@@ -1,0 +1,2529 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.361">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Statistics Using Technology, 4th Edition - 9&nbsp; Two Sample Inference</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Regression.html" rel="next">
+<link href="./Estimation.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Two Sample Inference.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Two Sample Inference</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Statistics Using Technology, 4th Edition</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Statistical Basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Statistical Basics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Graphical Description of Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Graphical Description of Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Numerical Description of Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Numerical Description of Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Discrete Probability Distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Discrete Probability Distribution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Continuous Probability Distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Continuous Probability Distribution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./One Sample Inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">One Sample Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Two Sample Inference.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Two Sample Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Chi-Square and ANOVA Tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chi-squared and ANOVA Tests</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./References.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">References</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#two-proportions" id="toc-two-proportions" class="nav-link active" data-scroll-target="#two-proportions"><span class="header-section-number">9.1</span> Two Proportions</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test-for-two-population-proportion-2-prop-test" id="toc-hypothesis-test-for-two-population-proportion-2-prop-test" class="nav-link" data-scroll-target="#hypothesis-test-for-two-population-proportion-2-prop-test"><span class="header-section-number">9.1.1</span> Hypothesis Test for Two Population Proportion (2-Prop Test)</a></li>
+  <li><a href="#confidence-interval-for-the-difference-between-two-population-proportion-2-prop-interval" id="toc-confidence-interval-for-the-difference-between-two-population-proportion-2-prop-interval" class="nav-link" data-scroll-target="#confidence-interval-for-the-difference-between-two-population-proportion-2-prop-interval"><span class="header-section-number">9.1.2</span> Confidence Interval for the Difference Between Two Population Proportion (2-Prop Interval)</a></li>
+  <li><a href="#example-hypothesis-test-for-two-population-proportions" id="toc-example-hypothesis-test-for-two-population-proportions" class="nav-link" data-scroll-target="#example-hypothesis-test-for-two-population-proportions"><span class="header-section-number">9.1.3</span> Example: Hypothesis Test for Two Population Proportions</a></li>
+  <li><a href="#example-confidence-interval-for-two-population-proportions" id="toc-example-confidence-interval-for-two-population-proportions" class="nav-link" data-scroll-target="#example-confidence-interval-for-two-population-proportions"><span class="header-section-number">9.1.4</span> Example: Confidence Interval for Two Population Proportions</a></li>
+  <li><a href="#homework-for-two-proportions-section" id="toc-homework-for-two-proportions-section" class="nav-link" data-scroll-target="#homework-for-two-proportions-section"><span class="header-section-number">9.1.5</span> Homework for Two Proportions Section</a></li>
+  </ul></li>
+  <li><a href="#paired-samples-for-two-means" id="toc-paired-samples-for-two-means" class="nav-link" data-scroll-target="#paired-samples-for-two-means"><span class="header-section-number">9.2</span> Paired Samples for Two Means</a>
+  <ul class="collapse">
+  <li><a href="#example-independent-or-dependent-samples" id="toc-example-independent-or-dependent-samples" class="nav-link" data-scroll-target="#example-independent-or-dependent-samples"><span class="header-section-number">9.2.1</span> Example: Independent or Dependent Samples</a></li>
+  <li><a href="#hypothesis-test-for-two-sample-paired-t-test" id="toc-hypothesis-test-for-two-sample-paired-t-test" class="nav-link" data-scroll-target="#hypothesis-test-for-two-sample-paired-t-test"><span class="header-section-number">9.2.2</span> Hypothesis Test for Two Sample Paired t-Test</a></li>
+  <li><a href="#confidence-interval-for-difference-in-means-from-paired-samples-t-interval" id="toc-confidence-interval-for-difference-in-means-from-paired-samples-t-interval" class="nav-link" data-scroll-target="#confidence-interval-for-difference-in-means-from-paired-samples-t-interval"><span class="header-section-number">9.2.3</span> Confidence Interval for Difference in Means from Paired Samples (t-Interval)</a></li>
+  <li><a href="#example-hypothesis-test-for-paired-samples" id="toc-example-hypothesis-test-for-paired-samples" class="nav-link" data-scroll-target="#example-hypothesis-test-for-paired-samples"><span class="header-section-number">9.2.4</span> Example: Hypothesis Test for Paired Samples</a></li>
+  <li><a href="#example-hypothesis-test-for-paired-samples-1" id="toc-example-hypothesis-test-for-paired-samples-1" class="nav-link" data-scroll-target="#example-hypothesis-test-for-paired-samples-1"><span class="header-section-number">9.2.5</span> Example: Hypothesis Test for Paired Samples</a></li>
+  <li><a href="#example-confidence-interval-for-paired-samples" id="toc-example-confidence-interval-for-paired-samples" class="nav-link" data-scroll-target="#example-confidence-interval-for-paired-samples"><span class="header-section-number">9.2.6</span> Example: Confidence Interval for Paired Samples</a></li>
+  <li><a href="#homework-for-paired-samples-for-two-means-section" id="toc-homework-for-paired-samples-for-two-means-section" class="nav-link" data-scroll-target="#homework-for-paired-samples-for-two-means-section"><span class="header-section-number">9.2.7</span> Homework for Paired Samples for Two Means Section</a></li>
+  </ul></li>
+  <li><a href="#independent-samples-for-two-means" id="toc-independent-samples-for-two-means" class="nav-link" data-scroll-target="#independent-samples-for-two-means"><span class="header-section-number">9.3</span> Independent Samples for Two Means</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test-for-the-difference-in-means-from-two-independent-samples" id="toc-hypothesis-test-for-the-difference-in-means-from-two-independent-samples" class="nav-link" data-scroll-target="#hypothesis-test-for-the-difference-in-means-from-two-independent-samples"><span class="header-section-number">9.3.1</span> Hypothesis Test for the Difference in Means from Two Independent Samples</a></li>
+  <li><a href="#confidence-interval-for-the-difference-in-means-from-two-independent-samples" id="toc-confidence-interval-for-the-difference-in-means-from-two-independent-samples" class="nav-link" data-scroll-target="#confidence-interval-for-the-difference-in-means-from-two-independent-samples"><span class="header-section-number">9.3.2</span> Confidence Interval for the Difference in Means from Two Independent Samples</a></li>
+  <li><a href="#example-hypothesis-test-for-two-means" id="toc-example-hypothesis-test-for-two-means" class="nav-link" data-scroll-target="#example-hypothesis-test-for-two-means"><span class="header-section-number">9.3.3</span> Example: Hypothesis Test for Two Means</a></li>
+  <li><a href="#example-confidence-interval-in-two-samples" id="toc-example-confidence-interval-in-two-samples" class="nav-link" data-scroll-target="#example-confidence-interval-in-two-samples"><span class="header-section-number">9.3.4</span> Example: Confidence Interval in Two Samples</a></li>
+  <li><a href="#example-hypothesis-test-for-two-means-1" id="toc-example-hypothesis-test-for-two-means-1" class="nav-link" data-scroll-target="#example-hypothesis-test-for-two-means-1"><span class="header-section-number">9.3.5</span> Example: Hypothesis Test for Two Means</a></li>
+  <li><a href="#example-confidence-interval-for-two-independent-samples" id="toc-example-confidence-interval-for-two-independent-samples" class="nav-link" data-scroll-target="#example-confidence-interval-for-two-independent-samples"><span class="header-section-number">9.3.6</span> Example: Confidence Interval for Two Independent Samples</a></li>
+  <li><a href="#homework-for-independent-samples-for-two-means-section" id="toc-homework-for-independent-samples-for-two-means-section" class="nav-link" data-scroll-target="#homework-for-independent-samples-for-two-means-section"><span class="header-section-number">9.3.7</span> Homework for Independent Samples for Two Means Section</a></li>
+  </ul></li>
+  <li><a href="#which-analysis-should-you-conduct" id="toc-which-analysis-should-you-conduct" class="nav-link" data-scroll-target="#which-analysis-should-you-conduct"><span class="header-section-number">9.4</span> Which Analysis Should You Conduct?</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Two Sample Inference</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Chapter 7 discussed methods of hypothesis testing about one-population parameters. Chapter 8 discussed methods of estimating population parameters from one sample using confidence intervals. This chapter will look at methods of confidence intervals and hypothesis testing for two populations. Since there are two populations, there are two random variables, two means or proportions, and two samples (though with paired samples you usually consider there to be one sample with pairs collected). Examples of where you would do this are:</p>
+<p>Testing and estimating the difference in testosterone levels of men before and after they had children (Gettler, McDade, Feranil &amp; Kuzawa, 2011).</p>
+<p>Testing the claim that a diet works by looking at the weight before and after subjects are on the diet.</p>
+<p>Estimating the difference in proportion of those who approve of President Obama in the age group 18 to 26 year old and the 55 and over age group.</p>
+<p>All of these are examples of hypothesis tests or confidence intervals for two populations. The methods to conduct these hypothesis tests and confidence intervals will be explored in this chapter. As a reminder, all hypothesis tests are the same process. The only thing that changes is the formula that you use and the conditions. Confidence intervals are also the same process, except that the formula is different.</p>
+<section id="two-proportions" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="two-proportions"><span class="header-section-number">9.1</span> Two Proportions</h2>
+<p>There are times you want to test a claim about two population proportions or construct a confidence interval estimate of the difference between two population proportions. As with all other hypothesis tests and confidence intervals, the process is the same though the formulas and conditions are different.</p>
+<section id="hypothesis-test-for-two-population-proportion-2-prop-test" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="hypothesis-test-for-two-population-proportion-2-prop-test"><span class="header-section-number">9.1.1</span> Hypothesis Test for Two Population Proportion (2-Prop Test)</h3>
+<ol type="1">
+<li>State the random variables and the parameters in words.</li>
+</ol>
+<p><span class="math inline">\(x_1\)</span> = number of successes from group 1</p>
+<p><span class="math inline">\(x_2\)</span> = number of successes from group 2</p>
+<p><span class="math inline">\(p_1\)</span> = proportion of successes in group 1</p>
+<p><span class="math inline">\(p_2\)</span> = proportion of successes in group 2</p>
+<ol start="2" type="1">
+<li>State the null and alternative hypotheses and the level of significance</li>
+</ol>
+<p><span class="math inline">\(H_o:p_1=p_2\)</span></p>
+<p><span class="math inline">\(H_a: p_1\ne p_2\)</span>. the <span class="math inline">\(\ne\)</span> can be replaced with <span class="math inline">\(&lt;\)</span> or <span class="math inline">\(&gt;\)</span> depending on the question.</p>
+<p>Also, state your <span class="math inline">\(\alpha\)</span> level here.</p>
+<ol start="3" type="1">
+<li>State and check the conditions for a hypothesis test</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li><p>State: A simple random sample of size <span class="math inline">\(n_1\)</span> is taken from population 1, and a simple random sample of size <span class="math inline">\(n_2\)</span> is taken from population 2. Check: describe how each sample was collected.</p></li>
+<li><p>State: The samples are independent. Check: describe why the two samples are independent.</p></li>
+<li><p>State: The properties for the binomial distribution are satisfied for both populations. Check: describe how each population meets all the properties.</p></li>
+<li><p>State: The sampling distribution of <span class="math inline">\(\hat{p_1}\)</span> can be approximated as a normal distribution. Check: To determine the sampling distribution of <span class="math inline">\(\hat{p_1}\)</span>, you need to show that <span class="math inline">\(p_1*n_1\ge5\)</span> and <span class="math inline">\(q_1*n_1\ge5\)</span> where <span class="math inline">\(q_1=1-p_1\)</span>. If this requirement is true, then the sampling distribution of <span class="math inline">\(\hat{p_1}\)</span> is well approximated by a normal curve. State: The sampling distribution of <span class="math inline">\(\hat{p_2}\)</span> can be approximated as a normal distribution. Check: To determine the sampling distribution of <span class="math inline">\(\hat{p_2}\)</span>, you need to show that <span class="math inline">\(p_2*n_2\ge 5\)</span> and <span class="math inline">\(q_2*n_2\ge 5\)</span> where <span class="math inline">\(q_2=1-p_2\)</span>. If this requirement is true, then the sampling distribution of <span class="math inline">\(\hat{p_2}\)</span> is well approximated by a normal curve. However, if you do not know <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span>, you will need to use <span class="math inline">\(\hat{p_1}\)</span> and <span class="math inline">\(\hat{p_2}\)</span> instead. This is not perfect, but it is the best you can do.</p></li>
+</ol>
+<!-- -->
+<ol start="4" type="1">
+<li>Find the sample statistics, test statistic, and p-value</li>
+</ol>
+<p>On rStudio, use the command</p>
+<p>prop.test(c(x1,x2), c(n1, n2)</p>
+<ol start="5" type="1">
+<li>Conclusion</li>
+</ol>
+<p>This is where you write reject or fail to reject <span class="math inline">\(H_o\)</span>. The rule is: if the p-value <span class="math inline">\(&lt;\alpha\)</span>, then reject <span class="math inline">\(H_o\)</span>. If the p-value <span class="math inline">\(\ge \alpha\)</span>, then fail to reject <span class="math inline">\(H_o\)</span>.</p>
+<ol start="6" type="1">
+<li>Interpretation</li>
+</ol>
+<p>This is where you interpret in real world terms the conclusion to the test. The conclusion for a hypothesis test is that you either have enough evidence to support <span class="math inline">\(H_a\)</span>, or you do not have enough evidence to support <span class="math inline">\(H_a\)</span>.</p>
+</section>
+<section id="confidence-interval-for-the-difference-between-two-population-proportion-2-prop-interval" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="confidence-interval-for-the-difference-between-two-population-proportion-2-prop-interval"><span class="header-section-number">9.1.2</span> Confidence Interval for the Difference Between Two Population Proportion (2-Prop Interval)</h3>
+<p>The confidence interval for the difference in proportions has the same random variables and proportions and the same conditions as the hypothesis test for two proportions. If you have already completed the hypothesis test, then you do not need to state them again. If you haven’t completed the hypothesis test, then state the random variables and proportions and state and check the conditions before completing the confidence interval step.</p>
+<ol type="1">
+<li>Find the sample statistics and the confidence interval</li>
+</ol>
+<p>The confidence interval estimate of the difference is found using the following command in r Studio:</p>
+<p>prop.test(c(x1,x2), c(n1, n2), conf.level=C) Type C as a decimal</p>
+<ol start="2" type="1">
+<li><p>Statistical Interpretation: In general this looks like, “You are C% confident that the confidence interval contains the true difference in proportions.”</p></li>
+<li><p>Real World Interpretation: This is where you state how much more (or less) the first proportion is from the second proportion.</p></li>
+</ol>
+</section>
+<section id="example-hypothesis-test-for-two-population-proportions" class="level3" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="example-hypothesis-test-for-two-population-proportions"><span class="header-section-number">9.1.3</span> Example: Hypothesis Test for Two Population Proportions</h3>
+<p>Do husbands cheat on their wives in a different proportion from the proportion of wives cheat on their husbands (“Statistics brain,” 2013)? Suppose you take a group of 1000 randomly selected husbands and find that 231 had cheated on their wives. Suppose in a group of 1200 randomly selected wives, 176 cheated on their husbands. Do the data show that the proportion of husbands who cheat on their wives is different from the proportion of wives who cheat on their husbands. Test at the 5% level.</p>
+<section id="solution" class="level4" data-number="9.1.3.1">
+<h4 data-number="9.1.3.1" class="anchored" data-anchor-id="solution"><span class="header-section-number">9.1.3.1</span> Solution</h4>
+<ol type="1">
+<li>State the random variables and the parameters in words.</li>
+</ol>
+<p><span class="math inline">\(x_1\)</span> = number of husbands who cheat on his wife</p>
+<p><span class="math inline">\(x_2\)</span> = number of wives who cheat on her husband</p>
+<p><span class="math inline">\(p_1\)</span> = proportion of husbands who cheat on his wife</p>
+<p><span class="math inline">\(p_2\)</span> = proportion of wives who cheat on her husband</p>
+<ol start="2" type="1">
+<li>State the null and alternative hypotheses and the level of significance</li>
+</ol>
+<p><span class="math inline">\(H_o: p_1=p_2\)</span></p>
+<p><span class="math inline">\(H_a: p_1\ne p_2\)</span></p>
+<p>level of significance is <span class="math inline">\(\alpha=0.05\)</span></p>
+<ol start="3" type="1">
+<li>State and check the conditions for a hypothesis test</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li><p>State: A simple random sample of 1000 responses about cheating from husbands is taken. Check: This was stated in the problem. State: A simple random sample of 1200 responses about cheating from wives is taken. Check: This was stated in the problem.</p></li>
+<li><p>State: The samples are independent. Check: The samples are independent. This is true since the samples involved different genders.</p></li>
+<li><p>State: The properties of the binomial distribution are satisfied in both populations. Check: This is true since there are only two responses, there are a fixed number of trials, the probability of a success is the same, and the trials are independent.</p></li>
+<li><p>State: The sampling distributions of <span class="math inline">\(\hat{p_1}\)</span> and <span class="math inline">\(\hat{p_2}\)</span> can be approximated with a normal distribution. Check: <span class="math inline">\(n_1*p_1\)</span>, <span class="math inline">\(n_2*p_2\)</span>, <span class="math inline">\(n_1*q_1\)</span>, and <span class="math inline">\(n_2*q_2\)</span> are all greater than or equal to 5. So both sampling distributions of <span class="math inline">\(\hat{p_1}\)</span> and <span class="math inline">\(\hat{p_2}\)</span> can be approximated with a normal distribution.</p></li>
+</ol>
+<!-- -->
+<ol start="4" type="1">
+<li>Find the sample statistics, test statistic, and p-value</li>
+</ol>
+<p>On r use the command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(<span class="dv">231</span>,<span class="dv">176</span>), <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">1200</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    2-sample test for equality of proportions with continuity correction
+
+data:  c out of c231 out of 1000176 out of 1200
+X-squared = 25.173, df = 1, p-value = 5.241e-07
+alternative hypothesis: two.sided
+95 percent confidence interval:
+ 0.05050705 0.11815962
+sample estimates:
+   prop 1    prop 2 
+0.2310000 0.1466667 </code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Conclusion</li>
+</ol>
+<p>Reject <span class="math inline">\(H_o\)</span>, since the p-value is less than 5%.</p>
+<ol start="6" type="1">
+<li>Interpretation</li>
+</ol>
+<p>This is enough evidence to support that the proportion of husbands having affairs is different from the proportion of wives having affairs.</p>
+</section>
+</section>
+<section id="example-confidence-interval-for-two-population-proportions" class="level3" data-number="9.1.4">
+<h3 data-number="9.1.4" class="anchored" data-anchor-id="example-confidence-interval-for-two-population-proportions"><span class="header-section-number">9.1.4</span> Example: Confidence Interval for Two Population Proportions</h3>
+<p>What is the difference in proportion that husbands cheat on their wives than wives cheat on the husbands (“Statistics brain,” 2013)? Suppose you take a group of 1000 randomly selected husbands and find that 231 had cheated on their wives. Suppose in a group of 1200 randomly selected wives, 176 cheated on their husbands. Estimate the difference in the proportion of husbands and wives who cheat on their spouses using a 95% confidence level.</p>
+<section id="solution-1" class="level4" data-number="9.1.4.1">
+<h4 data-number="9.1.4.1" class="anchored" data-anchor-id="solution-1"><span class="header-section-number">9.1.4.1</span> Solution</h4>
+<ol type="1">
+<li>State the random variables and the parameters in words.</li>
+</ol>
+<p>These were stated in <a href="#example-hypothesis-test-for-two-population-proportions">Example: Hypothesis Test for Two Population Proportions</a>.</p>
+<ol start="2" type="1">
+<li>State and check the conditions for the confidence interval</li>
+</ol>
+<p>The conditions were stated and checked in <a href="#example-hypothesis-test-for-two-population-proportions">Example: Hypothesis Test for Two Population Proportions</a>.</p>
+<ol start="3" type="1">
+<li>Find the sample statistics and the confidence interval</li>
+</ol>
+<p>On r use the command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(<span class="dv">231</span>,<span class="dv">176</span>), <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">1200</span>), <span class="at">conf.level =</span> .<span class="dv">95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    2-sample test for equality of proportions with continuity correction
+
+data:  c out of c231 out of 1000176 out of 1200
+X-squared = 25.173, df = 1, p-value = 5.241e-07
+alternative hypothesis: two.sided
+95 percent confidence interval:
+ 0.05050705 0.11815962
+sample estimates:
+   prop 1    prop 2 
+0.2310000 0.1466667 </code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li><p>Statistical Interpretation: You are 95% confident that <span class="math inline">\(0.05050705&lt;p_1-p_2&lt;0.11815962\)</span> contains the true difference in proportions.</p></li>
+<li><p>Real World Interpretation: The proportion of husbands who cheat on their wives is anywhere from 5.05% to 11.82% higher than the proportion of wives who cheat on their husband.</p></li>
+</ol>
+</section>
+</section>
+<section id="homework-for-two-proportions-section" class="level3" data-number="9.1.5">
+<h3 data-number="9.1.5" class="anchored" data-anchor-id="homework-for-two-proportions-section"><span class="header-section-number">9.1.5</span> Homework for Two Proportions Section</h3>
+<p><strong>In each problem show all steps of the hypothesis test or confidence interval. If some of the conditions are not met, note that the results of the test or interval may not be correct and then continue the process of the hypothesis test or confidence interval.</strong></p>
+<ol type="1">
+<li><p>Many high school students take the AP tests in different subject areas. In 2007, of the 144,796 students who took the biology exam 84,199 of them were female. In that same year, of the 211,693 students who took the calculus AB exam 102,598 of them were female (“AP exam scores,” 2013). Is there enough evidence to show that the proportion of female students taking the biology exam is different than the proportion of female students taking the calculus AB exam? Test at the 5% level.</p></li>
+<li><p>Many high school students take the AP tests in different subject areas. In 2007, of the 144,796 students who took the biology exam 84,199 of them were female. In that same year, of the 211,693 students who took the calculus AB exam 102,598 of them were female (“AP exam scores,” 2013). Estimate the difference in the proportion of female students taking the biology exam and female students taking the calculus AB exam using a 90% confidence level.</p></li>
+<li><p>Many high school students take the AP tests in different subject areas. In 2007, of the 211,693 students who took the calculus AB exam 102,598 of them were female and 109,095 of them were male (“AP exam scores,” 2013). Is there enough evidence to show that the proportion of female students taking the calculus AB exam is different from the proportion of male students taking the calculus AB exam? Test at the 5% level.</p></li>
+<li><p>Many high school students take the AP tests in different subject areas. In 2007, of the 211,693 students who took the calculus AB exam 102,598 of them were female and 109,095 of them were male (“AP exam scores,” 2013). Estimate using a 90% level the difference in proportion of female students taking the calculus AB exam versus male students taking the calculus AB exam.</p></li>
+<li><p>Are there more children diagnosed with Autism Spectrum Disorder (ASD) in states that have larger urban areas over states that are mostly rural? In the state of Pennsylvania, a fairly urban state, there are 245 eight year old diagnosed with ASD out of 18,440 eight year old evaluated. In the state of Utah, a fairly rural state, there are 45 eight year old diagnosed with ASD out of 2,123 eight year old evaluated (“Autism and developmental,” 2008). Is there enough evidence to show that the proportion of children diagnosed with ASD in Pennsylvania is different than the proportion in Utah? Test at the 1% level.</p></li>
+<li><p>Are there more children diagnosed with Autism Spectrum Disorder (ASD) in states that have larger urban areas over states that are mostly rural? In the state of Pennsylvania, a fairly urban state, there are 245 eight year old diagnosed with ASD out of 18,440 eight year old evaluated. In the state of Utah, a fairly rural state, there are 45 eight year old diagnosed with ASD out of 2,123 eight year old evaluated (“Autism and developmental,” 2008). Estimate the difference in proportion of children diagnosed with ASD between Pennsylvania and Utah. Use a 98% confidence level.</p></li>
+<li><p>A child dying from an accidental poisoning is a terrible incident. Is it more likely that a male child will get into poison than a female child? To find this out, data was collected that showed that out of 1830 children between the ages one and four who pass away from poisoning, 1031 were males and 799 were females (Flanagan, Rooney &amp; Griffiths, 2005). Do the data show that there is different proportion of male children dying of poisoning than female children? Test at the 1% level.</p></li>
+<li><p>A child dying from an accidental poisoning is a terrible incident. Is it more likely that a male child will get into poison than a female child? To find this out, data was collected that showed that out of 1830 children between the ages one and four who pass away from poisoning, 1031 were males and 799 were females (Flanagan, Rooney &amp; Griffiths, 2005). Compute a 99% confidence interval for the difference in proportions of poisoning deaths of male and female children ages one to four.</p></li>
+</ol>
+</section>
+</section>
+<section id="paired-samples-for-two-means" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="paired-samples-for-two-means"><span class="header-section-number">9.2</span> Paired Samples for Two Means</h2>
+<p>Are two populations the same? Is the average height of men taller than the average height of women? Is the mean weight less after a diet than before?</p>
+<p>You can compare populations by comparing their means. You take a sample from each population and compare the statistics.</p>
+<p>Anytime you compare two populations you need to know if the samples are independent or dependent. The formulas you use are different for different types of samples.</p>
+<p>If how you choose one sample has no effect on the way you choose the other sample, the two samples are <strong>independent</strong>. The way to think about it is that in independent samples, the observations from one sample are overall different from the observations from the other sample. This will mean that sample one has no affect on sample two. The sample values from one sample are not related or paired with values from the other sample.</p>
+<p>If you choose the samples so that a measurement in one sample is paired with a measurement from the other sample, the samples are <strong>dependent</strong> or <strong>matched</strong> or <strong>paired</strong>. (Often a before and after situation.) You want to make sure the there is a meaning for pairing data values from one sample with a specific data value from the other sample. One way to think about it is that in dependent samples, the observations from one sample are the same observations from the other sample, though there can be other reasons to pair values. This makes the sample values from each sample paired.</p>
+<p>In tidy data, remember each row is a unit of observation, and each column is a variable. In paired samples, you would have two variables that you are working with. In independent samples, you would have a variable that distinguishes an observation from another observation. As an example, in the Pulse data frame, consider the variables pulse_before and pulse_after. Since they are measured off the same observation, then comparing the two variables would be a paired samples analysis. However, consider the pulse_after and whether a person smokes would be comparing the variable pulse_after against the variable smokes to see if smoking effects a person’s pulse rate after exercise. In this case, the observations would be different based on smoking yes or smoking no. Consider the variable smoking to be the factor that one is interested in seeing how it effects pulse rate in the data frame <a href="Numerical Description of Data.html#tbl-Pulse">Table&nbsp;<span>3.7</span></a>.</p>
+<section id="example-independent-or-dependent-samples" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="example-independent-or-dependent-samples"><span class="header-section-number">9.2.1</span> Example: Independent or Dependent Samples</h3>
+<p>Determine if the following are dependent or independent samples.</p>
+<ol type="a">
+<li>Randomly choose 5 men and 6 women and compare their heights</li>
+<li>Choose 10 men and weigh them. Give them a new diet drug and later weigh them again.</li>
+<li>Take 10 people and measure the strength of their dominant arm and their non-dominant arm.</li>
+</ol>
+<section id="solution-2" class="level4" data-number="9.2.1.1">
+<h4 data-number="9.2.1.1" class="anchored" data-anchor-id="solution-2"><span class="header-section-number">9.2.1.1</span> Solution</h4>
+<ol type="a">
+<li><p>Randomly choose 5 men and 6 women and compare their heights</p>
+<p>Independent, since there is no reason that one value belongs to another. The units of observations are not the same for both samples. The units of observations are definitely different. A way to think about this is that the knowledge that a man is chosen in one sample does not give any information about any of the woman chosen in the other sample.</p></li>
+</ol>
+<!-- -->
+<ol start="2" type="a">
+<li><p>Choose 10 men and weigh them. Give them a new diet drug and later weigh them again.</p>
+<p>Dependent, since each person’s before weight can be matched with their after weight. The units of observations are the same for both samples. A way to think about this is that the knowledge that a person weighs 400 pounds at the beginning will tell you something about their weight after the diet drug.</p></li>
+<li><p>Take 10 people and measure the strength of their dominant arm and their non-dominant arm.</p>
+<p>Dependent, since you can match the two arm strengths. The units of observations are the same for both samples. So the knowledge of one person’s dominant arm strength will tell you something about the strength of their non-dominant arm.</p></li>
+</ol>
+<p>To analyze data when there are matched or paired samples, called dependent samples, you conduct a paired t-test. Since the samples are matched, you can find the difference between the values of the two random variables.</p>
+</section>
+</section>
+<section id="hypothesis-test-for-two-sample-paired-t-test" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="hypothesis-test-for-two-sample-paired-t-test"><span class="header-section-number">9.2.2</span> Hypothesis Test for Two Sample Paired t-Test</h3>
+<ol type="1">
+<li>State the random variables and the parameters in words.</li>
+</ol>
+<p><span class="math inline">\(x_1\)</span> = random variable 1</p>
+<p><span class="math inline">\(x_2\)</span> = random variable 2</p>
+<p><span class="math inline">\(\mu_1\)</span> = mean of random variable 1</p>
+<p><span class="math inline">\(\mu_2\)</span> = mean of random variable 2</p>
+<ol start="2" type="1">
+<li>State the null and alternative hypotheses and the level of significance</li>
+</ol>
+<p>The hypotheses would be</p>
+<p><span class="math inline">\(H_o:\mu_1=\mu_2\)</span> or<span class="math inline">\(H_o:\mu_1-\mu_2=0\)</span></p>
+<p><span class="math inline">\(H_a:\mu_1\ne \mu_2\)</span> or <span class="math inline">\(H_a:\mu_1-\mu_2\ne0\)</span></p>
+<p>However, since you are finding the differences, then you can actually think of <span class="math inline">\(\mu_1-\mu_2=\mu_d\)</span>.</p>
+<p>So the hypotheses could become</p>
+<p><span class="math inline">\(H_o:\mu_d=0\)</span></p>
+<p><span class="math inline">\(H_a:\mu_d\ne 0\)</span> Remember, you can replace <span class="math inline">\(\ne\)</span> with <span class="math inline">\(&lt;\)</span> or <span class="math inline">\(&gt;\)</span>.</p>
+<p>Also, state your <span class="math inline">\(\alpha\)</span> level here.</p>
+<ol start="3" type="1">
+<li>State and check the conditions for the hypothesis test</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li><p>State: A random sample of <span class="math inline">\(n\)</span> pairs is taken. Check: state how the sample was collected.</p></li>
+<li><p>Check: The population of the difference between random variables is normally distributed. Check: In this case the population you are interested in has to do with the differences that you find. It does not matter if each random variable is normally distributed. It is only important if the differences you find are normally distributed. Just as before, the t-test is fairly robust to the condition if the sample size is large. This means that if this condition isn’t met, but your sample size is quite large, then the results of the t-test are valid.</p></li>
+</ol>
+<!-- -->
+<ol start="4" type="1">
+<li>Find the sample statistic, test statistic, and p-value</li>
+</ol>
+<p>Realize that a paired test is a one sample t-test on the difference between two variables. So you are running a one-sample t-test on a new variable known as the difference variable. You need to create this difference variable by creating a new data frame. This is done on rStudio by doing the following command (The following shows how to create the variable difference for pulse_after-pulse_before on the data frame Pulse. Change the variables used and data frame used to your data frame and variables):</p>
+<div class="cell" data-tbl-alt="Table showing first 6 rows of Pulse dataset with difference column added">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Pulse<span class="ot">&lt;-</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  Pulse <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">difference=</span>pulse_after<span class="sc">-</span>pulse_before) </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Pulse))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-Pulse_Difference" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;9.1: Pulse Data frame with Difference Column Added</caption>
+<colgroup>
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 4%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 4%">
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 5%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">height</th>
+<th style="text-align: right;">weight</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: left;">gender</th>
+<th style="text-align: left;">smokes</th>
+<th style="text-align: left;">alcohol</th>
+<th style="text-align: left;">exercise</th>
+<th style="text-align: left;">ran</th>
+<th style="text-align: right;">pulse_before</th>
+<th style="text-align: right;">pulse_after</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">difference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">170</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">moderate</td>
+<td style="text-align: left;">sat</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">182</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">moderate</td>
+<td style="text-align: left;">sat</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">76</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">-4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">moderate</td>
+<td style="text-align: left;">ran</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">125</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">57</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">182</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">low</td>
+<td style="text-align: left;">sat</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">-2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">167</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">low</td>
+<td style="text-align: left;">sat</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">-8</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">178</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">low</td>
+<td style="text-align: left;">sat</td>
+<td style="text-align: right;">76</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Notice rStudio added a new variable called difference to the data frame <a href="#tbl-Pulse_Difference">Table&nbsp;<span>9.1</span></a>. Now to conduct a paired t-test use the rStudio command</p>
+<p>t.test(~difference_variable, data=Data_Frame)</p>
+<p>Note: if the <span class="math inline">\(H_a\)</span> is &lt;, then the command becomes</p>
+<p>t.test(~difference_variable, data=Data_Frame, alternative=“less”)</p>
+<p>Similarly for &gt; put alternative=“greater”</p>
+<ol start="5" type="1">
+<li>Conclusion</li>
+</ol>
+<p>This is where you write reject <span class="math inline">\(H_o\)</span> or fail to reject <span class="math inline">\(H_o\)</span>. The rule is: if the p-value <span class="math inline">\(&lt;\alpha\)</span>, then reject <span class="math inline">\(H_o\)</span>. If the p-value <span class="math inline">\(\ge\alpha\)</span>, then fail to reject <span class="math inline">\(H_o\)</span>.</p>
+<ol start="6" type="1">
+<li>Interpretation</li>
+</ol>
+<p>This is where you interpret in real world terms the conclusion to the test. The conclusion for a hypothesis test is that you either have enough evidence to support <span class="math inline">\(H_a\)</span>, or you do not have enough evidence to support <span class="math inline">\(H_a\)</span>.</p>
+</section>
+<section id="confidence-interval-for-difference-in-means-from-paired-samples-t-interval" class="level3" data-number="9.2.3">
+<h3 data-number="9.2.3" class="anchored" data-anchor-id="confidence-interval-for-difference-in-means-from-paired-samples-t-interval"><span class="header-section-number">9.2.3</span> Confidence Interval for Difference in Means from Paired Samples (t-Interval)</h3>
+<p>The confidence interval for the difference in means has the same random variables and means and the same conditions as the hypothesis test for two paired samples. If you have already completed the hypothesis test, then you do not need to state them again. If you haven’t completed the hypothesis test, then state the random variables and means, and state and check the conditions before completing the confidence interval step.</p>
+<ol type="1">
+<li><p>Find the sample statistic and confidence interval. Again, you will need to create a new data frame with a difference variable. Then on rStudio the command is</p>
+<p>t.test(~difference_variable, data=Data_Frame, conf.level=C) Type C as a decimal</p></li>
+</ol>
+<!-- -->
+<ol start="2" type="1">
+<li><p>Statistical Interpretation: In general this looks like, “You are C% confident that the statement contains the true mean difference.”</p></li>
+<li><p>Real World Interpretation: This is where you state what interval contains the true mean difference.</p></li>
+</ol>
+</section>
+<section id="example-hypothesis-test-for-paired-samples" class="level3" data-number="9.2.4">
+<h3 data-number="9.2.4" class="anchored" data-anchor-id="example-hypothesis-test-for-paired-samples"><span class="header-section-number">9.2.4</span> Example: Hypothesis Test for Paired Samples</h3>
+<p>Is the pulse rate after exercise different from the pulse rate before exercise for a woman who drinks alcohol? Use the data frame <a href="Numerical Description of Data.html#tbl-Pulse">Table&nbsp;<span>3.7</span></a>. Test at the 5% level.</p>
+<p><strong>Code book for data frame Pulse below <a href="Numerical Description of Data.html#tbl-Pulse">Table&nbsp;<span>3.7</span></a>.</strong></p>
+<section id="solution-3" class="level4" data-number="9.2.4.1">
+<h4 data-number="9.2.4.1" class="anchored" data-anchor-id="solution-3"><span class="header-section-number">9.2.4.1</span> Solution</h4>
+<ol type="1">
+<li>State the random variables and the parameters in words.</li>
+</ol>
+<p><span class="math inline">\(x_1\)</span> = pulse of a smoking woman who drinks alcohol after exercise</p>
+<p><span class="math inline">\(x_2\)</span> = pulse of a smoking woman who drinks alcohol before exercise</p>
+<p><span class="math inline">\(\mu_1\)</span> = mean pulse of a smoking woman who drinks alcohol after exercise</p>
+<p><span class="math inline">\(\mu_2\)</span> = mean pulse of a smoking woman who drinks alcohol after exercise</p>
+<ol start="2" type="1">
+<li>State the null and alternative hypotheses and the level of significance</li>
+</ol>
+<p><span class="math inline">\(H_o: \mu_1=\mu_2\)</span></p>
+<p><span class="math inline">\(H_a: \mu_1\ne \mu_2\)</span></p>
+<p>level of significance, <span class="math inline">\(\alpha=0.05\)</span></p>
+<ol start="3" type="1">
+<li>State and check the conditions for the hypothesis test</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li><p>State: A random sample of 110 pairs of pulse rates after and before exercise was taken. Check: The data frame says that the data was collected from students in classes for several years. Though this was not a random sample, it is probably a representative sample.</p></li>
+<li><p>State: The population of the difference in after and before pulse rates is normally distributed. Check: To see if this is true, look at the density plot and the normal quantile plot for the difference between after and before. This variable must be created before the density plot and normal quantile plot can be created. The data frame <a href="#tbl-Females">Table&nbsp;<span>9.2</span></a> is females who drink alcohol.</p></li>
+</ol>
+<div class="cell" data-tbl-alt="Pulse Rates Before and After Exercise of females who do drink alcohol with difference">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Pulse_female<span class="ot">&lt;-</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  Pulse <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender<span class="sc">==</span><span class="st">"female"</span>, alcohol<span class="sc">==</span><span class="st">"yes"</span>) </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Pulse_female))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-Females" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;9.2: Pulse Rates Before and After Exercise of Females who do drink Alcohol with Difference</caption>
+<colgroup>
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 4%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 4%">
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 5%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">height</th>
+<th style="text-align: right;">weight</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: left;">gender</th>
+<th style="text-align: left;">smokes</th>
+<th style="text-align: left;">alcohol</th>
+<th style="text-align: left;">exercise</th>
+<th style="text-align: left;">ran</th>
+<th style="text-align: right;">pulse_before</th>
+<th style="text-align: right;">pulse_after</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">difference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">165</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">low</td>
+<td style="text-align: left;">ran</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">163</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">low</td>
+<td style="text-align: left;">ran</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">125</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">54</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">173</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">moderate</td>
+<td style="text-align: left;">sat</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">179</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">moderate</td>
+<td style="text-align: left;">ran</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">167</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">high</td>
+<td style="text-align: left;">ran</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">176</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">80</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">173</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">low</td>
+<td style="text-align: left;">sat</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">-2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Now mutate <a href="#tbl-Females">Table&nbsp;<span>9.2</span></a> data frame to include a difference variable.</p>
+<div class="cell" data-tbl-alt="Table showing first 6 rows of Female Pulse dataset with difference column added">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Pulse_female<span class="ot">&lt;-</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  Pulse_female <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">difference=</span>pulse_after<span class="sc">-</span>pulse_before) </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Pulse_female))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-Females_difference" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;9.3: Pulse Rates Before and After Exercise of Females who do drink Alcohol with Difference</caption>
+<colgroup>
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 4%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 4%">
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 5%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">height</th>
+<th style="text-align: right;">weight</th>
+<th style="text-align: right;">age</th>
+<th style="text-align: left;">gender</th>
+<th style="text-align: left;">smokes</th>
+<th style="text-align: left;">alcohol</th>
+<th style="text-align: left;">exercise</th>
+<th style="text-align: left;">ran</th>
+<th style="text-align: right;">pulse_before</th>
+<th style="text-align: right;">pulse_after</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">difference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">165</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">low</td>
+<td style="text-align: left;">ran</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">163</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">low</td>
+<td style="text-align: left;">ran</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">125</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">54</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">173</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">moderate</td>
+<td style="text-align: left;">sat</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">179</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">moderate</td>
+<td style="text-align: left;">ran</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">167</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">high</td>
+<td style="text-align: left;">ran</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">176</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">80</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">173</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">low</td>
+<td style="text-align: left;">sat</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">-2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Using <a href="#tbl-Females_difference">Table&nbsp;<span>9.3</span></a> create a density plot and normal quantile plot on the difference variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_density</span>(<span class="sc">~</span>difference, <span class="at">data=</span>Pulse_female, <span class="at">title =</span> <span class="st">"Difference in Pulse Rates for Females who drink Alcohol"</span>, <span class="at">xlab=</span><span class="st">"Difference Between Before and After"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-pulse-female-density" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Two-Sample-Inference_files/figure-html/fig-pulse-female-density-1.png" class="img-fluid figure-img" alt="Density plot of differences in pulse rates. Not symmetric" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.1: Density plot of differences in pulse rates</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_qq</span>(<span class="sc">~</span>difference, <span class="at">data=</span>Pulse_female, <span class="at">title =</span> <span class="st">"Difference in Pulse Rates for Females who drink Alcohol"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-pulse-female-quartile" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Two-Sample-Inference_files/figure-html/fig-pulse-female-quartile-1.png" class="img-fluid figure-img" alt="normal qunatile plot plot of differences in pulse rates. Does not look linear" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.2: Normal Quantile Plot of Differences in Pulse Rates</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The density plot is not symmetrical and the normal quantile plot on the differences is not linear. So you cannot assume that the distribution of the difference in pulse rates is normal. It is good that the t-test is robust if there is a large sample. The sample is of size 110, so that should be adequate to assume the conclusion is valid.</p>
+<ol start="4" type="1">
+<li>Find the sample statistic, test statistic, and p-value On r Studio, use the command:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="sc">~</span>difference, <span class="at">data=</span>Pulse_female)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  difference
+t = 4.1353, df = 26, p-value = 0.0003283
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 11.51152 34.26625
+sample estimates:
+mean of x 
+ 22.88889 </code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Conclusion</li>
+</ol>
+<p>Since the p-value &lt; 0.05, reject <span class="math inline">\(H_o\)</span>.</p>
+<ol start="6" type="1">
+<li>Interpretation</li>
+</ol>
+<p>There is enough evidence to support that there is a difference in pulse rate before and after exercise of females who smoke.</p>
+</section>
+</section>
+<section id="example-hypothesis-test-for-paired-samples-1" class="level3" data-number="9.2.5">
+<h3 data-number="9.2.5" class="anchored" data-anchor-id="example-hypothesis-test-for-paired-samples-1"><span class="header-section-number">9.2.5</span> Example: Hypothesis Test for Paired Samples</h3>
+<p>The New Zealand Air Force purchased a batch of flight helmets. They then found out that the helmets didn’t fit. In order to make sure that they order the correct size helmets, they measured the head size of recruits. To save money, they wanted to use cardboard calipers, but were not sure if they will be accurate enough. So they took 18 recruits and measured their heads with the cardboard calipers and also with metal calipers. The data frame is in <a href="#tbl-Helmet">Table&nbsp;<span>9.4</span></a> (Helmet Sizes for New Zealand Airforce, 2019). Do the data provide enough evidence to show that there is a difference in measurements between the cardboard and metal calipers? Use a 5% level of significance.</p>
+<div class="cell" data-tbl-alt="Table showing first 6 rows of Helmet dataset">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Helmet<span class="ot">&lt;-</span><span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/helmet.csv"</span>) </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Helmet))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-Helmet" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;9.4: Helmet Head Measurments</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Cardboard</th>
+<th style="text-align: right;">Metal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">146</td>
+<td style="text-align: right;">145</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">151</td>
+<td style="text-align: right;">153</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">163</td>
+<td style="text-align: right;">161</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">152</td>
+<td style="text-align: right;">151</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">151</td>
+<td style="text-align: right;">145</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">151</td>
+<td style="text-align: right;">150</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><strong>Code book for data frame Helmet</strong></p>
+<p><strong>Description</strong> After purchasing a batch of flight helmets that did not fit the heads of many pilots, the NZ Airforce decided to measure the head sizes of all recruits. Before this was carried out, information was collected to determine the feasibility of using cheap cardboard calipers to make the measurements, instead of metal ones which were expensive and uncomfortable. The data lists the head diameters of 18 recruits measured once using cardboard calipers and again using metal calipers. One question is whether there is any systematic difference between the two sets of calipers. One might also ask whether there is more variability in the cardboard calipers measurement than that of the metal calipers.</p>
+<p>This data frame contains the following columns:</p>
+<p>Cardboard: measurement using cardboard calipers (cm)</p>
+<p>Metal: measurement using metal calipers (cm)</p>
+<p>Source Helmet Sizes for New Zealand Airforce. (n.d.). Retrieved July 20, 2019, from http://www.statsci.org/data/oz/nzhelmet.html</p>
+<p>References Data courtesy of Dr Stephen Legg. Seber and Lee (1998). Page 545.</p>
+<section id="solution-4" class="level4" data-number="9.2.5.1">
+<h4 data-number="9.2.5.1" class="anchored" data-anchor-id="solution-4"><span class="header-section-number">9.2.5.1</span> Solution</h4>
+<ol type="1">
+<li>State the random variables and the parameters in words.</li>
+</ol>
+<p><span class="math inline">\(x_1\)</span> = head measurement of recruit using cardboard caliper</p>
+<p><span class="math inline">\(x_2\)</span> = head measurement of recruit using metal caliper</p>
+<p><span class="math inline">\(\mu_1\)</span>= mean head measurement of recruit using cardboard caliper</p>
+<p><span class="math inline">\(\mu_2\)</span> = mean head measurement of recruit using metal caliper</p>
+<ol start="2" type="1">
+<li>State the null and alternative hypotheses and the level of significance</li>
+</ol>
+<p><span class="math inline">\(H_o:\mu_1=\mu_2\)</span></p>
+<p><span class="math inline">\(H_a:\mu_1\ne \mu_2\)</span></p>
+<p>level of significance, <span class="math inline">\(\alpha=0.05\)</span></p>
+<ol start="3" type="1">
+<li>State and check the conditions for the hypothesis test</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li><p>State: A random sample of 18 pairs of head measures of recruits with cardboard and metal caliper was taken. Check: This was not stated, but probably could be safely assumed.</p></li>
+<li><p>State: The population of the difference in head measurements between cardboard and metal calipers is normally distributed. Check: First create the difference variable, then the density plot and normal quantile plot.</p></li>
+</ol>
+<div class="cell" data-tbl-alt="Table showing first 6 rows of Helmet dataset with difference column added">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Helmet<span class="ot">&lt;-</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  Helmet <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">difference=</span>Cardboard<span class="sc">-</span>Metal) </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Helmet))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-Helmet-difference" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;9.5: Helmet Head Measurments</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Cardboard</th>
+<th style="text-align: right;">Metal</th>
+<th style="text-align: right;">difference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">146</td>
+<td style="text-align: right;">145</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">151</td>
+<td style="text-align: right;">153</td>
+<td style="text-align: right;">-2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">163</td>
+<td style="text-align: right;">161</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">152</td>
+<td style="text-align: right;">151</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">151</td>
+<td style="text-align: right;">145</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">151</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_density</span>(<span class="sc">~</span>difference, <span class="at">data=</span>Helmet, <span class="at">title=</span><span class="st">"Differences in Head Measurements"</span>, <span class="at">xlab=</span><span class="st">"Difference Between Cardboard and Metal"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-helmet-density" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Two-Sample-Inference_files/figure-html/fig-helmet-density-1.png" class="img-fluid figure-img" alt="Density plot of differences in head measurements, somewhat bell shaped" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.3: Density plot of differences in head measurements</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_qq</span>(<span class="sc">~</span>difference, <span class="at">data=</span>Helmet, <span class="at">title=</span><span class="st">"Differences in Head Measurements"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-helmet-qq" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Two-Sample-Inference_files/figure-html/fig-helmet-qq-1.png" class="img-fluid figure-img" alt="Normal quantile plot of differences in head measurements, somewhat linear" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.4: Normal Quantile Plot of Differences in Head Measurements</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>This density plot <a href="#fig-helmet-density">Figure&nbsp;<span>9.3</span></a> looks somewhat bell shaped. The normal quantile plot <a href="#fig-helmet-qq">Figure&nbsp;<span>9.4</span></a> on the differences looks somewhat linear. So you can assume that the distribution of the difference in weights is normal.</p>
+<ol start="4" type="1">
+<li>Find the sample statistic, test statistic, and p-value</li>
+</ol>
+<p>Using rStudio the command is</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="sc">~</span>difference, <span class="at">data=</span>Helmet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  difference
+t = 3.1854, df = 17, p-value = 0.005415
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 0.5440163 2.6782060
+sample estimates:
+mean of x 
+ 1.611111 </code></pre>
+</div>
+</div>
+<p>The sample statistic is 1.6111, the test statistic is 3.1854, and the p-value is 0.005415.</p>
+<ol start="5" type="1">
+<li>Conclusion</li>
+</ol>
+<p>Since the p-value <span class="math inline">\(&lt;\)</span> 0.05, reject <span class="math inline">\(H_o\)</span>.</p>
+<ol start="6" type="1">
+<li>Interpretation</li>
+</ol>
+<p>There is enough evidence to support that the mean head measurements using the cardboard calipers are not the same as when using the metal calipers. So it looks like the New Zealand Air Force shouldn’t use the cardboard calipers.</p>
+</section>
+</section>
+<section id="example-confidence-interval-for-paired-samples" class="level3" data-number="9.2.6">
+<h3 data-number="9.2.6" class="anchored" data-anchor-id="example-confidence-interval-for-paired-samples"><span class="header-section-number">9.2.6</span> Example: Confidence Interval for Paired Samples</h3>
+<p>The New Zealand Air Force purchased a batch of flight helmets. They then found out that the helmets didn’t fit. In order to make sure that they order the correct size helmets, they measured the head size of recruits. To save money, they wanted to use cardboard calipers, but were not sure if they will be accurate enough. So they took 18 recruits and measured their heads with the cardboard calipers and also with metal calipers. The data frame is in <a href="#tbl-Helmet">Table&nbsp;<span>9.4</span></a> (Helmet Sizes for New Zealand Airforce, 2019). Estimate the difference in measurements between the cardboard and metal calipers using a 95% confidence interval.</p>
+<section id="solution-5" class="level4" data-number="9.2.6.1">
+<h4 data-number="9.2.6.1" class="anchored" data-anchor-id="solution-5"><span class="header-section-number">9.2.6.1</span> Solution</h4>
+<ol type="1">
+<li>State the random variables and the parameters in words.</li>
+</ol>
+<p>These were stated in <a href="#example-hypothesis-test-for-paired-samples-1">Example: Hypothesis Test for Paired Samples</a>.</p>
+<ol start="2" type="1">
+<li>State and check the conditions for the confidence interval</li>
+</ol>
+<p>The conditions were stated and checked in <a href="#example-hypothesis-test-for-paired-samples-1">Example: Hypothesis Test for Paired Samples</a>.</p>
+<ol start="3" type="1">
+<li>Find the sample statistic and confidence interval</li>
+</ol>
+<p>Using the data frame <a href="#tbl-Helmet-difference">Table&nbsp;<span>9.5</span></a> the rStudio the command is</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="sc">~</span>difference, <span class="at">data=</span>Helmet, <span class="at">conf.leve=</span><span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  difference
+t = 3.1854, df = 17, p-value = 0.005415
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 0.5440163 2.6782060
+sample estimates:
+mean of x 
+ 1.611111 </code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li><p>Statistical Interpretation: You are 95% confidence that <span class="math inline">\(0.5440163&lt;\mu_1-\mu_2&lt;2.6782060\)</span> contains the true mean difference in head measurement between using the cardboard and metal calibers.</p></li>
+<li><p>Real World Interpretation: The mean head measurement using the cardboard calibers is anywhere from 0.54 cm to 2.68 cm more than the head measurement using the metal calibers.</p></li>
+</ol>
+<p>Examples 9.2.6 and 9.2.7 use the same data set, but one is conducting a hypothesis test and the other is conducting a confidence interval. Notice that the hypothesis test’s conclusion was to reject and say that there was a difference in the means, and the confidence interval does not contain the number 0. If the confidence interval did contain the number 0, then that would mean that the two means could be the same. Since the interval did not contain 0, then you could say that the means are different just as in the hypothesis test. This means that the hypothesis test and the confidence interval can produce the same interpretation. Do be careful though, you can run a hypothesis test with a particular significance level and a confidence interval with a confidence level that is not compatible with your significance level. This will mean that the conclusion from the confidence interval would not be the same as with a hypothesis test. So if you want to estimate the mean difference, then conduct a confidence interval. If you want to show that the means are different, then conduct a hypothesis test. As a reminder, the American Statistical Association (ASA) suggests not conducting hypothesis tests and just create confidence intervals.</p>
+</section>
+</section>
+<section id="homework-for-paired-samples-for-two-means-section" class="level3" data-number="9.2.7">
+<h3 data-number="9.2.7" class="anchored" data-anchor-id="homework-for-paired-samples-for-two-means-section"><span class="header-section-number">9.2.7</span> Homework for Paired Samples for Two Means Section</h3>
+<p><strong>In each problem show all steps of the hypothesis test or confidence interval. If some of the conditions are not met, note that the results of the test or interval may not be correct and then continue the process of the hypothesis test or confidence interval.</strong></p>
+<ol type="1">
+<li>The cholesterol level of patients who had heart attacks was measured multiple times after the heart attack. The researchers want to see if the cholesterol level of patients who have heart attacks changes as the time since their heart attack increases. The data is in <a href="Numerical Description of Data.html#tbl-Cholesterol">Table&nbsp;<span>3.2</span></a>. Do the data show that the mean cholesterol level of patients that have had a heart attack changes as the time increases since their heart attack? Use day2 and day4 variables to answer the question. Test at the 1% level.</li>
+</ol>
+<p><strong>Code book for Data Frame Cholesterol is below <a href="#tbl-Helmet-difference">Table&nbsp;<span>9.5</span></a>.</strong></p>
+<ol start="2" type="1">
+<li><p>The cholesterol level of patients who had heart attacks was measured multiple times after the heart attack. The researchers want to see if the cholesterol level of patients who have heart attacks changes as the time since their heart attack increases. The data is in <a href="#tbl-Helmet-difference">Table&nbsp;<span>9.5</span></a>. Calculate a 98% confidence interval for the mean difference in cholesterol levels from day two to day four.</p></li>
+<li><p>All Fresh Seafood is a wholesale fish company based on the east coast of the U.S. Catalina Offshore Products is a wholesale fish company based on the west coast of the U.S. <a href="#tbl-Price-seafood">Table&nbsp;<span>9.6</span></a> contains prices from both companies for specific fish types (\“Seafood online,\” 2013) (\“Buy sushi grade,\” 2013). Do the data provide enough evidence to show that fish cost different from west coast fish wholesaler and east coast wholesaler? Test at the 5% level.</p></li>
+</ol>
+<div class="cell" data-tbl-alt="Table showing first 6 rows of Price dataset">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Price <span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/price.csv"</span>) </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Price))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-Price-seafood" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;9.6: Wholesale Prices of Fish in Dollars</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">fish</th>
+<th style="text-align: right;">east</th>
+<th style="text-align: right;">west</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Cod</td>
+<td style="text-align: right;">19.99</td>
+<td style="text-align: right;">17.99</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tilapi</td>
+<td style="text-align: right;">6.00</td>
+<td style="text-align: right;">13.99</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Farmed Salmon</td>
+<td style="text-align: right;">19.99</td>
+<td style="text-align: right;">22.99</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Organic Salmon</td>
+<td style="text-align: right;">24.99</td>
+<td style="text-align: right;">24.99</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Grouper Fillet</td>
+<td style="text-align: right;">29.99</td>
+<td style="text-align: right;">19.99</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tuna</td>
+<td style="text-align: right;">28.99</td>
+<td style="text-align: right;">31.99</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><strong>Code book for data frame Price</strong></p>
+<p><strong>Description</strong> Price of fish was collected from two websites. One for Catalina Offshore Products (west coast) and the other for All Fresh Seafood (east coast) in 2013.</p>
+<p>This data frame contains the following columns:</p>
+<p>fish: type of fish for sale</p>
+<p>east: price of fish from east coast supplier ($)</p>
+<p>west: price of fish from west coast supplier ($)</p>
+<p>Source Seafood online. (2013, November 20). Retrieved from http://www.allfreshseafood.com/</p>
+<p>Buy sushi grade fish online. (2013, November 20). Retrieved from http://www.catalinaop.com/</p>
+<p>References Websites of Catalina Offshore Products and All Fresh Seafood</p>
+<ol start="4" type="1">
+<li><p>All Fresh Seafood is a wholesale fish company based on the east coast of the U.S. Catalina Offshore Products is a wholesale fish company based on the west coast of the U.S. <a href="#tbl-Price-seafood">Table&nbsp;<span>9.6</span></a> contains prices from both companies for specific fish types (\“Seafood online,\” 2013) (\“Buy sushi grade,\” 2013). Find a 95% confidence interval for the mean difference in wholesale price between the east coast and west coast suppliers.</p></li>
+<li><p>The British Department of Transportation studied to see if people avoid driving or shopping, or have more accidents on Friday the 13th. They collected data from different locations (Friday the 13th, 2019). The data for each location on the two different dates is in <a href="#tbl-Traffic">Table&nbsp;<span>9.7</span></a>. Do the data show that on average different number of people are engaged in activities on Friday the 13th? Test at the 5% level.</p></li>
+</ol>
+<div class="cell" data-tbl-alt="Table showing first 6 rows of Traffic dataset">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Traffic <span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/traffic.csv"</span>) </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Traffic))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-Traffic" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;9.7: Traffic Count</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">source</th>
+<th style="text-align: left;">year</th>
+<th style="text-align: left;">month</th>
+<th style="text-align: right;">X6th</th>
+<th style="text-align: right;">X13th</th>
+<th style="text-align: left;">location</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">traffic</td>
+<td style="text-align: left;">1990,</td>
+<td style="text-align: left;">July</td>
+<td style="text-align: right;">139246</td>
+<td style="text-align: right;">138548</td>
+<td style="text-align: left;">7 to 8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">traffic</td>
+<td style="text-align: left;">1990,</td>
+<td style="text-align: left;">July</td>
+<td style="text-align: right;">134012</td>
+<td style="text-align: right;">132908</td>
+<td style="text-align: left;">9 to 10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">traffic</td>
+<td style="text-align: left;">1991,</td>
+<td style="text-align: left;">September</td>
+<td style="text-align: right;">137055</td>
+<td style="text-align: right;">136018</td>
+<td style="text-align: left;">7 to 8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">traffic</td>
+<td style="text-align: left;">1991,</td>
+<td style="text-align: left;">September</td>
+<td style="text-align: right;">133732</td>
+<td style="text-align: right;">131843</td>
+<td style="text-align: left;">9 to 10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">traffic</td>
+<td style="text-align: left;">1991,</td>
+<td style="text-align: left;">December</td>
+<td style="text-align: right;">123552</td>
+<td style="text-align: right;">121641</td>
+<td style="text-align: left;">7 to 8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">traffic</td>
+<td style="text-align: left;">1991,</td>
+<td style="text-align: left;">December</td>
+<td style="text-align: right;">121139</td>
+<td style="text-align: right;">118723</td>
+<td style="text-align: left;">9 to 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><strong>Code book for data frame Traffic</strong></p>
+<p><strong>Description</strong> This file consists of three separate data sets, all of which address the issues of how superstitions regarding Friday the 13th affect human behavior, and whether Friday the 13th is an unlucky day. Scanlon, et al.&nbsp;collected data on traffic and shopping patterns and accident frequency for Fridays the 6th and 13th between October of 1989 and November of 1992.</p>
+<p>For the first data set, the researchers obtained information from the British Department of Transport regarding the traffic flows between junctions 7 to 8 and junctions 9 to 10 of the M25 motorway. They collected the numbers of shoppers in nine different supermarkets in southeast England for the second data set. The third data set contains numbers of emergency admissions to hospitals due to transport accidents.</p>
+<p>We present the three data sets in a combined format, with the variable “Data set” as an identifier that may be used to separate them.</p>
+<p>This data frame contains the following columns:</p>
+<p>source: which data set the data were obtained from</p>
+<p>year: which year the data was collected from</p>
+<p>Month: the month that the Friday was in</p>
+<p>x6th: Number of cars passing through junction (traffic data set), shoppers for each supermarket (shopping data set), or admissions due to transport accidents (accident data set) on Friday the 6th</p>
+<p>x13th: Number of cars passing through junction (traffic data set), shoppers for each supermarket (shopping data set), or admissions due to transport accidents (accident data set) on Friday the 13th</p>
+<p>location: Motorway junction (traffic data set), supermarket location (shopping data set) or hospital (accident data set) to which the data correspond</p>
+<p>Source (n.d.). Retrieved from https://www3.nd.edu/~busiforc/handouts/Data and Stories/t test/Friday The Thirteenth/Friday The Thirteenth Data.html</p>
+<p>References Scanlon, T.J., Luben, R.N., Scanlon, F.L., Singleton, N. (1993), “Is Friday the 13th Bad For Your Health?,” BMJ, 307, 1584-1586.</p>
+<ol start="6" type="1">
+<li><p>The British Department of Transportation studied to see if people avoid driving or shopping, or have more accidents on Friday the 13th. They collected data from different locations (Friday the 13th, 2019). The data for each location on the two different dates is in <a href="#tbl-Traffic">Table&nbsp;<span>9.7</span></a>. Do the data show that on average different number of people are engaged in activities on Friday the 13th? Estimate the mean difference in activity count between the 6th and the 13th using a 95% level.</p></li>
+<li><p>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997). The data is in <a href="Numerical Description of Data.html#tbl-Reiki">Table&nbsp;<span>3.9</span></a>. Do the data show that Reiki treatment reduces pain? Test at the 5% level.</p></li>
+</ol>
+<p><strong>Code book for data frame Reiki is below <a href="Numerical Description of Data.html#tbl-Reiki">Table&nbsp;<span>3.9</span></a>.</strong></p>
+<ol start="8" type="1">
+<li><p>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997). The data is in <a href="Numerical Description of Data.html#tbl-Reiki">Table&nbsp;<span>3.9</span></a>. Compute a 90% confidence level for the mean difference in VAS score from before and after Reiki treatment.</p></li>
+<li><p>The female labor force participation rates (FLFPR) of women in countries from 1990 to 2018 are in table 9.2.8.5 (Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate), 2019). Do the data show that the mean female labor force participation rate in 1990 is different from that in the 2018 using a 5% level of significance?</p></li>
+</ol>
+<div class="cell" data-tbl-alt="Table showing first 6 rows of Labor dataset">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Labor <span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/labor.csv"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Labor))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-Labor" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;9.8: Female Labor Force Participation Rates</caption>
+<colgroup>
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Country.Name</th>
+<th style="text-align: left;">Country.Code</th>
+<th style="text-align: left;">Region</th>
+<th style="text-align: left;">IncomeGroup</th>
+<th style="text-align: right;">y1990</th>
+<th style="text-align: right;">y1991</th>
+<th style="text-align: right;">y1992</th>
+<th style="text-align: right;">y1993</th>
+<th style="text-align: right;">y1994</th>
+<th style="text-align: right;">y1995</th>
+<th style="text-align: right;">y1996</th>
+<th style="text-align: right;">y1997</th>
+<th style="text-align: right;">y1998</th>
+<th style="text-align: right;">y1999</th>
+<th style="text-align: right;">y2000</th>
+<th style="text-align: right;">y2001</th>
+<th style="text-align: right;">y2002</th>
+<th style="text-align: right;">y2003</th>
+<th style="text-align: right;">y2004</th>
+<th style="text-align: right;">y2005</th>
+<th style="text-align: right;">y2006</th>
+<th style="text-align: right;">y2007</th>
+<th style="text-align: right;">y2008</th>
+<th style="text-align: right;">y2009</th>
+<th style="text-align: right;">y2010</th>
+<th style="text-align: right;">y2011</th>
+<th style="text-align: right;">y2012</th>
+<th style="text-align: right;">y2013</th>
+<th style="text-align: right;">y2014</th>
+<th style="text-align: right;">y2015</th>
+<th style="text-align: right;">y2016</th>
+<th style="text-align: right;">y2017</th>
+<th style="text-align: right;">y2018</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Aruba</td>
+<td style="text-align: left;">ABW</td>
+<td style="text-align: left;">Latin America &amp; Caribbean</td>
+<td style="text-align: left;">High income</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Afghanistan</td>
+<td style="text-align: left;">AFG</td>
+<td style="text-align: left;">South Asia</td>
+<td style="text-align: left;">Low income</td>
+<td style="text-align: right;">43.11500</td>
+<td style="text-align: right;">43.12400</td>
+<td style="text-align: right;">43.12900</td>
+<td style="text-align: right;">43.07200</td>
+<td style="text-align: right;">43.00300</td>
+<td style="text-align: right;">43.01700</td>
+<td style="text-align: right;">42.77000</td>
+<td style="text-align: right;">42.55400</td>
+<td style="text-align: right;">42.41300</td>
+<td style="text-align: right;">42.3340</td>
+<td style="text-align: right;">42.27400</td>
+<td style="text-align: right;">42.53900</td>
+<td style="text-align: right;">42.89900</td>
+<td style="text-align: right;">43.28600</td>
+<td style="text-align: right;">43.66100</td>
+<td style="text-align: right;">44.02500</td>
+<td style="text-align: right;">43.59700</td>
+<td style="text-align: right;">43.19200</td>
+<td style="text-align: right;">42.8730</td>
+<td style="text-align: right;">42.70900</td>
+<td style="text-align: right;">42.73500</td>
+<td style="text-align: right;">43.32800</td>
+<td style="text-align: right;">44.11700</td>
+<td style="text-align: right;">45.03900</td>
+<td style="text-align: right;">46.01700</td>
+<td style="text-align: right;">47.00100</td>
+<td style="text-align: right;">47.76600</td>
+<td style="text-align: right;">48.47400</td>
+<td style="text-align: right;">48.66000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Angola</td>
+<td style="text-align: left;">AGO</td>
+<td style="text-align: left;">Sub-Saharan Africa</td>
+<td style="text-align: left;">Lower middle income</td>
+<td style="text-align: right;">74.94500</td>
+<td style="text-align: right;">74.87900</td>
+<td style="text-align: right;">74.82600</td>
+<td style="text-align: right;">74.78200</td>
+<td style="text-align: right;">74.77000</td>
+<td style="text-align: right;">74.78400</td>
+<td style="text-align: right;">74.78300</td>
+<td style="text-align: right;">74.80600</td>
+<td style="text-align: right;">74.84600</td>
+<td style="text-align: right;">74.8940</td>
+<td style="text-align: right;">74.94100</td>
+<td style="text-align: right;">74.96200</td>
+<td style="text-align: right;">74.98400</td>
+<td style="text-align: right;">75.01100</td>
+<td style="text-align: right;">75.04800</td>
+<td style="text-align: right;">75.09400</td>
+<td style="text-align: right;">75.12600</td>
+<td style="text-align: right;">75.16500</td>
+<td style="text-align: right;">75.2090</td>
+<td style="text-align: right;">75.25600</td>
+<td style="text-align: right;">75.30700</td>
+<td style="text-align: right;">75.34400</td>
+<td style="text-align: right;">75.38900</td>
+<td style="text-align: right;">75.43300</td>
+<td style="text-align: right;">75.46500</td>
+<td style="text-align: right;">75.47900</td>
+<td style="text-align: right;">75.47000</td>
+<td style="text-align: right;">75.45100</td>
+<td style="text-align: right;">75.41200</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Albania</td>
+<td style="text-align: left;">ALB</td>
+<td style="text-align: left;">Europe &amp; Central Asia</td>
+<td style="text-align: left;">Upper middle income</td>
+<td style="text-align: right;">53.77100</td>
+<td style="text-align: right;">56.29600</td>
+<td style="text-align: right;">56.68700</td>
+<td style="text-align: right;">55.74700</td>
+<td style="text-align: right;">54.90400</td>
+<td style="text-align: right;">53.74600</td>
+<td style="text-align: right;">53.07500</td>
+<td style="text-align: right;">53.81200</td>
+<td style="text-align: right;">53.15400</td>
+<td style="text-align: right;">52.2540</td>
+<td style="text-align: right;">51.76900</td>
+<td style="text-align: right;">51.11000</td>
+<td style="text-align: right;">50.67900</td>
+<td style="text-align: right;">49.75900</td>
+<td style="text-align: right;">48.87800</td>
+<td style="text-align: right;">48.05100</td>
+<td style="text-align: right;">47.38900</td>
+<td style="text-align: right;">46.80300</td>
+<td style="text-align: right;">46.2690</td>
+<td style="text-align: right;">44.94500</td>
+<td style="text-align: right;">45.69300</td>
+<td style="text-align: right;">47.10400</td>
+<td style="text-align: right;">48.80600</td>
+<td style="text-align: right;">44.65000</td>
+<td style="text-align: right;">44.78900</td>
+<td style="text-align: right;">47.67600</td>
+<td style="text-align: right;">47.45900</td>
+<td style="text-align: right;">47.31200</td>
+<td style="text-align: right;">47.19100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Andorra</td>
+<td style="text-align: left;">AND</td>
+<td style="text-align: left;">Europe &amp; Central Asia</td>
+<td style="text-align: left;">High income</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arab World</td>
+<td style="text-align: left;">ARB</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">19.18997</td>
+<td style="text-align: right;">19.24094</td>
+<td style="text-align: right;">19.13159</td>
+<td style="text-align: right;">19.29515</td>
+<td style="text-align: right;">19.64479</td>
+<td style="text-align: right;">19.66156</td>
+<td style="text-align: right;">19.51602</td>
+<td style="text-align: right;">19.27293</td>
+<td style="text-align: right;">19.07511</td>
+<td style="text-align: right;">19.5351</td>
+<td style="text-align: right;">19.59284</td>
+<td style="text-align: right;">19.52237</td>
+<td style="text-align: right;">19.08892</td>
+<td style="text-align: right;">19.32403</td>
+<td style="text-align: right;">19.44488</td>
+<td style="text-align: right;">19.53444</td>
+<td style="text-align: right;">19.68183</td>
+<td style="text-align: right;">20.17107</td>
+<td style="text-align: right;">19.8473</td>
+<td style="text-align: right;">20.05784</td>
+<td style="text-align: right;">20.17166</td>
+<td style="text-align: right;">20.27703</td>
+<td style="text-align: right;">20.46453</td>
+<td style="text-align: right;">20.76731</td>
+<td style="text-align: right;">20.70378</td>
+<td style="text-align: right;">20.51515</td>
+<td style="text-align: right;">20.61605</td>
+<td style="text-align: right;">20.56842</td>
+<td style="text-align: right;">20.58152</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><strong>Code book for data frame Labor</strong></p>
+<p><strong>Description</strong> Labor force participation rate, female (% of female population ages 15+)</p>
+<p>This data frame contains the following columns:</p>
+<p>Country Name: The name of a country around the world</p>
+<p>Country Code: The 3 letter country code</p>
+<p>Region: The location of the country in the world</p>
+<p>IncomeGroup: The World Bank’s income classification</p>
+<p>y1990-y2018: Labor force participation rate, female (% of female population ages 15+) for the years 100–2018</p>
+<p>Source Labor force participation rate, female (% of female population ages 15 ) (modeled ILO estimate). (n.d.). Retrieved July 20, 2019, from https://data.worldbank.org/indicator/SL.TLF.CACT.FE.ZS</p>
+<p>References International Labour Organization, ILOSTAT database. Data retrieved in April 2019.</p>
+<ol start="10" type="1">
+<li><p>The female labor force participation rates (FLFPR) of women in countries from 1990 to 2018 are in <a href="#tbl-Labor">Table&nbsp;<span>9.8</span></a> (Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate), 2019). Estimate the mean difference in the female labor force participation rate in 1990 to 2018 using a 95% confidence level?</p></li>
+<li><p>Is the pulse rate after exercise different from the pulse rate before exercise for a man who drinks alcohol but doesn’t smoke? Use the data frame Pulse <a href="Numerical Description of Data.html#tbl-Pulse">Table&nbsp;<span>3.7</span></a>. Test at the 5% level.</p></li>
+</ol>
+<p><strong>Code book for data frame Pulse is below <a href="Numerical Description of Data.html#tbl-Pulse">Table&nbsp;<span>3.7</span></a>.</strong></p>
+<ol start="12" type="1">
+<li><a href="Numerical Description of Data.html#tbl-Pulse">Table&nbsp;<span>3.7</span></a> contains pulse rates Compute a 95% confidence interval for the mean difference in pulse rates from before and after exercise for males who drink but do not smoke.</li>
+</ol>
+</section>
+</section>
+<section id="independent-samples-for-two-means" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="independent-samples-for-two-means"><span class="header-section-number">9.3</span> Independent Samples for Two Means</h2>
+<p>This section will look at how to analyze when two samples are collected that are independent. As with all other hypothesis tests and confidence intervals, the process is the same though the formulas and conditions are different.</p>
+<section id="hypothesis-test-for-the-difference-in-means-from-two-independent-samples" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="hypothesis-test-for-the-difference-in-means-from-two-independent-samples"><span class="header-section-number">9.3.1</span> Hypothesis Test for the Difference in Means from Two Independent Samples</h3>
+<ol type="1">
+<li>State the random variables and the parameters in words.</li>
+</ol>
+<p><span class="math inline">\(x_1\)</span> = random variable 1</p>
+<p><span class="math inline">\(x_2\)</span>= random variable 2</p>
+<p><span class="math inline">\(\mu_1\)</span>= mean of random variable 1</p>
+<p><span class="math inline">\(\mu_2\)</span>= mean of random variable 2</p>
+<ol start="2" type="1">
+<li>State the null and alternative hypotheses and the level of significance</li>
+</ol>
+<p>The hypotheses would be</p>
+<p><span class="math inline">\(H_o:\mu_1=\mu_2\)</span></p>
+<p><span class="math inline">\(H_a:\mu_1\ne \mu_2\)</span>, the <span class="math inline">\(\ne\)</span> can be replaced with <span class="math inline">\(&lt;\)</span> or <span class="math inline">\(&gt;\)</span></p>
+<p>Also, state your <span class="math inline">\(\alpha\)</span> level here.</p>
+<ol start="3" type="1">
+<li>State and check the conditions for the hypothesis test</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li><p>State: A random sample of size <span class="math inline">\(n_1\)</span> is taken from population 1. A random sample of size <span class="math inline">\(n_2\)</span> is taken from population 2. Check: describe how both samples are collected. Note: the samples do not need to be the same size, but the test is more robust if they are.</p></li>
+<li><p>State: The two samples are independent. Check: describe whey the samples are independent of each other.</p></li>
+<li><p>State: Population 1 is normally distributed. Population 2 is normally distributed. Check: draw the density graph and normal quantile plot for both samples and discuss if they meet the criteria. Just as before, the t-test is fairly robust to the condition if the sample size is large. This means that if this condition isn’t met, but your sample sizes are quite large, then the results of the t-test are valid.</p></li>
+<li><p>State: The population variances are unknown and not assumed to be equal. The old condition is that the variances are equal. However, this condition is no longer a condition that most statisticians use. This is because it isn’t really realistic to assume that the variances are equal. So just assume the condition of the variances being unknown and not assumed to be equal is true, and it will not be checked.</p></li>
+</ol>
+<!-- -->
+<ol start="4" type="1">
+<li>Find the sample statistic, test statistic, and p-value</li>
+</ol>
+<p>The command using r is</p>
+<p>t.test(variable~factor, data=Data_Frame)</p>
+<p>Note: if the <span class="math inline">\(H_a\)</span> is &lt;, then the command becomes</p>
+<p>t.test(variable~factor, data=Data_Frame, alternative=“less”)</p>
+<p>Similarly for &gt; put alternative=“greater”</p>
+<ol start="5" type="1">
+<li>Conclusion</li>
+</ol>
+<p>This is where you write reject or fail to reject <span class="math inline">\(H_0\)</span>. The rule is: if the p-value <span class="math inline">\(&lt;\alpha\)</span>, then reject <span class="math inline">\(H_o\)</span>. If the p-value <span class="math inline">\(\ge \alpha\)</span>, then fail to reject <span class="math inline">\(H_o\)</span>.</p>
+<ol start="6" type="1">
+<li>Interpretation</li>
+</ol>
+<p>This is where you interpret in real world terms the conclusion to the test. The conclusion for a hypothesis test is that you either have enough evidence to support <span class="math inline">\(H_a\)</span>, or you do not have enough evidence to support <span class="math inline">\(H_a\)</span>.</p>
+</section>
+<section id="confidence-interval-for-the-difference-in-means-from-two-independent-samples" class="level3" data-number="9.3.2">
+<h3 data-number="9.3.2" class="anchored" data-anchor-id="confidence-interval-for-the-difference-in-means-from-two-independent-samples"><span class="header-section-number">9.3.2</span> Confidence Interval for the Difference in Means from Two Independent Samples</h3>
+<p>The confidence interval for the difference in means has the same random variables and means and the same conditions as the hypothesis test for independent samples. If you have already completed the hypothesis test, then you do not need to state them again. If you haven’t completed the hypothesis test, then state the random variables and means and state and check the conditions before completing the confidence interval step.</p>
+<p>Find the sample statistic and confidence interval</p>
+<p>On r Studio, the command is</p>
+<p>t.test(variable~factor, data=Data_Frame, conf.level=C) type C as a decimal</p>
+<ol start="2" type="1">
+<li><p>Statistical Interpretation: In general this looks like, “You are C% confident that the interval contains the true mean difference.”</p></li>
+<li><p>Real World Interpretation: This is where you state what interval contains the true difference in means, though often you state how much more (or less) the first mean is from the second mean.</p></li>
+</ol>
+</section>
+<section id="example-hypothesis-test-for-two-means" class="level3" data-number="9.3.3">
+<h3 data-number="9.3.3" class="anchored" data-anchor-id="example-hypothesis-test-for-two-means"><span class="header-section-number">9.3.3</span> Example: Hypothesis Test for Two Means</h3>
+<p>The cholesterol level of people vary for many reasons. The question is do people with diabetes have different cholesterol levels from people who do not have diabetes? Use the NHANES data frame. Test at the 5% level.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(NHANES) <span class="co">#displays the names of the variables in a data frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "ID"               "SurveyYr"         "Gender"           "Age"             
+ [5] "AgeDecade"        "AgeMonths"        "Race1"            "Race3"           
+ [9] "Education"        "MaritalStatus"    "HHIncome"         "HHIncomeMid"     
+[13] "Poverty"          "HomeRooms"        "HomeOwn"          "Work"            
+[17] "Weight"           "Length"           "HeadCirc"         "Height"          
+[21] "BMI"              "BMICatUnder20yrs" "BMI_WHO"          "Pulse"           
+[25] "BPSysAve"         "BPDiaAve"         "BPSys1"           "BPDia1"          
+[29] "BPSys2"           "BPDia2"           "BPSys3"           "BPDia3"          
+[33] "Testosterone"     "DirectChol"       "TotChol"          "UrineVol1"       
+[37] "UrineFlow1"       "UrineVol2"        "UrineFlow2"       "Diabetes"        
+[41] "DiabetesAge"      "HealthGen"        "DaysPhysHlthBad"  "DaysMentHlthBad" 
+[45] "LittleInterest"   "Depressed"        "nPregnancies"     "nBabies"         
+[49] "Age1stBaby"       "SleepHrsNight"    "SleepTrouble"     "PhysActive"      
+[53] "PhysActiveDays"   "TVHrsDay"         "CompHrsDay"       "TVHrsDayChild"   
+[57] "CompHrsDayChild"  "Alcohol12PlusYr"  "AlcoholDay"       "AlcoholYear"     
+[61] "SmokeNow"         "Smoke100"         "Smoke100n"        "SmokeAge"        
+[65] "Marijuana"        "AgeFirstMarij"    "RegularMarij"     "AgeRegMarij"     
+[69] "HardDrugs"        "SexEver"          "SexAge"           "SexNumPartnLife" 
+[73] "SexNumPartYear"   "SameSex"          "SexOrientation"   "PregnantNow"     </code></pre>
+</div>
+</div>
+<p><strong>Code book for data frame NHANES type help(“NHANES”) in the r Console.</strong></p>
+<section id="solution-6" class="level4" data-number="9.3.3.1">
+<h4 data-number="9.3.3.1" class="anchored" data-anchor-id="solution-6"><span class="header-section-number">9.3.3.1</span> Solution</h4>
+<ol type="1">
+<li>State the random variables and the parameters in words.</li>
+</ol>
+<p><span class="math inline">\(x_1\)</span> = Cholesterol level of people with diabetes</p>
+<p><span class="math inline">\(x_2\)</span> = Cholesterol level of people without diabetes</p>
+<p><span class="math inline">\(\mu_1\)</span> = mean cholesterol level of people with diabetes</p>
+<p><span class="math inline">\(\mu_2\)</span> = mean cholesterol level of people without diabetes</p>
+<ol start="2" type="1">
+<li>State the null and alternative hypotheses and the level of significance</li>
+</ol>
+<p>The hypotheses would be</p>
+<p><span class="math inline">\(H_o: \mu_1=\mu_2\)</span></p>
+<p><span class="math inline">\(H_a: \mu_1 \ne \mu_2\)</span></p>
+<p>level of significance, <span class="math inline">\(\alpha=0.05\)</span></p>
+<ol start="3" type="1">
+<li>State and check the conditions for the hypothesis test</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li><p>State: A random sample of cholesterol levels of people with diabetes is taken. A random sample of cholesterol levels of people without diabetes is taken.</p>
+<p>Check: The NHANES data frame uses cluster sampling which incorporates random sampling, so the sample is probably representative. This condition has been met.</p></li>
+<li><p>State: The two samples are independent.</p>
+<p>Check: This is because either they were dealing with people who have diabetes or not.</p></li>
+<li><p>State: Population of all cholesterol levels of people who have diabetes is normally distributed. Population of all cholesterol levels of people without diabetes is normally distributed.</p>
+<p>Check:</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>NHANES_no_NA<span class="ot">&lt;-</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  NHANES <span class="sc">|&gt;</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(Diabetes) </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_density</span>(<span class="sc">~</span>TotChol<span class="sc">|</span>Diabetes, <span class="at">data=</span>NHANES_no_NA, <span class="at">title =</span> <span class="st">"Cholesterol of a person with and without Diabetes"</span>, <span class="at">xlab=</span><span class="st">"Total Cholesterol"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-desnity-facet-diabetes" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Two-Sample-Inference_files/figure-html/fig-desnity-facet-diabetes-1.png" class="img-fluid figure-img" alt="Density plot of total cholesterol faceted by diabetes. Looks somehwat bell shaped." width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.5: Density Plot of Cholesterol of a person with and without Diabetes</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Both the yes group and the no group look somewhat bell shaped.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_qq</span>(<span class="sc">~</span>TotChol<span class="sc">|</span>Diabetes, <span class="at">data=</span>NHANES_no_NA, <span class="at">title =</span> <span class="st">"Cholesterol of a person with and without Diabetes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-quantile-facet-diabetes" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Two-Sample-Inference_files/figure-html/fig-quantile-facet-diabetes-1.png" class="img-fluid figure-img" alt="Normal quantile plot of total coholesterol faceted by diabetes. Looks somewhat linear." width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.6: quantile Plot of Cholesterol of a person with and without Diabetes</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Both the yes group and the no group look somewhat linear.</p>
+<p>The population of all cholesterol levels of people who have diabetes is probably normally distributed. The population of all cholesterol levels of people who do not have diabetes is probably normally distributed.</p>
+<ol start="4" type="1">
+<li>Find the sample statistic, test statistic, and p-value</li>
+</ol>
+<p>The variable is cholesterol (TotChol) and separating based on if a person has diabetes or not. So the factor is Diabetes. Using r Studio the command would be</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(TotChol<span class="sc">~</span>Diabetes, <span class="at">data=</span>NHANES) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  TotChol by Diabetes
+t = 2.4286, df = 809.7, p-value = 0.01537
+alternative hypothesis: true difference in means between group No and group Yes is not equal to 0
+95 percent confidence interval:
+ 0.02105115 0.19851114
+sample estimates:
+ mean in group No mean in group Yes 
+         4.887936          4.778155 </code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Conclusion</li>
+</ol>
+<p>Reject <span class="math inline">\(H_o\)</span> since the p-value <span class="math inline">\(&lt;\alpha\)</span>.</p>
+<ol start="6" type="1">
+<li>Interpretation</li>
+</ol>
+<p>There is enough evidence to support that people who have diabetes have different cholesterol levels on average from people who do not have diabetes.</p>
+</section>
+</section>
+<section id="example-confidence-interval-in-two-samples" class="level3" data-number="9.3.4">
+<h3 data-number="9.3.4" class="anchored" data-anchor-id="example-confidence-interval-in-two-samples"><span class="header-section-number">9.3.4</span> Example: Confidence Interval in Two Samples</h3>
+<p>The cholesterol level of people vary for many reasons. The question is how different is the cholesterol levels of people with diabetes from people who do not have diabetes? Use the NHANES data frame. Compute a 95% confidence interval.</p>
+<section id="solution-7" class="level4" data-number="9.3.4.1">
+<h4 data-number="9.3.4.1" class="anchored" data-anchor-id="solution-7"><span class="header-section-number">9.3.4.1</span> Solution</h4>
+<ol type="1">
+<li>State the random variables and the parameters in words.</li>
+</ol>
+<p>These were stated in <a href="#example-hypothesis-test-for-two-means-1">Example: Hypothesis Test for Two Means</a>.</p>
+<ol start="2" type="1">
+<li>State and check the conditions for the hypothesis test</li>
+</ol>
+<p>The conditions were stated and checked in <a href="#example-hypothesis-test-for-two-means-1">Example: Hypothesis Test for Two Means</a>.</p>
+<ol start="3" type="1">
+<li>Find the sample statistic and confidence interval</li>
+</ol>
+<p>The variable is cholesterol (TotChol) and separating based on if a person has diabetes or not. So the factor is Diabetes. Using rStudio the command would be</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(TotChol<span class="sc">~</span>Diabetes, <span class="at">data=</span>NHANES, <span class="at">conf.level=</span><span class="fl">0.95</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  TotChol by Diabetes
+t = 2.4286, df = 809.7, p-value = 0.01537
+alternative hypothesis: true difference in means between group No and group Yes is not equal to 0
+95 percent confidence interval:
+ 0.02105115 0.19851114
+sample estimates:
+ mean in group No mean in group Yes 
+         4.887936          4.778155 </code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li><p>Statistical Interpretation: You are 95% confident that the interval <span class="math inline">\(0.02105115&lt;\mu_1-\mu_2&lt;0.19851114\)</span> contains the true difference in means.</p></li>
+<li><p>Real World Interpretation: The mean cholesterol level for people with diabetes is anywhere from 0.021 mmol/L to 0.199 mmol/L more than the mean cholesterol level for people without diabetes.</p></li>
+</ol>
+</section>
+</section>
+<section id="example-hypothesis-test-for-two-means-1" class="level3" data-number="9.3.5">
+<h3 data-number="9.3.5" class="anchored" data-anchor-id="example-hypothesis-test-for-two-means-1"><span class="header-section-number">9.3.5</span> Example: Hypothesis Test for Two Means</h3>
+<p>The amount of sodium in beef and poultry hot dogs was measured. (\“SOCR 012708 id,\” 2013). The data is in <a href="#tbl-Hotdog">Table&nbsp;<span>9.9</span></a>. Is there enough evidence to show that beef has different amounts of sodium on average than poultry hot dogs? Use a 5% level of significance.</p>
+<div class="cell" data-tbl-alt="Table showing first 6 rows of Hotdog dataset">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Hotdog<span class="ot">&lt;-</span><span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/hotdog_beef_poultry.csv"</span>) </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Hotdog))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-Hotdog" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;9.9: Hot dog Data</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">type</th>
+<th style="text-align: right;">calories</th>
+<th style="text-align: right;">sodium</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Beef</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: right;">495</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Beef</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: right;">477</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Beef</td>
+<td style="text-align: right;">176</td>
+<td style="text-align: right;">425</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Beef</td>
+<td style="text-align: right;">149</td>
+<td style="text-align: right;">322</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Beef</td>
+<td style="text-align: right;">184</td>
+<td style="text-align: right;">482</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Beef</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: right;">587</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><strong>Code book for data frame Hot dog</strong></p>
+<p><strong>Description</strong> Results of a laboratory analysis of calories and sodium content of major hot dog brands. Researchers for Consumer Reports analyzed three types of hot dog: beef, poultry, and meat (mostly pork and beef, but up to 15% poultry meat). The meat was left off this data frame so a two-sample t-test could be performed.</p>
+<p>This data frame contains the following columns:</p>
+<p>type: Type of hot dog (beef or poultry)</p>
+<p>calories: Calories per hot dog</p>
+<p>sodium: Milligrams of sodium per hot dog</p>
+<p>Source SOCR 012708 id data hotdogs. (2013, November 13). Retrieved from http://wiki.stat.ucla.edu/socr/index.php/SOCR_012708_ID_Data_HotDogs</p>
+<p>References SOCR Home page: http://www.socr.ucla.edu</p>
+<section id="solution-8" class="level4" data-number="9.3.5.1">
+<h4 data-number="9.3.5.1" class="anchored" data-anchor-id="solution-8"><span class="header-section-number">9.3.5.1</span> Solution</h4>
+<ol type="1">
+<li>State the random variables and the parameters in words.</li>
+</ol>
+<p><span class="math inline">\(x_1\)</span> = sodium level in beef hot dogs</p>
+<p><span class="math inline">\(x_2\)</span> = sodium level in poultry hot dogs</p>
+<p><span class="math inline">\(\mu_1\)</span> = mean sodium level in beef hot dogs</p>
+<p><span class="math inline">\(\mu_2\)</span> = mean sodium level in poultry hot dogs</p>
+<ol start="2" type="1">
+<li>State the null and alternative hypotheses and the level of significance</li>
+</ol>
+<p>The hypotheses would be</p>
+<p><span class="math inline">\(H_o:\mu_1=\mu_2\)</span></p>
+<p><span class="math inline">\(H_o:\mu_1\ne \mu_2\)</span></p>
+<p>level of significance: <span class="math inline">\(\alpha=0.05\)</span></p>
+<ol start="3" type="1">
+<li>State and check the conditions for the hypothesis test</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li><p>State: A random sample of 20 sodium levels in beef hot dogs is taken. A random sample of 20 sodium levels in poultry hot dogs.</p>
+<p>Check: The code does not state if either sample was randomly selected, but since Consumer Reports performed the test, it is safe to assume the samples were both random.</p></li>
+<li><p>State: The two samples are independent.</p>
+<p>Check: These are different types of hot dogs so this is true.</p></li>
+<li><p>State; Population of all sodium levels in beef hot dogs is normally distributed. Population of all sodium levels in poultry hot dogs is normally distributed.</p>
+<p>Check:</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_density</span>(<span class="sc">~</span>sodium<span class="sc">|</span>type, <span class="at">data=</span>Hotdog, <span class="at">title=</span><span class="st">"Sodium amount in Hot Dogs facetted by Type of Meat"</span>, <span class="at">xlab=</span><span class="st">"Total Sodium Level"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-density-Hotdog" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Two-Sample-Inference_files/figure-html/fig-density-Hotdog-1.png" class="img-fluid figure-img" alt="Density plot of sodium amount faceted by type. Neither looks bell shaped." width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.7: Density Plot of Sodium Amount in Hot Dogs facetted by Type of Meat</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The density plot for beef hot dogs looks somewhat bell shaped, but the density plot for poultry hot dogs does not look bell shaped.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_qq</span>(<span class="sc">~</span>sodium<span class="sc">|</span>type, <span class="at">data=</span>Hotdog, <span class="at">title=</span><span class="st">"Sodium amoount in Hot Dogs facetted by Type of Meat"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-quantile-Hotdog" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Two-Sample-Inference_files/figure-html/fig-quantile-Hotdog-1.png" class="img-fluid figure-img" alt="Normal quantile plot of sodium amount faceted by type. The beef graph looks linear, but the poultry does not." width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;9.8: Quantile Plot of Sodium Amount in Hot Dogs facetted by Type of Meat</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The normal quantile plot <a href="#fig-density-Hotdog">Figure&nbsp;<span>9.7</span></a> for the sodium level in beef hot dogs looks somewhat linear. The normal quantile plot <a href="#fig-quantile-Hotdog">Figure&nbsp;<span>9.8</span></a> for the sodium level in poultry hot dogs does not look linear. The population of all sodium levels in beef hot dogs may be normally distributed, but the population of all sodium levels in poultry hot dogs is probably not normally distributed. The sample size is not very large so the results of the test may not be valid. A larger sample would be a good idea.</p>
+<ol start="4" type="1">
+<li>Find the sample statistic, test statistic, and p-value</li>
+</ol>
+<p>Using rStudio the variable is sodium levels (sodium) in different types of hot dogs. So the factor is type. The command is</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(sodium<span class="sc">~</span>type, <span class="at">data=</span>Hotdog)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  sodium by type
+t = -1.8798, df = 34.983, p-value = 0.06848
+alternative hypothesis: true difference in means between group Beef and group Poultry is not equal to 0
+95 percent confidence interval:
+ -120.325706    4.625706
+sample estimates:
+   mean in group Beef mean in group Poultry 
+               401.15                459.00 </code></pre>
+</div>
+</div>
+<ol start="5" type="1">
+<li><p>Conclusion: Fail to reject <span class="math inline">\(H_o\)</span> since the p-value <span class="math inline">\(\ge \alpha\)</span>.</p></li>
+<li><p>Interpretation</p></li>
+</ol>
+<p>This is not enough evidence to support that beef hot dogs’ sodium level is different from poultry hot dogs. (Though do realize that the population conditions is not valid, so this interpretation may be invalid.)</p>
+</section>
+</section>
+<section id="example-confidence-interval-for-two-independent-samples" class="level3" data-number="9.3.6">
+<h3 data-number="9.3.6" class="anchored" data-anchor-id="example-confidence-interval-for-two-independent-samples"><span class="header-section-number">9.3.6</span> Example: Confidence Interval for Two Independent Samples</h3>
+<p>The amount of sodium in beef and poultry hot dogs was measured. (“SOCR 012708 id,” 2013). The data is in <a href="#tbl-Hotdog">Table&nbsp;<span>9.9</span></a>. Find a 95% confidence interval for the mean difference in sodium levels between beef and poultry hot dogs.</p>
+<section id="solution-9" class="level4" data-number="9.3.6.1">
+<h4 data-number="9.3.6.1" class="anchored" data-anchor-id="solution-9"><span class="header-section-number">9.3.6.1</span> Solution</h4>
+<ol type="1">
+<li><p>State the random variables and the parameters in words.</p>
+<p>These were stated in <a href="#example-hypothesis-test-for-two-means-1">Example: Hypothesis Test for Two Means</a>.</p></li>
+<li><p>State and check the conditions for the hypothesis test</p></li>
+</ol>
+<p>The conditions were stated and checked in <a href="#example-hypothesis-test-for-two-means-1">Example: Hypothesis Test for Two Means</a>.</p>
+<ol start="3" type="1">
+<li>Find the sample statistic and confidence interval Using r Studio the variable is sodium levels (sodium) in different types of hot dogs. So the factor is type. The command is</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(sodium<span class="sc">~</span>type, <span class="at">data=</span>Hotdog, <span class="at">conf.level=</span><span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  sodium by type
+t = -1.8798, df = 34.983, p-value = 0.06848
+alternative hypothesis: true difference in means between group Beef and group Poultry is not equal to 0
+95 percent confidence interval:
+ -120.325706    4.625706
+sample estimates:
+   mean in group Beef mean in group Poultry 
+               401.15                459.00 </code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li><p>Statistical Interpretation: You are 95% confident that the interval <span class="math inline">\(-120.325706&lt;\mu_1-\mu_2&lt;4.625706\)</span> contains the true difference in mean sodium level between beef and poultry hot dogs.</p></li>
+<li><p>Real World Interpretation: The mean sodium level of beef hot dogs is anywhere from 120.33 mg less than the mean sodium level of poultry hot dogs to 4.63 mg more. (The negative sign on the lower limit implies that the first mean is less than the second mean. The positive sign on the upper limit implies that the first mean is greater than the second mean.)</p></li>
+</ol>
+<p>Do realize that the population conditions is not valid, so this interpretation may be invalid.</p>
+</section>
+</section>
+<section id="homework-for-independent-samples-for-two-means-section" class="level3" data-number="9.3.7">
+<h3 data-number="9.3.7" class="anchored" data-anchor-id="homework-for-independent-samples-for-two-means-section"><span class="header-section-number">9.3.7</span> Homework for Independent Samples for Two Means Section</h3>
+<p><strong>In each problem show all steps of the hypothesis test or confidence interval. If some of the conditions are not met, note that the results of the test or interval may not be correct and then continue the process of the hypothesis test or confidence interval.</strong></p>
+<ol type="1">
+<li>The NHANES data contains many variables. One variable is the income of households derived from the middle income of different income categories. The variable is called HHIncomeMid. Is there enough evidence to show that the mean income of males is different from the mean income of females? Test at the 1% level.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(NHANES)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "ID"               "SurveyYr"         "Gender"           "Age"             
+ [5] "AgeDecade"        "AgeMonths"        "Race1"            "Race3"           
+ [9] "Education"        "MaritalStatus"    "HHIncome"         "HHIncomeMid"     
+[13] "Poverty"          "HomeRooms"        "HomeOwn"          "Work"            
+[17] "Weight"           "Length"           "HeadCirc"         "Height"          
+[21] "BMI"              "BMICatUnder20yrs" "BMI_WHO"          "Pulse"           
+[25] "BPSysAve"         "BPDiaAve"         "BPSys1"           "BPDia1"          
+[29] "BPSys2"           "BPDia2"           "BPSys3"           "BPDia3"          
+[33] "Testosterone"     "DirectChol"       "TotChol"          "UrineVol1"       
+[37] "UrineFlow1"       "UrineVol2"        "UrineFlow2"       "Diabetes"        
+[41] "DiabetesAge"      "HealthGen"        "DaysPhysHlthBad"  "DaysMentHlthBad" 
+[45] "LittleInterest"   "Depressed"        "nPregnancies"     "nBabies"         
+[49] "Age1stBaby"       "SleepHrsNight"    "SleepTrouble"     "PhysActive"      
+[53] "PhysActiveDays"   "TVHrsDay"         "CompHrsDay"       "TVHrsDayChild"   
+[57] "CompHrsDayChild"  "Alcohol12PlusYr"  "AlcoholDay"       "AlcoholYear"     
+[61] "SmokeNow"         "Smoke100"         "Smoke100n"        "SmokeAge"        
+[65] "Marijuana"        "AgeFirstMarij"    "RegularMarij"     "AgeRegMarij"     
+[69] "HardDrugs"        "SexEver"          "SexAge"           "SexNumPartnLife" 
+[73] "SexNumPartYear"   "SameSex"          "SexOrientation"   "PregnantNow"     </code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li><p>The NHANES data contains many variables. One variable is the income of households derived from the middle income of different income categories. The variable is called HHIncomeMid. Estimate with 95% confidence the mean difference in incomes between males and females in the U.S.</p></li>
+<li><p>A study was conducted that measured the total brain volume (TBV) of patients that had schizophrenia and patients that do not have schizophrenia. <a href="#tbl-Brain">Table&nbsp;<span>9.10</span></a> contains the TBV of the all patients (“SOCR data oct2009,\” 2013). Is there enough evidence to show that the patients with schizophrenia have a different TBV on average than a patient without schizophrenia? Test at the 10% level.</p></li>
+</ol>
+<div class="cell" data-tbl-alt="Table showing first 6 rows of Brain dataset">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>Brain <span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/brain.csv"</span>) </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Brain))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-Brain" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;9.10: Total Brain Volume of Patients</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">type</th>
+<th style="text-align: right;">volume</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">n</td>
+<td style="text-align: right;">1663407</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">n</td>
+<td style="text-align: right;">1583940</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">n</td>
+<td style="text-align: right;">1299470</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">n</td>
+<td style="text-align: right;">1535137</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">n</td>
+<td style="text-align: right;">1431890</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">n</td>
+<td style="text-align: right;">1578698</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><strong>Code book for data frame Brain</strong></p>
+<p><strong>Description</strong> A study to measure the total brain volume (TBV) (in ) of patients that had schizophrenia and patients that do not have schizophrenia.</p>
+<p>This data frame contains the following columns:</p>
+<p>type: whether the patient had schizophrenia (s) or did not have schizophrenia (n)</p>
+<p>volume: the total brain volume of a patient.(<span class="math inline">\(mm^3\)</span>)</p>
+<p>Source SOCR data Oct2009 id ni. (2013, November 16). Retrieved from http://wiki.stat.ucla.edu/socr/index.php/SOCR_Data_Oct2009_ID_NI</p>
+<p>References “SOCR data nips,” 2013</p>
+<ol start="4" type="1">
+<li><p>A study was conducted that measured the total brain volume (TBV) of patients that had schizophrenia and patients that do not have schizophrenia. <a href="#tbl-Brain">Table&nbsp;<span>9.10</span></a> contains the TBV of the all patients (“SOCR data oct2009,” 2013). Is there enough evidence to show that the patients with schizophrenia have a different TBV on average than a patient without schizophrenia? Test at the 10% level. Compute a 90% confidence interval for the difference in TBV of patients with Schizophrenia and patients without Schizophrenia.</p></li>
+<li><p>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in <a href="Numerical Description of Data.html#tbl-Length">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Do the data provide enough evidence to show on average that the rivers that travel to the Pacific Ocean are different length than the rivers that travel to the Tasman Sea? Use a 5% level of significance.</p></li>
+</ol>
+<p><strong>Code book for data frame Length below <a href="Numerical Description of Data.html#tbl-Length">Table&nbsp;<span>3.3</span></a>.</strong></p>
+<ol start="6" type="1">
+<li><p>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in <a href="Numerical Description of Data.html#tbl-Length">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Estimate the difference in mean lengths of rivers between rivers in New Zealand that travel to the Pacific Ocean and ones that travel to the Tasman Sea. Use a 95% confidence level.</p></li>
+<li><p>A vitamin K shot is given to infants soon after birth. Nurses at Northbay Healthcare were involved in a study to see if how they handle the infants could reduce the pain the infants feel (\“SOCR data nips,\” 2013). The data frame is in <a href="#tbl-Crying">Table&nbsp;<span>9.11</span></a>. Is there enough evidence to show that infants cried a different amount on average when they are held by their mothers than if held using conventional methods? Test at the 5% level.</p></li>
+</ol>
+<section id="table-crying-time-of-infants-given-shots-using-new-methods" class="level4" data-number="9.3.7.1">
+<h4 data-number="9.3.7.1" class="anchored" data-anchor-id="table-crying-time-of-infants-given-shots-using-new-methods"><span class="header-section-number">9.3.7.1</span> Table: Crying Time of Infants Given Shots Using New Methods</h4>
+<div class="cell" data-tbl-alt="Table showing first 6 rows of Crying dataset">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>Crying<span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/crying.csv"</span>) </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Crying))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="tbl-Crying" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;9.11: Crying Time of Infants Given Shots Using New Methods</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">method</th>
+<th style="text-align: right;">crying</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">convent</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">convent</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">convent</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">convent</td>
+<td style="text-align: right;">46</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">convent</td>
+<td style="text-align: right;">33</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">convent</td>
+<td style="text-align: right;">33</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><strong>Code book for data frame Crying</strong></p>
+<p><strong>Description</strong> Nurses at Northbay Healthcare were involved in a study to see if how they handle the infants could reduce the pain the infants feel. One of the measurements taken was how long, in seconds, the infant cried after being given the shot. A random sample was taken from the group that was given the shot using conventional methods, and a random sample was taken from the group that was given the shot where the mother held the infant prior to and during the shot.</p>
+<p>This data frame contains the following columns:</p>
+<p>method: whether the infant was given the conventional method (convent) or the new method (new) prior to being given the vitamin K shot.</p>
+<p>crying: how long the infant cried after given a vitamin K shot. (seconds)</p>
+<p>Source SOCR data nips infantvitK shotdata. (2013, November 16). Retrieved from http://wiki.stat.ucla.edu/socr/index.php/SOCR_Data_NIPS_InfantVitK_ShotData</p>
+<p>References \“SOCR data nips,\” 2013</p>
+<ol start="8" type="1">
+<li>A vitamin K shot is given to infants soon after birth. Nurses at Northbay Healthcare were involved in a study to see if how they handle the infants could reduce the pain the infants feel (\“SOCR data nips,\” 2013). The data frame is in <a href="#tbl-Crying">Table&nbsp;<span>9.11</span></a>. Calculate a 95% confidence interval for the mean difference in mean crying time after being given a vitamin K shot between infants held using conventional methods and infants held by their mothers.</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="which-analysis-should-you-conduct" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="which-analysis-should-you-conduct"><span class="header-section-number">9.4</span> Which Analysis Should You Conduct?</h2>
+<p>One of the most important concept that you need to understand is deciding which analysis you should conduct for a particular situation. To help you to figure out the analysis to conduct, there are a series of questions you should ask yourself.</p>
+<ol type="1">
+<li>Does the problem deal with mean or proportion?</li>
+</ol>
+<p>Sometimes the problem states explicitly the words mean or proportion, but other times you have to figure it out based on the information you are given. If you counted number of individuals that responded in the affirmative to a question, then you are dealing with proportion. If you measured something, then you are dealing with mean.</p>
+<ol start="2" type="1">
+<li>Does the problem have one or two samples?</li>
+</ol>
+<p>So look to see if one group was measured or if two groups were measured. You need to decide if the problem describes collecting data from one group or from two groups, or if you are comparing two different groups.</p>
+<ol start="3" type="1">
+<li>If you have two samples, then you need to determine if the samples are independent or dependent.</li>
+</ol>
+<p>If the individuals are different for both samples, then most likely the samples are independent. If you can’t tell, then determine if a data value from the first sample influences the data value in the second sample. In other words, can you pair data values together so you can find the difference, and that difference has meaning. If the answer is yes, then the samples are paired. Otherwise, the samples are independent.</p>
+<ol start="4" type="1">
+<li>Does the situation involve a hypothesis test or a confidence interval?</li>
+</ol>
+<p>If the problem talks about “do the data show”, “is there evidence of”, “test to see”, then you are doing a hypothesis test. If the problem talks about “find the value”, “estimate the” or “find the interval”, then you are doing a confidence interval.</p>
+<p>So if you have a situation that has two samples, independent samples, involving the mean, and is a hypothesis test, then you have a two-sample independent t-test. Now you look up the conditions and the technology process for doing this test. Every hypothesis test involves the same six steps, and you just have to use the correct conditions and calculations. Every confidence interval has the same five steps, and again you just need to use the correct conditions and calculations. So this is why it is so important to figure out what analysis you should conduct.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Estimation.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estimation</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Regression.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Regression</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

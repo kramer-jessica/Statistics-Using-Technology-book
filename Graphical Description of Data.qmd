@@ -1,0 +1,947 @@
+---
+title: "Graphical Description of Data"
+format: html
+editor: visual
+---
+
+In chapter 1, you were introduced to the concepts of population, which again is a collection of all the measurements from the individuals of interest. Remember, in most cases you can't collect the entire population, so you have to take a sample. Thus, you collect data either through a sample or a census. Now you have a large number of data values. What can you do with them? No one likes to look at just a set of numbers. One thing is to organize the data into a table or graph. Ultimately though, you want to be able to use that graph to interpret the data, to describe the distribution of the data set, and to explore different characteristics of the data. The characteristics that will be discussed in this chapter and the next chapter are:
+
+1.  Center: middle of the data set, also known as the average.
+2.  Variation: how much the data varies.
+3.  Distribution: shape of the data (symmetric, uniform, or skewed).
+4.  Qualitative data: analysis of the data
+5.  Outliers: data values that are far from the majority of the data.
+6.  Time: changing characteristics of the data over time.
+
+This chapter will focus mostly on using the graphs to understand aspects of the data, and not as much on how to create the graphs. There is technology that will create most of the graphs, though it is important for you to understand the basics of how to create them.
+
+This textbook uses RStudio to perform all graphical and descriptive statistics, and all statistical inference. When using RStudio, every command is performed the same way. You start off with a goal(explanatory variable \~ response variable, data=data frame_name,...)
+
+RStudio uses packages to make calculations easier. For this textbook, you will mostly need the package mosaic. There will be others that you will need on occasion, but you will be told that at the time. Most likely, mosaic is already installed in your RStudio. If you wish to install other packages you use the command
+
+install.packages("name of package")
+
+where you replace the name of package with the package you wish to install.
+
+Once the package is installed, then you will need to tell RStudio you want to use it every time you start RStudio. The command to tell RStudio you want to use a package is
+
+library("name of package")
+
+You will need to turn on the package mosaic. The NHANES package contains a data frame that is useful. Both are accessed by running the command library("name of package").
+
+```{r setup2, include=FALSE}
+library("mosaicCore") 
+library("mosaic") 
+library("NHANES") 
+```
+
+Back to the basic command
+
+goal(explanatory variable \~ response variable, data=data frame_name,...)
+
+The goal depends on what you want to do. If you want to create a graph then you would need
+
+gf_graph_type(explanatory_variable \~ response_variable, data=data_frame_name, ...)
+
+As an example if you want to create a density plot of cholesterol levels on day 2 from a data frame called Cholesterol, then your command would be
+
+gf_density(\~day2, data=Cholesterol)
+
+You will see more on what the different commands are that you would use. A word about the ... at the end of the command. That means there are other things you can do, but that is up to you if you want to actually do them. They do not need to be used if you don't want to. The following sections will show you how to create the different graphs that are usually completed in an introductory statistics course.
+
+## Qualitative Data
+
+Remember, qualitative data are words describing a characteristic of the individual. There are several different graphs that are used for qualitative data. These graphs include bar graphs, Pareto charts, and pie charts. Bar graphs can be created using a statistical program like RStudio.
+
+**Bar graphs or charts** consist of the frequencies on one axis and the categories on the other axis. Drawing the bar graph using r is performed using the following command.
+
+gf_bar(\~explanatory variable, data=Dataframe)
+
+### Example: Drawing a Bar Chart
+
+Data was collected for two semesters in a statistics class. The data frame is in @tbl-Class. The command
+
+head(data frame)
+
+shows the variables and the first few lines of the data set. The data sets are usually larger than what is shown. The head command allows one to see the structure of the data frame.
+
+```{r class-data1-table}
+#| tbl-alt: "Table showing first 6 rows of statistics class survey dataset"
+#| label: tbl-Class
+#| tbl-cap: "Head of Statistics Class Survey"
+Class<-read.csv( "https://krkozak.github.io/MAT160/class_survey.csv") 
+knitr::kable(head(Class))
+```
+
+Every data frame has a code book that describes the data set, the source of the data set, and a listing and description of the variables in the data frame.
+
+**Code book for data frame class**
+
+Description Survey results from two semesters of statistics classes at Coconino Community College in the years 2018-2019.
+
+Format
+
+This data frame contains the following columns:
+
+vehicle: Type of car a student drives
+
+gender: Self declared gender of a student
+
+distance_campus: how far a student lives from the Lone Tree Campus of Coconino Community College (miles)
+
+ice_cream: favorite ice cream flavor
+
+rent: How much a student pays in rent
+
+major: Students declared major
+
+height: height of the student (inches)
+
+winter: Student's opinion of winter (Love it, Like it, Don't like, No opinion)
+
+Source
+
+Kozak K (2019). Survey results form surveys collected in statistics class at Coconino Community College.
+
+References
+
+Kozak, 2019
+
+Create a bar graph of vehicle type. To do this in RStudio, use the command
+
+gf_bar(\~variable, data=Data_Frame, ...)
+
+where gf_bar is the goal, vehicle is the name of the response variable (there is no explanatory variable), the data frame is Class, and a title was added to the graph.
+
+#### Solution
+
+```{r class-data-bar}
+#| fig-alt: "See the description of the graph below the graph"
+#| warning: FALSE
+#| label: fig-class_data
+#| fig-cap: "Cars driven by students in statistics class"
+gf_bar(~vehicle, data=Class, title="Bar Chart of Cars driven by students in statistics class", xlab="Vehicle") 
+```
+
+Description of @fig-class_data is a Bar graph with bars for Audi, Buick, Honda, Hyundai, Mercury, Nissan with height of 1, Dodge and None with height of 2, Jeep, Subaru, Toyota with heights of 3, and Chevrolet and Ford at height of 4.
+
+Notice from @fig-class_data, you can see that Chevrolet and Ford are the more popular car, with Jeep, Subaru, and Toyota not far behind. Many types seems to be the lesser used, and tied for last place. However, more data would help to figure this out.
+
+**All graphs should have labels on each axis and a title for the graph.**
+
+The beauty of data frames with multiple variables is that you can answer many questions from the data. Suppose you want to see if gender makes a difference for the type of car a person drives. If you are a car manufacturer, if you knew that certain genders like certain cars, then you would advertise to the different genders. To create a bar graph that separates based on gender, perform the following command in RStudio.
+
+```{r class-data-bar-gender}
+#| fig-alt: "See the description of the graph below the graph"
+#| warning: FALSE
+#| label: fig-class_data_dodge
+#| fig-cap: "Bar graph of Cars driven by students in statistics class"
+gf_bar(~vehicle, fill=~gender, data=Class, title="Cars driving by students in statistics class",xlab="Vehicle", position=position_dodge())
+```
+
+Description of @fig-class_data_dodge is a bar graph of number of vehicles separated by female and male. Audi and male has height of 1, Buick and female has a height of 1, Chevrolet and male and Chevrolet and female have heights of 2, Dodge and male and Dodge and female has heights of 1, Ford and female has a height of 4, Honda and female has a height of 1, Hyundai and male has a height of 1, Jeep and male has a height of 2 while Jeep and female has a height of 1, Mercury and female has a height of 1, Nissan and female has a height of 1, no car and female has a height of 2, Subaru and female has a height of 1, Subaru and male has a height of 2, Toyota and female has a height of 1, and Toyota and male has a height of 2.
+
+Notice a Ford is driven by females more than any other car, while Chevrolet, Mercury, and Subaru cars are equally driven by males. Obviously a larger sample would be needed to make any conclusions from this data.
+
+There are other types of graphs that can be created for quantitative variables. Another type is known as a dot plot. The command for this graph is as follows.
+
+```{r class-data-dot-gender}
+#| fig-alt: "See the description of the graph below the graph"
+#| warning: FALSE
+#| label: fig-class_data_dot-car
+#| fig-cap: "Cars driven by students in statistics class"
+gf_dotplot(~vehicle, data=Class, title="Cars driven by students in statistics class", xlab="Vehicle")
+```
+
+Description of @fig-class_data_dot is a dot plot of number of vehicles with Audi, Buick, Honda, Hyundai, Mercury, Nissan with height of 1, Dodge and None with height of 2, Jeep, Subaru, Toyota with heights of 3, and Chevrolet and Ford at height of 4. Very similar to bar graph.
+
+Notice a dot plot is like a bar chart. Both give you the same information. You can also divide a dot plot by gender.
+
+Another type of graph that is also useful and similar to the dot plot is a point plot (scatter plot). In this plot you can graph the explanatory variable versus the response variable. The command for this in rStudio is as follows.
+
+```{r car-data-gender}
+#| fig-alt: "See the description of the graph below the graph"
+#| warning: FALSE
+#| label: fig-class_data_point
+#| fig-cap: "Cars driven by students in statistics class"
+gf_point(vehicle~gender, data=Class, title="Cars driving by students in statistics class", xlab="Gender", ylab="Vehicle") 
+```
+
+Description of @fig-class_data_point is a scatter plot of type of vehicles separated by female and male with females owning Toyota, Subaru, none, Nissan, Mercury, Jeep, Honda, Ford, Dodge, Chevrolet, and Buick, while males own Toyota, Subaru, Jeep, Hyundai, Dodge, Chevrolet, and Audi.
+
+The problem with @fig-class_data_point is that if there are multiple females who drive a Ford, only one dot is shown. So it is best to spread the dots out using a plot known as a jitter plot. In a jitter plot the dots are randomly moved off the center line. The command for a jitter plot is as follows:
+
+```{r car-data-gender-jitter}
+#| fig-alt: "See the description of the graph below the graph"
+#| warning: FALSE
+#| label: fig-class_data_jitter
+#| fig-cap: "Cars driven by students in statistics class"
+gf_jitter(vehicle~gender, data=Class, title="Cars driving by students in statistics class", xlab="Gender", ylab="Vehicle")
+```
+
+Description of @fig-class_data_jitter is a jitter plot of number of vehicles separated by female and male with females owning 1 Toyota, 1 Subaru, 2 with none, 1 Nissan, 1 Mercury, 1 Jeep, 1 Honda, 4 Fords, 1 Dodge, 2 Chevrolets, and 1 Buick, while males own 2 Toyotas, 2 Subarus, 2 Jeeps, 1 Hyundai, 1 Dodge, 1 Chevrolets, and 1 Audi.
+
+Now you can observe that there are 4 females who drive a Ford. There is one female who drives a Honda. Other information about other cars and genders can be seen better than in the point plot and the bar graph. Jitter plots are useful to see how many data values are for each qualitative data values.
+
+There are many other types of graphs that can be used on qualitative data. There are spreadsheet software packages that will create most of them, and it is better to look at them to see how to create then. It depends on your data as to which may be useful, but the bar, dot, and jitter plots are really the most useful.
+
+### Homework for Qualitative Data Section
+
+1.  Eyeglassomatic manufactures eyeglasses for different retailers. The number of lenses for different activities is in @tbl-eyeglasses.
+
+```{r eyeglass-tab}
+#| tbl-alt: "Table showing first 6 rows of Eyeglasses dataset"
+#| label: tbl-eyeglasses
+#| tbl-cap: "Head of Eyeglasses Data frame"
+Eyeglasses<-read.csv( "https://krkozak.github.io/MAT160/eyglasses.csv") 
+knitr::kable(head(Eyeglasses))
+```
+
+**Code book for Data Frame Eyeglasses**
+
+**Description** Activities that an Eyeglass company performs when making eyeglasses, Grind means ground the lenses and put them in frames, multicoat means put tinting or coatings on lenses and then put them in frames, assemble means received frames and lenses from other sources and put them together, make frames means made the frames and put lenses in from other sources, receive finished means received glasses from other source unknown means do not know where the lenses came from.
+
+Format
+
+This data frame contains the following columns:
+
+activity: The activity that is completed to make the eyeglasses by Eyeglassomatic
+
+Source John Matic provided the data from a company he worked with. The company's name is fictitious, but the data is from an actual company.
+
+References John Matic (2013)
+
+Make a bar chart of this data. State any findings you can see from the graph.
+
+2.  Data was collected for two semesters in a statistics class drive. The data frame is in @tbl-Class.
+
+**Code book for the Data Frame Class is found below @tbl-Class.**
+
+Create a bar graph of the variable ice cream. State any findings you can see from the graphs.
+
+3.  The number of deaths in the US due to carbon monoxide (CO) poisoning from generators from the years 1999 to 2011 are in @tbl-Area (Hinatov, 2012). Create a bar chart of this data. State any findings you see from the graph.
+
+```{r area-table}
+#| tbl-alt: "Table showing first 6 rows of Area dataset"
+#| label: tbl-Area
+#| tbl-cap: "Head of Area Data frame"
+Area<-read.csv( "https://krkozak.github.io/MAT160/area.csv") 
+knitr::kable(head(Area))
+```
+
+4.  Data was collected for two semesters in a statistics class drive. The data frame is in @tbl-Class. Create a bar graph and dot plot of the variable major. Create a jitter plot of major and gender. State any findings you can see from the graphs.
+
+    **Code book for the Data Frame Class is found below @tbl-Class.**
+
+5.  Eyeglassomatic manufactures eyeglasses for different retailers. They test to see how many defective lenses they made during the time period of January 1 to March 31. The table @tbl-Defects gives the defect and the number of defects. Create a bar chart of the data and then describe what this tells you about what causes the most defects.
+
+```{r defects-table2a}
+#| tbl-alt: "Table showing first 6 rows of Defects dataset"
+#| label: tbl-Defects
+#| tbl-cap: "Head of Defects Data frame"
+Defects<- read.csv( "https://krkozak.github.io/MAT160/defects.csv") 
+knitr::kable(head(Defects))
+```
+
+**Code book for Data Frame Defects**
+
+**Description** Types of defects that an Eyeglass company sees in the lenses they make into eyeglasses.
+
+Format
+
+This data frame contains the following columns:
+
+type: The type of defect that is Seen when making eyeglasses by Eyeglassomatic
+
+Source John Matic provided the data from a company he worked with. The company's name is fictitious, but the data is from an actual company.
+
+References John Matic (2013)
+
+6.  American National Health and Nutrition Examination (NHANES) surveys is collected every year by the US National Center for Health Statistics (NCHS). The data frame is in @tbl-NHANES. Create a bar chart of MartialStatus. Create a jitter plot of MaritalStatus versus Education. Describe any findings from the graphs.
+
+```{r nhanes-data-table}
+#| tbl-alt: "Table showing first 6 rows of NHANES dataset"
+#| label: tbl-NHANES
+#| tbl-cap: "NHANES Data frame"
+knitr::kable(head(NHANES))
+```
+
+To view the code book for NHANES, type help("NHANES") in rStudio after you load the NHANES packages using library("NHANES")
+
+## Quantitative Data
+
+There are several different graphs for quantitative data. With quantitative data, you can talk about how the data is distributed, called a distribution. The shape of the distribution can be described from the graphs.
+
+**Histogram:** a graph of frequencies (counts) on the vertical axis and classes on the horizontal axis. The height of the rectangles is the frequency and the width is the class width. The width depends on how many classes (bins) are in the histogram. The shape of a histogram is dependent on the number of bins. In RStudio the command to create a histogram is
+
+gf_histogram(\~response variable, data=Data_Frame, title="title of the graph")
+
+The last part of the command puts a title on the graph. You type in what ever you want for the title in the quotes.
+
+**Density Plot:** Similar to a histogram, except smoothing is created to smooth out the graph. The shape is not dependent on the number of bins so the distribution is easier to determine from the density plot. In RStudio the command to create a density plot is
+
+gf_density(\~response variable, data=Data_Frame, title="title of the graph", xlab="Label", ylab="Label")
+
+The last part of the command puts a title on the graph and labels on the axes. You type in what every you want for the title and labels in the quotes.
+
+The last part of the command puts a title on the graph and labels on the axes. You type in what every you want for the title and labels in the quotes.
+
+### Example: Drawing a Histogram and Density plot
+
+Data was collected for two semesters in a statistics class drive. The data frame is in @tbl-Class and the code book is below the data frame
+
+Draw a histogram, density plot, and a dot plot for the variable the distance a student lives from the Lone Tree Campus of Coconino Community College. Describe the story the graphs tell.
+
+#### **Solution**
+
+```{r distance-campus-hist-cap}
+#| fig-alt: "See the description of the graph below the graph"
+#| warning: FALSE
+#| label: fig-class_data_histogram
+#| fig-cap: "Distance in miles from the Lone Tree Campus"
+gf_histogram(~distance_campus, data=Class, title="Distance in miles from the Lone Tree Campus", xlab="Distance (miles)")
+```
+
+Description of the graph is histogram with high part on left and low part on right with several gaps. The graph contains bars.
+
+```{r distance-campus-density}
+#| fig-alt: "See the description of the graph below the graph"
+#| warning: FALSE
+#| label: fig-class_data_density
+#| fig-cap: "Distance in miles from the Lone Tree Campus"
+gf_density(~distance_campus, data=Class, title="Distance in miles from the Lone Tree Campus", xlab="Distance (miles)")
+```
+
+Description of the graph is density graph with high part on left and low part on right with several gaps. The graph is smooth.
+
+```{r distance-campus-dot}
+#| fig-alt: "See the description of the graph below the graph"
+#| warning: FALSE
+#| label: fig-class_data_dot
+#| fig-cap: "Distance in miles from the Lone Tree Campus"
+gf_dotplot(~distance_campus, data=Class, title="Distance in miles from the Lone Tree Campus", xlab="Distance (miles)") 
+```
+
+Description of the graph of dot plot with high part on left and low part on right with several gaps. The graph is with dots that represent each data value.
+
+Notice the histogram, density plot, and dot plot are all very similar, but the density plot is smoother. They all tell you similar ideas of the shape of the distribution. Reviewing the graphs you can see that most of the students live within 10 miles of the Lone Tree Campus, in fact most live within 5 miles from the campus. However, there is a student who lives around 50 miles from the Lone Tree Campus. This is a great deal farther from the rest of the data. This value could be considered an outlier. An outlier is a data value that is far from the rest of the values. It may be an unusual value or a mistake. It is a data value that should be investigated. In this case, the student lived really far from campus, thus the value is not a mistake, and is just very unusual. The density plot is probably the best plot for most data frames.
+
+There are other aspects that can be discussed, but first some other concepts need to be introduced.
+
+### Shapes of the distribution:
+
+When you look at a distribution, look at the basic shape. There are some basic shapes that are seen in histograms. Realize though that some distributions have no shape. The common shapes are symmetric, skewed, and uniform. Another interest is how many peaks a graph may have. This is known as modal.
+
+Symmetric means that you can fold the graph in half down the middle and the two sides will line up. You can think of the two sides as being mirror images of each other. Skewed means one "tail" of the graph is longer than the other. The graph is skewed in the direction of the longer tail (backwards from what you would expect). A uniform graph has all the bars the same height.
+
+Modal refers to the number of peaks. Unimodal has one peak and bimodal has two peaks. Usually if a graph has more than two peaks, the modal information is not longer of interest.
+
+Other important features to consider are gaps between bars, a repetitive pattern, how spread out is the data, and where the center of the graph is.
+
+### Examples of graphs:
+
+This graph is roughly symmetric and unimodal:
+
+**Graph: Symmetric Distribution**
+
+![symmetric Graph](symmetric.png){fig-alt="one side looks like other"}
+
+This graph is symmetric and bimodal:
+
+**Graph: Symmetric and Bimodal Distribution**
+
+![Bimodal and symmetric graph](bimodal_symmetric.png){fig-alt="two bars high, and one side looks like other"}
+
+This graph is skewed to the right:
+
+**Graph: Skewed Right Distribution**
+
+![Skewed right graph](skewed_right.png){fig-alt="small bars on right"}
+
+This graph is skewed to the left and has a gap:
+
+**Graph: Skewed Left Distribution**
+
+![Skewed Left graph](skewed_left.png){fig-alt="small bars on left"}
+
+This graph is uniform since all the bars are the same height:
+
+**Graph: Uniform Distribution**
+
+![Uniform graph](Uniform.png){fig-alt="All bars same height"}
+
+### Example: Drawing a Histogram and Density plot
+
+Data was collected from the Chronicle of Higher Education for tuition from public four year colleges, private four year colleges, and for profit four year colleges. The data frame is in @tbl-Tuition. Draw a density plot of instate tuition levels for all four year institutions, and then separate the density plot for instate tuition based on type of institution. Describe any findings from the graph.
+
+```{r tuition-table}
+#| tbl-alt: "Table showing first 6 rows of Tuition dataset with difference column added"
+#| warning: FALSE
+#| label: tbl-Tuition
+#| tbl-cap: "Head of Tuition Data Frame"
+Tuition<-read.csv( "https://krkozak.github.io/MAT160/Tuition_4_year.csv") 
+knitr::kable(head(Tuition))
+```
+
+**Code book for Data Frame Tuition**
+
+**Description** Cost of four year institutions.
+
+Format
+
+This data frame contains the following columns:
+
+INSTITUTION: Name of four year institution
+
+TYPE: Type of four year institution, Public_4\_year, Private_4\_year, For_profit_4\_year.
+
+STATE: What state the institution resides
+
+ROOM_BOARD: The cost of room and board at the institution (\\\$)
+
+INSTATE_TUTION: The cost of instate tuition (\\\$)
+
+INSTATE_TOTAL: The cost of room and board and instate tuition (\\\$ per year)
+
+OUTOFSTATE_TUTION: The cost of out of state tuition (\\\$ per year)
+
+OUTOFSTATE_TOTAL: The cost of room and board and out of state tuition (\\\$ per year)
+
+Source Tuition and Fees, 1998-99 Through 2018-19. (2018, December 31). Retrieved from https://www.chronicle.com/interactives/tuition-and-fees
+
+References Chronicle of Higher Education \*, December 31, 2018.
+
+#### **Solution**
+
+```{r tuition-instate}
+#| fig-alt: "See the description of the graph below the graph"
+#| fig-cap: "Density Plot for Instate Tuition Levels at all Four-Year Colleges"
+#| warning: FALSE
+gf_density(~INSTATE_TUITION, data=Tuition, title="Instate Tuition at all Four Year institutions", xlab="Instate Tutition ($ per year)")
+```
+
+Description of the graph is a density with high part on left, then a dip and up to peak in the middle that is lower than the left peak and then the lowest peak on the right .
+
+(ref:tuition-instate-type-cap) Density Plot for Instate Tuition Levels at all Four-Year Colleges
+
+```{r tuition-instate-type}
+#| fig-alt: "See the description of the graph below the graph"
+#| warning: FALSE
+#| label: fig-tuition_data_density
+#| fig-cap: "Instate Tuition at all Four Year institions"
+gf_density(~INSTATE_TUITION|TYPE, data=Tuition, title="Instate Tuition at all Four Year institions", xlab="Instate Tuition ($/year)") 
+```
+
+Description of @fig-tuition_data_density is a density plots separated by for profit 4 year with peak on left, private 4 year with peak in the middle, and public 4 year colleges with peak on the left. Public 4 year has the highest peak, with for profit 4 year is lower, and then private 4 year with the lowest peak.
+
+The distribution is skewed right, with no gaps. Most institutions in state is less than \\\$ 20,000 per year though some go as high as \\\$ 60,000 per year. When separated by public versus private and for profit, most public are much less than \\\$ 20,000 per year while private four year cost around \\\$ 30,000 per year, and for profit are around \\\$ 20,000 per year.
+
+There are other types of graphs for quantitative data. They will be explored in the next section.
+
+### Homework for Quantitative Data Section
+
+1.  The weekly median incomes of males and females for specific occupations, are given in @tbl-wages (CPS News Releases. (n.d.). Retrieved July 8, 2019, from https://www.bls.gov/cps/). Create a density plot for males and females. Discuss any findings from the graph. Note: to put two graphs on the same axis, type the piping symbol \|\> (base r) or %\>% (magrittr package) (Note: \|\> and %\>% are piping symbols that can be thought of as "and then") at the end of the first command and then type the command for the second graph on the next line. Also, use fill="pick a color" in the command to plot the graphs with different colors so the two graphs can be easier to distinguish.
+
+```{r wages-table}
+#| tbl-alt: "Table showing first 6 rows of Wages dataset"
+#| label: tbl-wages
+#| tbl-cap: "Head of Wages Data frame"
+Wages<- read.csv( "https://krkozak.github.io/MAT160/wages.csv") 
+knitr::kable(head(Wages))
+```
+
+**Code book for Data Frame Wages**
+
+**Description** Median weekly earnings of full-time wage and salary workers by detailed occupation and sex. The Current Population Survey (CPS) is a monthly survey of households conducted by the Bureau of Census for the Bureau of Labor Statistics. It provides a comprehensive body of data on the labor force, employment, unemployment, persons not in the labor force, hours of work, earnings, and other demographic and labor force characteristics.
+
+Format
+
+This data frame contains the following columns:
+
+Occupation: Occupations of workers.
+
+Numworkers: The number of workers in each occupation (in thousands of workers)
+
+median_wage: Median weekly wage (\\\$)
+
+male_worker: number of male workers (in thousands of workers)
+
+male_wage: Median weekly wage of male workers (\\\$)
+
+female_worker: number of female workers (in thousands of workers)
+
+female_wage: Median weekly wage of female workers (\\\$)
+
+Source CPS News Releases. (n.d.). Retrieved July 8, 2019, from https://www.bls.gov/cps/
+
+References Current Population Survey (CPS) retrieved July 8, 2019.
+
+2.  The density of people per square kilometer for certain countries is in @tbl-Density (World Bank, 2019). Create density plot of density in 2018 for just Sub-Saharan Africa. Describe what story the graph tells.
+
+```{r density-table}
+#| tbl-alt: "Table showing first 6 rows of Density dataset"
+#| label: tbl-Density
+#| tbl-cap: "Head of Density Data frame"
+Density<- read.csv( "https://krkozak.github.io/MAT160/density.csv") 
+knitr::kable(head(Density))
+```
+
+**Code book for Data Frame Density**
+
+**Description** Population density of all countries in the world
+
+Format
+
+This data frame contains the following columns:
+
+Country_Name: The name of countries or regions around the world
+
+Country_Code: The 3 letter code for a country or region
+
+Region: World Banks classification of where the country is in the world
+
+Incomegroup: World Banks classification of what income level the country is considered to be
+
+y1961-y2018: population density for the years 1961 through 2018, people per sq. km of land area, population density is midyear population divided by land area in square kilometers. Population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship--except for refugees not permanently settled in the country of asylum, who are generally considered part of the population of their country of origin. Land area is a country's total area, excluding area under inland water bodies, national claims to continental shelf, and exclusive economic zones. In most cases the definition of inland water bodies includes major rivers and lakes.
+
+Source Population density (people per sq. km of land area). (n.d.). Retrieved July 9, 2019, from https://data.worldbank.org/indicator/EN.POP.DNST
+
+References Food and Agriculture Organization and World Bank population estimates.
+
+Since the Density data frame is for all countries, a new data frame must be created with just Sub-Saharan Africa @tbl-Africa. This is created by using the following command
+
+```{r africa-filtering, warning=FALSE}
+#| tbl-alt: "Table showing first 6 rows of Africa dataset"
+#| label: tbl-Africa
+#| tbl-cap: "Head of Africa Data frame"
+Africa <- Density |> 
+  filter(Region == "Sub-Saharan Africa") 
+knitr::kable(head(Africa))
+```
+
+3.  The Affordable Care Act created a market place for individuals to purchase health care plans. In 2014, the premiums for a 27 year old for the different levels health insurance are given in @tbl-Insurance (\\"Health insurance marketplace,\\" 2013). Create a density plot of bronze_lowest, then silver_lowest, and gold_lowest all on the same aces. Use \|\> or %\>% at the end of each command. Describe the story the graphs tells.
+
+```{r insurance-table}
+#| tbl-alt: "Table showing first 6 rows of Insurance dataset"
+#| label: tbl-Insurance
+#| tbl-cap: "Head of Insurance Data frame"
+Insurance<- read.csv( "https://krkozak.github.io/MAT160/insurance.csv") 
+knitr::kable(head(Insurance))
+```
+
+**Code book for Data Frame Insurance**
+
+**Description** The Affordable Care Act created a market place for individuals to purchase health care plans.The data is from 2014.
+
+Format
+
+This data frame contains the following columns:
+
+state: state of insured.
+
+average_QHP: The number of qualified health plans
+
+bronze_lowest: premium for the lowest bronze level of insurance for a single person (\\\$)
+
+silver_lowest: premium for the lowest silver level of insurance for a single person (\\\$)
+
+gold_lowest: premium for the lowest gold level of insurance for a single person (\\\$)
+
+catastrophic: premium for the catastrophic level of insurance for a single person (\\\$)
+
+second_silver_pretax: premium for the second silver level of insurance for a single person pretax (\\\$)
+
+second_silver_posttax: premium for the second silver level of insurance for a single person posttax (\\\$)
+
+second_bronze_posttax: premium for the lowest bronze level of insurance for a single person posttax (\\\$)
+
+silver_family_pretax: premium for the silver level of insurance for a family pretax (\\\$)
+
+silver_family_posttax: premium for the silver level of insurance for a family posttax (\\\$)
+
+bronze_family_posttax: premium for the bronze level of insurance for a family posttax (\\\$)
+
+Source Health Insurance Market Place Retrieved from website: http://aspe.hhs.gov/health/reports/2013/marketplacepremiums/ib_premiumslandscape.pdf premiums for 2014.
+
+References Department of Health and Human Services, ASPE. (2013). Health insurance marketplace
+
+4.  Students in a statistics class took their first test. In @tbl-first-test-1 are the scores they earned. Create a density plot for grades. Describe the shape of the distribution.
+
+```{r test1-data}
+#| tbl-alt: "Table showing first 6 rows of first test 1 dataset"
+#| label: tbl-first-test-1
+#| tbl-cap: "Head of First Test Data frame"
+Firsttest_1<- read.csv( "https://krkozak.github.io/MAT160/firsttest_1.csv") 
+knitr::kable(head(Firsttest_1))
+```
+
+5.  Students in a statistics class took their first test. The scores they earned are in @tbl-first-test-2. Create a density plot for grades. Describe the shape of the distribution. Compare to the graph in question 4.
+
+```{r test1-grades-table}
+#| tbl-alt: "Table showing first 6 rows of first test 2 dataset"
+#| label: tbl-first-test-2
+#| tbl-cap: "Head of First Test Data frame"
+Firsttest_2<- read.csv( "https://krkozak.github.io/MAT160/firsttest_2.csv") 
+knitr::kable(head(Firsttest_2))
+```
+
+## Other Graphical Representations of Data
+
+There are many other types of graphs. Some of the more common ones are the point plot (scatter plot), and a time-series plot. There are also many different graphs that have emerged lately for qualitative data. Many are found in publications and websites. The following is a description of the point plot (scatter plot), and the time-series plot.
+
+### Point Plots or Scatter Plot
+
+Sometimes you have two different variables and you want to see if they are related in any way. A scatter plot helps you to see what the relationship would look like. A scatter plot is just a plotting of the ordered pairs.
+
+### Example: Scatter Plot
+
+Is there a relationship between systolic blood pressure and weight? To answer this question some data is needed. The data frame NHANES contains this data, but given the size of the data frame, it may be not be very useful to look at the graph of all the data. It makes sense to take a sample from the data frame. A random sample is the better type of sample to take. Once the sample is taken, then a scatter plot can be created. The rStudio command for a scatter plot is
+
+gf_point(response_variable \~ explanatory_variable, data= Data_Frame)
+
+The sample is @tbl-sample_NHANES.
+
+#### **Solution**
+
+```{r nhanes-data-table-1}
+#| tbl-alt: "Table showing first 6 rows of sample from NHANES dataset"
+#| label: tbl-sample_NHANES
+#| tbl-cap: "Head of NHANES Sample Data frame"
+sample_NHANES <- NHANES |> 
+  sample_n(size = 100) 
+knitr::kable(head(sample_NHANES))
+```
+
+Preliminary: State the explanatory variable and the response variable
+
+Let x=explanatory variable = Weight of a person (Weight)
+
+y=response variable = Systolic blood pressure (BPSys1)
+
+```{r weight-bp-sys-data}
+#| fig-alt: "See the description of the graph below the graph"
+#| warning: FALSE
+#| label: fig-blood-data
+#| fig-cap: "Blood Pressure versus Weight"
+gf_point(BPSys1~Weight, data=sample_NHANES, xlab="Weight (kg)", ylab="Systolic Blood Pressure", title="Blood Pressure versus Weight")
+```
+
+Description of @fig-blood-data is a scatter plot with dots all over the plot though a line could be thought of fitting the dots with lower on the left and higher on the right.
+
+Looking at the graph @fig-blood-data, it appears that there is a linear relationship between weight and systolic blood pressure though it looks somewhat weak. It also appears to be a positive relationship, thus as weight increases, the systolic blood pressure increases.
+
+### **Time-Series**
+
+A time-series plot is a graph showing the data measurements in chronological order, the data being quantitative data. For example, a time-series plot is used to show profits over the last 5 years. To create a time-series plot on RStudio, use the command
+
+gf_line(response_variable \~ explanatory_variable, data=Data_Frame)
+
+The purpose of a time-series graph is to look for trends over time. Caution, you must realize that the trend may not continue. Just because you see an increase, doesn't mean the increase will continue forever. As an example, prior to 2007, many people noticed that housing prices were increasing. The belief at the time was that housing prices would continue to increase. However, the housing bubble burst in 2007, and many houses lost value, and haven't recovered.
+
+### Example: Time-Series Plot
+
+The bank assets (in billions of Australia dollars (AUD)) of the Reserve Bank of Australia (RBA) and other financial organizations for the time period of September 1 1969, through March 1 2019, are contained in table @tbl-Australian (Reserve Bank of Australia, 2019). Create a time-series plot of the total assets of Authorized Deposit-taking Institutions (ADIs) and interpret any findings.
+
+```{r australian-table}
+#| tbl-alt: "Table showing first 6 rows of Australian dataset"
+#| label: tbl-Australian
+#| tbl-cap: "Head of Australian Data frame"
+Australian<- read.csv( "https://krkozak.github.io/MAT160/Australian_financial.csv") 
+knitr::kable(head(Australian))
+```
+
+**Code book for Data frame Australian**
+
+**Description** The data is a range of economic and financial data produced by the Reserve Bank of Australia and other organizations.
+
+Format
+
+This data frame contains the following columns:
+
+Date: quarters from September 1, 1969, to March 1, 2019
+
+Day: The number of days since September 1, 1969, using 90 days between starts of a quarter. This column is to make it easier to graph in rStudio, and has no other purpose.
+
+Assets_RBA: The assets for the Royal Bank of Australia
+
+Assets_ADIs_Banks: The assets for Authorized Deposit-taking Institutions (ADIs), Banks
+
+Assets_ADIs_Building: The assets for Authorized Deposit-taking Institutions (ADIs), Building societies
+
+Assets_ADIs_CU: The assets for Authorized Deposit-taking Institutions (ADIs), Credit Unions
+
+Assets_ADIs_Total: The assets for Authorized Deposit-taking Institutions (ADIs), total
+
+Assets_RFCs_MM: The assets for Registered Financial Corporations (RFCs), Money Market Corporations
+
+Assets_RFCs_Finance: The assets for Registered Financial Corporations (RFCs), Finance companies and general financiers
+
+Assets_RFCs_Total: The assets for Registered Financial Corporations (RFCs) total
+
+Assets_Life offices: The Assets of Life offices and superannuation funds; Life insurance offices
+
+Assets_Life_funds: The Assets of Life offices and superannuation funds; Superannuation funds
+
+Assets_Life_Total: The Assets of Life offices and superannuation; Total
+
+Assets_Other_Public_trusts: The Assets of Other managed funds; Public unit trusts
+
+Assets_Other_Cash_trusts: The Assets of Other managed funds; Cash management trusts
+
+Assets_Other_Common_funds: The Assets of Other managed funds; Common funds
+
+Assets_Others_Friendly: The Assets of Other managed funds; Friendly societies
+
+Assets_Other_General_insurance: The Assets of Other financial institutions; General insurance offices
+
+Assets_Other_vehicles: The Assets Other financial institutions; Securitisation vehicles
+
+Assets_Unconsolidated: The Assets of Unconsolidated; Statutory funds of life insurance offices; Superannuation
+
+Source Reserve Bank of Australia. (2019, May 13). Statistical Tables. Retrieved July 10, 2019, from https://www.rba.gov.au/statistics/tables/
+
+References Reserve Bank of Australia and other organizations
+
+#### Solution
+
+variable, x=total assets of Authorized Deposit-taking Institutions (ADIs)
+
+Looking at the code book, one can see that the variable Assets_ADIs_Total is the variable in the data frame that is of interest here. With a time series plot, the other variable is time. In this case the variable in the data frame that represents time is Date. The problem with Date is that the units are every quarter. This is not easily interpreted by rStudio, so a column was created called Day. From the code book, this is the number of days since September 1, 1969, using 90 days between starts of a quarter. Even though this isn't perfect, it will work for determining trends. So create a time series plot of Assets_ADIs_Total versus Day. The command is:
+
+```{r Assets}
+#| fig-alt: "See the description of the graph below the graph"
+#| warning: FALSE
+#| label: fig-Australian_data
+#| fig-cap: "Total Assets of Authorized Deposit-taking Institutions"
+gf_line(Assets_ADIs_Total~Day, data=Australian, title="Total Assets of Authorized Deposit-taking Institutions (ADIs)", xlab="Day since September 1, 1969", ylab="ADI (AUD)")
+```
+
+Description of @fig-Australian_data is an increasing time series Graph of Total Assets of Authorized Deposit-taking Institutions from day 7500 to 17500. The first number starts at 0 and goes up to about 4500.
+
+From the graph, total assets of Authorized Deposit-taking Institutions (ADIs) appear to be increasing with a slight dip around 14000 days since September 1, 1969. That would be around the year 2008 (14000 days /360 days per year + 1969).
+
+Be careful when making a graph. If the vertical axis doesn't start at 0, then the change can look much more dramatic than it really is. For a graph to be useful to the reader, it needs to have a title that explains what the graph contains, the axes should be labeled so the reader knows what each axes represents, each axes should have a scale marked, and it is best if the vertical axis contains 0 to show the relationship.
+
+### Homework for Other Graphical Representations of Data Section
+
+1.  When an anthropologist finds skeletal remains, they need to figure out the height of the person. The height of a person (in cm) and the length of one of their metacarpal bone (in cm) were collected and are in @tbl-Metacarpal (Prediction of height, 2013). Create a scatter plot of length and height and state if there is a relationship between the height of a person and the length of their metacarpal.
+
+```{r metacarpal-table}
+#| tbl-alt: "Table showing first 6 rows of Metacarpal dataset"
+#| label: tbl-Metacarpal
+#| tbl-cap: "Head of Metacarpal Data frame"
+Metacarpal<- read.csv( "https://krkozak.github.io/MAT160/metacarpal.csv") 
+knitr::kable(head(Metacarpal))
+```
+
+**Code book for Data frame Metacarpal**
+
+**Description** When anthropologists analyze human skeletal remains, an important piece of information is living stature. Since skeletons are commonly based on statistical methods that utilize measurements on small bones. The following data was presented in a paper in the American Journal of Physical Anthropology to validate one such method.
+
+Format
+
+This data frame contains the following columns:
+
+length: length of Metacarpal I bone in mm
+
+height: stature of skeleton in cm
+
+Source Prediction of Height from Metacarpal Bone Length. (n.d.). Retrieved July 9, 2019, from http://www.statsci.org/data/general/stature.html
+
+References Musgrave, J., and Harneja, N. (1978). The estimation of adult stature from metacarpal bone length. Amer. J. Phys. Anthropology 48, 113-120.
+
+Devore, J., and Peck, R. (1986). Statistics. The Exploration and Analysis of Data. West Publishing, St Paul, Minnesota.
+
+2.  The value of the house and the amount of rental income in a year that the house brings in are in @tbl-House (Capital and rental 2013). Create a scatter plot and state if there is a relationship between the value of the house and the annual rental income.
+
+```{r house-table}
+#| tbl-alt: "Table showing first 6 rows of House dataset"
+#| label: tbl-House
+#| tbl-cap: "Head of House Data frame"
+House<- read.csv( "https://krkozak.github.io/MAT160/house.csv") 
+knitr::kable(head(House))
+```
+
+**Code book for Data frame House**
+
+**Description** The data show the capital value and annual rental value of domestic properties in Auckland in 1991.
+
+Format
+
+This data frame contains the following columns:
+
+Capital: Selling price of house in Australian dollar (AUD)
+
+rental: rental price of a house in Australian dollar (AUD)
+
+Source Capital and rental values of Auckland properties. (2013, September 26). Retrieved from http://www.statsci.org/data/oz/rentcap.html
+
+References Lee, A. (1994) Data Analysis: An introduction based on R. Auckland: Department of Statistics, University of Auckland. Data courtesy of Sage Consultants Ltd.
+
+3.  The World Bank collects information on the life expectancy of a person in each country (\\"Life expectancy at,\\" 2013) and the fertility rate per woman in the country (\\"Fertility rate,\\" 2013). The data for countries for the year 2011 are in @tbl-Fertility. Create a scatter plot of the data and state if there appears to be a relationship between life expectancy and the number of births per woman in 2011.
+
+```{r fertility-table}
+#| tbl-alt: "Table showing first 6 rows of Fertility dataset"
+#| label: tbl-Fertility
+#| tbl-cap: "Head of Fertility Data frame"
+Fertility<- read.csv( "https://krkozak.github.io/MAT160/fertility.csv") 
+knitr::kable(head(Fertility))
+```
+
+**Code book for Data frame Fertility**
+
+**Description** Data is from the World Bank on the life expectancy of countries and the fertility rates in those countries.
+
+Format
+
+This data frame contains the following columns:
+
+Country: Countries in the World
+
+lifexp_2011: Life expectancy of a person born in 2011
+
+fertilrate_2011: Fertility rate in the country in 2011
+
+lifexp_2000: Life expectancy of a person born in 2000
+
+fertilrate_2000: Fertility rate in the country in 2000
+
+lifexp_1990: Life expectancy of a person born in 1990
+
+fertilrate_1990: Fertility rate in the country in 1990
+
+Source Life expectancy at birth. (2013, October 14). Retrieved from http://data.worldbank.org/indicator/SP.DYN.LE00.IN
+
+References Data from World Bank, Life expectancy at birth, total (years)
+
+4.  The World Bank collected data on the percentage of gross domestic product (GDP) that a country spends on health expenditures (Current health expenditure (% of GDP), 2019), the fertility rate of the country (Fertility rate, total (births per woman), 2019), and the percentage of women receiving prenatal care (Pregnant women receiving prenatal care (%), 2019). The data for the countries where this information is available in @tbl-Fert_prenatal. Create a scatter plot of the health expenditure and percentage of women receiving prenatal care in the year 2014, and state if there appears to be a relationship between percentage spent on health expenditure and the percentage of women receiving prenatal care.
+
+```{r prenatal-table}
+#| tbl-alt: "Table showing first 6 rows of Pert_prenatal dataset"
+#| label: tbl-Fert_prenatal
+#| tbl-cap: "Head of Fert_prenatal Data frame"
+Fert_prenatal<-read.csv( "https://krkozak.github.io/MAT160/fertility_prenatal.csv") 
+knitr::kable(head(Fert_prenatal))
+```
+
+**Code book for Data frame Fert_prenatal**
+
+**Description** Data is from the World Bank on money spent on expenditure of countries and the percentage of women receiving prenatal care in those countries.
+
+Format
+
+This data frame contains the following columns:
+
+Country.Name: Countries around the world
+
+Country.Code: Three letter country code for countries around the world
+
+Region: Location of a country around the world as classified by the World Bank
+
+IncomeGroup: The income level of a country as classified by the World Bank
+
+f1960-f2017: Fertility rate of a country from 1960-2017
+
+p1986-p2018: Percentage of women receiving prenatal care in the country in 1986-2018
+
+e200-2016: Expenditure amounts of the countries for medical care in 2000-2016 (% of GDP)
+
+Source Fertility rate, total (births per woman). (n.d.). Retrieved July 8, 2019, from https://data.worldbank.org/indicator/SP.DYN.TFRT.IN Pregnant women receiving prenatal care (%). (n.d.). Retrieved July 9, 2019, from https://data.worldbank.org/indicator/SH.STA.ANVC.ZS Current health expenditure (% of GDP). (n.d.). Retrieved July 9, 2019, from https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS
+
+References Data from World Bank, fertility rate, expenditure on health, and pregnant woman rate of prenatal care.
+
+5.  The Australian Institute of Criminology gathered data on the number of deaths (per 100,000 people) due to firearms during the period 1983 to 1997 (\\"Deaths from firearms,\\" 2013). The data is in @tbl-firearm. Create a time-series plot of the data and state any findings you can from the graph.
+
+```{r firearm-table}
+#| tbl-alt: "Table showing first 6 rows of Firearm dataset"
+#| label: tbl-firearm
+#| tbl-cap: "Head of Firearm Data frame"
+Firearm<- read.csv( "https://krkozak.github.io/MAT160/rate.csv") 
+knitr::kable(head(Firearm))
+```
+
+**Code book for Data Frame Firearm**
+
+**Description** The data give the number of deaths caused by firearms in Australia from 1983 to 1997, expressed as a rate per 100,000 of population.
+
+Format
+
+This data frame contains the following columns:
+
+Year: Years from 1983 to 1997
+
+Rate: Rate of deaths caused by firearms in Australia per 100,000 population
+
+Source Deaths from firearms. (2013, September 26). Retrieved from http://www.statsci.org/data/oz/firearms.html
+
+References Australian Institute of Criminology, 1999.The data was contributed by Rex Boggs, Glenmore State High School, Rockhampton, Queensland, Australia.
+
+6.  The economic crisis of 2008 affected many countries, though some more than others. Some people in Australia have claimed that Australia wasn't hurt that badly from the crisis. The bank assets (in billions of Australia dollars (AUD)) of the Reserve Bank of Australia (RBA) for the time period of September 1 1969, through March 1 2019, are contained in @bl-Australian (Reserve Bank of Australia, 2019). Create a time-series plot of the assets of the RBA and interpret any findings.
+
+**Code book for Data Frame Australian is below @tbl-Australian.**
+
+7.  The consumer price index (CPI) is a measure used by the U.S. government to describe the cost of living. The cost of living for the U.S. from the years 1913 through 2019, with the year 1982 being used as the year that all others are compared (Consumer Price Index Data from 1913 to 2019, 2019) is given in @tbl-CPI. Create a time-series plot of the Average Annual CPI for 2018 and interpret.
+
+```{r cpi-table}
+#| tbl-alt: "Table showing first 6 rows of CPI dataset"
+#| label: tbl-CPI
+#| tbl-cap: "Head of CPI Data frame"
+CPI<- read.csv( "https://krkozak.github.io/MAT160/CPI_US.csv") 
+knitr::kable(head(CPI))
+```
+
+**Code book for Data frame CPI**
+
+**Description** This table of Consumer Price Index (CPI) data is based upon a 1982 base of 100.
+
+Format
+
+This data frame contains the following columns:
+
+Year: Year from 1913 to 2019
+
+Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec: CPI for a particular month
+
+Average_Avg: The average CPI for a particular year
+
+PerDec_Dec: Percent change from December to December
+
+Per_Avg_Avg: Percent change from Annual Average to Annual Average
+
+Source Consumer Price Index Data from 1913 to 2019. (2019, June 12). Retrieved July 10, 2019, from https://www.usinflationcalculator.com/inflation/consumer-price-index-and-annual-percent-changes-from-1913-to-2008/
+
+References US Inflation Calculator website, 2019.
+
+8.  The mean and median incomes income in current dollars is given in @tbl-US_income. Create a time-series plot and interpret.
+
+```{r income-table}
+#| tbl-alt: "Table showing first 6 rows of US_income dataset"
+#| label: tbl-US_income
+#| tbl-cap: "Head of US_income Data frame"
+US_income<- read.csv( "https://krkozak.github.io/MAT160/US_income.csv") 
+knitr::kable(head(US_income))
+```
+
+**Code book for Data Frame US_income**
+
+**Description** This table is of US mean and median incomes in both current dollars and in 2017 dollars.
+
+Format
+
+This data frame contains the following columns:
+
+Year: Year from 1975 to 2017
+
+number: Households as of March of the following year. (in thousands)
+
+med_income_current: median income of a US household in current dollars
+
+med_income_2017: median income of a US household in 2017 CPI-U-RS adjusted dollars
+
+mean_income_current: mean income of a US household in current dollars
+
+mean_income_2017: mean income of a US household in 2017 CPI-U-RS adjusted dollars
+
+Source US Census Bureau. (2018, March 06). Data. Retrieved July 21, 2019, from https://www.census.gov/programs-surveys/cps/data-detail.html
+
+References U.S. Census Bureau, Current Population Survey, Annual Social and Economic Supplements.
