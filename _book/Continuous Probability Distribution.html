@@ -1064,16 +1064,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 10 × 76
       ID SurveyYr Gender   Age AgeDecade AgeMonths Race1   Race3 Educa…¹ Marit…²
    &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;  &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt;   &lt;fct&gt; &lt;fct&gt;   &lt;fct&gt;  
- 1 55668 2009_10  male      21 " 20-29"        256 White   &lt;NA&gt;  High S… LivePa…
- 2 70980 2011_12  male      32 " 30-39"         NA White   White High S… Married
- 3 56192 2009_10  female    17 " 10-19"        208 White   &lt;NA&gt;  &lt;NA&gt;    &lt;NA&gt;   
- 4 51857 2009_10  female    44 " 40-49"        538 Other   &lt;NA&gt;  Colleg… LivePa…
- 5 65751 2011_12  male      54 " 50-59"         NA Mexican Mexi… High S… Married
- 6 65923 2011_12  male      62 " 60-69"         NA White   White Colleg… Divorc…
- 7 64439 2011_12  male      53 " 50-59"         NA White   White Some C… Married
- 8 62634 2011_12  male      68 " 60-69"         NA White   White 9 - 11… Married
- 9 70304 2011_12  female    65 " 60-69"         NA White   White High S… Widowed
-10 55903 2009_10  male      47 " 40-49"        565 Black   &lt;NA&gt;  High S… Separa…
+ 1 66362 2011_12  female    55 " 50-59"         NA White   White Some C… Separa…
+ 2 52773 2009_10  female    64 " 60-69"        776 White   &lt;NA&gt;  Some C… Married
+ 3 60632 2009_10  female    29 " 20-29"        349 White   &lt;NA&gt;  High S… Divorc…
+ 4 69500 2011_12  male      19 " 10-19"         NA White   White &lt;NA&gt;    &lt;NA&gt;   
+ 5 60291 2009_10  male      35 " 30-39"        420 Hispan… &lt;NA&gt;  Colleg… Divorc…
+ 6 68182 2011_12  male      47 " 40-49"         NA White   White High S… Married
+ 7 62107 2009_10  female    70 " 70+"          846 Other   &lt;NA&gt;  Some C… Widowed
+ 8 52661 2009_10  male      71 " 70+"          853 White   &lt;NA&gt;  Some C… Married
+ 9 58892 2009_10  female    36 " 30-39"        439 Black   &lt;NA&gt;  Colleg… Married
+10 57230 2009_10  female    64 " 60-69"        776 White   &lt;NA&gt;  Colleg… Married
 # … with 66 more variables: HHIncome &lt;fct&gt;, HHIncomeMid &lt;int&gt;, Poverty &lt;dbl&gt;,
 #   HomeRooms &lt;int&gt;, HomeOwn &lt;fct&gt;, Work &lt;fct&gt;, Weight &lt;dbl&gt;, Length &lt;dbl&gt;,
 #   HeadCirc &lt;dbl&gt;, Height &lt;dbl&gt;, BMI &lt;dbl&gt;, BMICatUnder20yrs &lt;fct&gt;,
@@ -1087,7 +1087,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>  response mean
-1    Pulse 69.5</code></pre>
+1    Pulse 73.8</code></pre>
 </div>
 </div>
 <p>Now suppose you took another random sample of size 10 and found the mean pulse rate for that sample. Repeat this process 100 times. At this point you would basically have a new sample of 100 mean pulse rates. You could assess how this sample is distributed by creating a density plot <a href="#fig-NHANES6e-density">Figure&nbsp;<span>6.21</span></a></p>
@@ -1100,7 +1100,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">df_stats</span>(<span class="sc">~</span>means, <span class="at">data=</span>Trials, mean, sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  response     mean       sd
-1    means 72.79116 4.093546</code></pre>
+1    means 72.89906 4.100716</code></pre>
 </div>
 <div class="cell-output-display">
 <div id="fig-NHANES6e-density" class="quarto-figure quarto-figure-center anchored">
@@ -1124,7 +1124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">df_stats</span>(<span class="sc">~</span>means, <span class="at">data=</span>Trials, mean, sd) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  response     mean       sd
-1    means 73.50105 1.967006</code></pre>
+1    means 73.61296 1.938624</code></pre>
 </div>
 <div class="cell-output-display">
 <div id="fig-NHANES6f-density" class="quarto-figure quarto-figure-center anchored">
@@ -1157,7 +1157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>  response     mean       sd
-1    means 17.55949 1.364349</code></pre>
+1    means 17.86299 1.516481</code></pre>
 </div>
 <div class="cell-output-display">
 <div id="fig-NHANES6-random-density" class="quarto-figure quarto-figure-center anchored">
