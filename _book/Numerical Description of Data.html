@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistics Using Technology, 4th Edition - 3&nbsp; Numerical Description of Data</title>
+<title>3&nbsp; Numerical Description of Data – Statistics Using Technology, 4th Edition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,14 +96,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -107,13 +141,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Numerical Description of Data.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Numerical Description of Data</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Numerical Description of Data.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Numerical Description of Data</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -122,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Statistics Using Technology, 4th Edition</a> 
@@ -216,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -275,7 +309,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>Chapter 1 discussed what a population, sample, parameter, and statistic are, and how to take different types of samples. Chapter 2 discussed ways to graphically display data. There was also a discussion of important characteristics: center, variations, distribution, outliers, and changing characteristics of the data over time. Distributions and outliers can be answered using graphical means. Finding the center and variation can be done using numerical methods that will be discussed in this chapter. Both graphical and numerical methods are part of a branch of statistics known as <strong>descriptive statistics</strong>. Later descriptive statistics will be used to make decisions and/or estimate population parameters using methods that are part of the branch called <strong>inferential statistics</strong>.</p>
 <section id="measures-of-center" class="level2" data-number="3.1">
@@ -302,13 +338,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="example-finding-the-mean-and-median-using-r" class="level3" data-number="3.1.3">
 <h3 data-number="3.1.3" class="anchored" data-anchor-id="example-finding-the-mean-and-median-using-r"><span class="header-section-number">3.1.3</span> Example: Finding the Mean and Median using r</h3>
-<p>Suppose a vet wants to find the average weight of cats. The weights (in kg) of cats are in <a href="#tbl-Cats">Table&nbsp;<span>3.1</span></a>.</p>
+<p>Suppose a vet wants to find the average weight of cats. The weights (in kg) of cats are in <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a>.</p>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of cats dataset">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(cats))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Cats" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of cats dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Cats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.1: Head of Cats
+</figcaption>
+<div aria-describedby="tbl-Cats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Cats" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;3.1: Head of Cats</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Sex</th>
@@ -351,6 +391,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>The head command shows the variable names and the first few unit of observation rows</p>
 <p>Find the mean and median of the weight of a cat.</p>
@@ -380,7 +422,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="example-finding-mean-and-median-with-filtering" class="level3" data-number="3.1.4">
 <h3 data-number="3.1.4" class="anchored" data-anchor-id="example-finding-mean-and-median-with-filtering"><span class="header-section-number">3.1.4</span> Example: Finding Mean and Median with filtering</h3>
-<p>Looking at the data frame for cats weights <a href="#tbl-Cats">Table&nbsp;<span>3.1</span></a> you see that there are several variables You may want to know what the other variables are. A Code Book describes the data set, explains what the variables are including the units, and the source of the data frame. To review the code book for a data frame, complete the following command.</p>
+<p>Looking at the data frame for cats weights <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> you see that there are several variables You may want to know what the other variables are. A Code Book describes the data set, explains what the variables are including the units, and the source of the data frame. To review the code book for a data frame, complete the following command.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>??cats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -390,7 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="code_book_cats.jpg" class="img-fluid figure-img" alt="Code book cats Dataframe"></p>
-<figcaption class="figure-caption">Code book for cats data frame</figcaption>
+<figcaption>Code book for cats data frame</figcaption>
 </figure>
 </div>
 <p>Suppose you want to know if male cats weigh more than female cats. Looking at the variables, you notice that there is a variable for the sex of the cat. You can look at the weights of males and females separately. This looks like:</p>
@@ -460,7 +502,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="centers_distribution.png" class="img-fluid figure-img" alt="skewed left graph with mean, median,mode lines, then symmetric graph with all three the same line, then skewed right graph with mode, median, mean lines"></p>
-<figcaption class="figure-caption">Mean, median, mode as related to distribution</figcaption>
+<figcaption>Mean, median, mode as related to distribution</figcaption>
 </figure>
 </div>
 <p>One last type of average is a weighted average. <strong>Weighted averages</strong> are used quite often in different situations. Some teachers use them in calculating a student’s grade in the course, or a grade on a project. Some employers use them in employee evaluations. The idea is that some activities are more important than others. As an example, a full time teacher at a community college may be evaluated on their service to the college, their service to the community, whether their paperwork is turned in on time, and their teaching. However, teaching is much more important than whether their paperwork is turned in on time. When the evaluation is completed, more weight needs to be given to the teaching and less to the paperwork. This is a weighted average.</p>
@@ -543,15 +585,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="3.1.9" class="anchored" data-anchor-id="homework-for-measures-of-center-section"><span class="header-section-number">3.1.9</span> Homework for Measures of Center Section</h3>
 <p><strong>Use Technology on all problems. State the variable on all problems.</strong></p>
 <ol type="1">
-<li>Cholesterol levels were collected from patients certain days after they had a heart attack and are in <a href="#tbl-Cholesterol">Table&nbsp;<span>3.2</span></a>. Find the mean and median for cholesterol levels 2 days after the heart attack.</li>
+<li>Cholesterol levels were collected from patients certain days after they had a heart attack and are in <a href="#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>. Find the mean and median for cholesterol levels 2 days after the heart attack.</li>
 </ol>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Cholesterol dataset">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>Cholesterol<span class="ot">&lt;-</span><span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/cholesterol.csv"</span>) </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Cholesterol))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Cholesterol" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Cholesterol dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Cholesterol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.2: Head of Cholesterol Levels of Patients After Heart Attack
+</figcaption>
+<div aria-describedby="tbl-Cholesterol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Cholesterol" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;3.2: Head of Cholesterol Levels of Patients After Heart Attack</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">patient</th>
@@ -601,6 +647,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for Data Frame Cholesterol</strong></p>
 <p><strong>Description</strong> Cholesterol levels were collected from patients certain days after they had a heart attack</p>
@@ -612,15 +660,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Source Ryan, B. F., Joiner, B. L., &amp; Ryan, Jr, T. A. (1985). Cholesterol levels after heart attack.Retrieved from http://www.statsci.org/data/general/cholest.html</p>
 <p>References Ryan, Joiner &amp; Ryan, Jr, 1985</p>
 <ol start="2" type="1">
-<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in <a href="#tbl-Length">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.</li>
+<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.</li>
 </ol>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Length dataset">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Length<span class="ot">&lt;-</span><span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/length.csv"</span>) </span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Length))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Length" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Length dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Length-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.3: Head of Length of New zealand rivers (km)
+</figcaption>
+<div aria-describedby="tbl-Length-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Length" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;3.3: Head of Length of New zealand rivers (km)</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">river</th>
@@ -663,6 +715,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Length</strong></p>
 <p><strong>Description</strong> Rivers in New Zealand, the lengths of river and what body of water the river flows into</p>
@@ -673,15 +727,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Source Lee, A. (1994). Data analysis: An introduction based on r. Auckland. Retrieved from http://www.statsci.org/data/oz/nzrivers.html</p>
 <p>References Lee, A. (1994). Data analysis: An introduction based on r. Auckland.</p>
 <ol start="3" type="1">
-<li>Print-O-Matic printing company’s employees have salaries that are contained in <a href="#tbl-Pay">Table&nbsp;<span>3.4</span></a>.</li>
+<li>Print-O-Matic printing company’s employees have salaries that are contained in <a href="#tbl-Pay" class="quarto-xref">Table&nbsp;<span>3.4</span></a>.</li>
 </ol>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Pay dataset">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>Pay<span class="ot">&lt;-</span><span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/pay.csv"</span>) </span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Pay))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Pay" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Pay dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Pay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.4: Head of Salaries of Print-O-Matic Printing Company Employees
+</figcaption>
+<div aria-describedby="tbl-Pay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Pay" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;3.4: Head of Salaries of Print-O-Matic Printing Company Employees</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">employee</th>
@@ -717,6 +775,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Pay</strong></p>
 <p><strong>Description</strong> Salaries of Print-O-Matic printing company’s employees</p>
@@ -734,15 +794,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <!-- -->
 <ol start="4" type="1">
-<li>Print-O-Matic printing company spends specific amounts on fixed costs every month. The costs of those fixed costs are in a <a href="#tbl-Cost">Table&nbsp;<span>3.5</span></a>.</li>
+<li>Print-O-Matic printing company spends specific amounts on fixed costs every month. The costs of those fixed costs are in a <a href="#tbl-Cost" class="quarto-xref">Table&nbsp;<span>3.5</span></a>.</li>
 </ol>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Cost dataset">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>Cost<span class="ot">&lt;-</span><span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/cost.csv"</span>) </span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Cost))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Cost" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Cost dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Cost-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.5: Fixed Costs for Print-O-Matic Printing Company
+</figcaption>
+<div aria-describedby="tbl-Cost-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Cost" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;3.5: Fixed Costs for Print-O-Matic Printing Company</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">charges</th>
@@ -778,6 +842,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Cost</strong></p>
 <p><strong>Description</strong> fixed monthly charges for Print-0-Matic printing company</p>
@@ -801,7 +867,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="graph_3_1_1.png" class="img-fluid figure-img" alt="histogram with bars on left tallest and then gradually getting shorter as you go to the right"></p>
-<figcaption class="figure-caption">Graph #3.1.2</figcaption>
+<figcaption>Graph #3.1.2</figcaption>
 </figure>
 </div>
 <ol start="6" type="1">
@@ -811,7 +877,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="graph_3_1_2.png" class="img-fluid figure-img" alt="histogram with bars on left shortest and then gradually getting taller as you go to the right"></p>
-<figcaption class="figure-caption">Graph 3.1.3</figcaption>
+<figcaption>Graph 3.1.3</figcaption>
 </figure>
 </div>
 <ol start="7" type="1">
@@ -843,7 +909,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="example-finding-the-standard-deviation" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="example-finding-the-standard-deviation"><span class="header-section-number">3.2.2</span> Example: Finding the Standard Deviation</h3>
-<p>For the data frame Cats <a href="#tbl-Cats">Table&nbsp;<span>3.1</span></a> find the variance and standard derivation for weight of cats. Then find the variance and standard deviation separated by sex of the cat.</p>
+<p>For the data frame Cats <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> find the variance and standard derivation for weight of cats. Then find the variance and standard deviation separated by sex of the cat.</p>
 <section id="solution-5" class="level4" data-number="3.2.2.1">
 <h4 data-number="3.2.2.1" class="anchored" data-anchor-id="solution-5"><span class="header-section-number">3.2.2.1</span> <strong>Solution</strong></h4>
 <p>The variance and standard deviation for all cats is found by performing the command:</p>
@@ -876,14 +942,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="example-the-general-rule" class="level3" data-number="3.2.4">
 <h3 data-number="3.2.4" class="anchored" data-anchor-id="example-the-general-rule"><span class="header-section-number">3.2.4</span> Example: the general rule</h3>
-<p>The U.S. Weather Service has provided the information in <a href="#tbl-Tornado">Table&nbsp;<span>3.6</span></a> about the total monthly/annual number of reported tornadoes in Oklahoma for the years 1950 to 2018. (US Department of Commerce &amp; Noaa, 2016)</p>
+<p>The U.S. Weather Service has provided the information in <a href="#tbl-Tornado" class="quarto-xref">Table&nbsp;<span>3.6</span></a> about the total monthly/annual number of reported tornadoes in Oklahoma for the years 1950 to 2018. (US Department of Commerce &amp; Noaa, 2016)</p>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Tornado dataset">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Tornado<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://krkozak.github.io/MAT160/Tornado_OK.csv"</span>) </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Tornado))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Tornado" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Tornado dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Tornado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.6: Monthly/Annual Number of tornadoes in Oklahoma
+</figcaption>
+<div aria-describedby="tbl-Tornado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Tornado" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;3.6: Monthly/Annual Number of tornadoes in Oklahoma</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 8%">
 <col style="width: 6%">
@@ -1019,6 +1089,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Tornado</strong></p>
 <p><strong>Description</strong> The U.S. Weather Service has collected data on the monthly and annual number of tornadoes in Oklahoma.</p>
@@ -1073,31 +1145,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="3.2.6" class="anchored" data-anchor-id="homework-for-measures-of-spread-section"><span class="header-section-number">3.2.6</span> Homework for Measures of Spread Section</h3>
 <p><strong>Use Technology on all problems. State the variable on all problems.</strong></p>
 <ol type="1">
-<li>Cholesterol levels were collected from patients certain days after they had a heart attack and are in <a href="#tbl-Cholesterol">Table&nbsp;<span>3.2</span></a>. Find the mean, median, range, variance, and standard deviation for cholesterol levels 2 days after the heart attack.</li>
+<li>Cholesterol levels were collected from patients certain days after they had a heart attack and are in <a href="#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>. Find the mean, median, range, variance, and standard deviation for cholesterol levels 2 days after the heart attack.</li>
 </ol>
-<p><strong>Code book for Data Frame Cholesterol</strong> is below <a href="#tbl-Cholesterol">Table&nbsp;<span>3.2</span></a>.</p>
+<p><strong>Code book for Data Frame Cholesterol</strong> is below <a href="#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>.</p>
 <ol start="2" type="1">
-<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in <a href="#tbl-Length">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Find the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Pacific Ocean and the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Tasman Sea. Compare and contrast the length of rivers that flow to the Pacific Ocean versus the ones that flow into the Tasman Sea using both measures of spread and measures of variability.</li>
+<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Find the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Pacific Ocean and the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Tasman Sea. Compare and contrast the length of rivers that flow to the Pacific Ocean versus the ones that flow into the Tasman Sea using both measures of spread and measures of variability.</li>
 </ol>
-<p><strong>Code book for data frame Length</strong> is below <a href="#tbl-Length">Table&nbsp;<span>3.3</span></a>.</p>
+<p><strong>Code book for data frame Length</strong> is below <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a>.</p>
 <ol start="3" type="1">
-<li>Print-O-Matic printing company’s employees have salaries that are contained in <a href="#tbl-Pay">Table&nbsp;<span>3.4</span></a>. Find the mean, median, range, variance, and standard deviation for the salaries of all employees.</li>
+<li>Print-O-Matic printing company’s employees have salaries that are contained in <a href="#tbl-Pay" class="quarto-xref">Table&nbsp;<span>3.4</span></a>. Find the mean, median, range, variance, and standard deviation for the salaries of all employees.</li>
 </ol>
-<p><strong>Code book for data frame Pay</strong> below <a href="#tbl-Pay">Table&nbsp;<span>3.4</span></a>.</p>
+<p><strong>Code book for data frame Pay</strong> below <a href="#tbl-Pay" class="quarto-xref">Table&nbsp;<span>3.4</span></a>.</p>
 <ol start="4" type="1">
-<li>Print-O-Matic printing company spends specific amounts on fixed costs every month. The costs of those fixed costs are in <a href="#tbl-Cost">Table&nbsp;<span>3.5</span></a>. Find the mean, median, range, variance, and standard deviation for the fixed costs.</li>
+<li>Print-O-Matic printing company spends specific amounts on fixed costs every month. The costs of those fixed costs are in <a href="#tbl-Cost" class="quarto-xref">Table&nbsp;<span>3.5</span></a>. Find the mean, median, range, variance, and standard deviation for the fixed costs.</li>
 </ol>
-<p><strong>Code book for Data frame Cost</strong> is below <a href="#tbl-Cost">Table&nbsp;<span>3.5</span></a>.</p>
+<p><strong>Code book for Data frame Cost</strong> is below <a href="#tbl-Cost" class="quarto-xref">Table&nbsp;<span>3.5</span></a>.</p>
 <ol start="5" type="1">
-<li>The data frame Pulse <a href="#tbl-Pulse">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute.</li>
+<li>The data frame Pulse <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute.</li>
 </ol>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Pulse dataset">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>Pulse<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://krkozak.github.io/MAT160/pulse.csv"</span>)</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Pulse))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Pulse" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Pulse dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Pulse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.7: Head of Pulse Rates of people Before and After Exercise
+</figcaption>
+<div aria-describedby="tbl-Pulse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Pulse" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;3.7: Head of Pulse Rates of people Before and After Exercise</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 8%">
 <col style="width: 8%">
@@ -1209,6 +1285,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Pulse</strong></p>
 <p>Description Students in an introductory statistics class (MS212 taught by Professor John Eccleston and Dr Richard Wilson at The University of Queensland) participated in a simple experiment. The students took their own pulse rate. They were then asked to flip a coin. If the coin came up heads, they were to run in place for one minute. Otherwise they sat for one minute. Then everyone took their pulse again. The pulse rates and other physiological and lifestyle data are given in the data.</p>
@@ -1227,15 +1305,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>year: what year the data was collected (93-98)</p>
 <p>Source Pulse rates before and after exercise. (2013, September 25). Retrieved from http://www.statsci.org/data/oz/ms212.html</p>
 <p>References The data was supplied by Dr Richard J. Wilson, Department of Mathematics, University of Queensland.</p>
-<p>Create a data frame that contains only males, who drink alcohol, but do not smoke. Then compare the pulse before and the pulse after using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread. The following command creates a new data frame with just males, who drink alcohol, but do not smoke, use the following command, where the new name is Males in <a href="#tbl-Males">Table&nbsp;<span>3.8</span></a>.</p>
+<p>Create a data frame that contains only males, who drink alcohol, but do not smoke. Then compare the pulse before and the pulse after using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread. The following command creates a new data frame with just males, who drink alcohol, but do not smoke, use the following command, where the new name is Males in <a href="#tbl-Males" class="quarto-xref">Table&nbsp;<span>3.8</span></a>.</p>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Males dataset">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>Males<span class="ot">&lt;-</span> Pulse <span class="sc">|&gt;</span> </span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender<span class="sc">==</span><span class="st">"male"</span>, smokes <span class="sc">==</span> <span class="st">"no"</span>, alcohol <span class="sc">==</span> <span class="st">"yes"</span>)</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Males))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Males" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Males dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Males-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.8: Head of Pulse Rates of Nonsmoking Males Before and After Exercise
+</figcaption>
+<div aria-describedby="tbl-Males-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Males" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;3.8: Head of Pulse Rates of Nonsmoking Males Before and After Exercise</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 8%">
 <col style="width: 8%">
@@ -1347,18 +1429,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <ol start="6" type="1">
-<li><p>The data frame Pulse <a href="#tbl-Pulse">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute. Create a data frame that contains females, who do not smoke but do drink alcohol. Compare the pulse rate before and after exercise using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread.</p></li>
-<li><p>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997) and the data is in <a href="#tbl-Reiki">Table&nbsp;<span>3.9</span></a>.</p></li>
+<li><p>The data frame Pulse <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute. Create a data frame that contains females, who do not smoke but do drink alcohol. Compare the pulse rate before and after exercise using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread.</p></li>
+<li><p>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997) and the data is in <a href="#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>.</p></li>
 </ol>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Reiki dataset">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>Reiki<span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/reki.csv"</span>) </span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Reiki))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Reiki" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Reiki dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Reiki-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.9: Head of Pain Measurements Before and After Reiki Treatment
+</figcaption>
+<div aria-describedby="tbl-Reiki-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Reiki" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;3.9: Head of Pain Measurements Before and After Reiki Treatment</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">vas.before</th>
@@ -1408,6 +1496,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Reiki</strong></p>
 <p><strong>Description</strong> The purpose of this study was to explore the usefulness of Reiki as an adjuvant to opioid therapy in the management of pain. Since no studies in this area could be found, a pilot study was carried out involving 20 volunteers experiencing pain at 55 sites for a variety of reasons, including cancer. All Reiki treatments were provided by a certified second-degree Reiki therapist. Pain was measured using both a visual analogue scale (VAS) and a Likert scale immediately before and after the Reiki treatment. Both instruments showed a highly significant (p &lt; 0.0001) reduction in pain following the Reiki treatment.</p>
@@ -1418,15 +1508,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>likert_after: pain measured using a likert after Reiki treatment</p>
 <p>Source Olson, K., &amp; Hanson, J. (1997). Using reiki to manage pain: a preliminary report. Cancer Prev Control, 1(2), 108-13. Retrieved from http://www.ncbi.nlm.nih.gov/pubmed/9765732</p>
 <p>References** Using Reiki to manage pain: a preliminary report. Olson K1, Hanson J., Cancer Prev Control 1997, Jun; 1(2): 108-13.</p>
-<p>Since the data was collected both before and after the treatment for all of the units of observations, you want to look at the effect size of the treatment. You want to find the difference between before and after for the pain scale. First you must create a new data frame that adds a column for the difference in before and after. This data is known as paired data. To create the new column in a new data frame called Newreiki use the following commands, <a href="#tbl-Newreiki">Table&nbsp;<span>3.10</span></a>.</p>
+<p>Since the data was collected both before and after the treatment for all of the units of observations, you want to look at the effect size of the treatment. You want to find the difference between before and after for the pain scale. First you must create a new data frame that adds a column for the difference in before and after. This data is known as paired data. To create the new column in a new data frame called Newreiki use the following commands, <a href="#tbl-Newreiki" class="quarto-xref">Table&nbsp;<span>3.10</span></a>.</p>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of New Reiki dataset">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>Newreiki<span class="ot">&lt;-</span>Reiki <span class="sc">|&gt;</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vas.diff=</span>vas.before<span class="sc">-</span>vas.after) </span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Newreiki))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Newreiki" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of New Reiki dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Newreiki-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.10: Head of Pain Measurements Before and After Reiki Treatment with Difference column
+</figcaption>
+<div aria-describedby="tbl-Newreiki-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Newreiki" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;3.10: Head of Pain Measurements Before and After Reiki Treatment with Difference column</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">vas.before</th>
@@ -1483,16 +1577,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>Now find the mean and standard deviation of the vas.diff variable in Newreiki. Perform similar commands to create the likert.diff variable. Then find the mean and standard deviation for likert.diff, and compare and contrast the vas and likert methods for describing pain.</p>
-<p>8.Yearly rainfall amounts (in millimeters) in Sydney, Australia, are in <a href="#tbl-Rainfall">Table&nbsp;<span>3.11</span></a> (Annual maximums of, 2013). a. Calculate the mean and standard deviation. b. Suppose Sydney, Australia received 300 mm of rainfall in a year. Would this be unusual?</p>
+<p>8.Yearly rainfall amounts (in millimeters) in Sydney, Australia, are in <a href="#tbl-Rainfall" class="quarto-xref">Table&nbsp;<span>3.11</span></a> (Annual maximums of, 2013). a. Calculate the mean and standard deviation. b. Suppose Sydney, Australia received 300 mm of rainfall in a year. Would this be unusual?</p>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Rainfall dataset">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>Rainfall<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://krkozak.github.io/MAT160/rainfall.csv"</span>) </span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Rainfall))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Rainfall" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Rainfall dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Rainfall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.11: Head of Yearly rainfall amounts in Sydney, Australia
+</figcaption>
+<div aria-describedby="tbl-Rainfall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Rainfall" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;3.11: Head of Yearly rainfall amounts in Sydney, Australia</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">amount</th>
@@ -1520,6 +1620,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </div>
+</div>
+</figure>
 </div>
 </div>
 <p><strong>Code book for data frame Rainfall</strong></p>
@@ -1575,7 +1677,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="example-five-number-summary-and-boxplot" class="level3" data-number="3.3.4">
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="example-five-number-summary-and-boxplot"><span class="header-section-number">3.3.4</span> Example: Five-number Summary and Boxplot</h3>
-<p>Find the five-number summary, the interquartile range (*IQR*), and draw a box-and-whiskers plot for the weight of cats <a href="#tbl-Cats">Table&nbsp;<span>3.1</span></a>.</p>
+<p>Find the five-number summary, the interquartile range (*IQR*), and draw a box-and-whiskers plot for the weight of cats <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a>.</p>
 <section id="solution-10" class="level4" data-number="3.3.4.1">
 <h4 data-number="3.3.4.1" class="anchored" data-anchor-id="solution-10"><span class="header-section-number">3.3.4.1</span> <strong>Solution</strong></h4>
 <p>Variable: <span class="math inline">\(x\)</span> = weight of cats To compute the five-number summary on RStudio, use the command:</p>
@@ -1595,10 +1697,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(<span class="sc">~</span>Bwt, <span class="at">data=</span>cats, <span class="at">title=</span><span class="st">"Weight of Cats"</span>, <span class="at">xlab=</span><span class="st">"Body Weight (kg)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-Cats-boxplot" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Numerical-Description-of-Data_files/figure-html/fig-Cats-boxplot-1.png" class="img-fluid figure-img" alt="box plot of weight of Cats median 2.7, Q1 at 2.3, lower fence at 2.0, Q3 at 3.0, upper fence at 3.8." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;3.1: Weight of Cats</figcaption>
+<div id="fig-Cats-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored" alt="box plot of weight of Cats median 2.7, Q1 at 2.3, lower fence at 2.0, Q3 at 3.0, upper fence at 3.8.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Cats-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Numerical-Description-of-Data_files/figure-html/fig-Cats-boxplot-1.png" class="img-fluid figure-img" alt="box plot of weight of Cats median 2.7, Q1 at 2.3, lower fence at 2.0, Q3 at 3.0, upper fence at 3.8." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Cats-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Weight of Cats
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1629,10 +1735,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(<span class="sc">~</span>Bwt<span class="sc">|</span>Sex, <span class="at">data=</span>cats, <span class="at">title=</span><span class="st">"Weights of Cats"</span>, <span class="at">xlab=</span><span class="st">"Body Weight in (kg)"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-Cats-boxplot-sex" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Numerical-Description-of-Data_files/figure-html/fig-Cats-boxplot-sex-1.png" class="img-fluid figure-img" alt="box plot of weight of Cats female lower 2.0, Q1 22, Median 2.3, Q3 3.0, upper 3.0, male 2.0, 2.5, 2.9, 3, 3.8" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;3.2: Weight of Cats Faceted by Sex</figcaption>
+<div id="fig-Cats-boxplot-sex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="box plot of weight of Cats female lower 2.0, Q1 22, Median 2.3, Q3 3.0, upper 3.0, male 2.0, 2.5, 2.9, 3, 3.8">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Cats-boxplot-sex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Numerical-Description-of-Data_files/figure-html/fig-Cats-boxplot-sex-1.png" class="img-fluid figure-img" alt="box plot of weight of Cats female lower 2.0, Q1 22, Median 2.3, Q3 3.0, upper 3.0, male 2.0, 2.5, 2.9, 3, 3.8" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Cats-boxplot-sex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: Weight of Cats Faceted by Sex
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1642,14 +1752,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="example-putting-it-all-together" class="level3" data-number="3.3.6">
 <h3 data-number="3.3.6" class="anchored" data-anchor-id="example-putting-it-all-together"><span class="header-section-number">3.3.6</span> Example: Putting it all together</h3>
-<p>The time (in 1/50 seconds) between successive pulses along a nerve fiber (“Time between nerve,” 2013) are given in <a href="#tbl-Nerve">Table&nbsp;<span>3.12</span></a>.</p>
+<p>The time (in 1/50 seconds) between successive pulses along a nerve fiber (“Time between nerve,” 2013) are given in <a href="#tbl-Nerve" class="quarto-xref">Table&nbsp;<span>3.12</span></a>.</p>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Nerve dataset">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>Nerve<span class="ot">&lt;-</span><span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/Nerve_pulse.csv"</span>) </span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Nerve))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Nerve" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Nerve dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Nerve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.12: Head of Successive pulses along a nerve fiber
+</figcaption>
+<div aria-describedby="tbl-Nerve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Nerve" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;3.12: Head of Successive pulses along a nerve fiber</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">time</th>
@@ -1678,6 +1792,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Nerve</strong></p>
 <p><strong>Description</strong> The data gives the time between 800 successive pulses along a nerve fiber. There are 799 observations rounded to the nearest half in units of 1/50 second.</p>
@@ -1693,15 +1809,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_density</span>(<span class="sc">~</span>time, <span class="at">data=</span>Nerve, <span class="at">title=</span><span class="st">"Time between Successive Nerve Pulses"</span>, <span class="at">xlab=</span><span class="st">"Time (1/50 second)"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-Pulse-density-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Numerical-Description-of-Data_files/figure-html/fig-Pulse-density-1-1.png" class="img-fluid figure-img" alt="Density plot with peak on left and lower on the right" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;3.3: Weight of Cats Faceted by Sex</figcaption>
+<div id="fig-Pulse-density-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot with peak on left and lower on the right">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Pulse-density-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Numerical-Description-of-Data_files/figure-html/fig-Pulse-density-1-1.png" class="img-fluid figure-img" alt="Density plot with peak on left and lower on the right" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Pulse-density-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3: Weight of Cats Faceted by Sex
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>From the graph <a href="#fig-Pulse-density-1">Figure&nbsp;<span>3.3</span></a> the data appears to be skewed right. Most of the time between successive nerve pulses appear to be around 5 or 10 1/50 second, but there are some times that are 60 1/50 second.</p>
+<p>From the graph <a href="#fig-Pulse-density-1" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> the data appears to be skewed right. Most of the time between successive nerve pulses appear to be around 5 or 10 1/50 second, but there are some times that are 60 1/50 second.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df_stats</span>(<span class="sc">~</span>time, <span class="at">data=</span>Nerve, mean, median, sd, summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1714,10 +1834,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_boxplot</span>(<span class="sc">~</span>time, <span class="at">data=</span>Nerve, <span class="at">title=</span><span class="st">"Nerve Pulses"</span>, <span class="at">xlab=</span><span class="st">"Time (1/50 second)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-Nerve-box" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Numerical-Description-of-Data_files/figure-html/fig-Nerve-box-1.png" class="img-fluid figure-img" alt="box plot lower fence 0, Q1 5, median 8, Q3 17, upper fence 31, many outliers above upper fence" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;3.4: Boxplot of Nerve Pulses</figcaption>
+<div id="fig-Nerve-box" class="quarto-float quarto-figure quarto-figure-center anchored" alt="box plot lower fence 0, Q1 5, median 8, Q3 17, upper fence 31, many outliers above upper fence">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Nerve-box-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Numerical-Description-of-Data_files/figure-html/fig-Nerve-box-1.png" class="img-fluid figure-img" alt="box plot lower fence 0, Q1 5, median 8, Q3 17, upper fence 31, many outliers above upper fence" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Nerve-box-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.4: Boxplot of Nerve Pulses
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1733,28 +1857,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Suppose your child takes a standardized test in mathematics and scores in the <span class="math inline">\(96^{th}\)</span> percentile. What does this percentile mean? Can you say your child passed the test? Explain.</p></li>
 <li><p>Suppose your child is in the <span class="math inline">\(83^{rd}\)</span> percentile in height and <span class="math inline">\(24^{th}\)</span> percentile in weight. Describe what this tells you about your child’s stature.</p></li>
 <li><p>Suppose your work evaluates the employees and places them on a percentile ranking. If your evaluation is in the <span class="math inline">\(65^{th}\)</span> percentile, do you think you are working hard enough? Explain.</p></li>
-<li><p>Cholesterol levels were collected from patients certain days after they had a heart attack and are in table <a href="#tbl-Cholesterol">Table&nbsp;<span>3.2</span></a>.</p></li>
+<li><p>Cholesterol levels were collected from patients certain days after they had a heart attack and are in table <a href="#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>.</p></li>
 </ol>
-<p><strong>Code book for Data Frame Cholesterol</strong> below <a href="#tbl-Cholesterol">Table&nbsp;<span>3.2</span></a>.</p>
+<p><strong>Code book for Data Frame Cholesterol</strong> below <a href="#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>.</p>
 <p>Find the five-number summary and interquartile range (IQR) for the cholesterol level on day 2, and draw a boxplot</p>
 <ol start="6" type="1">
-<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in table <a href="#tbl-Length">Table&nbsp;<span>3.3</span></a> (Lee, 1994).</li>
+<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in table <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a> (Lee, 1994).</li>
 </ol>
-<p><strong>Code book for data frame Length</strong> below <a href="#tbl-Length">Table&nbsp;<span>3.3</span></a>.</p>
+<p><strong>Code book for data frame Length</strong> below <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a>.</p>
 <p>Find the five-number summary and interquartile range (IQR) for the lengths of rivers that go to the Pacific Ocean and ones that go to the Tasman Sea, and draw a boxplot of both.</p>
 <ol start="7" type="1">
-<li>Print-O-Matic printing company’s employees have salaries that are contained in <a href="#tbl-Pay">Table&nbsp;<span>3.4</span></a> Find the five number summary and draw a boxplot for the salaries of all employees.</li>
+<li>Print-O-Matic printing company’s employees have salaries that are contained in <a href="#tbl-Pay" class="quarto-xref">Table&nbsp;<span>3.4</span></a> Find the five number summary and draw a boxplot for the salaries of all employees.</li>
 </ol>
-<p><strong>Code book for data frame Pay</strong> below <a href="#tbl-Pay">Table&nbsp;<span>3.4</span></a>.</p>
+<p><strong>Code book for data frame Pay</strong> below <a href="#tbl-Pay" class="quarto-xref">Table&nbsp;<span>3.4</span></a>.</p>
 <ol start="8" type="1">
-<li>The data frame Pulse <a href="#tbl-Pulse">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after after the subject ran in place for one minute.</li>
+<li>The data frame Pulse <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after after the subject ran in place for one minute.</li>
 </ol>
-<p><strong>Code book for data frame Pulse</strong> below <a href="#tbl-Pulse">Table&nbsp;<span>3.7</span></a>.</p>
+<p><strong>Code book for data frame Pulse</strong> below <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a>.</p>
 <p>Create a data frame that contains only people who drink alcohol, but do not smoke. Then find the five number summary and draw a boxplot for both males and females separately.</p>
 <ol start="9" type="1">
-<li>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997) and the data is in <a href="#tbl-Reiki">Table&nbsp;<span>3.9</span></a>.</li>
+<li>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997) and the data is in <a href="#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>.</li>
 </ol>
-<p><strong>Code book for data frame Reiki</strong> below <a href="#tbl-Reiki">Table&nbsp;<span>3.9</span></a>.</p>
+<p><strong>Code book for data frame Reiki</strong> below <a href="#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>.</p>
 <p>Find the five number summary for both the before and after VAS scores and draw boxplots of before and after VAS scores. To draw two boxplots at the same time, after the command to create the first box plot type the piping symbol |&gt; (base r) or %&gt;% (magrittr package) before pressing enter. (Note: |&gt; and %&gt;% are piping symbols that can be thought of as “and then.”) Then type the command for the second boxplot after the + symbol or on the next line in the r chunk if using an rmd or qmd file. Then press enter. You may want to graph each boxplot as a different color. To do this, the command would be</p>
 <p>gf_boxplot(~variable, data=data_frame, color=“red”, xlab=“type a label”)</p>
 <p>You can pick any color you want. Just replace the word red with the color you want to use. Now compare and contrast the before and after VAS scores.</p>
@@ -1799,18 +1923,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1842,11 +1955,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1856,8 +2008,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1869,7 +2030,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1913,6 +2197,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1938,6 +2223,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1999,17 +2310,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Graphical Description of Data.html" class="pagination-link">
+      <a href="./Graphical Description of Data.html" class="pagination-link" aria-label="Graphical Description of Data">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Graphical Description of Data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Probability.html" class="pagination-link">
+      <a href="./Probability.html" class="pagination-link" aria-label="Probability">
         <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

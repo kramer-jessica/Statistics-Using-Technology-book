@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kathryn Kozak">
 
-<title>Statistics Using Technology, 4th Edition - 11&nbsp; Chi-squared and ANOVA Tests</title>
+<title>11&nbsp; Chi-squared and ANOVA Tests – Statistics Using Technology, 4th Edition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -82,7 +82,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -91,14 +97,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -108,13 +142,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Chi-Square and ANOVA Tests.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chi-squared and ANOVA Tests</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Chi-Square and ANOVA Tests.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chi-squared and ANOVA Tests</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -123,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Statistics Using Technology, 4th Edition</a> 
@@ -217,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -268,7 +302,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>This chapter presents material on three more hypothesis tests. One is used to determine significant relationship between two qualitative variables, the second is used to determine if the sample data has a particular distribution, and the last is used to determine significant relationships between means of 3 or more samples.</p>
 <section id="chi-square-test-for-independence" class="level2" data-number="11.1">
@@ -310,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Is there a relationship between autism and breastfeeding? To determine if there is, a researcher asked mothers of autistic and non-autistic children to say what time period they breastfed their children. The data is in <a href="#autism-versus-breastfeeding">Autism Versus Breastfeeding</a> (Schultz, Klonoff-Cohen, Wingard, Askhoomoff, Macera, Ji &amp; Bacher, 2006). Do the data provide enough evidence to support that breastfeeding and autism are independent? Test at the 1% level.</p>
 <section id="autism-versus-breastfeeding" class="level5" data-number="11.1.1.1.1">
 <h5 data-number="11.1.1.1.1" class="anchored" data-anchor-id="autism-versus-breastfeeding"><span class="header-section-number">11.1.1.1.1</span> Autism Versus Breastfeeding</h5>
-<table class="table">
+<table class="caption-top table">
 <caption>Breast Feeding</caption>
 <colgroup>
 <col style="width: 20%">
@@ -399,13 +435,17 @@ no   32.41542  27.69593  23.72163  32.16702</code></pre>
 <h3 data-number="11.1.2" class="anchored" data-anchor-id="homework-for-chi-square-test-for-independence-section"><span class="header-section-number">11.1.2</span> Homework for Chi-Square Test for Independence Section</h3>
 <p><strong>In each problem show all steps of the hypothesis test. If some of the conditions are not met, note that the results of the test may not be correct and then continue the process of the hypothesis test.</strong></p>
 <ol type="1">
-<li>The number of people who survived the Titanic based on class and sex is in <a href="#tbl-Titanic_table">Table&nbsp;<span>11.1</span></a> (“Encyclopedia Titanica,” 2013). Is there enough evidence to show that the class and the sex of a person who survived the Titanic are independent? Test at the 5% level.</li>
+<li>The number of people who survived the Titanic based on class and sex is in <a href="#tbl-Titanic_table" class="quarto-xref">Table&nbsp;<span>11.1</span></a> (“Encyclopedia Titanica,” 2013). Is there enough evidence to show that the class and the sex of a person who survived the Titanic are independent? Test at the 5% level.</li>
 </ol>
 <div class="cell" data-tbl-alt="Head of Surviving the Titanic">
+<div id="tbl-Titanic_table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Head of Surviving the Titanic">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Titanic_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.1: Surviving the Titanic
+</figcaption>
+<div aria-describedby="tbl-Titanic_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Titanic_table" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.1: Surviving the Titanic</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -433,18 +473,24 @@ no   32.41542  27.69593  23.72163  32.16702</code></pre>
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <ol start="2" type="1">
-<li>Researchers watched groups of dolphins off the coast of Ireland in 1998 to determine what activities the dolphins partake in at certain times of the day (“Activities of dolphin,” 2013). The numbers in <a href="#tbl-Dolphin_table">Table&nbsp;<span>11.2</span></a> represent the number of groups of dolphins that were partaking in an activity at certain times of days. Is there enough evidence to show that the activity and the time period are independent for dolphins? Test at the 1% level.</li>
+<li>Researchers watched groups of dolphins off the coast of Ireland in 1998 to determine what activities the dolphins partake in at certain times of the day (“Activities of dolphin,” 2013). The numbers in <a href="#tbl-Dolphin_table" class="quarto-xref">Table&nbsp;<span>11.2</span></a> represent the number of groups of dolphins that were partaking in an activity at certain times of days. Is there enough evidence to show that the activity and the time period are independent for dolphins? Test at the 1% level.</li>
 </ol>
 <div class="cell" data-tbl-alt="Head of Dolphin Activity">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Dolphin<span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/dolphins.csv"</span>) </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Dolphin_table<span class="ot">&lt;-</span><span class="fu">tally</span>(<span class="sc">~</span>activity<span class="sc">+</span>period, <span class="at">data=</span>Dolphin)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(Dolphin_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Dolphin_table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Head of Dolphin Activity">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Dolphin_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.2: Dolphin Activity
+</figcaption>
+<div aria-describedby="tbl-Dolphin_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Dolphin_table" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.2: Dolphin Activity</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -480,18 +526,24 @@ no   32.41542  27.69593  23.72163  32.16702</code></pre>
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <ol start="3" type="1">
-<li>Is there a relationship between autism and what an infant is fed? To determine if there is, a researcher asked mothers of autistic and non-autistic children to say what they fed their infant. The data is in <a href="#tbl-Feeding_table">Table&nbsp;<span>11.3</span></a> (Schultz, Klonoff-Cohen, Wingard, Askhoomoff, Macera, Ji &amp; Bacher, 2006). Do the data provide enough evidence to show that that what an infant is fed and autism are independent? Breast-feeding (BF), Formula with DHA/ARA (For with), and Formula without DHA/ARA (Form without)Test at the 1% level.</li>
+<li>Is there a relationship between autism and what an infant is fed? To determine if there is, a researcher asked mothers of autistic and non-autistic children to say what they fed their infant. The data is in <a href="#tbl-Feeding_table" class="quarto-xref">Table&nbsp;<span>11.3</span></a> (Schultz, Klonoff-Cohen, Wingard, Askhoomoff, Macera, Ji &amp; Bacher, 2006). Do the data provide enough evidence to show that that what an infant is fed and autism are independent? Breast-feeding (BF), Formula with DHA/ARA (For with), and Formula without DHA/ARA (Form without)Test at the 1% level.</li>
 </ol>
 <div class="cell" data-tbl-alt="Autism Versus Breastfeeding">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Feeding<span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/Mothers.csv"</span>) </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Feeding_table<span class="ot">&lt;-</span><span class="fu">tally</span>(<span class="sc">~</span>autism<span class="sc">+</span>feeding, <span class="at">data=</span>Feeding)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(Feeding_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Feeding_table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Autism Versus Breastfeeding">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Feeding_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.3: Autism Versus Breastfeeding
+</figcaption>
+<div aria-describedby="tbl-Feeding_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Feeding_table" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.3: Autism Versus Breastfeeding</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -517,18 +569,24 @@ no   32.41542  27.69593  23.72163  32.16702</code></pre>
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <ol start="4" type="1">
-<li>Students at multiple grade schools were asked what their personal goal (get good grades, be popular, be good at sports) was and how important good grades were to them (1 very important and 4 least important). The data is in <a href="#tbl-Goal_Grades_table">Table&nbsp;<span>11.4</span></a> (“Popular kids datafile,” 2013). Do the data provide enough evidence to show that goal attainment and importance of grades are independent? Test at the 5% level.</li>
+<li>Students at multiple grade schools were asked what their personal goal (get good grades, be popular, be good at sports) was and how important good grades were to them (1 very important and 4 least important). The data is in <a href="#tbl-Goal_Grades_table" class="quarto-xref">Table&nbsp;<span>11.4</span></a> (“Popular kids datafile,” 2013). Do the data provide enough evidence to show that goal attainment and importance of grades are independent? Test at the 5% level.</li>
 </ol>
 <div class="cell" data-tbl-alt="Personal Goal and Importance of Grades">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Goal<span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/Popular_Kids_clean.csv"</span>) </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Goal_Grades_table<span class="ot">&lt;-</span><span class="fu">tally</span>(<span class="sc">~</span>Goals<span class="sc">+</span>Grades, <span class="at">data=</span>Goal)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(Goal_Grades_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Goal_Grades_table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Personal Goal and Importance of Grades">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Goal_Grades_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.4: Personal Goal and Importance of Grades
+</figcaption>
+<div aria-describedby="tbl-Goal_Grades_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Goal_Grades_table" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.4: Personal Goal and Importance of Grades</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -564,18 +622,24 @@ no   32.41542  27.69593  23.72163  32.16702</code></pre>
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <ol start="5" type="1">
-<li>Students at multiple grade schools were asked what their personal goal (get good grades, be popular, be good at sports) was and how important being good at sports were to them (1 very important and 4 least important). The data is in <a href="#tbl-Goal_Sports_table">Table&nbsp;<span>11.5</span></a> (“Popular kids datafile,” 2013). Do the data provide enough evidence to show that goal attainment and importance of sports are independent? Test at the 5% level.</li>
+<li>Students at multiple grade schools were asked what their personal goal (get good grades, be popular, be good at sports) was and how important being good at sports were to them (1 very important and 4 least important). The data is in <a href="#tbl-Goal_Sports_table" class="quarto-xref">Table&nbsp;<span>11.5</span></a> (“Popular kids datafile,” 2013). Do the data provide enough evidence to show that goal attainment and importance of sports are independent? Test at the 5% level.</li>
 </ol>
 <div class="cell" data-tbl-alt="Personal Goal and Importance of Sports">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Goal<span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/Popular_Kids_clean.csv"</span>) </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Goal_Sports_table<span class="ot">&lt;-</span><span class="fu">tally</span>(<span class="sc">~</span>Goals<span class="sc">+</span>Sports, <span class="at">data=</span>Goal)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(Goal_Sports_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Goal_Sports_table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Personal Goal and Importance of Sports">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Goal_Sports_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.5: Personal Goal and Importance of Sports
+</figcaption>
+<div aria-describedby="tbl-Goal_Sports_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Goal_Sports_table" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.5: Personal Goal and Importance of Sports</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -611,18 +675,24 @@ no   32.41542  27.69593  23.72163  32.16702</code></pre>
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <ol start="6" type="1">
-<li>Students at multiple grade schools were asked what their personal goal (get good grades, be popular, be good at sports) was and how important having good looks were to them (1 very important and 4 least important). The data is in <a href="#tbl-Goal_Looks_table">Table&nbsp;<span>11.6</span></a> (“Popular kids datafile,” 2013). Do the data provide enough evidence to show that goal attainment and importance of looks are independent? Test at the 5% level.</li>
+<li>Students at multiple grade schools were asked what their personal goal (get good grades, be popular, be good at sports) was and how important having good looks were to them (1 very important and 4 least important). The data is in <a href="#tbl-Goal_Looks_table" class="quarto-xref">Table&nbsp;<span>11.6</span></a> (“Popular kids datafile,” 2013). Do the data provide enough evidence to show that goal attainment and importance of looks are independent? Test at the 5% level.</li>
 </ol>
 <div class="cell" data-tbl-alt="Personal Goal and Importance of Looks">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Goal<span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/Popular_Kids_clean.csv"</span>) </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Goal_Looks_table<span class="ot">&lt;-</span><span class="fu">tally</span>(<span class="sc">~</span>Goals<span class="sc">+</span>Looks, <span class="at">data=</span>Goal)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(Goal_Looks_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Goal_Looks_table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Personal Goal and Importance of Looks">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Goal_Looks_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.6: Personal Goal and Importance of Looks
+</figcaption>
+<div aria-describedby="tbl-Goal_Looks_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Goal_Looks_table" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.6: Personal Goal and Importance of Looks</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -658,18 +728,24 @@ no   32.41542  27.69593  23.72163  32.16702</code></pre>
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <ol start="7" type="1">
-<li>Students at multiple grade schools were asked what their personal goal (get good grades, be popular, be good at sports) was and how important having money were to them (1 very important and 4 least important). The data is in <a href="#tbl-Goal_Money_table">Table&nbsp;<span>11.7</span></a> (“Popular kids datafile,” 2013). Do the data provide enough evidence to show that goal attainment and importance of money are independent? Test at the 5% level.</li>
+<li>Students at multiple grade schools were asked what their personal goal (get good grades, be popular, be good at sports) was and how important having money were to them (1 very important and 4 least important). The data is in <a href="#tbl-Goal_Money_table" class="quarto-xref">Table&nbsp;<span>11.7</span></a> (“Popular kids datafile,” 2013). Do the data provide enough evidence to show that goal attainment and importance of money are independent? Test at the 5% level.</li>
 </ol>
 <div class="cell" data-tbl-alt="Personal Goal and Importance of Money">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Goal<span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/Popular_Kids_clean.csv"</span>) </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>Goal_Money_table<span class="ot">&lt;-</span><span class="fu">tally</span>(<span class="sc">~</span>Goals<span class="sc">+</span>Money, <span class="at">data=</span>Goal)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(Goal_Money_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Goal_Money_table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Personal Goal and Importance of Money">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Goal_Money_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.7: Personal Goal and Importance of Money
+</figcaption>
+<div aria-describedby="tbl-Goal_Money_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Goal_Money_table" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.7: Personal Goal and Importance of Money</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -704,6 +780,8 @@ no   32.41542  27.69593  23.72163  32.16702</code></pre>
 </tbody>
 </table>
 </div>
+</div>
+</figure>
 </div>
 </div>
 </section>
@@ -743,12 +821,16 @@ no   32.41542  27.69593  23.72163  32.16702</code></pre>
 </section>
 <section id="example-goodness-of-fit-test" class="level3" data-number="11.2.2">
 <h3 data-number="11.2.2" class="anchored" data-anchor-id="example-goodness-of-fit-test"><span class="header-section-number">11.2.2</span> Example: Goodness of Fit Test</h3>
-<p>Suppose you have a die that you are curious if it is fair or not. If it is fair then the proportion for each value should be the same. You need to find the observed frequencies and to accomplish this you roll the die 500 times and count how often each side comes up. The data is in table <a href="#tbl-Die">Table&nbsp;<span>11.8</span></a>. Do the data show that the die is fair? Test at the 5% level.</p>
+<p>Suppose you have a die that you are curious if it is fair or not. If it is fair then the proportion for each value should be the same. You need to find the observed frequencies and to accomplish this you roll the die 500 times and count how often each side comes up. The data is in table <a href="#tbl-Die" class="quarto-xref">Table&nbsp;<span>11.8</span></a>. Do the data show that the die is fair? Test at the 5% level.</p>
 <div class="cell" data-tbl-alt="Observed Frequencies of Die for sides 1 through 6">
+<div id="tbl-Die" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Observed Frequencies of Die for sides 1 through 6">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Die-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.8: Observed Frequencies of Die for sides 1 through 6
+</figcaption>
+<div aria-describedby="tbl-Die-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Die" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.8: Observed Frequencies of Die for sides 1 through 6</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Sides</th>
@@ -783,6 +865,8 @@ no   32.41542  27.69593  23.72163  32.16702</code></pre>
 </tbody>
 </table>
 </div>
+</div>
+</figure>
 </div>
 </div>
 <section id="solution-1" class="level4" data-number="11.2.2.1">
@@ -837,7 +921,7 @@ X-squared = 1.504, df = 5, p-value = 0.9126</code></pre>
 <h3 data-number="11.2.3" class="anchored" data-anchor-id="homework-for-chi-square-goodness-of-fit-section"><span class="header-section-number">11.2.3</span> Homework for Chi-Square Goodness of Fit Section</h3>
 <p><strong>In each problem show all steps of the hypothesis test. If some of the conditions are not met, note that the results of the test may not be correct and then continue the process of the hypothesis test.</strong></p>
 <ol type="1">
-<li>According to the M&amp;M candy company, the expected proportion can be found in <a href="#tbl-MandM">Table&nbsp;<span>11.9</span></a>. In addition, the table contains the number of M&amp;M’s of each color that were found in a case of candy (Madison, 2013). At the 5% level, do the observed frequencies support the claim of M&amp;M?</li>
+<li>According to the M&amp;M candy company, the expected proportion can be found in <a href="#tbl-MandM" class="quarto-xref">Table&nbsp;<span>11.9</span></a>. In addition, the table contains the number of M&amp;M’s of each color that were found in a case of candy (Madison, 2013). At the 5% level, do the observed frequencies support the claim of M&amp;M?</li>
 </ol>
 <div class="cell" data-tbl-alt="M&amp;M Observed and Expected">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>MandM <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
@@ -846,10 +930,14 @@ X-squared = 1.504, df = 5, p-value = 0.9126</code></pre>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Expected =</span> <span class="fu">c</span>(<span class="fl">0.24</span>, <span class="fl">0.13</span>, <span class="fl">0.16</span>, <span class="fl">0.20</span>, <span class="fl">0.13</span>, <span class="fl">0.14</span>)</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(MandM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-MandM" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="M&amp;M Observed and Expected">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-MandM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.9: M&amp;M Observed and Expected
+</figcaption>
+<div aria-describedby="tbl-MandM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-MandM" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.9: M&amp;M Observed and Expected</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Color</th>
@@ -892,18 +980,24 @@ X-squared = 1.504, df = 5, p-value = 0.9126</code></pre>
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <ol start="2" type="1">
-<li><p>Eyeglassomatic manufactures eyeglasses for different retailers. The data frame is in <a href="Graphical Description of Data.html#tbl-Defects">Table&nbsp;<span>2.4</span></a>. They test to see how many defective lenses they made the time period of January 1 to March 31. <a href="#tbl-Defect_table">Table&nbsp;<span>11.10</span></a> gives the defect and the number of defects.</p>
-<p><strong>Code book for Data Frame Defects</strong> below <a href="Graphical Description of Data.html#tbl-Defects">Table&nbsp;<span>2.4</span></a>.</p></li>
+<li><p>Eyeglassomatic manufactures eyeglasses for different retailers. The data frame is in <a href="Graphical Description of Data.html#tbl-Defects" class="quarto-xref">Table&nbsp;<span>2.4</span></a>. They test to see how many defective lenses they made the time period of January 1 to March 31. <a href="#tbl-Defect_table" class="quarto-xref">Table&nbsp;<span>11.10</span></a> gives the defect and the number of defects.</p>
+<p><strong>Code book for Data Frame Defects</strong> below <a href="Graphical Description of Data.html#tbl-Defects" class="quarto-xref">Table&nbsp;<span>2.4</span></a>.</p></li>
 </ol>
 <div class="cell" data-tbl-alt="Number of Defective Lenses">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Defect_table <span class="ot">&lt;-</span> <span class="fu">tally</span>(<span class="sc">~</span>type, <span class="at">data=</span>Defects)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(Defect_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Defect_table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Number of Defective Lenses">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Defect_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.10: Number of Defective Lenses
+</figcaption>
+<div aria-describedby="tbl-Defect_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Defect_table" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.10: Number of Defective Lenses</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">type</th>
@@ -967,10 +1061,12 @@ X-squared = 1.504, df = 5, p-value = 0.9126</code></pre>
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>Do the data support the notion that each defect type occurs in the same proportion? Test at the 5% level.</p>
 <ol start="3" type="1">
-<li><p>On occasion, medical studies need to model the proportion of the population that has a disease and compare that to observed frequencies of the disease actually occurring. Suppose the end-stage renal failure in south-west Wales was collected for different age groups. Do the data in <a href="#tbl-Renal">Table&nbsp;<span>11.11</span></a> show that the observed frequencies are in agreement with proportion of people in each age group (Boyle, Flowerdew &amp; Williams, 1997)? Test at the 1% level.</p>
+<li><p>On occasion, medical studies need to model the proportion of the population that has a disease and compare that to observed frequencies of the disease actually occurring. Suppose the end-stage renal failure in south-west Wales was collected for different age groups. Do the data in <a href="#tbl-Renal" class="quarto-xref">Table&nbsp;<span>11.11</span></a> show that the observed frequencies are in agreement with proportion of people in each age group (Boyle, Flowerdew &amp; Williams, 1997)? Test at the 1% level.</p>
 <p><strong>Table Renal Failure Frequencies</strong></p>
 <div class="cell" data-tbl-alt="Renal Failure Frequencies">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Renal <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
@@ -979,10 +1075,14 @@ X-squared = 1.504, df = 5, p-value = 0.9126</code></pre>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Expected =</span> <span class="fu">c</span>(<span class="fl">0.23</span>, <span class="fl">0.25</span>, <span class="fl">0.22</span>, <span class="fl">0.21</span>, <span class="fl">0.09</span>)</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(Renal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Renal" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Renal Failure Frequencies">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Renal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.11: Renal Failure Frequencies
+</figcaption>
+<div aria-describedby="tbl-Renal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Renal" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.11: Renal Failure Frequencies</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Age_group</th>
@@ -1020,8 +1120,10 @@ X-squared = 1.504, df = 5, p-value = 0.9126</code></pre>
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div></li>
-<li><p>In Africa in 2011, the number of deaths of a female from cardiovascular disease for different age groups are in <a href="#tbl-Deaths">Table&nbsp;<span>11.12</span></a> (“Global health observatory,” 2013). In addition, the proportion of deaths of females from all causes for the same age groups are also in table Deaths of Females for Different Age Groups. Do the data show that the death from cardiovascular disease are in the same proportion as all deaths for the different age groups? Test at the 5% level.</p>
+<li><p>In Africa in 2011, the number of deaths of a female from cardiovascular disease for different age groups are in <a href="#tbl-Deaths" class="quarto-xref">Table&nbsp;<span>11.12</span></a> (“Global health observatory,” 2013). In addition, the proportion of deaths of females from all causes for the same age groups are also in table Deaths of Females for Different Age Groups. Do the data show that the death from cardiovascular disease are in the same proportion as all deaths for the different age groups? Test at the 5% level.</p>
 <div class="cell" data-tbl-alt="Deaths of Females for Different Age Groups">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>Deaths <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Age =</span> <span class="fu">c</span>(<span class="st">"5-14"</span>, <span class="st">"14-29"</span>, <span class="st">"30-49"</span>, <span class="st">"50-69"</span>),</span>
@@ -1029,10 +1131,14 @@ X-squared = 1.504, df = 5, p-value = 0.9126</code></pre>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Expected =</span> <span class="fu">c</span>(<span class="fl">0.10</span>, <span class="fl">0.12</span>, <span class="fl">0.226</span>, <span class="fl">0.52</span>)</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(Deaths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Deaths" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Deaths of Females for Different Age Groups">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Deaths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.12: Deaths of Females for Different Age Groups
+</figcaption>
+<div aria-describedby="tbl-Deaths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Deaths" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.12: Deaths of Females for Different Age Groups</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Age</th>
@@ -1065,21 +1171,27 @@ X-squared = 1.504, df = 5, p-value = 0.9126</code></pre>
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div></li>
 </ol>
 <!-- -->
 <ol start="5" type="1">
-<li><p>In Australia in 1995, there was a question of whether indigenous people are more likely to die in prison than non-indigenous people. To figure out, the data in <a href="#tbl-Prisoners">Table&nbsp;<span>11.13</span></a> was collected. (“Aboriginal deaths in,” 2013). Do the data show that indigenous people die in the same proportion as non-indigenous people? Test at the 1% level.</p>
+<li><p>In Australia in 1995, there was a question of whether indigenous people are more likely to die in prison than non-indigenous people. To figure out, the data in <a href="#tbl-Prisoners" class="quarto-xref">Table&nbsp;<span>11.13</span></a> was collected. (“Aboriginal deaths in,” 2013). Do the data show that indigenous people die in the same proportion as non-indigenous people? Test at the 1% level.</p>
 <div class="cell" data-tbl-alt="Death of Indigenous Prisoners">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Prisoners <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Died =</span> <span class="fu">c</span>(<span class="st">"Yes"</span>, <span class="st">"No"</span>),</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Observed =</span> <span class="fu">c</span>(<span class="dv">17</span>, <span class="dv">3890</span>),</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Expected =</span> <span class="fu">c</span>(<span class="fl">0.003</span>, <span class="fl">0.997</span>))</span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(Prisoners)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Prisoners" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Death of Indigenous Prisoners">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Prisoners-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.13: Death of Indigenous Prisoners
+</figcaption>
+<div aria-describedby="tbl-Prisoners-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Prisoners" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.13: Death of Indigenous Prisoners</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Died</th>
@@ -1102,16 +1214,22 @@ X-squared = 1.504, df = 5, p-value = 0.9126</code></pre>
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div></li>
-<li><p>A project conducted by the Australian Federal Office of Road Safety asked people many questions about their cars. One question was the reason that a person chooses a given car, and that data is in <a href="#tbl-Car_table">Table&nbsp;<span>11.14</span></a> (“Car preferences,” 2013).</p></li>
+<li><p>A project conducted by the Australian Federal Office of Road Safety asked people many questions about their cars. One question was the reason that a person chooses a given car, and that data is in <a href="#tbl-Car_table" class="quarto-xref">Table&nbsp;<span>11.14</span></a> (“Car preferences,” 2013).</p></li>
 </ol>
 <div class="cell" data-tbl-alt="Reason for Choosing a Car">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Car_table <span class="ot">&lt;-</span> <span class="fu">tally</span>(<span class="sc">~</span>Reason, <span class="at">data=</span>Car_pref)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(Car_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Car_table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Reason for Choosing a Car">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Car_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.14: Reason for Choosing a Car
+</figcaption>
+<div aria-describedby="tbl-Car_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Car_table" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.14: Reason for Choosing a Car</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Reason</th>
@@ -1146,6 +1264,8 @@ X-squared = 1.504, df = 5, p-value = 0.9126</code></pre>
 </tbody>
 </table>
 </div>
+</div>
+</figure>
 </div>
 </div>
 <p>Do the data show that the frequencies observed substantiate the claim that the reasons for choosing a car are equally likely? Test at the 5% level.</p>
@@ -1188,14 +1308,18 @@ X-squared = 1.504, df = 5, p-value = 0.9126</code></pre>
 </section>
 <section id="example-hypothesis-test-involving-several-means" class="level3" data-number="11.3.2">
 <h3 data-number="11.3.2" class="anchored" data-anchor-id="example-hypothesis-test-involving-several-means"><span class="header-section-number">11.3.2</span> Example: Hypothesis Test Involving Several Means</h3>
-<p>Cancer is a terrible disease. Surviving may depend on the type of cancer the person has. To see if the mean survival time for several types of cancer are different, data was collected on the survival time in days of patients with one of these cancer in advanced stage. The data is in <a href="#tbl-Cancer">Table&nbsp;<span>11.15</span></a> (“Cancer survival story,” 2013). (Please realize that this data is from 1978. There have been many advances in cancer treatment, so do not use this data as an indication of survival rates from these cancers.) Do the data indicate that at least two of the mean survival time for these types of cancer are not all equal? Test at the 1% level.</p>
+<p>Cancer is a terrible disease. Surviving may depend on the type of cancer the person has. To see if the mean survival time for several types of cancer are different, data was collected on the survival time in days of patients with one of these cancer in advanced stage. The data is in <a href="#tbl-Cancer" class="quarto-xref">Table&nbsp;<span>11.15</span></a> (“Cancer survival story,” 2013). (Please realize that this data is from 1978. There have been many advances in cancer treatment, so do not use this data as an indication of survival rates from these cancers.) Do the data indicate that at least two of the mean survival time for these types of cancer are not all equal? Test at the 1% level.</p>
 <div class="cell" data-tbl-alt="Survival Times in Days of Five Cancer Types">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Cancer <span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/cancer.csv"</span>) </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Cancer))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Cancer" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Survival Times in Days of Five Cancer Types">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Cancer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.15: Survival Times in Days of Five Cancer Types
+</figcaption>
+<div aria-describedby="tbl-Cancer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Cancer" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.15: Survival Times in Days of Five Cancer Types</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">survival</th>
@@ -1230,6 +1354,8 @@ X-squared = 1.504, df = 5, p-value = 0.9126</code></pre>
 </tbody>
 </table>
 </div>
+</div>
+</figure>
 </div>
 </div>
 <p><strong>Code book for data frame Cancer</strong></p>
@@ -1277,10 +1403,14 @@ X-squared = 1.504, df = 5, p-value = 0.9126</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_density</span>(<span class="sc">~</span>survival<span class="sc">|</span>organ, <span class="at">data=</span>Cancer, <span class="at">title=</span><span class="st">"Survival times for Different Cancers"</span>, <span class="at">xlab =</span> <span class="st">"Survival Times"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-Cancer-density" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Chi-Square-and-ANOVA-Tests_files/figure-html/fig-Cancer-density-1.png" class="img-fluid figure-img" alt="Density Plot of Survival Times for Different Cancers" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;11.1: Density Plot of Survival Times for Different Cancers</figcaption>
+<div id="fig-Cancer-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density Plot of Survival Times for Different Cancers">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Cancer-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Chi-Square-and-ANOVA-Tests_files/figure-html/fig-Cancer-density-1.png" class="img-fluid figure-img" alt="Density Plot of Survival Times for Different Cancers" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Cancer-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.1: Density Plot of Survival Times for Different Cancers
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1288,10 +1418,14 @@ X-squared = 1.504, df = 5, p-value = 0.9126</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_qq</span>(<span class="sc">~</span>survival<span class="sc">|</span>organ, <span class="at">data=</span>Cancer, <span class="at">title=</span><span class="st">"Survival times for Different Cancers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-Cancer-quantile" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Chi-Square-and-ANOVA-Tests_files/figure-html/fig-Cancer-quantile-1.png" class="img-fluid figure-img" alt="Quantile plots of survival times for diffent cancers. All do appear exponential" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;11.2: Quantile Plot of Survival Times for Different Cancers</figcaption>
+<div id="fig-Cancer-quantile" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Quantile plots of survival times for diffent cancers. All do appear exponential">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Cancer-quantile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Chi-Square-and-ANOVA-Tests_files/figure-html/fig-Cancer-quantile-1.png" class="img-fluid figure-img" alt="Quantile plots of survival times for diffent cancers. All do appear exponential" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Cancer-quantile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.2: Quantile Plot of Survival Times for Different Cancers
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1339,15 +1473,19 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h3 data-number="11.3.3" class="anchored" data-anchor-id="homework-for-analysis-of-variance-anova-section"><span class="header-section-number">11.3.3</span> Homework for Analysis of Variance (ANOVA) Section</h3>
 <p><strong>In each problem show all steps of the hypothesis test. If some of the conditions are not met, note that the results of the test may not be correct and then continue the process of the hypothesis test.</strong></p>
 <ol type="1">
-<li>Cuckoo birds are in the habit of laying their eggs in other birds’ nest. The other birds adopt and hatch the eggs. The lengths (in cm) of cuckoo birds’ eggs in the other species nests were measured and are in <a href="#tbl-Eggs">Table&nbsp;<span>11.16</span></a> (“Cuckoo eggs in,” 2013). Do the data show that the mean length of cuckoo bird’s eggs is not all the same when put into different nests? Test at the 5% level.</li>
+<li>Cuckoo birds are in the habit of laying their eggs in other birds’ nest. The other birds adopt and hatch the eggs. The lengths (in cm) of cuckoo birds’ eggs in the other species nests were measured and are in <a href="#tbl-Eggs" class="quarto-xref">Table&nbsp;<span>11.16</span></a> (“Cuckoo eggs in,” 2013). Do the data show that the mean length of cuckoo bird’s eggs is not all the same when put into different nests? Test at the 5% level.</li>
 </ol>
 <div class="cell" data-tbl-alt="Lengths of Cuckoo Bird Eggs in Different Species Nest">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>Eggs <span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/Birds_eggs.csv"</span>) </span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Eggs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Eggs" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Lengths of Cuckoo Bird Eggs in Different Species Nest">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Eggs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.16: Lengths of Cuckoo Bird Eggs in Different Species Nest
+</figcaption>
+<div aria-describedby="tbl-Eggs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Eggs" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.16: Lengths of Cuckoo Bird Eggs in Different Species Nest</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">length</th>
@@ -1383,6 +1521,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Eggs</strong></p>
 <p><strong>Description</strong> Cuckoo birds are in the habit of laying their eggs in other birds’ nest. The other birds adopt and hatch the eggs. The lengths (in cm) of cuckoo birds’ eggs in the other species nests were measured</p>
@@ -1392,15 +1532,19 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>Source Cuckoo eggs in nest of other birds. (2013, December 04). Retrieved from &lt;http://lib.stat.cmu.edu/DASL/Stories/cuckoo.html&gt;</p>
 <p>References SOCR Home page: &lt;http://www.socr.ucla.edu&gt;</p>
 <ol start="2" type="1">
-<li>Levi-Strauss Co manufactures clothing. The quality control department measures weekly values of different suppliers for the percentage difference of waste between the layout on the computer and the actual waste when the clothing is made (called run-up). The data is in <a href="#tbl-Levi">Table&nbsp;<span>11.17</span></a> (“Waste run up,” 2013). Do the data show that there is a difference between some of the suppliers? Test at the 1% level.</li>
+<li>Levi-Strauss Co manufactures clothing. The quality control department measures weekly values of different suppliers for the percentage difference of waste between the layout on the computer and the actual waste when the clothing is made (called run-up). The data is in <a href="#tbl-Levi" class="quarto-xref">Table&nbsp;<span>11.17</span></a> (“Waste run up,” 2013). Do the data show that there is a difference between some of the suppliers? Test at the 1% level.</li>
 </ol>
 <div class="cell" data-tbl-alt="Run-ups for Different Plants Making Levi Strauss Clothing">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>Levi <span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/Levi_jeans.csv"</span>) </span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Levi))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Levi" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Run-ups for Different Plants Making Levi Strauss Clothing">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Levi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.17: Run-ups for Different Plants Making Levi Strauss Clothing
+</figcaption>
+<div aria-describedby="tbl-Levi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Levi" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.17: Run-ups for Different Plants Making Levi Strauss Clothing</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">run_up</th>
@@ -1436,6 +1580,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Levi</strong></p>
 <p><strong>Description</strong> Levi-Strauss Co manufactures clothing. The quality control department measures weekly values of different suppliers for the percentage difference of waste between the layout on the computer and the actual waste when the clothing is made (called run-up).</p>
@@ -1445,15 +1591,19 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>Source Waste run up. (2013, December 04). Retrieved from &lt;http://lib.stat.cmu.edu/DASL/Stories/wasterunup.html&gt;</p>
 <p>References &lt;http://lib.stat.cmu.edu/DASL&gt;</p>
 <ol start="3" type="1">
-<li>Several magazines were grouped into three categories based on what level of education of their readers the magazines are geared towards: high, medium, or low level. Then random samples of the magazines were selected to determine the number of three-plus-syllable words were in the advertising copy, and the data is in <a href="#tbl-Advertising">Table&nbsp;<span>11.18</span></a> (“Magazine ads readability,” 2013). Is there enough evidence to show that the mean number of three-plus-syllable words in advertising copy is different for at least two of the education levels? Test at the 5% level.</li>
+<li>Several magazines were grouped into three categories based on what level of education of their readers the magazines are geared towards: high, medium, or low level. Then random samples of the magazines were selected to determine the number of three-plus-syllable words were in the advertising copy, and the data is in <a href="#tbl-Advertising" class="quarto-xref">Table&nbsp;<span>11.18</span></a> (“Magazine ads readability,” 2013). Is there enough evidence to show that the mean number of three-plus-syllable words in advertising copy is different for at least two of the education levels? Test at the 5% level.</li>
 </ol>
 <div class="cell" data-tbl-alt="Number of Three Plus Syllable Words in Advertising Copy">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Advertising <span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/three_syllable_words.csv"</span>) </span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Advertising))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Advertising" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Number of Three Plus Syllable Words in Advertising Copy">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Advertising-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.18: Number of Three Plus Syllable Words in Advertising Copy
+</figcaption>
+<div aria-describedby="tbl-Advertising-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Advertising" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.18: Number of Three Plus Syllable Words in Advertising Copy</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">number</th>
@@ -1489,6 +1639,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Advertising</strong></p>
 <p><strong>Description</strong> Several magazines were grouped into three categories based on what level of education of their readers the magazines are geared towards: high, medium, or low level. Then random samples of the magazines were selected to determine the number of three-plus-syllable words were in the advertising copy</p>
@@ -1498,15 +1650,19 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>Source Magazine ads readability. (2013, December 04). Retrieved from &lt;http://lib.stat.cmu.edu/DASL/Datafiles/magadsdat.html&gt;</p>
 <p>References &lt;http://lib.stat.cmu.edu/DASL&gt;</p>
 <ol start="4" type="1">
-<li>A study was undertaken to see how accurate food labeling for calories on food that is considered reduced calorie. The group measured the amount of calories for each item of food and then found the percent difference between measured and labeled food. The group also looked at food that was nationally advertised, regionally distributed, or locally prepared. The data is in <a href="#tbl-Food">Table&nbsp;<span>11.19</span></a> (“Calories datafile,” 2013). Do the data indicate that at least two of the mean percent differences between the three groups are different? Test at the 5% level.</li>
+<li>A study was undertaken to see how accurate food labeling for calories on food that is considered reduced calorie. The group measured the amount of calories for each item of food and then found the percent difference between measured and labeled food. The group also looked at food that was nationally advertised, regionally distributed, or locally prepared. The data is in <a href="#tbl-Food" class="quarto-xref">Table&nbsp;<span>11.19</span></a> (“Calories datafile,” 2013). Do the data indicate that at least two of the mean percent differences between the three groups are different? Test at the 5% level.</li>
 </ol>
 <div class="cell" data-tbl-alt="Percent Differences Between Measured and Labeled Food">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Food <span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/Food_calories_percent_diff.csv"</span>) </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Food))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Food" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Percent Differences Between Measured and Labeled Food">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Food-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.19: Percent Differences Between Measured and Labeled Food
+</figcaption>
+<div aria-describedby="tbl-Food-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Food" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.19: Percent Differences Between Measured and Labeled Food</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">percent_diff</th>
@@ -1542,6 +1698,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Food</strong></p>
 <p><strong>Description</strong> A study was undertaken to see how accurate food labeling for calories on food that is considered reduced calorie. The group measured the amount of calories for each item of food and then found the percent difference between measured and labeled food. The group also looked at food that was nationally advertised, regionally distributed, or locally prepared.</p>
@@ -1551,9 +1709,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>Source Calories datafile. (2013, December 07). Retrieved from &lt;http://lib.stat.cmu.edu/DASL/Datafiles/Calories.html&gt;</p>
 <p>References &lt;http://lib.stat.cmu.edu/DASL&gt;</p>
 <ol start="5" type="1">
-<li>The amount of sodium (in mg) in different types of hot dogs is in <a href="#tbl-Food">Table&nbsp;<span>11.19</span></a> (“Hot dogs story,” 2013). Is there sufficient evidence to show that the mean amount of sodium in the types of hot dogs are not all equal? Test at the 5% level.</li>
+<li>The amount of sodium (in mg) in different types of hot dogs is in <a href="#tbl-Food" class="quarto-xref">Table&nbsp;<span>11.19</span></a> (“Hot dogs story,” 2013). Is there sufficient evidence to show that the mean amount of sodium in the types of hot dogs are not all equal? Test at the 5% level.</li>
 </ol>
-<p><strong>Code book for data frame Food is below <a href="#tbl-Food">Table&nbsp;<span>11.19</span></a>.</strong></p>
+<p><strong>Code book for data frame Food is below <a href="#tbl-Food" class="quarto-xref">Table&nbsp;<span>11.19</span></a>.</strong></p>
 
 
 </section>
@@ -1595,18 +1753,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1638,11 +1785,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1652,8 +1838,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1665,7 +1860,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1709,6 +2027,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1734,6 +2053,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1795,17 +2140,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Regression.html" class="pagination-link">
+      <a href="./Regression.html" class="pagination-link" aria-label="Regression">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./References.html" class="pagination-link">
+      <a href="./References.html" class="pagination-link" aria-label="References">
         <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">References</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

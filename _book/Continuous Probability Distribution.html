@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistics Using Technology, 4th Edition - 6&nbsp; Continuous Probability Distribution</title>
+<title>6&nbsp; Continuous Probability Distribution – Statistics Using Technology, 4th Edition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,14 +96,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -107,13 +141,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Continuous Probability Distribution.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Continuous Probability Distribution</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Continuous Probability Distribution.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Continuous Probability Distribution</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -122,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Statistics Using Technology, 4th Edition</a> 
@@ -216,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -267,65 +301,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>Chapter 5 dealt with probability distributions arising from discrete random variables. Mostly that chapter focused on the binomial experiment. There are many other experiments from discrete random variables that exist but are not covered in this book.</p>
 <p>Chapter 6 deals with probability distributions that arise from continuous random variables. The focus of this chapter is a distribution known as the normal distribution, though realize that there are many other distributions that exist. A few others are examined in future chapters.</p>
 <p>Looking at the density plot of a quantitative variable, one can guess what the distribution of that variable is. As an example, consider the NHANES data frame. One variable to consider is Weight. The density plot of Weight is</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-density-cap" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-density-cap-1.png" class="img-fluid figure-img" alt="Density plot of a person's weight. Appears to be symmetric, and maybe bell shaped" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.1: Density plot of the Weight of a Person</figcaption>
+<div id="fig-density-cap" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of a person's weight. Appears to be symmetric, and maybe bell shaped">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-density-cap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-density-cap-1.png" class="img-fluid figure-img" alt="Density plot of a person's weight. Appears to be symmetric, and maybe bell shaped" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-density-cap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.1: Density plot of the Weight of a Person
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-density-cap">Figure&nbsp;<span>6.1</span></a> looks somewhat symmetric, and maybe bell shaped.</p>
-<p>Consider, the variable head circumference (HeadCirc) in the NHANES data frame. The density plot for this variable is <a href="#fig-HeadCirc-density">Figure&nbsp;<span>6.2</span></a></p>
+<p><a href="#fig-density-cap" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> looks somewhat symmetric, and maybe bell shaped.</p>
+<p>Consider, the variable head circumference (HeadCirc) in the NHANES data frame. The density plot for this variable is <a href="#fig-HeadCirc-density" class="quarto-xref">Figure&nbsp;<span>6.2</span></a></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-HeadCirc-density" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-HeadCirc-density-1.png" class="img-fluid figure-img" alt="Density plot of head circumference of a person. Appears to be skewed left." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.2: Density plot of head circumference of a person</figcaption>
+<div id="fig-HeadCirc-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of head circumference of a person. Appears to be skewed left.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-HeadCirc-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-HeadCirc-density-1.png" class="img-fluid figure-img" alt="Density plot of head circumference of a person. Appears to be skewed left." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-HeadCirc-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.2: Density plot of head circumference of a person
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-HeadCirc-density">Figure&nbsp;<span>6.2</span></a> looks somewhat skewed left.</p>
+<p><a href="#fig-HeadCirc-density" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> looks somewhat skewed left.</p>
 <p>Now consider the variable BMI from the NHANES data frame. The density plot is</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-BMI-density" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-BMI-density-1.png" class="img-fluid figure-img" alt="Density plot of BMI of a person that is skewed right." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.3: Density Plot of BMI of a Person</figcaption>
+<div id="fig-BMI-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of BMI of a person that is skewed right.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-BMI-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-BMI-density-1.png" class="img-fluid figure-img" alt="Density plot of BMI of a person that is skewed right." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-BMI-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.3: Density Plot of BMI of a Person
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>This density plot <a href="Estimation.html#fig-BMI-density">Figure&nbsp;<span>8.1</span></a> appears to be skewed right</p>
-<p>Now consider the variable SmokeAge. Its density plot is <a href="#fig-Smoking-density">Figure&nbsp;<span>6.4</span></a></p>
+<p>This density plot <a href="Estimation.html#fig-BMI-density" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> appears to be skewed right</p>
+<p>Now consider the variable SmokeAge. Its density plot is <a href="#fig-Smoking-density" class="quarto-xref">Figure&nbsp;<span>6.4</span></a></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-Smoking-density" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-Smoking-density-1.png" class="img-fluid figure-img" alt="Density plot of age when a person started smoking. Appears to be bimodal." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.4: Density Plot of Age when Person Started Smoking</figcaption>
+<div id="fig-Smoking-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of age when a person started smoking. Appears to be bimodal.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Smoking-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-Smoking-density-1.png" class="img-fluid figure-img" alt="Density plot of age when a person started smoking. Appears to be bimodal." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Smoking-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.4: Density Plot of Age when Person Started Smoking
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>This distribution appears to be bimodal.</p>
-<p>lastly, consider the variable Pulse. The density plot is <a href="#fig-Pulse-density">Figure&nbsp;<span>6.5</span></a></p>
+<p>lastly, consider the variable Pulse. The density plot is <a href="#fig-Pulse-density" class="quarto-xref">Figure&nbsp;<span>6.5</span></a></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-Pulse-density" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-Pulse-density-1.png" class="img-fluid figure-img" alt="Density plot of pulse rate of a person. Appears to be symmetric." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.5: Density Plot of Pulse Rate of a person</figcaption>
+<div id="fig-Pulse-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of pulse rate of a person. Appears to be symmetric.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Pulse-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-Pulse-density-1.png" class="img-fluid figure-img" alt="Density plot of pulse rate of a person. Appears to be symmetric." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Pulse-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.5: Density Plot of Pulse Rate of a person
+</figcaption>
 </figure>
 </div>
 </div>
@@ -335,23 +391,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="normal-distribution" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="normal-distribution"><span class="header-section-number">6.1</span> Normal Distribution</h2>
 <p>Many populations have a distribution that is a symmetric, unimodal, and bell-shaped. For example: height, blood pressure, and cholesterol level. However, not every bell shaped curve is a normal curve. In a normal curve, there is a specific relationship between its “height” and its “width.” Normal curves can be tall and skinny or they can be short and fat. They are all symmetric, unimodal, and centered at <span class="math inline">\(\mu\)</span>, the population mean.</p>
-<p><a href="#fig-normal-curvea">Figure&nbsp;<span>6.6</span></a> and <a href="#fig-normal-curveb">Figure&nbsp;<span>6.7</span></a> show two different normal curves drawn on the same scale. Both have <span class="math inline">\(\mu=2\)</span> but the one in <a href="#fig-normal-curvea">Figure&nbsp;<span>6.6</span></a> has a standard deviation of 1 and the one in <a href="#fig-normal-curveb">Figure&nbsp;<span>6.7</span></a> has a standard deviation of 4. Notice that the larger standard deviation makes the graph wider (more spread out) and shorter.</p>
+<p><a href="#fig-normal-curvea" class="quarto-xref">Figure&nbsp;<span>6.6</span></a> and <a href="#fig-normal-curveb" class="quarto-xref">Figure&nbsp;<span>6.7</span></a> show two different normal curves drawn on the same scale. Both have <span class="math inline">\(\mu=2\)</span> but the one in <a href="#fig-normal-curvea" class="quarto-xref">Figure&nbsp;<span>6.6</span></a> has a standard deviation of 1 and the one in <a href="#fig-normal-curveb" class="quarto-xref">Figure&nbsp;<span>6.7</span></a> has a standard deviation of 4. Notice that the larger standard deviation makes the graph wider (more spread out) and shorter.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-normal-curvea" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curvea-1.png" class="img-fluid figure-img" alt="Bell curve with mean 2 and standard deviation of 1" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.6: Normal curve with mean 2 and standard deviation 1</figcaption>
+<div id="fig-normal-curvea" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bell curve with mean 2 and standard deviation of 1">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normal-curvea-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curvea-1.png" class="img-fluid figure-img" alt="Bell curve with mean 2 and standard deviation of 1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal-curvea-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.6: Normal curve with mean 2 and standard deviation 1
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-normal-curveb" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curveb-1.png" class="img-fluid figure-img" alt="Bell curve with mean 2 and standard deviation of 4" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.7: Normal curve with mean 2 and standard deviation 4</figcaption>
+<div id="fig-normal-curveb" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bell curve with mean 2 and standard deviation of 4">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normal-curveb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curveb-1.png" class="img-fluid figure-img" alt="Bell curve with mean 2 and standard deviation of 4" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal-curveb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.7: Normal curve with mean 2 and standard deviation 4
+</figcaption>
 </figure>
 </div>
 </div>
@@ -368,7 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Empirical_rule.png" class="img-fluid figure-img" alt="Empirical Rule graph with 68% of data between -1 and 1 standard deviation of mean, 95% between -2 and 2, and 99.7% between -3 and 3"></p>
-<figcaption class="figure-caption">Empirical Rule Graph</figcaption>
+<figcaption>Empirical Rule Graph</figcaption>
 </figure>
 </div>
 <p>Be careful, there is still some area left over in each end. Remember, the maximum a probability can be is 100%, so if you calculate you will see that for both ends together there is 0.3% of the curve. Because of symmetry, you can divide this equally between both ends and find that there is 0.15% in each tail beyond the 3rd standard deviations.</p>
@@ -404,13 +468,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Find the probability of a pregnancy lasting more than 280 days.</li>
 </ol>
 <p>First translate the statement into a mathematical statement. <span class="math inline">\(P(x&gt;280)\)</span></p>
-<p>Now, draw a picture <a href="#fig-normal-curve61">Figure&nbsp;<span>6.8</span></a>.</p>
+<p>Now, draw a picture <a href="#fig-normal-curve61" class="quarto-xref">Figure&nbsp;<span>6.8</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-normal-curve61" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curve61-1.png" class="img-fluid figure-img" alt="Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9. Shaded above 280" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.8: Normally distributed with mean 272 and standard deviation 9, and P(x&gt;280)</figcaption>
+<div id="fig-normal-curve61" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9. Shaded above 280">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normal-curve61-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curve61-1.png" class="img-fluid figure-img" alt="Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9. Shaded above 280" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal-curve61-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.8: Normally distributed with mean 272 and standard deviation 9, and P(x&gt;280)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -427,13 +495,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Find the probability of a pregnancy lasting less than 250 days.</li>
 </ol>
 <p>First translate the statement into a mathematical statement. <span class="math inline">\(P(x&lt;250)\)</span></p>
-<p>Now, draw a picture <a href="#fig-normal-curve62">Figure&nbsp;<span>6.9</span></a>.</p>
+<p>Now, draw a picture <a href="#fig-normal-curve62" class="quarto-xref">Figure&nbsp;<span>6.9</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-normal-curve62" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curve62-1.png" class="img-fluid figure-img" alt="Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9. Shaded below 250" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.9: Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9, and P(x&lt;250)</figcaption>
+<div id="fig-normal-curve62" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9. Shaded below 250">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normal-curve62-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curve62-1.png" class="img-fluid figure-img" alt="Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9. Shaded below 250" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal-curve62-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.9: Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9, and P(x&lt;250)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -450,40 +522,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Find the probability that a pregnancy lasts between 265 and 280 days.</li>
 </ol>
 <p>First translate the statement into a mathematical statement. <span class="math inline">\(P(265&lt;x&lt;280)\)</span></p>
-<p>Now draw a picture <a href="#fig-normal-curve63">Figure&nbsp;<span>6.10</span></a>.</p>
+<p>Now draw a picture <a href="#fig-normal-curve63" class="quarto-xref">Figure&nbsp;<span>6.10</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-normal-curve63" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curve63-1.png" class="img-fluid figure-img" alt="Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9. Shaded from 265 to 280" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.10: Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9, and P(265&lt;x&lt;280)</figcaption>
+<div id="fig-normal-curve63" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9. Shaded from 265 to 280">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normal-curve63-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curve63-1.png" class="img-fluid figure-img" alt="Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9. Shaded from 265 to 280" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal-curve63-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.10: Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9, and P(265&lt;x&lt;280)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The probability of a pregnancy lasting between 265 days and 280 days is <span class="math inline">\(P(265&lt;x&lt;280)=0.187\)</span>. To find the area between two values on the normal distribution, first, find the area to the left of the lower value, Graphically, this looks like <a href="#fig-normal-curve-preg">Figure&nbsp;<span>6.11</span></a></p>
+<p>The probability of a pregnancy lasting between 265 days and 280 days is <span class="math inline">\(P(265&lt;x&lt;280)=0.187\)</span>. To find the area between two values on the normal distribution, first, find the area to the left of the lower value, Graphically, this looks like <a href="#fig-normal-curve-preg" class="quarto-xref">Figure&nbsp;<span>6.11</span></a></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-normal-curve-preg" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curve-preg-1.png" class="img-fluid figure-img" alt="Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9. Shaded below 265" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.11: Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9, and P(x&lt;265)</figcaption>
+<div id="fig-normal-curve-preg" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9. Shaded below 265">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normal-curve-preg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curve-preg-1.png" class="img-fluid figure-img" alt="Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9. Shaded below 265" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal-curve-preg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.11: Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9, and P(x&lt;265)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Now find the area less than 280. Graphically this looks like <a href="#fig-normal-curve-preg1">Figure&nbsp;<span>6.12</span></a></p>
+<p>Now find the area less than 280. Graphically this looks like <a href="#fig-normal-curve-preg1" class="quarto-xref">Figure&nbsp;<span>6.12</span></a></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-normal-curve-preg1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curve-preg1-1.png" class="img-fluid figure-img" alt="Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9. Shaded below 280" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.12: Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9, and P(x&lt;280)</figcaption>
+<div id="fig-normal-curve-preg1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9. Shaded below 280">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normal-curve-preg1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curve-preg1-1.png" class="img-fluid figure-img" alt="Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9. Shaded below 280" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal-curve-preg1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.12: Density plot of pregnancy length. Normally distributed with mean 272 and standard deviation 9, and P(x&lt;280)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Looking at the three figures, if you take the area in <a href="#fig-normal-curve-preg1">Figure&nbsp;<span>6.12</span></a> and subtract the area in <a href="#fig-normal-curve-preg">Figure&nbsp;<span>6.11</span></a> you get the area in <a href="#fig-normal-curve63">Figure&nbsp;<span>6.10</span></a>. In rStudio, the way to find the probability the probability of a pregnancy lasting between 265 days and 280 days, <span class="math inline">\(P(265&lt;x&lt;280)=0.595\)</span> use the following command</p>
+<p>Looking at the three figures, if you take the area in <a href="#fig-normal-curve-preg1" class="quarto-xref">Figure&nbsp;<span>6.12</span></a> and subtract the area in <a href="#fig-normal-curve-preg" class="quarto-xref">Figure&nbsp;<span>6.11</span></a> you get the area in <a href="#fig-normal-curve63" class="quarto-xref">Figure&nbsp;<span>6.10</span></a>. In rStudio, the way to find the probability the probability of a pregnancy lasting between 265 days and 280 days, <span class="math inline">\(P(265&lt;x&lt;280)=0.595\)</span> use the following command</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">280</span>, <span class="dv">272</span>, <span class="dv">9</span>, <span class="at">lower.tail=</span><span class="cn">TRUE</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">265</span>, <span class="dv">272</span>, <span class="dv">9</span>, <span class="at">lower.tail=</span><span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -530,13 +614,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Find the probability that a person has a mathematics SAT score over 700.</li>
 </ol>
 <p>First translate the statement into a mathematical statement. <span class="math inline">\(P(x&gt;700)\)</span></p>
-<p>Now, draw a picture <a href="#fig-normal-curve-SAT">Figure&nbsp;<span>6.13</span></a></p>
+<p>Now, draw a picture <a href="#fig-normal-curve-SAT" class="quarto-xref">Figure&nbsp;<span>6.13</span></a></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-normal-curve-SAT" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curve-SAT-1.png" class="img-fluid figure-img" alt="Density plot of SAT mathematics score. Normally distributed with mean 514 and standard deviation 117. Shaded above 700" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.13: Density plot of SAT mathematics score. Normally distributed with mean 514 and standard deviation 117 and P(x&gt;700)</figcaption>
+<div id="fig-normal-curve-SAT" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of SAT mathematics score. Normally distributed with mean 514 and standard deviation 117. Shaded above 700">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normal-curve-SAT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curve-SAT-1.png" class="img-fluid figure-img" alt="Density plot of SAT mathematics score. Normally distributed with mean 514 and standard deviation 117. Shaded above 700" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal-curve-SAT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.13: Density plot of SAT mathematics score. Normally distributed with mean 514 and standard deviation 117 and P(x&gt;700)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -553,13 +641,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Find the probability that a person has a mathematics SAT score of less than 400.</li>
 </ol>
 <p>First translate the statement into a mathematical statement. <span class="math inline">\(P(x&lt;400)\)</span></p>
-<p>Now, draw a picture <a href="#fig-normal-curve-SAT1">Figure&nbsp;<span>6.14</span></a></p>
+<p>Now, draw a picture <a href="#fig-normal-curve-SAT1" class="quarto-xref">Figure&nbsp;<span>6.14</span></a></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-normal-curve-SAT1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curve-SAT1-1.png" class="img-fluid figure-img" alt="Density plot of SAT mathematics score. Normally distributed with mean 514 and standard deviation 117. Shaded below 400" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.14: Density plot of SAT mathematics score. Normally distributed with mean 514 and standard deviation 117 and P(x&lt;400)</figcaption>
+<div id="fig-normal-curve-SAT1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of SAT mathematics score. Normally distributed with mean 514 and standard deviation 117. Shaded below 400">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normal-curve-SAT1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curve-SAT1-1.png" class="img-fluid figure-img" alt="Density plot of SAT mathematics score. Normally distributed with mean 514 and standard deviation 117. Shaded below 400" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal-curve-SAT1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.14: Density plot of SAT mathematics score. Normally distributed with mean 514 and standard deviation 117 and P(x&lt;400)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -576,13 +668,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Find the probability that a person has a mathematics SAT score between a 500 and a 650.</li>
 </ol>
 <p>First translate the statement into a mathematical statement <span class="math inline">\(P(500&lt;x&lt;650)\)</span></p>
-<p>Now, draw a picture <a href="#fig-normal-curve-SAT2">Figure&nbsp;<span>6.15</span></a></p>
+<p>Now, draw a picture <a href="#fig-normal-curve-SAT2" class="quarto-xref">Figure&nbsp;<span>6.15</span></a></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-normal-curve-SAT2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curve-SAT2-1.png" class="img-fluid figure-img" alt="Density plot of SAT mathematics score. Normally distributed with mean 514 and standard deviation 117. Shaded from 514 to 650" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.15: Density plot of SAT mathematics score. Normally distributed with mean 514 and standard deviation 117 and P(514&lt;x&lt;650)</figcaption>
+<div id="fig-normal-curve-SAT2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of SAT mathematics score. Normally distributed with mean 514 and standard deviation 117. Shaded from 514 to 650">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normal-curve-SAT2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-curve-SAT2-1.png" class="img-fluid figure-img" alt="Density plot of SAT mathematics score. Normally distributed with mean 514 and standard deviation 117. Shaded from 514 to 650" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal-curve-SAT2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.15: Density plot of SAT mathematics score. Normally distributed with mean 514 and standard deviation 117 and P(514&lt;x&lt;650)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -758,14 +854,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="example-is-it-normal" class="level3" data-number="6.3.3">
 <h3 data-number="6.3.3" class="anchored" data-anchor-id="example-is-it-normal"><span class="header-section-number">6.3.3</span> Example: Is It Normal?</h3>
-<p>In Kiama, NSW, Australia, there is a blowhole. The data in <a href="#tbl-Eruption">Table&nbsp;<span>6.1</span></a> are times in seconds between eruptions (“Kiama blowhole eruptions,” 2013). Do the data come from a population that is normally distributed?</p>
+<p>In Kiama, NSW, Australia, there is a blowhole. The data in <a href="#tbl-Eruption" class="quarto-xref">Table&nbsp;<span>6.1</span></a> are times in seconds between eruptions (“Kiama blowhole eruptions,” 2013). Do the data come from a population that is normally distributed?</p>
 <div class="cell" data-tbl-alt="Time (in Seconds) Between Kiama Blowhole Eruptions">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Eruption<span class="ot">&lt;-</span><span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/Blowhole_eruptions.csv"</span>) </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Eruption))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Eruption" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Time (in Seconds) Between Kiama Blowhole Eruptions">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Eruption-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.1: Time (in Seconds) Between Kiama Blowhole Eruptions
+</figcaption>
+<div aria-describedby="tbl-Eruption-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Eruption" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;6.1: Time (in Seconds) Between Kiama Blowhole Eruptions</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">Interval</th>
@@ -794,6 +894,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for Data Frame Eruption</strong></p>
 <p><strong>Description</strong> The ocean swell produces spectacular eruptions of water through a hole in the cliff at Kiama, about 120km south of Sydney, known as the Blowhole. The times at which 65 successive eruptions occurred from 1340 hours on 12 July 1998 were observed using a digital watch.</p>
@@ -816,14 +918,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="a">
 <li>Draw a Density plot</li>
 </ol>
-<p>The density plot produced is in <a href="#fig-blowhole-density">Figure&nbsp;<span>6.16</span></a></p>
+<p>The density plot produced is in <a href="#fig-blowhole-density" class="quarto-xref">Figure&nbsp;<span>6.16</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_density</span>(<span class="sc">~</span>Interval, <span class="at">data=</span>Eruption, <span class="at">title=</span><span class="st">"Eruption times for Kiama Blowhole"</span>, <span class="at">xlab=</span><span class="st">"Time (seconds)"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-blowhole-density" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-blowhole-density-1.png" class="img-fluid figure-img" alt="Density plot of eruption times for Kiama blowhole. Appears skewed right." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.16: Density Plot of Eruption Times for Kiama Blowhole</figcaption>
+<div id="fig-blowhole-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of eruption times for Kiama blowhole. Appears skewed right.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-blowhole-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-blowhole-density-1.png" class="img-fluid figure-img" alt="Density plot of eruption times for Kiama blowhole. Appears skewed right." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-blowhole-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.16: Density Plot of Eruption Times for Kiama Blowhole
+</figcaption>
 </figure>
 </div>
 </div>
@@ -832,19 +938,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="3" type="a">
 <li>Draw the normal quantile plot.</li>
 </ol>
-<p>The normal quantile plot is in <a href="#fig-blowhole-qq">Figure&nbsp;<span>6.17</span></a></p>
+<p>The normal quantile plot is in <a href="#fig-blowhole-qq" class="quarto-xref">Figure&nbsp;<span>6.17</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_qq</span>(<span class="sc">~</span>Interval, <span class="at">data=</span>Eruption, <span class="at">title=</span><span class="st">"Eruption times for Kiama Blowhole"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-blowhole-qq" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-blowhole-qq-1.png" class="img-fluid figure-img" alt="Normal quantile plot of eruption times for Kiama blowhole. Appears exponential." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.17: Normal Quantile Plot of Eruption Times for Kiama blowhole.</figcaption>
+<div id="fig-blowhole-qq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Normal quantile plot of eruption times for Kiama blowhole. Appears exponential.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-blowhole-qq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-blowhole-qq-1.png" class="img-fluid figure-img" alt="Normal quantile plot of eruption times for Kiama blowhole. Appears exponential." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-blowhole-qq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.17: Normal Quantile Plot of Eruption Times for Kiama blowhole.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-blowhole-qq">Figure&nbsp;<span>6.17</span></a> looks more like an exponential growth than linear.</p>
+<p><a href="#fig-blowhole-qq" class="quarto-xref">Figure&nbsp;<span>6.17</span></a> looks more like an exponential growth than linear.</p>
 <ol start="4" type="a">
 <li>Do the data come from a population that is normally distributed?</li>
 </ol>
@@ -853,7 +963,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="example-is-it-normal-1" class="level3" data-number="6.3.4">
 <h3 data-number="6.3.4" class="anchored" data-anchor-id="example-is-it-normal-1"><span class="header-section-number">6.3.4</span> Example: Is It Normal?</h3>
-<p>The US National Center for Health Statistics (NCHS) conducted a series of health and nutrition surveys called NHANES. One of the many variables in NHANES is pulse. Determine if pulse is a normally distributed variable. The NHANES data frame is <a href="Graphical Description of Data.html#tbl-NHANES">Table&nbsp;<span>2.5</span></a>.</p>
+<p>The US National Center for Health Statistics (NCHS) conducted a series of health and nutrition surveys called NHANES. One of the many variables in NHANES is pulse. Determine if pulse is a normally distributed variable. The NHANES data frame is <a href="Graphical Description of Data.html#tbl-NHANES" class="quarto-xref">Table&nbsp;<span>2.5</span></a>.</p>
 <ol type="a">
 <li>State the random variable</li>
 <li>Draw a density plot</li>
@@ -869,14 +979,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="a">
 <li>Draw a density plot</li>
 </ol>
-<p>The density plot is in <a href="#fig-pulse-density">Figure&nbsp;<span>6.18</span></a></p>
+<p>The density plot is in <a href="#fig-pulse-density" class="quarto-xref">Figure&nbsp;<span>6.18</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_density</span>(<span class="sc">~</span>Pulse, <span class="at">data=</span>NHANES, <span class="at">title=</span><span class="st">"Pulse Rate"</span>, <span class="at">xlab=</span><span class="st">"Pulse Rate (bpm)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-pulse-density" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-pulse-density-1.png" class="img-fluid figure-img" alt="Density plot of pulse rate. Appears to be bell shapped." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.18: Density plot of Pulse Rate (bpm)</figcaption>
+<div id="fig-pulse-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of pulse rate. Appears to be bell shapped.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pulse-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-pulse-density-1.png" class="img-fluid figure-img" alt="Density plot of pulse rate. Appears to be bell shapped." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pulse-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.18: Density plot of Pulse Rate (bpm)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -885,19 +999,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="3" type="a">
 <li>Draw the normal quantile plot.</li>
 </ol>
-<p>The normal quantile plot is in <a href="#fig-pulse-qq">Figure&nbsp;<span>6.19</span></a></p>
+<p>The normal quantile plot is in <a href="#fig-pulse-qq" class="quarto-xref">Figure&nbsp;<span>6.19</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_qq</span>(<span class="sc">~</span>Pulse, <span class="at">data=</span>NHANES, <span class="at">title=</span><span class="st">"Pulse Rate"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-pulse-qq" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-pulse-qq-1.png" class="img-fluid figure-img" alt="Normal quantile plot of pulse rate. Appears to be linear." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.19: Normal Quantile Plot of Pulse Rate (bmp)</figcaption>
+<div id="fig-pulse-qq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Normal quantile plot of pulse rate. Appears to be linear.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pulse-qq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-pulse-qq-1.png" class="img-fluid figure-img" alt="Normal quantile plot of pulse rate. Appears to be linear." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pulse-qq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.19: Normal Quantile Plot of Pulse Rate (bmp)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-pulse-qq">Figure&nbsp;<span>6.19</span></a> looks fairly linear.</p>
+<p><a href="#fig-pulse-qq" class="quarto-xref">Figure&nbsp;<span>6.19</span></a> looks fairly linear.</p>
 <ol start="4" type="a">
 <li>Do the data come from a population that is normally distributed?</li>
 </ol>
@@ -907,19 +1025,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="homework-for-assessing-normality-section" class="level3" data-number="6.3.5">
 <h3 data-number="6.3.5" class="anchored" data-anchor-id="homework-for-assessing-normality-section"><span class="header-section-number">6.3.5</span> Homework for Assessing Normality Section</h3>
 <ol type="1">
-<li>Cholesterol data was collected on patients four days after having a heart attack. The data is in <a href="Numerical Description of Data.html#tbl-Cholesterol">Table&nbsp;<span>3.2</span></a>. Assess if the data is from a population that is normally distributed.</li>
+<li>Cholesterol data was collected on patients four days after having a heart attack. The data is in <a href="Numerical Description of Data.html#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>. Assess if the data is from a population that is normally distributed.</li>
 </ol>
-<p><strong>Code Book for Cholesterol</strong> See is below <a href="Numerical Description of Data.html#tbl-Cholesterol">Table&nbsp;<span>3.2</span></a>.</p>
+<p><strong>Code Book for Cholesterol</strong> See is below <a href="Numerical Description of Data.html#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>.</p>
 <ol start="2" type="1">
-<li>The size of fish is very important to commercial fishing. A study conducted in 2012 collected the lengths of Atlantic cod caught in nets in Karlskrona (Ovegard, Berndt &amp; Lunneryd, 2012). Data based on information from the study is in <a href="#tbl-Cod">Table&nbsp;<span>6.2</span></a>. Determine if the data is from a population that is normally distributed.</li>
+<li>The size of fish is very important to commercial fishing. A study conducted in 2012 collected the lengths of Atlantic cod caught in nets in Karlskrona (Ovegard, Berndt &amp; Lunneryd, 2012). Data based on information from the study is in <a href="#tbl-Cod" class="quarto-xref">Table&nbsp;<span>6.2</span></a>. Determine if the data is from a population that is normally distributed.</li>
 </ol>
 <div class="cell" data-tbl-alt="Atlantic Cod Lengths">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Cod<span class="ot">&lt;-</span><span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/cod.csv"</span>) </span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Cod))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Cod" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Atlantic Cod Lengths">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Cod-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.2: Atlantic Cod Lengths
+</figcaption>
+<div aria-describedby="tbl-Cod-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Cod" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;6.2: Atlantic Cod Lengths</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">length</th>
@@ -948,17 +1070,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <ol start="3" type="1">
-<li>The WHO MONICA Project collected blood pressure data for people in China (Kuulasmaa, Hense &amp; Tolonen, 1998). Data based on information from the study is in <a href="#tbl-BP">Table&nbsp;<span>6.3</span></a>. Determine if the data is from a population that is normally distributed.</li>
+<li>The WHO MONICA Project collected blood pressure data for people in China (Kuulasmaa, Hense &amp; Tolonen, 1998). Data based on information from the study is in <a href="#tbl-BP" class="quarto-xref">Table&nbsp;<span>6.3</span></a>. Determine if the data is from a population that is normally distributed.</li>
 </ol>
 <div class="cell" data-tbl-alt="Blood Pressure Values for People in China">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>BP<span class="ot">&lt;-</span><span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/bp.csv"</span>) </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(BP))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-BP" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Blood Pressure Values for People in China">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-BP-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.3: Blood Pressure Values for People in China
+</figcaption>
+<div aria-describedby="tbl-BP-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-BP" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;6.3: Blood Pressure Values for People in China</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">pressure</th>
@@ -987,17 +1115,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <ol start="4" type="1">
-<li>Annual rainfalls for Sydney, Australia are given in <a href="#tbl-Annual">Table&nbsp;<span>6.4</span></a> (“Annual maximums of,” 2013). Can you assume rainfall is normally distributed?</li>
+<li>Annual rainfalls for Sydney, Australia are given in <a href="#tbl-Annual" class="quarto-xref">Table&nbsp;<span>6.4</span></a> (“Annual maximums of,” 2013). Can you assume rainfall is normally distributed?</li>
 </ol>
 <div class="cell" data-tbl-alt="Annual Rainfall in Sydney, Australia">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Annual<span class="ot">&lt;-</span><span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/annual.csv"</span>) </span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Annual))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Annual" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Annual Rainfall in Sydney, Australia">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Annual-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.4: Annual Rainfall in Sydney, Australia
+</figcaption>
+<div aria-describedby="tbl-Annual-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Annual" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;6.4: Annual Rainfall in Sydney, Australia</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">amount</th>
@@ -1026,6 +1160,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 </section>
 </section>
@@ -1039,7 +1175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Sampling Distribution</strong>: how a sample statistic is distributed when repeated trials of size <span class="math inline">\(n\)</span> are taken.</p>
 <section id="example-sampling-distribution" class="level3" data-number="6.4.1">
 <h3 data-number="6.4.1" class="anchored" data-anchor-id="example-sampling-distribution"><span class="header-section-number">6.4.1</span> Example: Sampling Distribution</h3>
-<p>The NHANES data frame has the pulse rates for approximately 50,000 individuals. The random variable is <span class="math inline">\(x\)</span> = pulse rate. The probability distribution of this random variable is presented in <a href="#fig-NHANES6h-density">Figure&nbsp;<span>6.20</span></a>. Although pulse rates from 50,000 individuals isn’t the entire population, the sample is most likely a good representation of the population. Thus, it is safe to assume the population is normally distributed. An estimate for the population mean is 73.6 pbm, and the population standard deviation estimate is 12.2 bpm.</p>
+<p>The NHANES data frame has the pulse rates for approximately 50,000 individuals. The random variable is <span class="math inline">\(x\)</span> = pulse rate. The probability distribution of this random variable is presented in <a href="#fig-NHANES6h-density" class="quarto-xref">Figure&nbsp;<span>6.20</span></a>. Although pulse rates from 50,000 individuals isn’t the entire population, the sample is most likely a good representation of the population. Thus, it is safe to assume the population is normally distributed. An estimate for the population mean is 73.6 pbm, and the population standard deviation estimate is 12.2 bpm.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_density</span>(<span class="sc">~</span>Pulse, <span class="at">data=</span>NHANES, <span class="at">title =</span> <span class="st">"Pulse Rate"</span>, <span class="at">xlab=</span><span class="st">"Pulse (bpm)"</span>) </span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">df_stats</span>(<span class="sc">~</span>Pulse, <span class="at">data=</span>NHANES, mean, sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1048,10 +1184,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 1    Pulse 73.55973 12.15542</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-NHANES6h-density" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-NHANES6h-density-1.png" class="img-fluid figure-img" alt="Density plot of pulse rate. Appears to be normally distributed." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.20: Distribution of Pulse Rate</figcaption>
+<div id="fig-NHANES6h-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of pulse rate. Appears to be normally distributed.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-NHANES6h-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-NHANES6h-density-1.png" class="img-fluid figure-img" alt="Density plot of pulse rate. Appears to be normally distributed." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NHANES6h-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.20: Distribution of Pulse Rate
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1062,35 +1202,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size=</span><span class="dv">10</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 76
-      ID SurveyYr Gender   Age AgeDecade AgeMonths Race1   Race3 Educa…¹ Marit…²
-   &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;  &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt;   &lt;fct&gt; &lt;fct&gt;   &lt;fct&gt;  
- 1 66362 2011_12  female    55 " 50-59"         NA White   White Some C… Separa…
- 2 52773 2009_10  female    64 " 60-69"        776 White   &lt;NA&gt;  Some C… Married
- 3 60632 2009_10  female    29 " 20-29"        349 White   &lt;NA&gt;  High S… Divorc…
- 4 69500 2011_12  male      19 " 10-19"         NA White   White &lt;NA&gt;    &lt;NA&gt;   
- 5 60291 2009_10  male      35 " 30-39"        420 Hispan… &lt;NA&gt;  Colleg… Divorc…
- 6 68182 2011_12  male      47 " 40-49"         NA White   White High S… Married
- 7 62107 2009_10  female    70 " 70+"          846 Other   &lt;NA&gt;  Some C… Widowed
- 8 52661 2009_10  male      71 " 70+"          853 White   &lt;NA&gt;  Some C… Married
- 9 58892 2009_10  female    36 " 30-39"        439 Black   &lt;NA&gt;  Colleg… Married
-10 57230 2009_10  female    64 " 60-69"        776 White   &lt;NA&gt;  Colleg… Married
-# … with 66 more variables: HHIncome &lt;fct&gt;, HHIncomeMid &lt;int&gt;, Poverty &lt;dbl&gt;,
-#   HomeRooms &lt;int&gt;, HomeOwn &lt;fct&gt;, Work &lt;fct&gt;, Weight &lt;dbl&gt;, Length &lt;dbl&gt;,
-#   HeadCirc &lt;dbl&gt;, Height &lt;dbl&gt;, BMI &lt;dbl&gt;, BMICatUnder20yrs &lt;fct&gt;,
-#   BMI_WHO &lt;fct&gt;, Pulse &lt;int&gt;, BPSysAve &lt;int&gt;, BPDiaAve &lt;int&gt;, BPSys1 &lt;int&gt;,
-#   BPDia1 &lt;int&gt;, BPSys2 &lt;int&gt;, BPDia2 &lt;int&gt;, BPSys3 &lt;int&gt;, BPDia3 &lt;int&gt;,
-#   Testosterone &lt;dbl&gt;, DirectChol &lt;dbl&gt;, TotChol &lt;dbl&gt;, UrineVol1 &lt;int&gt;,
-#   UrineFlow1 &lt;dbl&gt;, UrineVol2 &lt;int&gt;, UrineFlow2 &lt;dbl&gt;, Diabetes &lt;fct&gt;, …</code></pre>
+      ID SurveyYr Gender   Age AgeDecade AgeMonths Race1    Race3    Education  
+   &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;  &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;    &lt;fct&gt;      
+ 1 71641 2011_12  female     7 " 0-9"           NA White    White    &lt;NA&gt;       
+ 2 62346 2011_12  male      19 " 10-19"         NA Other    Other    &lt;NA&gt;       
+ 3 57926 2009_10  male      56 " 50-59"        675 White    &lt;NA&gt;     College Gr…
+ 4 57262 2009_10  female    38 " 30-39"        464 White    &lt;NA&gt;     Some Colle…
+ 5 56405 2009_10  female     6 " 0-9"           80 White    &lt;NA&gt;     &lt;NA&gt;       
+ 6 70574 2011_12  female    36 " 30-39"         NA Black    Black    High School
+ 7 68858 2011_12  female    12 " 10-19"         NA Hispanic Hispanic &lt;NA&gt;       
+ 8 70782 2011_12  male      64 " 60-69"         NA White    White    College Gr…
+ 9 67312 2011_12  male      45 " 40-49"         NA White    White    High School
+10 68606 2011_12  female    62 " 60-69"         NA Hispanic Hispanic 8th Grade  
+# ℹ 67 more variables: MaritalStatus &lt;fct&gt;, HHIncome &lt;fct&gt;, HHIncomeMid &lt;int&gt;,
+#   Poverty &lt;dbl&gt;, HomeRooms &lt;int&gt;, HomeOwn &lt;fct&gt;, Work &lt;fct&gt;, Weight &lt;dbl&gt;,
+#   Length &lt;dbl&gt;, HeadCirc &lt;dbl&gt;, Height &lt;dbl&gt;, BMI &lt;dbl&gt;,
+#   BMICatUnder20yrs &lt;fct&gt;, BMI_WHO &lt;fct&gt;, Pulse &lt;int&gt;, BPSysAve &lt;int&gt;,
+#   BPDiaAve &lt;int&gt;, BPSys1 &lt;int&gt;, BPDia1 &lt;int&gt;, BPSys2 &lt;int&gt;, BPDia2 &lt;int&gt;,
+#   BPSys3 &lt;int&gt;, BPDia3 &lt;int&gt;, Testosterone &lt;dbl&gt;, DirectChol &lt;dbl&gt;,
+#   TotChol &lt;dbl&gt;, UrineVol1 &lt;int&gt;, UrineFlow1 &lt;dbl&gt;, UrineVol2 &lt;int&gt;, …</code></pre>
 </div>
 </div>
 <p>It might be useful to find the mean pulse rate from a random sample of size 10.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>  response mean
-1    Pulse 73.8</code></pre>
+1    Pulse   74</code></pre>
 </div>
 </div>
-<p>Now suppose you took another random sample of size 10 and found the mean pulse rate for that sample. Repeat this process 100 times. At this point you would basically have a new sample of 100 mean pulse rates. You could assess how this sample is distributed by creating a density plot <a href="#fig-NHANES6e-density">Figure&nbsp;<span>6.21</span></a></p>
+<p>Now suppose you took another random sample of size 10 and found the mean pulse rate for that sample. Repeat this process 100 times. At this point you would basically have a new sample of 100 mean pulse rates. You could assess how this sample is distributed by creating a density plot <a href="#fig-NHANES6e-density" class="quarto-xref">Figure&nbsp;<span>6.21</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Trials <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">100</span>) <span class="sc">*</span> { NHANES <span class="sc">|&gt;</span> </span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
@@ -1100,13 +1240,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">df_stats</span>(<span class="sc">~</span>means, <span class="at">data=</span>Trials, mean, sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  response     mean       sd
-1    means 72.89906 4.100716</code></pre>
+1    means 73.73221 4.234021</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-NHANES6e-density" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-NHANES6e-density-1.png" class="img-fluid figure-img" alt="Density plot of sample means when sample size is 10. Appears to be bell shaped." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.21: Density Plot of Sample Means When n = 10</figcaption>
+<div id="fig-NHANES6e-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of sample means when sample size is 10. Appears to be bell shaped.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-NHANES6e-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-NHANES6e-density-1.png" class="img-fluid figure-img" alt="Density plot of sample means when sample size is 10. Appears to be bell shaped." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NHANES6e-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.21: Density Plot of Sample Means When n = 10
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1114,7 +1258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This distribution is a sampling distribution. That is all a sampling distribution is. It is a distribution created from statistics.</p>
 <p>Notice the distribution does look a great deal like the distribution of the original random variable. Notice the mean of the sample means <span class="math inline">\(\mu_{\bar{x}} = 73.8\)</span> bpm which is almost the same of as the mean of the population. The standard deviation of the sample means, <span class="math inline">\(\sigma_{\bar{x}}=4.35\)</span> pbm is about <span class="math inline">\(\frac{1}{3}\)</span> of the population standard deviation.</p>
 <p>What does this distribution look like if instead of repeating the experiment 10 times you repeat it 50 times instead?</p>
-<p>This density plot of the sampling distribution is displayed in <a href="#fig-NHANES6f-density">Figure&nbsp;<span>6.22</span></a></p>
+<p>This density plot of the sampling distribution is displayed in <a href="#fig-NHANES6f-density" class="quarto-xref">Figure&nbsp;<span>6.22</span></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>Trials <span class="ot">&lt;-</span> <span class="fu">do</span>(<span class="dv">100</span>) <span class="sc">*</span> { NHANES <span class="sc">|&gt;</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>) <span class="sc">|&gt;</span></span>
@@ -1123,20 +1267,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_lims</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">68</span>,<span class="dv">79</span>))</span>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">df_stats</span>(<span class="sc">~</span>means, <span class="at">data=</span>Trials, mean, sd) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  response     mean       sd
-1    means 73.61296 1.938624</code></pre>
+<pre><code>  response   mean       sd
+1    means 73.329 1.857094</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-NHANES6f-density" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-NHANES6f-density-1.png" class="img-fluid figure-img" alt="Density plot of sample means when sample size is 50. Appears to be bell shaped." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.22: Density Plot of Sample Means When n = 50</figcaption>
+<div id="fig-NHANES6f-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of sample means when sample size is 50. Appears to be bell shaped.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-NHANES6f-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-NHANES6f-density-1.png" class="img-fluid figure-img" alt="Density plot of sample means when sample size is 50. Appears to be bell shaped." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NHANES6f-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.22: Density Plot of Sample Means When n = 50
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Notice this density plot of the sample mean looks approximately symmetrical and could almost be called normal. Notice, the mean of the sample means is 73.6 bpm which is approximately what the population mean is. The standard deviation of the sample means is 1.77 bpm which is around <span class="math inline">\(\frac{1}{7}\)</span> of the population standard deviation. What if you keep increasing <span class="math inline">\(n\)</span>? What will the sampling distribution of the sample mean look like? In other words, what does the sampling distribution of <span class="math inline">\(\bar{x}\)</span> look like as <span class="math inline">\(n\)</span> gets even larger?</p>
-<p>This depends on how the original distribution is distributed. In <a href="#example-sampling-distribution">Example: Sampling Distribution</a>, the random variable was approximately normally distributed. When <span class="math inline">\(n\)</span> was 10, the distribution of the mean looked approximately normal. What if the original distribution wasn’t normal? How big would <span class="math inline">\(n\)</span> have to be? Consider a different variable in the NHANES data frame that isn’t normally distributed such as age when a participant started to smoke cigarettes (SmokeAge). The density plot for the large sample is in <a href="#fig-NHANES6g-density">Figure&nbsp;<span>6.23</span></a>. The mean for the large sample is 17.8 years and the standard deviation is 5.3 years, so <span class="math inline">\(\mu=17.8\)</span> dollars and <span class="math inline">\(\sigma=5.3\)</span> dollars approximately.</p>
+<p>This depends on how the original distribution is distributed. In <a href="#example-sampling-distribution">Example: Sampling Distribution</a>, the random variable was approximately normally distributed. When <span class="math inline">\(n\)</span> was 10, the distribution of the mean looked approximately normal. What if the original distribution wasn’t normal? How big would <span class="math inline">\(n\)</span> have to be? Consider a different variable in the NHANES data frame that isn’t normally distributed such as age when a participant started to smoke cigarettes (SmokeAge). The density plot for the large sample is in <a href="#fig-NHANES6g-density" class="quarto-xref">Figure&nbsp;<span>6.23</span></a>. The mean for the large sample is 17.8 years and the standard deviation is 5.3 years, so <span class="math inline">\(\mu=17.8\)</span> dollars and <span class="math inline">\(\sigma=5.3\)</span> dollars approximately.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_density</span>(<span class="sc">~</span>SmokeAge, <span class="at">data=</span>NHANES, <span class="at">title =</span> <span class="st">"Density Plot of Age when Person Started Smoking"</span>, <span class="at">xlab=</span><span class="st">"Age"</span>) </span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">df_stats</span>(<span class="sc">~</span>SmokeAge, <span class="at">data=</span>NHANES, mean, sd) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1145,10 +1293,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 1 SmokeAge 17.82662 5.32666</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-NHANES6g-density" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-NHANES6g-density-1.png" class="img-fluid figure-img" alt="Density plot of age when person started smoking. Appears to not be bell shaped." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.23: Density Plot of Age When Person Started Smoking.</figcaption>
+<div id="fig-NHANES6g-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of age when person started smoking. Appears to not be bell shaped.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-NHANES6g-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-NHANES6g-density-1.png" class="img-fluid figure-img" alt="Density plot of age when person started smoking. Appears to not be bell shaped." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NHANES6g-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.23: Density Plot of Age When Person Started Smoking.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1157,13 +1309,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>  response     mean       sd
-1    means 17.86299 1.516481</code></pre>
+1    means 18.12607 1.591801</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="fig-NHANES6-random-density" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Continuous-Probability-Distribution_files/figure-html/fig-NHANES6-random-density-1.png" class="img-fluid figure-img" alt="Density plot of mean age a person starts to smoke of a sample of size 50. Appears to be bell shaped." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.24: Density Plot of Age When Person Started Smoking when sample size is 50.</figcaption>
+<div id="fig-NHANES6-random-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of mean age a person starts to smoke of a sample of size 50. Appears to be bell shaped.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-NHANES6-random-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-NHANES6-random-density-1.png" class="img-fluid figure-img" alt="Density plot of mean age a person starts to smoke of a sample of size 50. Appears to be bell shaped." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-NHANES6-random-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.24: Density Plot of Age When Person Started Smoking when sample size is 50.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1404,18 +1560,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1447,11 +1592,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1461,8 +1645,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1474,7 +1667,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1518,6 +1834,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1543,6 +1860,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1604,17 +1947,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Discrete Probability Distribution.html" class="pagination-link">
+      <a href="./Discrete Probability Distribution.html" class="pagination-link" aria-label="Discrete Probability Distribution">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Discrete Probability Distribution</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./One Sample Inference.html" class="pagination-link">
+      <a href="./One Sample Inference.html" class="pagination-link" aria-label="One Sample Inference">
         <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">One Sample Inference</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

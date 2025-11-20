@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistics Using Technology, 4th Edition - 9&nbsp; Two Sample Inference</title>
+<title>9&nbsp; Two Sample Inference – Statistics Using Technology, 4th Edition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,14 +96,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -107,13 +141,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Two Sample Inference.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Two Sample Inference</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Two Sample Inference.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Two Sample Inference</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -122,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Statistics Using Technology, 4th Edition</a> 
@@ -216,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -273,7 +307,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>Chapter 7 discussed methods of hypothesis testing about one-population parameters. Chapter 8 discussed methods of estimating population parameters from one sample using confidence intervals. This chapter will look at methods of confidence intervals and hypothesis testing for two populations. Since there are two populations, there are two random variables, two means or proportions, and two samples (though with paired samples you usually consider there to be one sample with pairs collected). Examples of where you would do this are:</p>
 <p>Testing and estimating the difference in testosterone levels of men before and after they had children (Gettler, McDade, Feranil &amp; Kuzawa, 2011).</p>
@@ -456,7 +492,7 @@ sample estimates:
 <p>Anytime you compare two populations you need to know if the samples are independent or dependent. The formulas you use are different for different types of samples.</p>
 <p>If how you choose one sample has no effect on the way you choose the other sample, the two samples are <strong>independent</strong>. The way to think about it is that in independent samples, the observations from one sample are overall different from the observations from the other sample. This will mean that sample one has no affect on sample two. The sample values from one sample are not related or paired with values from the other sample.</p>
 <p>If you choose the samples so that a measurement in one sample is paired with a measurement from the other sample, the samples are <strong>dependent</strong> or <strong>matched</strong> or <strong>paired</strong>. (Often a before and after situation.) You want to make sure the there is a meaning for pairing data values from one sample with a specific data value from the other sample. One way to think about it is that in dependent samples, the observations from one sample are the same observations from the other sample, though there can be other reasons to pair values. This makes the sample values from each sample paired.</p>
-<p>In tidy data, remember each row is a unit of observation, and each column is a variable. In paired samples, you would have two variables that you are working with. In independent samples, you would have a variable that distinguishes an observation from another observation. As an example, in the Pulse data frame, consider the variables pulse_before and pulse_after. Since they are measured off the same observation, then comparing the two variables would be a paired samples analysis. However, consider the pulse_after and whether a person smokes would be comparing the variable pulse_after against the variable smokes to see if smoking effects a person’s pulse rate after exercise. In this case, the observations would be different based on smoking yes or smoking no. Consider the variable smoking to be the factor that one is interested in seeing how it effects pulse rate in the data frame <a href="Numerical Description of Data.html#tbl-Pulse">Table&nbsp;<span>3.7</span></a>.</p>
+<p>In tidy data, remember each row is a unit of observation, and each column is a variable. In paired samples, you would have two variables that you are working with. In independent samples, you would have a variable that distinguishes an observation from another observation. As an example, in the Pulse data frame, consider the variables pulse_before and pulse_after. Since they are measured off the same observation, then comparing the two variables would be a paired samples analysis. However, consider the pulse_after and whether a person smokes would be comparing the variable pulse_after against the variable smokes to see if smoking effects a person’s pulse rate after exercise. In this case, the observations would be different based on smoking yes or smoking no. Consider the variable smoking to be the factor that one is interested in seeing how it effects pulse rate in the data frame <a href="Numerical Description of Data.html#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a>.</p>
 <section id="example-independent-or-dependent-samples" class="level3" data-number="9.2.1">
 <h3 data-number="9.2.1" class="anchored" data-anchor-id="example-independent-or-dependent-samples"><span class="header-section-number">9.2.1</span> Example: Independent or Dependent Samples</h3>
 <p>Determine if the following are dependent or independent samples.</p>
@@ -519,10 +555,14 @@ sample estimates:
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  Pulse <span class="sc">|&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">difference=</span>pulse_after<span class="sc">-</span>pulse_before) </span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Pulse))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Pulse_Difference" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Pulse dataset with difference column added">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Pulse_Difference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.1: Pulse Data frame with Difference Column Added
+</figcaption>
+<div aria-describedby="tbl-Pulse_Difference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Pulse_Difference" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.1: Pulse Data frame with Difference Column Added</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 7%">
 <col style="width: 7%">
@@ -642,8 +682,10 @@ sample estimates:
 </table>
 </div>
 </div>
+</figure>
 </div>
-<p>Notice rStudio added a new variable called difference to the data frame <a href="#tbl-Pulse_Difference">Table&nbsp;<span>9.1</span></a>. Now to conduct a paired t-test use the rStudio command</p>
+</div>
+<p>Notice rStudio added a new variable called difference to the data frame <a href="#tbl-Pulse_Difference" class="quarto-xref">Table&nbsp;<span>9.1</span></a>. Now to conduct a paired t-test use the rStudio command</p>
 <p>t.test(~difference_variable, data=Data_Frame)</p>
 <p>Note: if the <span class="math inline">\(H_a\)</span> is &lt;, then the command becomes</p>
 <p>t.test(~difference_variable, data=Data_Frame, alternative=“less”)</p>
@@ -672,8 +714,8 @@ sample estimates:
 </section>
 <section id="example-hypothesis-test-for-paired-samples" class="level3" data-number="9.2.4">
 <h3 data-number="9.2.4" class="anchored" data-anchor-id="example-hypothesis-test-for-paired-samples"><span class="header-section-number">9.2.4</span> Example: Hypothesis Test for Paired Samples</h3>
-<p>Is the pulse rate after exercise different from the pulse rate before exercise for a woman who drinks alcohol? Use the data frame <a href="Numerical Description of Data.html#tbl-Pulse">Table&nbsp;<span>3.7</span></a>. Test at the 5% level.</p>
-<p><strong>Code book for data frame Pulse below <a href="Numerical Description of Data.html#tbl-Pulse">Table&nbsp;<span>3.7</span></a>.</strong></p>
+<p>Is the pulse rate after exercise different from the pulse rate before exercise for a woman who drinks alcohol? Use the data frame <a href="Numerical Description of Data.html#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a>. Test at the 5% level.</p>
+<p><strong>Code book for data frame Pulse below <a href="Numerical Description of Data.html#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a>.</strong></p>
 <section id="solution-3" class="level4" data-number="9.2.4.1">
 <h4 data-number="9.2.4.1" class="anchored" data-anchor-id="solution-3"><span class="header-section-number">9.2.4.1</span> Solution</h4>
 <ol type="1">
@@ -695,17 +737,21 @@ sample estimates:
 <!-- -->
 <ol type="a">
 <li><p>State: A random sample of 110 pairs of pulse rates after and before exercise was taken. Check: The data frame says that the data was collected from students in classes for several years. Though this was not a random sample, it is probably a representative sample.</p></li>
-<li><p>State: The population of the difference in after and before pulse rates is normally distributed. Check: To see if this is true, look at the density plot and the normal quantile plot for the difference between after and before. This variable must be created before the density plot and normal quantile plot can be created. The data frame <a href="#tbl-Females">Table&nbsp;<span>9.2</span></a> is females who drink alcohol.</p></li>
+<li><p>State: The population of the difference in after and before pulse rates is normally distributed. Check: To see if this is true, look at the density plot and the normal quantile plot for the difference between after and before. This variable must be created before the density plot and normal quantile plot can be created. The data frame <a href="#tbl-Females" class="quarto-xref">Table&nbsp;<span>9.2</span></a> is females who drink alcohol.</p></li>
 </ol>
 <div class="cell" data-tbl-alt="Pulse Rates Before and After Exercise of females who do drink alcohol with difference">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Pulse_female<span class="ot">&lt;-</span> </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  Pulse <span class="sc">|&gt;</span> </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender<span class="sc">==</span><span class="st">"female"</span>, alcohol<span class="sc">==</span><span class="st">"yes"</span>) </span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Pulse_female))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Females" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Pulse Rates Before and After Exercise of females who do drink alcohol with difference">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Females-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.2: Pulse Rates Before and After Exercise of Females who do drink Alcohol with Difference
+</figcaption>
+<div aria-describedby="tbl-Females-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Females" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.2: Pulse Rates Before and After Exercise of Females who do drink Alcohol with Difference</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 7%">
 <col style="width: 7%">
@@ -825,17 +871,23 @@ sample estimates:
 </table>
 </div>
 </div>
+</figure>
 </div>
-<p>Now mutate <a href="#tbl-Females">Table&nbsp;<span>9.2</span></a> data frame to include a difference variable.</p>
+</div>
+<p>Now mutate <a href="#tbl-Females" class="quarto-xref">Table&nbsp;<span>9.2</span></a> data frame to include a difference variable.</p>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Female Pulse dataset with difference column added">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Pulse_female<span class="ot">&lt;-</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  Pulse_female <span class="sc">|&gt;</span> </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">difference=</span>pulse_after<span class="sc">-</span>pulse_before) </span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Pulse_female))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Females_difference" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Female Pulse dataset with difference column added">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Females_difference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.3: Pulse Rates Before and After Exercise of Females who do drink Alcohol with Difference
+</figcaption>
+<div aria-describedby="tbl-Females_difference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Females_difference" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.3: Pulse Rates Before and After Exercise of Females who do drink Alcohol with Difference</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 7%">
 <col style="width: 7%">
@@ -955,15 +1007,21 @@ sample estimates:
 </table>
 </div>
 </div>
+</figure>
 </div>
-<p>Using <a href="#tbl-Females_difference">Table&nbsp;<span>9.3</span></a> create a density plot and normal quantile plot on the difference variable.</p>
+</div>
+<p>Using <a href="#tbl-Females_difference" class="quarto-xref">Table&nbsp;<span>9.3</span></a> create a density plot and normal quantile plot on the difference variable.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_density</span>(<span class="sc">~</span>difference, <span class="at">data=</span>Pulse_female, <span class="at">title =</span> <span class="st">"Difference in Pulse Rates for Females who drink Alcohol"</span>, <span class="at">xlab=</span><span class="st">"Difference Between Before and After"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-pulse-female-density" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Two-Sample-Inference_files/figure-html/fig-pulse-female-density-1.png" class="img-fluid figure-img" alt="Density plot of differences in pulse rates. Not symmetric" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.1: Density plot of differences in pulse rates</figcaption>
+<div id="fig-pulse-female-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of differences in pulse rates. Not symmetric">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pulse-female-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Two-Sample-Inference_files/figure-html/fig-pulse-female-density-1.png" class="img-fluid figure-img" alt="Density plot of differences in pulse rates. Not symmetric" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pulse-female-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.1: Density plot of differences in pulse rates
+</figcaption>
 </figure>
 </div>
 </div>
@@ -971,10 +1029,14 @@ sample estimates:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_qq</span>(<span class="sc">~</span>difference, <span class="at">data=</span>Pulse_female, <span class="at">title =</span> <span class="st">"Difference in Pulse Rates for Females who drink Alcohol"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-pulse-female-quartile" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Two-Sample-Inference_files/figure-html/fig-pulse-female-quartile-1.png" class="img-fluid figure-img" alt="normal qunatile plot plot of differences in pulse rates. Does not look linear" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.2: Normal Quantile Plot of Differences in Pulse Rates</figcaption>
+<div id="fig-pulse-female-quartile" class="quarto-float quarto-figure quarto-figure-center anchored" alt="normal qunatile plot plot of differences in pulse rates. Does not look linear">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pulse-female-quartile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Two-Sample-Inference_files/figure-html/fig-pulse-female-quartile-1.png" class="img-fluid figure-img" alt="normal qunatile plot plot of differences in pulse rates. Does not look linear" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pulse-female-quartile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.2: Normal Quantile Plot of Differences in Pulse Rates
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1011,14 +1073,18 @@ mean of x
 </section>
 <section id="example-hypothesis-test-for-paired-samples-1" class="level3" data-number="9.2.5">
 <h3 data-number="9.2.5" class="anchored" data-anchor-id="example-hypothesis-test-for-paired-samples-1"><span class="header-section-number">9.2.5</span> Example: Hypothesis Test for Paired Samples</h3>
-<p>The New Zealand Air Force purchased a batch of flight helmets. They then found out that the helmets didn’t fit. In order to make sure that they order the correct size helmets, they measured the head size of recruits. To save money, they wanted to use cardboard calipers, but were not sure if they will be accurate enough. So they took 18 recruits and measured their heads with the cardboard calipers and also with metal calipers. The data frame is in <a href="#tbl-Helmet">Table&nbsp;<span>9.4</span></a> (Helmet Sizes for New Zealand Airforce, 2019). Do the data provide enough evidence to show that there is a difference in measurements between the cardboard and metal calipers? Use a 5% level of significance.</p>
+<p>The New Zealand Air Force purchased a batch of flight helmets. They then found out that the helmets didn’t fit. In order to make sure that they order the correct size helmets, they measured the head size of recruits. To save money, they wanted to use cardboard calipers, but were not sure if they will be accurate enough. So they took 18 recruits and measured their heads with the cardboard calipers and also with metal calipers. The data frame is in <a href="#tbl-Helmet" class="quarto-xref">Table&nbsp;<span>9.4</span></a> (Helmet Sizes for New Zealand Airforce, 2019). Do the data provide enough evidence to show that there is a difference in measurements between the cardboard and metal calipers? Use a 5% level of significance.</p>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Helmet dataset">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Helmet<span class="ot">&lt;-</span><span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/helmet.csv"</span>) </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Helmet))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Helmet" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Helmet dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Helmet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.4: Helmet Head Measurments
+</figcaption>
+<div aria-describedby="tbl-Helmet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Helmet" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.4: Helmet Head Measurments</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">Cardboard</th>
@@ -1053,6 +1119,8 @@ mean of x
 </tbody>
 </table>
 </div>
+</div>
+</figure>
 </div>
 </div>
 <p><strong>Code book for data frame Helmet</strong></p>
@@ -1090,10 +1158,14 @@ mean of x
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  Helmet <span class="sc">|&gt;</span> </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">difference=</span>Cardboard<span class="sc">-</span>Metal) </span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Helmet))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Helmet-difference" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Helmet dataset with difference column added">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Helmet-difference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.5: Helmet Head Measurments
+</figcaption>
+<div aria-describedby="tbl-Helmet-difference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Helmet-difference" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.5: Helmet Head Measurments</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">Cardboard</th>
@@ -1136,14 +1208,20 @@ mean of x
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_density</span>(<span class="sc">~</span>difference, <span class="at">data=</span>Helmet, <span class="at">title=</span><span class="st">"Differences in Head Measurements"</span>, <span class="at">xlab=</span><span class="st">"Difference Between Cardboard and Metal"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-helmet-density" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Two-Sample-Inference_files/figure-html/fig-helmet-density-1.png" class="img-fluid figure-img" alt="Density plot of differences in head measurements, somewhat bell shaped" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.3: Density plot of differences in head measurements</figcaption>
+<div id="fig-helmet-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of differences in head measurements, somewhat bell shaped">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-helmet-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Two-Sample-Inference_files/figure-html/fig-helmet-density-1.png" class="img-fluid figure-img" alt="Density plot of differences in head measurements, somewhat bell shaped" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-helmet-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.3: Density plot of differences in head measurements
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1151,15 +1229,19 @@ mean of x
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_qq</span>(<span class="sc">~</span>difference, <span class="at">data=</span>Helmet, <span class="at">title=</span><span class="st">"Differences in Head Measurements"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-helmet-qq" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Two-Sample-Inference_files/figure-html/fig-helmet-qq-1.png" class="img-fluid figure-img" alt="Normal quantile plot of differences in head measurements, somewhat linear" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.4: Normal Quantile Plot of Differences in Head Measurements</figcaption>
+<div id="fig-helmet-qq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Normal quantile plot of differences in head measurements, somewhat linear">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-helmet-qq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Two-Sample-Inference_files/figure-html/fig-helmet-qq-1.png" class="img-fluid figure-img" alt="Normal quantile plot of differences in head measurements, somewhat linear" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-helmet-qq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.4: Normal Quantile Plot of Differences in Head Measurements
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>This density plot <a href="#fig-helmet-density">Figure&nbsp;<span>9.3</span></a> looks somewhat bell shaped. The normal quantile plot <a href="#fig-helmet-qq">Figure&nbsp;<span>9.4</span></a> on the differences looks somewhat linear. So you can assume that the distribution of the difference in weights is normal.</p>
+<p>This density plot <a href="#fig-helmet-density" class="quarto-xref">Figure&nbsp;<span>9.3</span></a> looks somewhat bell shaped. The normal quantile plot <a href="#fig-helmet-qq" class="quarto-xref">Figure&nbsp;<span>9.4</span></a> on the differences looks somewhat linear. So you can assume that the distribution of the difference in weights is normal.</p>
 <ol start="4" type="1">
 <li>Find the sample statistic, test statistic, and p-value</li>
 </ol>
@@ -1193,7 +1275,7 @@ mean of x
 </section>
 <section id="example-confidence-interval-for-paired-samples" class="level3" data-number="9.2.6">
 <h3 data-number="9.2.6" class="anchored" data-anchor-id="example-confidence-interval-for-paired-samples"><span class="header-section-number">9.2.6</span> Example: Confidence Interval for Paired Samples</h3>
-<p>The New Zealand Air Force purchased a batch of flight helmets. They then found out that the helmets didn’t fit. In order to make sure that they order the correct size helmets, they measured the head size of recruits. To save money, they wanted to use cardboard calipers, but were not sure if they will be accurate enough. So they took 18 recruits and measured their heads with the cardboard calipers and also with metal calipers. The data frame is in <a href="#tbl-Helmet">Table&nbsp;<span>9.4</span></a> (Helmet Sizes for New Zealand Airforce, 2019). Estimate the difference in measurements between the cardboard and metal calipers using a 95% confidence interval.</p>
+<p>The New Zealand Air Force purchased a batch of flight helmets. They then found out that the helmets didn’t fit. In order to make sure that they order the correct size helmets, they measured the head size of recruits. To save money, they wanted to use cardboard calipers, but were not sure if they will be accurate enough. So they took 18 recruits and measured their heads with the cardboard calipers and also with metal calipers. The data frame is in <a href="#tbl-Helmet" class="quarto-xref">Table&nbsp;<span>9.4</span></a> (Helmet Sizes for New Zealand Airforce, 2019). Estimate the difference in measurements between the cardboard and metal calipers using a 95% confidence interval.</p>
 <section id="solution-5" class="level4" data-number="9.2.6.1">
 <h4 data-number="9.2.6.1" class="anchored" data-anchor-id="solution-5"><span class="header-section-number">9.2.6.1</span> Solution</h4>
 <ol type="1">
@@ -1207,7 +1289,7 @@ mean of x
 <ol start="3" type="1">
 <li>Find the sample statistic and confidence interval</li>
 </ol>
-<p>Using the data frame <a href="#tbl-Helmet-difference">Table&nbsp;<span>9.5</span></a> the rStudio the command is</p>
+<p>Using the data frame <a href="#tbl-Helmet-difference" class="quarto-xref">Table&nbsp;<span>9.5</span></a> the rStudio the command is</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="sc">~</span>difference, <span class="at">data=</span>Helmet, <span class="at">conf.leve=</span><span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1235,20 +1317,24 @@ mean of x
 <h3 data-number="9.2.7" class="anchored" data-anchor-id="homework-for-paired-samples-for-two-means-section"><span class="header-section-number">9.2.7</span> Homework for Paired Samples for Two Means Section</h3>
 <p><strong>In each problem show all steps of the hypothesis test or confidence interval. If some of the conditions are not met, note that the results of the test or interval may not be correct and then continue the process of the hypothesis test or confidence interval.</strong></p>
 <ol type="1">
-<li>The cholesterol level of patients who had heart attacks was measured multiple times after the heart attack. The researchers want to see if the cholesterol level of patients who have heart attacks changes as the time since their heart attack increases. The data is in <a href="Numerical Description of Data.html#tbl-Cholesterol">Table&nbsp;<span>3.2</span></a>. Do the data show that the mean cholesterol level of patients that have had a heart attack changes as the time increases since their heart attack? Use day2 and day4 variables to answer the question. Test at the 1% level.</li>
+<li>The cholesterol level of patients who had heart attacks was measured multiple times after the heart attack. The researchers want to see if the cholesterol level of patients who have heart attacks changes as the time since their heart attack increases. The data is in <a href="Numerical Description of Data.html#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>. Do the data show that the mean cholesterol level of patients that have had a heart attack changes as the time increases since their heart attack? Use day2 and day4 variables to answer the question. Test at the 1% level.</li>
 </ol>
-<p><strong>Code book for Data Frame Cholesterol is below <a href="#tbl-Helmet-difference">Table&nbsp;<span>9.5</span></a>.</strong></p>
+<p><strong>Code book for Data Frame Cholesterol is below <a href="#tbl-Helmet-difference" class="quarto-xref">Table&nbsp;<span>9.5</span></a>.</strong></p>
 <ol start="2" type="1">
-<li><p>The cholesterol level of patients who had heart attacks was measured multiple times after the heart attack. The researchers want to see if the cholesterol level of patients who have heart attacks changes as the time since their heart attack increases. The data is in <a href="#tbl-Helmet-difference">Table&nbsp;<span>9.5</span></a>. Calculate a 98% confidence interval for the mean difference in cholesterol levels from day two to day four.</p></li>
-<li><p>All Fresh Seafood is a wholesale fish company based on the east coast of the U.S. Catalina Offshore Products is a wholesale fish company based on the west coast of the U.S. <a href="#tbl-Price-seafood">Table&nbsp;<span>9.6</span></a> contains prices from both companies for specific fish types (\“Seafood online,\” 2013) (\“Buy sushi grade,\” 2013). Do the data provide enough evidence to show that fish cost different from west coast fish wholesaler and east coast wholesaler? Test at the 5% level.</p></li>
+<li><p>The cholesterol level of patients who had heart attacks was measured multiple times after the heart attack. The researchers want to see if the cholesterol level of patients who have heart attacks changes as the time since their heart attack increases. The data is in <a href="#tbl-Helmet-difference" class="quarto-xref">Table&nbsp;<span>9.5</span></a>. Calculate a 98% confidence interval for the mean difference in cholesterol levels from day two to day four.</p></li>
+<li><p>All Fresh Seafood is a wholesale fish company based on the east coast of the U.S. Catalina Offshore Products is a wholesale fish company based on the west coast of the U.S. <a href="#tbl-Price-seafood" class="quarto-xref">Table&nbsp;<span>9.6</span></a> contains prices from both companies for specific fish types (\“Seafood online,\” 2013) (\“Buy sushi grade,\” 2013). Do the data provide enough evidence to show that fish cost different from west coast fish wholesaler and east coast wholesaler? Test at the 5% level.</p></li>
 </ol>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Price dataset">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Price <span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/price.csv"</span>) </span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Price))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Price-seafood" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Price dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Price-seafood-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.6: Wholesale Prices of Fish in Dollars
+</figcaption>
+<div aria-describedby="tbl-Price-seafood-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Price-seafood" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.6: Wholesale Prices of Fish in Dollars</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">fish</th>
@@ -1291,6 +1377,8 @@ mean of x
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Price</strong></p>
 <p><strong>Description</strong> Price of fish was collected from two websites. One for Catalina Offshore Products (west coast) and the other for All Fresh Seafood (east coast) in 2013.</p>
@@ -1302,16 +1390,20 @@ mean of x
 <p>Buy sushi grade fish online. (2013, November 20). Retrieved from http://www.catalinaop.com/</p>
 <p>References Websites of Catalina Offshore Products and All Fresh Seafood</p>
 <ol start="4" type="1">
-<li><p>All Fresh Seafood is a wholesale fish company based on the east coast of the U.S. Catalina Offshore Products is a wholesale fish company based on the west coast of the U.S. <a href="#tbl-Price-seafood">Table&nbsp;<span>9.6</span></a> contains prices from both companies for specific fish types (\“Seafood online,\” 2013) (\“Buy sushi grade,\” 2013). Find a 95% confidence interval for the mean difference in wholesale price between the east coast and west coast suppliers.</p></li>
-<li><p>The British Department of Transportation studied to see if people avoid driving or shopping, or have more accidents on Friday the 13th. They collected data from different locations (Friday the 13th, 2019). The data for each location on the two different dates is in <a href="#tbl-Traffic">Table&nbsp;<span>9.7</span></a>. Do the data show that on average different number of people are engaged in activities on Friday the 13th? Test at the 5% level.</p></li>
+<li><p>All Fresh Seafood is a wholesale fish company based on the east coast of the U.S. Catalina Offshore Products is a wholesale fish company based on the west coast of the U.S. <a href="#tbl-Price-seafood" class="quarto-xref">Table&nbsp;<span>9.6</span></a> contains prices from both companies for specific fish types (\“Seafood online,\” 2013) (\“Buy sushi grade,\” 2013). Find a 95% confidence interval for the mean difference in wholesale price between the east coast and west coast suppliers.</p></li>
+<li><p>The British Department of Transportation studied to see if people avoid driving or shopping, or have more accidents on Friday the 13th. They collected data from different locations (Friday the 13th, 2019). The data for each location on the two different dates is in <a href="#tbl-Traffic" class="quarto-xref">Table&nbsp;<span>9.7</span></a>. Do the data show that on average different number of people are engaged in activities on Friday the 13th? Test at the 5% level.</p></li>
 </ol>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Traffic dataset">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Traffic <span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/traffic.csv"</span>) </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Traffic))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Traffic" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Traffic dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Traffic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.7: Traffic Count
+</figcaption>
+<div aria-describedby="tbl-Traffic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Traffic" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.7: Traffic Count</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">source</th>
@@ -1375,6 +1467,8 @@ mean of x
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Traffic</strong></p>
 <p><strong>Description</strong> This file consists of three separate data sets, all of which address the issues of how superstitions regarding Friday the 13th affect human behavior, and whether Friday the 13th is an unlucky day. Scanlon, et al.&nbsp;collected data on traffic and shopping patterns and accident frequency for Fridays the 6th and 13th between October of 1989 and November of 1992.</p>
@@ -1390,21 +1484,25 @@ mean of x
 <p>Source (n.d.). Retrieved from https://www3.nd.edu/~busiforc/handouts/Data and Stories/t test/Friday The Thirteenth/Friday The Thirteenth Data.html</p>
 <p>References Scanlon, T.J., Luben, R.N., Scanlon, F.L., Singleton, N. (1993), “Is Friday the 13th Bad For Your Health?,” BMJ, 307, 1584-1586.</p>
 <ol start="6" type="1">
-<li><p>The British Department of Transportation studied to see if people avoid driving or shopping, or have more accidents on Friday the 13th. They collected data from different locations (Friday the 13th, 2019). The data for each location on the two different dates is in <a href="#tbl-Traffic">Table&nbsp;<span>9.7</span></a>. Do the data show that on average different number of people are engaged in activities on Friday the 13th? Estimate the mean difference in activity count between the 6th and the 13th using a 95% level.</p></li>
-<li><p>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997). The data is in <a href="Numerical Description of Data.html#tbl-Reiki">Table&nbsp;<span>3.9</span></a>. Do the data show that Reiki treatment reduces pain? Test at the 5% level.</p></li>
+<li><p>The British Department of Transportation studied to see if people avoid driving or shopping, or have more accidents on Friday the 13th. They collected data from different locations (Friday the 13th, 2019). The data for each location on the two different dates is in <a href="#tbl-Traffic" class="quarto-xref">Table&nbsp;<span>9.7</span></a>. Do the data show that on average different number of people are engaged in activities on Friday the 13th? Estimate the mean difference in activity count between the 6th and the 13th using a 95% level.</p></li>
+<li><p>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997). The data is in <a href="Numerical Description of Data.html#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>. Do the data show that Reiki treatment reduces pain? Test at the 5% level.</p></li>
 </ol>
-<p><strong>Code book for data frame Reiki is below <a href="Numerical Description of Data.html#tbl-Reiki">Table&nbsp;<span>3.9</span></a>.</strong></p>
+<p><strong>Code book for data frame Reiki is below <a href="Numerical Description of Data.html#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>.</strong></p>
 <ol start="8" type="1">
-<li><p>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997). The data is in <a href="Numerical Description of Data.html#tbl-Reiki">Table&nbsp;<span>3.9</span></a>. Compute a 90% confidence level for the mean difference in VAS score from before and after Reiki treatment.</p></li>
+<li><p>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997). The data is in <a href="Numerical Description of Data.html#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>. Compute a 90% confidence level for the mean difference in VAS score from before and after Reiki treatment.</p></li>
 <li><p>The female labor force participation rates (FLFPR) of women in countries from 1990 to 2018 are in table 9.2.8.5 (Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate), 2019). Do the data show that the mean female labor force participation rate in 1990 is different from that in the 2018 using a 5% level of significance?</p></li>
 </ol>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Labor dataset">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Labor <span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/labor.csv"</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Labor))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Labor" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Labor dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Labor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.8: Female Labor Force Participation Rates
+</figcaption>
+<div aria-describedby="tbl-Labor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Labor" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.8: Female Labor Force Participation Rates</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 3%">
 <col style="width: 3%">
@@ -1692,6 +1790,8 @@ mean of x
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Labor</strong></p>
 <p><strong>Description</strong> Labor force participation rate, female (% of female population ages 15+)</p>
@@ -1704,12 +1804,12 @@ mean of x
 <p>Source Labor force participation rate, female (% of female population ages 15 ) (modeled ILO estimate). (n.d.). Retrieved July 20, 2019, from https://data.worldbank.org/indicator/SL.TLF.CACT.FE.ZS</p>
 <p>References International Labour Organization, ILOSTAT database. Data retrieved in April 2019.</p>
 <ol start="10" type="1">
-<li><p>The female labor force participation rates (FLFPR) of women in countries from 1990 to 2018 are in <a href="#tbl-Labor">Table&nbsp;<span>9.8</span></a> (Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate), 2019). Estimate the mean difference in the female labor force participation rate in 1990 to 2018 using a 95% confidence level?</p></li>
-<li><p>Is the pulse rate after exercise different from the pulse rate before exercise for a man who drinks alcohol but doesn’t smoke? Use the data frame Pulse <a href="Numerical Description of Data.html#tbl-Pulse">Table&nbsp;<span>3.7</span></a>. Test at the 5% level.</p></li>
+<li><p>The female labor force participation rates (FLFPR) of women in countries from 1990 to 2018 are in <a href="#tbl-Labor" class="quarto-xref">Table&nbsp;<span>9.8</span></a> (Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate), 2019). Estimate the mean difference in the female labor force participation rate in 1990 to 2018 using a 95% confidence level?</p></li>
+<li><p>Is the pulse rate after exercise different from the pulse rate before exercise for a man who drinks alcohol but doesn’t smoke? Use the data frame Pulse <a href="Numerical Description of Data.html#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a>. Test at the 5% level.</p></li>
 </ol>
-<p><strong>Code book for data frame Pulse is below <a href="Numerical Description of Data.html#tbl-Pulse">Table&nbsp;<span>3.7</span></a>.</strong></p>
+<p><strong>Code book for data frame Pulse is below <a href="Numerical Description of Data.html#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a>.</strong></p>
 <ol start="12" type="1">
-<li><a href="Numerical Description of Data.html#tbl-Pulse">Table&nbsp;<span>3.7</span></a> contains pulse rates Compute a 95% confidence interval for the mean difference in pulse rates from before and after exercise for males who drink but do not smoke.</li>
+<li><a href="Numerical Description of Data.html#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a> contains pulse rates Compute a 95% confidence interval for the mean difference in pulse rates from before and after exercise for males who drink but do not smoke.</li>
 </ol>
 </section>
 </section>
@@ -1833,10 +1933,14 @@ mean of x
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(Diabetes) </span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_density</span>(<span class="sc">~</span>TotChol<span class="sc">|</span>Diabetes, <span class="at">data=</span>NHANES_no_NA, <span class="at">title =</span> <span class="st">"Cholesterol of a person with and without Diabetes"</span>, <span class="at">xlab=</span><span class="st">"Total Cholesterol"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-desnity-facet-diabetes" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Two-Sample-Inference_files/figure-html/fig-desnity-facet-diabetes-1.png" class="img-fluid figure-img" alt="Density plot of total cholesterol faceted by diabetes. Looks somehwat bell shaped." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.5: Density Plot of Cholesterol of a person with and without Diabetes</figcaption>
+<div id="fig-desnity-facet-diabetes" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of total cholesterol faceted by diabetes. Looks somehwat bell shaped.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-desnity-facet-diabetes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Two-Sample-Inference_files/figure-html/fig-desnity-facet-diabetes-1.png" class="img-fluid figure-img" alt="Density plot of total cholesterol faceted by diabetes. Looks somehwat bell shaped." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-desnity-facet-diabetes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.5: Density Plot of Cholesterol of a person with and without Diabetes
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1845,10 +1949,14 @@ mean of x
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_qq</span>(<span class="sc">~</span>TotChol<span class="sc">|</span>Diabetes, <span class="at">data=</span>NHANES_no_NA, <span class="at">title =</span> <span class="st">"Cholesterol of a person with and without Diabetes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-quantile-facet-diabetes" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Two-Sample-Inference_files/figure-html/fig-quantile-facet-diabetes-1.png" class="img-fluid figure-img" alt="Normal quantile plot of total coholesterol faceted by diabetes. Looks somewhat linear." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.6: quantile Plot of Cholesterol of a person with and without Diabetes</figcaption>
+<div id="fig-quantile-facet-diabetes" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Normal quantile plot of total coholesterol faceted by diabetes. Looks somewhat linear.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-quantile-facet-diabetes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Two-Sample-Inference_files/figure-html/fig-quantile-facet-diabetes-1.png" class="img-fluid figure-img" alt="Normal quantile plot of total coholesterol faceted by diabetes. Looks somewhat linear." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-quantile-facet-diabetes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.6: quantile Plot of Cholesterol of a person with and without Diabetes
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1926,14 +2034,18 @@ sample estimates:
 </section>
 <section id="example-hypothesis-test-for-two-means-1" class="level3" data-number="9.3.5">
 <h3 data-number="9.3.5" class="anchored" data-anchor-id="example-hypothesis-test-for-two-means-1"><span class="header-section-number">9.3.5</span> Example: Hypothesis Test for Two Means</h3>
-<p>The amount of sodium in beef and poultry hot dogs was measured. (\“SOCR 012708 id,\” 2013). The data is in <a href="#tbl-Hotdog">Table&nbsp;<span>9.9</span></a>. Is there enough evidence to show that beef has different amounts of sodium on average than poultry hot dogs? Use a 5% level of significance.</p>
+<p>The amount of sodium in beef and poultry hot dogs was measured. (\“SOCR 012708 id,\” 2013). The data is in <a href="#tbl-Hotdog" class="quarto-xref">Table&nbsp;<span>9.9</span></a>. Is there enough evidence to show that beef has different amounts of sodium on average than poultry hot dogs? Use a 5% level of significance.</p>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Hotdog dataset">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Hotdog<span class="ot">&lt;-</span><span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/hotdog_beef_poultry.csv"</span>) </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Hotdog))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Hotdog" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Hotdog dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Hotdog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.9: Hot dog Data
+</figcaption>
+<div aria-describedby="tbl-Hotdog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Hotdog" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.9: Hot dog Data</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">type</th>
@@ -1976,6 +2088,8 @@ sample estimates:
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Hot dog</strong></p>
 <p><strong>Description</strong> Results of a laboratory analysis of calories and sodium content of major hot dog brands. Researchers for Consumer Reports analyzed three types of hot dog: beef, poultry, and meat (mostly pork and beef, but up to 15% poultry meat). The meat was left off this data frame so a two-sample t-test could be performed.</p>
@@ -2016,10 +2130,14 @@ sample estimates:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_density</span>(<span class="sc">~</span>sodium<span class="sc">|</span>type, <span class="at">data=</span>Hotdog, <span class="at">title=</span><span class="st">"Sodium amount in Hot Dogs facetted by Type of Meat"</span>, <span class="at">xlab=</span><span class="st">"Total Sodium Level"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-density-Hotdog" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Two-Sample-Inference_files/figure-html/fig-density-Hotdog-1.png" class="img-fluid figure-img" alt="Density plot of sodium amount faceted by type. Neither looks bell shaped." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.7: Density Plot of Sodium Amount in Hot Dogs facetted by Type of Meat</figcaption>
+<div id="fig-density-Hotdog" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of sodium amount faceted by type. Neither looks bell shaped.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-density-Hotdog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Two-Sample-Inference_files/figure-html/fig-density-Hotdog-1.png" class="img-fluid figure-img" alt="Density plot of sodium amount faceted by type. Neither looks bell shaped." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-density-Hotdog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.7: Density Plot of Sodium Amount in Hot Dogs facetted by Type of Meat
+</figcaption>
 </figure>
 </div>
 </div>
@@ -2028,15 +2146,19 @@ sample estimates:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gf_qq</span>(<span class="sc">~</span>sodium<span class="sc">|</span>type, <span class="at">data=</span>Hotdog, <span class="at">title=</span><span class="st">"Sodium amoount in Hot Dogs facetted by Type of Meat"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-quantile-Hotdog" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Two-Sample-Inference_files/figure-html/fig-quantile-Hotdog-1.png" class="img-fluid figure-img" alt="Normal quantile plot of sodium amount faceted by type. The beef graph looks linear, but the poultry does not." width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;9.8: Quantile Plot of Sodium Amount in Hot Dogs facetted by Type of Meat</figcaption>
+<div id="fig-quantile-Hotdog" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Normal quantile plot of sodium amount faceted by type. The beef graph looks linear, but the poultry does not.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-quantile-Hotdog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Two-Sample-Inference_files/figure-html/fig-quantile-Hotdog-1.png" class="img-fluid figure-img" alt="Normal quantile plot of sodium amount faceted by type. The beef graph looks linear, but the poultry does not." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-quantile-Hotdog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.8: Quantile Plot of Sodium Amount in Hot Dogs facetted by Type of Meat
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The normal quantile plot <a href="#fig-density-Hotdog">Figure&nbsp;<span>9.7</span></a> for the sodium level in beef hot dogs looks somewhat linear. The normal quantile plot <a href="#fig-quantile-Hotdog">Figure&nbsp;<span>9.8</span></a> for the sodium level in poultry hot dogs does not look linear. The population of all sodium levels in beef hot dogs may be normally distributed, but the population of all sodium levels in poultry hot dogs is probably not normally distributed. The sample size is not very large so the results of the test may not be valid. A larger sample would be a good idea.</p>
+<p>The normal quantile plot <a href="#fig-density-Hotdog" class="quarto-xref">Figure&nbsp;<span>9.7</span></a> for the sodium level in beef hot dogs looks somewhat linear. The normal quantile plot <a href="#fig-quantile-Hotdog" class="quarto-xref">Figure&nbsp;<span>9.8</span></a> for the sodium level in poultry hot dogs does not look linear. The population of all sodium levels in beef hot dogs may be normally distributed, but the population of all sodium levels in poultry hot dogs is probably not normally distributed. The sample size is not very large so the results of the test may not be valid. A larger sample would be a good idea.</p>
 <ol start="4" type="1">
 <li>Find the sample statistic, test statistic, and p-value</li>
 </ol>
@@ -2066,7 +2188,7 @@ sample estimates:
 </section>
 <section id="example-confidence-interval-for-two-independent-samples" class="level3" data-number="9.3.6">
 <h3 data-number="9.3.6" class="anchored" data-anchor-id="example-confidence-interval-for-two-independent-samples"><span class="header-section-number">9.3.6</span> Example: Confidence Interval for Two Independent Samples</h3>
-<p>The amount of sodium in beef and poultry hot dogs was measured. (“SOCR 012708 id,” 2013). The data is in <a href="#tbl-Hotdog">Table&nbsp;<span>9.9</span></a>. Find a 95% confidence interval for the mean difference in sodium levels between beef and poultry hot dogs.</p>
+<p>The amount of sodium in beef and poultry hot dogs was measured. (“SOCR 012708 id,” 2013). The data is in <a href="#tbl-Hotdog" class="quarto-xref">Table&nbsp;<span>9.9</span></a>. Find a 95% confidence interval for the mean difference in sodium levels between beef and poultry hot dogs.</p>
 <section id="solution-9" class="level4" data-number="9.3.6.1">
 <h4 data-number="9.3.6.1" class="anchored" data-anchor-id="solution-9"><span class="header-section-number">9.3.6.1</span> Solution</h4>
 <ol type="1">
@@ -2133,15 +2255,19 @@ sample estimates:
 </div>
 <ol start="2" type="1">
 <li><p>The NHANES data contains many variables. One variable is the income of households derived from the middle income of different income categories. The variable is called HHIncomeMid. Estimate with 95% confidence the mean difference in incomes between males and females in the U.S.</p></li>
-<li><p>A study was conducted that measured the total brain volume (TBV) of patients that had schizophrenia and patients that do not have schizophrenia. <a href="#tbl-Brain">Table&nbsp;<span>9.10</span></a> contains the TBV of the all patients (“SOCR data oct2009,\” 2013). Is there enough evidence to show that the patients with schizophrenia have a different TBV on average than a patient without schizophrenia? Test at the 10% level.</p></li>
+<li><p>A study was conducted that measured the total brain volume (TBV) of patients that had schizophrenia and patients that do not have schizophrenia. <a href="#tbl-Brain" class="quarto-xref">Table&nbsp;<span>9.10</span></a> contains the TBV of the all patients (“SOCR data oct2009,\” 2013). Is there enough evidence to show that the patients with schizophrenia have a different TBV on average than a patient without schizophrenia? Test at the 10% level.</p></li>
 </ol>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Brain dataset">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>Brain <span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/brain.csv"</span>) </span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Brain))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Brain" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Brain dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Brain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.10: Total Brain Volume of Patients
+</figcaption>
+<div aria-describedby="tbl-Brain-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Brain" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.10: Total Brain Volume of Patients</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">type</th>
@@ -2177,6 +2303,8 @@ sample estimates:
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Brain</strong></p>
 <p><strong>Description</strong> A study to measure the total brain volume (TBV) (in ) of patients that had schizophrenia and patients that do not have schizophrenia.</p>
@@ -2186,23 +2314,27 @@ sample estimates:
 <p>Source SOCR data Oct2009 id ni. (2013, November 16). Retrieved from http://wiki.stat.ucla.edu/socr/index.php/SOCR_Data_Oct2009_ID_NI</p>
 <p>References “SOCR data nips,” 2013</p>
 <ol start="4" type="1">
-<li><p>A study was conducted that measured the total brain volume (TBV) of patients that had schizophrenia and patients that do not have schizophrenia. <a href="#tbl-Brain">Table&nbsp;<span>9.10</span></a> contains the TBV of the all patients (“SOCR data oct2009,” 2013). Is there enough evidence to show that the patients with schizophrenia have a different TBV on average than a patient without schizophrenia? Test at the 10% level. Compute a 90% confidence interval for the difference in TBV of patients with Schizophrenia and patients without Schizophrenia.</p></li>
-<li><p>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in <a href="Numerical Description of Data.html#tbl-Length">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Do the data provide enough evidence to show on average that the rivers that travel to the Pacific Ocean are different length than the rivers that travel to the Tasman Sea? Use a 5% level of significance.</p></li>
+<li><p>A study was conducted that measured the total brain volume (TBV) of patients that had schizophrenia and patients that do not have schizophrenia. <a href="#tbl-Brain" class="quarto-xref">Table&nbsp;<span>9.10</span></a> contains the TBV of the all patients (“SOCR data oct2009,” 2013). Is there enough evidence to show that the patients with schizophrenia have a different TBV on average than a patient without schizophrenia? Test at the 10% level. Compute a 90% confidence interval for the difference in TBV of patients with Schizophrenia and patients without Schizophrenia.</p></li>
+<li><p>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in <a href="Numerical Description of Data.html#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Do the data provide enough evidence to show on average that the rivers that travel to the Pacific Ocean are different length than the rivers that travel to the Tasman Sea? Use a 5% level of significance.</p></li>
 </ol>
-<p><strong>Code book for data frame Length below <a href="Numerical Description of Data.html#tbl-Length">Table&nbsp;<span>3.3</span></a>.</strong></p>
+<p><strong>Code book for data frame Length below <a href="Numerical Description of Data.html#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a>.</strong></p>
 <ol start="6" type="1">
-<li><p>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in <a href="Numerical Description of Data.html#tbl-Length">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Estimate the difference in mean lengths of rivers between rivers in New Zealand that travel to the Pacific Ocean and ones that travel to the Tasman Sea. Use a 95% confidence level.</p></li>
-<li><p>A vitamin K shot is given to infants soon after birth. Nurses at Northbay Healthcare were involved in a study to see if how they handle the infants could reduce the pain the infants feel (\“SOCR data nips,\” 2013). The data frame is in <a href="#tbl-Crying">Table&nbsp;<span>9.11</span></a>. Is there enough evidence to show that infants cried a different amount on average when they are held by their mothers than if held using conventional methods? Test at the 5% level.</p></li>
+<li><p>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in <a href="Numerical Description of Data.html#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Estimate the difference in mean lengths of rivers between rivers in New Zealand that travel to the Pacific Ocean and ones that travel to the Tasman Sea. Use a 95% confidence level.</p></li>
+<li><p>A vitamin K shot is given to infants soon after birth. Nurses at Northbay Healthcare were involved in a study to see if how they handle the infants could reduce the pain the infants feel (\“SOCR data nips,\” 2013). The data frame is in <a href="#tbl-Crying" class="quarto-xref">Table&nbsp;<span>9.11</span></a>. Is there enough evidence to show that infants cried a different amount on average when they are held by their mothers than if held using conventional methods? Test at the 5% level.</p></li>
 </ol>
 <section id="table-crying-time-of-infants-given-shots-using-new-methods" class="level4" data-number="9.3.7.1">
 <h4 data-number="9.3.7.1" class="anchored" data-anchor-id="table-crying-time-of-infants-given-shots-using-new-methods"><span class="header-section-number">9.3.7.1</span> Table: Crying Time of Infants Given Shots Using New Methods</h4>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Crying dataset">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>Crying<span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/crying.csv"</span>) </span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Crying))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Crying" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Crying dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Crying-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.11: Crying Time of Infants Given Shots Using New Methods
+</figcaption>
+<div aria-describedby="tbl-Crying-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-Crying" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;9.11: Crying Time of Infants Given Shots Using New Methods</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">method</th>
@@ -2238,6 +2370,8 @@ sample estimates:
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p><strong>Code book for data frame Crying</strong></p>
 <p><strong>Description</strong> Nurses at Northbay Healthcare were involved in a study to see if how they handle the infants could reduce the pain the infants feel. One of the measurements taken was how long, in seconds, the infant cried after being given the shot. A random sample was taken from the group that was given the shot using conventional methods, and a random sample was taken from the group that was given the shot where the mother held the infant prior to and during the shot.</p>
@@ -2247,7 +2381,7 @@ sample estimates:
 <p>Source SOCR data nips infantvitK shotdata. (2013, November 16). Retrieved from http://wiki.stat.ucla.edu/socr/index.php/SOCR_Data_NIPS_InfantVitK_ShotData</p>
 <p>References \“SOCR data nips,\” 2013</p>
 <ol start="8" type="1">
-<li>A vitamin K shot is given to infants soon after birth. Nurses at Northbay Healthcare were involved in a study to see if how they handle the infants could reduce the pain the infants feel (\“SOCR data nips,\” 2013). The data frame is in <a href="#tbl-Crying">Table&nbsp;<span>9.11</span></a>. Calculate a 95% confidence interval for the mean difference in mean crying time after being given a vitamin K shot between infants held using conventional methods and infants held by their mothers.</li>
+<li>A vitamin K shot is given to infants soon after birth. Nurses at Northbay Healthcare were involved in a study to see if how they handle the infants could reduce the pain the infants feel (\“SOCR data nips,\” 2013). The data frame is in <a href="#tbl-Crying" class="quarto-xref">Table&nbsp;<span>9.11</span></a>. Calculate a 95% confidence interval for the mean difference in mean crying time after being given a vitamin K shot between infants held using conventional methods and infants held by their mothers.</li>
 </ol>
 </section>
 </section>
@@ -2312,18 +2446,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2355,11 +2478,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2369,8 +2531,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2382,7 +2553,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2426,6 +2720,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2451,6 +2746,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2512,17 +2833,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Estimation.html" class="pagination-link">
+      <a href="./Estimation.html" class="pagination-link" aria-label="Estimation">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estimation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Regression.html" class="pagination-link">
+      <a href="./Regression.html" class="pagination-link" aria-label="Regression">
         <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 
