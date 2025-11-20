@@ -1202,18 +1202,18 @@ Figure&nbsp;6.20: Distribution of Pulse Rate
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size=</span><span class="dv">10</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 76
-      ID SurveyYr Gender   Age AgeDecade AgeMonths Race1    Race3    Education  
-   &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;  &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;    &lt;fct&gt;      
- 1 71641 2011_12  female     7 " 0-9"           NA White    White    &lt;NA&gt;       
- 2 62346 2011_12  male      19 " 10-19"         NA Other    Other    &lt;NA&gt;       
- 3 57926 2009_10  male      56 " 50-59"        675 White    &lt;NA&gt;     College Gr…
- 4 57262 2009_10  female    38 " 30-39"        464 White    &lt;NA&gt;     Some Colle…
- 5 56405 2009_10  female     6 " 0-9"           80 White    &lt;NA&gt;     &lt;NA&gt;       
- 6 70574 2011_12  female    36 " 30-39"         NA Black    Black    High School
- 7 68858 2011_12  female    12 " 10-19"         NA Hispanic Hispanic &lt;NA&gt;       
- 8 70782 2011_12  male      64 " 60-69"         NA White    White    College Gr…
- 9 67312 2011_12  male      45 " 40-49"         NA White    White    High School
-10 68606 2011_12  female    62 " 60-69"         NA Hispanic Hispanic 8th Grade  
+      ID SurveyYr Gender   Age AgeDecade AgeMonths Race1 Race3 Education     
+   &lt;int&gt; &lt;fct&gt;    &lt;fct&gt;  &lt;int&gt; &lt;fct&gt;         &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;         
+ 1 69151 2011_12  male      57 " 50-59"         NA White White College Grad  
+ 2 53109 2009_10  female    27 " 20-29"        334 White &lt;NA&gt;  9 - 11th Grade
+ 3 71671 2011_12  male      65 " 60-69"         NA White White Some College  
+ 4 59642 2009_10  male      49 " 40-49"        599 White &lt;NA&gt;  9 - 11th Grade
+ 5 61906 2009_10  male      14 " 10-19"        175 White &lt;NA&gt;  &lt;NA&gt;          
+ 6 58130 2009_10  male      40 " 40-49"        491 White &lt;NA&gt;  Some College  
+ 7 53547 2009_10  female    19 " 10-19"        231 White &lt;NA&gt;  &lt;NA&gt;          
+ 8 54672 2009_10  female     1 " 0-9"           12 White &lt;NA&gt;  &lt;NA&gt;          
+ 9 64222 2011_12  male      39 " 30-39"         NA White White College Grad  
+10 52022 2009_10  female    16 " 10-19"        195 Black &lt;NA&gt;  &lt;NA&gt;          
 # ℹ 67 more variables: MaritalStatus &lt;fct&gt;, HHIncome &lt;fct&gt;, HHIncomeMid &lt;int&gt;,
 #   Poverty &lt;dbl&gt;, HomeRooms &lt;int&gt;, HomeOwn &lt;fct&gt;, Work &lt;fct&gt;, Weight &lt;dbl&gt;,
 #   Length &lt;dbl&gt;, HeadCirc &lt;dbl&gt;, Height &lt;dbl&gt;, BMI &lt;dbl&gt;,
@@ -1226,8 +1226,8 @@ Figure&nbsp;6.20: Distribution of Pulse Rate
 <p>It might be useful to find the mean pulse rate from a random sample of size 10.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>  response mean
-1    Pulse   74</code></pre>
+<pre><code>  response     mean
+1    Pulse 69.33333</code></pre>
 </div>
 </div>
 <p>Now suppose you took another random sample of size 10 and found the mean pulse rate for that sample. Repeat this process 100 times. At this point you would basically have a new sample of 100 mean pulse rates. You could assess how this sample is distributed by creating a density plot <a href="#fig-NHANES6e-density" class="quarto-xref">Figure&nbsp;<span>6.21</span></a></p>
@@ -1240,7 +1240,7 @@ Figure&nbsp;6.20: Distribution of Pulse Rate
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">df_stats</span>(<span class="sc">~</span>means, <span class="at">data=</span>Trials, mean, sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  response     mean       sd
-1    means 73.73221 4.234021</code></pre>
+1    means 73.41145 3.905215</code></pre>
 </div>
 <div class="cell-output-display">
 <div id="fig-NHANES6e-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of sample means when sample size is 10. Appears to be bell shaped.">
@@ -1267,8 +1267,8 @@ Figure&nbsp;6.21: Density Plot of Sample Means When n = 10
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gf_lims</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">68</span>,<span class="dv">79</span>))</span>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">df_stats</span>(<span class="sc">~</span>means, <span class="at">data=</span>Trials, mean, sd) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  response   mean       sd
-1    means 73.329 1.857094</code></pre>
+<pre><code>  response     mean       sd
+1    means 73.74611 1.898087</code></pre>
 </div>
 <div class="cell-output-display">
 <div id="fig-NHANES6f-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of sample means when sample size is 50. Appears to be bell shaped.">
@@ -1309,7 +1309,7 @@ Figure&nbsp;6.23: Density Plot of Age When Person Started Smoking.
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>  response     mean       sd
-1    means 18.12607 1.591801</code></pre>
+1    means 17.70733 1.464226</code></pre>
 </div>
 <div class="cell-output-display">
 <div id="fig-NHANES6-random-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density plot of mean age a person starts to smoke of a sample of size 50. Appears to be bell shaped.">
