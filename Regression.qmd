@@ -1,7 +1,8 @@
 ---
 title: "Regression"
-format: html
-editor: visual
+
+number-sections: true
+number-offset: 11
 ---
 
 ```{r chapter-10-setup, include= FALSE, echo=FALSE, warning=FALSE}
@@ -24,9 +25,9 @@ When comparing different variables, two questions come to mind: "Is there a rela
 
 ### Example: Determining if there is a Relationship
 
-Is there a relationship between the alcohol content and the number of calories in 12-ounce beer? To determine if there is one a sample of beer's alcohol content and calories (Find Out How Many Calories in Beer?, 2019), is in table @tbl-Beer.
+Is there a relationship between the alcohol content and the number of calories in 12-ounce beer? To determine if there is one, we explore a sample of 227 beers' alcohol content and their calories (Find Out How Many Calories in Beer?, 2019). @tbl-Beer shows the first five rows of the dataset. 
 
-```{r chapter-10-beer-data}
+```{r chapter-10-beer-data, echo=FALSE}
 #| tbl-alt: "Head of beer data frame"
 #| label: tbl-Beer
 #| tbl-cap: "Alcohol and Calorie Content in Beer"
@@ -34,11 +35,24 @@ Beer <- read.csv( "https://krkozak.github.io/MAT160/beer_data.csv")
 knitr::kable(head(Beer))
 ```
 
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  For instructions to import and view the Beer dataset in your Rguroo account, click here"} 
+
+1. Go to your Rguroo account. 
+2. Open the **Data** toolbox.
+3. Click on [Data Import]{.dpd} dropdown and select [Dataset Repository]{.fun}.
+5. In the searchbox on the top type in the keyword [kozak]{.typein}. Then select the ``_Statistics Using Technology - Kozak_'' repository.
+6. In the middle _searchbox_ type in [beer]{.typein} and select the [beer_data]{.data} dataset.
+7. Click the [Import]{.button} button. The dataset will be imported to your Rguroo account.
+8. Click the [Close]{.button} button to close the Rguroo dialog.
+9. To view the dataset, click on the [beer_data]{.data} under the **Data** toolbox.
+:::
+
 **Code book for data frame Beer**
 
 **Description** Collection of the most popular beers from large breweries. The data is of the calories, carbs and alcohol of a specific beer. The data is shown for a 12 ounce serving. The collection includes both domestic and import beer. For the imported beers the information is per 12 oz. serving even though many imports come in pints.
 
-This data frame contains the following columns:
+This dataset contains the following columns:
 
 beer: The name of the beer.
 
@@ -52,7 +66,7 @@ calories: the number of calories in the beer.
 
 carbs: the amount of carbohydrates in the beer (g).
 
-Source Find Out How Many Calories in Beer? (n.d.). Retrieved July 21, 2019, from https://www.beer100.com/beer-calories/
+Source Find Out How Many Calories in Beer? (n.d.). Retrieved July 21, 2019, from [](https://www.beer100.com/beer-calories/)
 
 References (Find Out How Many Calories in Beer?, 2019)
 
@@ -66,15 +80,37 @@ $x$ = alcohol content in the beer
 
 $y$ = calories in 12 ounce beer
 
-```{r beer10-point}
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} To see how to create the scatterplot of calories vs. alcohol content in Rguroo, click here"}
+1. Go to your Rguroo account. Make sure that you have already imported the [beer_data]{.data} dataset by following the instructions given above.  
+2. Open the **Plots** toolbox.  
+3. Click on the [Create Plot]{.dpd} dropdown, and select [Scatterplot]{.fun}. This opens the Scatterplot dialog.  
+4. From the [Dataset]{.dpd} dropdown, select the [beer_data]{.data} dataset.  
+5. From the [Predictor (x)]{.dpd} dropdown, select the [alcohol]{.var} variable.  
+6. From the [Response (y)]{.dpd} dropdown, select the [calories]{.var} variable.  
+7. **(Optional)** In the **Label** section of the dialog:  
+   - In the [Title]{.des} textbox, enter [Calories versus Alcohol Content in Beer]{.typein}.  
+   - In the [X-Axis]{.des} textbox, enter [Alcohol Content]{.typein}.  
+   - In the [Y-Axis]{.des} textbox, enter [Number of Calories]{.typein}.  
+8. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the scatterplot.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+
+![Scatterplot dialog in Rguroo](Rguroo_images/Regression/Scatterplot_dialog.png){width=500px}
+
+:::
+
+:::
+
+```{r,echo=FALSE}
 #| fig-alt: "Scatter plot of alcohol content versus calories with dots following somewhat along a line"
 #| warning: FALSE
 #| label: fig-Beer-point
 #| fig-cap: "Calories versus Alcohol Content in Beer"
-gf_point(calories~alcohol, data=Beer, title="Calories versus Alcohol Content in Beer", xlab="Alcohol Content", ylab="Number of Calories")
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCaloryScatter.svg")
 ```
 
-This scatter plot looks fairly linear.
+This scatter plot shown in @fig-Beer-point looks fairly linear.
 
 To find the equation for the linear relationship, the process of regression is used to find the line that best fits the data (sometimes called the best fitting line). The process is to draw the line through the data and then find the vertical distance from a point to the line. These are called the **residuals**. The regression line is the line that makes the square of the residuals as small as possible, so the regression line is also sometimes called the least squares line. The regression line on the scatter plot is displayed in @fig-Beer-point-line.
 

@@ -1,0 +1,64 @@
+---
+title: "Macro & Blocks Demo"
+lua-filters:
+  - filters/class-to-macro.lua
+format:
+  html:
+    css: styles.css
+  pdf:
+    pdf-engine: xelatex
+    include-in-header: _preamble.tex
+    keep-tex: true
+---
+
+Welcome! This page demonstrates inline macros, a step box, and a collapsible box.
+
+# 1) Inline macros
+
+- Variable: [x]{.var}, [y]{.var}
+- Defined term: [standard deviation]{.def}
+- Descriptor/UI label: [Frequency]{.des}
+- Dataset: [Cars]{.data}
+- Dropdown selection: [Mean]{.dpd}
+- Function: [lm]{.fun}
+- Dialog name: [Descriptive Statistics]{.dialog}
+- Repository: [Rguroo Datasets]{.repo}
+- Answer: [42]{.ans}
+
+Mixed in prose: we compute the [mean]{.fun} of [mpg]{.var} from [Cars]{.data} in the [Descriptive Statistics]{.dialog} dialog.
+
+# 2) Step box (HTML + PDF)
+
+::: {.step tabindex="0" role="note" aria-label="Example step-by-step instructions"}
+<span class="step-title">Step-by-step instructions</span>
+
+1. Open the [Descriptive Statistics]{.dialog} dialog.  
+2. Choose [Mean]{.dpd} from the dropdown menu.  
+3. Load the [Cars]{.data} dataset.  
+4. Fit a linear model with [lm]{.fun}: response = [mpg]{.var}, predictor = [weight]{.var}.  
+5. Interpret the results. The [answer]{.ans} should be clear.
+
+![Cover picture (for demo).](images/Cover_picture.jpg){#fig-waterfall width=60% fig-cap="Figure: Example image used inside a step box." fig-alt="A cover picture demonstrating figure placement."}
+:::
+
+We can refer to the image as @fig-waterfall in both HTML and PDF.
+
+# 3) Collapsible section (open/close in HTML; titled box in PDF)
+
+This collapsible section shows the same image, using an R chunk and figure options.
+
+::: {.callout-note collapse=true title="Click here to see the cover picture"}
+```{r}
+#| label: cover-image
+#| echo: false
+#| fig-alt: "Cover picture demonstrating collapsible content."
+#| fig-cap: "Figure: Cover picture in a collapsible section."
+#| fig-align: center
+#| out-width: 65%
+knitr::include_graphics("images/Cover_picture.jpg")
+```
+:::
+
+::: {.callout-tip collapse="true" title="Try this tip!"}
+Content for a tip callout.
+:::

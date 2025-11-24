@@ -1,0 +1,47 @@
+% _preamble.tex
+% Keep only color defs, inline macros, and the stepbox. No custom collapsible box needed.
+
+% Colors: Okabe–Ito palette
+\definecolor{OIblue}{HTML}{0072B2}
+\definecolor{OIsky}{HTML}{56B4E9}
+\definecolor{OIgreen}{HTML}{009E73}
+\definecolor{OIorange}{HTML}{E69F00}
+\definecolor{OIverm}{HTML}{D55E00}
+\definecolor{OIpurple}{HTML}{CC79A7}
+\definecolor{OIblack}{HTML}{000000}
+
+% Inline macros (match your .var/.def/.fun/... classes)
+\newcommand{\Var}[1]{\textcolor{OIblue}{\textit{#1}}}           % .var
+\newcommand{\Def}[1]{\textcolor{OIpurple}{\textit{#1}}}         % .def
+\newcommand{\Des}[1]{\textcolor{OIorange}{#1}}                  % .des
+\newcommand{\Data}[1]{\textcolor{OIsky}{\textit{#1}}}           % .data
+\newcommand{\Dpd}[1]{\textcolor{OIgreen}{\textit{#1}}}          % .dpd
+\newcommand{\Fun}[1]{\textcolor{OIverm}{\textit{#1}}}           % .fun
+\newcommand{\Dialog}[1]{\textcolor{OIblue}{\textbf{#1}}}        % .dialog
+\newcommand{\Repo}[1]{\textcolor{OIgreen}{\textbf{\textit{#1}}}}% .repo
+\newcommand{\Ans}[1]{\textcolor{OIblack}{\textbf{#1}}}          % .ans
+% Text typed into a textbox / input field (PDF equivalent of .typein)
+% ==========================
+% Typein style for PDF (matches .typein in HTML)
+% ==========================
+\newcommand{\Typein}[1]{%
+  \colorbox{blue!2}{\texttt{\textcolor{black}{#1}}}%
+}
+% Subtle inline button for PDF (very light gray)
+\newtcbox{\Button}{on line,
+  colback=gray!5,        % very light gray background
+  coltext=black!80,      % medium–dark gray text
+  colframe=gray!40,      % light gray border
+  boxrule=0.4pt,
+  left=2pt,right=2pt,top=1pt,bottom=1pt,
+  arc=1mm, boxsep=0pt, nobeforeafter}
+% Step box for PDF
+\usepackage[most]{tcolorbox}
+\tcbset{enhanced, breakable}
+\newtcolorbox{stepbox}{
+  colback=OIsky!8,
+  colframe=OIblue,
+  arc=2mm,
+  boxrule=0.8pt,
+  left=6pt,right=6pt,top=6pt,bottom=6pt
+}

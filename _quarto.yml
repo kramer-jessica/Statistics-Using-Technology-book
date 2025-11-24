@@ -1,15 +1,30 @@
 project:
   type: book
+  output-dir: Final_output
+  post-render:
+    - scripts/make-pdf.sh
 
-format: html
-editor: visual
+lua-filters:
+  - filters/class-to-macro.lua
+
+format:
+  html:
+    css: styles.css
+  pdf:
+    pdf-engine: xelatex
+    include-in-header: _preamble.tex
 
 book:
-  title: "Statistics Using Technology, 4th Edition"
-  author: "Kathryn Kozak"
-  date: "5/3/2025"
+  title: "Statistics Using Technology: Rguroo Edition"
+  author:
+    - name: "Kathryn Kozak"
+      affiliation: "Coconino Community College"
+    - name: "John Doe"
+      affiliation: "University of Example"
+    - name: "Jane Smith"
+      affiliation: "Northern Arizona University"
+  date: "2026"
   cover-image: images/cover_picture.jpg
-  cover-image-alt: "Barron Falls Australia"
   chapters:
     - index.qmd
     - Statistical Basics.qmd
