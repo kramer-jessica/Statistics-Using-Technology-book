@@ -36,17 +36,23 @@ knitr::kable(head(Beer))
 ```
 
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  For instructions to import and view the Beer dataset in your Rguroo account, click here"} 
+:::{#Importing-Beer_data-to-Rguroo .ref-label} :::
 
-1. Go to your Rguroo account. 
-2. Open the **Data** toolbox.
-3. Click on [Data Import]{.dpd} dropdown and select [Dataset Repository]{.fun}.
-5. In the searchbox on the top type in the keyword [kozak]{.typein}. Then select the ``_Statistics Using Technology - Kozak_'' repository.
-6. In the middle _searchbox_ type in [beer]{.typein} and select the [beer_data]{.data} dataset.
-7. Click the [Import]{.button} button. The dataset will be imported to your Rguroo account.
-8. Click the [Close]{.button} button to close the Rguroo dialog.
-9. To view the dataset, click on the [beer_data]{.data} under the **Data** toolbox.
+Click to expand the box below to see instructions to import and view the [beer_data]{.data} dataset in your Rguroo account.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing beer_data to Rguroo"} 
+
+1. Open your Rguroo account.  
+2. Go to the **Data** toolbox.  
+3. From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.  
+4. In the top search box, type [kozak]{.typein}, then select the [Statistics Using Technology – Kozak]{.repo} repository.  
+5. In the middle search box, type [beer]{.typein}, and select the [beer_data]{.data} dataset that appears in the lower panel.  
+6. Click the [Import]{.button} button. The dataset will be imported into your Rguroo account.  
+7. Click the [Close]{.button} button to close the Rguroo dialog.  
+8. To view the dataset, double-click [beer_data]{.data} under the **Data** toolbox list.
+
 :::
+
 
 **Code book for data frame Beer**
 
@@ -66,7 +72,7 @@ calories: the number of calories in the beer.
 
 carbs: the amount of carbohydrates in the beer (g).
 
-Source Find Out How Many Calories in Beer? (n.d.). Retrieved July 21, 2019, from [](https://www.beer100.com/beer-calories/)
+Source Find Out How Many Calories in Beer? (n.d.). Retrieved July 21, 2019, from ![](https://www.beer100.com/beer-calories/)
 
 References (Find Out How Many Calories in Beer?, 2019)
 
@@ -80,8 +86,15 @@ $x$ = alcohol content in the beer
 
 $y$ = calories in 12 ounce beer
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} To see how to create the scatterplot of calories vs. alcohol content in Rguroo, click here"}
-1. Go to your Rguroo account. Make sure that you have already imported the [beer_data]{.data} dataset by following the instructions given above.  
+::: {#Creating-Scatterplot-of-Calories-vs-Alcohol-Content-in-Rguroo .ref-label} :::
+
+Click to expand the box below see how to create the scatterplot of calories vs. alcohol content in Rguroo.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Scatterplot of Calories vs. Alcohol Content in Rguroo"}
+
+**Before you begin:** Make sure you have already imported the [beer_data]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Beer_data-to-Rguroo).
+
+1. Go to your Rguroo account.  
 2. Open the **Plots** toolbox.  
 3. Click on the [Create Plot]{.dpd} dropdown, and select [Scatterplot]{.fun}. This opens the Scatterplot dialog.  
 4. From the [Dataset]{.dpd} dropdown, select the [beer_data]{.data} dataset.  
@@ -106,52 +119,79 @@ $y$ = calories in 12 ounce beer
 #| warning: FALSE
 #| label: fig-Beer-point
 #| fig-cap: "Calories versus Alcohol Content in Beer"
-#| out-width: "70%"
-knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCaloryScatter.svg")
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieScatter.svg")
 ```
 
-This scatter plot shown in @fig-Beer-point looks fairly linear.
+The scatter plot shown in @fig-Beer-point looks fairly linear.
 
 To find the equation for the linear relationship, the process of regression is used to find the line that best fits the data (sometimes called the best fitting line). The process is to draw the line through the data and then find the vertical distance from a point to the line. These are called the **residuals**. The regression line is the line that makes the square of the residuals as small as possible, so the regression line is also sometimes called the least squares line. The regression line on the scatter plot is displayed in @fig-Beer-point-line.
 
-```{r beer10-point-lm}
+:::{#Adding-Regression-Line-to-Scatterplot-in-Rguroo .ref-label} :::
+
+Click to expand the box below to see how to add a regression line to the scatterplot in Rguroo.
+
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Adding Regression Line to Scatterplot in Rguroo"}
+
+**Before you begin:** Ensure you’ve created the scatterplot of calories vs. alcohol content in your Rguroo account, as shown [here](#Creating-Scatterplot-of-Calories-vs-Alcohol-Content-in-Rguroo).
+
+1. Go to the Rguroo tab with your scatterplot of calories vs. alcohol content.  
+2. Open the [Basics]{.diag} dialog by clicking the ![](Rguroo_Icons/basics.png) button.  
+3. Select the checkbox [LS Line]{.des} in the **Superimpose** section of the dialog.  
+4. Click the **preview icon** ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the scatterplot with the regression line.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+
+![Scatteplot Dialog: Adding a least squares line](Rguroo_outputs/Regression/Scatterplot_dialog_LS.png){width=500px}
+
+:::
+
+:::
+
+```{r beer10-point-lm, echo=FALSE, evaluate=FALSE}
 #| fig-alt: "Scatter plot with regression line on plot"
 #| warning: FALSE
 #| label: fig-Beer-point-line
 #| fig-cap: "Scatter Plot of Beer Data with Regression Line"
-gf_point(alcohol~calories, data=Beer, title="Calories versus Alcohol Content in Beer", xlab="Alcohol Content", ylab="Number of Calories") |>
-  gf_lm()
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieScatterLS.svg")
+#gf_point(alcohol~calories, data=Beer, title="Calories versus Alcohol Content in Beer", xlab="Alcohol Content", ylab="Number of Calories") |>
+#  gf_lm()
 ```
 
 ### Find the regression equation (also known as best fitting line or least squares line)
 
-Given a collection of paired sample data, the regression equation is $\hat{y}=mx+b$
+Given a collection of paired sample data, the regression equation is $\hat{y}=mx+b$, where the slope = $m$ and $y$-intercept = $(0,b)$.
 
-where the slope = $m$ and $y$-intercept = $(0,b)$
+As we will show, to find the linear model using Rguroo, we will use the [Linear Regression]{.fun} function in the **Analytics** toolbox. 
 
-To find the linear model using r Studio, use the command:
+The **residuals** are the difference between the actual values and the estimated values, namely $\text{residual} = y - \hat{y}$.
 
-lm(response_variable\~explanatory_variable, data=Data_Frame
+The **independent variable**, also called the **explanatory variable** or **predictor variable**, is the $x$-value in the equation. The independent variable is the one that you use to predict what the other variable. The **dependent variable** depends on what independent value you pick. It also responds to the explanatory variable and is usually called the **response variable**. In the alcohol content and calorie example, it makes slightly more sense to say that you would use the alcohol content on a beer to predict the number of calories in the beer.
 
-The **residuals** are the difference between the actual values and the estimated values.
+**Conditions for creating a regression line from a sample:**
 
-The **independent variable**, also called the **explanatory variable** or **predictor variable**, is the $x$-value in the equation. The independent variable is the one that you use to predict what the other variable is. The **dependent variable** depends on what independent value you pick. It also responds to the explanatory variable and is usually called the **response variable**. In the alcohol content and calorie example, it makes slightly more sense to say that you would use the alcohol content on a beer to predict the number of calories in the beer.
+1. _Randomness_: The set of ordered pairs is a random sample from the population of all such possible pairs.
 
-Conditions of the regression line when creating a regression line from a sample:
+2. _Linearity_: For a given $x$-value, the distribution of $y$-values has a mean that lies on the least squares line.
 
-1.  The set of ordered pairs is a random sample from the population of all such possible pairs.
+3. _Constant Variance_: The variance of the $y$-values should be the same across all $x$-values. 
 
-2.  For each fixed value of $x$, the $y$-values have a normal distribution. All of the $y$ distributions have the same variance, and for a given $x$-value, the distribution of $y$-values has a mean that lies on the least squares line. You also assume that for a fixed $y$, each $x$ has its own normal distribution. This is difficult to figure out, so you can use the following to determine if you have a normal distribution.
+4. _Normality_: For inference on parameters to be valid, the $y$-values for each fixed value of $x$ should follow a normal distribution. 
 
-<!-- -->
 
-i.  Look to see if the scatter plot has a linear pattern.
+Since it can be difficult to verify these conditions directly, we will show how you can use the following to assess these conditions graphically:
 
-ii. Examine the residuals to see if there is randomness in the residuals. If there is a pattern to the residuals, then there is an issue in the data.
+   i. _Linearity:_ Check whether the scatterplot has a roughly linear pattern. 
+
+   ii. _Constant Variance_: Examine the plot of the residuals for randomness. If you observe a pattern, this assumption may not hold.  
+
+   iii. _Normality_: Inspect the normal probability plot of the residuals to see if it is approximately linear.
 
 ### Example: Find the Equation of the Regression Line
 
-Is there a relationship between the alcohol content and the number of calories in 12-ounce beer? To determine if there is one a sample of beer's alcohol content and calories (Find Out How Many Calories in Beer?, 2019), is in @tbl-Beer.
+Is there a relationship between the alcohol content and the number of calories in 12-ounce beer? To determine if there is one, we examine the sample of beer's alcohol content and calories, portion of which is shown in @tbl-Beer (Find Out How Many Calories in Beer?, 2019).
 
 a.  Find the regression equation between alcohol content and calories.
 b.  Use the regression equation to find the number of calories when the alcohol content is 7.00%.
@@ -167,31 +207,114 @@ $x$ = alcohol content in the beer
 
 $y$ = calories in 12 ounce beer
 
-To find the regression equation using rStudio for this example, the command would be
+::: {#Finding-the-Regression-Equation-in-Rguroo .ref-label} :::
 
-```{r chapter-10-beer-lm-model}
+Click to expand the box below to see how to obtain the regression equation in Rguroo.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Finding the Regression Equation in Rguroo"}
+**Before you begin:** Make sure you have already imported the [beer_data]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Beer_data-to-Rguroo).
+
+1. Go to your Rguroo account.
+2. Open the **Analytics** toolbox.
+3. From the [Analysis]{.dpd} dropdown, select [Linear Regression]{.fun} --> [Simple Regression]{.fun}. This opens the Simple Linear Regression dialog.
+4. From the [Dataset]{.dpd} dropdown, select the [beer_data]{.data} dataset.
+5. From the [Predictor (x)]{.dpd} dropdown, select the [alcohol]{.var} variable.
+6. From the [Response (y)]{.dpd} dropdown, select the [calories]{.var} variable.
+7. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the regression results.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+![Simple Linear Regression dialog in Rguroo](Rguroo_outputs/Regression/AlcoholCalorieRegress_dialog.png){width=500px}
+:::
+
+:::
+
+```{r chapter-10-beer-lm-model, echo=FALSE, eval=FALSE}
 lm(calories~alcohol, data=Beer)
 ```
 
-From this you can see that the y-intercept is 14.53 and the slope is 2672.36. So the regression equation is $\hat{y}=2672x+14.3$.
+The following is a portion of the output from Rguroo for this regression analysis.
 
-Remember, this is an estimate for the true regression. A different sample would produce a different estimate.
+```{r AlcoholCalorieLSEstimates, echo=FALSE}
+#| label: tbl-Beer-lm-model
+#| tbl-cap: "Data and model summary for Alcohol Content versus Calories"
+#| out-width: "90%"
+#| fig-alt: "Regression output for alcohol content versus calories"
+#| warning: FALSE
+knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieLSEstimates.png")
+```
+
+This table shows various information about the regression analysis. In particular, the last row, labeled “Equation of Least Squares Line,” gives the estimates for the slope and the $y$-intercept. Note that the equation states *calories* in place of $y$ and *alcohol* in place of $x$.
+
+From this, rounding the values,  you can see that the y-intercept is 14.53 and the slope is 2672.36. So the regression equation is $\hat{y}=2672x+14.5$.
+
+Remember, this is an estimate for the true regression equation. A different sample would produce a different estimate.
 
 Conditions check:
 
-1.  State: A random sample of alcohol content and calories was taken.
+1.  _Randomness_: A random sample of alcohol content and calories was taken.
 
     Check: There is no guarantee that this was a random sample. The data was collected off of a website, and the website does not say how the data was obtained. However, it is a collection of most popular beers from large breweries, so it may be alright that it isn't a random sample.
 
-2.  State: The distribution for each calorie value is normally distributed for every value of alcohol content in the beer.
+2. _Linearity_: For a given $x$-value, the distribution of $y$-values has a mean that lies on the least squares line.
 
 Check:
 
-i.  From @fig-Beer-point, the scatter plot looks fairly linear.
+We Examine two graphs to check this condition.
 
-ii. To graph the residuals, first the residuals need to be calculated. This means that for every $x$ value, you need to calculate the $y$ value that can be found from the regression equation. Then subtract the $y$ value that was measured from this calculated $y$ value. This is $\hat{y}-y$. Luckily, rStudio will calculate these for you. The command is:
+i.  From @fig-Beer-point, the scatter plot looks fairly linear. Note that this graph is also shown in the output of the [Linear Regression]{.fun} function in Rguroo.
 
-```{r chapter-10-beer-residuals}
+```{r AlcoholCalorieResvsFit}
+#| fig-alt: "Residuals versus Fitted values plot looks random"
+#| warning: FALSE
+#| label: fig-Beer-resvsfit
+#| fig-cap: "Residuals versus Fitted Values Plot for Beer Data"
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieResvsFit.png")
+```
+
+ii. @fig-Beer-resvsfit shows a plot of residuals versus fitted values. To graph the residuals, the residuals must first be calculated. For each $x$ value, compute the corresponding $y$ value predicted by the regression equation; this predicted value is called the *fitted value* and is denoted by $\hat{y}$. Then subtract the observed $y$ value from this fitted value to obtain the residual. Fortunately, Rguroo calculates these automatically for you.
+
+Click to expand the box below to see how to obtain the residuals in Rguroo.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Obtaining Residuals in Rguroo"}
+
+**Before you begin:** Continue with the steps shown [here](#Finding-the-Regression-Equation-in-Rguroo) to obtain the regression equation in Rguroo.
+
+1. Go to the tab in Rguroo with your regression results.
+2. Click the ![](Rguroo_Icons/basics.png) button to open the [Simple Linear Regression]{.diag} dialog.
+3. Select the checkbox [Predictions \& Residuals]{.des}.
+4. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the regression results with residuals.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+![Simple Linear Regression dialog: Obtaining Residuals](Rguroo_outputs/Regression/AlcoholCalorieResidualsDialog1.png){width=500px}
+
+:::
+
+:::
+
+Click to expand the box below to see the residuals for the first 20 cases of the beer data.
+
+:::{.callout-note appearance="simple" collapse="true" icon="none" title="Residuals for Alcohol and Calorie Content in Beer"}
+
+```{r AlcoholCalorieResiduals, echo=FALSE}
+#| fig-alt: "Residuals for Alcohol and Calorie Content in Beer from Rguroo"
+#| warning: FALSE
+#| label: tbl-Beer-residuals-rguroo
+#| fig-cap: "Residuals for Alcohol and Calorie Content in Beer from Rguroo"
+#| out-width: "70%"
+
+knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieResiduals.png")
+```
+
+:::
+
+
+
+
+
+
+
+```{r chapter-10-beer-residuals, echo=FALSE, evaluate=FALSE}
 #| tbl-alt: "Residuals for Alcohol and Calorie Content in Beer"
 #| label: tbl-Beer-residuals
 #| tbl-cap: "Residuals for Alcohol and Calorie Content in Beer"

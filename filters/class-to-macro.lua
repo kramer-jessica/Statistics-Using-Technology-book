@@ -1,30 +1,25 @@
--- filters/class-to-macro.lua
--- Purpose:
---   1) Map inline span classes to LaTeX macros for PDF.
---   2) Turn ::: step blocks into a tcolorbox (PDF) or leave as <div class="step"> (HTML).
--- Notes:
---   Collapsibles are now handled with Quarto callouts (no Lua required).
+-- class-to-macro.lua
+-- Maps inline span classes (var, def, dpd, typein, etc.) to LaTeX macros for PDF,
+-- and adds a cross-format reference label macro using the class ".ref-label" 
+-- that works in both HTML and PDF.
 
--- ----- Inline classes -> LaTeX macro names (defined in _preamble.tex) -----
-local inline_map = {
-  var    = "Var",
-  def    = "Def",
-  des    = "Des",
-  data   = "Data",
-  dpd    = "Dpd",
-  fun    = "Fun",
-  dialog = "Dialog",
-  repo   = "Repo",
-  ans    = "Ans",
-  typein = "Typein",     -- maps [.typein] -> \Typein{...} in PDF
-  button = "Button"      -- maps [.button] -> \Button{...} in PDF
-}
+-- Lua 5.3+ unpack
+local unpack = table.unpack
 
+-- Detect PDF/LaTeX output
 local function is_pdf()
-  return FORMAT:match("latex") or FORMAT:match("pdf")
+  return (FORMAT or ""):match("latex") or (FORMAT or ""):match("pdf")
 end
 
--- Minimal TeX escape for macro arguments
+-- Utility: does a block/span have a given class?
+local function has_class(el, name)
+  for _, cls in ipairs(el.classes or {}) do
+    if cls == name then return true end
+  end
+  return false
+end
+
+-- Escape TeX special chars for macro arguments
 local function tex_escape(s)
   local r = tostring(s)
   r = r:gsub("\\", "\\textbackslash{}")
@@ -40,36 +35,75 @@ local function tex_escape(s)
   return r
 end
 
-local unpack = table.unpack or unpack
+-- Map inline classes to LaTeX macros (PDF only).
+local inline_map = {
+  var    = "Var",
+  def    = "Def",
+  des    = "Des",
+  data   = "Data",
+  dpd    = "Dpd",
+  fun    = "Fun",
+  dialog = "Dialog",
+  repo   = "Repo",
+  ans    = "Ans",
+  typein = "Typein",
+  button = "Button"
+}
 
--- Inline span classes -> LaTeX macros in PDF; no change in HTML
+-- Inline spans: convert known classes to LaTeX macros in PDF;
+-- also support inline .ref-label anchors.
 function Span(el)
-  if not is_pdf() then return el end
-  for _, cls in ipairs(el.classes) do
+  -- Reference label macro: [anything]{#id .ref-label}
+  if has_class(el, "ref-label") and el.identifier ~= "" then
+    local id = el.identifier
+    if is_pdf() then
+      return pandoc.RawInline("tex", "\\hypertarget{" .. id .. "}{}")
+    else
+      return pandoc.RawInline("html", '<a id="' .. id .. '"></a>')
+    end
+  end
+
+  if not is_pdf() then
+    return el
+  end
+
+  for _, cls in ipairs(el.classes or {}) do
     local macro = inline_map[cls]
     if macro then
       local txt = pandoc.utils.stringify(el.content)
       return pandoc.RawInline("tex", "\\" .. macro .. "{" .. tex_escape(txt) .. "}")
     end
   end
+
   return el
 end
 
--- Step box block: ::: step ... :::
+-- Block-level transforms:
+-- 1) Step boxes (if you still use .step -> a LaTeX environment)
+-- 2) Reference label macro: ::: {#id .ref-label} :::
 function Div(el)
-  for _, cls in ipairs(el.classes) do
-    if cls == "step" then
-      if is_pdf() then
-        return {
-          pandoc.RawBlock("latex", "\\begin{stepbox}"),
-          unpack(el.content),
-          pandoc.RawBlock("latex", "\\end{stepbox}")
-        }
-      else
-        -- HTML: keep <div class="step">...</div> for CSS styling
-        return el
-      end
+  -- Block reference label
+  if has_class(el, "ref-label") and el.identifier ~= "" then
+    local id = el.identifier
+    if is_pdf() then
+      return pandoc.RawBlock("latex", "\\hypertarget{" .. id .. "}{}")
+    else
+      return pandoc.RawBlock("html", '<a id="' .. id .. '"></a>')
     end
   end
+
+  -- Optional: if you have a .step class mapped to a LaTeX box in PDF
+  if has_class(el, "step") then
+    if is_pdf() then
+      return {
+        pandoc.RawBlock("latex", "\\begin{stepbox}"),
+        unpack(el.content),
+        pandoc.RawBlock("latex", "\\end{stepbox}")
+      }
+    else
+      return el
+    end
+  end
+
   return el
 end
