@@ -291,10 +291,10 @@ window.Quarto = {
 <p>Please note: there are many other types of relationships besides linear that can be found for the data. This book will only explore linear, but realize that there are other relationships that can be used to describe data.</p>
 <section id="regression" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="regression"><span class="header-section-number">11.1</span> Regression</h2>
-<p>When comparing different variables, two questions come to mind: “Is there a relationship between two variables?” and “How strong is that relationship?” These questions can be answered using <strong>regression</strong> and <strong>correlation</strong>. Regression answers whether there is a relationship (again this book will explore linear only) and correlation answers how strong the linear relationship is. The variable that are used to explain the change in the other variable is called the <strong>explanatory variable</strong> while the variable that is changing is called the <strong>response variable</strong>. Other variables that help to explain the changes are known as <strong>covariates</strong>. To introduce the concepts of regression and correlation it is easier to look at a set of data.</p>
+<p>When comparing different variables, two questions come to mind: “Is there a relationship between two variables?” and “How strong is that relationship?” These questions can be answered using <strong>regression</strong> and <strong>correlation</strong>. Regression answers whether there is a relationship, (again this book will explore linear relationships only) and correlation answers how strong the linear relationship is. The variable that is used to explain the change (or variability) in the other variable is called the <strong>explanatory variable</strong> or <strong>predictor variable</strong>, while the variable whose variability is being explained is called the <strong>response variable</strong>. In general, variables that help to explain the changes in a response variable are known as <strong>covariates</strong>. To introduce the concepts of regression and correlation, it is easier to look at a set of data.</p>
 <section id="example-determining-if-there-is-a-relationship" class="level3" data-number="11.1.1">
 <h3 data-number="11.1.1" class="anchored"><span class="header-section-number">11.1.1</span> Example: Determining if there is a Relationship</h3>
-<p>Is there a relationship between the alcohol content and the number of calories in 12-ounce beer? To determine if there is one, we explore a sample of 227 beers’ alcohol content and their calories (Find Out How Many Calories in Beer?, 2019). <a href="#tbl-Beer" class="quarto-xref">Table&nbsp;<span>11.1</span></a> shows the first five rows of the dataset.</p>
+<p>Is there a relationship between the alcohol content and the number of calories in 12-ounce beer? To determine if there is one, we explore a dataset of 227 beers, including their alcohol content and their calorie counts (Find Out How Many Calories in Beer?, 2019). <a href="#tbl-Beer" class="quarto-xref">Table&nbsp;<span>11.1</span></a> shows the first five rows of the dataset.</p>
 <div class="cell" data-tbl-alt="Head of beer data frame">
 <div id="tbl-Beer" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Head of beer data frame">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -379,7 +379,7 @@ Table&nbsp;11.1: Alcohol and Calorie Content in Beer
 </div>
 </div>
 <div id="Importing-Beer_data-to-Rguroo" class="ref-label">
-<p>Click to expand the box below to see instructions to import and view the <span class="data">beer_data</span> dataset in your Rguroo account.</p>
+<p>Click to expand the box below to see instructions to import and view the <span class="data">beer_data</span> dataset.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing beer_data to Rguroo">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -393,9 +393,7 @@ Table&nbsp;11.1: Alcohol and Calorie Content in Beer
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Open your Rguroo account.<br>
-</li>
-<li>Go to the <strong>Data</strong> toolbox.<br>
+<li>Open the <strong>Data</strong> toolbox in Rguroo.<br>
 </li>
 <li>From the <span class="dpd">Data Import</span> dropdown, select <span class="fun">Dataset Repository</span>.<br>
 </li>
@@ -403,9 +401,9 @@ Table&nbsp;11.1: Alcohol and Calorie Content in Beer
 </li>
 <li>In the middle search box, type <span class="typein">beer</span>, and select the <span class="data">beer_data</span> dataset that appears in the lower panel.<br>
 </li>
-<li>Click the <span class="button">Import</span> button. The dataset will be imported into your Rguroo account.<br>
+<li>Click the <span class="button">Import</span>. The dataset will be imported into your Rguroo account.<br>
 </li>
-<li>Click the <span class="button">Close</span> button to close the Rguroo dialog.<br>
+<li>Click the <span class="button">Close</span> to close the dialog.<br>
 </li>
 <li>To view the dataset, double-click <span class="data">beer_data</span> under the <strong>Data</strong> toolbox list.</li>
 </ol>
@@ -421,16 +419,16 @@ Table&nbsp;11.1: Alcohol and Calorie Content in Beer
 <p>alcohol: the alcohol content of the beer.</p>
 <p>calories: the number of calories in the beer.</p>
 <p>carbs: the amount of carbohydrates in the beer (g).</p>
-<p>Source Find Out How Many Calories in Beer? (n.d.). Retrieved July 21, 2019, from <img src="https://www.beer100.com/beer-calories/.png" class="img-fluid"></p>
-<p>References (Find Out How Many Calories in Beer?, 2019)</p>
+<p>Source: Find Out How Many Calories in Beer? (n.d.). Retrieved July 21, 2019, from <img src="https://www.beer100.com/beer-calories/.png" class="img-fluid"></p>
+<p>References: (Find Out How Many Calories in Beer?, 2019)</p>
 <section id="solution" class="level4" data-number="11.1.1.1">
 <h4 data-number="11.1.1.1" class="anchored"><span class="header-section-number">11.1.1.1</span> Solution</h4>
-<p>To aid in figuring out if there is a relationship, it helps to draw a scatter plot of the data. First it is helpful to state the random variables, and since in an algebra class the variables are represented as <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, those labels will be used here. It helps to state which variable is <span class="math inline">\(x\)</span> and which is <span class="math inline">\(y\)</span>.</p>
-<p>State random variables</p>
+<p>To aid in figuring out if there is a relationship, it helps to draw a scatterplot of the data. First, it is helpful to state the variables, and since variables in an algebra class are typically represented as <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, those labels will be used here. It helps to state which variable is <span class="math inline">\(x\)</span> (explanatory or predictor) and which is <span class="math inline">\(y\)</span> (response).</p>
+<p>State variables</p>
 <p><span class="math inline">\(x\)</span> = alcohol content in the beer</p>
 <p><span class="math inline">\(y\)</span> = calories in 12 ounce beer</p>
 <div id="Creating-Scatterplot-of-Calories-vs-Alcohol-Content-in-Rguroo" class="ref-label">
-<p>Click to expand the box below see how to create the scatterplot of calories vs.&nbsp;alcohol content in Rguroo.</p>
+<p>Click to expand the box below see how to create the scatterplot of calories vs.&nbsp;alcohol content.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Scatterplot of Calories vs. Alcohol Content in Rguroo">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -445,30 +443,28 @@ Table&nbsp;11.1: Alcohol and Calorie Content in Beer
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">beer_data</span> dataset into your Rguroo account, as was shown <a href="#Importing-Beer_data-to-Rguroo">here</a>.</p>
 <ol type="1">
-<li>Go to your Rguroo account.<br>
+<li>Open the <strong>Plots</strong> toolbox in Rguroo.<br>
 </li>
-<li>Open the <strong>Plots</strong> toolbox.<br>
+<li>Open the <span class="dpd">Create Plot</span> dropdown, and select <span class="fun">Scatterplot</span>. This opens the Scatterplot dialog.<br>
 </li>
-<li>Click on the <span class="dpd">Create Plot</span> dropdown, and select <span class="fun">Scatterplot</span>. This opens the Scatterplot dialog.<br>
+<li>In the Scatterplot dialog, choose the <span class="data">beer_data</span> dataset from the <span class="dpd">Dataset</span> dropdown.<br>
 </li>
-<li>From the <span class="dpd">Dataset</span> dropdown, select the <span class="data">beer_data</span> dataset.<br>
+<li>Choose the <span class="var">alcohol</span> variable from the <span class="dpd">Predictor (x)</span> dropdown.<br>
 </li>
-<li>From the <span class="dpd">Predictor (x)</span> dropdown, select the <span class="var">alcohol</span> variable.<br>
-</li>
-<li>From the <span class="dpd">Response (y)</span> dropdown, select the <span class="var">calories</span> variable.<br>
+<li>Choose the <span class="var">calories</span> variable from the <span class="dpd">Response (y)</span> dropdown.<br>
 </li>
 <li><strong>(Optional)</strong> In the <strong>Label</strong> section of the dialog:
 <ul>
-<li>In the <span class="des">Title</span> textbox, enter <span class="typein">Calories versus Alcohol Content in Beer</span>.<br>
+<li>Enter <span class="typein">Calories versus Alcohol Content in Beer</span> in the <span class="des">Title</span> textbox.<br>
 </li>
-<li>In the <span class="des">X-Axis</span> textbox, enter <span class="typein">Alcohol Content</span>.<br>
+<li>Enter <span class="typein">Alcohol Content</span> in the <span class="des">X-Axis</span> textbox,.<br>
 </li>
-<li>In the <span class="des">Y-Axis</span> textbox, enter <span class="typein">Number of Calories</span>.<br>
+<li>Enter <span class="typein">Number of Calories</span> in the <span class="des">Y-Axis</span> textbox.<br>
 </li>
 </ul></li>
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the scatterplot.</li>
 </ol>
-<div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
+<div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -482,8 +478,8 @@ Click here to see the Rguroo dialog
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Rguroo_images/Regression/Scatterplot_dialog.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>Scatterplot dialog in Rguroo</figcaption>
+<p><img src="Rguroo_dialogs/Regression/Scatterplot_dialog.png" class="img-fluid figure-img" width="500"></p>
+<figcaption>Scatterplot dialog showing settings for plotting alcohol content versus calories.</figcaption>
 </figure>
 </div>
 </div>
@@ -507,16 +503,16 @@ Figure&nbsp;11.1: Calories versus Alcohol Content in Beer
 </div>
 </div>
 <p>The scatter plot shown in <a href="#fig-Beer-point" class="quarto-xref">Figure&nbsp;<span>11.1</span></a> looks fairly linear.</p>
-<p>To find the equation for the linear relationship, the process of regression is used to find the line that best fits the data (sometimes called the best fitting line). The process is to draw the line through the data and then find the vertical distance from a point to the line. These are called the <strong>residuals</strong>. The regression line is the line that makes the square of the residuals as small as possible, so the regression line is also sometimes called the least squares line. The regression line on the scatter plot is displayed in <a href="#fig-Beer-point-line" class="quarto-xref">Figure&nbsp;<span>11.2</span></a>.</p>
+<p>To find the equation for the linear relationship, the process of regression is used to determine the line that best fits the data (sometimes called the best-fitting line). The process is to draw a line through the data and measure the vertical distance from each point to the line. These distances are called the <strong>residuals</strong>. The regression line is the line that makes the makes square of the residuals as small as possible, which is why it is sometimes called the least squares line. The regression line on the scatter plot is displayed in <a href="#fig-Beer-point-line" class="quarto-xref">Figure&nbsp;<span>11.2</span></a>.</p>
 <div id="Adding-Regression-Line-to-Scatterplot-in-Rguroo" class="ref-label">
-<p>Click to expand the box below to see how to add a regression line to the scatterplot in Rguroo.</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Adding Regression Line to Scatterplot in Rguroo">
+<p>Click to expand the box below to see how to add a regression line to the scatterplot.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Adding Regression Line to a Scatterplot">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Adding Regression Line to Scatterplot in Rguroo
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Adding Regression Line to a Scatterplot
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -524,15 +520,15 @@ Figure&nbsp;11.1: Calories versus Alcohol Content in Beer
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Ensure you’ve created the scatterplot of calories vs.&nbsp;alcohol content in your Rguroo account, as shown <a href="#Creating-Scatterplot-of-Calories-vs-Alcohol-Content-in-Rguroo">here</a>.</p>
 <ol type="1">
-<li>Go to the Rguroo tab with your scatterplot of calories vs.&nbsp;alcohol content.<br>
+<li>Open the Rguroo tab with your scatterplot of calories vs.&nbsp;alcohol content.<br>
 </li>
 <li>Open the <span class="diag">Basics</span> dialog by clicking the <img src="Rguroo_Icons/basics.png" class="img-fluid"> button.<br>
 </li>
-<li>Select the checkbox <span class="des">LS Line</span> in the <strong>Superimpose</strong> section of the dialog.<br>
+<li>In the <strong>Superimpose</strong> section of the dialog, Select the checkbox <span class="des">LS Line</span>.<br>
 </li>
 <li>Click the <strong>preview icon</strong> <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the scatterplot with the regression line.</li>
 </ol>
-<div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
+<div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -546,8 +542,8 @@ Click here to see the Rguroo dialog
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Rguroo_outputs/Regression/Scatterplot_dialog_LS.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>Scatteplot Dialog: Adding a least squares line</figcaption>
+<p><img src="Rguroo_dialogs/Regression/Scatterplot_dialog_LS.png" class="img-fluid figure-img" width="500"></p>
+<figcaption>Scatterplot dialog for adding a least-squares line to a plot of alcohol content versus calorie counts</figcaption>
 </figure>
 </div>
 </div>
@@ -573,22 +569,22 @@ Figure&nbsp;11.2: Scatter Plot of Beer Data with Regression Line
 <section id="find-the-regression-equation-also-known-as-best-fitting-line-or-least-squares-line" class="level3" data-number="11.1.2">
 <h3 data-number="11.1.2" class="anchored" data-anchor-id="find-the-regression-equation-also-known-as-best-fitting-line-or-least-squares-line"><span class="header-section-number">11.1.2</span> Find the regression equation (also known as best fitting line or least squares line)</h3>
 <p>Given a collection of paired sample data, the regression equation is <span class="math inline">\(\hat{y}=mx+b\)</span>, where the slope = <span class="math inline">\(m\)</span> and <span class="math inline">\(y\)</span>-intercept = <span class="math inline">\((0,b)\)</span>.</p>
-<p>As we will show, to find the linear model using Rguroo, we will use the <span class="fun">Linear Regression</span> function in the <strong>Analytics</strong> toolbox.</p>
+<p>As we will show, to find the linear model using Rguroo, we use the <span class="fun">Linear Regression</span> function in the <strong>Analytics</strong> toolbox.</p>
 <p>The <strong>residuals</strong> are the difference between the actual values and the estimated values, namely <span class="math inline">\(\text{residual} = y - \hat{y}\)</span>.</p>
-<p>The <strong>independent variable</strong>, also called the <strong>explanatory variable</strong> or <strong>predictor variable</strong>, is the <span class="math inline">\(x\)</span>-value in the equation. The independent variable is the one that you use to predict what the other variable. The <strong>dependent variable</strong> depends on what independent value you pick. It also responds to the explanatory variable and is usually called the <strong>response variable</strong>. In the alcohol content and calorie example, it makes slightly more sense to say that you would use the alcohol content on a beer to predict the number of calories in the beer.</p>
-<p><strong>Conditions for creating a regression line from a sample:</strong></p>
+<p>The <strong>independent variable</strong> (the <span class="math inline">\(x\)</span>-value) corresponds to the <strong>explanatory</strong> or <strong>predictor</strong> variable, the variable used to predict or explain changes in another variable. The <strong>dependent variable</strong> (the <span class="math inline">\(y\)</span>-value) corresponds to the <strong>response</strong> variable—the variable whose values change in relation to the predictor.In our example, alcohol content is the predictor (independent, <span class="math inline">\(x\)</span>) variable, and the number of calories is the response (dependent, <span class="math inline">\(y\)</span>) variable, since it makes more sense to predict calories from alcohol content rather than vice versa.</p>
+<p><strong>Assumptions for the Validity of the Regression Equation and Line:</strong></p>
 <ol type="1">
 <li><p><em>Randomness</em>: The set of ordered pairs is a random sample from the population of all such possible pairs.</p></li>
 <li><p><em>Linearity</em>: For a given <span class="math inline">\(x\)</span>-value, the distribution of <span class="math inline">\(y\)</span>-values has a mean that lies on the least squares line.</p></li>
+</ol>
+<p>The assumption of linearity is essential. If the relationship between the two variables is not linear, then a regression line will not fit the data well. To check linearity, we look at the scatterplot: a roughly straight-line pattern suggests the assumption is reasonable, while a curved pattern suggests it is not. We can also examine the residual plot. If the residuals are randomly scattered around the horizontal line <span class="math inline">\(y = 0\)</span>, the linearity assumption is likely valid. If the residuals show a curved pattern, then the assumption of linearity is likely violated.</p>
+<p><strong>Assumptions for the validity of inference on the parameters of the regression line:</strong></p>
+<ol start="3" type="1">
 <li><p><em>Constant Variance</em>: The variance of the <span class="math inline">\(y\)</span>-values should be the same across all <span class="math inline">\(x\)</span>-values.</p></li>
-<li><p><em>Normality</em>: For inference on parameters to be valid, the <span class="math inline">\(y\)</span>-values for each fixed value of <span class="math inline">\(x\)</span> should follow a normal distribution.</p></li>
+<li><p><em>Normality</em>: The <span class="math inline">\(y\)</span>-values for each fixed value of <span class="math inline">\(x\)</span> should follow a normal distribution.</p></li>
 </ol>
-<p>Since it can be difficult to verify these conditions directly, we will show how you can use the following to assess these conditions graphically:</p>
-<ol type="i">
-<li><p><em>Linearity:</em> Check whether the scatterplot has a roughly linear pattern.</p></li>
-<li><p><em>Constant Variance</em>: Examine the plot of the residuals for randomness. If you observe a pattern, this assumption may not hold.</p></li>
-<li><p><em>Normality</em>: Inspect the normal probability plot of the residuals to see if it is approximately linear.</p></li>
-</ol>
+<p>The assumptions of constant variance and normality are mainly needed when we make inferences about the regression model. Inference in regression includes creating confidence intervals for the regression parameters, testing hypotheses about those parameters, and creating confidence intervals or prediction intervals for the value of the response variable we predict at a given <span class="math inline">\(x\)</span>-value.. These ideas are similar to the confidence intervals and hypothesis tests for means that you have already seen, but here they apply to the slope and intercept of the regression line and to predicted values.</p>
+<p>Although this book does not cover inference for regression, it is helpful to understand the basic ideas behind these assumptions. To check constant variance, we examine the residual plot: if the residuals are scattered with roughly the same vertical spread around the horizontal line <span class="math inline">\(y = 0\)</span> across all <span class="math inline">\(x\)</span>-values, the assumption is reasonable. A funnel-shaped pattern suggests the spread is not constant. To check normality, we look at a histogram or a <em>normal probability plot</em> of the residuals. In a normal probability plot, the residuals should fall roughly along a straight line; strong curves or outliers suggest that the normality assumption may not hold.</p>
 </section>
 <section id="example-find-the-equation-of-the-regression-line" class="level3" data-number="11.1.3">
 <h3 data-number="11.1.3" class="anchored"><span class="header-section-number">11.1.3</span> Example: Find the Equation of the Regression Line</h3>
@@ -607,30 +603,34 @@ Figure&nbsp;11.2: Scatter Plot of Beer Data with Regression Line
 <p><span class="math inline">\(x\)</span> = alcohol content in the beer</p>
 <p><span class="math inline">\(y\)</span> = calories in 12 ounce beer</p>
 <div id="Finding-the-Regression-Equation-in-Rguroo" class="ref-label">
-<p>Click to expand the box below to see how to obtain the regression equation in Rguroo.</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Finding the Regression Equation in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<p>Click to expand the box below to see how to obtain the regression equation.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Finding the Regression Equation for the Beer Data">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Finding the Regression Equation in Rguroo
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Finding the Regression Equation for the Beer Data
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">beer_data</span> dataset into your Rguroo account, as was shown <a href="#Importing-Beer_data-to-Rguroo">here</a>.</p>
 <ol type="1">
-<li>Go to your Rguroo account.</li>
-<li>Open the <strong>Analytics</strong> toolbox.</li>
-<li>From the <span class="dpd">Analysis</span> dropdown, select <span class="fun">Linear Regression</span> –&gt; <span class="fun">Simple Regression</span>. This opens the Simple Linear Regression dialog.</li>
-<li>From the <span class="dpd">Dataset</span> dropdown, select the <span class="data">beer_data</span> dataset.</li>
-<li>From the <span class="dpd">Predictor (x)</span> dropdown, select the <span class="var">alcohol</span> variable.</li>
-<li>From the <span class="dpd">Response (y)</span> dropdown, select the <span class="var">calories</span> variable.</li>
-<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the regression results.</li>
+<li>Open the <strong>Analytics</strong> toolbox in Rguroo.<br>
+</li>
+<li>Open the <span class="dpd">Analysis</span> dropdown and select <span class="fun">Linear Regression</span> → <span class="fun">Simple Regression</span>. This opens the Simple Linear Regression dialog.<br>
+</li>
+<li>From the <span class="dpd">Dataset</span> dropdown, choose the <span class="data">beer_data</span> dataset.<br>
+</li>
+<li>From the <span class="dpd">Predictor (x)</span> dropdown, choose the <span class="var">alcohol</span> variable.<br>
+</li>
+<li>From the <span class="dpd">Response (y)</span> dropdown, choose the <span class="var">calories</span> variable.<br>
+</li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to view a preview of the regression results.</li>
 </ol>
-<div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
+<div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -644,9 +644,27 @@ Click here to see the Rguroo dialog
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Rguroo_outputs/Regression/AlcoholCalorieRegress_dialog.png" class="img-fluid figure-img" width="500"></p>
+<p><img src="Rguroo_dialogs/Regression/AlcoholCalorieRegress_dialog.png" class="img-fluid figure-img" width="500"></p>
 <figcaption>Simple Linear Regression dialog in Rguroo</figcaption>
 </figure>
+</div>
+</div>
+</div>
+</div>
+<div class="inner-callout callout callout-style-default callout-tip callout-titled" title="Rguroo output: Linear Regression for Beer Data">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rguroo output: Linear Regression for Beer Data
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="rg-iframe-wrapper" tabindex="0">
+<p><iframe src="Rguroo_html_output/RegressionHtmlOtput/AlcoholCalorieRegress_docx/AlcoholCalorieRegress.html" class="rg-iframe" title="Rguroo output: Linear Regression for Beer Data"> </iframe></p>
 </div>
 </div>
 </div>
@@ -707,7 +725,7 @@ Figure&nbsp;11.3: Residuals versus Fitted Values Plot for Beer Data
 </ol>
 <p>Click to expand the box below to see how to obtain the residuals in Rguroo.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Obtaining Residuals in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -716,7 +734,7 @@ Figure&nbsp;11.3: Residuals versus Fitted Values Plot for Beer Data
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Continue with the steps shown <a href="#Finding-the-Regression-Equation-in-Rguroo">here</a> to obtain the regression equation in Rguroo.</p>
 <ol type="1">
@@ -726,7 +744,7 @@ Figure&nbsp;11.3: Residuals versus Fitted Values Plot for Beer Data
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the regression results with residuals.</li>
 </ol>
 <div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -735,11 +753,11 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Rguroo_outputs/Regression/AlcoholCalorieResidualsDialog1.png" class="img-fluid figure-img" width="500"></p>
+<p><img src="Rguroo_dialogs/Regression/AlcoholCalorieResidualsDialog1.png" class="img-fluid figure-img" width="500"></p>
 <figcaption>Simple Linear Regression dialog: Obtaining Residuals</figcaption>
 </figure>
 </div>
@@ -751,7 +769,7 @@ Click here to see the Rguroo dialog
 </div>
 <p>Click to expand the box below to see the residuals for the first 20 cases of the beer data.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Residuals for Alcohol and Calorie Content in Beer">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -760,7 +778,7 @@ Residuals for Alcohol and Calorie Content in Beer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div id="tbl-Beer-residuals-rguroo" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -785,7 +803,7 @@ Table&nbsp;11.3
 </div>
 </div>
 <div class="cell" data-evaluate="false" data-tbl-alt="Residuals for Alcohol and Calorie Content in Beer">
-<div id="tbl-Beer-residuals" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Residuals for Alcohol and Calorie Content in Beer" data-evaluate="false">
+<div id="tbl-Beer-residuals" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-evaluate="false" data-tbl-alt="Residuals for Alcohol and Calorie Content in Beer">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Beer-residuals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;11.4: Residuals for Alcohol and Calorie Content in Beer
