@@ -534,7 +534,7 @@ sample estimates:
 </section>
 <section id="example-confidence-interval-for-the-population-mean" class="level3" data-number="9.3.2">
 <h3 data-number="9.3.2" class="anchored" data-anchor-id="example-confidence-interval-for-the-population-mean"><span class="header-section-number">9.3.2</span> Example: Confidence Interval for the Population Mean</h3>
-<p>A random sample of 50 body mass index (BMI) were taken from the NHANES Data frame <a href="#tbl-NHANES_50" class="quarto-xref">Table&nbsp;<span>9.1</span></a>. Estimate the mean BMI of Americans at the 95% level.</p>
+<p>A random sample of 50 body mass index (BMI) were taken from the NHANES Data frame <a href="#tbl-NHANES_50" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-NHANES_50</span></a>. Estimate the mean BMI of Americans at the 95% level.</p>
 <div class="cell" data-tbl-alt="Head of sample of BMI of Americans">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sample_NHANES_50<span class="ot">&lt;-</span> <span class="fu">sample_n</span>(NHANES, <span class="at">size=</span><span class="dv">50</span>) </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(sample_NHANES_50))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -706,277 +706,355 @@ Table&nbsp;9.1: BMI of Americans
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">66246</td>
+<td style="text-align: right;">69958</td>
 <td style="text-align: left;">2011_12</td>
 <td style="text-align: left;">male</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: left;">40-49</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">10-19</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">White</td>
+<td style="text-align: left;">White</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">55000-64999</td>
+<td style="text-align: right;">60000</td>
+<td style="text-align: right;">2.60</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Own</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">91.9</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">175.6</td>
+<td style="text-align: right;">29.80</td>
+<td style="text-align: left;">Obese</td>
+<td style="text-align: left;">25.0_to_29.9</td>
+<td style="text-align: right;">76</td>
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">116</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">102</td>
+<td style="text-align: right;">0.576</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">Vgood</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">2_hr</td>
+<td style="text-align: left;">3_hr</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">64530</td>
+<td style="text-align: left;">2011_12</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: left;">50-59</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: left;">White</td>
 <td style="text-align: left;">White</td>
 <td style="text-align: left;">9 - 11th Grade</td>
-<td style="text-align: left;">NeverMarried</td>
-<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Married</td>
+<td style="text-align: left;">65000-74999</td>
+<td style="text-align: right;">70000</td>
+<td style="text-align: right;">4.76</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Own</td>
+<td style="text-align: left;">Working</td>
+<td style="text-align: right;">140.1</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NotWorking</td>
-<td style="text-align: right;">106.2</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">178.8</td>
-<td style="text-align: right;">33.20</td>
+<td style="text-align: right;">184.9</td>
+<td style="text-align: right;">41.00</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">30.0_plus</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">131</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">134</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">132</td>
 <td style="text-align: right;">84</td>
-<td style="text-align: right;">122</td>
-<td style="text-align: right;">65</td>
-<td style="text-align: right;">118</td>
-<td style="text-align: right;">68</td>
-<td style="text-align: right;">124</td>
-<td style="text-align: right;">68</td>
-<td style="text-align: right;">120</td>
-<td style="text-align: right;">62</td>
-<td style="text-align: right;">311.09</td>
-<td style="text-align: right;">1.19</td>
-<td style="text-align: right;">4.73</td>
-<td style="text-align: right;">70</td>
-<td style="text-align: right;">0.414</td>
+<td style="text-align: right;">130</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">174.10</td>
+<td style="text-align: right;">1.22</td>
+<td style="text-align: right;">6.18</td>
+<td style="text-align: right;">299</td>
+<td style="text-align: right;">3.181</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: right;">NA</td>
-<td style="text-align: left;">Excellent</td>
+<td style="text-align: left;">Good</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">None</td>
-<td style="text-align: left;">None</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">More_4_hr</td>
-<td style="text-align: left;">0_hrs</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">Yes</td>
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">72</td>
+<td style="text-align: left;">Several</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">4_hr</td>
+<td style="text-align: left;">1_hr</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">52</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">Smoker</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Yes</td>
 <td style="text-align: right;">16</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Heterosexual</td>
-<td style="text-align: left;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">68846</td>
-<td style="text-align: left;">2011_12</td>
-<td style="text-align: left;">female</td>
-<td style="text-align: right;">49</td>
-<td style="text-align: left;">40-49</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">Other</td>
-<td style="text-align: left;">Asian</td>
-<td style="text-align: left;">College Grad</td>
-<td style="text-align: left;">Married</td>
-<td style="text-align: left;">more 99999</td>
-<td style="text-align: right;">1e+05</td>
-<td style="text-align: right;">5.00</td>
 <td style="text-align: right;">8</td>
-<td style="text-align: left;">Own</td>
-<td style="text-align: left;">Working</td>
-<td style="text-align: right;">79.3</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">145.9</td>
-<td style="text-align: right;">37.30</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">30.0_plus</td>
-<td style="text-align: right;">78</td>
-<td style="text-align: right;">118</td>
-<td style="text-align: right;">61</td>
-<td style="text-align: right;">114</td>
-<td style="text-align: right;">58</td>
-<td style="text-align: right;">120</td>
-<td style="text-align: right;">62</td>
-<td style="text-align: right;">116</td>
-<td style="text-align: right;">60</td>
-<td style="text-align: right;">17.55</td>
-<td style="text-align: right;">1.11</td>
-<td style="text-align: right;">4.81</td>
-<td style="text-align: right;">83</td>
-<td style="text-align: right;">0.464</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">Vgood</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">None</td>
-<td style="text-align: left;">None</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: left;">2_hr</td>
-<td style="text-align: left;">0_hrs</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Non-Smoker</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: left;">Heterosexual</td>
 <td style="text-align: left;">NA</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">59072</td>
+<td style="text-align: right;">61508</td>
 <td style="text-align: left;">2009_10</td>
-<td style="text-align: left;">male</td>
-<td style="text-align: right;">68</td>
-<td style="text-align: left;">60-69</td>
-<td style="text-align: right;">817</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: left;">40-49</td>
+<td style="text-align: right;">545</td>
 <td style="text-align: left;">White</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: left;">College Grad</td>
-<td style="text-align: left;">Married</td>
-<td style="text-align: left;">more 99999</td>
-<td style="text-align: right;">1e+05</td>
-<td style="text-align: right;">5.00</td>
-<td style="text-align: right;">9</td>
+<td style="text-align: left;">9 - 11th Grade</td>
+<td style="text-align: left;">LivePartner</td>
+<td style="text-align: left;">20000-24999</td>
+<td style="text-align: right;">22500</td>
+<td style="text-align: right;">1.28</td>
+<td style="text-align: right;">4</td>
 <td style="text-align: left;">Own</td>
-<td style="text-align: left;">NotWorking</td>
-<td style="text-align: right;">93.9</td>
+<td style="text-align: left;">Working</td>
+<td style="text-align: right;">80.5</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
-<td style="text-align: right;">177.1</td>
-<td style="text-align: right;">29.94</td>
+<td style="text-align: right;">160.6</td>
+<td style="text-align: right;">31.21</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">70</td>
-<td style="text-align: right;">126</td>
-<td style="text-align: right;">85</td>
-<td style="text-align: right;">136</td>
-<td style="text-align: right;">88</td>
-<td style="text-align: right;">124</td>
-<td style="text-align: right;">84</td>
-<td style="text-align: right;">128</td>
+<td style="text-align: left;">30.0_plus</td>
 <td style="text-align: right;">86</td>
+<td style="text-align: right;">122</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">126</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">122</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">122</td>
+<td style="text-align: right;">80</td>
 <td style="text-align: right;">NA</td>
-<td style="text-align: right;">1.50</td>
-<td style="text-align: right;">4.11</td>
-<td style="text-align: right;">289</td>
-<td style="text-align: right;">2.890</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">5.51</td>
+<td style="text-align: right;">151</td>
+<td style="text-align: right;">1.013</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: right;">NA</td>
-<td style="text-align: left;">Vgood</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">None</td>
-<td style="text-align: left;">None</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Good</td>
 <td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Several</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: right;">NA</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">250</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Smoker</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Heterosexual</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">70265</td>
+<td style="text-align: left;">2011_12</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: left;">40-49</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">White</td>
+<td style="text-align: left;">White</td>
+<td style="text-align: left;">High School</td>
+<td style="text-align: left;">Widowed</td>
+<td style="text-align: left;">20000-24999</td>
+<td style="text-align: right;">22500</td>
+<td style="text-align: right;">1.30</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Own</td>
+<td style="text-align: left;">Working</td>
+<td style="text-align: right;">78.4</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">168.4</td>
+<td style="text-align: right;">27.60</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">25.0_to_29.9</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">106</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">114</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">104</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">7.87</td>
+<td style="text-align: right;">1.68</td>
+<td style="text-align: right;">4.22</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">Good</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">3_hr</td>
+<td style="text-align: left;">2_hr</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">36</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: left;">Non-Smoker</td>
 <td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
+<td style="text-align: left;">No</td>
 <td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
+<td style="text-align: left;">No</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Heterosexual</td>
 <td style="text-align: left;">NA</td>
 </tr>
-<tr class="even">
-<td style="text-align: right;">52289</td>
-<td style="text-align: left;">2009_10</td>
+<tr class="odd">
+<td style="text-align: right;">63489</td>
+<td style="text-align: left;">2011_12</td>
 <td style="text-align: left;">male</td>
-<td style="text-align: right;">80</td>
-<td style="text-align: left;">NA</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: left;">30-39</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: left;">White</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">High School</td>
+<td style="text-align: left;">White</td>
+<td style="text-align: left;">College Grad</td>
 <td style="text-align: left;">Married</td>
-<td style="text-align: left;">55000-64999</td>
-<td style="text-align: right;">6e+04</td>
-<td style="text-align: right;">3.77</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: left;">Own</td>
+<td style="text-align: left;">65000-74999</td>
+<td style="text-align: right;">70000</td>
+<td style="text-align: right;">4.89</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Rent</td>
 <td style="text-align: left;">Working</td>
-<td style="text-align: right;">78.0</td>
+<td style="text-align: right;">135.1</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
-<td style="text-align: right;">171.7</td>
-<td style="text-align: right;">26.46</td>
+<td style="text-align: right;">189.0</td>
+<td style="text-align: right;">37.80</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: left;">25.0_to_29.9</td>
-<td style="text-align: right;">60</td>
-<td style="text-align: right;">113</td>
-<td style="text-align: right;">65</td>
-<td style="text-align: right;">126</td>
-<td style="text-align: right;">70</td>
-<td style="text-align: right;">110</td>
-<td style="text-align: right;">64</td>
-<td style="text-align: right;">116</td>
-<td style="text-align: right;">66</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">1.01</td>
-<td style="text-align: right;">5.12</td>
-<td style="text-align: right;">161</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: left;">30.0_plus</td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">129</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">130</td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">128</td>
+<td style="text-align: right;">76</td>
+<td style="text-align: right;">130</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">245.40</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">4.37</td>
+<td style="text-align: right;">415</td>
+<td style="text-align: right;">1.812</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: left;">No</td>
@@ -991,15 +1069,93 @@ Table&nbsp;9.1: BMI of Americans
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">7</td>
 <td style="text-align: left;">No</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">2_hr</td>
+<td style="text-align: left;">0_to_1_hr</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Non-Smoker</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Heterosexual</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">55297</td>
+<td style="text-align: left;">2009_10</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: left;">60-69</td>
+<td style="text-align: right;">819</td>
+<td style="text-align: left;">White</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">High School</td>
+<td style="text-align: left;">Married</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Own</td>
+<td style="text-align: left;">Working</td>
+<td style="text-align: right;">59.1</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">149.1</td>
+<td style="text-align: right;">26.58</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">25.0_to_29.9</td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">135</td>
+<td style="text-align: right;">73</td>
+<td style="text-align: right;">142</td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">134</td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">136</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">1.76</td>
+<td style="text-align: right;">5.25</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">0.247</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">0.966</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: left;">Good</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">No</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: right;">NA</td>
 <td style="text-align: right;">NA</td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">364</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: left;">Non-Smoker</td>
@@ -1008,168 +1164,12 @@ Table&nbsp;9.1: BMI of Americans
 <td style="text-align: right;">NA</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">63520</td>
-<td style="text-align: left;">2011_12</td>
-<td style="text-align: left;">female</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">0-9</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: left;">White</td>
-<td style="text-align: left;">White</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">more 99999</td>
-<td style="text-align: right;">1e+05</td>
-<td style="text-align: right;">4.77</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: left;">Own</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">4.8</td>
-<td style="text-align: right;">53.9</td>
-<td style="text-align: right;">38.1</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">70655</td>
-<td style="text-align: left;">2011_12</td>
-<td style="text-align: left;">female</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: left;">10-19</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">White</td>
-<td style="text-align: left;">White</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">55000-64999</td>
-<td style="text-align: right;">6e+04</td>
-<td style="text-align: right;">2.66</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">Own</td>
-<td style="text-align: left;">NotWorking</td>
-<td style="text-align: right;">77.7</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">161.8</td>
-<td style="text-align: right;">29.70</td>
-<td style="text-align: left;">OverWeight</td>
-<td style="text-align: left;">25.0_to_29.9</td>
-<td style="text-align: right;">74</td>
-<td style="text-align: right;">99</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: right;">96</td>
-<td style="text-align: right;">48</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">53.16</td>
-<td style="text-align: right;">0.96</td>
-<td style="text-align: right;">5.20</td>
-<td style="text-align: right;">42</td>
-<td style="text-align: right;">0.452</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">Vgood</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">7</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: left;">Yes</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">NA</td>
-<td style="text-align: left;">3_hr</td>
-<td style="text-align: left;">2_hr</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
+<td style="text-align: left;">No</td>
 <td style="text-align: left;">NA</td>
 <td style="text-align: left;">NA</td>
 </tr>
@@ -1237,13 +1237,13 @@ Figure&nbsp;9.2: Normal quantile Plot of BMI from NHANES sample
     One Sample t-test
 
 data:  BMI
-t = 23.792, df = 46, p-value &lt; 2.2e-16
+t = 30.578, df = 48, p-value &lt; 2.2e-16
 alternative hypothesis: true mean is not equal to 0
 95 percent confidence interval:
- 25.12006 29.76334
+ 24.93504 28.44496
 sample estimates:
 mean of x 
-  27.4417 </code></pre>
+    26.69 </code></pre>
 </div>
 </div>
 <p>The sample statistic is the mean of <span class="math inline">\(x\)</span> in the output, and confidence interval is under the words 95 percent confidence interval.</p>
@@ -1257,8 +1257,8 @@ mean of x
 </section>
 <section id="example-confidence-interval-for-the-population-mean-1" class="level3" data-number="9.3.3">
 <h3 data-number="9.3.3" class="anchored" data-anchor-id="example-confidence-interval-for-the-population-mean-1"><span class="header-section-number">9.3.3</span> Example: Confidence Interval for the Population Mean</h3>
-<p>The data in <a href="One Sample Inference.html#tbl-Expectancy" class="quarto-xref">Table&nbsp;<span>8.5</span></a> are the life expectancies for all people in European countries (\“WHO life expectancy,\” 2013). The data in <a href="One Sample Inference.html#tbl-Expectancy-male" class="quarto-xref">Table&nbsp;<span>8.6</span></a> filtered the data frame for just males and just year 2000. The year 2000 was randomly chosen as the year to use. Estimate the mean life expectancy for a man in Europe at the 99% level.</p>
-<p>Code book for data frame Expectancy is below <a href="One Sample Inference.html#tbl-Expectancy" class="quarto-xref">Table&nbsp;<span>8.5</span></a>.</p>
+<p>The data in <a href="#tbl-Expectancy" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Expectancy</span></a> are the life expectancies for all people in European countries (\“WHO life expectancy,\” 2013). The data in <a href="#tbl-Expectancy-male" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Expectancy-male</span></a> filtered the data frame for just males and just year 2000. The year 2000 was randomly chosen as the year to use. Estimate the mean life expectancy for a man in Europe at the 99% level.</p>
+<p>Code book for data frame Expectancy is below <a href="#tbl-Expectancy" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Expectancy</span></a>.</p>
 <section id="solution-4" class="level4" data-number="9.3.3.1">
 <h4 data-number="9.3.3.1" class="anchored" data-anchor-id="solution-4"><span class="header-section-number">9.3.3.1</span> Solution</h4>
 <ol type="1">
@@ -1338,36 +1338,36 @@ mean of x
 <h3 data-number="9.3.4" class="anchored" data-anchor-id="homework-for-one-sample-interval-for-the-mean-section"><span class="header-section-number">9.3.4</span> Homework for One-Sample Interval for the Mean Section</h3>
 <p><strong>In each problem show all steps of the confidence interval. If some of the conditions are not met, note that the results of the interval may not be correct and then continue the process of the confidence interval.</strong></p>
 <ol type="1">
-<li>The Kyoto Protocol was signed in 1997, and required countries to start reducing their carbon emissions. The protocol became enforceable in February 2005. <a href="One Sample Inference.html#tbl-Emission" class="quarto-xref">Table&nbsp;<span>8.7</span></a> contains a random sample of CO2 emissions in 2010 (CO2 emissions (metric tons per capita), 2018). Find a 99% confidence interval for the mean CO-2 emissions in 2010.</li>
+<li>The Kyoto Protocol was signed in 1997, and required countries to start reducing their carbon emissions. The protocol became enforceable in February 2005. <a href="#tbl-Emission" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Emission</span></a> contains a random sample of CO2 emissions in 2010 (CO2 emissions (metric tons per capita), 2018). Find a 99% confidence interval for the mean CO-2 emissions in 2010.</li>
 </ol>
-<p>Code book for data frame Emission is below <a href="One Sample Inference.html#tbl-Emission" class="quarto-xref">Table&nbsp;<span>8.7</span></a>.</p>
+<p>Code book for data frame Emission is below <a href="#tbl-Emission" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Emission</span></a>.</p>
 <ol start="2" type="1">
-<li>The amount of sugar in a Krispy Kream glazed donut is 10 g. Many people feel that cereal is a healthier alternative for children over glazed donuts. <a href="One Sample Inference.html#tbl-Sugar" class="quarto-xref">Table&nbsp;<span>8.8</span></a> contains the amount of sugar in a sample of cereal that is geared towards children (breakfast cereal, 2019). Estimate the mean amount of sugar in children’s cereal at the 95% confidence level.</li>
+<li>The amount of sugar in a Krispy Kream glazed donut is 10 g. Many people feel that cereal is a healthier alternative for children over glazed donuts. <a href="#tbl-Sugar" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Sugar</span></a> contains the amount of sugar in a sample of cereal that is geared towards children (breakfast cereal, 2019). Estimate the mean amount of sugar in children’s cereal at the 95% confidence level.</li>
 </ol>
-<p>Code book for data frame Sugar is below <a href="One Sample Inference.html#tbl-Sugar" class="quarto-xref">Table&nbsp;<span>8.8</span></a>.</p>
-<p>A new data frame will need to be created of just cereal for children. It is <a href="One Sample Inference.html#tbl-Sugar_children" class="quarto-xref">Table&nbsp;<span>8.9</span></a>.</p>
+<p>Code book for data frame Sugar is below <a href="#tbl-Sugar" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Sugar</span></a>.</p>
+<p>A new data frame will need to be created of just cereal for children. It is <a href="#tbl-Sugar_children" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Sugar_children</span></a>.</p>
 <ol start="3" type="1">
-<li>The FDA regulates that fish that is consumed is allowed to contain 1.0 mg/kg of mercury. In Florida, bass fish were collected in 53 different lakes to measure the health of the lakes. The data frame of measurements from Florida lakes is in <a href="One Sample Inference.html#tbl-Mercury" class="quarto-xref">Table&nbsp;<span>8.10</span></a> (NISER 081107 ID Data, 2019). Calculate with 90% confidence the mean amount of mercury in fish in Florida lakes. Is there too much mercury in the fish in Florida?</li>
+<li>The FDA regulates that fish that is consumed is allowed to contain 1.0 mg/kg of mercury. In Florida, bass fish were collected in 53 different lakes to measure the health of the lakes. The data frame of measurements from Florida lakes is in <a href="#tbl-Mercury" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Mercury</span></a> (NISER 081107 ID Data, 2019). Calculate with 90% confidence the mean amount of mercury in fish in Florida lakes. Is there too much mercury in the fish in Florida?</li>
 </ol>
-<p>Code book for data frame Mercury is below <a href="One Sample Inference.html#tbl-Mercury" class="quarto-xref">Table&nbsp;<span>8.10</span></a>.</p>
+<p>Code book for data frame Mercury is below <a href="#tbl-Mercury" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Mercury</span></a>.</p>
 <ol start="4" type="1">
-<li>The data frame <a href="Numerical Description of Data.html#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>4.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute. Estimate the mean pulse rate before exercise of females who do drink alcohol with a 95% level of confidence?</li>
+<li>The data frame <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Pulse</span></a> contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute. Estimate the mean pulse rate before exercise of females who do drink alcohol with a 95% level of confidence?</li>
 </ol>
-<p>Code book for data frame Pulse below <a href="Numerical Description of Data.html#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>4.7</span></a>.</p>
-<p>A new data frame with just females who drink alcohol is <a href="Two Sample Inference.html#tbl-Females" class="quarto-xref">Table&nbsp;<span>10.2</span></a> from chapter 7.</p>
+<p>Code book for data frame Pulse below <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Pulse</span></a>.</p>
+<p>A new data frame with just females who drink alcohol is <a href="#tbl-Females" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Females</span></a> from chapter 7.</p>
 <ol start="5" type="1">
-<li>The economic dynamism is an index of productive growth in dollars. Economic data for many countries are in <a href="One Sample Inference.html#tbl-Economics" class="quarto-xref">Table&nbsp;<span>8.12</span></a> (SOCR Data 2008 World CountriesRankings, 2019).</li>
+<li>The economic dynamism is an index of productive growth in dollars. Economic data for many countries are in <a href="#tbl-Economics" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Economics</span></a> (SOCR Data 2008 World CountriesRankings, 2019).</li>
 </ol>
-<p>Code book for data frame Economics is below <a href="One Sample Inference.html#tbl-Economics" class="quarto-xref">Table&nbsp;<span>8.12</span></a>.</p>
-<p>A data frame that contains only middle income countries was created in chapter 7 and is <a href="One Sample Inference.html#tbl-Middle_economics" class="quarto-xref">Table&nbsp;<span>8.13</span></a>. Find a 95% confidence interval for the mean economic dynamism for middle income countries.</p>
+<p>Code book for data frame Economics is below <a href="#tbl-Economics" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Economics</span></a>.</p>
+<p>A data frame that contains only middle income countries was created in chapter 7 and is <a href="#tbl-Middle_economics" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Middle_economics</span></a>. Find a 95% confidence interval for the mean economic dynamism for middle income countries.</p>
 <ol start="6" type="1">
-<li><a href="Graphical Description of Data.html#tbl-Fert_prenatal" class="quarto-xref">Table&nbsp;<span>3.18</span></a> contains the percentage of woman receiving prenatal care in a sample of countries over several years. (births per woman), 2019). Estimate the average percentage of women receiving prenatal care in 2009 (p2009) with a 95% confidence interval?</li>
+<li><a href="#tbl-Fert_prenatal" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Fert_prenatal</span></a> contains the percentage of woman receiving prenatal care in a sample of countries over several years. (births per woman), 2019). Estimate the average percentage of women receiving prenatal care in 2009 (p2009) with a 95% confidence interval?</li>
 </ol>
-<p>Code book for Data frame Fert_prenatal is below <a href="Graphical Description of Data.html#tbl-Fert_prenatal" class="quarto-xref">Table&nbsp;<span>3.18</span></a>.</p>
+<p>Code book for Data frame Fert_prenatal is below <a href="#tbl-Fert_prenatal" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Fert_prenatal</span></a>.</p>
 <ol start="7" type="1">
-<li>Maintaining your balance may get harder as you grow older. A study was conducted to see how steady the elderly is on their feet. They had the subjects stand on a force platform and have them react to a noise. The force platform then measured how much they swayed forward and backward, and the data is in <a href="One Sample Inference.html#tbl-Sway" class="quarto-xref">Table&nbsp;<span>8.14</span></a> (Maintaining Balance while Concentrating, 2019). Find the mean forward/backward sway of elderly person? Use a 95% confidence level. Follow the filtering methods in other homework problems to create a data frame for only Elderly.</li>
+<li>Maintaining your balance may get harder as you grow older. A study was conducted to see how steady the elderly is on their feet. They had the subjects stand on a force platform and have them react to a noise. The force platform then measured how much they swayed forward and backward, and the data is in <a href="#tbl-Sway" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Sway</span></a> (Maintaining Balance while Concentrating, 2019). Find the mean forward/backward sway of elderly person? Use a 95% confidence level. Follow the filtering methods in other homework problems to create a data frame for only Elderly.</li>
 </ol>
-<p>Code book for data frame Sway is below <a href="One Sample Inference.html#tbl-Sway" class="quarto-xref">Table&nbsp;<span>8.14</span></a>.</p>
+<p>Code book for data frame Sway is below <a href="#tbl-Sway" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Sway</span></a>.</p>
 
 
 </section>
