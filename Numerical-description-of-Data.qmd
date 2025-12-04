@@ -198,9 +198,9 @@ knitr::include_graphics(c("Final_output/Rguroo_dialogs/Numerical_Description/max
 
 The minimum weight of a cat in this data frame is 2 kg and the maximum weight of a cat is 3.9 kg.
 
-You can create two new data sets in Rguroo by subsetting (filtering). One data set will exclude the maximum value. Click to expand the box below to see how to subset a data set in Rguroo:
+You can create two new data sets in Rguroo by subsetting (filtering). One data set will exclude the maximum value. Click to expand the box below to see how to subset a dataset in Rguroo:
 
-:::: {#Subsetting-Data-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Subsetting the cats Data Set"}
+:::: {#Subsetting-Data-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Subsetting the cats Dataset"}
 **Before you begin:** Make sure you have already imported the [cats]{.data} dataset into your **Data** Toolbox, as was shown [here](#Importing-cats-to-Rguroo).
 
 1.  Open the **Data** toolbox.\
@@ -281,7 +281,28 @@ In your biology class, your final grade is based on several things: a lab score,
 
 Variable: **x** = score
 
-A weighted average can be found using technology. The commands for finding the weighted mean using RStudio is as follows:
+A weighted average can be found using Rguroo. First, we will create a new dataset in Rguroo. Click to expand the box below to see how to create a new dataset in Rguroo:
+
+:::: {#Creating-new-dataset .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a New Dataset"}
+**Before you begin:** Make sure you have already imported the [cats]{.data} dataset into your **Data** Toolbox, as was shown [here](#Importing-cats-to-Rguroo).
+
+1.  Open the **Data** toolbox.\
+2.  Click on the [Data Import]{.dpd} dropdown, and select [Create New Dataset]{.fun}. This opens the [Create New Dataset]{.dialog} dialog. Specify the number of rows and columns for your new dataset.\
+3.  The default variable names will be [Var1]{.var}, [Var2]{.var}, etc. To change the variable name, move your cursor over the variable name on the header. You will see the Variable Context Menu icon.  \
+4.  Select the [Logical Expression]{.button} button.\
+5.  To create a new Logical Expression, click the green plus icon.
+6.  From the [Variable]{.dpd} dropdown, select the [Bwt]{.var}. From the [Op.]{.dpd} (operations) dropwdown, select the less than symbol (<). In the Value column, enter 3.9 (the maximum body weight of cats dataset). Click the [Done]{.button}.
+7.  When you are done with your selection, click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the scatterplot.
+8. In Save As... name the new data set cats_nomax and click the [Save As...]{.button}.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+![Logical Expression Dialog in Rguroo](Final_output/Rguroo_dialogs/Numerical_description/subset_nomax_cats.png){width="500px"}
+![Data Subset Dialog in Rguroo](Final_output/Rguroo_dialogs/Numerical_description/logical_subset_nomax.png){width="500px"}
+![Save As... Dataset View](Final_output/Rguroo_outputs/Numerical_Description/save_data_nomax.png) 
+:::
+::::
+
+<!-- The commands for finding the weighted mean using RStudio is as follows:
 
 x\<-c(type in the scores with commas in between)
 
@@ -291,7 +312,7 @@ weighted.mean(x,w)
 
 The **x** and **w** represent the variables, \<- means make the variables equivalent to what follows, the c( means combine all the values in the () as one combined variable.
 
-For this example, the commands would be
+For this example, the commands would be -->
 
 ```{r weighted-mean}
 x<-c(95, 83, 76, 84) 
