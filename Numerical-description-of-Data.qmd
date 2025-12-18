@@ -598,14 +598,14 @@ The **population variance** formula: $\sigma^2 = \frac{\sum\left(x-\mu \right)^2
 
 The **population standard deviation** formula: $\sigma =\sqrt{ \frac{\sum\left(x-\mu \right)^2}{N}}$
 
-Both the sample variance and sample standard deviation can be found using technology. If using Rguroo, you would perform the same steps as described [here](#Calculating-summary-stats-in-Rguroo) and select [standard deviation]{.def} as shown in the figure @fig-sd-dialog.
+Both the sample variance and sample standard deviation can be found using technology. If using Rguroo, you would perform the same steps as described [here](#Calculating-summary-stats-in-Rguroo) and select [standard deviation]{.def} and [variance]{.def} as shown in the figure @fig-sd-dialog.
 ```{r,echo=FALSE}
-#| fig-alt: "Dialog box for standard deviation"
+#| fig-alt: "Dialog box for standard deviation and variance"
 #| warning: FALSE
 #| label: fig-sd-dialog
-#| fig-cap: "Finding Standard Deviation Using Basic Summary Statistic"
+#| fig-cap: "Basic Summary Statistic Dialog for Standard Deviation and Variance "
 #| out-width: "70%"
-knitr::include_graphics("Final_output/Rguroo_dialogs/Numerical_Description/sd_cats_dialog.png")
+knitr::include_graphics("Final_output/Rguroo_dialogs/Numerical_Description/sd_var_cats_dialog.png")
 ```
 
 <!--df_stats(\~variable, data=data_frame, var, sd)-->
@@ -620,15 +620,24 @@ For the data frame Cats @tbl-Cats find the variance and standard derivation for 
 
 The variance and standard deviation for all cats is found by performing the command:
 
-```{r statistics-cats}
+```{r statistics-cats, echo = FALSE, eval = FALSE}
 df_stats(~Bwt, data=cats, var, sd) 
+```
+
+```{r,echo=FALSE}
+#| fig-alt: "Standard Deviation and Variance of Cats Weights"
+#| warning: FALSE
+#| label: fig-sd-output
+#| fig-cap: "Standard Deviation and Variance of Weights of Cats"
+#| out-width: "70%"
+knitr::include_graphics("Final_output/Rguroo_dialogs/Numerical_Description/sd_var_cats_output.png")
 ```
 
 The variance for all cats is 0.24 $kg^2$ and the standard deviation is 0.49 kg.
 
 To find out the mean, variance, and standard deviation for each sex of the cats, use the command:
 
-```{r statistics-cats-sex}
+```{r statistics-cats-sex, eval = FALSE, echo = FALSE}
 df_stats(Bwt~Sex, data=cats, mean, var, sd) 
 ```
 
