@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; Discrete Probability Distribution – Statistics Using Technology: Rguroo Edition</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Continuous Probability Distribution.html" rel="next">
+<link href="./Probability.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Discrete Probability Distribution.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Discrete Probability Distribution</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Statistics Using Technology: Rguroo Edition</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Statistical Basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Statistical Basics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Graphical Description of Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Graphical Description of Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Numerical-description-of-Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Numerical Description of Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Discrete Probability Distribution.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Discrete Probability Distribution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Continuous Probability Distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Continuous Probability Distribution</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./One Sample Inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">One Sample Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Two Sample Inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Two Sample Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Chi-Square and ANOVA Tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chi-squared and ANOVA Tests</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./References.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">References</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#examples-of-each" id="toc-examples-of-each" class="nav-link active" data-scroll-target="#examples-of-each"><span class="header-section-number">5.0.1</span> <strong>Examples of each:</strong></a></li>
+  <li><a href="#basics-of-probability-distributions" id="toc-basics-of-probability-distributions" class="nav-link" data-scroll-target="#basics-of-probability-distributions"><span class="header-section-number">5.1</span> Basics of Probability Distributions</a>
+  <ul class="collapse">
+  <li><a href="#example-probability-distribution" id="toc-example-probability-distribution" class="nav-link" data-scroll-target="#example-probability-distribution"><span class="header-section-number">5.1.1</span> Example: Probability Distribution</a></li>
+  <li><a href="#example-calculating-the-expected-value" id="toc-example-calculating-the-expected-value" class="nav-link" data-scroll-target="#example-calculating-the-expected-value"><span class="header-section-number">5.1.2</span> Example: Calculating the Expected Value</a></li>
+  <li><a href="#rare-event-rule-for-inferential-statistics" id="toc-rare-event-rule-for-inferential-statistics" class="nav-link" data-scroll-target="#rare-event-rule-for-inferential-statistics"><span class="header-section-number">5.1.3</span> <strong>Rare Event Rule for Inferential Statistics</strong></a></li>
+  <li><a href="#determining-if-an-event-is-unusual" id="toc-determining-if-an-event-is-unusual" class="nav-link" data-scroll-target="#determining-if-an-event-is-unusual"><span class="header-section-number">5.1.4</span> <strong>Determining if an event is unusual</strong></a></li>
+  <li><a href="#example-is-the-event-unusual" id="toc-example-is-the-event-unusual" class="nav-link" data-scroll-target="#example-is-the-event-unusual"><span class="header-section-number">5.1.5</span> Example: Is the Event Unusual</a></li>
+  <li><a href="#homework-for-basics-of-probability-distributions-section" id="toc-homework-for-basics-of-probability-distributions-section" class="nav-link" data-scroll-target="#homework-for-basics-of-probability-distributions-section"><span class="header-section-number">5.1.6</span> Homework for Basics of Probability Distributions Section</a></li>
+  </ul></li>
+  <li><a href="#binomial-probability-distribution" id="toc-binomial-probability-distribution" class="nav-link" data-scroll-target="#binomial-probability-distribution"><span class="header-section-number">5.2</span> Binomial Probability Distribution</a>
+  <ul class="collapse">
+  <li><a href="#formula-for-the-probabilities-for-a-binomial-experiment" id="toc-formula-for-the-probabilities-for-a-binomial-experiment" class="nav-link" data-scroll-target="#formula-for-the-probabilities-for-a-binomial-experiment"><span class="header-section-number">5.2.1</span> <strong>Formula for the probabilities for a Binomial experiment</strong></a></li>
+  <li><a href="#example-calculating-binomial-probabilities" id="toc-example-calculating-binomial-probabilities" class="nav-link" data-scroll-target="#example-calculating-binomial-probabilities"><span class="header-section-number">5.2.2</span> Example: Calculating Binomial Probabilities</a></li>
+  <li><a href="#example-calculating-binomial-probabilities-1" id="toc-example-calculating-binomial-probabilities-1" class="nav-link" data-scroll-target="#example-calculating-binomial-probabilities-1"><span class="header-section-number">5.2.3</span> Example: Calculating Binomial Probabilities</a></li>
+  <li><a href="#homework-for-binomial-probability-distribution-section" id="toc-homework-for-binomial-probability-distribution-section" class="nav-link" data-scroll-target="#homework-for-binomial-probability-distribution-section"><span class="header-section-number">5.2.4</span> Homework for Binomial Probability Distribution Section</a></li>
+  </ul></li>
+  <li><a href="#mean-and-standard-deviation-of-binomial-distribution" id="toc-mean-and-standard-deviation-of-binomial-distribution" class="nav-link" data-scroll-target="#mean-and-standard-deviation-of-binomial-distribution"><span class="header-section-number">5.3</span> Mean and Standard Deviation of Binomial Distribution</a>
+  <ul class="collapse">
+  <li><a href="#example-finding-the-probability-distribution-mean-variance-and-standard-deviation-of-a-binomial-distribution" id="toc-example-finding-the-probability-distribution-mean-variance-and-standard-deviation-of-a-binomial-distribution" class="nav-link" data-scroll-target="#example-finding-the-probability-distribution-mean-variance-and-standard-deviation-of-a-binomial-distribution"><span class="header-section-number">5.3.1</span> Example: Finding the Probability Distribution, Mean, Variance and Standard Deviation of a Binomial Distribution</a></li>
+  <li><a href="#homework-for-mean-and-standard-deviation-of-binomial-distribution-section" id="toc-homework-for-mean-and-standard-deviation-of-binomial-distribution-section" class="nav-link" data-scroll-target="#homework-for-mean-and-standard-deviation-of-binomial-distribution-section"><span class="header-section-number">5.3.2</span> Homework for Mean and Standard Deviation of Binomial Distribution Section</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Discrete Probability Distribution</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>When computing probabilities, the sample space, which contains all the outcomes of the experiment, is listed. If the probabilities for all of the outcomes are also listed then these two together are called a probability distribution. With a probability distribution, the shape can be determined, the mean and standard deviation can be calculated, and the probability of events can be found. How to find all of these concepts depends on what type of quantitative variables are being considered. Remember there are different types of quantitative variables, called discrete or continuous. What is the difference between discrete and continuous data? <strong>Discrete</strong> data can only take on particular values in a range. <strong>Continuous</strong> data can take on any value in a range. Discrete data usually arises from counting while continuous data usually arises from measuring.</p>
+<p>If you have a variable, and can find a probability associated with that variable, it is called a <strong>random variable</strong>. In many cases the random variable is what you are measuring, but when it comes to discrete random variables, it is usually what you are counting. So for the example of how tall is a plant given a new fertilizer, the random variable is the height of the plant given a new fertilizer. For the example of how many fleas are on prairie dogs in a colony, the random variable is the number of fleas on a prairie dog in a colony.</p>
+<section id="examples-of-each" class="level3" data-number="5.0.1">
+<h3 data-number="5.0.1" class="anchored" data-anchor-id="examples-of-each"><span class="header-section-number">5.0.1</span> <strong>Examples of each:</strong></h3>
+<p>How tall is a plant given a new fertilizer? Continuous. This is something you measure.</p>
+<p>How many fleas are on prairie dogs in a colony? Discrete. This is something you count.</p>
+<p>Now suppose you put all the values of the random variable together with the probability that the random variable would occur. You could then have a distribution like before, but now it is called a probability distribution since it involves probabilities. A <strong>probability distribution</strong> is an assignment of probabilities to the values of the random variable.</p>
+<p>With the idea of a probability distribution, the next thing is to look at the basics of a probability distribution.</p>
+</section>
+<section id="basics-of-probability-distributions" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="basics-of-probability-distributions"><span class="header-section-number">5.1</span> Basics of Probability Distributions</h2>
+<p>As a reminder, a variable or what will be called the random variable from now on, is represented by the letter <span class="math inline">\(x\)</span> and it represents a quantitative (numerical) variable that is measured or observed in an experiment.</p>
+<p>As with probabilities, probability distributions, have the properties, <span class="math inline">\(0 \le P(outcome)\le1\)</span> and <span class="math inline">\(\sum{P(outcomes)}=1\)</span></p>
+<section id="example-probability-distribution" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="example-probability-distribution"><span class="header-section-number">5.1.1</span> Example: Probability Distribution</h3>
+<p>The 2010 U.S. Census found the chance of a household being a certain size. The data is in <a href="#tbl-Household" class="quarto-xref">Table&nbsp;<span>5.1</span></a> (\“Households by age,\” 2013). Note, the category 7 is really 7 or more people in the household. Draw the probability distribution and find the mean, variance, and standard deviation.</p>
+<div class="cell" data-tbl-alt="Table showing household size">
+<div id="tbl-Household" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing household size">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Household-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.1: Household Size from U.S. Census of 2010
+</figcaption>
+<div aria-describedby="tbl-Household-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">size</th>
+<th style="text-align: right;">prob</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.267</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.336</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.158</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.137</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.063</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.024</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.015</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<section id="solution" class="level4" data-number="5.1.1.1">
+<h4 data-number="5.1.1.1" class="anchored" data-anchor-id="solution"><span class="header-section-number">5.1.1.1</span> <strong>Solution</strong></h4>
+<p>In this case, the random variable is <span class="math inline">\(x\)</span> = size of household. This is a discrete random variable, since you are counting the number of people in a household.</p>
+<p>It is a probability distribution since you have the <span class="math inline">\(x\)</span> value and the probabilities that go with it, all of the probabilities are between zero and one, and the sum of all of the probabilities is one.</p>
+<p>You can give a probability distribution in table form (as in <a href="#tbl-Household" class="quarto-xref">Table&nbsp;<span>5.1</span></a>) or as a graph. The graph looks like a histogram. To graph the histogram, use the following commands and process in rStudio.</p>
+<p>First you need to load a few packages using the following commands. These packages are “arm” and “Weighted.Desc.Stat”. If these packages have not been installed, they need to be installed before you can load them using library. Once you have installed them, they will always be available in /r Studio to be loaded. To load a package, use the command</p>
+<p>library(“name of package”)</p>
+<p>In this case the packages you need are arm and Weighted.Desc.Stat.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: MASS</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: Matrix</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: lme4</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+arm (Version 1.14-4, built: 2024-4-1)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Working directory is /Users/mori/CSU Fullerton Dropbox/Mortaza Jamshidian/Statistics Text Using Rguroo Positron/Statistics-Using-Technology-book</code></pre>
+</div>
+</div>
+<p>To draw the probability distribution, use the following command. First you need to create variables for <span class="math inline">\(x\)</span>, size, and the probability, <span class="math inline">\(prob\)</span>, in r Studio. Then you can draw the distribution.</p>
+<p>(ref:discrete-histogram-cap) Histogram of Size of Family</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">discrete.histogram</span>(Household<span class="sc">$</span>size,Household<span class="sc">$</span>prob, <span class="at">bar.width =</span> <span class="dv">1</span>, <span class="at">main=</span><span class="st">"Size of family"</span>, <span class="at">xlab=</span><span class="st">"Size"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-discrete-histogram" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Histogram of size of family that has higher bars on the left and lower bars on the right">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-discrete-histogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Discrete-Probability-Distribution_files/figure-html/fig-discrete-histogram-1.png" class="img-fluid figure-img" alt="Histogram of size of family that has higher bars on the left and lower bars on the right" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-discrete-histogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: Histogram of Household Size from U.S. Census of 2010
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>This command is different than the commands used in the past, but is needed for discrete probability distributions. So putting a title on the graph uses the command main=“title you want” instead of title= as before.</p>
+<p>Notice this graph <a href="#fig-discrete-histogram" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> is skewed right, which means that most families have around 2 people in them and larger families become more and more rare.</p>
+<p>To find the mean, variance, and standard deviation using r Studio, make sure that the package Weighted.Desc.Stat is loaded, then use the following commands.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">w.mean</span>(Household<span class="sc">$</span>size, Household<span class="sc">$</span>prob) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.525</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">w.var</span>(Household<span class="sc">$</span>size, Household<span class="sc">$</span>prob) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.023375</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">w.sd</span>(Household<span class="sc">$</span>size, Household<span class="sc">$</span>prob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.422454</code></pre>
+</div>
+</div>
+<p>The mean is 2.525 people, the variance is 2.02 <span class="math inline">\(people^2\)</span>, and the standard deviation is 1.42 people.</p>
+<p>When calculating the mean and standard deviation of a probability distribution, you can consider the population distribution the population even though it was most likely created from a large sample. Since a probability distribution is basically a population, the mean and standard deviation that are calculated are actually the population parameters and not the sample statistics. The notation used is the same as the notation for population mean, <span class="math inline">\(\mu\)</span>, and population standard deviation, $\sigma$, that was used in chapter 3. Note: the mean can also be thought of as the expected value. It is the value you expect to get if the trials were repeated infinite number of times. The mean or expected value does not need to be a whole number, even if the possible values of <span class="math inline">\(x\)</span> are whole numbers. This means one can find what value they can expect to get in the long run for gambling or insurance including extended warranties using the mean of a probability distribution. First one needs to figure out the probability distribution, and then follow the process in example 5.1.1.</p>
+</section>
+</section>
+<section id="example-calculating-the-expected-value" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="example-calculating-the-expected-value"><span class="header-section-number">5.1.2</span> Example: Calculating the Expected Value</h3>
+<p>In the Arizona lottery game called Pick 3, a player pays \$1 and then picks a three-digit number. If those three numbers are picked in that specific order the person wins \$500. What is the expected value in this game?</p>
+<section id="solution-1" class="level4" data-number="5.1.2.1">
+<h4 data-number="5.1.2.1" class="anchored" data-anchor-id="solution-1"><span class="header-section-number">5.1.2.1</span> <strong>Solution</strong></h4>
+<p>To find the expected value, you need to first create the probability distribution. In this case, the random variable <span class="math inline">\(x\)</span> = winnings. If you pick the right numbers in the right order, then you win \$500, but you paid \$1 to play, so you actually win \$499. If you didn’t pick the right numbers, you lose the \$1, the <span class="math inline">\(x\)</span> value is $-1$. You also need the probability of winning and losing. Since you are picking a three-digit number, and for each digit there are 10 numbers you can pick with each independent of the others, you can use the multiplication rule. To win, you have to pick the right numbers in the right order. The first digit, you pick 1 number out of 10, the second digit you pick 1 number out of 10, and the third digit you pick 1 number out of 10. The probability of picking the right number in the right order is $\frac{1}{1000}$. The probability of losing (not winning) would be</p>
+<p><span class="math inline">\(1-\frac{1}{1000}=\frac{999}{1000}\)</span>.</p>
+<p>Putting this information into a table will help to organize the information and find the expected value.</p>
+<table class="caption-top table">
+<caption>Probability Distribution of Lottery</caption>
+<thead>
+<tr class="header">
+<th>outcome</th>
+<th>amount</th>
+<th>probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>win</td>
+<td>499</td>
+<td>0.001</td>
+</tr>
+<tr class="even">
+<td>lose</td>
+<td>-1</td>
+<td>0.999</td>
+</tr>
+</tbody>
+</table>
+<p>Now type the values into r using the following command:</p>
+<p>Now to find the expected value, it is the same as finding the mean, though the command is a little different since you don’t have a data frame for this data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">weighted.mean</span>(amount, probability)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.5</code></pre>
+</div>
+</div>
+<p>The expected value (or mean) is -0.5. That is -\$0.50. Since it is negative, that means you lose \$0.50 every time you play the Pick 3. It seems you would be better off putting the \$1 every week into a savings account then playing the Pick 3 lottery.</p>
+<p>The reason probability is studied in statistics is to help in making decisions in inferential statistics. To understand how that is done the concept of a rare event is needed.</p>
+</section>
+</section>
+<section id="rare-event-rule-for-inferential-statistics" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="rare-event-rule-for-inferential-statistics"><span class="header-section-number">5.1.3</span> <strong>Rare Event Rule for Inferential Statistics</strong></h3>
+<p>If, under a given assumption, the probability of a particular observed event is extremely small, then you can conclude that the assumption is probably not correct.</p>
+<p>An example of this is suppose you roll an assumed fair die 1000 times and get a six 600 times, when you should have only rolled a six around 160 times, then you should believe that your assumption about it being a fair die is untrue.</p>
+</section>
+<section id="determining-if-an-event-is-unusual" class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4" class="anchored" data-anchor-id="determining-if-an-event-is-unusual"><span class="header-section-number">5.1.4</span> <strong>Determining if an event is unusual</strong></h3>
+<p>If you are looking at a value of <span class="math inline">\(x\)</span> for a discrete variable, and the P(the variable has a value of <span class="math inline">\(x\)</span> or more) is less than 0.05, then you can consider the <span class="math inline">\(x\)</span> an unusually high value. Another way to think of this is if the probability of getting such a high value is less than 0.05, then the event of getting the value x is unusual.</p>
+<p>Similarly, if the P(the variable has a value of <span class="math inline">\(x\)</span> or less) is less than 0.05, then you can consider this an unusually low value. Another way to think of this is if the probability of getting a value as small as <span class="math inline">\(x\)</span> is less than 0.05, then the event <span class="math inline">\(x\)</span> is considered unusual.</p>
+<p>Why is it “<span class="math inline">\(x\)</span> or more” or “<span class="math inline">\(x\)</span> or less” instead of just “<span class="math inline">\(x\)</span>” when you are determining if an event is unusual? Consider this example: you and your friend go out to lunch every day. Instead of Going Dutch (each paying for their own lunch), you decide to flip a coin, and the loser pays for both. Your friend seems to be winning more often than you’d expect, so you want to determine if this is unusual before you decide to change how you pay for lunch (or accuse your friend of cheating). The process for how to calculate these probabilities will be presented in the next section on the binomial distribution. If your friend won 6 out of 10 lunches, the probability of that happening turns out to be about 20.5%, not unusual. The probability of winning 6 or more is about 37.7%. But what happens if your friend won 501 out of 1,000 lunches? That doesn’t seem so unlikely! The probability of winning 501 or more lunches is about 47.8%, and that is consistent with your hunch that this isn’t so unusual. But the probability of winning exactly 501 lunches is much less, only about 2.5%. That is why the probability of getting exactly that value is not the right question to ask: you should ask the probability of getting that value or more (or that value or less on the other side).</p>
+<p>The value 0.05 will be explained later, and it is not the only value you can use for unusual events.</p>
+</section>
+<section id="example-is-the-event-unusual" class="level3" data-number="5.1.5">
+<h3 data-number="5.1.5" class="anchored" data-anchor-id="example-is-the-event-unusual"><span class="header-section-number">5.1.5</span> Example: Is the Event Unusual</h3>
+<p>The 2010 U.S. Census found the chance of a household being a certain size. The data is in the table (\“Households by age,\” 2013).</p>
+<p>The 2010 U.S. Census found the chance of a household being a certain size. The data is in <a href="#tbl-Household" class="quarto-xref">Table&nbsp;<span>5.1</span></a> (\“Households by age,\” 2013). Note, the category 7 is really 7 or more people in the household.</p>
+<p>State random variable:</p>
+<p><strong>Solution</strong></p>
+<p>State random variable</p>
+<ol type="a">
+<li>Is it unusual for a household to have six people in the family?</li>
+</ol>
+<p>size = number of people in a household</p>
+<ol type="a">
+<li>Is it unusual for a household to have six people in the family?</li>
+<li>If you did come upon many families that had six people in the family, what would you think?</li>
+<li>Is it unusual for a household to have four people in the family?</li>
+<li>If you did come upon a family that has four people in it, what would you think?</li>
+</ol>
+<section id="solution-2" class="level4" data-number="5.1.5.1">
+<h4 data-number="5.1.5.1" class="anchored" data-anchor-id="solution-2"><span class="header-section-number">5.1.5.1</span> <strong>Solution</strong></h4>
+<p>To determine this, you need to look at probabilities. However, you cannot just look at the probability of six people. You need to look at the probability of <span class="math inline">\(x\)</span> being six or less people or the probability of <span class="math inline">\(x\)</span> being six or more people. The</p>
+<p><span class="math inline">\(P(x \le 6)=P(1)+P(2)+P(3)+P(4)+P(5)+P(6)\)</span> <span class="math inline">\(=0.267+0.336+0.158+0.137+0.063+0.024=0.985\)</span></p>
+<p>Since this probability is more than 5%, then six is not an unusually low value.</p>
+<p>The <span class="math inline">\(P(x \ge 6)=P(6)+P(7)=0.024+0.015=0.039\)</span></p>
+<p>Since this probability is less than 5%, then six is an unusually high value. It is unusual for a household to have six people in the family.</p>
+<ol start="2" type="a">
+<li>If you did come upon many families that had six people in the family, what would you think?</li>
+</ol>
+<p>Since it is unusual for a family to have six people in it, then you may think that either the size of families is increasing from what it was or that you are in a location where families are larger than in other locations.</p>
+<ol start="3" type="a">
+<li>Is it unusual for a household to have four people in the family?</li>
+</ol>
+<p>To determine this, you need to look at probabilities. Again, look at the probability of <span class="math inline">\(x\)</span> being four or less or the probability of <span class="math inline">\(x\)</span> being four or more. The</p>
+<p><span class="math inline">\(P(x \le 4)=P(0)+P(1)+P(2)+P(3)+P(4)\)</span> <span class="math inline">\(=0.267+0.336+0.158+0.137=0.898\)</span></p>
+<p>Since this probability is more than 5%, four is not an unusually low value.</p>
+<p>The</p>
+<p><span class="math inline">\(P(\ge4)=P(4)+P(5)+P(5)+P(7)\)</span> <span class="math inline">\(=0.137+0.063+0.024+0.015=0.239\)</span></p>
+<p>Since this probability is more than 5%, four is not an unusually low value. Thus, four is not an unusual size of a family.</p>
+<ol start="4" type="a">
+<li>If you did come upon a family that has four people in it, what would you think?</li>
+</ol>
+<p>Since it is not unusual for a family to have four members, then you would not think anything is amiss.</p>
+</section>
+</section>
+<section id="homework-for-basics-of-probability-distributions-section" class="level3" data-number="5.1.6">
+<h3 data-number="5.1.6" class="anchored" data-anchor-id="homework-for-basics-of-probability-distributions-section"><span class="header-section-number">5.1.6</span> Homework for Basics of Probability Distributions Section</h3>
+<ol type="1">
+<li>Eyeglassomatic manufactures eyeglasses for different retailers. The number of days it takes to fix defects in an eyeglass and the probability that it will take that number of days are in <a href="#tbl-Days" class="quarto-xref">Table&nbsp;<span>5.2</span></a>.</li>
+</ol>
+<!-- -->
+<div class="cell" data-tbl-alt="Table showing Number of Days to Fix Eyeglasses">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Days<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"https://krkozak.github.io/MAT160/table_5_1_3.csv"</span>) </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(Days)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-Days" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing Number of Days to Fix Eyeglasses">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Days-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5.2: Nuumber of Days to fix Eyeglasses
+</figcaption>
+<div aria-describedby="tbl-Days-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">days</th>
+<th style="text-align: right;">prob</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.249</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.108</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.091</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.123</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.133</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.114</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.070</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0.046</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0.019</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.013</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.010</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0.008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0.006</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0.004</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">0.002</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">0.002</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0.001</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">0.001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<ol type="a">
+<li>State the random variable.</li>
+<li>Draw a histogram of the number of days to fix defects</li>
+<li>Find the mean number of days to fix defects.</li>
+<li>Find the variance for the number of days to fix defects.</li>
+<li>Find the standard deviation for the number of days to fix defects.</li>
+<li>Find probability that a lens will take at least 16 days to make a fix the defect.</li>
+<li>Is it unusual for a lens to take 16 days to fix a defect?</li>
+<li>If it does take 16 days for eyeglasses to be repaired, what would you think?</li>
+</ol>
+<!-- -->
+<ol start="2" type="1">
+<li>Suppose you have an experiment where you flip a coin three times. You then count the number of heads.</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li>State the random variable.</li>
+<li>Write the probability distribution for the number of heads.</li>
+<li>Draw a histogram for the number of heads.</li>
+<li>Find the mean number of heads.</li>
+<li>Find the variance for the number of heads.</li>
+<li>Find the standard deviation for the number of heads.</li>
+<li>Find the probability of having two or more number of heads.</li>
+<li>Is it unusual for to flip two heads?</li>
+</ol>
+<!-- -->
+<ol start="3" type="1">
+<li><p>The Ohio lottery has a game called Pick 4 where a player pays \$1 and picks a four-digit number. If the four numbers come up in the order you picked, then you win \$2,500. What is your expected value?</p></li>
+<li><p>An LG Dishwasher, which costs \$800, has a 20% chance of needing to be replaced in the first 2 years of purchase. A two-year extended warranty costs \$112.10 on a dishwasher. What is the expected value of the extended warranty assuming it is replaced in the first 2 years?</p></li>
+</ol>
+</section>
+</section>
+<section id="binomial-probability-distribution" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="binomial-probability-distribution"><span class="header-section-number">5.2</span> Binomial Probability Distribution</h2>
+<p>Section 5.1 introduced the concept of a probability distribution. The focus of the section was on discrete probability distributions. To find the probability distribution for a situation, you usually needed to actually conduct the experiment and collect data. Then you can calculate the experimental probabilities. Normally you cannot calculate the theoretical probabilities. However, there are certain types of experiment that allow you to calculate the theoretical probability. One of those types is called a <strong>Binomial Experiment</strong>.</p>
+<p>Properties of a <strong>binomial experiment</strong> (or Bernoulli trial):</p>
+<ol type="1">
+<li><p>Fixed number of trials, <span class="math inline">\(n\)</span>, which means that the experiment is repeated a specific number of times.</p></li>
+<li><p>The <span class="math inline">\(n\)</span> trials are independent, which means that what happens on one trial does not influence the outcomes of other trials.</p></li>
+<li><p>There are only two outcomes, which are called a success and a failure.</p></li>
+<li><p>The probability of a success doesn’t change from trial to trial, where <span class="math inline">\(p\)</span> = probability of success and <span class="math inline">\(q = 1-p\)</span> = probability of failure.</p></li>
+</ol>
+<p>If you know you have a binomial experiment, then you can calculate binomial probabilities. This is important because binomial probabilities come up often in real life. Examples of binomial experiments are:</p>
+<p>Toss a fair coin ten times, and find the probability of getting two heads.</p>
+<p>Question twenty people in class, and look for the probability of more than half being women?</p>
+<p>Shoot five arrows at a target, and find the probability of hitting it five times?</p>
+<section id="formula-for-the-probabilities-for-a-binomial-experiment" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="formula-for-the-probabilities-for-a-binomial-experiment"><span class="header-section-number">5.2.1</span> <strong>Formula for the probabilities for a Binomial experiment</strong></h3>
+<p>First, the random variable in a binomial experiment is <span class="math inline">\(x\)</span> = number of successes.</p>
+<p>Be careful, a success is not always a good thing. Sometimes a success is something that is bad, like finding a defect. A success just means you observed the outcome you wanted to see happen.</p>
+<p>Binomial Formula for the probability of <span class="math inline">\(r\)</span> successes in <span class="math inline">\(n\)</span> trials is <span class="math inline">\(P(X=r)=_nC_r*p^r*q^{n-r}\)</span></p>
+<p>where <span class="math inline">\(_nC_r\)</span> is the number of combinations of <span class="math inline">\(n\)</span> things taking <span class="math inline">\(r\)</span> at a time. It is read “<span class="math inline">\(n\)</span> choose <span class="math inline">\(r\)</span>”.</p>
+<p>When solving problems, make sure you define your random variable and state what <span class="math inline">\(n, p\)</span>, and <span class="math inline">\(r\)</span> are. Without doing this, the problems are a great deal harder.</p>
+<p>The command to find a binomial probability in r Studio is</p>
+<p>P<span class="math inline">\((X=r)=\)</span></p>
+<p>dbinom(r, n, p)</p>
+<p><span class="math inline">\(P(x \le r)=\)</span></p>
+<p>pbinom(r, n, p, lower.tail=TRUE)</p>
+<p><span class="math inline">\(P(x \ge r)=\)</span></p>
+<p>pbinom(r-1, n, p, lower.tail = FALSE)</p>
+</section>
+<section id="example-calculating-binomial-probabilities" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="example-calculating-binomial-probabilities"><span class="header-section-number">5.2.2</span> Example: Calculating Binomial Probabilities</h3>
+<p>When looking at a person’s eye color, it turns out that 1% of people in the world has green eyes (“What percentage of,” 2013). Consider a group of 20 people.</p>
+<ol type="a">
+<li>State the random variable.</li>
+<li>Argue that this is a binomial experiment</li>
+<li>Find the probability that none of the 20 people have green eyes.</li>
+<li>Find the probability that nine have green eyes.</li>
+<li>Find the probability that at most three have green eyes.</li>
+<li>Find the probability that at most two have green eyes.</li>
+<li>Find the probability that at least four have green eyes.</li>
+<li>In Europe, four people out of twenty have green eyes. Is this unusual? What does that tell you?</li>
+</ol>
+<section id="solution-3" class="level4" data-number="5.2.2.1">
+<h4 data-number="5.2.2.1" class="anchored" data-anchor-id="solution-3"><span class="header-section-number">5.2.2.1</span> <strong>Solution</strong></h4>
+<ol type="a">
+<li>State the random variable.</li>
+</ol>
+<p><span class="math inline">\(x\)</span> = number of people with green eyes</p>
+<ol start="2" type="a">
+<li>Argue that this is a binomial experiment.</li>
+</ol>
+<!-- -->
+<ol type="1">
+<li><p>There are 20 people, and each person is a trial, so there are a fixed number of trials. In this case, <span class="math inline">\(n\)</span> = 20.</p></li>
+<li><p>If you assume that each person in the group is chosen at random the eye color of one person doesn’t affect the eye color of the next person, thus the trials are independent.</p></li>
+<li><p>Either a person has green eyes or they do not have green eyes, so there are only two outcomes. In this case, the success is a person has green eyes.</p></li>
+<li><p>The probability of a person having green eyes is 0.01. This is the same for every trial since each person has the same chance of having green eyes.</p></li>
+</ol>
+<!-- -->
+<ol start="3" type="a">
+<li>Find the probability that none of the 20 people have green eyes.</li>
+</ol>
+<p>If none have green eyes, then <span class="math inline">\(r=0\)</span>.</p>
+<p>Probability that none have green eyes is <span class="math inline">\(P(X=0)=0.818\)</span>, using the command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="fl">0.01</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8179069</code></pre>
+</div>
+</div>
+<ol start="4" type="a">
+<li>Find the probability that nine have green eyes.</li>
+</ol>
+<p>If nine have green eyes, then <span class="math inline">\(r=9\)</span>.</p>
+<p>Probability that 9 have green eyes is</p>
+<p><span class="math inline">\(P(X=9)=1.50X10^{-13}\)</span>. Notice that r gives the answer as 1.50391e-13. This is the way many computer programs write a number in scientific notation. It isn’t possible for a computer to write it as <span class="math inline">\(1.50381X10^{-13}\)</span>, but it is possible for humans to write it correctly. So make sure the answer is written in the correct scientific notation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">9</span>,<span class="dv">20</span>,<span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.50381e-13</code></pre>
+</div>
+</div>
+<ol start="5" type="a">
+<li>Find the probability that at most three have green eyes.</li>
+</ol>
+<p>At most three means that three is the highest value you will have. Find the probability of <span class="math inline">\(x\)</span> is less than or equal to three.</p>
+<p>Since this is less than, then the lower tail of the probability distribution is being used, so <span class="math inline">\(P(X \le 3)=0.99996\)</span> using the command in r Studio of</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">3</span>,<span class="dv">20</span>,<span class="fl">0.01</span>, <span class="at">lower.tail=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9999574</code></pre>
+</div>
+</div>
+<p>The reason the answer is written to more decimal places is because when it is rounded to three decimal places the rounding makes the answer 1. But 1 means that the event will happen, when in reality there is a slight chance that it won’t happen. It is best to write the answer to more decimal places or it can be written as <span class="math inline">\(&gt;0.999\)</span> to represent that the number is very close to 1, but isn’t 1.</p>
+<ol start="6" type="a">
+<li>Find the probability that at most two have green eyes.</li>
+</ol>
+<p>At most 2 means 2 or less. So find the probability that there are less than or equal to 2. <span class="math inline">\(P(X \le 2)=0.999\)</span>, and again, this is the lower tail of the probability distribution, so use lower.tail=TRUE in the r command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">2</span>,<span class="dv">20</span>,<span class="fl">0.01</span>, <span class="at">lower.tail=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9989964</code></pre>
+</div>
+</div>
+<ol start="7" type="a">
+<li>Find the probability that at least four have green eyes.</li>
+</ol>
+<p>At least four means four or more. Find the probability of <span class="math inline">\(x\)</span> being greater than or equal to four. Since it is greater than or equal to, this is the right tail of the probability distribution. However, if you just use lower.tail=FALSE, then the 4 is not included in r calculations. You want all numbers from 4 on up, so you need to use</p>
+<p><span class="math inline">\(r=4-1=3\)</span> in the r command. This will include 4 in the calculation. <span class="math inline">\(P(X \ge 4)=4.26X10^{-5}\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">4-1</span>,<span class="dv">20</span>,<span class="fl">0.01</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.262093e-05</code></pre>
+</div>
+</div>
+<ol start="8" type="a">
+<li>In Europe, four people out of twenty have green eyes. Is this unusual? What does that tell you?</li>
+</ol>
+<p>Since the probability of finding four or more people with green eyes is much less than 0.05, it is unusual to find four people out of twenty with green eyes. That should make you wonder if the proportion of people in Europe with green eyes is more than the 1% for the general population. If this is true, then you may want to ask why Europeans have a higher proportion of green-eyed people. That of course could lead to more questions.</p>
+</section>
+</section>
+<section id="example-calculating-binomial-probabilities-1" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="example-calculating-binomial-probabilities-1"><span class="header-section-number">5.2.3</span> Example: Calculating Binomial Probabilities</h3>
+<p>According to the Center for Disease Control (CDC), about 1 in 88 children in the U.S. have been diagnosed with autism (“CDC-data and statistics,” 2013). Suppose you consider a group of 10 children.</p>
+<ol type="a">
+<li>State the random variable.</li>
+<li>Argue that this is a binomial experiment</li>
+<li>Find the probability that none have autism.</li>
+<li>Find the probability that seven have autism.</li>
+<li>Find the probability that at least five have autism.</li>
+<li>Find the probability that at most two have autism.</li>
+<li>Suppose five children out of ten have autism. Is this unusual? What does that tell you?</li>
+</ol>
+<section id="solution-4" class="level4" data-number="5.2.3.1">
+<h4 data-number="5.2.3.1" class="anchored" data-anchor-id="solution-4"><span class="header-section-number">5.2.3.1</span> <strong>Solution</strong></h4>
+<ol type="a">
+<li>State the random variable.</li>
+</ol>
+<p><span class="math inline">\(x\)</span> = number of children with autism.</p>
+<ol start="2" type="a">
+<li>Argue that this is a binomial experiment</li>
+</ol>
+<!-- -->
+<ol type="1">
+<li><p>There are 10 children, and each child is a trial, so there are a fixed number of trials. In this case, <span class="math inline">\(n\)</span> = 10.</p></li>
+<li><p>If you assume that each child in the group is chosen at random, then whether a child has autism does not affect the chance that the next child has autism. Thus the trials are independent.</p></li>
+<li><p>Either a child has autism or they do not have autism, so there are two outcomes. In this case, the success is a child has autism.</p></li>
+<li><p>The probability of a child having autism is <span class="math inline">\(\frac{1}{88}\)</span>. This is the same for every trial since each child has the same chance of having autism.</p></li>
+</ol>
+<!-- -->
+<ol start="3" type="a">
+<li>Find the probability that none have autism.</li>
+</ol>
+<p><span class="math inline">\(P(X=0)=0.892\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">0</span>,<span class="dv">10</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">88</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.892002</code></pre>
+</div>
+</div>
+<ol start="4" type="a">
+<li>Find the probability that seven have autism.</li>
+</ol>
+<p><span class="math inline">\(P(X=7)=2.84X10^{-12}\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">7</span>,<span class="dv">10</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">88</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.837346e-12</code></pre>
+</div>
+</div>
+<ol start="5" type="a">
+<li>Find the probability that at least five have autism.</li>
+</ol>
+<p><span class="math inline">\(P(X \ge 5)=4.553X10^{-8}\)</span>. Again, this is the upper tail of the probability distribution, so use lower=tail=FALSE and</p>
+<p><span class="math inline">\(r=5-1=4\)</span> to make sure that r calculates for 5 and on up.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">5-1</span>, <span class="dv">10</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">88</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.553416e-08</code></pre>
+</div>
+</div>
+<ol start="6" type="a">
+<li>Find the probability that at most two have autism.</li>
+</ol>
+<p><span class="math inline">\(P(X \le 2)=0.9998\)</span>. This is using the lower tail of the probability distribution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">88</span>, <span class="at">lower.tail=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9998341</code></pre>
+</div>
+</div>
+<ol start="7" type="a">
+<li>Suppose five children out of ten have autism. Is this unusual? What does that tell you?</li>
+</ol>
+<p>Since the probability of five or more children in a group of ten having autism is much less than 5%, it is unusual to happen. If this does happen, then one may think that the proportion of children diagnosed with autism is actually more than <span class="math inline">\(\frac{1}{88}\)</span>.</p>
+</section>
+</section>
+<section id="homework-for-binomial-probability-distribution-section" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="homework-for-binomial-probability-distribution-section"><span class="header-section-number">5.2.4</span> Homework for Binomial Probability Distribution Section</h3>
+<ol type="1">
+<li>Approximately 10% of all people are left-handed (\“11 little-known facts,\” 2013). Consider a grouping of fifteen people.</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li>State the random variable.</li>
+<li>Argue that this is a binomial experiment</li>
+<li>Find the probability that none are left-handed.</li>
+<li>Find the probability that seven are left-handed.</li>
+<li>Find the probability that at least two are left-handed.</li>
+<li>Find the probability that at most three are left-handed.</li>
+<li>Find the probability that at least seven are left-handed.</li>
+<li>Seven of the last 15 U.S. Presidents were left-handed. Is this unusual? What does that tell you?</li>
+</ol>
+<!-- -->
+<ol start="2" type="1">
+<li>According to an article in the American Heart Association’s publication *Circulation*, 24% of patients who had been hospitalized for an acute myocardial infarction did not fill their cardiac medication by the seventh day of being discharged (Ho, Bryson &amp; Rumsfeld, 2009). Suppose there are twelve people who have been hospitalized for an acute myocardial infarction.</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li>State the random variable.</li>
+<li>Argue that this is a binomial experiment</li>
+<li>Find the probability that all filled their cardiac medication.</li>
+<li>Find the probability that seven did not fill their cardiac medication.</li>
+<li>Find the probability that none filled their cardiac medication.</li>
+<li>Find the probability that at most two did not fill their cardiac medication.</li>
+<li>Find the probability that at least three did not fill their cardiac medication.</li>
+<li>Find the probability that at least ten did not fill their cardiac medication.</li>
+<li>Suppose of the next twelve patients discharged, ten did not fill their cardiac medication, would this be unusual? What does this tell you?</li>
+</ol>
+<!-- -->
+<ol start="3" type="1">
+<li>Eyeglassomatic manufactures eyeglasses for different retailers. In March 2010, they tested to see how many defective lenses they made, and there were 16.9% defective lenses due to scratches. Suppose Eyeglassomatic examined twenty eyeglasses.</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li>State the random variable.</li>
+<li>Argue that this is a binomial experiment</li>
+<li>Find the probability that none are scratched.</li>
+<li>Find the probability that all are scratched.</li>
+<li>Find the probability that at least three are scratched.</li>
+<li>Find the probability that at most five are scratched.</li>
+<li>Find the probability that at least ten are scratched.</li>
+<li>Is it unusual for ten lenses to be scratched? If it turns out that ten lenses out of twenty are scratched, what might that tell you about the manufacturing process?</li>
+</ol>
+<!-- -->
+<ol start="4" type="1">
+<li>The proportion of brown M&amp;M’s in a milk chocolate packet is approximately 14% (Madison, 2013). Suppose a package of M&amp;M’s typically contains 52 M&amp;M’s.</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li>State the random variable.</li>
+<li>Argue that this is a binomial experiment</li>
+<li>Find the probability that six M&amp;M’s are brown.</li>
+<li>Find the probability that twenty-five M&amp;M’s are brown.</li>
+<li>Find the probability that all of the M&amp;M’s are brown.</li>
+<li>Would it be unusual for a package to have only brown M&amp;M’s? If this were to happen, what would you think is the reason?</li>
+</ol>
+</section>
+</section>
+<section id="mean-and-standard-deviation-of-binomial-distribution" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="mean-and-standard-deviation-of-binomial-distribution"><span class="header-section-number">5.3</span> Mean and Standard Deviation of Binomial Distribution</h2>
+<p>If you list all possible values of <span class="math inline">\(x\)</span> in a Binomial distribution, you get the <strong>Binomial Probability Distribution</strong>. You can draw a histogram of the probability distribution and find the mean (expected value), variance, and standard deviation of it. To have r Studio calculate the binomial values and save them to a variable, use the command</p>
+<p>x&lt;-c(0:n) p&lt;-dbinom(0:n, n, p)</p>
+<section id="example-finding-the-probability-distribution-mean-variance-and-standard-deviation-of-a-binomial-distribution" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="example-finding-the-probability-distribution-mean-variance-and-standard-deviation-of-a-binomial-distribution"><span class="header-section-number">5.3.1</span> Example: Finding the Probability Distribution, Mean, Variance and Standard Deviation of a Binomial Distribution</h3>
+<p>When looking at a person’s eye color, it turns out that 1% of people in the world has green eyes (“What percentage of,” 2013). Consider a group of 20 people.</p>
+<ol type="a">
+<li>State the random variable.</li>
+<li>Write the probability distribution.</li>
+<li>Draw a histogram.</li>
+<li>Find the mean, variance, and standard deviation.</li>
+</ol>
+<section id="solution-5" class="level4" data-number="5.3.1.1">
+<h4 data-number="5.3.1.1" class="anchored" data-anchor-id="solution-5"><span class="header-section-number">5.3.1.1</span> <strong>Solution</strong></h4>
+<ol type="a">
+<li>State the random variable.</li>
+</ol>
+<p><span class="math inline">\(x\)</span> = number of people who have green eyes</p>
+<ol start="2" type="a">
+<li>Write the probability distribution.</li>
+</ol>
+<p>In this case you need to write each value of <span class="math inline">\(x\)</span> and its corresponding probability. It is easiest to do this by using the r Command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>green<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">20</span>) </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>probability_green<span class="ot">&lt;-</span><span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">20</span>,<span class="dv">20</span>, <span class="fl">0.01</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It looks like nothing happened, but r save the values as variables. To see what is in each of those values, type</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>green</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>probability_green</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 8.179069e-01 1.652337e-01 1.585576e-02 9.609552e-04 4.125313e-05
+ [6] 1.333434e-06 3.367259e-08 6.802543e-10 1.116579e-11 1.503810e-13
+[11] 1.670900e-15 1.534344e-17 1.162381e-19 7.225371e-22 3.649177e-24
+[16] 1.474415e-26 4.654088e-29 1.106141e-31 1.862190e-34 1.980000e-37
+[21] 1.000000e-40</code></pre>
+</div>
+</div>
+<p>These can now be typed into a table if desired.</p>
+<ol start="3" type="a">
+<li>Draw a histogram.</li>
+</ol>
+<p>On r, this is like what was done in Section 5.1. Makes sure that the packages “arm” and “Weighted.Desc.Stat” are loaded. Then perform the command to get:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">discrete.histogram</span>(green, probability_green, <span class="at">bar.width =</span> <span class="dv">1</span>, <span class="at">main=</span><span class="st">"Number of People with Green Eyes"</span>, <span class="at">xlab=</span><span class="st">"Numbr of People with Green Eyes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-Green" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Histogram of number of people with green eyes that has a high bar on the left and low bars on the right">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Green-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Discrete-Probability-Distribution_files/figure-html/fig-Green-1.png" class="img-fluid figure-img" alt="Histogram of number of people with green eyes that has a high bar on the left and low bars on the right" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Green-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: Histogram of Number of People with Green Eyes
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Notice this graph <a href="#fig-Green" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> is skewed right.</p>
+<ol start="4" type="a">
+<li>Find the mean, variance, and standard deviation</li>
+</ol>
+<p>Using r Studio command such as those in Section 5.1:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">w.mean</span>(green, probability_green) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">w.var</span>(green, probability_green) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.198</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">w.sd</span>(green, probability_green)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4449719</code></pre>
+</div>
+</div>
+<p>You expect on average that out of 20 people, less than 1 person would have green eyes, with are variance of 0.198 <span class="math inline">\(people^2\)</span> and a standard deviation of 0.44 people.</p>
+</section>
+</section>
+<section id="homework-for-mean-and-standard-deviation-of-binomial-distribution-section" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="homework-for-mean-and-standard-deviation-of-binomial-distribution-section"><span class="header-section-number">5.3.2</span> Homework for Mean and Standard Deviation of Binomial Distribution Section</h3>
+<ol type="1">
+<li>Suppose a random variable, <span class="math inline">\(x\)</span>, arises from a binomial experiment. Suppose <span class="math inline">\(n = 6\)</span>, and <span class="math inline">\(p = 0.13\)</span>.</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li>Write the probability distribution.</li>
+<li>Draw a histogram.</li>
+<li>Describe the shape of the histogram.</li>
+<li>Find the mean.</li>
+<li>Find the variance.</li>
+<li>Find the standard deviation.</li>
+</ol>
+<!-- -->
+<ol start="2" type="1">
+<li>Suppose a random variable, <span class="math inline">\(x\)</span>, arises from a binomial experiment. Suppose <span class="math inline">\(n = 10\)</span>, and <span class="math inline">\(p = 0.81\)</span>.</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li>Write the probability distribution.</li>
+<li>Draw a histogram.</li>
+<li>Describe the shape of the histogram.</li>
+<li>Find the mean.</li>
+<li>Find the variance.</li>
+<li>Find the standard deviation.</li>
+</ol>
+<!-- -->
+<ol start="3" type="1">
+<li>Suppose a random variable, <span class="math inline">\(x\)</span>, arises from a binomial experiment. Suppose <span class="math inline">\(n = 7\)</span>, and <span class="math inline">\(p = 0.50\)</span>.</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li>Write the probability distribution.</li>
+<li>Draw a histogram.</li>
+<li>Describe the shape of the histogram.</li>
+<li>Find the mean.</li>
+<li>Find the variance.</li>
+<li>Find the standard deviation.</li>
+</ol>
+<!-- -->
+<ol start="4" type="1">
+<li>Approximately 10% of all people are left-handed. Consider a grouping of fifteen people.</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li>State the random variable.</li>
+<li>Write the probability distribution.</li>
+<li>Draw a histogram.</li>
+<li>Describe the shape of the histogram.</li>
+<li>Find the mean.</li>
+<li>Find the variance.</li>
+<li>Find the standard deviation.</li>
+</ol>
+<!-- -->
+<ol start="5" type="1">
+<li>According to an article in the American Heart Association’s publication *Circulation*, 24% of patients who had been hospitalized for an acute myocardial infarction did not fill their cardiac medication by the seventh day of being discharged (Ho, Bryson &amp; Rumsfeld, 2009). Suppose there are twelve people who have been hospitalized for an acute myocardial infarction.</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li>State the random variable.</li>
+<li>Write the probability distribution.</li>
+<li>Draw a histogram.</li>
+<li>Describe the shape of the histogram.</li>
+<li>Find the mean.</li>
+<li>Find the variance.</li>
+<li>Find the standard deviation.</li>
+</ol>
+<!-- -->
+<ol start="6" type="1">
+<li>Eyeglassomatic manufactures eyeglasses for different retailers. In March 2010, they tested to see how many defective lenses they made, and there were 16.9% defective lenses due to scratches. Suppose Eyeglassomatic examined twenty eyeglasses.</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li>State the random variable.</li>
+<li>Write the probability distribution.</li>
+<li>Draw a histogram.</li>
+<li>Describe the shape of the histogram.</li>
+<li>Find the mean.</li>
+<li>Find the variance.</li>
+<li>Find the standard deviation.</li>
+</ol>
+<!-- -->
+<ol start="7" type="1">
+<li>The proportion of brown M&amp;M’s in a milk chocolate packet is approximately 14% (Madison, 2013). Suppose a package of M&amp;M’s typically contains 52 M&amp;M’s.</li>
+</ol>
+<!-- -->
+<ol type="a">
+<li><p>State the random variable.</p></li>
+<li><p>Find the mean.</p></li>
+<li><p>Find the variance.</p></li>
+<li><p>Find the standard deviation.</p></li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Probability.html" class="pagination-link" aria-label="Probability">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Continuous Probability Distribution.html" class="pagination-link" aria-label="Continuous Probability Distribution">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Continuous Probability Distribution</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
