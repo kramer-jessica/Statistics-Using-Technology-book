@@ -33,7 +33,7 @@ $\mu=\frac{\sum{x}}{N}$, pronounced mu
 
 $\sum{x}$ means to add up all of the data values.
 
-### **Sample Mean**:
+### **Sample Mean**
 
 $\bar{x}=\frac{\sum{x}}{n}$, pronounced x bar.
 
@@ -284,21 +284,15 @@ Variable: **x** = score
 A weighted average can be found using Rguroo. First, we will create a new dataset in Rguroo. Click to expand the box below to see how to create a new dataset in Rguroo:
 
 :::: {#Creating-new-dataset .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a New Dataset"}
-**Before you begin:** Make sure you have already imported the [cats]{.data} dataset into your **Data** Toolbox, as was shown [here](#Importing-cats-to-Rguroo).
-
 1.  Open the **Data** toolbox.\
 2.  Click on the [Data Import]{.dpd} dropdown, and select [Create New Dataset]{.fun}. This opens the [Create New Dataset]{.dialog} dialog. Specify the number of rows and columns for your new dataset.\
-3.  The default variable names will be [Var1]{.var}, [Var2]{.var}, etc. To change the variable name, move your cursor over the variable name on the header. You will see the Variable Context Menu icon.  \
-4.  Select the [Logical Expression]{.button} button.\
-5.  To create a new Logical Expression, click the green plus icon.
-6.  From the [Variable]{.dpd} dropdown, select the [Bwt]{.var}. From the [Op.]{.dpd} (operations) dropwdown, select the less than symbol (<). In the Value column, enter 3.9 (the maximum body weight of cats dataset). Click the [Done]{.button}.
-7.  When you are done with your selection, click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the scatterplot.
-8. In Save As... name the new data set cats_nomax and click the [Save As...]{.button}.
+3.  The default variable names will be [Var1]{.var}, [Var2]{.var}, etc. To change the variable name, move your cursor over the variable name on the header. You will see the Variable Context Menu icon. Click on the icon to open the variable context menu. From the menu select the option [Rename]{.des}. This will bring up the [Rename Variable]{.dialog} dialog box. In the dialog box, type in the new name for your variable, and press enter. The new name will now appear on the header. Note that variable names cannot have spaces.\
+4.  Enter your data.\
+5.  Enter a name for your dataset in the [Save As]{.des} textbox on the top, and click the [Save as]{.button} button to save your dataset.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-![Logical Expression Dialog in Rguroo](Final_output/Rguroo_dialogs/Numerical_description/subset_nomax_cats.png){width="500px"}
-![Data Subset Dialog in Rguroo](Final_output/Rguroo_dialogs/Numerical_description/logical_subset_nomax.png){width="500px"}
-![Save As... Dataset View](Final_output/Rguroo_outputs/Numerical_Description/save_data_nomax.png) 
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog and new dataset"}
+![New Dataset Dialog](Final_output/Rguroo_dialogs/Numerical_description/new_dataset_dialog.png){width="500px"}
+![Biology Class Dataset](Final_output/Rguroo_outputs/Numerical_Description/biology_dataset.png){width="500px"}
 :::
 ::::
 
@@ -314,7 +308,21 @@ The **x** and **w** represent the variables, \<- means make the variables equiva
 
 For this example, the commands would be -->
 
-```{r weighted-mean}
+To calculate the weighted average in Rguroo, you will follow the same steps described [here](#Calculating-summary-stats-in-Rguroo). In the [Basic Summary Statistics]{.dialog} dialog box select the [biology_grade]{.data} from the [dataset]{.dpd} dropdown, select [score]{.var} in the [Numerical]{.dpd} dropdown, and select [weight]{.var} in the [frequency]{.dpd} dropdown as shown in figure @fig-weighted-mean.
+```{r,echo=FALSE}
+#| fig-alt: "basic summary statistics dialog box and weighted mean output"
+#| warning: FALSE
+#| label: fig-weighted-mean
+#| fig-cap: "Weighted Mean of Biology Grade"
+#| fig-subcap: 
+#|   - "Basic Summary Statistics Dialog box"
+#|   - "Output results"
+#| out-width: "70%"
+knitr::include_graphics(c("Final_output/Final_output/Rguroo_dialogs/Numerical_Description/summary_stat_dialog_weight_mean.png",
+"Final_output/Final_output/Rguroo_outputs/Numerical_Description/weight_mean_bio_grade.png"))
+```
+
+```{r weighted-mean, echo = FALSE, eval = FALSE}
 x<-c(95, 83, 76, 84) 
 w<-c(.15, .25, .25, .35) 
 weighted.mean(x,w) 
@@ -335,21 +343,60 @@ c)  Which faculty member had the higher average evaluation?
 a)  One faculty member had the following ratings: 8 for teaching, 9 for publishing, 2 for committee work, 1 for community service, and 8 for paperwork. Compute the weighted average of the evaluation.
 
 Variable: **x** = rating, **w** = weight
-
-```{r weighted-mean1}
+```{r weighted-mean1, echo = FALSE, eval = FALSE}
 x<-c(8, 9, 2, 1, 8) 
 w<-c(20, 18, 6, 4, 2) 
 weighted.mean(x,w)
+```
+
+To find the weighted average using Rguroo, start by creating a new dataset as described [here](#Creating-new-dataset). The new dataset is shown in the figure @fig-dataset-ratings below.
+
+```{r,echo=FALSE}
+#| fig-alt: "new dataset for weight of category in a and b"
+#| warning: FALSE
+#| label: fig-dataset-ratings
+#| fig-cap: "Faculty Ratings Dataset"
+#| out-width: "70%"
+knitr::include_graphics(c("Final_output/Rguroo_outputs/Numerical_Description/ex_4_1_8_dataset.png"))
+```
+
+Calculate the weighted average in Rguroo using the same steps described [here](#Calculating-summary-stats-in-Rguroo). In the [Basic Summary Statistics]{.dialog} dialog box select the [faculty_ratings]{.data} from the [dataset]{.dpd} dropdown, select [faculty_a]{.var} in the [Numerical]{.dpd} dropdown, and select [weight]{.var} in the [frequency]{.dpd} dropdown as shown in figure @fig-faculty_a-weighted_mean.
+```{r,echo=FALSE}
+#| fig-alt: "basic summary statistics dialog box and weighted mean output faculty_a"
+#| warning: FALSE
+#| label: fig-faculty_a-weighted_mean
+#| fig-cap: "Weighted Mean of Faculty Ratings"
+#| fig-subcap: 
+#|   - "Basic Summary Statistics Dialog box"
+#|   - "Output results"
+#| out-width: "70%"
+knitr::include_graphics(c("Final_output/Rguroo_dialogs/Numerical_Description/ex_4_1_8_a_dialog.png",
+"Final_output/Rguroo_outputs/Numerical_Description/ex_4_1_8_a_output.png"))
 ```
 
 The weighted average is 7.08.
 
 b)  Another faculty member had ratings of 6 for teaching, 8 for publishing, 9 for committee work, 10 for community service, and 10 for paperwork. Compute the weighted average of the evaluation.
 
-```{r weighted-mean2}
+```{r weighted-mean2, echo = FALSE, eval = FALSE}
 x<-c(6, 8, 9, 10, 10) 
 w<-c(20, 18, 6, 4, 2) 
 weighted.mean(x,w)
+```
+
+The weighted mean can be calculated in the same fasion as part (a). In the [Basic Summary Statistics]{.dialog} dialog box select the [faculty_ratings]{.data} from the [dataset]{.dpd} dropdown, select [faculty_b]{.var} in the [Numerical]{.dpd} dropdown, and select [weight]{.var} in the [frequency]{.dpd} dropdown as shown in figure 
+
+```{r,echo=FALSE}
+#| fig-alt: "basic summary statistics dialog box and weighted mean output faculty_b"
+#| warning: FALSE
+#| label: fig-faculty_b-weighted_mean
+#| fig-cap: "Weighted Mean of Faculty Ratings"
+#| fig-subcap: 
+#|   - "Basic Summary Statistics Dialog box"
+#|   - "Output results"
+#| out-width: "70%"
+knitr::include_graphics(c("Final_output/Rguroo_dialogs/Numerical_Description/ex_4_1_8_b_dialog.png",
+"Final_output/Rguroo_outputs/Numerical_Description/ex_4_1_8_b_output.png"))
 ```
 
 The weighted average for this employee is 7.56.
@@ -368,11 +415,19 @@ Mean can be found on interval and ratio data, since you must have numbers to add
 
 ### Homework for Measures of Center Section
 
-**Use Technology on all problems. State the variable on all problems.**
+**Use Rguroo on all problems. State the variable on all problems.**
 
-1.  Cholesterol levels were collected from patients certain days after they had a heart attack and are in @tbl-Cholesterol. Find the mean and median for cholesterol levels 2 days after the heart attack.
-
-```{r cholesterol2-data}
+1. **Before you begin:** Make sure you have already imported the [cholesterol]{.data} dataset into your **Data** Toolbox, as was shown [here](#Importing-cats-to-Rguroo) by selecting the [Statistics Using Technology - Kozak]{.repo} as shown in the figure @fig-kozak-repo. 
+Cholesterol levels were collected from patients a certain number of days after they had a heart attack and are in @tbl-Cholesterol. Find the mean and median for cholesterol levels 2 days after the heart attack.
+```{r,echo=FALSE}
+#| fig-alt: "Repository search"
+#| warning: FALSE
+#| label: fig-kozak-repo
+#| fig-cap: "Repository Search Dialog"
+#| out-width: "70%"
+knitr::include_graphics("Final_output/Rguroo_dialogs/Numerical_Description/chol_data_repo.png")
+```
+```{r cholesterol2-data,echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Cholesterol dataset"
 #| label: tbl-Cholesterol
 #| tbl-cap: "Head of Cholesterol Levels of Patients After Heart Attack"
@@ -382,7 +437,7 @@ knitr::kable(head(Cholesterol))
 
 **Code book for Data Frame Cholesterol**
 
-**Description** Cholesterol levels were collected from patients certain days after they had a heart attack
+**Description** Cholesterol levels were collected from patients a certain number of days after they had a heart attack
 
 This data frame contains the following columns:
 
@@ -394,13 +449,14 @@ day4: Cholesterol level of patient 4 days after heart attack. (mg/dL)
 
 day14: Cholesterol level of patient 14 days after heart attack. (mg/dL)
 
-Source Ryan, B. F., Joiner, B. L., & Ryan, Jr, T. A. (1985). Cholesterol levels after heart attack.Retrieved from http://www.statsci.org/data/general/cholest.html
+Source Ryan, B. F., Joiner, B. L., & Ryan, Jr, T. A. (1985). Cholesterol levels after heart attack. Retrieved from [here](https://gksmyth.github.io/ozdasl/general/cholest.html)
 
 References Ryan, Joiner & Ryan, Jr, 1985
 
-2.  The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in @tbl-Length (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.
+2. **Before you begin:** Make sure you have already imported the [length]{.data} dataset into your **Data** Toolbox located in the [Statistics Using Technology - Kozak]{.repo}. 
+The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in @tbl-Length (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.
 
-```{r length2-data}
+```{r length2-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Length dataset"
 #| label: tbl-Length
 #| tbl-cap: "Head of Length of New zealand rivers (km)"
@@ -420,13 +476,13 @@ length: how long the river is in kilometers
 
 flowsto: what body of water the river flows into Pacific Ocean is Pacific and the Tasman Sea is Tasman
 
-Source Lee, A. (1994). Data analysis: An introduction based on r. Auckland. Retrieved from http://www.statsci.org/data/oz/nzrivers.html
+Source Lee, A. (1994). Data analysis: An introduction based on r. Auckland. Retrieved from [here](https://gksmyth.github.io/ozdasl/oz/nzrivers.html)
 
 References Lee, A. (1994). Data analysis: An introduction based on r. Auckland.
 
-3.  Print-O-Matic printing company's employees have salaries that are contained in @tbl-Pay.
+3. **Before you begin:** Make sure you have already imported the [pay]{.data} dataset into your **Data** Toolbox, located in the [Statistics Using Technology - Kozak]{.repo}. Print-O-Matic printing company's employees have salaries that are contained in @tbl-Pay.
 
-```{r pay2-data}
+```{r pay2-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Pay dataset"
 #| label: tbl-Pay
 #| tbl-cap: "Head of Salaries of Print-O-Matic Printing Company Employees"
@@ -460,9 +516,9 @@ e.  If you were a platen worker, who believes that the employees need a raise, w
 
 <!-- -->
 
-4.  Print-O-Matic printing company spends specific amounts on fixed costs every month. The costs of those fixed costs are in a @tbl-Cost.
+4.  **Before you begin:** Make sure you have already imported the [cost]{.data} dataset into your **Data** Toolbox, located in the [Statistics Using Technology - Kozak]{.repo}. Print-O-Matic printing company spends specific amounts on fixed costs every month. The costs of those fixed costs are in a @tbl-Cost.
 
-```{r cost-data}
+```{r cost-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Cost dataset"
 #| label: tbl-Cost
 #| tbl-cap: "Fixed Costs for Print-O-Matic Printing Company"
@@ -500,13 +556,13 @@ e.  If it is your job to find places in the budget to reduce costs, which averag
 
 **Graph 3.1.2: Skewed or Symmetric Graph**
 
-![Graph #3.1.2](graph_3_1_1.png){fig-alt="histogram with bars on left tallest and then gradually getting shorter as you go to the right"}
+![Graph 3.1.2](Final_output/Rguroo_outputs/Numerical_Description/skewed_right_hist.png){fig-alt="histogram with bars on left tallest and then gradually getting shorter as you go to the right"}
 
 6.  Looking at graph 3.1.3, state if the graph is skewed left, skewed right, or symmetric and then state which is larger, the mean or the median?
 
 **Graph 3.1.3: Skewed or Symmetric Graph**
 
-![Graph 3.1.3](graph_3_1_2.png){fig-alt="histogram with bars on left shortest and then gradually getting taller as you go to the right"}
+![Graph 3.1.3](Final_output/Rguroo_outputs/Numerical_Description/skewed_left_hist.png){fig-alt="histogram with bars on left shortest and then gradually getting taller as you go to the right"}
 
 7.  An employee at Coconino Community College (CCC) is evaluated based on goal setting and accomplishments toward the goals, job effectiveness, competencies, and CCC core values. Suppose for a specific employee, goal 1 has a weight of 30%, goal 2 has a weight of 20%, job effectiveness has a weight of 25%, competency 1 has a weight of 4%, competency 2 has a weight of 3%, competency 3 has a weight of 3%, competency 4 has a weight of 3%, competency 5 has a weight of 2%, and core values has a weight of 10%. Suppose the employee has scores of 3.0 for goal 1, 3.0 for goal 2, 2.0 for job effectiveness, 3.0 for competency 1, 2.0 for competency 2, 2.0 for competency 3, 3.0 for competency 4, 4.0 for competency 5, and 3.0 for core values. Find the weighted average score for this employee. If an employee has a score less than 2.5, they must have a Performance Enhancement Plan written. Does this employee need a plan?
 
@@ -520,7 +576,7 @@ e.  If it is your job to find places in the budget to reduce costs, which averag
 
 Variability is an important idea in statistics. If you were to measure the height of everyone in your classroom, every observation gives you a different value. That means not every student has the same height. Thus there is variability in people's heights. If you were to take a sample of the income level of people in a town, every sample gives you different information. There is variability between samples too. Variability describes how the data are spread out. If the data are very close to each other, then there is low variability. If the data are very spread out, then there is high variability. How do you measure variability? It would be good to have a number that measures it. This section will describe some of the different measures of variability, also known as variation.
 
-In \[Example: Finding the Mean and Median using r\], the average weight of a cat was calculated to be 2.72 kg. How much does this tell you about the weight of all cats? Can you tell if most of the weights were close to 2.72 kg or were the weights really spread out? The highest weight and the lowest weight are known, but is there more that you can tell? All you know is that the center of the weights is 2.72 kg.
+In \[Example: Finding the Mean and Median using Rguroo\], the average weight of a cat was calculated to be 2.72 kg. How much does this tell you about the weight of all cats? Can you tell if most of the weights were close to 2.72 kg or were the weights really spread out? The highest weight and the lowest weight are known, but is there more that you can tell? All you know is that the center of the weights is 2.72 kg.
 
 You need more information.
 
@@ -528,13 +584,13 @@ The **range** of a set of data is the difference between the highest and the low
 
 ### Example: Range
 
-From [Example: Affect of Extreme Values on Mean and Median], the maximum is 3.9 kg and the minimum is 2 kg. So the range is $3.9-2=1.9 kg$. But what does that tell you? You don't know if the weights are really spread out, or if they are close together.
+From [Example: Effect of Extreme Values on Mean and Median], the maximum is 3.9 kg and the minimum is 2 kg. So the range is $3.9-2=1.9 kg$. But what does that tell you? You don't know if the weights are really spread out, or if they are close together.
 
-Unfortunately, range doesn't really provide a very accurate picture of the variability. A better way to describe how the data is spread out is needed. Instead of looking at the distance the highest value is from the lowest how about looking at the distance each value is from the mean. This distance is called the **deviation**. You might want to find the average of the deviation. Though the calculation for finding the average deviation is not very straight forward, you end up with a value called the **variance**. The symbol for the population variance is $\sigma^2$, and it is the average squared distance from the mean. Statisticians like the variance, but many other people who work with statistics use a descriptive statistics which is the square root of the variance. This gives you the average distance from the mean. This is called the standard deviation, and is denoted with the letter $\sigma$.
+Unfortunately, range doesn't really provide a very accurate picture of the variability. A better way to describe how the data is spread out is needed. Instead of looking at the distance the highest value is from the lowest how about looking at the distance each value is from the mean. This distance is called the **deviation**. You might want to find the average of the deviation. Though the calculation for finding the average deviation is not very straight forward, you end up with a value called the **variance**. The symbol for the population variance is $\sigma^2$, and it is the average squared distance from the mean. Statisticians like the variance, but many other people who work with statistics use a descriptive statistic which is the square root of the variance. This gives you the average distance from the mean. This is called the **standard deviation**, and the population standard deviation is denoted with the letter $\sigma$.
 
 The standard deviation is the average (mean) distance from a data point to the mean. It can be thought of as how much a typical data point differs from the mean.
 
-The **sample variance** formula: $s^2=\frac{\sum\left(x-\bar{x}\right)^2}{n-1}$, where $\bar{x}$ is the sample mean, $n$ is the sample size, and $\sum{}$ means to find the sum of the values.The $n-1$ on the bottom has to do with a concept called degrees of freedom. Basically, it makes the sample variance a better approximation of the population variance.
+The **sample variance** formula: $s^2=\frac{\sum\left(x-\bar{x}\right)^2}{n-1}$, where $\bar{x}$ is the sample mean, $n$ is the sample size, and $\sum{}$ means to find the sum of the values. The $n-1$ on the bottom has to do with a concept called degrees of freedom. Basically, it makes the sample variance a better approximation of the population variance.
 
 The **sample standard deviation** formula: $s=\sqrt{ \frac{\sum\left(x-\bar{x}\right)^2}{n-1}}$.
 
@@ -542,9 +598,17 @@ The **population variance** formula: $\sigma^2 = \frac{\sum\left(x-\mu \right)^2
 
 The **population standard deviation** formula: $\sigma =\sqrt{ \frac{\sum\left(x-\mu \right)^2}{N}}$
 
-Both the sample variance and sample standard deviation can be found using technology. If using rStudio, you would use
+Both the sample variance and sample standard deviation can be found using technology. If using Rguroo, you would perform the same steps as described [here](#Calculating-summary-stats-in-Rguroo) and select [standard deviation]{.def} as shown in the figure @fig-sd-dialog.
+```{r,echo=FALSE}
+#| fig-alt: "Dialog box for standard deviation"
+#| warning: FALSE
+#| label: fig-sd-dialog
+#| fig-cap: "Finding Standard Deviation Using Basic Summary Statistic"
+#| out-width: "70%"
+knitr::include_graphics("Final_output/Rguroo_dialogs/Numerical_Description/sd_cats_dialog.png")
+```
 
-df_stats(\~variable, data=data_frame, var, sd)
+<!--df_stats(\~variable, data=data_frame, var, sd)-->
 
 The next example will demonstrate this command.
 
