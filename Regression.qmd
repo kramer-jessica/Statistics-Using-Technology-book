@@ -385,28 +385,75 @@ c.  Use the regression equation to find the number of calories when the alcohol 
 
 $$\hat{y}=2672*0.14+14.3=388.38$$
 
-**Discuss: Shoud we add how you can get predicted values in Rguroo?**
+You can obtain predicted values in Rguroo. For example, to get the predicted values for alcohol contents of 7.00% and 14.00%, enter 0.07 and 0.14 (separated by a comma) in the textbox labeled [Predict at new x value(s)]{.des} in the [Simple Linear Regression]{.diag} dialog in Rguroo, as shown in @fig-AlcoholCalorieRegress_pred below.
+
+```{r AlcoholCalorieRegress_pred, echo=FALSE}
+#| fig-alt: "Predicting calories for alcohol contents of 7.00% and 14.00% in Rguroo"
+#| warning: FALSE
+#| label: fig-AlcoholCalorieRegress_pred
+#| fig-cap: "Predicting Calories for Alcohol Contents of 7.00% and 14.00% in Rguroo"
+#| out-width: "70%"
+knitr::include_graphics(
+  "Rguroo_dialogs/Regression/AlcoholCalorieRegress_pred.png")
+```
+
+
+The predicted values output from Rguroo is shown in @fig-AlcoholCaloriePredOutput below.
+
+```{r AlcoholCaloriePredOutput, echo=FALSE}
+#| fig-alt: "Rguroo output showing predicted calories for alcohol contents of 7.00% and 14.00%"
+#| warning: FALSE
+#| label: fig-AlcoholCaloriePredOutput
+#| fig-cap: "Rguroo Output Showing Predicted Calories for Alcohol Contents of 7.00% and 14.00%"
+#| out-width: "70%"
+knitr::include_graphics(
+  "Rguroo_outputs/Regression/AlcoholCaloriePredOutput.png")
+```
+
 
 If you are drinking a beer that is 14% alcohol content, then it probably has close to 388 calories. Since, on average, a 12% alcohol beer has 330 calories, you might expect a 14% beer to have more calories than this. However, the maximum alcohol content in our dataset is 12%. The estimate for a 14% beer is therefore an example of **extrapolation**, because it is a prediction for an $x$-value outside the range of the data used to fit the model. It is not a good idea to predict values that fall far outside the range of the original data, because we cannot be sure that the regression relationship remains valid beyond the observed $x$-values.
 
 Notice that 7.00% alcohol is within the range of the original $x$-values. Predicting a value for an $x$-value inside the observed range is called **interpolation**. The 14.00% value is outside that range, and predicting for an $x$-value outside the original data is called **extrapolation**. When you interpolate, you can usually feel confident that the predicted value will be close to the true value because the model was created using data within that range and is intended to describe relationships only there. When you extrapolate, however, you cannot be sure the prediction is close to the true value, because the relationship may change for $x$-values beyond those observed when the model was created.
 
-**Discuss: The following example is vague. Can a linear model beused to predict? which model it is refereing to? Can we make it more specific or give another example such as relationship between age and height, say ages 5-12 which is linear but for example if we extrapolate say to age 40 we get a value that is not reasonable?**
+<!-- Discuss: The following example is not clear and its relationship to linear regression is not clear. . So I replaced it.
 
 Another example of extrapolation is when you use regression to come up with an equation to predict the growth of a city, like Flagstaff, AZ. Based on analysis it was determined that the population of Flagstaff would be well over 50,000 by 1995. However, when a census was undertaken in 1995, the population was less than 50,000. This is because they extrapolated and the growth factor they were using had obviously changed from the early 1990's. Growth factors can change for many reasons, such as employment growth, employment stagnation, disease, articles saying great place to live, etc. Realize that when you extrapolate, your predicted value may not be anywhere close to the actual value that you observe.
+-->
+
+Another example of extrapolation is the relationship between age and height.
+This relationship is approximately linear only during middle childhood,
+roughly between ages 2 and 10. Suppose we model height (in inches) as a
+linear function of age (in years) using the equation
+
+Height = 30 + 2.5 × Age.
+
+For example, to predict the height of a child who is 6 years old
+(an interpolation because 6 is within the 2–10 range), we substitute Age = 6:
+
+Height = 30 + 2.5 × 6 = 45 inches.
+
+However, using the same model to predict height at age 30 represents an
+extrapolation, since age 30 is far outside the range where the linear
+relationship holds. Substituting Age = 30 gives:
+
+Height = 30 + 2.5 × 30 = 105 inches,
+
+a clearly unrealistic value. This illustrates why extrapolation can lead
+to misleading conclusions.
+
 
 What does the slope mean in the context of this problem?
 
 The calories increase by 26.72 for every 1% increase in alcohol content.
 
-The $y$-intercept in many cases is meaningless. In this case, it means that if a drink has 0 alcohol content, then it would have 14.3 calories which maybe a reasonable value. 
+The $y$-intercept in many cases is meaningless. In this case, it means that if a drink has 0 alcohol content, then it would have 14.3 calories which maybe a reasonable value. However, consider the model for height versus age discussed above. The $y$-intercept is 30 inches, which would be the predicted height of a newborn baby (age 0). This is not a reasonable value since newborn babies are typically about 20 inches long. So in this case, the $y$-intercept is not meaningful. 
 
-<!-- This may be reasonable, but remember this value is an extrapolation so it may be wrong. (Mynote: actually it is not an extrapolation since 0% is within the range of possible alcohol content) 
+<!-- Revised: This may be reasonable, but remember this value is an extrapolation so it may be wrong. (Mynote: actually it is not an extrapolation since 0% is within the range of possible alcohol content) 
 --->
 
 Consider the residuals again. According to the data, a beer with 7.0% alcohol has between 160 and 231 calories. The predicted value is 201 calories. This variation means that the actual value was between 40 calories below and 30 calories above the predicted value. That isn't that far off. Some of the actual values differ by a large amount from the predicted value. This is due to variability in the response variable. The larger the residuals the less the model explains the variability in the response variable. There needs to be a way to calculate how well the model explains the variability in the response variable. This will be explored in the next section.
 
-One last thing that you may wonder is if imported beer has a different number of calories than domestic beer. The location (imported versus domestic) is a covariate, a third variable that may affects the calorie content. A covariate that is a categorical variable is referred to as a **factor**. You can create a scatterplot that  displays the data separately for each category of this covariate. Here is how to do this in Rguroo.
+One last thing that you may wonder is if imported beer has a different number of calories than domestic beer. The location (imported versus domestic) is a covariate, a third variable that may affects the calorie content. A covariate that is a categorical variable is referred to as a **factor**. You can create a scatterplot that  displays the data separately for each category of this covariate (factor). 
 
 ::: {#Creating-Scatterplot-of-Calories-vs-Alcohol-location .ref-label} :::
 
@@ -460,7 +507,7 @@ gf_point(calories~alcohol, data=Beer, title="Calories versus Alcohol Content of 
   gf_lm() 
 ```
 
-@fig-AlcoholCalorieLocationScatter shows the scatterplot of calories versus alcohol content separated by location (imported versus domestic). The least squares lines for each location are also shown. Looking at the scatter plot, there doesn't appear to be an affect from domestic or import. This is what is nice about scatter plots, You can visually see a possible relationships.
+@fig-AlcoholCalorieLocationScatter shows the scatterplot of calories versus alcohol content separated by location (imported versus domestic). The least squares lines for each location are also shown. Looking at the scatterplot, there doesn't appear to be an affect from domestic or import. This is what is nice about scatter plots, You can visually see a possible relationships.
 
 ### Homework for Regression Section
 
@@ -468,29 +515,59 @@ gf_point(calories~alcohol, data=Beer, title="Calories versus Alcohol Content of 
 
 1.  When an anthropologist finds skeletal remains, they need to figure out the height of the person. The height of a person (in cm) and the length of their metacarpal bone 1 (in mm) were collected and are in @tbl-Metacarpal (\\"Prediction of height,\\" 2013). Create a scatter plot and find a regression equation between the height of a person and the length of their metacarpal. Then use the regression equation to find the height of a person for a metacarpal length of 44 mm and for a metacarpal length of 55 mm. Which height that you calculated do you think is closer to the true height of the person? Why?
 
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [height_vs_metacarp]{.data}.
+
 **Code book for Data Frame Metacarpal is below @tbl-Metacarpal.**
+
+</div>
 
 2.  @tbl-House contains the value of the house and the amount of rental income in a year that the house brings in (\\"Capital and rental,\\" 2013). Create a scatter plot and find a regression equation between house value and rental income. Then use the regression equation to find the rental income of a house worth \\\$230,000 and for a house worth \\\$400,000. Which rental income that you calculated do you think is closer to the true rental income? Why?
 
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [house]{.data}.
+
 **Code book for Data Frame House is below @tbl-House.**
+
+</div>
 
 3.  The World Bank collects information on the life expectancy of a person in each country (\\"Life expectancy at,\\" 2013) and the fertility rate per woman in the country (\\"Fertility rate,\\" 2013). The Data Frame for countries for the year 2011 are in @tbl-Fertility. Create a scatter plot of the Data Frame and find a linear regression equation between fertility rate and life expectancy in 2011. Then use the regression equation to find the life expectancy for a country that has a fertility rate of 2.7 and for a country with fertility rate of 8.1. Which life expectancy that you calculated do you think is closer to the true life expectancy? Why?
 
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [Life_exp_fert_rate]{.data}.
+
 **Code book for Data Frame Fertility is below @tbl-Fertility.**
+
+</div>
 
 4.  The World Bank collected data on the percentage of gross domestic product (GDP) that a country spends on health expenditures (Current health expenditure (% of GDP), 2019), the fertility rate of the country (Fertility rate, total (births per woman), 2019), and the percentage of woman receiving prenatal care (Pregnant women receiving prenatal care (%), 2019). The Data Frame for the countries where this information is available in @tbl-Fert_prenatal. Create a scatter plot of the Data Frame and find a regression equation between percentage spent on health expenditure and the percentage of women receiving prenatal care. Then use the regression equation to find the percent of women receiving prenatal care for a country that spends 5.0% of GDP on health expenditure and for a country that spends 12.0% of GDP. Which prenatal care percentage that you calculated do you think is closer to the true percentage? Why?
 
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [fertility_prenatal]{.data}.
+
+
 **Code book for Data Frame Fert_prenatal is below @tbl-Fert_prenatal.**
+
+</div>
 
 5.  The height and weight of baseball players are in @tbl-Baseball (\\"MLB heightsweights,\\" 2013). Create a scatter plot and find a regression equation between height and weight of baseball players. Then use the regression equation to find the weight of a baseball player that is 75 inches tall and for a baseball player that is 68 inches tall. Which weight that you calculated do you think is closer to the true weight? Why?
 
-```{r chapter-10-baseball-data}
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [baseball]{.data}.
+
+```{r chapter-10-baseball-data, echo=FALSE}
 #| tbl-alt: "Head of Heights and Weights of Baseball Players data frame"
 #| label: tbl-Baseball
 #| tbl-cap: "Heights and Weights of Baseball Players"
 Baseball <- read.csv( "https://krkozak.github.io/MAT160/baseball.csv") 
 knitr::kable(head(Baseball))
 ```
+
 
 **Code book for Data Frame Baseball**
 
@@ -512,9 +589,15 @@ Source MLB heightsweights. (2013, November 16). Retrieved from http://wiki.stat.
 
 References SOCR Data Frame of MLB Heights Weights from UCLA.
 
+</div>
+
 6.  Different species have different body weights and brain weights are in @tbl-Body. (\\"Brain2bodyweight,\\" 2013). Create a scatter plot and find a regression equation between body weights and brain weights. Then use the regression equation to find the brain weight for a species that has a body weight of 62 kg and for a species that has a body weight of 180,000 kg. Which brain weight that you calculated do you think is closer to the true brain weight? Why?
 
-```{r Chapter-10-Body-data}
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [body]{.data}.
+
+```{r Chapter-10-Body-data, echo=FALSE}
 #| tbl-alt: "Head of Body Weights and Brain Weights of Species"
 #| label: tbl-Body
 #| tbl-cap: "Body Weights and Brain Weights of Species"
@@ -544,13 +627,27 @@ Source Brain2bodyweight. (2013, November 16). Retrieved from http://wiki.stat.uc
 
 References SOCR Data of species body weights and brain weights from UCLA.
 
+</div>
+
 7.  A sample of hot dogs was taken and the amount of sodium (in mg) and calories were measured. (\\"Data hotdogs,\\" 2013) The Data Frame are in @tbl-Hotdog. Create a scatter plot and find a regression equation between amount of calories and amount of sodium. Then use the regression equation to find the amount of sodium a hot dog has if it is 170 calories and if it is 120 calories. Which sodium level that you calculated do you think is closer to the true sodium level? Why?
+
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [hotdog]{.data}.
+
 
 **Code book for data frame Hotdog is below @tbl-Hotdog.**
 
+</div>
+
 8.  Per capita income in 1960 dollars for European countries and the percent of the labor force that works in agriculture in 1960 are in @tbl-Agriculture (\\"OECD economic development,\\" 2013). Create a scatter plot and find a regression equation between percent of labor force in agriculture and per capita income. Then use the regression equation to find the per capita income in a country that has 21 percent of labor in agriculture and in a country that has 2 percent of labor in agriculture. Which per capita income that you calculated do you think is closer to the true income? Why?
 
-```{r chapter-10-agricultue-data}
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [agriculture]{.data}.
+
+
+```{r chapter-10-agricultue-data, echo=FALSE}
 #| tbl-alt: "Head of Percent of Labor in Agriculture and Per Capita Income for European Countries"
 #| label: tbl-Agriculture
 #| tbl-cap: "Percent of Labor in Agriculture and Per Capita Income for European Countries"
@@ -582,9 +679,15 @@ Source OECD economic development. (2013, December 04). Retrieved from http://lib
 
 References Data And Story Library
 
+</div>
+
 9.  Cigarette smoking and cancer have been linked. The number of deaths per one hundred thousand from bladder cancer and the number of cigarettes sold per capita in 1960 are in table \\#10.1.11 (\\"Smoking and cancer,\\" 2013). Create a scatter plot and find a regression equation between number of cigarettes smoked and number of deaths from bladder cancer. Then use the regression equation to find the number of deaths from bladder cancer when the cigarette sales were 20 per capita and when the cigarette sales were 6 per capita. Which number of deaths that you calculated do you think is closer to the true number? Why?
 
-```{r chapter-10-cancer-data}
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cancer_1]{.data}.
+
+```{r chapter-10-cancer-data, echo=FALSE}
 #| tbl-alt: "Head of Number of Cigarettes and Number of Bladder Cancer Deaths"
 #| label: tbl-Cancer
 #| tbl-cap: "Number of Cigarettes and Number of Bladder Cancer Deaths"
@@ -616,9 +719,15 @@ Source Smoking and cancer. (2013, December 04). Retrieved from http://lib.stat.c
 
 References Data And Story Library
 
+</div>
+
 10. The weight of a car can influence the mileage that the car can obtain. A random sample of cars' weights and mileage was collected and are in @tbl-Cars (\\"us auto mileage,\\" 2019). Create a scatter plot and find a regression equation between weight of cars and mileage. Then use the regression equation to find the mileage on a car that weighs 3800 pounds and on a car that weighs 2000 pounds. Which mileage that you calculated do you think is closer to the true mileage? Why?
 
-```{r chapter-10-cars-data}
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cars]{.data}.
+
+```{r chapter-10-cars-data, echo=FALSE}
 #| tbl-alt: "Head of Weights and Mileages of Carss"
 #| label: tbl-Cars
 #| tbl-cap: "Weights and Mileages of Cars"
@@ -649,6 +758,8 @@ wt: the weight of the car (100 pounds)
 Source (n.d.). Retrieved July 21, 2019, from https://www3.nd.edu/\~busiforc/handouts/Data and Stories/regression/us auto mileage/usautomileage.html
 
 References R.M. Heavenrich, J.D. Murrell, and K.H. Hellman, Light Duty Automotive Technology and Fuel Economy Trends Through 1991, U.S. Environmental Protection Agency, 1991 (EPA/AA/CTAB/91-02).
+
+</div>
 
 \*\*\\ \*\*
 
