@@ -417,8 +417,14 @@ Mean can be found on interval and ratio data, since you must have numbers to add
 
 **Use Rguroo on all problems. State the variable on all problems.**
 
-1. **Before you begin:** Make sure you have already imported the [cholesterol]{.data} dataset into your **Data** Toolbox, as was shown [here](#Importing-cats-to-Rguroo) by selecting the [Statistics Using Technology - Kozak]{.repo} as shown in the figure @fig-kozak-repo. 
-Cholesterol levels were collected from patients a certain number of days after they had a heart attack and are in @tbl-Cholesterol. Find the mean and median for cholesterol levels 2 days after the heart attack.
+1. Cholesterol levels were collected from patients a certain number of days after they had a heart attack and are in @tbl-Cholesterol. Find the mean and median for cholesterol levels 2 days after the heart attack.
+
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cholesterol]{.data}. 
+
+</div>
+
 ```{r,echo=FALSE}
 #| fig-alt: "Repository search"
 #| warning: FALSE
@@ -453,8 +459,14 @@ Source Ryan, B. F., Joiner, B. L., & Ryan, Jr, T. A. (1985). Cholesterol levels 
 
 References Ryan, Joiner & Ryan, Jr, 1985
 
-2. **Before you begin:** Make sure you have already imported the [length]{.data} dataset into your **Data** Toolbox located in the [Statistics Using Technology - Kozak]{.repo}. 
-The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in @tbl-Length (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.
+2. The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in @tbl-Length (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.
+
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [length]{.data}. 
+
+</div>
+
 
 ```{r length2-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Length dataset"
@@ -480,7 +492,13 @@ Source Lee, A. (1994). Data analysis: An introduction based on r. Auckland. Retr
 
 References Lee, A. (1994). Data analysis: An introduction based on r. Auckland.
 
-3. **Before you begin:** Make sure you have already imported the [pay]{.data} dataset into your **Data** Toolbox, located in the [Statistics Using Technology - Kozak]{.repo}. Print-O-Matic printing company's employees have salaries that are contained in @tbl-Pay.
+3. Print-O-Matic printing company's employees have salaries that are contained in @tbl-Pay.
+
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pay]{.data}. 
+
+</div>
 
 ```{r pay2-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Pay dataset"
@@ -516,7 +534,13 @@ e.  If you were a platen worker, who believes that the employees need a raise, w
 
 <!-- -->
 
-4.  **Before you begin:** Make sure you have already imported the [cost]{.data} dataset into your **Data** Toolbox, located in the [Statistics Using Technology - Kozak]{.repo}. Print-O-Matic printing company spends specific amounts on fixed costs every month. The costs of those fixed costs are in a @tbl-Cost.
+4.  Print-O-Matic printing company spends specific amounts on fixed costs every month. The costs of those fixed costs are in a @tbl-Cost.
+
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cost]{.data}. 
+
+</div>
 
 ```{r cost-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Cost dataset"
@@ -598,8 +622,8 @@ The **population variance** formula: $\sigma^2 = \frac{\sum\left(x-\mu \right)^2
 
 The **population standard deviation** formula: $\sigma =\sqrt{ \frac{\sum\left(x-\mu \right)^2}{N}}$
 
-Both the sample variance and sample standard deviation can be found using technology. If using Rguroo, you would perform the same steps as described [here](#Calculating-summary-stats-in-Rguroo) and select [standard deviation]{.def} and [variance]{.def} as shown in the figure @fig-sd-dialog.
-```{r,echo=FALSE
+Both the sample variance and sample standard deviation can be found using technology. When using Rguroo, you would perform the same steps as described [here](#Calculating-summary-stats-in-Rguroo) and select [standard deviation]{.def} and [variance]{.def} as shown in the figure @fig-sd-dialog.
+```{r,echo=FALSE}
 #| fig-alt: "Dialog box for standard deviation and variance"
 #| warning: FALSE
 #| label: fig-sd-dialog
@@ -635,7 +659,19 @@ knitr::include_graphics("Rguroo_outputs/Numerical_Description/sd_var_cats_output
 
 The variance for all cats is 0.24 $kg^2$ and the standard deviation is 0.49 kg.
 
-To find out the mean, variance, and standard deviation for each sex of the cats, use the command:
+To find out the mean, variance, and standard deviation for each sex of the cats, we use a similar function as in @fig-sd-dialog and select sex from the {Factor 1}{.dpd} dropdown as shown in @fig-spread-sex
+
+```{r,echo=FALSE}
+#| fig-alt: "Mean, Standard Deviation, Variance of Cats Weights by Sex"
+#| warning: FALSE
+#| label: fig-spread-sex
+#| fig-cap: "Mean, Standard Deviation, and Variance of Weights of Cats by Sex"
+#| fig-subcap: 
+#|   - "Basic Summaries Dialog"
+#|   - "Basic Summaries Output"
+#| out-width: "70%"
+knitr::include_graphics(c("Rguroo_dialogs/Numerical_description/cat_sex_sdvarmean_dialog.png","Rguroo_outputs/Numerical_Description/cat_sex_sdvarmean_output.png"))
+```
 
 ```{r statistics-cats-sex, eval = FALSE, echo = FALSE}
 df_stats(Bwt~Sex, data=cats, mean, var, sd) 
@@ -657,7 +693,7 @@ One of the uses of the standard deviation is to describe how a population is dis
 
 The U.S. Weather Service has provided the information in @tbl-Tornado about the total monthly/annual number of reported tornadoes in Oklahoma for the years 1950 to 2018. (US Department of Commerce & Noaa, 2016)
 
-```{r tornado-data}
+```{r tornado-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Tornado dataset"
 #| label: tbl-Tornado
 #| tbl-cap: "Monthly/Annual Number of tornadoes in Oklahoma"
@@ -685,12 +721,26 @@ Find the general interval that contains about 95% of the data.
 
 #### **Solution**
 
+Import the [Torando_OK]{.data} dataset into your Data toolbox on Rguroo using the directions [here]{#Importing-cats-to-Rguroo}.
+
 Variable: $x$ = number of annual tornadoes in Oklahoma
 
-Find the mean and standard deviation:
+Find the mean and standard deviation as in @fig-tornado-ex:
 
-```{r statistics-tornado}
+```{r statistics-tornado, echo = FALSE, eval = FALSE}
 df_stats(~Annual, data=Tornado, mean, sd)
+```
+
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo Dialog Box and Output for Mean and Standard Deivation of Annual Tornados"
+#| warning: FALSE
+#| label: fig-tornado-ex
+#| fig-cap: "Mean and Standard Deviation of Annual Tornados"
+#| fig-subcap: 
+#|   - "Basic Summaries Dialog"
+#|   - "Basic Summaries Output"
+#| out-width: "70%"
+knitr::include_graphics(c("Rguroo_dialogs/Numerical_description/tornado_dialog.png","Rguroo_outputs/Numerical_Description/tornado_output.png"))
 ```
 
 The mean is $\mu=56$ tornadoes and the standard deviation is $\sigma=27.6$ tornadoes. The interval will be $\mu\pm2*\sigma=56\pm2*27.6=(0.8,111.2)$
@@ -714,7 +764,7 @@ a.  In 1974, there were 45 tornadoes in Oklahoma. Is this value unusual? Why or 
 
     Variable: $x$ = number of tornadoes in Oklahoma
 
-To answer this question, first find how many standard deviations 45 is from the mean. From 3.2.4 example, we know $\mu=56$ and $\sigma=27.6$. For $x$=45, $z=\frac{45-56}{27.6}=-0.399$
+To answer this question, first find how many standard deviations 45 is from the mean. From [Example: the general rule], we know $\mu=56$ and $\sigma=27.6$. For $x$=45, $z=\frac{45-56}{27.6}=-0.399$
 
 Since this value is between -2 and 2, then it is not unusual to have 45 tornadoes in a year in Oklahoma. The z value is negative, so that means that 45 is less than the mean number of tornadoes.
 
@@ -732,23 +782,53 @@ Since this value is more than 2, then it is unusual to have only 145 tornadoes i
 
 1.  Cholesterol levels were collected from patients certain days after they had a heart attack and are in @tbl-Cholesterol. Find the mean, median, range, variance, and standard deviation for cholesterol levels 2 days after the heart attack.
 
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cholesterol]{.data}. 
+
 **Code book for Data Frame Cholesterol** is below @tbl-Cholesterol.
+
+</div>
 
 2.  The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in @tbl-Length (Lee, 1994). Find the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Pacific Ocean and the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Tasman Sea. Compare and contrast the length of rivers that flow to the Pacific Ocean versus the ones that flow into the Tasman Sea using both measures of spread and measures of variability.
 
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [length]{.data}.  
+
 **Code book for data frame Length** is below @tbl-Length.
+
+</div>
 
 3.  Print-O-Matic printing company's employees have salaries that are contained in @tbl-Pay. Find the mean, median, range, variance, and standard deviation for the salaries of all employees.
 
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pay]{.data}. 
+
 **Code book for data frame Pay** below @tbl-Pay.
+
+</div>
 
 4.  Print-O-Matic printing company spends specific amounts on fixed costs every month. The costs of those fixed costs are in @tbl-Cost. Find the mean, median, range, variance, and standard deviation for the fixed costs.
 
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pay]{.data}. 
+
 **Code book for Data frame Cost** is below @tbl-Cost.
 
-5.  The data frame Pulse @tbl-Pulse contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute.
+</div>
 
-```{r pulse-data}
+5. The data frame Pulse @tbl-Pulse contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute.
+
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pulse]{.data}. 
+
+</div>
+
+```{r pulse-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Pulse dataset"
 #| label: tbl-Pulse
 #| tbl-cap: "Head of Pulse Rates of people Before and After Exercise"
@@ -786,13 +866,21 @@ pulse_after: the pulse rate after a subject either ran or sat (bpm)
 
 year: what year the data was collected (93-98)
 
-Source Pulse rates before and after exercise. (2013, September 25). Retrieved from http://www.statsci.org/data/oz/ms212.html
+Source Pulse rates before and after exercise. (2013, September 25). Retrieved from [here](https://gksmyth.github.io/ozdasl/oz/ms212.html)
 
 References The data was supplied by Dr Richard J. Wilson, Department of Mathematics, University of Queensland.
 
-Create a data frame that contains only males, who drink alcohol, but do not smoke. Then compare the pulse before and the pulse after using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread. The following command creates a new data frame with just males, who drink alcohol, but do not smoke, use the following command, where the new name is Males in @tbl-Males.
+Create a data frame that contains only males, who drink alcohol, but do not smoke. Then compare the pulse before and the pulse after using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread. Create the new dataset and save as [pulse_males]{.data} by subsetting the [pulse]{.data} data using the steps described [here]{#Subsetting-Data-in-Rguroo}. See @fig-subset-pulse for the Data Subset Dialog.
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo Dialog Box for Subsetting Pulse Data"
+#| warning: FALSE
+#| label: fig-subset-pulse
+#| fig-cap: "Subsetting Dialog Box"
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_dialogs/Numerical_description/pulse_subset_dialog.png")
+```
 
-```{r males-filter-data}
+```{r males-filter-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Males dataset"
 #| label: tbl-Males
 #| tbl-cap: "Head of Pulse Rates of Nonsmoking Males Before and After Exercise"
@@ -803,9 +891,15 @@ knitr::kable(head(Males))
 
 6.  The data frame Pulse @tbl-Pulse contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute. Create a data frame that contains females, who do not smoke but do drink alcohol. Compare the pulse rate before and after exercise using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread.
 
-7.  To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson & Hanson, 1997) and the data is in @tbl-Reiki.
+7. To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson & Hanson, 1997) and the data is in @tbl-Reiki.
 
-```{r reiki-data}
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [Reiki_pain]{.data}. 
+
+</div>
+
+```{r reiki-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Reiki dataset"
 #| label: tbl-Reiki
 #| tbl-cap: "Head of Pain Measurements Before and After Reiki Treatment"
@@ -827,13 +921,30 @@ likert_before: pain measured using a likert before Reiki treatment
 
 likert_after: pain measured using a likert after Reiki treatment
 
-Source Olson, K., & Hanson, J. (1997). Using reiki to manage pain: a preliminary report. Cancer Prev Control, 1(2), 108-13. Retrieved from http://www.ncbi.nlm.nih.gov/pubmed/9765732
+Source Olson, K., & Hanson, J. (1997). Using reiki to manage pain: a preliminary report. Cancer Prev Control, 1(2), 108-13. Retrieved from [here](http://www.ncbi.nlm.nih.gov/pubmed/9765732)
 
 References\*\* Using Reiki to manage pain: a preliminary report. Olson K1, Hanson J., Cancer Prev Control 1997, Jun; 1(2): 108-13.
 
-Since the data was collected both before and after the treatment for all of the units of observations, you want to look at the effect size of the treatment. You want to find the difference between before and after for the pain scale. First you must create a new data frame that adds a column for the difference in before and after. This data is known as paired data. To create the new column in a new data frame called Newreiki use the following commands, @tbl-Newreiki.
+Since the data was collected both before and after the treatment for all of the units of observations, you want to look at the effect size of the treatment. You want to find the difference between before and after for the pain scale. First you must create a new data frame that adds a column for the difference in before and after. This data is known as paired data. To create the new column in a new data frame called Newreiki use the following steps
 
-```{r newreiki-data}
+:::: {#Transforming-Data-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a New Variable in the Reiki_pain Dataset"}
+**Before you begin:** Make sure you have already imported the [Reiki_pain]{.data} dataset into your **Data** Toolbox, as was shown [here](#Importing-cats-to-Rguroo).
+
+1.  Open the **Data** toolbox.\
+2.  Click on the [Functions]{.dpd} dropdown, and select [Transform]{.fun}. This opens the [Data Transform]{.dialog} dialog.\
+3.  From the [Dataset]{.dpd} dropdown, select the [Reiki_pain]{.data} dataset.\
+4.  Click on the plus sign icon ![plus icon](Rguroo_Icons/add.png) in the Variable column and type [vas.diff]{.var}. The variable’s name appears in the list labeled Retuned Variable on the right side.\
+5.  In the middle text field type your R function (transformation). To write a variable name, you can either type it or double-click on the variable name in the Returned Variable list. Double click [VAS.before]{.var} enter minus(-) and double click [VAS.after]{.var}.
+6.  When you are done with your selection, click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the scatterplot.
+7. In Save As... name the new data set Newreiki and click the [Save As...]{.button}.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+![Data Transform Dialog in Rguroo](Rguroo_dialogs/Numerical_description/transform_dialog.png){width="500px"}
+![Save As... Dataset View](Rguroo_outputs/Numerical_Description/newreiki_dataset.png) 
+:::
+::::
+
+```{r newreiki-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of New Reiki dataset"
 #| label: tbl-Newreiki
 #| tbl-cap: "Head of Pain Measurements Before and After Reiki Treatment with Difference column"
@@ -844,9 +955,16 @@ knitr::kable(head(Newreiki))
 
 Now find the mean and standard deviation of the vas.diff variable in Newreiki. Perform similar commands to create the likert.diff variable. Then find the mean and standard deviation for likert.diff, and compare and contrast the vas and likert methods for describing pain.
 
-8.Yearly rainfall amounts (in millimeters) in Sydney, Australia, are in @tbl-Rainfall (Annual maximums of, 2013). a. Calculate the mean and standard deviation. b. Suppose Sydney, Australia received 300 mm of rainfall in a year. Would this be unusual?
+8. Yearly rainfall amounts (in millimeters) in Sydney, Australia, are in @tbl-Rainfall (Annual maximums of, 2013). a. Calculate the mean and standard deviation. b. Suppose Sydney, Australia received 300 mm of rainfall in a year. Would this be unusual?
 
-```{r rainfall-data}
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [rainfall]{.data}. 
+
+</div>
+
+
+```{r rainfall-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Rainfall dataset"
 #| label: tbl-Rainfall
 #| tbl-cap: "Head of Yearly rainfall amounts in Sydney, Australia"
@@ -862,7 +980,7 @@ This data frame contains the following columns:
 
 amount: daily rainfall (mm)
 
-Source Annual maximums of daily rainfall in Sydney. (2013, September 25). Retrieved from http://www.statsci.org/data/oz/sydrain.html
+Source Annual maximums of daily rainfall in Sydney. (2013, September 25). Retrieved from [here](https://gksmyth.github.io/ozdasl/oz/sydrain.html).
 
 References Rayner J.C.W. and Best D.J. (1989) Smooth tests of goodness of fit. Oxford: Oxford University Press. Hand D.J., Daly F., Lunn A.D., McConway K.J., Ostrowski E. (1994). A Handbook of Small Data Sets. London: Chapman & Hall. Data set 157. Thanks to Jim Irish of the University of Technology, Sydney, for assistance in identifying the correct units for this data.
 
@@ -899,9 +1017,19 @@ There are special percentiles called **quartiles**. Quartiles are numbers that d
 
 ### **To find the quartiles**:
 
-The command in rStudio is
+To find the quartiles in Rguroo, you use the same steps as finding the mean, standard deviation, and variation in Summary Stasitic as described [here](#Calculating-summary-stats-in-Rguroo).
 
-df_stats(\~variable, data=data_frame, summary)
+<!-- df_stats(\~variable, data=data_frame, summary) --> 
+
+```{r,echo=FALSE}
+#| fig-alt: "Dialog for Basic Summary to find Quartiles for Cats Bodyweight in Rguroo"
+#| warning: FALSE
+#| label: fig-cats-quartiles
+#| fig-cap: "Quartiles for Bodyweight of Cats"
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_dialogs/Numerical_description/quartiles_dialog.png")
+```
+
 
 If you record the quartiles together with the maximum and minimum you have five numbers. This is known as the five-number summary. The five-number summary consists of the minimum, the first quartile ($Q1$), the median, the third quartile ($Q3$), and the maximum (in that order).
 
@@ -911,13 +1039,13 @@ Interquartile Range ($IQR$)
 
 Determining probable outliers from $IQR$: **fences**
 
-A value that is less than $Q1-1.5*IQR$ (this value is often referred to as a **low fence**) is considered an outlier.
+A value that is less than $Q1-1.5*IQR$ (this value is often referred to as a **lower fence**) is considered an outlier.
 
-Similarly, a value that is more than $Q3+1.5*IQR$ (the **high fence**) is considered an outlier.
+Similarly, a value that is more than $Q3+1.5*IQR$ (the **upper fence**) is considered an outlier.
 
 A boxplot (or box-and-whisker plot) is a graphical display of the five-number summary. It can be drawn vertically or horizontally. The basic format is a box from $Q1$ to $Q3$, a vertical line across the box for the median and horizontal lines as whiskers extending out each end to the minimum and maximum. The minimum and maximum can be represented with dots. Don't forget to label the tick marks on the number line and give the graph a title.
 
-An alternate form of a Boxplot, known as a modified box plot, only extends the left line to the smallest value greater than the **low fence**, and extends the left line to the largest value less than the **high fence**, and displays markers (dots, circles or asterisks) for each outlier.
+An alternate form of a Boxplot, known as a modified box plot, only extends the left line to the smallest value greater than the **lower fence**, and extends the left line to the largest value less than the **upper fence**, and displays markers (dots, circles or asterisks) for each outlier.
 
 If the data are **symmetrical**, then the box plot will be visibly symmetrical. If the data distribution has a left skew or a right skew, the line on that side of the box plot will be visibly long. If the plot is symmetrical, and the four quartiles are all about the same length, then the data are likely a near **uniform** distribution. If a box plot is symmetrical, and both outside lines are noticeably longer than the $Q1$ to median and median to $Q3$ distance, the distribution is then probably **bell-shaped**.
 
@@ -927,32 +1055,68 @@ Find the five-number summary, the interquartile range (\*IQR\*), and draw a box-
 
 #### **Solution**
 
-Variable: $x$ = weight of cats To compute the five-number summary on RStudio, use the command:
+Variable: $x$ = weight of cats 
 
-```{r statistics-cats1}
+To compute the five-number summary on Rguroo, use summary statistic and select the appropriate statistics as shown in @fig-cats-5numsum
+
+```{r statistics-cats1, echo = FALSE, eval = FALSE}
 df_stats(~Bwt, data=cats, summary)
 ```
 
-Note rStudio also calculates the mean as part of the summary command, but the five-number summary is just the five numbers:
+```{r,echo=FALSE}
+#| fig-alt: "Five-Number Summary for Cats Bodyweight"
+#| warning: FALSE
+#| label: fig-cats-5numsum
+#| fig-cap: "Five-Number Summary for Bodyweight of Cats"
+#| fig-subcap: 
+#|   - "Basic Summary Dialog Box"
+#|   - "Five-Number Summary Output"
+#| out-width: "70%"
+knitr::include_graphics(c("Rguroo_dialogs/Numerical_description/cats_5numsum_dialog.png","Rguroo_outputs/Numerical_Description/cats_5numsum_output.png"))
+```
+
+<!-- Note rStudio also calculates the mean as part of the summary command, but the five-number summary is just the five numbers: -->
 
 Minimum: 2 kg $Q1$: 2.3 kg Median: 2.7 kg $Q3$: 3.025 kg Maximum: 3.9 kg
 
 To find the interquartile range, $IQR$ find \$Q3-Q1\$, so $IQR=3.025-2.3=0.725 kg$
 
-To create a boxplot use the command
+Click to expand the box below to see instructions to create a boxplot of the [cats]{.data} dataset in Rguroo.
 
-gf_boxplot(\~variable, data=data_frame)
+:::: {#Creating-a-boxplot-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a Boxplot of the Bodyweight of Cats"}
+**Before you begin:** Make sure you have already imported the [cats]{.data} dataset into your **Data** Toolbox, as was shown [here](#Importing-cats-to-Rguroo).
+
+1.  Open the **Plots** toolbox.\
+2.  Click on the [Create Plot]{.dpd} dropdown menu and choose the [Boxplot]{.fun} function. The Boxplot dialog will open.
+3.  From the [Dataset]{.dpd} dropdown, select the [cats]{.data} dataset.\
+4.  Move the [Bwt]{.var} variables to the Selected column.\
+5.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the graph.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+![Boxplot dialog in Rguroo](Rguroo_dialogs/Numerical_description/cats_boxplot_dialog.png){width="500px"}
+:::
+::::
+
+<!-- gf_boxplot(\~variable, data=data_frame) -->
 
 This is a modified boxplot which shows the outliers in the data.
 
-```{r cats1-data-box}
+```{r cats1-data-box, eval = FALSE, echo = FALSE}
 #| fig-alt: "box plot of weight of Cats median 2.7, Q1 at 2.3, lower fence at 2.0, Q3 at 3.0, upper fence at 3.8."
 #| warning: FALSE
 #| label: fig-Cats-boxplot
 #| fig-cap: "Weight of Cats"
-gf_boxplot(~Bwt, data=cats, title="Weight of Cats", xlab="Body Weight (kg)")
+# gf_boxplot(~Bwt, data=cats, title="Weight of Cats", xlab="Body Weight (kg)")
+
 ```
 
+<div tabindex="0" class="rg-iframe-wrapper">
+  <iframe
+    src="Rguroo_html_output/Numerical_description/Boxplot_12/Boxplot_12.html"
+    class="rg-iframe"
+    title="Boxplot for Weight of Cats">
+  </iframe>
+</div>
 There are no outliers since there are no dots outside of the fences.
 
 ### Example: Separating based on a factor
@@ -965,10 +1129,22 @@ Variable: $x_1$ = weight of female cat
 
 Variable: $x_2$ = weight of male cat
 
-To find the five-number summary separated based on gender use the following command:
+The five-number summary separated based on gender can be found in a similar way to [Example: Five-number Summary and Boxplot]:
 
-```{r statistics-cats2-sex}
+```{r statistics-cats2-sex, echo = FALSE, eval = FALSE}
 df_stats(~Bwt|Sex, data=cats, summary)
+```
+
+```{r,echo=FALSE}
+#| fig-alt: "Five-Number Summary of weight of Cats female lower 2.0, Q1 22, Median 2.3, Q3 3.0, upper 3.0, male 2.0, 2.5, 2.9, 3, 3.8"
+#| warning: FALSE
+#| label: fig-cats-5numsumsex
+#| fig-cap: "Five-Number Summary for Bodyweight of Cats by Sex"
+#| fig-subcap: 
+#|   - "Basic Summary Dialog Box"
+#|   - "Five-Number Summary Output"
+#| out-width: "70%"
+knitr::include_graphics(c("Rguroo_dialogs/Numerical_description/5summary_cats_sex_dialog.png","Rguroo_outputs/Numerical_Description/cats_5summ_sex_output.png"))
 ```
 
 The five-number summary for female cats is (in kg)
@@ -979,7 +1155,7 @@ The five-number summary for male cats is (in kg)
 
 Minimum: 2 $Q1$: 2.50 Median: 2.9 $Q3$: 3.2 Maximum: 3.9
 
-```{r cats2-data-box}
+```{r cats2-data-box, eval = FALSE, echo = FALSE}
 #| fig-alt: "box plot of weight of Cats female lower 2.0, Q1 22, Median 2.3, Q3 3.0, upper 3.0, male 2.0, 2.5, 2.9, 3, 3.8"
 #| warning: FALSE
 #| label: fig-Cats-boxplot-sex
@@ -987,13 +1163,21 @@ Minimum: 2 $Q1$: 2.50 Median: 2.9 $Q3$: 3.2 Maximum: 3.9
 gf_boxplot(~Bwt|Sex, data=cats, title="Weights of Cats", xlab="Body Weight in (kg)") 
 ```
 
+<div tabindex="0" class="rg-iframe-wrapper">
+  <iframe
+    src="Rguroo_html_output/Numerical_description/Boxplot_8/Boxplot_8.html"
+    class="rg-iframe"
+    title="Boxplot for Weight of Cats by Sex">
+  </iframe>
+</div>
+
 Notice that the weights of female cats has a median less than male cats, and in fact it can be seen that the $Q1$ to $Q3$ of the female cats is less than the $Q1$ to $Q3$ of the male cats.
 
 ### Example: Putting it all together
 
 The time (in 1/50 seconds) between successive pulses along a nerve fiber ("Time between nerve," 2013) are given in @tbl-Nerve.
 
-```{r nerve-data}
+```{r nerve-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Nerve dataset"
 #| label: tbl-Nerve
 #| tbl-cap: "Head of Successive pulses along a nerve fiber"
@@ -1009,7 +1193,7 @@ This data frame contains the following columns:
 
 time: time between successive Pulses along a nerve fiber, 1/50 second.
 
-Source Time between nerve pulses. (2019, July 3). Retrieved from \<http://www.statsci.org/data/general/nerve.html
+Source Time between nerve pulses. (2019, July 3). Retrieved from here (https://gksmyth.github.io/ozdasl/general/nerve.html)
 
 References Fatt, P., and Katz, B. (1952). Spontaneous subthreshold activity at motor nerve endings. Journal of Physiology 117, 109-128.
 
@@ -1019,9 +1203,11 @@ Jorgensen, B. (1982). The Generalized Inverse-Gaussian Distribution. Springer-Ve
 
 #### **Solution**
 
+**Before you begin:** Make sure you have already imported the [nerve]{.data} dataset into your **Data** Toolbox, located in the [Statistics Using Technology - Kozak]{.repo}.
+
 First, it might be useful to look at a visualization of the data, so create a density plot
 
-```{r density-data-density}
+```{r density-data-density, echo = FALSE, eval = FALSE}
 #| fig-alt: "Density plot with peak on left and lower on the right"
 #| warning: FALSE
 #| label: fig-Pulse-density-1
@@ -1029,17 +1215,51 @@ First, it might be useful to look at a visualization of the data, so create a de
 gf_density(~time, data=Nerve, title="Time between Successive Nerve Pulses", xlab="Time (1/50 second)") 
 ```
 
-From the graph @fig-Pulse-density-1 the data appears to be skewed right. Most of the time between successive nerve pulses appear to be around 5 or 10 1/50 second, but there are some times that are 60 1/50 second.
+Click to expand the box below to see instructions to create a density plot of the [nerve]{.data} dataset in Rguroo.
 
-```{r statistics-nerve}
+:::: {#Creating-a-density-plot-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a Density PLot of the Time Between Successive Nerve Pulses"}
+**Before you begin:** Make sure you have already imported the [nerve]{.data} dataset into your **Data** Toolbox, as was shown [here](#Importing-cats-to-Rguroo).
+
+1.  Open the **Plots** toolbox.\
+2.  Click on the [Create Plot]{.dpd} dropdown menu and choose the [Histogram]{.fun} function. The Histogram dialog will open.
+3.  From the [Dataset]{.dpd} dropdown, select the [nerve]{.data} dataset.\
+4.  Move the [pulse]{.var} variables to the Selected column.\
+5. Select density in Type and density in Smoothing additional options.
+6.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the graph.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+![Boxplot dialog in Rguroo](Rguroo_dialogs/Numerical_description/nerve_density_dialog.png){width="500px"}
+:::
+::::
+
+<div tabindex="0" class="rg-iframe-wrapper">
+  <iframe
+    src="Rguroo_html_output/Numerical_description/Histogram_7/Histogram_7.html"
+    class="rg-iframe"
+    title="Denisty Plot for Successive Nerve Pulses">
+  </iframe>
+</div>
+
+From the graph, the data appears to be skewed right. Most of the time, between successive nerve pulses appear to be around 5 or 10 1/50 second, but there are some times that are 60 1/50 second.
+
+```{r statistics-nerve, echo = FALSE, eval = FALSE}
 df_stats(~time, data=Nerve, mean, median, sd, summary)
 ```
 
-Numerical descriptions might also be useful. Using technology, the mean is 11 1/50 second,the median is 7.5 1/50 second, the standard deviation is 10.5 1/50 second, and the five-number summary is minimum = 3.5, Q1 = 3.5, median = 7.5, Q3 = 15, and maximum = 69 1/50 second.
+```{r, echo = FALSE }
+#| fig-alt: "Five-Number Summary with Mean and Standard Deviation of Nerve Pulses"
+#| warning: FALSE
+#| label: fig-Pulse-summary
+#| fig-cap: "Numerical Summary of Time Between Successive Nerve Pulses"
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_outputs/Numerical_Description/nerve_summary_output.png")
+```
 
-To visualize the five-number summary, create a box plot.
+Numerical descriptions might also be useful. Using technology, the mean is 11 1/50 second,the median is 7.5 1/50 second, the standard deviation is 10.5 1/50 second, and the five-number summary is minimum = 0.5, Q1 = 3.5, median = 7.5, Q3 = 15, and maximum = 69 1/50 second.
 
-```{r nerve-data-box}
+To visualize the five-number summary, create a box plot using the instructions given [here](#Creating-a-boxplot-in-Rguroo).
+
+```{r nerve-data-box, echo = FALSE, eval = FALSE}
 #| fig-alt: "box plot lower fence 0, Q1 5, median 8, Q3 17, upper fence 31, many outliers above upper fence"
 #| warning: FALSE
 #| label: fig-Nerve-box
@@ -1047,7 +1267,18 @@ To visualize the five-number summary, create a box plot.
 gf_boxplot(~time, data=Nerve, title="Nerve Pulses", xlab="Time (1/50 second)")
 ```
 
-Since there are many dots outside the upper fence the data has many outliers. From all of this information, one could say that nerve pulses between successive pulses is around 11 1/50 second, with a spread of 19.5 1/50 second. Most of the values are round 11 1/50 second, but they are not very consistent. The density plot and boxplot show that there is a great deal of spread of the data and it is skewed to the right. This means mostly the speed is around 11 1/50 second, but there is a great deal of variability in the values.
+```{r, echo = FALSE }
+#| fig-alt: "Boxplot of Nerve Pulses"
+#| warning: FALSE
+#| label: fig-nerve-boxplot
+#| fig-cap: "Boxplot of Time Between Successive Nerve Pulses"
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_outputs/Numerical_Description/nerve_boxplot_output.svg")
+```
+
+<!-- Rewrote: Since there are many dots outside the upper fence the data has many outliers. From all of this information, one could say that nerve pulses between successive pulses is around 11 1/50 second, with a spread of 19.5 1/50 second. Most of the values are round 11 1/50 second, but they are not very consistent. The density plot and boxplot show that there is a great deal of spread of the data and it is skewed to the right. This means mostly the speed is around 11 1/50 second, but there is a great deal of variability in the values. -->
+
+The boxplot reveals multiple high outliers. The median shows a typical pulse interval of 11 1/50 seconds, with an IQR of 19.5 1/50 seconds indicating substantial variability. The right skew visible in both plots confirms that while most pulses occur consistently around 11 1/50 seconds, occasional longer delays create the high outliers.
 
 ### Homework for Ranking Section
 
@@ -1063,32 +1294,59 @@ Since there are many dots outside the upper fence the data has many outliers. Fr
 
 5.  Cholesterol levels were collected from patients certain days after they had a heart attack and are in table @tbl-Cholesterol.
 
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cholesterol]{.data}. 
+
 **Code book for Data Frame Cholesterol** below @tbl-Cholesterol.
+
+</div>
 
 Find the five-number summary and interquartile range (IQR) for the cholesterol level on day 2, and draw a boxplot
 
 6.  The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in table @tbl-Length (Lee, 1994).
 
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [length]{.data}. 
+
 **Code book for data frame Length** below @tbl-Length.
+
+</div>
 
 Find the five-number summary and interquartile range (IQR) for the lengths of rivers that go to the Pacific Ocean and ones that go to the Tasman Sea, and draw a boxplot of both.
 
 7.  Print-O-Matic printing company's employees have salaries that are contained in @tbl-Pay Find the five number summary and draw a boxplot for the salaries of all employees.
 
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pay]{.data}. 
+
 **Code book for data frame Pay** below @tbl-Pay.
+
+</div>
 
 8.  The data frame Pulse @tbl-Pulse contains various variables about a person including their pulse rates before the subject exercised and after after the subject ran in place for one minute.
 
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pulse]{.data}. 
+
 **Code book for data frame Pulse** below @tbl-Pulse.
 
+
+</div>
 Create a data frame that contains only people who drink alcohol, but do not smoke. Then find the five number summary and draw a boxplot for both males and females separately.
 
 9.  To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson & Hanson, 1997) and the data is in @tbl-Reiki.
 
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [Reiki_pain]{.data}. 
+
 **Code book for data frame Reiki** below @tbl-Reiki.
 
-Find the five number summary for both the before and after VAS scores and draw boxplots of before and after VAS scores. To draw two boxplots at the same time, after the command to create the first box plot type the piping symbol \|\> (base r) or %\>% (magrittr package) before pressing enter. (Note: \|\> and %\>% are piping symbols that can be thought of as "and then.") Then type the command for the second boxplot after the + symbol or on the next line in the r chunk if using an rmd or qmd file. Then press enter. You may want to graph each boxplot as a different color. To do this, the command would be
+</div>
+Find the five number summary for both the before and after VAS scores and draw boxplots of before and after VAS scores. <!--To draw two boxplots at the same time, after the command to create the first box plot type the piping symbol \|\> (base r) or %\>% (magrittr package) before pressing enter. (Note: \|\> and %\>% are piping symbols that can be thought of as "and then.") Then type the command for the second boxplot after the + symbol or on the next line in the r chunk if using an rmd or qmd file. Then press enter. You may want to graph each boxplot as a different color. To do this, the command would be gf_boxplot(\~variable, data=data_frame, color="red", xlab="type a label") You can pick any color you want. Just replace the word red with the color you want to use.--> 
 
-gf_boxplot(\~variable, data=data_frame, color="red", xlab="type a label")
-
-You can pick any color you want. Just replace the word red with the color you want to use. Now compare and contrast the before and after VAS scores.
+Compare and contrast the before and after VAS scores.
