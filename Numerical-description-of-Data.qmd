@@ -9,45 +9,45 @@ library("mosaic")
 library("MASS")
 ```
 
-Chapter 1 discussed what a population, sample, parameter, and statistic are, and how to take different types of samples. Chapter 2 discussed ways to graphically display data. There was also a discussion of important characteristics: center, variations, distribution, outliers, and changing characteristics of the data over time. Distributions and outliers can be answered using graphical means. Finding the center and variation can be done using numerical methods that will be discussed in this chapter. Both graphical and numerical methods are part of a branch of statistics known as **descriptive statistics**. Later descriptive statistics will be used to make decisions and/or estimate population parameters using methods that are part of the branch called **inferential statistics**.
+Chapter 1 discussed what a population, sample, parameter, and statistic are, as well as how to take different types of samples. Chapter 2 discussed ways to graphically display data. There was also a discussion of important characteristics: center, variations, distribution, outliers, and changing characteristics of the data over time. Distributions and outliers can be identified using graphical means. Finding the center and variation can be done using numerical methods that will be discussed in this chapter. Both graphical and numerical methods are part of a branch of statistics known as **descriptive statistics**. Later, descriptive statistics will be used to make decisions and/or estimate population parameters using methods that are part of the branch called **inferential statistics**.
 
 ## Measures of Center
 
-This section focuses on measures of central tendency. Many times you are asking what to expect on average. Such as when you pick a major, you would probably ask how much you expect to earn in that field. If you are thinking of relocating to a new town, you might ask how much you can expect to pay for housing. If you are planting vegetables in the spring, you might want to know how long it will be until you can harvest. These questions, and many more, can be answered by knowing the center of the data set. There are three measures of the "center" of the data. They are the mode, median, and mean. Any of the values can be referred to as the "average."
+This section focuses on measures of central tendency. Many times you are asking what to expect on average. For example, when you pick a major, you would probably ask how much you can expect to earn in that field. If you are thinking of relocating to a new town, you might ask how much you can expect to pay for housing. If you are planting vegetables in the spring, you might want to know how long it will be until you can harvest. These questions, and many more, can be answered by knowing the center of the data. There are three measures of the "center" of the data: the mode, median, and mean. Any of the values can be referred to as an "average."
 
-The **mode** is the data value that occurs the most frequently in the data. To find it, you count how often each data value occurs, and then determine which data value occurs most often. The mode is not the most useful measure of center. This is because, a data set can have more than one mode. If there is a tie between two values for the most number of times then both values are the mode and the data is called bimodal (two modes). If every data point occurs the same number of times, there is no mode. If there are more than two numbers that appear the most times, then usually there is no mode.
+The **mode** is the data value that occurs most frequently in the data. To find it, you count how often each data value occurs, and then determine which value occurs most often. If there is a tie between two values for the most number of times, then both values are the mode and the data are called bimodal (two modes). If every data value occurs the same number of times, there is no mode. If there are more than two values that appear the most times, then usually there is no mode. The mode is not always a useful measure of center, especially when a dataset has more than one mode.
 
-The **median** is the data value in the middle of a sorted list of data. To find it, you put the data in order, and then determine which data value is in the middle of the data set.
+The **median** is the data value in the middle of a sorted list of data. To find the median, you arrange the data in order and then determine which value is in the middle of the data values.
 
 The **mean** is the arithmetic average of the numbers. This is the center that most people call the average, though all three -- mean, median, and mode -- really are averages.
 
-There are no symbols for the mode and the median, but the mean is used a great deal, and statisticians gave it a symbol. There are actually two symbols, one for the population parameter and one for the sample statistic. In most cases you cannot find the population parameter, so you use the sample statistic to estimate the population parameter.
+There are no symbols for the mode and the median, but the mean is used a great deal, so statisticians gave it a symbol. There are actually two symbols: one for the population mean (parameter) and one for the sample mean (statistic). In most cases, you cannot find the population parameter, because you don't have values for the entire population, so you use the sample mean (statistic) to estimate the population mean (parameter).
 
-### **Population Mean**
+ **Population Mean**
 
 $\mu=\frac{\sum{x}}{N}$, pronounced mu
 
-**N** is the size of the population.
+$N$ is the size of the population.
 
-**x** represents a data value.
+$x$ represents a data value.
 
 $\sum{x}$ means to add up all of the data values.
 
-### **Sample Mean**
+**Sample Mean**
 
 $\bar{x}=\frac{\sum{x}}{n}$, pronounced x bar.
 
-**n** is the size of the sample.
+$n$ is the size of the sample.
 
-**x** represents a data value.
+$x$ represents a data value.
 
 $\sum{x}$ means to add up all of the data values.
 
-The value for $\bar{x}$ is used to estimate $\mu$ since $\mu$ can't be calculated in most situations.
+The value for $\bar{x}$ is used to estimate $\mu$, since $\mu$ can't be calculated in most situations.
 
-### Example: Finding the Mean and Median using Rguroo
+### Example: Finding the Mean and Median using Rguroo {#example-mean-median-cats}
 
-Suppose a vet wants to find the average weight of cats. The weights (in kg) of cats are in @tbl-Cats.
+Suppose a vet wants to find the average weight of cats. The weights (in kg) of 144 cats are  given in a dataset named [cats]{.data}. The first six rows of this dataset are shown in @tbl-Cats.
 
 ```{r cats5-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of cats dataset"
@@ -57,6 +57,11 @@ knitr::kable(head(cats))
 ```
 
 <!-- The head command shows the variable names and the first few unit of observation rows -->
+
+
+```{r cats1-data, echo = FALSE, eval = FALSE}
+#??cats
+```
 
 Click to expand the box below to see instructions to import and view the [cats]{.data} dataset in your **Data** Toolbox in Rguroo.
 
@@ -70,13 +75,20 @@ Click to expand the box below to see instructions to import and view the [cats]{
 7.  To view the dataset, double-click [cats]{.data} under the **Data** toolbox list.
 :::
 
+Looking at the data frame for cats weights, @tbl-Cats, you see that there are several variables. A Code Book describes the dataset, explains what the variables are including the units, and the source of the data frame. The code book for the [cats]{.data} is below.
+
+**Code book for cats data frame**
+
+![Code book for cats data frame](code_book_cats.jpg){fig-alt="Code book cats Dataframe"}
+
+
 Find the mean and median of the weight of a cat.
 
 #### **Solution**
 
-Before starting any mathematics problem, it is always a good idea to define the unknown in the problem. In statistics, you want to define the variable. The symbol for the variable is \*x\*.
+Before starting any mathematics problem, it is always a good idea to define the unknown in the problem. In statistics, you want to define the variable. The symbol for the variable is $x$.
 
-The variable is **x** = weight of a cat
+The variable is $x$ = weight of a cat
 
 Click to expand the box below see how to calculate the mean and median in Rguroo.
 
@@ -84,9 +96,9 @@ Click to expand the box below see how to calculate the mean and median in Rguroo
 **Before you begin:** Make sure you have already imported the [cats]{.data} dataset into your **Data** Toolbox, as was shown [here](#Importing-cats-to-Rguroo).
 
 1.  Open the **Data** toolbox.\
-2.  Click on the [Functions]{.dpd} dropdown, and select [Summary Statistic]{.fun}. This opens the Basic Summary Statistic dialog.\
+2.  Click on the [Functions]{.dpd} dropdown, and select [Summary Statistic]{.fun}. This opens the [Basic Summary Statistic]{.dialog}.\
 3.  From the [Dataset]{.dpd} dropdown, select the [cats]{.data} dataset.\
-4.  From the [Numerical]{.dpd} dropdown, select the [Bwt]{.var} variable.\
+4.  From the [Numerical]{.dpd} dropdown, select the [Bwt]{.var} variable. \
 5.  In the **Statistics** section of the dialog, select the checkbox for Mean and Median.\
 6.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the summary statistics.
 
@@ -120,17 +132,7 @@ The median weight is 2.7 kg also. It appears the average weight is 2.7 kg of all
 
 ### Example: Finding Mean and Median with Factor
 
-Looking at the data frame for cats weights @tbl-Cats you see that there are several variables You may want to know what the other variables are. A Code Book describes the data set, explains what the variables are including the units, and the source of the data frame. The code book for the [cats]{.data} is below.
-
-```{r cats1-data, echo = FALSE, eval = FALSE}
-#??cats
-```
-
-**Image 3.1.1: Code book for cats data frame**
-
-![Code book for cats data frame](code_book_cats.jpg){fig-alt="Code book cats Dataframe"}
-
-Suppose you want to know if male cats weigh more than female cats. Looking at the variables, you notice that there is a variable for the sex of the cat. You can look at the weights of males and females separately. This looks like:
+Suppose you want to know if male cats weigh more than female cats. Looking at the variables, you notice that there is a variable for the sex of the cat. You can look at the weights of males and females separately.
 
 #### **Solution**
 
@@ -165,11 +167,11 @@ knitr::include_graphics("Rguroo_outputs/Numerical_Description/cat_wt_sex_output.
 #df_stats(Bwt~Sex, data=cats, mean, median)
 ```
 
-Notice that the female cats' mean weight is 2.4 kg and the male cats' mean weight is 2.9 kg. The median weight of female cats is 2.3 kg and for males it is 2.9 kg. So it does appear that male cats weigh a bit more than the female cats.
+Notice that the female cats' mean weight is 2.36 kg and the male cats' mean weight is 2.9 kg. The median weight of female cats is 2.3 kg and for males it is 2.9 kg. So it does appear that male cats weigh a bit more than the female cats.
 
-There are many different summary statistics that can be found. An example is the minimum and maximum value. In this example, you will see how to find the min and max values and then filter them out of a data set to see what effect they have on the mean and median.
+There are many different summary statistics that can be found. An example is the minimum and maximum value. In this example, you will see how to find the min and max values and then filter them out of a dataset to see what effect they have on the mean and median.
 
-### Example: Effect of Extreme Values on Mean and Median
+### Example: Effect of Extreme Values on Mean and Median {#example-effect-extreme-values}
 
 Find the minimum and maximum values of cats weights.
 
@@ -177,10 +179,10 @@ Find the minimum and maximum values of cats weights.
 
 The steps to find the minimum and the maximum in Rguroo are similar to finding the mean and median. In the **Statistics** section of the dialog, select the checkbox for Minimum and Maximum.
 
-Here is the Basic Summary Statistic Dialog and Output from Rguroo for the minimum and maximum of cats body weight.
+@fig-max-min-cats shows the Basic Summary Statistic Dialog and Output from Rguroo for the minimum and maximum of cats body weight.
 
 ```{r,echo=FALSE}
-#| fig-alt: "Maximum and Minumum dialog and Output from Rguroo"
+#| fig-alt: "Dialog and Output from Rguroo for Maximum and Minimum"
 #| warning: FALSE
 #| label: fig-max-min-cats
 #| fig-cap: "Maximum and Minimum Weight of Cats"
@@ -198,7 +200,9 @@ knitr::include_graphics(c("Rguroo_dialogs/Numerical_Description/max_min_dialog.p
 
 The minimum weight of a cat in this data frame is 2 kg and the maximum weight of a cat is 3.9 kg.
 
-You can create two new data sets in Rguroo by subsetting (filtering). One data set will exclude the maximum value. Click to expand the box below to see how to subset a dataset in Rguroo:
+You can create two new datasets in Rguroo by subsetting (filtering). One dataset will exclude the maximum value and include values less than 3.9, and the other will exclude the minimum value and include values greater than 2.
+
+Click to expand the box below to see how to obtain a subset of the [cats]{.data} dataset in Rguroo that includes values less than 3.9 kg.
 
 :::: {#Subsetting-Data-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Subsetting the cats Dataset"}
 **Before you begin:** Make sure you have already imported the [cats]{.data} dataset into your **Data** Toolbox, as was shown [here](#Importing-cats-to-Rguroo).
@@ -207,15 +211,13 @@ You can create two new data sets in Rguroo by subsetting (filtering). One data s
 2.  Click on the [Functions]{.dpd} dropdown, and select [Subset]{.fun}. This opens the [Data Subset]{.dialog} dialog.\
 3.  From the [Dataset]{.dpd} dropdown, select the [cats]{.data} dataset.\
 4.  Select the [Logical Expression]{.button} button.\
-5.  To create a new Logical Expression, click the green plus icon.
-6.  From the [Variable]{.dpd} dropdown, select the [Bwt]{.var}. From the [Op.]{.dpd} (operations) dropwdown, select the less than symbol (<). In the Value column, enter 3.9 (the maximum body weight of cats dataset). Click the [Done]{.button}.
-7.  When you are done with your selection, click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the scatterplot.
-8. In Save As... name the new data set cats_nomax and click the [Save As...]{.button}.
+5.  To create a new Logical Expression, click the green plus icon ![plus icon](Rguroo_Icons/add.png).
+6.  From the [Variable]{.dpd} dropdown, select the [Bwt]{.var}. From the [Op.]{.dpd} (operations) dropwdown, select the less than symbol (\<). In the Value column, enter 3.9 (the maximum body weight of cats dataset). Click the [Done]{.button}.
+7.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the filtered data.
+8.  In Save As... textbox, name the new dataset [cats_nomax]{.typein} and click the [Save As...]{.button} button.
 
 ::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-![Logical Expression Dialog in Rguroo](Rguroo_dialogs/Numerical_description/subset_nomax_cats.png){width="500px"}
-![Data Subset Dialog in Rguroo](Rguroo_dialogs/Numerical_description/logical_subset_nomax.png){width="500px"}
-![Save As... Dataset View](Rguroo_outputs/Numerical_Description/save_data_nomax.png) 
+![Logical Expression Dialog in Rguroo](Rguroo_dialogs/Numerical_description/subset_nomax_cats.png){width="500px"} ![Data Subset Dialog in Rguroo](Rguroo_dialogs/Numerical_description/logical_subset_nomax.png){width="500px"} ![Save As... Dataset View](Rguroo_outputs/Numerical_Description/save_data_nomax.png)
 :::
 ::::
 
@@ -223,13 +225,29 @@ You can create two new data sets in Rguroo by subsetting (filtering). One data s
 nomax <- filter(cats, Bwt<3.9)
 ```
 
-Then create a data set that excludes the minimum value using the same steps shown [here](#Subsetting-Data-in-Rguroo). In the [Logical Expression]{.dialog} dialog, choose the greater than (>) operator in the [Op.]{.dpd} dropdown and enter 2 in the Value column. Save this new dataset as [cats_nomin]{.data}.
+Then create a dataset that excludes the minimum value using the same steps shown [here](#Subsetting-Data-in-Rguroo), except in the [Logical Expression]{.dialog} dialog, choose the greater than (\>) operator in the [Op.]{.dpd} dropdown and enter 2 in the Value column, as shown in @fig-min-cats. Save this new dataset as [cats_nomin]{.data}.
+
+```{r,echo=FALSE}
+#| fig-alt: "Logical Expression Dialogfor removing the minimum"
+#| warning: FALSE
+#| label: fig-min-cats
+#| fig-cap: "Logical Expression Dialog for Removing the Minimum Weight of Cats"
+#| out-width: "80%"
+knitr::include_graphics(
+  "Rguroo_dialogs/Numerical_Description/min_dialog.png"
+)
+```
+
+
+
 
 ```{r filter-cats1-data, echo = FALSE, eval = FALSE}
 nomin<-filter(cats, Bwt>2)
 ```
 
-<!-- The \<- is the way to indicate to r what the data set nomin is equivalent to what follows the symbol. Notice that it doesn't look like anything happened, but new data sets were created in the background.--> Now you can find the mean and median of each new data set using the steps described [here](#Calculating-summary-stats-in-Rguroo) :
+<!-- The \<- is the way to indicate to r what the dataset nomin is equivalent to what follows the symbol. Notice that it doesn't look like anything happened, but new datasets were created in the background.-->
+
+Now you can find the mean and median of each new dataset using the steps described [here](#Calculating-summary-stats-in-Rguroo) using the new datasets [cats_nomax]{.data} and [cats_nomin]{.data}.
 
 ```{r statistics-nomax, eval = FALSE, echo = FALSE}
 df_stats(~Bwt, data=nomax, mean, median)
@@ -243,19 +261,26 @@ df_stats(~Bwt, data=nomin, mean, median)
 
 The mean without the minimum value is 2.75 kg, and the median is 2.7 kg.
 
-From [Example: Effect of Extreme Values on Mean and Median], the mean of the [cats]{.data} data set with all the values is 2.72 kg where the median is 2.7 kg. Notice that when the maximum value was excluded from the data set, the mean decreased a little but the median didn't change, and when the minimum value was excluded from the data set, the mean increased a little but the median didn't change. The mean is much higher than the median. Why is this? This is because the mean is affected by extreme values, while the median is not. We say the median is a resistant measure of center because it isn't affected by extreme values as much.
+From [this](#example-effect-extreme-values) example, the mean of the [cats]{.data} dataset with all the values is 2.72 kg, while the median is 2.7 kg. Notice that when the maximum value was excluded from the dataset, the mean decreased slightly but the median didn't change, and when the minimum value was excluded from the dataset, the mean increased a little but the median didn't change. This shows that the mean is affected by extreme values, while the median is not. We say the median is a resistant measure of center because it isn't affected by extreme values as much.
 
-An outlier is a data value that is very different from the rest of the data. It can be really high or really low. Extreme values may be an outlier if the extreme value is far enough from the center. If there are extreme values in the data, the median is a better measure of the center than the mean. If there are no extreme values, the mean and the median will be similar so most people use the mean. The mean is not a resistant measure because it is affected by extreme values. The median is a resistant measure because it not affected by extreme values.
+An outlier is a data value that is very different from the rest of the data. It can be really high or really low. An extreme value may be an outlier if it is far enough from the center. If there are extreme values in the data, the median is a better measure of the center than the mean. If there are no extreme values, the mean and the median will be similar so most people use the mean. The mean is not a resistant measure because it is affected by extreme values. The median is a resistant measure because it not affected by extreme values.
 
-As a consumer you need to be aware that people choose the measure of center that best supports their claim. When you read an article in the newspaper and it talks about the "average" it usually means the mean but sometimes it refers to the median. Some articles will use the word "median" instead of "average" to be more specific. If you need to make an important decision and the information says "average", it would be wise to ask if the "average" is the mean or the median before you decide.
+You need to be aware that people generally choose the measure of center that best supports their claim. When you read an article in the newspaper and it talks about the "average" it usually means the mean but sometimes it refers to the median. Some articles will use the word "median" instead of "average" to be more specific. If you need to make an important decision and the information says "average", it would be wise to ask if the "average" is the mean or the median before you decide.
 
-As an example, suppose that a company wants to use the mean salary as the average salary for the company. This is because the high salaries of the administrators will pull the mean higher. The company can say that the employees are paid well because the average is high. However, the employees want to use the median since it discounts the extreme values of the administration and will give a lower value of the average. This will make the salaries seem lower and that a raise is in order.
+As an example, suppose that a company wants to use the mean salary as the average salary for the company. This is because the high salaries of the administrators will pull the mean higher. The company can say that employees are paid well because the average is high. However, the employees want to use the median since it discounts the extreme values of the administration and gives a lower measure of the average. This makes the salaries seem lower and suggests that a raise is in order.
 
+<!--
 Why use the mean instead of the median? The reason is because when multiple samples are taken from the same population, the sample means tend to be more consistent than other measures of the center.
+-->
+Why use the mean instead of the median? Imagine repeatedly taking different samples from the same population. Some samples may include more large values, while others may include more small values. When we calculate the mean for each sample, some sample means will overestimate the true center of the population and others will underestimate it. Over many samples, these overestimates and underestimates tend to balance out. The median, however, can tend to underestimate or overestimate the center more often in one direction, depending on how the middle values fall in the samples. Because of this, the mean does not systematically overestimate or underestimate the center of the population, making it a reliable measure of center.
 
-To understand how the different measures of center relate to skewed or symmetric distributions, see @fig-centers-dist. As you can see sometimes the mean is smaller than the median, sometimes the mean is larger than the median, and sometimes they are the same values.
 
-**@fig-centers-dist: Mean, Median, Mode as Related to a Distribution**
+To understand how different measures of center relate to skewed or symmetric distributions, see @fig-centers-dist. For a left-skewed distribution, the mean is smaller than the median. For a right-skewed distribution, the mean is larger than the median. For a symmetric distribution, the mean and the median are the same.
+
+<!--
+@fig-centers-dist**:** **Mean, Median, Mode as Related to a Distribution**
+-->
+
 ```{r,echo=FALSE}
 #| fig-alt: "skewed left graph with mean, median,mode lines, then symmetric graph with all three the same line, then skewed right graph with mode, median, mean lines"
 #| warning: FALSE
@@ -265,37 +290,40 @@ To understand how the different measures of center relate to skewed or symmetric
 knitr::include_graphics("images/centers_distribution.png")
 ```
 
-One last type of average is a weighted average. **Weighted averages** are used quite often in different situations. Some teachers use them in calculating a student's grade in the course, or a grade on a project. Some employers use them in employee evaluations. The idea is that some activities are more important than others. As an example, a full time teacher at a community college may be evaluated on their service to the college, their service to the community, whether their paperwork is turned in on time, and their teaching. However, teaching is much more important than whether their paperwork is turned in on time. When the evaluation is completed, more weight needs to be given to the teaching and less to the paperwork. This is a weighted average.
+One type of average is a weighted average. Weighted averages are commonly used in situations where some components matter more than others. For example, a teacher may use a weighted average when calculating a student’s final course grade. Homework, quizzes, and exams may all contribute to the final grade, but exams might count more because they measure overall understanding more directly. In this case, exams are given more weight than homework, so they have a larger impact on the final grade. Similarly, employers may use weighted averages in performance evaluations when some aspects of a job are more important than others.
+As an example, a full time teacher at a community college may be evaluated on their service to the college, their service to the community, whether their paperwork is turned in on time, and their teaching. However, teaching is much more important than whether their paperwork is turned in on time. When the evaluation is completed, more weight needs to be given to the teaching and less to the paperwork. This is a weighted average.
 
-### **Weighted Average**
 
-$\text{weighted average}=\frac{\sum{x*w}}{\sum{w}}$
+### Weighted Average
 
-where **w** is the weight of the data value, **x**.
+$\text{weighted average}=\frac{\sum{x*w}}{\sum{w}}$,
+
+where $w$ is the weight of the data value $x$.
 
 ### Example: Weighted Average
 
-In your biology class, your final grade is based on several things: a lab score, scores on two major tests, and your score on the final exam. There are 100 points available for each score. The lab score is worth 15% of the course, the two exams are worth 25% of the course each, and the final exam is worth 35% of the course. Suppose you earned scores of 95 on the labs, 83 and 76 on the two exams, and 84 on the final exam. Compute your weighted average for the course.
+In your biology class, your final grade is based on several components: a lab score, scores on two major tests, and your score on the final exam. Each component is graded out of 100 points. The lab score is worth 15% of the course grade, the two exams are worth 25% each, and the final exam is worth 35% of the course. Suppose you earned scores of 95 on the labs, 83 and 76 on the two exams, and 84 on the final exam. Compute your weighted average for the course.
 
 #### **Solution**
 
-Variable: **x** = score
+Variable: $x$ = score
 
 A weighted average can be found using Rguroo. First, we will create a new dataset in Rguroo. Click to expand the box below to see how to create a new dataset in Rguroo:
 
 :::: {#Creating-new-dataset .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a New Dataset"}
 1.  Open the **Data** toolbox.\
-2.  Click on the [Data Import]{.dpd} dropdown, and select [Create New Dataset]{.fun}. This opens the [Create New Dataset]{.dialog} dialog. Specify the number of rows and columns for your new dataset.\
-3.  The default variable names will be [Var1]{.var}, [Var2]{.var}, etc. To change the variable name, move your cursor over the variable name on the header. You will see the Variable Context Menu icon. Click on the icon to open the variable context menu. From the menu select the option [Rename]{.des}. This will bring up the [Rename Variable]{.dialog} dialog box. In the dialog box, type in the new name for your variable, and press enter. The new name will now appear on the header. Note that variable names cannot have spaces.\
-4.  Enter your data.\
-5.  Enter a name for your dataset in the [Save As]{.des} textbox on the top, and click the [Save as]{.button} button to save your dataset.
+2.  Click on the [Data Import]{.dpd} dropdown, and select [Create New Dataset]{.fun}. This opens the [Create New Dataset]{.dialog} dialog. Specify the number of rows and columns  for your new dataset (optional), and click the [Create Dataset]{.button} button. This opens Rguroo's dataset editor.\
+3.  The default variable names will be [Var1]{.var}, [Var2]{.var}, etc. To change the variable name, move your cursor over the variable name in the column header. You will see the Variable Context Menu icon ![variable context menu icon](Rguroo_Icons/four_horizontal_line_icon.png). Click on the icon to open the variable context menu. 
+4. From the variable context menu select the option [Rename]{.des}. This will bring up the [Rename Variable]{.dialog} dialog box. In the dialog box, type in the new name for your variable and press enter. The new name will appear in the column header. Note that variable names cannot have spaces. For this example we use two have two variables; specify the names [score](.var) and [weight](.var) in two columns.\
+4.  Enter your data (score and weights) in the two columns.\
+5.  Enter a name for your dataset in the [Save As]{.des} textbox on the top, and click the [Save as]{.button} button to save your dataset. For this example, name the dataset [biology_grade]{.data}.
 
 ::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog and new dataset"}
-![New Dataset Dialog](Rguroo_dialogs/Numerical_description/new_dataset_dialog.png){width="500px"}
-![Biology Class Dataset](Rguroo_outputs/Numerical_Description/biology_dataset.png){width="500px"}
+![New Dataset Dialog](Rguroo_dialogs/Numerical_description/new_dataset_dialog.png){width="500px"} ![Biology Class Dataset](Rguroo_outputs/Numerical_Description/biology_dataset.png){width="500px"}
 :::
 ::::
 
+```{=html}
 <!-- The commands for finding the weighted mean using RStudio is as follows:
 
 x\<-c(type in the scores with commas in between)
@@ -307,8 +335,10 @@ weighted.mean(x,w)
 The **x** and **w** represent the variables, \<- means make the variables equivalent to what follows, the c( means combine all the values in the () as one combined variable.
 
 For this example, the commands would be -->
+```
 
-To calculate the weighted average in Rguroo, you will follow the same steps described [here](#Calculating-summary-stats-in-Rguroo). In the [Basic Summary Statistics]{.dialog} dialog box select the [biology_grade]{.data} from the [dataset]{.dpd} dropdown, select [score]{.var} in the [Numerical]{.dpd} dropdown, and select [weight]{.var} in the [frequency]{.dpd} dropdown as shown in figure @fig-weighted-mean.
+To calculate the weighted average in Rguroo, you will follow similar steps as described [here](#Calculating-summary-stats-in-Rguroo). In the [Basic Summary Statistics]{.dialog} dialog box select the [biology_grade]{.data} from the [dataset]{.dpd} dropdown, select [score]{.var} in the [Numerical]{.dpd} dropdown, and select [weight]{.var} in the [frequency]{.dpd} dropdown as shown in figure @fig-weighted-mean.
+
 ```{r,echo=FALSE}
 #| fig-alt: "basic summary statistics dialog box and weighted mean output"
 #| warning: FALSE
@@ -342,14 +372,15 @@ c)  Which faculty member had the higher average evaluation?
 
 a)  One faculty member had the following ratings: 8 for teaching, 9 for publishing, 2 for committee work, 1 for community service, and 8 for paperwork. Compute the weighted average of the evaluation.
 
-Variable: **x** = rating, **w** = weight
+Variable: $x$ = rating, $w$ = weight
+
 ```{r weighted-mean1, echo = FALSE, eval = FALSE}
 x<-c(8, 9, 2, 1, 8) 
 w<-c(20, 18, 6, 4, 2) 
 weighted.mean(x,w)
 ```
 
-To find the weighted average using Rguroo, start by creating a new dataset as described [here](#Creating-new-dataset). The new dataset is shown in the figure @fig-dataset-ratings below.
+To find the weighted average using Rguroo, start by creating a new dataset as described [here](#Creating-new-dataset). The new dataset, including weights and scores for each faculty, is shown in the figure @fig-dataset-ratings below.
 
 ```{r,echo=FALSE}
 #| fig-alt: "new dataset for weight of category in a and b"
@@ -361,6 +392,7 @@ knitr::include_graphics(c("Rguroo_outputs/Numerical_Description/ex_4_1_8_dataset
 ```
 
 Calculate the weighted average in Rguroo using the same steps described [here](#Calculating-summary-stats-in-Rguroo). In the [Basic Summary Statistics]{.dialog} dialog box select the [faculty_ratings]{.data} from the [dataset]{.dpd} dropdown, select [faculty_a]{.var} in the [Numerical]{.dpd} dropdown, and select [weight]{.var} in the [frequency]{.dpd} dropdown as shown in figure @fig-faculty_a-weighted_mean.
+
 ```{r,echo=FALSE}
 #| fig-alt: "basic summary statistics dialog box and weighted mean output faculty_a"
 #| warning: FALSE
@@ -384,7 +416,7 @@ w<-c(20, 18, 6, 4, 2)
 weighted.mean(x,w)
 ```
 
-The weighted mean can be calculated in the same fasion as part (a). In the [Basic Summary Statistics]{.dialog} dialog box select the [faculty_ratings]{.data} from the [dataset]{.dpd} dropdown, select [faculty_b]{.var} in the [Numerical]{.dpd} dropdown, and select [weight]{.var} in the [frequency]{.dpd} dropdown as shown in figure 
+The weighted mean can be calculated in the same fasion as part (a). In the [Basic Summary Statistics]{.dialog} dialog box select the [faculty_ratings]{.data} from the [dataset]{.dpd} dropdown, select [faculty_b]{.var} in the [Numerical]{.dpd} dropdown, and select [weight]{.var} in the [frequency]{.dpd} dropdown as shown in figure
 
 ```{r,echo=FALSE}
 #| fig-alt: "basic summary statistics dialog box and weighted mean output faculty_b"
@@ -417,13 +449,11 @@ Mean can be found on interval and ratio data, since you must have numbers to add
 
 **Use Rguroo on all problems. State the variable on all problems.**
 
-1. Cholesterol levels were collected from patients a certain number of days after they had a heart attack and are in @tbl-Cholesterol. Find the mean and median for cholesterol levels 2 days after the heart attack.
+1.  Cholesterol levels were collected from patients a certain number of days after they had a heart attack and the first six rows of the data are shown in @tbl-Cholesterol. Find the mean and median for cholesterol levels 2 days after the heart attack.
 
-<div tabindex="0" style="width:85%; margin:auto;">
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cholesterol]{.data}. 
-
-</div>
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cholesterol]{.data}.
+:::
 
 ```{r,echo=FALSE}
 #| fig-alt: "Repository search"
@@ -433,6 +463,7 @@ Mean can be found on interval and ratio data, since you must have numbers to add
 #| out-width: "70%"
 knitr::include_graphics("Rguroo_dialogs/Numerical_Description/chol_data_repo.png")
 ```
+
 ```{r cholesterol2-data,echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Cholesterol dataset"
 #| label: tbl-Cholesterol
@@ -459,14 +490,11 @@ Source Ryan, B. F., Joiner, B. L., & Ryan, Jr, T. A. (1985). Cholesterol levels 
 
 References Ryan, Joiner & Ryan, Jr, 1985
 
-2. The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in @tbl-Length (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.
+2.  The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are given in a dataset named [length]{.data}. The first six rows of this datset are listed in @tbl-Length (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.
 
-<div tabindex="0" style="width:85%; margin:auto;">
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [length]{.data}. 
-
-</div>
-
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [length]{.data}.
+:::
 
 ```{r length2-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Length dataset"
@@ -492,13 +520,11 @@ Source Lee, A. (1994). Data analysis: An introduction based on r. Auckland. Retr
 
 References Lee, A. (1994). Data analysis: An introduction based on r. Auckland.
 
-3. Print-O-Matic printing company's employees have salaries that are contained in @tbl-Pay.
+3.  Print-O-Matic printing company's employees have salaries that are contained in a dataset named [pay]{.data}. The first six rows of these data are given in @tbl-Pay.
 
-<div tabindex="0" style="width:85%; margin:auto;">
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pay]{.data}. 
-
-</div>
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pay]{.data}.
+:::
 
 ```{r pay2-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Pay dataset"
@@ -524,23 +550,36 @@ References John Matic (2013)
 
 a.  Find the mean and median.
 
-b.  Find the mean and median with the CEO's salary removed.
+b.  Find the mean and median with the CEOs salaries removed. Hint: You can filter the dataset to remove the CEOs' salaries either by using the Rguroo [Subset]{.fun} function following similar instructions as shown [here](#Subsetting-Data-in-Rguroo) or more simply using the dataset editor as shown below.
+
+:::: {#filter-in-editor .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Filtering the pay Dataset in the Dataset Editor"}
+**Before you begin:** Make sure you have already imported the [pay]{.data} dataset into your **Data** Toolbox.
+
+1.  Open the **Data** toolbox.\
+2.  Double click on the [pay]{.data} dataset to open it in the dataset editor.\
+3.  Click on the filter icon ![filter icon](Rguroo_Icons/filters.png) shown in the right margin of the dataset editor to open the list of variables.\
+4.  From the list of variables, click on the [employee]{.var} variable to open the filter dialog for that variable.\
+5.  In the filter dialog, uncheck the box for [CEO]{.des} to exclude the CEO from the dataset.\
+6.  In Save As... textbox, name the new dataset [pay_no_CEO]{.typein} and click the [Save As...]{.button} button.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Dataset Editor filtering process"}
+![Dataset editor showing the filtering function](Rguroo_dialogs/Numerical_description/filter_ceo.png){width="700px"}
+:::
+::::
 
 c.  What happened to the mean and median when the CEO's salary was removed? Why?
 
-d.  If you were the CEO, who is answering concerns from the union that employees are underpaid, which average (mean or median) using the complete data set of the complete data set would you prefer? Why?
+d.  If you were the CEO, who is answering concerns from the union that employees are underpaid, which average (mean or median) using the complete dataset of the complete dataset would you prefer? Why?
 
-e.  If you were a platen worker, who believes that the employees need a raise, which average (mean or median) using the complete data set would you prefer? Why?
+e.  If you were a platen worker, who believes that the employees need a raise, which average (mean or median) using the complete dataset would you prefer? Why?
 
 <!-- -->
 
-4.  Print-O-Matic printing company spends specific amounts on fixed costs every month. The costs of those fixed costs are in a @tbl-Cost.
+4.  Print-O-Matic printing company spends specific amounts on fixed costs every month. These costs are listed in the dataset [cost]{.data}. The first six rows of the data are shown in @tbl-Cost.
 
-<div tabindex="0" style="width:85%; margin:auto;">
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cost]{.data}. 
-
-</div>
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cost]{.data}.
+:::
 
 ```{r cost-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Cost dataset"
@@ -570,9 +609,9 @@ b.  Find the mean and median with the bank charges removed.
 
 c.  What happened to the mean and median when the bank charges was removed? Why?
 
-d.  If it is your job to oversee the fixed costs, which average (mean or median) using the complete data set would you prefer to use when submitting a report to administration to show that costs are low? Why?
+d.  If it is your job to oversee the fixed costs, which average (mean or median) using the complete dataset would you prefer to use when submitting a report to administration to show that costs are low? Why?
 
-e.  If it is your job to find places in the budget to reduce costs, which average (mean or median) using the complete data set would you prefer to use when submitting a report to administration to show that fixed costs need to be reduced? Why?
+e.  If it is your job to find places in the budget to reduce costs, which average (mean or median) using the complete dataset would you prefer to use when submitting a report to administration to show that fixed costs need to be reduced? Why?
 
 <!-- -->
 
@@ -598,31 +637,50 @@ e.  If it is your job to find places in the budget to reduce costs, which averag
 
 ## Measures of Spread
 
-Variability is an important idea in statistics. If you were to measure the height of everyone in your classroom, every observation gives you a different value. That means not every student has the same height. Thus there is variability in people's heights. If you were to take a sample of the income level of people in a town, every sample gives you different information. There is variability between samples too. Variability describes how the data are spread out. If the data are very close to each other, then there is low variability. If the data are very spread out, then there is high variability. How do you measure variability? It would be good to have a number that measures it. This section will describe some of the different measures of variability, also known as variation.
+Variability is an important idea in statistics. If you were to measure the height of everyone in your classroom, the resulting observations will generally have different values. That means not every student has the same height. Thus there is variability in people's heights. If you were to take a sample of the income level of people in a town, every sample gives you different information. <!-- There is variability between samples too. --> Variability describes how the data are spread out. If the data are very close to each other, then there is low variability. If the data are very spread out, then there is high variability. How do you measure variability? It would be good to have a number that measures it. This section will describe some of the different measures of variability, also known as measures of variation.
 
-In \[Example: Finding the Mean and Median using Rguroo\], the average weight of a cat was calculated to be 2.72 kg. How much does this tell you about the weight of all cats? Can you tell if most of the weights were close to 2.72 kg or were the weights really spread out? The highest weight and the lowest weight are known, but is there more that you can tell? All you know is that the center of the weights is 2.72 kg.
+In the [Example: Finding the Mean and Median using Rguroo](#example-mean-median-cats), the average weight of a cat was calculated to be 2.72 kg. How much does this tell you about the weight of all cats? Can you tell if most of the weights were close to 2.72 kg or were the weights really spread out? The highest weight and the lowest weight are known, but is there more that you can tell? All you know is that the center of the weights is 2.72 kg.
 
 You need more information.
 
-The **range** of a set of data is the difference between the highest and the lowest data values (or maximum and minimum values). The **interval** is the lowest and highest values. The range is one value while the interval is two.
+The **range** of a set of data is the difference between the highest and lowest data values (the maximum and minimum values). The **interval** refers to the lowest and highest values themselves. The range is a single value while the interval consists of two values.
 
 ### Example: Range
 
 From [Example: Effect of Extreme Values on Mean and Median], the maximum is 3.9 kg and the minimum is 2 kg. So the range is $3.9-2=1.9 kg$. But what does that tell you? You don't know if the weights are really spread out, or if they are close together.
 
-Unfortunately, range doesn't really provide a very accurate picture of the variability. A better way to describe how the data is spread out is needed. Instead of looking at the distance the highest value is from the lowest how about looking at the distance each value is from the mean. This distance is called the **deviation**. You might want to find the average of the deviation. Though the calculation for finding the average deviation is not very straight forward, you end up with a value called the **variance**. The symbol for the population variance is $\sigma^2$, and it is the average squared distance from the mean. Statisticians like the variance, but many other people who work with statistics use a descriptive statistic which is the square root of the variance. This gives you the average distance from the mean. This is called the **standard deviation**, and the population standard deviation is denoted with the letter $\sigma$.
+Unfortunately, the range does not provide a very accurate picture of variability. A better way to describe how the data are spread out is needed. Instead of looking only at the distance between the highest and lowest values, we can look at how far each data value is from the mean. This distance is called a **deviation**.
 
-The standard deviation is the average (mean) distance from a data point to the mean. It can be thought of as how much a typical data point differs from the mean.
+You might want to find an average of these deviations. This leads to calculating a value called the **variance**. The symbol for the population variance is $\sigma^2$, where $\sigma$ is the Greek letter sigma. The population variance is the average squared distance of each data value from the mean of the data. 
+
+In practice, however, people usually use and report the square root of the variance, which is called **standard deviation**. <!-- NOT TRUE This gives you the average distance from the mean. --> The population standard deviation is denoted with the symbol $\sigma$. The reason for taking the square root is that the variance is measured in squared units. For example, if the data are measured in kilograms (kg), then the variance is measured in kg-squared. The standard deviation, on the other hand, is measured in the same units as the original data. So if the data are in kg, the standard deviation is also in kg, which makes it easier to interpret.
+
+<!-- NOT TRUE The standard deviation is the average (mean) distance from a data point to the mean. It can be thought of as how much a typical data point differs from the mean.-->
+
+To estimate the population variance, we use the so called **sample variance**. The sample variance is denoted by $s^2$.
 
 The **sample variance** formula: $s^2=\frac{\sum\left(x-\bar{x}\right)^2}{n-1}$, where $\bar{x}$ is the sample mean, $n$ is the sample size, and $\sum{}$ means to find the sum of the values. The $n-1$ on the bottom has to do with a concept called degrees of freedom. Basically, it makes the sample variance a better approximation of the population variance.
 
 The **sample standard deviation** formula: $s=\sqrt{ \frac{\sum\left(x-\bar{x}\right)^2}{n-1}}$.
 
-The **population variance** formula: $\sigma^2 = \frac{\sum\left(x-\mu \right)^2}{N}$, where $\sigma$ is the Greek letter sigma and $\sigma^2$ represents the population variance, $\mu$ is the population mean, and $N$ is the size of the population.
+The **population variance** formula: $\sigma^2 = \frac{\sum\left(x-\mu \right)^2}{N}$, where  $\sigma^2$ represents the population variance, $\mu$ is the population mean, and $N$ is the size of the population.
 
 The **population standard deviation** formula: $\sigma =\sqrt{ \frac{\sum\left(x-\mu \right)^2}{N}}$
 
-Both the sample variance and sample standard deviation can be found using technology. When using Rguroo, you would perform the same steps as described [here](#Calculating-summary-stats-in-Rguroo) and select [standard deviation]{.def} and [variance]{.def} as shown in the figure @fig-sd-dialog.
+Both the sample variance and sample standard deviation can be found using technology.
+<!--df_stats(\~variable, data=data_frame, var, sd)
+
+The next example will demonstrate this command.
+-->
+
+### Example: Finding the Standard Deviation
+
+For the dataset [cats]{.data} (@tbl-Cats) find the variance and standard derivation for weight of cats. Then find the variance and standard deviation separated by sex of the cat.
+
+#### **Solution**
+
+ When using Rguroo, you would perform the similar steps as described in calculation mean and median[here](#Calculating-summary-stats-in-Rguroo), and select [standard deviation]{.def} and [variance]{.def}, as shown in the figure @fig-sd-dialog.
+
 ```{r,echo=FALSE}
 #| fig-alt: "Dialog box for standard deviation and variance"
 #| warning: FALSE
@@ -632,21 +690,11 @@ Both the sample variance and sample standard deviation can be found using techno
 knitr::include_graphics("Rguroo_dialogs/Numerical_Description/sd_var_cats_dialog.png")
 ```
 
-<!--df_stats(\~variable, data=data_frame, var, sd)-->
-
-The next example will demonstrate this command.
-
-### Example: Finding the Standard Deviation
-
-For the data frame Cats @tbl-Cats find the variance and standard derivation for weight of cats. Then find the variance and standard deviation separated by sex of the cat.
-
-#### **Solution**
-
-The variance and standard deviation for all cats is found by performing the command:
-
 ```{r statistics-cats, echo = FALSE, eval = FALSE}
 df_stats(~Bwt, data=cats, var, sd) 
 ```
+
+The output is shown in @fig-sd-output. The variance for all cats is 0.24 $kg^2$ and the standard deviation is 0.49 kg.
 
 ```{r,echo=FALSE}
 #| fig-alt: "Standard Deviation and Variance of Cats Weights"
@@ -657,9 +705,8 @@ df_stats(~Bwt, data=cats, var, sd)
 knitr::include_graphics("Rguroo_outputs/Numerical_Description/sd_var_cats_output.png")
 ```
 
-The variance for all cats is 0.24 $kg^2$ and the standard deviation is 0.49 kg.
 
-To find out the mean, variance, and standard deviation for each sex of the cats, we use a similar function as in @fig-sd-dialog and select sex from the {Factor 1}{.dpd} dropdown as shown in @fig-spread-sex
+To find out the mean, variance, and standard deviation for each sex of the cats, we use a similar function as in @fig-sd-dialog and select sex from the [Factor 1]{.dpd} dropdown, as shown in @fig-spread-sex
 
 ```{r,echo=FALSE}
 #| fig-alt: "Mean, Standard Deviation, Variance of Cats Weights by Sex"
@@ -679,19 +726,25 @@ df_stats(Bwt~Sex, data=cats, mean, var, sd)
 
 You can see that the mean weight of females cats is 2.36 kg, the variance is 0.075 $kg^2$, and the standard deviation is 0.27 kg. For males cats, the mean is 2.9 kg, the variance is 0.22 $kg^2$, and the standard deviation is 0.47 kg. This means that female cats weigh less than males and since the variance and standard deviations are much less for female cats than males cats, female cats' weights are more consistent than male cats.
 
-In general a "small" variance and standard deviation means the data is close together (more consistent) and a "large" variance and standard deviation means the data is spread out (less consistent). Sometimes you want consistent data and sometimes you don't. As an example if you are making bolts, you want the lengths to be very consistent so you want a small standard deviation. If you are administering a test to see who can be a pilot, you want a large standard deviation so you can tell who are the good pilots and who are the not so good pilots.
+In general a "small" variance and standard deviation means the data is close together (more consistent) and a "large" variance and standard deviation means the data is spread out (less consistent). Sometimes you want consistent data and sometimes you don't. As an example if you are making bolts, you want the lengths to be very consistent so you want a small standard deviation. On the other hand, if you are administering a test to evaluate pilot ability, you want the test scores to show enough variability to distinguish strong candidates from weaker ones. If nearly everyone scores about the same, the standard deviation will be small and it will be difficult to tell who performs better. A larger standard deviation indicates that scores are more spread out, making it easier to differentiate between high-performing and low-performing candidates.
 
-What do "small" and "large" standard deviation mean? To a bicyclist whose average speed is 20 mph, $s = 20 mph$ is huge. To an airplane whose average speed is 500 mph, $s = 20 mph$ is nothing. The "size" of the variation depends on the size of the numbers in the problem and the mean. Another situation where you can determine whether a standard deviation is small or large is when you are comparing two different samples such as in [Example: Finding the Standard Deviation]. A sample with a smaller standard deviation is more consistent than a sample with a larger standard deviation.
+What do “small” and “large” standard deviation mean? To a bicyclist whose average speed is 20 mph, $s = 20$ mph is huge. To an airplane whose average speed is 500 mph, $s = 20$ mph is small. The “size” of the variation depends on the size of the numbers in the problem and the mean. Another situation where it makes sense to describe a standard deviation as small or large is when comparing two different samples, such as in [Example: Finding the Standard Deviation]. When two samples are measured on the same scale, the sample with the smaller standard deviation shows less spread in its data than the sample with the larger standard deviation.
 
-Many other books and authors stress that there is a computational formula for calculating the standard deviation. However, this formula doesn't give you an idea of what standard deviation is and what you are doing. It is only good for doing the calculations quickly. It goes back to the days when standard deviations were calculated by hand, and the person needed a quick way to calculate the standard deviation. It is an archaic formula that this author is trying to eradicate. It is not necessary anymore, computers will do the calculations for you with as much meaning as this formula gives. It is suggested that you never use it. If you want to understand what the standard deviation is doing, then you should use the definition formula. If you want an answer quickly, use a computer.
+Many textbooks present an alternative computational formula for calculating the standard deviation. While this formula can be efficient for performing calculations, it does not provide much insight into what the standard deviation represents or how it is constructed. Historically, this computational formula was useful when standard deviations were calculated by hand, since it simplified the arithmetic. Today, however, computers perform these calculations quickly and accurately. For this reason, the computational formula is no longer necessary for routine work. To develop a clear understanding of what the standard deviation measures, it is better to focus on the definition-based formula. When a numerical answer is needed, using a computer is the most practical approach.
+
 
 ### **Use of Standard Deviation**
+<!--
+One of the uses of the standard deviation is to describe how values are a population is distributed. This describes where much of the data is for most distributions. A general rule is that about 95% of the data is within 2 standard deviations of the mean. This is not perfect, but is works for many distributions. There are rules like the empirical rule and Chebyshev's theorem that give you more detailed percentages, but 95% in 2 standard deviations is a very good approximation.
 
-One of the uses of the standard deviation is to describe how a population is distributed. This describes where much of the data is for most distributions. A general rule is that about 95% of the data is within 2 standard deviations of the mean. This is not perfect, but is works for many distributions. There are rules like the empirical rule and Chebyshev's theorem that give you more detailed percentages, but 95% in 2 standard deviations is a very good approximation.
+-->
+The standard deviation helps describe where the data tend to lie relative to the mean. When the data are symmetric and have most values clustered around a typical center, the empirical rule provides a helpful guideline. It says that about 68% of the data fall within one standard deviation of the mean, about 95% fall within two standard deviations, and about 99.7% fall within three standard deviations. These percentages are not exact, but they often give a reasonable picture of where most of the data lie.
+
+For data that are not symmetric, other rules can still be used. Chebyshev’s rule gives a minimum proportion of the data that must lie within a certain number of standard deviations of the mean, regardless of the overall shape of the distribution. The results from this rule are usually less precise than those from the empirical rule, but they apply to a much wider range of situations.
 
 ### Example: the general rule
 
-The U.S. Weather Service has provided the information in @tbl-Tornado about the total monthly/annual number of reported tornadoes in Oklahoma for the years 1950 to 2018. (US Department of Commerce & Noaa, 2016)
+In the dataset [Tornado_OK]{.data}, the U.S. Weather Service has provided information about the total monthly/annual number of reported tornadoes in Oklahoma for the years 1950 to 2018 (US Department of Commerce & Noaa, 2016). The first six rows of the dataset are shown in @tbl-Tornado.
 
 ```{r tornado-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Tornado dataset"
@@ -721,9 +774,9 @@ Find the general interval that contains about 95% of the data.
 
 #### **Solution**
 
-Import the [Torando_OK]{.data} dataset into your Data toolbox on Rguroo using the directions [here]{#Importing-cats-to-Rguroo}.
+Import the [Torando_OK]{.data} dataset from the ??? repository into your Data toolbox on Rguroo.
 
-Variable: $x$ = number of annual tornadoes in Oklahoma
+Variable: $x$ = number of **annual** tornadoes in Oklahoma
 
 Find the mean and standard deviation as in @fig-tornado-ex:
 
@@ -743,13 +796,13 @@ df_stats(~Annual, data=Tornado, mean, sd)
 knitr::include_graphics(c("Rguroo_dialogs/Numerical_description/tornado_dialog.png","Rguroo_outputs/Numerical_Description/tornado_output.png"))
 ```
 
-The mean is $\mu=56$ tornadoes and the standard deviation is $\sigma=27.6$ tornadoes. The interval will be $\mu\pm2*\sigma=56\pm2*27.6=(0.8,111.2)$
+The mean is $\mu=56$ tornadoes and the standard deviation is $\sigma=27.6$ tornadoes. The interval will be $\mu\pm2\times\sigma=56\pm(2\times27.6)=(0.8,111.2)$
 
-About 95% of the years have between 0.8 or 1 and 111 tornadoes in Oklahoma.
+Therefore, we can say that about 95% of the years have between 0.8 or 1 and 111 tornadoes in Oklahoma.
 
-The general rule says that about 95% of the data is within two standard deviations of the mean. That percentage is fairly high. There isn't much data outside two standard deviations. A rule that can be followed is that if a data value is within two standard deviations, then that value is a common data value. If the data value is outside two standard deviations of the mean, either above or below, then the number is uncommon. It could even be called unusual. An easy calculation that you can do to figure it out is to find the difference between the data point and the mean, and then divide that answer by the standard deviation. As a formula this would be
+The general rule says that about 95% of the data is within two standard deviations of the mean. That percentage is fairly high. There isn't much data outside two standard deviations. A rule that can be followed is that if a data value is within two standard deviations, then that value is a common data value. If the data value is outside two standard deviations of the mean, either above or below, then the number is uncommon. It could even be called unusual. An easy calculation that you can do to figure it out is to find the difference between the data point and the mean, and then divide that answer by the standard deviation. The resulting value is called the z-value, and it has the formula
 
-$z=\frac{x-\mu}{\sigma}$
+$z=\frac{x-\mu}{\sigma}$.
 
 If you don't know the population mean, $\mu$, and the population standard deviation, $\sigma$, then use the sample mean, $\bar{x}$, and the sample standard deviation, $s$, to estimate the population parameter values. Realize that using the sample standard deviation may not actually be very accurate.
 
@@ -782,51 +835,41 @@ Since this value is more than 2, then it is unusual to have only 145 tornadoes i
 
 1.  Cholesterol levels were collected from patients certain days after they had a heart attack and are in @tbl-Cholesterol. Find the mean, median, range, variance, and standard deviation for cholesterol levels 2 days after the heart attack.
 
-<div tabindex="0" style="width:85%; margin:auto;">
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cholesterol]{.data}. 
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cholesterol]{.data}.
 
 **Code book for Data Frame Cholesterol** is below @tbl-Cholesterol.
-
-</div>
+:::
 
 2.  The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in @tbl-Length (Lee, 1994). Find the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Pacific Ocean and the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Tasman Sea. Compare and contrast the length of rivers that flow to the Pacific Ocean versus the ones that flow into the Tasman Sea using both measures of spread and measures of variability.
 
-<div tabindex="0" style="width:85%; margin:auto;">
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [length]{.data}.  
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [length]{.data}.
 
 **Code book for data frame Length** is below @tbl-Length.
-
-</div>
+:::
 
 3.  Print-O-Matic printing company's employees have salaries that are contained in @tbl-Pay. Find the mean, median, range, variance, and standard deviation for the salaries of all employees.
 
-<div tabindex="0" style="width:85%; margin:auto;">
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pay]{.data}. 
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pay]{.data}.
 
 **Code book for data frame Pay** below @tbl-Pay.
-
-</div>
+:::
 
 4.  Print-O-Matic printing company spends specific amounts on fixed costs every month. The costs of those fixed costs are in @tbl-Cost. Find the mean, median, range, variance, and standard deviation for the fixed costs.
 
-<div tabindex="0" style="width:85%; margin:auto;">
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pay]{.data}. 
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pay]{.data}.
 
 **Code book for Data frame Cost** is below @tbl-Cost.
+:::
 
-</div>
+5.  The data frame Pulse @tbl-Pulse contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute.
 
-5. The data frame Pulse @tbl-Pulse contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute.
-
-<div tabindex="0" style="width:85%; margin:auto;">
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pulse]{.data}. 
-
-</div>
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pulse]{.data}.
+:::
 
 ```{r pulse-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Pulse dataset"
@@ -870,7 +913,8 @@ Source Pulse rates before and after exercise. (2013, September 25). Retrieved fr
 
 References The data was supplied by Dr Richard J. Wilson, Department of Mathematics, University of Queensland.
 
-Create a data frame that contains only males, who drink alcohol, but do not smoke. Then compare the pulse before and the pulse after using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread. Create the new dataset and save as [pulse_males]{.data} by subsetting the [pulse]{.data} data using the steps described [here]{#Subsetting-Data-in-Rguroo}. See @fig-subset-pulse for the Data Subset Dialog.
+Create a data frame that contains only males, who drink alcohol, but do not smoke. Then compare the pulse before and the pulse after using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread. Create the new dataset and save as [pulse_males]{.data} by subsetting the [pulse]{.data} data using the steps described here. See @fig-subset-pulse for the Data Subset Dialog.
+
 ```{r,echo=FALSE}
 #| fig-alt: "Rguroo Dialog Box for Subsetting Pulse Data"
 #| warning: FALSE
@@ -891,13 +935,11 @@ knitr::kable(head(Males))
 
 6.  The data frame Pulse @tbl-Pulse contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute. Create a data frame that contains females, who do not smoke but do drink alcohol. Compare the pulse rate before and after exercise using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread.
 
-7. To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson & Hanson, 1997) and the data is in @tbl-Reiki.
+7.  To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson & Hanson, 1997) and the data is in @tbl-Reiki.
 
-<div tabindex="0" style="width:85%; margin:auto;">
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [Reiki_pain]{.data}. 
-
-</div>
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [Reiki_pain]{.data}.
+:::
 
 ```{r reiki-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Reiki dataset"
@@ -936,11 +978,10 @@ Since the data was collected both before and after the treatment for all of the 
 4.  Click on the plus sign icon ![plus icon](Rguroo_Icons/add.png) in the Variable column and type [vas.diff]{.var}. The variable’s name appears in the list labeled Retuned Variable on the right side.\
 5.  In the middle text field type your R function (transformation). To write a variable name, you can either type it or double-click on the variable name in the Returned Variable list. Double click [VAS.before]{.var} enter minus(-) and double click [VAS.after]{.var}.
 6.  When you are done with your selection, click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the scatterplot.
-7. In Save As... name the new data set Newreiki and click the [Save As...]{.button}.
+7.  In Save As... name the new dataset Newreiki and click the [Save As...]{.button}.
 
 ::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-![Data Transform Dialog in Rguroo](Rguroo_dialogs/Numerical_description/transform_dialog.png){width="500px"}
-![Save As... Dataset View](Rguroo_outputs/Numerical_Description/newreiki_dataset.png) 
+![Data Transform Dialog in Rguroo](Rguroo_dialogs/Numerical_description/transform_dialog.png){width="500px"} ![Save As... Dataset View](Rguroo_outputs/Numerical_Description/newreiki_dataset.png)
 :::
 ::::
 
@@ -955,14 +996,11 @@ knitr::kable(head(Newreiki))
 
 Now find the mean and standard deviation of the vas.diff variable in Newreiki. Perform similar commands to create the likert.diff variable. Then find the mean and standard deviation for likert.diff, and compare and contrast the vas and likert methods for describing pain.
 
-8. Yearly rainfall amounts (in millimeters) in Sydney, Australia, are in @tbl-Rainfall (Annual maximums of, 2013). a. Calculate the mean and standard deviation. b. Suppose Sydney, Australia received 300 mm of rainfall in a year. Would this be unusual?
+8.  Yearly rainfall amounts (in millimeters) in Sydney, Australia, are in @tbl-Rainfall (Annual maximums of, 2013). a. Calculate the mean and standard deviation. b. Suppose Sydney, Australia received 300 mm of rainfall in a year. Would this be unusual?
 
-<div tabindex="0" style="width:85%; margin:auto;">
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [rainfall]{.data}. 
-
-</div>
-
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [rainfall]{.data}.
+:::
 
 ```{r rainfall-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Rainfall dataset"
@@ -982,7 +1020,7 @@ amount: daily rainfall (mm)
 
 Source Annual maximums of daily rainfall in Sydney. (2013, September 25). Retrieved from [here](https://gksmyth.github.io/ozdasl/oz/sydrain.html).
 
-References Rayner J.C.W. and Best D.J. (1989) Smooth tests of goodness of fit. Oxford: Oxford University Press. Hand D.J., Daly F., Lunn A.D., McConway K.J., Ostrowski E. (1994). A Handbook of Small Data Sets. London: Chapman & Hall. Data set 157. Thanks to Jim Irish of the University of Technology, Sydney, for assistance in identifying the correct units for this data.
+References Rayner J.C.W. and Best D.J. (1989) Smooth tests of goodness of fit. Oxford: Oxford University Press. Hand D.J., Daly F., Lunn A.D., McConway K.J., Ostrowski E. (1994). A Handbook of Small datasets. London: Chapman & Hall. dataset 157. Thanks to Jim Irish of the University of Technology, Sydney, for assistance in identifying the correct units for this data.
 
 ## Ranking
 
@@ -1019,7 +1057,7 @@ There are special percentiles called **quartiles**. Quartiles are numbers that d
 
 To find the quartiles in Rguroo, you use the same steps as finding the mean, standard deviation, and variation in Summary Stasitic as described [here](#Calculating-summary-stats-in-Rguroo).
 
-<!-- df_stats(\~variable, data=data_frame, summary) --> 
+<!-- df_stats(\~variable, data=data_frame, summary) -->
 
 ```{r,echo=FALSE}
 #| fig-alt: "Dialog for Basic Summary to find Quartiles for Cats Bodyweight in Rguroo"
@@ -1030,12 +1068,9 @@ To find the quartiles in Rguroo, you use the same steps as finding the mean, sta
 knitr::include_graphics("Rguroo_dialogs/Numerical_description/quartiles_dialog.png")
 ```
 
-
 If you record the quartiles together with the maximum and minimum you have five numbers. This is known as the five-number summary. The five-number summary consists of the minimum, the first quartile ($Q1$), the median, the third quartile ($Q3$), and the maximum (in that order).
 
-The interquartile range, $IQR$, is the difference between the first and third quartiles, $Q1$ and \$Q3\$. Half of the data (50%) falls in the interquartile range. If the $IQR$ is "large" the data is spread out and if the $IQR$ is "small" the data is closer together.
-
-Interquartile Range ($IQR$)
+The interquartile range, $IQR$, is the difference between the first and third quartiles, $Q1$ and $Q3$. Half of the data (50%) falls in the interquartile range. If the $IQR$ is "large" the data is spread out and if the $IQR$ is "small" the data is closer together.
 
 Determining probable outliers from $IQR$: **fences**
 
@@ -1043,11 +1078,11 @@ A value that is less than $Q1-1.5*IQR$ (this value is often referred to as a **l
 
 Similarly, a value that is more than $Q3+1.5*IQR$ (the **upper fence**) is considered an outlier.
 
-A boxplot (or box-and-whisker plot) is a graphical display of the five-number summary. It can be drawn vertically or horizontally. The basic format is a box from $Q1$ to $Q3$, a vertical line across the box for the median and horizontal lines as whiskers extending out each end to the minimum and maximum. The minimum and maximum can be represented with dots. Don't forget to label the tick marks on the number line and give the graph a title.
+A boxplot (or box-and-whisker plot) is a graphical display of the five-number summary. It can be drawn vertically or horizontally. In the horizontal form, the plot consists of a rectangular box that extends from $Q_1$ to $Q_3$, with a line inside the box marking the median. Lines called whiskers extend horizontally from each end of the box to the minimum and maximum values. The horizontal axis is a number line that shows the values of the variable being displayed, with appropriate tick marks and a label. A title is often included above the plot.
 
-An alternate form of a Boxplot, known as a modified box plot, only extends the left line to the smallest value greater than the **lower fence**, and extends the left line to the largest value less than the **upper fence**, and displays markers (dots, circles or asterisks) for each outlier.
+An alternate form of a boxplot, known as a modified boxplot, shortens the whiskers so that the left whisker extends only to the smallest value greater than the **lower fence** and the right whisker extends only to the largest value less than the **upper fence**. Any values beyond these fences are considered outliers and are shown separately using markers such as dots, circles, or asterisks.
 
-If the data are **symmetrical**, then the box plot will be visibly symmetrical. If the data distribution has a left skew or a right skew, the line on that side of the box plot will be visibly long. If the plot is symmetrical, and the four quartiles are all about the same length, then the data are likely a near **uniform** distribution. If a box plot is symmetrical, and both outside lines are noticeably longer than the $Q1$ to median and median to $Q3$ distance, the distribution is then probably **bell-shaped**.
+If the data are **symmetrical**, then the box plot will be visibly symmetrical around the median line. If the distribution is skewed to the left or to the right, the whisker on the skewed side will tend to be longer, and the median will be shifted away from the center of the box in the opposite direction. <!-- THIS IS NOT TRUE SINCE THIS CAN HAPPEN FOR NON_UNIFORM DISTRIBUTIONS If the plot is symmetrical, and the four quartiles are all about the same length, then the data are likely a near **uniform** distribution. --> If a boxplot is symmetrical and the whiskers are noticeably longer than the distances from $Q_1$ to the median and from the median to $Q_3$, the distribution may be bell-shaped, with more data concentrated near the center and thinner tails. However, this pattern alone is not sufficient to conclude that the distribution is bell-shaped.
 
 ### Example: Five-number Summary and Boxplot
 
@@ -1055,7 +1090,7 @@ Find the five-number summary, the interquartile range (\*IQR\*), and draw a box-
 
 #### **Solution**
 
-Variable: $x$ = weight of cats 
+Variable: $x$ = weight of cats
 
 To compute the five-number summary on Rguroo, use summary statistic and select the appropriate statistics as shown in @fig-cats-5numsum
 
@@ -1110,13 +1145,12 @@ This is a modified boxplot which shows the outliers in the data.
 
 ```
 
-<div tabindex="0" class="rg-iframe-wrapper">
-  <iframe
-    src="Rguroo_html_output/Numerical_description/Boxplot_12/Boxplot_12.html"
-    class="rg-iframe"
-    title="Boxplot for Weight of Cats">
-  </iframe>
-</div>
+::: {.rg-iframe-wrapper tabindex="0"}
+<iframe src="Rguroo_html_output/Numerical_description/Boxplot_12/Boxplot_12.html" class="rg-iframe" title="Boxplot for Weight of Cats">
+
+</iframe>
+:::
+
 There are no outliers since there are no dots outside of the fences.
 
 ### Example: Separating based on a factor
@@ -1163,13 +1197,11 @@ Minimum: 2 $Q1$: 2.50 Median: 2.9 $Q3$: 3.2 Maximum: 3.9
 gf_boxplot(~Bwt|Sex, data=cats, title="Weights of Cats", xlab="Body Weight in (kg)") 
 ```
 
-<div tabindex="0" class="rg-iframe-wrapper">
-  <iframe
-    src="Rguroo_html_output/Numerical_description/Boxplot_8/Boxplot_8.html"
-    class="rg-iframe"
-    title="Boxplot for Weight of Cats by Sex">
-  </iframe>
-</div>
+::: {.rg-iframe-wrapper tabindex="0"}
+<iframe src="Rguroo_html_output/Numerical_description/Boxplot_8/Boxplot_8.html" class="rg-iframe" title="Boxplot for Weight of Cats by Sex">
+
+</iframe>
+:::
 
 Notice that the weights of female cats has a median less than male cats, and in fact it can be seen that the $Q1$ to $Q3$ of the female cats is less than the $Q1$ to $Q3$ of the male cats.
 
@@ -1224,7 +1256,7 @@ Click to expand the box below to see instructions to create a density plot of th
 2.  Click on the [Create Plot]{.dpd} dropdown menu and choose the [Histogram]{.fun} function. The Histogram dialog will open.
 3.  From the [Dataset]{.dpd} dropdown, select the [nerve]{.data} dataset.\
 4.  Move the [pulse]{.var} variables to the Selected column.\
-5. Select density in Type and density in Smoothing additional options.
+5.  Select density in Type and density in Smoothing additional options.
 6.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the graph.
 
 ::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
@@ -1232,13 +1264,11 @@ Click to expand the box below to see instructions to create a density plot of th
 :::
 ::::
 
-<div tabindex="0" class="rg-iframe-wrapper">
-  <iframe
-    src="Rguroo_html_output/Numerical_description/Histogram_7/Histogram_7.html"
-    class="rg-iframe"
-    title="Denisty Plot for Successive Nerve Pulses">
-  </iframe>
-</div>
+::: {.rg-iframe-wrapper tabindex="0"}
+<iframe src="Rguroo_html_output/Numerical_description/Histogram_7/Histogram_7.html" class="rg-iframe" title="Denisty Plot for Successive Nerve Pulses">
+
+</iframe>
+:::
 
 From the graph, the data appears to be skewed right. Most of the time, between successive nerve pulses appear to be around 5 or 10 1/50 second, but there are some times that are 60 1/50 second.
 
@@ -1294,59 +1324,50 @@ The boxplot reveals multiple high outliers. The median shows a typical pulse int
 
 5.  Cholesterol levels were collected from patients certain days after they had a heart attack and are in table @tbl-Cholesterol.
 
-<div tabindex="0" style="width:85%; margin:auto;">
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cholesterol]{.data}. 
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cholesterol]{.data}.
 
 **Code book for Data Frame Cholesterol** below @tbl-Cholesterol.
-
-</div>
+:::
 
 Find the five-number summary and interquartile range (IQR) for the cholesterol level on day 2, and draw a boxplot
 
 6.  The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in table @tbl-Length (Lee, 1994).
 
-<div tabindex="0" style="width:85%; margin:auto;">
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [length]{.data}. 
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [length]{.data}.
 
 **Code book for data frame Length** below @tbl-Length.
-
-</div>
+:::
 
 Find the five-number summary and interquartile range (IQR) for the lengths of rivers that go to the Pacific Ocean and ones that go to the Tasman Sea, and draw a boxplot of both.
 
 7.  Print-O-Matic printing company's employees have salaries that are contained in @tbl-Pay Find the five number summary and draw a boxplot for the salaries of all employees.
 
-<div tabindex="0" style="width:85%; margin:auto;">
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pay]{.data}. 
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pay]{.data}.
 
 **Code book for data frame Pay** below @tbl-Pay.
-
-</div>
+:::
 
 8.  The data frame Pulse @tbl-Pulse contains various variables about a person including their pulse rates before the subject exercised and after after the subject ran in place for one minute.
 
-<div tabindex="0" style="width:85%; margin:auto;">
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pulse]{.data}. 
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pulse]{.data}.
 
 **Code book for data frame Pulse** below @tbl-Pulse.
+:::
 
-
-</div>
 Create a data frame that contains only people who drink alcohol, but do not smoke. Then find the five number summary and draw a boxplot for both males and females separately.
 
 9.  To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson & Hanson, 1997) and the data is in @tbl-Reiki.
 
-<div tabindex="0" style="width:85%; margin:auto;">
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [Reiki_pain]{.data}. 
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [Reiki_pain]{.data}.
 
 **Code book for data frame Reiki** below @tbl-Reiki.
+:::
 
-</div>
-Find the five number summary for both the before and after VAS scores and draw boxplots of before and after VAS scores. <!--To draw two boxplots at the same time, after the command to create the first box plot type the piping symbol \|\> (base r) or %\>% (magrittr package) before pressing enter. (Note: \|\> and %\>% are piping symbols that can be thought of as "and then.") Then type the command for the second boxplot after the + symbol or on the next line in the r chunk if using an rmd or qmd file. Then press enter. You may want to graph each boxplot as a different color. To do this, the command would be gf_boxplot(\~variable, data=data_frame, color="red", xlab="type a label") You can pick any color you want. Just replace the word red with the color you want to use.--> 
+Find the five number summary for both the before and after VAS scores and draw boxplots of before and after VAS scores. <!--To draw two boxplots at the same time, after the command to create the first box plot type the piping symbol \|\> (base r) or %\>% (magrittr package) before pressing enter. (Note: \|\> and %\>% are piping symbols that can be thought of as "and then.") Then type the command for the second boxplot after the + symbol or on the next line in the r chunk if using an rmd or qmd file. Then press enter. You may want to graph each boxplot as a different color. To do this, the command would be gf_boxplot(\~variable, data=data_frame, color="red", xlab="type a label") You can pick any color you want. Just replace the word red with the color you want to use.-->
 
 Compare and contrast the before and after VAS scores.

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -32,16 +32,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <link href="./Probability.html" rel="next">
 <link href="./Graphical Description of Data.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-231ef2f9d4ce3268f31ef752336c15d2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -103,7 +102,7 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -229,10 +228,10 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#population-mean" id="toc-population-mean" class="nav-link" data-scroll-target="#population-mean"><span class="header-section-number">3.1.1</span> <strong>Population Mean</strong></a></li>
   <li><a href="#sample-mean" id="toc-sample-mean" class="nav-link" data-scroll-target="#sample-mean"><span class="header-section-number">3.1.2</span> <strong>Sample Mean</strong></a></li>
-  <li><a href="#example-finding-the-mean-and-median-using-rguroo" id="toc-example-finding-the-mean-and-median-using-rguroo" class="nav-link" data-scroll-target="#example-finding-the-mean-and-median-using-rguroo"><span class="header-section-number">3.1.3</span> Example: Finding the Mean and Median using Rguroo</a></li>
+  <li><a href="#example-mean-median-cats" id="toc-example-mean-median-cats" class="nav-link" data-scroll-target="#example-mean-median-cats"><span class="header-section-number">3.1.3</span> Example: Finding the Mean and Median using Rguroo</a></li>
   <li><a href="#example-finding-mean-and-median-with-factor" id="toc-example-finding-mean-and-median-with-factor" class="nav-link" data-scroll-target="#example-finding-mean-and-median-with-factor"><span class="header-section-number">3.1.4</span> Example: Finding Mean and Median with Factor</a></li>
-  <li><a href="#example-effect-of-extreme-values-on-mean-and-median" id="toc-example-effect-of-extreme-values-on-mean-and-median" class="nav-link" data-scroll-target="#example-effect-of-extreme-values-on-mean-and-median"><span class="header-section-number">3.1.5</span> Example: Effect of Extreme Values on Mean and Median</a></li>
-  <li><a href="#weighted-average" id="toc-weighted-average" class="nav-link" data-scroll-target="#weighted-average"><span class="header-section-number">3.1.6</span> <strong>Weighted Average</strong></a></li>
+  <li><a href="#example-effect-extreme-values" id="toc-example-effect-extreme-values" class="nav-link" data-scroll-target="#example-effect-extreme-values"><span class="header-section-number">3.1.5</span> Example: Effect of Extreme Values on Mean and Median</a></li>
+  <li><a href="#weighted-average" id="toc-weighted-average" class="nav-link" data-scroll-target="#weighted-average"><span class="header-section-number">3.1.6</span> Weighted Average</a></li>
   <li><a href="#example-weighted-average" id="toc-example-weighted-average" class="nav-link" data-scroll-target="#example-weighted-average"><span class="header-section-number">3.1.7</span> Example: Weighted Average</a></li>
   <li><a href="#example-weighted-average-1" id="toc-example-weighted-average-1" class="nav-link" data-scroll-target="#example-weighted-average-1"><span class="header-section-number">3.1.8</span> Example: Weighted Average</a></li>
   <li><a href="#homework-for-measures-of-center-section" id="toc-homework-for-measures-of-center-section" class="nav-link" data-scroll-target="#homework-for-measures-of-center-section"><span class="header-section-number">3.1.9</span> Homework for Measures of Center Section</a></li>
@@ -281,32 +280,32 @@ window.Quarto = {
 </header>
 
 
-<p>Chapter 1 discussed what a population, sample, parameter, and statistic are, and how to take different types of samples. Chapter 2 discussed ways to graphically display data. There was also a discussion of important characteristics: center, variations, distribution, outliers, and changing characteristics of the data over time. Distributions and outliers can be answered using graphical means. Finding the center and variation can be done using numerical methods that will be discussed in this chapter. Both graphical and numerical methods are part of a branch of statistics known as <strong>descriptive statistics</strong>. Later descriptive statistics will be used to make decisions and/or estimate population parameters using methods that are part of the branch called <strong>inferential statistics</strong>.</p>
+<p>Chapter 1 discussed what a population, sample, parameter, and statistic are, as well as how to take different types of samples. Chapter 2 discussed ways to graphically display data. There was also a discussion of important characteristics: center, variations, distribution, outliers, and changing characteristics of the data over time. Distributions and outliers can be identified using graphical means. Finding the center and variation can be done using numerical methods that will be discussed in this chapter. Both graphical and numerical methods are part of a branch of statistics known as <strong>descriptive statistics</strong>. Later, descriptive statistics will be used to make decisions and/or estimate population parameters using methods that are part of the branch called <strong>inferential statistics</strong>.</p>
 <section id="measures-of-center" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="measures-of-center"><span class="header-section-number">3.1</span> Measures of Center</h2>
-<p>This section focuses on measures of central tendency. Many times you are asking what to expect on average. Such as when you pick a major, you would probably ask how much you expect to earn in that field. If you are thinking of relocating to a new town, you might ask how much you can expect to pay for housing. If you are planting vegetables in the spring, you might want to know how long it will be until you can harvest. These questions, and many more, can be answered by knowing the center of the data set. There are three measures of the “center” of the data. They are the mode, median, and mean. Any of the values can be referred to as the “average.”</p>
-<p>The <strong>mode</strong> is the data value that occurs the most frequently in the data. To find it, you count how often each data value occurs, and then determine which data value occurs most often. The mode is not the most useful measure of center. This is because, a data set can have more than one mode. If there is a tie between two values for the most number of times then both values are the mode and the data is called bimodal (two modes). If every data point occurs the same number of times, there is no mode. If there are more than two numbers that appear the most times, then usually there is no mode.</p>
-<p>The <strong>median</strong> is the data value in the middle of a sorted list of data. To find it, you put the data in order, and then determine which data value is in the middle of the data set.</p>
+<p>This section focuses on measures of central tendency. Many times you are asking what to expect on average. For example, when you pick a major, you would probably ask how much you can expect to earn in that field. If you are thinking of relocating to a new town, you might ask how much you can expect to pay for housing. If you are planting vegetables in the spring, you might want to know how long it will be until you can harvest. These questions, and many more, can be answered by knowing the center of the data. There are three measures of the “center” of the data: the mode, median, and mean. Any of the values can be referred to as an “average.”</p>
+<p>The <strong>mode</strong> is the data value that occurs most frequently in the data. To find it, you count how often each data value occurs, and then determine which value occurs most often. If there is a tie between two values for the most number of times, then both values are the mode and the data are called bimodal (two modes). If every data value occurs the same number of times, there is no mode. If there are more than two values that appear the most times, then usually there is no mode. The mode is not always a useful measure of center, especially when a dataset has more than one mode.</p>
+<p>The <strong>median</strong> is the data value in the middle of a sorted list of data. To find it, you arrange the data in order and then determine which value is in the middle of the data values.</p>
 <p>The <strong>mean</strong> is the arithmetic average of the numbers. This is the center that most people call the average, though all three – mean, median, and mode – really are averages.</p>
-<p>There are no symbols for the mode and the median, but the mean is used a great deal, and statisticians gave it a symbol. There are actually two symbols, one for the population parameter and one for the sample statistic. In most cases you cannot find the population parameter, so you use the sample statistic to estimate the population parameter.</p>
+<p>There are no symbols for the mode and the median, but the mean is used a great deal, so statisticians gave it a symbol. There are actually two symbols: one for the population mean (parameter) and one for the sample mean (statistic). In most cases, you cannot find the population parameter, because you don’t have values for the entire population, so you use the sample mean (statistic) to estimate the population mean (parameter).</p>
 <section id="population-mean" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="population-mean"><span class="header-section-number">3.1.1</span> <strong>Population Mean</strong></h3>
 <p><span class="math inline">\(\mu=\frac{\sum{x}}{N}\)</span>, pronounced mu</p>
-<p><strong>N</strong> is the size of the population.</p>
-<p><strong>x</strong> represents a data value.</p>
+<p><span class="math inline">\(N\)</span> is the size of the population.</p>
+<p><span class="math inline">\(x\)</span> represents a data value.</p>
 <p><span class="math inline">\(\sum{x}\)</span> means to add up all of the data values.</p>
 </section>
 <section id="sample-mean" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="sample-mean"><span class="header-section-number">3.1.2</span> <strong>Sample Mean</strong></h3>
 <p><span class="math inline">\(\bar{x}=\frac{\sum{x}}{n}\)</span>, pronounced x bar.</p>
-<p><strong>n</strong> is the size of the sample.</p>
-<p><strong>x</strong> represents a data value.</p>
+<p><span class="math inline">\(n\)</span> is the size of the sample.</p>
+<p><span class="math inline">\(x\)</span> represents a data value.</p>
 <p><span class="math inline">\(\sum{x}\)</span> means to add up all of the data values.</p>
-<p>The value for <span class="math inline">\(\bar{x}\)</span> is used to estimate <span class="math inline">\(\mu\)</span> since <span class="math inline">\(\mu\)</span> can’t be calculated in most situations.</p>
+<p>The value for <span class="math inline">\(\bar{x}\)</span> is used to estimate <span class="math inline">\(\mu\)</span>, since <span class="math inline">\(\mu\)</span> can’t be calculated in most situations.</p>
 </section>
-<section id="example-finding-the-mean-and-median-using-rguroo" class="level3" data-number="3.1.3">
-<h3 data-number="3.1.3" class="anchored" data-anchor-id="example-finding-the-mean-and-median-using-rguroo"><span class="header-section-number">3.1.3</span> Example: Finding the Mean and Median using Rguroo</h3>
-<p>Suppose a vet wants to find the average weight of cats. The weights (in kg) of cats are in <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a>.</p>
+<section id="example-mean-median-cats" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="example-mean-median-cats"><span class="header-section-number">3.1.3</span> Example: Finding the Mean and Median using Rguroo</h3>
+<p>Suppose a vet wants to find the average weight of cats. The weights (in kg) of 144 cats are given in a dataset named <span class="data">cats</span>. The first six rows of this dataset are shown in <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a>.</p>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of cats dataset">
 <div id="tbl-Cats" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of cats dataset">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -388,11 +387,19 @@ Table&nbsp;3.1: Head of Cats
 </div>
 </div>
 </div>
+<p>Looking at the data frame for cats weights, <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a>, you see that there are several variables. A Code Book describes the dataset, explains what the variables are including the units, and the source of the data frame. The code book for the <span class="data">cats</span> is below.</p>
+<p><strong>Code book for cats data frame</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="code_book_cats.jpg" class="img-fluid figure-img" alt="Code book cats Dataframe"></p>
+<figcaption>Code book for cats data frame</figcaption>
+</figure>
+</div>
 <p>Find the mean and median of the weight of a cat.</p>
 <section id="solution" class="level4" data-number="3.1.3.1">
 <h4 data-number="3.1.3.1" class="anchored" data-anchor-id="solution"><span class="header-section-number">3.1.3.1</span> <strong>Solution</strong></h4>
-<p>Before starting any mathematics problem, it is always a good idea to define the unknown in the problem. In statistics, you want to define the variable. The symbol for the variable is *x*.</p>
-<p>The variable is <strong>x</strong> = weight of a cat</p>
+<p>Before starting any mathematics problem, it is always a good idea to define the unknown in the problem. In statistics, you want to define the variable. The symbol for the variable is <span class="math inline">\(x\)</span>.</p>
+<p>The variable is <span class="math inline">\(x\)</span> = weight of a cat</p>
 <p>Click to expand the box below see how to calculate the mean and median in Rguroo.</p>
 <div id="Calculating-summary-stats-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Calculating the Mean and Median Weight of Cats">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -410,7 +417,7 @@ Table&nbsp;3.1: Head of Cats
 <ol type="1">
 <li>Open the <strong>Data</strong> toolbox.<br>
 </li>
-<li>Click on the <span class="dpd">Functions</span> dropdown, and select <span class="fun">Summary Statistic</span>. This opens the Basic Summary Statistic dialog.<br>
+<li>Click on the <span class="dpd">Functions</span> dropdown, and select <span class="fun">Summary Statistic</span>. This opens the <span class="dialog">Basic Summary Statistic</span>.<br>
 </li>
 <li>From the <span class="dpd">Dataset</span> dropdown, select the <span class="data">cats</span> dataset.<br>
 </li>
@@ -465,15 +472,7 @@ Figure&nbsp;3.1: Mean and Median Weight of Cats
 </section>
 <section id="example-finding-mean-and-median-with-factor" class="level3" data-number="3.1.4">
 <h3 data-number="3.1.4" class="anchored" data-anchor-id="example-finding-mean-and-median-with-factor"><span class="header-section-number">3.1.4</span> Example: Finding Mean and Median with Factor</h3>
-<p>Looking at the data frame for cats weights <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> you see that there are several variables You may want to know what the other variables are. A Code Book describes the data set, explains what the variables are including the units, and the source of the data frame. The code book for the <span class="data">cats</span> is below.</p>
-<p><strong>Image 3.1.1: Code book for cats data frame</strong></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="code_book_cats.jpg" class="img-fluid figure-img" alt="Code book cats Dataframe"></p>
-<figcaption>Code book for cats data frame</figcaption>
-</figure>
-</div>
-<p>Suppose you want to know if male cats weigh more than female cats. Looking at the variables, you notice that there is a variable for the sex of the cat. You can look at the weights of males and females separately. This looks like:</p>
+<p>Suppose you want to know if male cats weigh more than female cats. Looking at the variables, you notice that there is a variable for the sex of the cat. You can look at the weights of males and females separately.</p>
 <section id="solution-1" class="level4" data-number="3.1.4.1">
 <h4 data-number="3.1.4.1" class="anchored" data-anchor-id="solution-1"><span class="header-section-number">3.1.4.1</span> <strong>Solution</strong></h4>
 <p>Click to expand the box below see how to calculate the mean and median, separated by sex, in Rguroo.</p>
@@ -541,26 +540,26 @@ Figure&nbsp;3.2: Mean and Median Weight of Cats by Sex
 </div>
 </div>
 </div>
-<p>Notice that the female cats’ mean weight is 2.4 kg and the male cats’ mean weight is 2.9 kg. The median weight of female cats is 2.3 kg and for males it is 2.9 kg. So it does appear that male cats weigh a bit more than the female cats.</p>
-<p>There are many different summary statistics that can be found. An example is the minimum and maximum value. In this example, you will see how to find the min and max values and then filter them out of a data set to see what effect they have on the mean and median.</p>
+<p>Notice that the female cats’ mean weight is 2.36 kg and the male cats’ mean weight is 2.9 kg. The median weight of female cats is 2.3 kg and for males it is 2.9 kg. So it does appear that male cats weigh a bit more than the female cats.</p>
+<p>There are many different summary statistics that can be found. An example is the minimum and maximum value. In this example, you will see how to find the min and max values and then filter them out of a dataset to see what effect they have on the mean and median.</p>
 </section>
 </section>
-<section id="example-effect-of-extreme-values-on-mean-and-median" class="level3" data-number="3.1.5">
-<h3 data-number="3.1.5" class="anchored" data-anchor-id="example-effect-of-extreme-values-on-mean-and-median"><span class="header-section-number">3.1.5</span> Example: Effect of Extreme Values on Mean and Median</h3>
+<section id="example-effect-extreme-values" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="example-effect-extreme-values"><span class="header-section-number">3.1.5</span> Example: Effect of Extreme Values on Mean and Median</h3>
 <p>Find the minimum and maximum values of cats weights.</p>
 <section id="solution-2" class="level4" data-number="3.1.5.1">
 <h4 data-number="3.1.5.1" class="anchored" data-anchor-id="solution-2"><span class="header-section-number">3.1.5.1</span> <strong>Solution</strong></h4>
 <p>The steps to find the minimum and the maximum in Rguroo are similar to finding the mean and median. In the <strong>Statistics</strong> section of the dialog, select the checkbox for Minimum and Maximum.</p>
-<p>Here is the Basic Summary Statistic Dialog and Output from Rguroo for the minimum and maximum of cats body weight.</p>
+<p><a href="#fig-max-min-cats" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> shows the Basic Summary Statistic Dialog and Output from Rguroo for the minimum and maximum of cats body weight.</p>
 <div class="cell">
 <div id="fig-max-min-cats" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-max-min-cats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="fig-max-min-cats-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Maximum and Minumum dialog and Output from Rguroo">
+<div id="fig-max-min-cats-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog and Output from Rguroo for Maximum and Minimum">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-max-min-cats-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Numerical_Description/max_min_dialog.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-max-min-cats" alt="Maximum and Minumum dialog and Output from Rguroo">
+<img src="Rguroo_dialogs/Numerical_Description/max_min_dialog.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-max-min-cats" alt="Dialog and Output from Rguroo for Maximum and Minimum">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-max-min-cats-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Dialog box
@@ -569,10 +568,10 @@ Figure&nbsp;3.2: Mean and Median Weight of Cats by Sex
 </div>
 </div>
 <div class="cell-output-display">
-<div id="fig-max-min-cats-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Maximum and Minumum dialog and Output from Rguroo">
+<div id="fig-max-min-cats-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog and Output from Rguroo for Maximum and Minimum">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-max-min-cats-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Numerical_Description/max_min_output.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-max-min-cats" alt="Maximum and Minumum dialog and Output from Rguroo">
+<img src="Rguroo_outputs/Numerical_Description/max_min_output.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-max-min-cats" alt="Dialog and Output from Rguroo for Maximum and Minimum">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-max-min-cats-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Output results
@@ -588,7 +587,8 @@ Figure&nbsp;3.3: Maximum and Minimum Weight of Cats
 </div>
 </div>
 <p>The minimum weight of a cat in this data frame is 2 kg and the maximum weight of a cat is 3.9 kg.</p>
-<p>You can create two new data sets in Rguroo by subsetting (filtering). One data set will exclude the maximum value. Click to expand the box below to see how to subset a dataset in Rguroo:</p>
+<p>You can create two new datasets in Rguroo by subsetting (filtering). One dataset will exclude the maximum value and include values less than 3.9, and the other will exclude the minimum value and include values greater than 2.</p>
+<p>Click to expand the box below to see how to obtain a subset of the <span class="data">cats</span> dataset in Rguroo that includes values less than 3.9 kg.</p>
 <div id="Subsetting-Data-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Subsetting the cats Dataset">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -611,10 +611,10 @@ Figure&nbsp;3.3: Maximum and Minimum Weight of Cats
 </li>
 <li>Select the <span class="button">Logical Expression</span> button.<br>
 </li>
-<li>To create a new Logical Expression, click the green plus icon.</li>
+<li>To create a new Logical Expression, click the green plus icon <img src="Rguroo_Icons/add.png" class="img-fluid" alt="plus icon">.</li>
 <li>From the <span class="dpd">Variable</span> dropdown, select the <span class="var">Bwt</span>. From the <span class="dpd">Op.</span> (operations) dropwdown, select the less than symbol (&lt;). In the Value column, enter 3.9 (the maximum body weight of cats dataset). Click the <span class="button">Done</span>.</li>
-<li>When you are done with your selection, click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the scatterplot.</li>
-<li>In Save As… name the new data set cats_nomax and click the <span class="button">Save As…</span>.</li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the filtered data.</li>
+<li>In Save As… textbox, name the new dataset <span class="typein">cats_nomax</span> and click the <span class="button">Save As…</span> button.</li>
 </ol>
 <div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
@@ -635,18 +635,37 @@ Click here to see the Rguroo dialog
 </div>
 </div>
 </div>
-<p>Then create a data set that excludes the minimum value using the same steps shown <a href="#Subsetting-Data-in-Rguroo">here</a>. In the <span class="dialog">Logical Expression</span> dialog, choose the greater than (&gt;) operator in the <span class="dpd">Op.</span> dropdown and enter 2 in the Value column. Save this new dataset as <span class="data">cats_nomin</span>.</p>
-<!-- The \<- is the way to indicate to r what the data set nomin is equivalent to what follows the symbol. Notice that it doesn't look like anything happened, but new data sets were created in the background.-->
-<p>Now you can find the mean and median of each new data set using the steps described <a href="#Calculating-summary-stats-in-Rguroo">here</a> :</p>
+<p>Then create a dataset that excludes the minimum value using the same steps shown <a href="#Subsetting-Data-in-Rguroo">here</a>, except in the <span class="dialog">Logical Expression</span> dialog, choose the greater than (&gt;) operator in the <span class="dpd">Op.</span> dropdown and enter 2 in the Value column, as shown in <a href="#fig-min-cats" class="quarto-xref">Figure&nbsp;<span>3.4</span></a>. Save this new dataset as <span class="data">cats_nomin</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-min-cats" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Logical Expression Dialogfor removing the minimum">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-min-cats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_dialogs/Numerical_Description/min_dialog.png" class="img-fluid figure-img" style="width:80.0%" alt="Logical Expression Dialogfor removing the minimum">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-min-cats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.4: Logical Expression Dialog for Removing the Minimum Weight of Cats
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<!-- The \<- is the way to indicate to r what the dataset nomin is equivalent to what follows the symbol. Notice that it doesn't look like anything happened, but new datasets were created in the background.-->
+<p>Now you can find the mean and median of each new dataset using the steps described <a href="#Calculating-summary-stats-in-Rguroo">here</a> using the new datasets <span class="data">cats_nomax</span> and <span class="data">cats_nomin</span>.</p>
 <p>The mean without the maximum value is 2.70 kg, and the median is 2.7 kg.</p>
 <p>The mean without the minimum value is 2.75 kg, and the median is 2.7 kg.</p>
-<p>From <a href="#example-effect-of-extreme-values-on-mean-and-median">Example: Effect of Extreme Values on Mean and Median</a>, the mean of the <span class="data">cats</span> data set with all the values is 2.72 kg where the median is 2.7 kg. Notice that when the maximum value was excluded from the data set, the mean decreased a little but the median didn’t change, and when the minimum value was excluded from the data set, the mean increased a little but the median didn’t change. The mean is much higher than the median. Why is this? This is because the mean is affected by extreme values, while the median is not. We say the median is a resistant measure of center because it isn’t affected by extreme values as much.</p>
-<p>An outlier is a data value that is very different from the rest of the data. It can be really high or really low. Extreme values may be an outlier if the extreme value is far enough from the center. If there are extreme values in the data, the median is a better measure of the center than the mean. If there are no extreme values, the mean and the median will be similar so most people use the mean. The mean is not a resistant measure because it is affected by extreme values. The median is a resistant measure because it not affected by extreme values.</p>
-<p>As a consumer you need to be aware that people choose the measure of center that best supports their claim. When you read an article in the newspaper and it talks about the “average” it usually means the mean but sometimes it refers to the median. Some articles will use the word “median” instead of “average” to be more specific. If you need to make an important decision and the information says “average”, it would be wise to ask if the “average” is the mean or the median before you decide.</p>
-<p>As an example, suppose that a company wants to use the mean salary as the average salary for the company. This is because the high salaries of the administrators will pull the mean higher. The company can say that the employees are paid well because the average is high. However, the employees want to use the median since it discounts the extreme values of the administration and will give a lower value of the average. This will make the salaries seem lower and that a raise is in order.</p>
-<p>Why use the mean instead of the median? The reason is because when multiple samples are taken from the same population, the sample means tend to be more consistent than other measures of the center.</p>
-<p>To understand how the different measures of center relate to skewed or symmetric distributions, see <a href="#fig-centers-dist" class="quarto-xref">Figure&nbsp;<span>3.4</span></a>. As you can see sometimes the mean is smaller than the median, sometimes the mean is larger than the median, and sometimes they are the same values.</p>
-<p><strong><a href="#fig-centers-dist" class="quarto-xref">Figure&nbsp;<span>3.4</span></a>: Mean, Median, Mode as Related to a Distribution</strong></p>
+<p>From <a href="#example-effect-extreme-values">this</a> example, the mean of the <span class="data">cats</span> dataset with all the values is 2.72 kg, while the median is 2.7 kg. Notice that when the maximum value was excluded from the dataset, the mean decreased slightly but the median didn’t change, and when the minimum value was excluded from the dataset, the mean increased a little but the median didn’t change. This shows that the mean is affected by extreme values, while the median is not. We say the median is a resistant measure of center because it isn’t affected by extreme values as much.</p>
+<p>An outlier is a data value that is very different from the rest of the data. It can be really high or really low. An extreme value may be an outlier if it is far enough from the center. If there are extreme values in the data, the median is a better measure of the center than the mean. If there are no extreme values, the mean and the median will be similar so most people use the mean. The mean is not a resistant measure because it is affected by extreme values. The median is a resistant measure because it not affected by extreme values.</p>
+<p>You need to be aware that people generally choose the measure of center that best supports their claim. When you read an article in the newspaper and it talks about the “average” it usually means the mean but sometimes it refers to the median. Some articles will use the word “median” instead of “average” to be more specific. If you need to make an important decision and the information says “average”, it would be wise to ask if the “average” is the mean or the median before you decide.</p>
+<p>As an example, suppose that a company wants to use the mean salary as the average salary for the company. This is because the high salaries of the administrators will pull the mean higher. The company can say that employees are paid well because the average is high. However, the employees want to use the median since it discounts the extreme values of the administration and gives a lower measure of the average. This makes the salaries seem lower and suggests that a raise is in order.</p>
+<!--
+Why use the mean instead of the median? The reason is because when multiple samples are taken from the same population, the sample means tend to be more consistent than other measures of the center.
+-->
+<p>Why use the mean instead of the median? Imagine repeatedly taking different samples from the same population. Some samples may include more large values, while others may include more small values. When we calculate the mean for each sample, some sample means will overestimate the true center of the population and others will underestimate it. Over many samples, these overestimates and underestimates tend to balance out. The median, however, can tend to underestimate or overestimate the center more often in one direction, depending on how the middle values fall in the samples. Because of this, the mean does not systematically overestimate or underestimate the center of the population, making it a reliable measure of center.</p>
+<p>To understand how different measures of center relate to skewed or symmetric distributions, see <a href="#fig-centers-dist" class="quarto-xref">Figure&nbsp;<span>3.5</span></a>. For a left-skewed distribution, the mean is smaller than the median. For a right-skewed distribution, the mean is larger than the median. For a symmetric distribution, the mean and the median are the same.</p>
+<!--
+@fig-centers-dist**:** **Mean, Median, Mode as Related to a Distribution**
+-->
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-centers-dist" class="quarto-float quarto-figure quarto-figure-center anchored" alt="skewed left graph with mean, median,mode lines, then symmetric graph with all three the same line, then skewed right graph with mode, median, mean lines">
@@ -655,26 +674,26 @@ Click here to see the Rguroo dialog
 <img src="images/centers_distribution.png" class="img-fluid figure-img" style="width:70.0%" alt="skewed left graph with mean, median,mode lines, then symmetric graph with all three the same line, then skewed right graph with mode, median, mean lines">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-centers-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.4: Mean, median, mode as related to distribution
+Figure&nbsp;3.5: Mean, median, mode as related to distribution
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>One last type of average is a weighted average. <strong>Weighted averages</strong> are used quite often in different situations. Some teachers use them in calculating a student’s grade in the course, or a grade on a project. Some employers use them in employee evaluations. The idea is that some activities are more important than others. As an example, a full time teacher at a community college may be evaluated on their service to the college, their service to the community, whether their paperwork is turned in on time, and their teaching. However, teaching is much more important than whether their paperwork is turned in on time. When the evaluation is completed, more weight needs to be given to the teaching and less to the paperwork. This is a weighted average.</p>
+<p>One type of average is a weighted average. Weighted averages are commonly used in situations where some components matter more than others. For example, a teacher may use a weighted average when calculating a student’s final course grade. Homework, quizzes, and exams may all contribute to the final grade, but exams might count more because they measure overall understanding more directly. In this case, exams are given more weight than homework, so they have a larger impact on the final grade. Similarly, employers may use weighted averages in performance evaluations when some aspects of a job are more important than others. As an example, a full time teacher at a community college may be evaluated on their service to the college, their service to the community, whether their paperwork is turned in on time, and their teaching. However, teaching is much more important than whether their paperwork is turned in on time. When the evaluation is completed, more weight needs to be given to the teaching and less to the paperwork. This is a weighted average.</p>
 </section>
 </section>
 <section id="weighted-average" class="level3" data-number="3.1.6">
-<h3 data-number="3.1.6" class="anchored" data-anchor-id="weighted-average"><span class="header-section-number">3.1.6</span> <strong>Weighted Average</strong></h3>
-<p><span class="math inline">\(\text{weighted average}=\frac{\sum{x*w}}{\sum{w}}\)</span></p>
-<p>where <strong>w</strong> is the weight of the data value, <strong>x</strong>.</p>
+<h3 data-number="3.1.6" class="anchored" data-anchor-id="weighted-average"><span class="header-section-number">3.1.6</span> Weighted Average</h3>
+<p><span class="math inline">\(\text{weighted average}=\frac{\sum{x*w}}{\sum{w}}\)</span>,</p>
+<p>where <span class="math inline">\(w\)</span> is the weight of the data value <span class="math inline">\(x\)</span>.</p>
 </section>
 <section id="example-weighted-average" class="level3" data-number="3.1.7">
 <h3 data-number="3.1.7" class="anchored" data-anchor-id="example-weighted-average"><span class="header-section-number">3.1.7</span> Example: Weighted Average</h3>
-<p>In your biology class, your final grade is based on several things: a lab score, scores on two major tests, and your score on the final exam. There are 100 points available for each score. The lab score is worth 15% of the course, the two exams are worth 25% of the course each, and the final exam is worth 35% of the course. Suppose you earned scores of 95 on the labs, 83 and 76 on the two exams, and 84 on the final exam. Compute your weighted average for the course.</p>
+<p>In your biology class, your final grade is based on several components: a lab score, scores on two major tests, and your score on the final exam. Each component is graded out of 100 points. The lab score is worth 15% of the course grade, the two exams are worth 25% each, and the final exam is worth 35% of the course. Suppose you earned scores of 95 on the labs, 83 and 76 on the two exams, and 84 on the final exam. Compute your weighted average for the course.</p>
 <section id="solution-3" class="level4" data-number="3.1.7.1">
 <h4 data-number="3.1.7.1" class="anchored" data-anchor-id="solution-3"><span class="header-section-number">3.1.7.1</span> <strong>Solution</strong></h4>
-<p>Variable: <strong>x</strong> = score</p>
+<p>Variable: <span class="math inline">\(x\)</span> = score</p>
 <p>A weighted average can be found using Rguroo. First, we will create a new dataset in Rguroo. Click to expand the box below to see how to create a new dataset in Rguroo:</p>
 <div id="Creating-new-dataset" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a New Dataset">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
@@ -691,13 +710,14 @@ Figure&nbsp;3.4: Mean, median, mode as related to distribution
 <ol type="1">
 <li>Open the <strong>Data</strong> toolbox.<br>
 </li>
-<li>Click on the <span class="dpd">Data Import</span> dropdown, and select <span class="fun">Create New Dataset</span>. This opens the <span class="dialog">Create New Dataset</span> dialog. Specify the number of rows and columns for your new dataset.<br>
+<li>Click on the <span class="dpd">Data Import</span> dropdown, and select <span class="fun">Create New Dataset</span>. This opens the <span class="dialog">Create New Dataset</span> dialog. Specify the number of rows and columns for your new dataset (optional), and click the <span class="button">Create Dataset</span> button. This opens Rguroo’s dataset editor.<br>
 </li>
-<li>The default variable names will be <span class="var">Var1</span>, <span class="var">Var2</span>, etc. To change the variable name, move your cursor over the variable name on the header. You will see the Variable Context Menu icon. Click on the icon to open the variable context menu. From the menu select the option <span class="des">Rename</span>. This will bring up the <span class="dialog">Rename Variable</span> dialog box. In the dialog box, type in the new name for your variable, and press enter. The new name will now appear on the header. Note that variable names cannot have spaces.<br>
+<li>The default variable names will be <span class="var">Var1</span>, <span class="var">Var2</span>, etc. To change the variable name, move your cursor over the variable name in the column header. You will see the Variable Context Menu icon <img src="Rguroo_Icons/four_horizontal_line_icon.png" class="img-fluid" alt="variable context menu icon">. Click on the icon to open the variable context menu.</li>
+<li>From the variable context menu select the option <span class="des">Rename</span>. This will bring up the <span class="dialog">Rename Variable</span> dialog box. In the dialog box, type in the new name for your variable and press enter. The new name will appear in the column header. Note that variable names cannot have spaces. For this example we use two have two variables; specify the names <a href=".var">score</a> and <a href=".var">weight</a> in two columns.<br>
 </li>
-<li>Enter your data.<br>
+<li>Enter your data (score and weights) in the two columns.<br>
 </li>
-<li>Enter a name for your dataset in the <span class="des">Save As</span> textbox on the top, and click the <span class="button">Save as</span> button to save your dataset.</li>
+<li>Enter a name for your dataset in the <span class="des">Save As</span> textbox on the top, and click the <span class="button">Save as</span> button to save your dataset. For this example, name the dataset <span class="data">biology_grade</span>.</li>
 </ol>
 <div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog and new dataset">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
@@ -729,7 +749,7 @@ weighted.mean(x,w)
 The **x** and **w** represent the variables, \<- means make the variables equivalent to what follows, the c( means combine all the values in the () as one combined variable.
 
 For this example, the commands would be -->
-<p>To calculate the weighted average in Rguroo, you will follow the same steps described <a href="#Calculating-summary-stats-in-Rguroo">here</a>. In the <span class="dialog">Basic Summary Statistics</span> dialog box select the <span class="data">biology_grade</span> from the <span class="dpd">dataset</span> dropdown, select <span class="var">score</span> in the <span class="dpd">Numerical</span> dropdown, and select <span class="var">weight</span> in the <span class="dpd">frequency</span> dropdown as shown in figure <a href="#fig-weighted-mean" class="quarto-xref">Figure&nbsp;<span>3.5</span></a>.</p>
+<p>To calculate the weighted average in Rguroo, you will follow similar steps as described <a href="#Calculating-summary-stats-in-Rguroo">here</a>. In the <span class="dialog">Basic Summary Statistics</span> dialog box select the <span class="data">biology_grade</span> from the <span class="dpd">dataset</span> dropdown, select <span class="var">score</span> in the <span class="dpd">Numerical</span> dropdown, and select <span class="var">weight</span> in the <span class="dpd">frequency</span> dropdown as shown in figure <a href="#fig-weighted-mean" class="quarto-xref">Figure&nbsp;<span>3.6</span></a>.</p>
 <div class="cell">
 <div id="fig-weighted-mean" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -760,7 +780,7 @@ For this example, the commands would be -->
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-weighted-mean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.5: Weighted Mean of Biology Grade
+Figure&nbsp;3.6: Weighted Mean of Biology Grade
 </figcaption>
 </figure>
 </div>
@@ -781,8 +801,8 @@ Figure&nbsp;3.5: Weighted Mean of Biology Grade
 <ol type="a">
 <li>One faculty member had the following ratings: 8 for teaching, 9 for publishing, 2 for committee work, 1 for community service, and 8 for paperwork. Compute the weighted average of the evaluation.</li>
 </ol>
-<p>Variable: <strong>x</strong> = rating, <strong>w</strong> = weight</p>
-<p>To find the weighted average using Rguroo, start by creating a new dataset as described <a href="#Creating-new-dataset">here</a>. The new dataset is shown in the figure <a href="#fig-dataset-ratings" class="quarto-xref">Figure&nbsp;<span>3.6</span></a> below.</p>
+<p>Variable: <span class="math inline">\(x\)</span> = rating, <span class="math inline">\(w\)</span> = weight</p>
+<p>To find the weighted average using Rguroo, start by creating a new dataset as described <a href="#Creating-new-dataset">here</a>. The new dataset, including weights and scores for each faculty, is shown in the figure <a href="#fig-dataset-ratings" class="quarto-xref">Figure&nbsp;<span>3.7</span></a> below.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-dataset-ratings" class="quarto-float quarto-figure quarto-figure-center anchored" alt="new dataset for weight of category in a and b">
@@ -791,13 +811,13 @@ Figure&nbsp;3.5: Weighted Mean of Biology Grade
 <img src="Rguroo_outputs/Numerical_Description/ex_4_1_8_dataset.png" class="img-fluid figure-img" style="width:70.0%" alt="new dataset for weight of category in a and b">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dataset-ratings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.6: Faculty Ratings Dataset
+Figure&nbsp;3.7: Faculty Ratings Dataset
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Calculate the weighted average in Rguroo using the same steps described <a href="#Calculating-summary-stats-in-Rguroo">here</a>. In the <span class="dialog">Basic Summary Statistics</span> dialog box select the <span class="data">faculty_ratings</span> from the <span class="dpd">dataset</span> dropdown, select <span class="var">faculty_a</span> in the <span class="dpd">Numerical</span> dropdown, and select <span class="var">weight</span> in the <span class="dpd">frequency</span> dropdown as shown in figure <a href="#fig-faculty_a-weighted_mean" class="quarto-xref">Figure&nbsp;<span>3.7</span></a>.</p>
+<p>Calculate the weighted average in Rguroo using the same steps described <a href="#Calculating-summary-stats-in-Rguroo">here</a>. In the <span class="dialog">Basic Summary Statistics</span> dialog box select the <span class="data">faculty_ratings</span> from the <span class="dpd">dataset</span> dropdown, select <span class="var">faculty_a</span> in the <span class="dpd">Numerical</span> dropdown, and select <span class="var">weight</span> in the <span class="dpd">frequency</span> dropdown as shown in figure <a href="#fig-faculty_a-weighted_mean" class="quarto-xref">Figure&nbsp;<span>3.8</span></a>.</p>
 <div class="cell">
 <div id="fig-faculty_a-weighted_mean" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -828,7 +848,7 @@ Figure&nbsp;3.6: Faculty Ratings Dataset
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-faculty_a-weighted_mean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.7: Weighted Mean of Faculty Ratings
+Figure&nbsp;3.8: Weighted Mean of Faculty Ratings
 </figcaption>
 </figure>
 </div>
@@ -868,7 +888,7 @@ Figure&nbsp;3.7: Weighted Mean of Faculty Ratings
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-faculty_b-weighted_mean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.8: Weighted Mean of Faculty Ratings
+Figure&nbsp;3.9: Weighted Mean of Faculty Ratings
 </figcaption>
 </figure>
 </div>
@@ -888,7 +908,7 @@ Figure&nbsp;3.8: Weighted Mean of Faculty Ratings
 <h3 data-number="3.1.9" class="anchored" data-anchor-id="homework-for-measures-of-center-section"><span class="header-section-number">3.1.9</span> Homework for Measures of Center Section</h3>
 <p><strong>Use Rguroo on all problems. State the variable on all problems.</strong></p>
 <ol type="1">
-<li>Cholesterol levels were collected from patients a certain number of days after they had a heart attack and are in <a href="#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>. Find the mean and median for cholesterol levels 2 days after the heart attack.</li>
+<li>Cholesterol levels were collected from patients a certain number of days after they had a heart attack and the first six rows of the data are shown in <a href="#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>. Find the mean and median for cholesterol levels 2 days after the heart attack.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cholesterol</span>.</p>
@@ -901,7 +921,7 @@ Figure&nbsp;3.8: Weighted Mean of Faculty Ratings
 <img src="Rguroo_dialogs/Numerical_Description/chol_data_repo.png" class="img-fluid figure-img" style="width:70.0%" alt="Repository search">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kozak-repo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.9: Repository Search Dialog
+Figure&nbsp;3.10: Repository Search Dialog
 </figcaption>
 </figure>
 </div>
@@ -978,7 +998,7 @@ Table&nbsp;3.2: Head of Cholesterol Levels of Patients After Heart Attack
 <p>Source Ryan, B. F., Joiner, B. L., &amp; Ryan, Jr, T. A. (1985). Cholesterol levels after heart attack. Retrieved from <a href="https://gksmyth.github.io/ozdasl/general/cholest.html">here</a></p>
 <p>References Ryan, Joiner &amp; Ryan, Jr, 1985</p>
 <ol start="2" type="1">
-<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.</li>
+<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are given in a dataset named <span class="data">length</span>. The first six rows of this datset are listed in <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">length</span>.</p>
@@ -1046,7 +1066,7 @@ Table&nbsp;3.3: Head of Length of New zealand rivers (km)
 <p>Source Lee, A. (1994). Data analysis: An introduction based on r. Auckland. Retrieved from <a href="https://gksmyth.github.io/ozdasl/oz/nzrivers.html">here</a></p>
 <p>References Lee, A. (1994). Data analysis: An introduction based on r. Auckland.</p>
 <ol start="3" type="1">
-<li>Print-O-Matic printing company’s employees have salaries that are contained in <a href="#tbl-Pay" class="quarto-xref">Table&nbsp;<span>3.4</span></a>.</li>
+<li>Print-O-Matic printing company’s employees have salaries that are contained in a dataset named <span class="data">pay</span>. The first six rows of these data are given in <a href="#tbl-Pay" class="quarto-xref">Table&nbsp;<span>3.4</span></a>.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">pay</span>.</p>
@@ -1107,14 +1127,66 @@ Table&nbsp;3.4: Head of Salaries of Print-O-Matic Printing Company Employees
 <p>References John Matic (2013)</p>
 <ol type="a">
 <li><p>Find the mean and median.</p></li>
-<li><p>Find the mean and median with the CEO’s salary removed.</p></li>
+<li><p>Find the mean and median with the CEOs salaries removed. Hint: You can filter the dataset to remove the CEOs’ salaries either by using the Rguroo <span class="fun">Subset</span> function following similar instructions as shown <a href="#Subsetting-Data-in-Rguroo">here</a> or more simply using the dataset editor as shown below.</p></li>
+</ol>
+<div id="filter-in-editor" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Filtering the pay Dataset in the Dataset Editor">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Filtering the pay Dataset in the Dataset Editor
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">pay</span> dataset into your <strong>Data</strong> Toolbox.</p>
+<ol type="1">
+<li>Open the <strong>Data</strong> toolbox.<br>
+</li>
+<li>Double click on the <span class="data">pay</span> dataset to open it in the dataset editor.<br>
+</li>
+<li>Click on the filter icon <img src="Rguroo_Icons/filters.png" class="img-fluid" alt="filter icon"> shown in the right margin of the dataset editor to open the list of variables.<br>
+</li>
+<li>From the list of variables, click on the <span class="var">employee</span> variable to open the filter dialog for that variable.<br>
+</li>
+<li>In the filter dialog, uncheck the box for <span class="des">CEO</span> to exclude the CEO from the dataset.<br>
+</li>
+<li>In Save As… textbox, name the new dataset <span class="typein">pay_no_CEO</span> and click the <span class="button">Save As…</span> button.</li>
+</ol>
+<div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Dataset Editor filtering process">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Click here to see the Dataset Editor filtering process
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Rguroo_dialogs/Numerical_description/filter_ceo.png" class="img-fluid figure-img" width="700"></p>
+<figcaption>Dataset editor showing the filtering function</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="3" type="a">
 <li><p>What happened to the mean and median when the CEO’s salary was removed? Why?</p></li>
-<li><p>If you were the CEO, who is answering concerns from the union that employees are underpaid, which average (mean or median) using the complete data set of the complete data set would you prefer? Why?</p></li>
-<li><p>If you were a platen worker, who believes that the employees need a raise, which average (mean or median) using the complete data set would you prefer? Why?</p></li>
+<li><p>If you were the CEO, who is answering concerns from the union that employees are underpaid, which average (mean or median) using the complete dataset of the complete dataset would you prefer? Why?</p></li>
+<li><p>If you were a platen worker, who believes that the employees need a raise, which average (mean or median) using the complete dataset would you prefer? Why?</p></li>
 </ol>
 <!-- -->
 <ol start="4" type="1">
-<li>Print-O-Matic printing company spends specific amounts on fixed costs every month. The costs of those fixed costs are in a <a href="#tbl-Cost" class="quarto-xref">Table&nbsp;<span>3.5</span></a>.</li>
+<li>Print-O-Matic printing company spends specific amounts on fixed costs every month. These costs are listed in the dataset <span class="data">cost</span>. The first six rows of the data are shown in <a href="#tbl-Cost" class="quarto-xref">Table&nbsp;<span>3.5</span></a>.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cost</span>.</p>
@@ -1177,8 +1249,8 @@ Table&nbsp;3.5: Fixed Costs for Print-O-Matic Printing Company
 <li><p>Find the mean and median.</p></li>
 <li><p>Find the mean and median with the bank charges removed.</p></li>
 <li><p>What happened to the mean and median when the bank charges was removed? Why?</p></li>
-<li><p>If it is your job to oversee the fixed costs, which average (mean or median) using the complete data set would you prefer to use when submitting a report to administration to show that costs are low? Why?</p></li>
-<li><p>If it is your job to find places in the budget to reduce costs, which average (mean or median) using the complete data set would you prefer to use when submitting a report to administration to show that fixed costs need to be reduced? Why?</p></li>
+<li><p>If it is your job to oversee the fixed costs, which average (mean or median) using the complete dataset would you prefer to use when submitting a report to administration to show that costs are low? Why?</p></li>
+<li><p>If it is your job to find places in the budget to reduce costs, which average (mean or median) using the complete dataset would you prefer to use when submitting a report to administration to show that fixed costs need to be reduced? Why?</p></li>
 </ol>
 <!-- -->
 <ol start="5" type="1">
@@ -1211,20 +1283,33 @@ Table&nbsp;3.5: Fixed Costs for Print-O-Matic Printing Company
 </section>
 <section id="measures-of-spread" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="measures-of-spread"><span class="header-section-number">3.2</span> Measures of Spread</h2>
-<p>Variability is an important idea in statistics. If you were to measure the height of everyone in your classroom, every observation gives you a different value. That means not every student has the same height. Thus there is variability in people’s heights. If you were to take a sample of the income level of people in a town, every sample gives you different information. There is variability between samples too. Variability describes how the data are spread out. If the data are very close to each other, then there is low variability. If the data are very spread out, then there is high variability. How do you measure variability? It would be good to have a number that measures it. This section will describe some of the different measures of variability, also known as variation.</p>
-<p>In [Example: Finding the Mean and Median using Rguroo], the average weight of a cat was calculated to be 2.72 kg. How much does this tell you about the weight of all cats? Can you tell if most of the weights were close to 2.72 kg or were the weights really spread out? The highest weight and the lowest weight are known, but is there more that you can tell? All you know is that the center of the weights is 2.72 kg.</p>
+<p>Variability is an important idea in statistics. If you were to measure the height of everyone in your classroom, the resulting observations will generally have different values. That means not every student has the same height. Thus there is variability in people’s heights. If you were to take a sample of the income level of people in a town, every sample gives you different information. <!-- There is variability between samples too. --> Variability describes how the data are spread out. If the data are very close to each other, then there is low variability. If the data are very spread out, then there is high variability. How do you measure variability? It would be good to have a number that measures it. This section will describe some of the different measures of variability, also known as measures of variation.</p>
+<p>In the <a href="#example-mean-median-cats">Example: Finding the Mean and Median using Rguroo</a>, the average weight of a cat was calculated to be 2.72 kg. How much does this tell you about the weight of all cats? Can you tell if most of the weights were close to 2.72 kg or were the weights really spread out? The highest weight and the lowest weight are known, but is there more that you can tell? All you know is that the center of the weights is 2.72 kg.</p>
 <p>You need more information.</p>
-<p>The <strong>range</strong> of a set of data is the difference between the highest and the lowest data values (or maximum and minimum values). The <strong>interval</strong> is the lowest and highest values. The range is one value while the interval is two.</p>
+<p>The <strong>range</strong> of a set of data is the difference between the highest and lowest data values (the maximum and minimum values). The <strong>interval</strong> refers to the lowest and highest values themselves. The range is a single value while the interval consists of two values.</p>
 <section id="example-range" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="example-range"><span class="header-section-number">3.2.1</span> Example: Range</h3>
-<p>From <a href="#example-effect-of-extreme-values-on-mean-and-median">Example: Effect of Extreme Values on Mean and Median</a>, the maximum is 3.9 kg and the minimum is 2 kg. So the range is <span class="math inline">\(3.9-2=1.9 kg\)</span>. But what does that tell you? You don’t know if the weights are really spread out, or if they are close together.</p>
-<p>Unfortunately, range doesn’t really provide a very accurate picture of the variability. A better way to describe how the data is spread out is needed. Instead of looking at the distance the highest value is from the lowest how about looking at the distance each value is from the mean. This distance is called the <strong>deviation</strong>. You might want to find the average of the deviation. Though the calculation for finding the average deviation is not very straight forward, you end up with a value called the <strong>variance</strong>. The symbol for the population variance is <span class="math inline">\(\sigma^2\)</span>, and it is the average squared distance from the mean. Statisticians like the variance, but many other people who work with statistics use a descriptive statistic which is the square root of the variance. This gives you the average distance from the mean. This is called the <strong>standard deviation</strong>, and the population standard deviation is denoted with the letter <span class="math inline">\(\sigma\)</span>.</p>
-<p>The standard deviation is the average (mean) distance from a data point to the mean. It can be thought of as how much a typical data point differs from the mean.</p>
+<p>From <a href="#example-effect-extreme-values">Example: Effect of Extreme Values on Mean and Median</a>, the maximum is 3.9 kg and the minimum is 2 kg. So the range is <span class="math inline">\(3.9-2=1.9 kg\)</span>. But what does that tell you? You don’t know if the weights are really spread out, or if they are close together.</p>
+<p>Unfortunately, the range does not provide a very accurate picture of variability. A better way to describe how the data are spread out is needed. Instead of looking only at the distance between the highest and lowest values, we can look at how far each data value is from the mean. This distance is called a <strong>deviation</strong>.</p>
+<p>You might want to find an average of these deviations. This leads to calculating a value called the <strong>variance</strong>. The symbol for the population variance is <span class="math inline">\(\sigma^2\)</span>, where <span class="math inline">\(\sigma\)</span> is the Greek letter sigma. The population variance is the average squared distance of each data value from the mean of the data.</p>
+<p>In practice, however, people usually use and report the square root of the variance, which is called <strong>standard deviation</strong>. <!-- NOT TRUE This gives you the average distance from the mean. --> The population standard deviation is denoted with the symbol <span class="math inline">\(\sigma\)</span>. The reason for taking the square root is that the variance is measured in squared units. For example, if the data are measured in kilograms (kg), then the variance is measured in kg-squared. The standard deviation, on the other hand, is measured in the same units as the original data. So if the data are in kg, the standard deviation is also in kg, which makes it easier to interpret.</p>
+<!-- NOT TRUE The standard deviation is the average (mean) distance from a data point to the mean. It can be thought of as how much a typical data point differs from the mean.-->
+<p>To estimate the population variance, we use the so called <strong>sample variance</strong>. The sample variance is denoted by <span class="math inline">\(s^2\)</span>.</p>
 <p>The <strong>sample variance</strong> formula: <span class="math inline">\(s^2=\frac{\sum\left(x-\bar{x}\right)^2}{n-1}\)</span>, where <span class="math inline">\(\bar{x}\)</span> is the sample mean, <span class="math inline">\(n\)</span> is the sample size, and <span class="math inline">\(\sum{}\)</span> means to find the sum of the values. The <span class="math inline">\(n-1\)</span> on the bottom has to do with a concept called degrees of freedom. Basically, it makes the sample variance a better approximation of the population variance.</p>
 <p>The <strong>sample standard deviation</strong> formula: <span class="math inline">\(s=\sqrt{ \frac{\sum\left(x-\bar{x}\right)^2}{n-1}}\)</span>.</p>
-<p>The <strong>population variance</strong> formula: <span class="math inline">\(\sigma^2 = \frac{\sum\left(x-\mu \right)^2}{N}\)</span>, where <span class="math inline">\(\sigma\)</span> is the Greek letter sigma and <span class="math inline">\(\sigma^2\)</span> represents the population variance, <span class="math inline">\(\mu\)</span> is the population mean, and <span class="math inline">\(N\)</span> is the size of the population.</p>
+<p>The <strong>population variance</strong> formula: <span class="math inline">\(\sigma^2 = \frac{\sum\left(x-\mu \right)^2}{N}\)</span>, where <span class="math inline">\(\sigma^2\)</span> represents the population variance, <span class="math inline">\(\mu\)</span> is the population mean, and <span class="math inline">\(N\)</span> is the size of the population.</p>
 <p>The <strong>population standard deviation</strong> formula: <span class="math inline">\(\sigma =\sqrt{ \frac{\sum\left(x-\mu \right)^2}{N}}\)</span></p>
-<p>Both the sample variance and sample standard deviation can be found using technology. When using Rguroo, you would perform the same steps as described <a href="#Calculating-summary-stats-in-Rguroo">here</a> and select <span class="def">standard deviation</span> and <span class="def">variance</span> as shown in the figure <a href="#fig-sd-dialog" class="quarto-xref">Figure&nbsp;<span>3.10</span></a>.</p>
+<p>Both the sample variance and sample standard deviation can be found using technology. <!--df_stats(\~variable, data=data_frame, var, sd)
+
+The next example will demonstrate this command.
+--></p>
+</section>
+<section id="example-finding-the-standard-deviation" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="example-finding-the-standard-deviation"><span class="header-section-number">3.2.2</span> Example: Finding the Standard Deviation</h3>
+<p>For the dataset <span class="data">cats</span> (<a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a>) find the variance and standard derivation for weight of cats. Then find the variance and standard deviation separated by sex of the cat.</p>
+<section id="solution-5" class="level4" data-number="3.2.2.1">
+<h4 data-number="3.2.2.1" class="anchored" data-anchor-id="solution-5"><span class="header-section-number">3.2.2.1</span> <strong>Solution</strong></h4>
+<p>When using Rguroo, you would perform the similar steps as described in calculation mean and median<a href="#Calculating-summary-stats-in-Rguroo">here</a>, and select <span class="def">standard deviation</span> and <span class="def">variance</span>, as shown in the figure <a href="#fig-sd-dialog" class="quarto-xref">Figure&nbsp;<span>3.11</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-sd-dialog" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog box for standard deviation and variance">
@@ -1233,21 +1318,13 @@ Table&nbsp;3.5: Fixed Costs for Print-O-Matic Printing Company
 <img src="Rguroo_dialogs/Numerical_Description/sd_var_cats_dialog.png" class="img-fluid figure-img" style="width:70.0%" alt="Dialog box for standard deviation and variance">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sd-dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.10: Basic Summary Statistic Dialog for Standard Deviation and Variance
+Figure&nbsp;3.11: Basic Summary Statistic Dialog for Standard Deviation and Variance
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<!--df_stats(\~variable, data=data_frame, var, sd)-->
-<p>The next example will demonstrate this command.</p>
-</section>
-<section id="example-finding-the-standard-deviation" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="example-finding-the-standard-deviation"><span class="header-section-number">3.2.2</span> Example: Finding the Standard Deviation</h3>
-<p>For the data frame Cats <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> find the variance and standard derivation for weight of cats. Then find the variance and standard deviation separated by sex of the cat.</p>
-<section id="solution-5" class="level4" data-number="3.2.2.1">
-<h4 data-number="3.2.2.1" class="anchored" data-anchor-id="solution-5"><span class="header-section-number">3.2.2.1</span> <strong>Solution</strong></h4>
-<p>The variance and standard deviation for all cats is found by performing the command:</p>
+<p>The output is shown in <a href="#fig-sd-output" class="quarto-xref">Figure&nbsp;<span>3.12</span></a>. The variance for all cats is 0.24 <span class="math inline">\(kg^2\)</span> and the standard deviation is 0.49 kg.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-sd-output" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Standard Deviation and Variance of Cats Weights">
@@ -1256,14 +1333,13 @@ Figure&nbsp;3.10: Basic Summary Statistic Dialog for Standard Deviation and Vari
 <img src="Rguroo_outputs/Numerical_Description/sd_var_cats_output.png" class="img-fluid figure-img" style="width:70.0%" alt="Standard Deviation and Variance of Cats Weights">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sd-output-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.11: Standard Deviation and Variance of Weights of Cats
+Figure&nbsp;3.12: Standard Deviation and Variance of Weights of Cats
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The variance for all cats is 0.24 <span class="math inline">\(kg^2\)</span> and the standard deviation is 0.49 kg.</p>
-<p>To find out the mean, variance, and standard deviation for each sex of the cats, we use a similar function as in <a href="#fig-sd-dialog" class="quarto-xref">Figure&nbsp;<span>3.10</span></a> and select sex from the {Factor 1}{.dpd} dropdown as shown in <a href="#fig-spread-sex" class="quarto-xref">Figure&nbsp;<span>3.12</span></a></p>
+<p>To find out the mean, variance, and standard deviation for each sex of the cats, we use a similar function as in <a href="#fig-sd-dialog" class="quarto-xref">Figure&nbsp;<span>3.11</span></a> and select sex from the <span class="dpd">Factor 1</span> dropdown, as shown in <a href="#fig-spread-sex" class="quarto-xref">Figure&nbsp;<span>3.13</span></a></p>
 <div class="cell">
 <div id="fig-spread-sex" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1294,24 +1370,29 @@ Figure&nbsp;3.11: Standard Deviation and Variance of Weights of Cats
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spread-sex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.12: Mean, Standard Deviation, and Variance of Weights of Cats by Sex
+Figure&nbsp;3.13: Mean, Standard Deviation, and Variance of Weights of Cats by Sex
 </figcaption>
 </figure>
 </div>
 </div>
 <p>You can see that the mean weight of females cats is 2.36 kg, the variance is 0.075 <span class="math inline">\(kg^2\)</span>, and the standard deviation is 0.27 kg. For males cats, the mean is 2.9 kg, the variance is 0.22 <span class="math inline">\(kg^2\)</span>, and the standard deviation is 0.47 kg. This means that female cats weigh less than males and since the variance and standard deviations are much less for female cats than males cats, female cats’ weights are more consistent than male cats.</p>
-<p>In general a “small” variance and standard deviation means the data is close together (more consistent) and a “large” variance and standard deviation means the data is spread out (less consistent). Sometimes you want consistent data and sometimes you don’t. As an example if you are making bolts, you want the lengths to be very consistent so you want a small standard deviation. If you are administering a test to see who can be a pilot, you want a large standard deviation so you can tell who are the good pilots and who are the not so good pilots.</p>
-<p>What do “small” and “large” standard deviation mean? To a bicyclist whose average speed is 20 mph, <span class="math inline">\(s = 20 mph\)</span> is huge. To an airplane whose average speed is 500 mph, <span class="math inline">\(s = 20 mph\)</span> is nothing. The “size” of the variation depends on the size of the numbers in the problem and the mean. Another situation where you can determine whether a standard deviation is small or large is when you are comparing two different samples such as in <a href="#example-finding-the-standard-deviation">Example: Finding the Standard Deviation</a>. A sample with a smaller standard deviation is more consistent than a sample with a larger standard deviation.</p>
-<p>Many other books and authors stress that there is a computational formula for calculating the standard deviation. However, this formula doesn’t give you an idea of what standard deviation is and what you are doing. It is only good for doing the calculations quickly. It goes back to the days when standard deviations were calculated by hand, and the person needed a quick way to calculate the standard deviation. It is an archaic formula that this author is trying to eradicate. It is not necessary anymore, computers will do the calculations for you with as much meaning as this formula gives. It is suggested that you never use it. If you want to understand what the standard deviation is doing, then you should use the definition formula. If you want an answer quickly, use a computer.</p>
+<p>In general a “small” variance and standard deviation means the data is close together (more consistent) and a “large” variance and standard deviation means the data is spread out (less consistent). Sometimes you want consistent data and sometimes you don’t. As an example if you are making bolts, you want the lengths to be very consistent so you want a small standard deviation. On the other hand, if you are administering a test to evaluate pilot ability, you want the test scores to show enough variability to distinguish strong candidates from weaker ones. If nearly everyone scores about the same, the standard deviation will be small and it will be difficult to tell who performs better. A larger standard deviation indicates that scores are more spread out, making it easier to differentiate between high-performing and low-performing candidates.</p>
+<p>What do “small” and “large” standard deviation mean? To a bicyclist whose average speed is 20 mph, <span class="math inline">\(s = 20\)</span> mph is huge. To an airplane whose average speed is 500 mph, <span class="math inline">\(s = 20\)</span> mph is small. The “size” of the variation depends on the size of the numbers in the problem and the mean. Another situation where it makes sense to describe a standard deviation as small or large is when comparing two different samples, such as in <a href="#example-finding-the-standard-deviation">Example: Finding the Standard Deviation</a>. When two samples are measured on the same scale, the sample with the smaller standard deviation shows less spread in its data than the sample with the larger standard deviation.</p>
+<p>Many textbooks present an alternative computational formula for calculating the standard deviation. While this formula can be efficient for performing calculations, it does not provide much insight into what the standard deviation represents or how it is constructed. Historically, this computational formula was useful when standard deviations were calculated by hand, since it simplified the arithmetic. Today, however, computers perform these calculations quickly and accurately. For this reason, the computational formula is no longer necessary for routine work. To develop a clear understanding of what the standard deviation measures, it is better to focus on the definition-based formula. When a numerical answer is needed, using a computer is the most practical approach.</p>
 </section>
 </section>
 <section id="use-of-standard-deviation" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="use-of-standard-deviation"><span class="header-section-number">3.2.3</span> <strong>Use of Standard Deviation</strong></h3>
-<p>One of the uses of the standard deviation is to describe how a population is distributed. This describes where much of the data is for most distributions. A general rule is that about 95% of the data is within 2 standard deviations of the mean. This is not perfect, but is works for many distributions. There are rules like the empirical rule and Chebyshev’s theorem that give you more detailed percentages, but 95% in 2 standard deviations is a very good approximation.</p>
+<!--
+One of the uses of the standard deviation is to describe how values are a population is distributed. This describes where much of the data is for most distributions. A general rule is that about 95% of the data is within 2 standard deviations of the mean. This is not perfect, but is works for many distributions. There are rules like the empirical rule and Chebyshev's theorem that give you more detailed percentages, but 95% in 2 standard deviations is a very good approximation.
+
+-->
+<p>The standard deviation helps describe where the data tend to lie relative to the mean. When the data are symmetric and have most values clustered around a typical center, the empirical rule provides a helpful guideline. It says that about 68% of the data fall within one standard deviation of the mean, about 95% fall within two standard deviations, and about 99.7% fall within three standard deviations. These percentages are not exact, but they often give a reasonable picture of where most of the data lie.</p>
+<p>For data that are not symmetric, other rules can still be used. Chebyshev’s rule gives a minimum proportion of the data that must lie within a certain number of standard deviations of the mean, regardless of the overall shape of the distribution. The results from this rule are usually less precise than those from the empirical rule, but they apply to a much wider range of situations.</p>
 </section>
 <section id="example-the-general-rule" class="level3" data-number="3.2.4">
 <h3 data-number="3.2.4" class="anchored" data-anchor-id="example-the-general-rule"><span class="header-section-number">3.2.4</span> Example: the general rule</h3>
-<p>The U.S. Weather Service has provided the information in <a href="#tbl-Tornado" class="quarto-xref">Table&nbsp;<span>3.6</span></a> about the total monthly/annual number of reported tornadoes in Oklahoma for the years 1950 to 2018. (US Department of Commerce &amp; Noaa, 2016)</p>
+<p>In the dataset <span class="data">Tornado_OK</span>, the U.S. Weather Service has provided information about the total monthly/annual number of reported tornadoes in Oklahoma for the years 1950 to 2018 (US Department of Commerce &amp; Noaa, 2016). The first six rows of the dataset are shown in <a href="#tbl-Tornado" class="quarto-xref">Table&nbsp;<span>3.6</span></a>.</p>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Tornado dataset">
 <div id="tbl-Tornado" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Tornado dataset">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1470,9 +1551,9 @@ Table&nbsp;3.6: Monthly/Annual Number of tornadoes in Oklahoma
 <p>Find the general interval that contains about 95% of the data.</p>
 <section id="solution-6" class="level4" data-number="3.2.4.1">
 <h4 data-number="3.2.4.1" class="anchored" data-anchor-id="solution-6"><span class="header-section-number">3.2.4.1</span> <strong>Solution</strong></h4>
-<p>Import the <span class="data">Torando_OK</span> dataset into your Data toolbox on Rguroo using the directions <span id="Importing-cats-to-Rguroo">here</span>.</p>
-<p>Variable: <span class="math inline">\(x\)</span> = number of annual tornadoes in Oklahoma</p>
-<p>Find the mean and standard deviation as in <a href="#fig-tornado-ex" class="quarto-xref">Figure&nbsp;<span>3.13</span></a>:</p>
+<p>Import the <span class="data">Torando_OK</span> dataset from the ??? repository into your Data toolbox on Rguroo.</p>
+<p>Variable: <span class="math inline">\(x\)</span> = number of <strong>annual</strong> tornadoes in Oklahoma</p>
+<p>Find the mean and standard deviation as in <a href="#fig-tornado-ex" class="quarto-xref">Figure&nbsp;<span>3.14</span></a>:</p>
 <div class="cell">
 <div id="fig-tornado-ex" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1503,15 +1584,15 @@ Table&nbsp;3.6: Monthly/Annual Number of tornadoes in Oklahoma
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tornado-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.13: Mean and Standard Deviation of Annual Tornados
+Figure&nbsp;3.14: Mean and Standard Deviation of Annual Tornados
 </figcaption>
 </figure>
 </div>
 </div>
-<p>The mean is <span class="math inline">\(\mu=56\)</span> tornadoes and the standard deviation is <span class="math inline">\(\sigma=27.6\)</span> tornadoes. The interval will be <span class="math inline">\(\mu\pm2*\sigma=56\pm2*27.6=(0.8,111.2)\)</span></p>
-<p>About 95% of the years have between 0.8 or 1 and 111 tornadoes in Oklahoma.</p>
-<p>The general rule says that about 95% of the data is within two standard deviations of the mean. That percentage is fairly high. There isn’t much data outside two standard deviations. A rule that can be followed is that if a data value is within two standard deviations, then that value is a common data value. If the data value is outside two standard deviations of the mean, either above or below, then the number is uncommon. It could even be called unusual. An easy calculation that you can do to figure it out is to find the difference between the data point and the mean, and then divide that answer by the standard deviation. As a formula this would be</p>
-<p><span class="math inline">\(z=\frac{x-\mu}{\sigma}\)</span></p>
+<p>The mean is <span class="math inline">\(\mu=56\)</span> tornadoes and the standard deviation is <span class="math inline">\(\sigma=27.6\)</span> tornadoes. The interval will be <span class="math inline">\(\mu\pm2\times\sigma=56\pm(2\times27.6)=(0.8,111.2)\)</span></p>
+<p>Therefore, we can say that about 95% of the years have between 0.8 or 1 and 111 tornadoes in Oklahoma.</p>
+<p>The general rule says that about 95% of the data is within two standard deviations of the mean. That percentage is fairly high. There isn’t much data outside two standard deviations. A rule that can be followed is that if a data value is within two standard deviations, then that value is a common data value. If the data value is outside two standard deviations of the mean, either above or below, then the number is uncommon. It could even be called unusual. An easy calculation that you can do to figure it out is to find the difference between the data point and the mean, and then divide that answer by the standard deviation. The resulting value is called the z-value, and it has the formula</p>
+<p><span class="math inline">\(z=\frac{x-\mu}{\sigma}\)</span>.</p>
 <p>If you don’t know the population mean, <span class="math inline">\(\mu\)</span>, and the population standard deviation, <span class="math inline">\(\sigma\)</span>, then use the sample mean, <span class="math inline">\(\bar{x}\)</span>, and the sample standard deviation, <span class="math inline">\(s\)</span>, to estimate the population parameter values. Realize that using the sample standard deviation may not actually be very accurate.</p>
 </section>
 </section>
@@ -1714,7 +1795,7 @@ Table&nbsp;3.7: Head of Pulse Rates of people Before and After Exercise
 <p>year: what year the data was collected (93-98)</p>
 <p>Source Pulse rates before and after exercise. (2013, September 25). Retrieved from <a href="https://gksmyth.github.io/ozdasl/oz/ms212.html">here</a></p>
 <p>References The data was supplied by Dr Richard J. Wilson, Department of Mathematics, University of Queensland.</p>
-<p>Create a data frame that contains only males, who drink alcohol, but do not smoke. Then compare the pulse before and the pulse after using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread. Create the new dataset and save as <span class="data">pulse_males</span> by subsetting the <span class="data">pulse</span> data using the steps described <span id="Subsetting-Data-in-Rguroo">here</span>. See <a href="#fig-subset-pulse" class="quarto-xref">Figure&nbsp;<span>3.14</span></a> for the Data Subset Dialog.</p>
+<p>Create a data frame that contains only males, who drink alcohol, but do not smoke. Then compare the pulse before and the pulse after using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread. Create the new dataset and save as <span class="data">pulse_males</span> by subsetting the <span class="data">pulse</span> data using the steps described here. See <a href="#fig-subset-pulse" class="quarto-xref">Figure&nbsp;<span>3.15</span></a> for the Data Subset Dialog.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-subset-pulse" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Dialog Box for Subsetting Pulse Data">
@@ -1723,7 +1804,7 @@ Table&nbsp;3.7: Head of Pulse Rates of people Before and After Exercise
 <img src="Rguroo_dialogs/Numerical_description/pulse_subset_dialog.png" class="img-fluid figure-img" style="width:70.0%" alt="Rguroo Dialog Box for Subsetting Pulse Data">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-subset-pulse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.14: Subsetting Dialog Box
+Figure&nbsp;3.15: Subsetting Dialog Box
 </figcaption>
 </figure>
 </div>
@@ -1931,7 +2012,7 @@ Table&nbsp;3.9: Head of Pain Measurements Before and After Reiki Treatment
 <p>References** Using Reiki to manage pain: a preliminary report. Olson K1, Hanson J., Cancer Prev Control 1997, Jun; 1(2): 108-13.</p>
 <p>Since the data was collected both before and after the treatment for all of the units of observations, you want to look at the effect size of the treatment. You want to find the difference between before and after for the pain scale. First you must create a new data frame that adds a column for the difference in before and after. This data is known as paired data. To create the new column in a new data frame called Newreiki use the following steps</p>
 <div id="Transforming-Data-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a New Variable in the Reiki_pain Dataset">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1940,7 +2021,7 @@ Table&nbsp;3.9: Head of Pain Measurements Before and After Reiki Treatment
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">Reiki_pain</span> dataset into your <strong>Data</strong> Toolbox, as was shown <a href="#Importing-cats-to-Rguroo">here</a>.</p>
 <ol type="1">
@@ -1954,10 +2035,10 @@ Table&nbsp;3.9: Head of Pain Measurements Before and After Reiki Treatment
 </li>
 <li>In the middle text field type your R function (transformation). To write a variable name, you can either type it or double-click on the variable name in the Returned Variable list. Double click <span class="var">VAS.before</span> enter minus(-) and double click <span class="var">VAS.after</span>.</li>
 <li>When you are done with your selection, click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the scatterplot.</li>
-<li>In Save As… name the new data set Newreiki and click the <span class="button">Save As…</span>.</li>
+<li>In Save As… name the new dataset Newreiki and click the <span class="button">Save As…</span>.</li>
 </ol>
 <div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1966,7 +2047,7 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><img src="Rguroo_dialogs/Numerical_description/transform_dialog.png" class="img-fluid" width="500" alt="Data Transform Dialog in Rguroo"> <img src="Rguroo_outputs/Numerical_Description/newreiki_dataset.png" class="img-fluid" alt="Save As… Dataset View"></p>
 </div>
@@ -2095,7 +2176,7 @@ Table&nbsp;3.11: Head of Yearly rainfall amounts in Sydney, Australia
 <p>This data frame contains the following columns:</p>
 <p>amount: daily rainfall (mm)</p>
 <p>Source Annual maximums of daily rainfall in Sydney. (2013, September 25). Retrieved from <a href="https://gksmyth.github.io/ozdasl/oz/sydrain.html">here</a>.</p>
-<p>References Rayner J.C.W. and Best D.J. (1989) Smooth tests of goodness of fit. Oxford: Oxford University Press. Hand D.J., Daly F., Lunn A.D., McConway K.J., Ostrowski E. (1994). A Handbook of Small Data Sets. London: Chapman &amp; Hall. Data set 157. Thanks to Jim Irish of the University of Technology, Sydney, for assistance in identifying the correct units for this data.</p>
+<p>References Rayner J.C.W. and Best D.J. (1989) Smooth tests of goodness of fit. Oxford: Oxford University Press. Hand D.J., Daly F., Lunn A.D., McConway K.J., Ostrowski E. (1994). A Handbook of Small datasets. London: Chapman &amp; Hall. dataset 157. Thanks to Jim Irish of the University of Technology, Sydney, for assistance in identifying the correct units for this data.</p>
 </section>
 </section>
 <section id="ranking" class="level2" data-number="3.3">
@@ -2139,21 +2220,20 @@ Table&nbsp;3.11: Head of Yearly rainfall amounts in Sydney, Australia
 <img src="Rguroo_dialogs/Numerical_description/quartiles_dialog.png" class="img-fluid figure-img" style="width:70.0%" alt="Dialog for Basic Summary to find Quartiles for Cats Bodyweight in Rguroo">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cats-quartiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.15: Quartiles for Bodyweight of Cats
+Figure&nbsp;3.16: Quartiles for Bodyweight of Cats
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>If you record the quartiles together with the maximum and minimum you have five numbers. This is known as the five-number summary. The five-number summary consists of the minimum, the first quartile (<span class="math inline">\(Q1\)</span>), the median, the third quartile (<span class="math inline">\(Q3\)</span>), and the maximum (in that order).</p>
-<p>The interquartile range, <span class="math inline">\(IQR\)</span>, is the difference between the first and third quartiles, <span class="math inline">\(Q1\)</span> and $Q3$. Half of the data (50%) falls in the interquartile range. If the <span class="math inline">\(IQR\)</span> is “large” the data is spread out and if the <span class="math inline">\(IQR\)</span> is “small” the data is closer together.</p>
-<p>Interquartile Range (<span class="math inline">\(IQR\)</span>)</p>
+<p>The interquartile range, <span class="math inline">\(IQR\)</span>, is the difference between the first and third quartiles, <span class="math inline">\(Q1\)</span> and <span class="math inline">\(Q3\)</span>. Half of the data (50%) falls in the interquartile range. If the <span class="math inline">\(IQR\)</span> is “large” the data is spread out and if the <span class="math inline">\(IQR\)</span> is “small” the data is closer together.</p>
 <p>Determining probable outliers from <span class="math inline">\(IQR\)</span>: <strong>fences</strong></p>
 <p>A value that is less than <span class="math inline">\(Q1-1.5*IQR\)</span> (this value is often referred to as a <strong>lower fence</strong>) is considered an outlier.</p>
 <p>Similarly, a value that is more than <span class="math inline">\(Q3+1.5*IQR\)</span> (the <strong>upper fence</strong>) is considered an outlier.</p>
-<p>A boxplot (or box-and-whisker plot) is a graphical display of the five-number summary. It can be drawn vertically or horizontally. The basic format is a box from <span class="math inline">\(Q1\)</span> to <span class="math inline">\(Q3\)</span>, a vertical line across the box for the median and horizontal lines as whiskers extending out each end to the minimum and maximum. The minimum and maximum can be represented with dots. Don’t forget to label the tick marks on the number line and give the graph a title.</p>
-<p>An alternate form of a Boxplot, known as a modified box plot, only extends the left line to the smallest value greater than the <strong>lower fence</strong>, and extends the left line to the largest value less than the <strong>upper fence</strong>, and displays markers (dots, circles or asterisks) for each outlier.</p>
-<p>If the data are <strong>symmetrical</strong>, then the box plot will be visibly symmetrical. If the data distribution has a left skew or a right skew, the line on that side of the box plot will be visibly long. If the plot is symmetrical, and the four quartiles are all about the same length, then the data are likely a near <strong>uniform</strong> distribution. If a box plot is symmetrical, and both outside lines are noticeably longer than the <span class="math inline">\(Q1\)</span> to median and median to <span class="math inline">\(Q3\)</span> distance, the distribution is then probably <strong>bell-shaped</strong>.</p>
+<p>A boxplot (or box-and-whisker plot) is a graphical display of the five-number summary. It can be drawn vertically or horizontally. In the horizontal form, the plot consists of a rectangular box that extends from <span class="math inline">\(Q_1\)</span> to <span class="math inline">\(Q_3\)</span>, with a line inside the box marking the median. Lines called whiskers extend horizontally from each end of the box to the minimum and maximum values. The horizontal axis is a number line that shows the values of the variable being displayed, with appropriate tick marks and a label. A title is often included above the plot.</p>
+<p>An alternate form of a boxplot, known as a modified boxplot, shortens the whiskers so that the left whisker extends only to the smallest value greater than the <strong>lower fence</strong> and the right whisker extends only to the largest value less than the <strong>upper fence</strong>. Any values beyond these fences are considered outliers and are shown separately using markers such as dots, circles, or asterisks.</p>
+<p>If the data are <strong>symmetrical</strong>, then the box plot will be visibly symmetrical around the median line. If the distribution is skewed to the left or to the right, the whisker on the skewed side will tend to be longer, and the median will be shifted away from the center of the box in the opposite direction. <!-- THIS IS NOT TRUE SINCE THIS CAN HAPPEN FOR NON_UNIFORM DISTRIBUTIONS If the plot is symmetrical, and the four quartiles are all about the same length, then the data are likely a near **uniform** distribution. --> If a boxplot is symmetrical and the whiskers are noticeably longer than the distances from <span class="math inline">\(Q_1\)</span> to the median and from the median to <span class="math inline">\(Q_3\)</span>, the distribution may be bell-shaped, with more data concentrated near the center and thinner tails. However, this pattern alone is not sufficient to conclude that the distribution is bell-shaped.</p>
 </section>
 <section id="example-five-number-summary-and-boxplot" class="level3" data-number="3.3.4">
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="example-five-number-summary-and-boxplot"><span class="header-section-number">3.3.4</span> Example: Five-number Summary and Boxplot</h3>
@@ -2161,7 +2241,7 @@ Figure&nbsp;3.15: Quartiles for Bodyweight of Cats
 <section id="solution-10" class="level4" data-number="3.3.4.1">
 <h4 data-number="3.3.4.1" class="anchored" data-anchor-id="solution-10"><span class="header-section-number">3.3.4.1</span> <strong>Solution</strong></h4>
 <p>Variable: <span class="math inline">\(x\)</span> = weight of cats</p>
-<p>To compute the five-number summary on Rguroo, use summary statistic and select the appropriate statistics as shown in <a href="#fig-cats-5numsum" class="quarto-xref">Figure&nbsp;<span>3.16</span></a></p>
+<p>To compute the five-number summary on Rguroo, use summary statistic and select the appropriate statistics as shown in <a href="#fig-cats-5numsum" class="quarto-xref">Figure&nbsp;<span>3.17</span></a></p>
 <div class="cell">
 <div id="fig-cats-5numsum" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -2192,7 +2272,7 @@ Figure&nbsp;3.15: Quartiles for Bodyweight of Cats
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cats-5numsum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.16: Five-Number Summary for Bodyweight of Cats
+Figure&nbsp;3.17: Five-Number Summary for Bodyweight of Cats
 </figcaption>
 </figure>
 </div>
@@ -2202,7 +2282,7 @@ Figure&nbsp;3.16: Five-Number Summary for Bodyweight of Cats
 <p>To find the interquartile range, <span class="math inline">\(IQR\)</span> find $Q3-Q1$, so <span class="math inline">\(IQR=3.025-2.3=0.725 kg\)</span></p>
 <p>Click to expand the box below to see instructions to create a boxplot of the <span class="data">cats</span> dataset in Rguroo.</p>
 <div id="Creating-a-boxplot-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a Boxplot of the Bodyweight of Cats">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2211,7 +2291,7 @@ Figure&nbsp;3.16: Five-Number Summary for Bodyweight of Cats
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">cats</span> dataset into your <strong>Data</strong> Toolbox, as was shown <a href="#Importing-cats-to-Rguroo">here</a>.</p>
 <ol type="1">
@@ -2225,7 +2305,7 @@ Figure&nbsp;3.16: Five-Number Summary for Bodyweight of Cats
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the graph.</li>
 </ol>
 <div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2234,7 +2314,7 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -2251,7 +2331,8 @@ Click here to see the Rguroo dialog
 <!-- gf_boxplot(\~variable, data=data_frame) -->
 <p>This is a modified boxplot which shows the outliers in the data.</p>
 <div class="rg-iframe-wrapper" tabindex="0">
-<p><iframe src="Rguroo_html_output/Numerical_description/Boxplot_12/Boxplot_12.html" class="rg-iframe" title="Boxplot for Weight of Cats"> </iframe></p>
+<iframe src="Rguroo_html_output/Numerical_description/Boxplot_12/Boxplot_12.html" class="rg-iframe" title="Boxplot for Weight of Cats">
+</iframe>
 </div>
 <p>There are no outliers since there are no dots outside of the fences.</p>
 </section>
@@ -2294,7 +2375,7 @@ Click here to see the Rguroo dialog
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cats-5numsumsex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.17: Five-Number Summary for Bodyweight of Cats by Sex
+Figure&nbsp;3.18: Five-Number Summary for Bodyweight of Cats by Sex
 </figcaption>
 </figure>
 </div>
@@ -2304,7 +2385,8 @@ Figure&nbsp;3.17: Five-Number Summary for Bodyweight of Cats by Sex
 <p>The five-number summary for male cats is (in kg)</p>
 <p>Minimum: 2 <span class="math inline">\(Q1\)</span>: 2.50 Median: 2.9 <span class="math inline">\(Q3\)</span>: 3.2 Maximum: 3.9</p>
 <div class="rg-iframe-wrapper" tabindex="0">
-<p><iframe src="Rguroo_html_output/Numerical_description/Boxplot_8/Boxplot_8.html" class="rg-iframe" title="Boxplot for Weight of Cats by Sex"> </iframe></p>
+<iframe src="Rguroo_html_output/Numerical_description/Boxplot_8/Boxplot_8.html" class="rg-iframe" title="Boxplot for Weight of Cats by Sex">
+</iframe>
 </div>
 <p>Notice that the weights of female cats has a median less than male cats, and in fact it can be seen that the <span class="math inline">\(Q1\)</span> to <span class="math inline">\(Q3\)</span> of the female cats is less than the <span class="math inline">\(Q1\)</span> to <span class="math inline">\(Q3\)</span> of the male cats.</p>
 </section>
@@ -2366,7 +2448,7 @@ Table&nbsp;3.12: Head of Successive pulses along a nerve fiber
 <p>First, it might be useful to look at a visualization of the data, so create a density plot</p>
 <p>Click to expand the box below to see instructions to create a density plot of the <span class="data">nerve</span> dataset in Rguroo.</p>
 <div id="Creating-a-density-plot-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a Density PLot of the Time Between Successive Nerve Pulses">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2375,7 +2457,7 @@ Table&nbsp;3.12: Head of Successive pulses along a nerve fiber
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">nerve</span> dataset into your <strong>Data</strong> Toolbox, as was shown <a href="#Importing-cats-to-Rguroo">here</a>.</p>
 <ol type="1">
@@ -2390,7 +2472,7 @@ Table&nbsp;3.12: Head of Successive pulses along a nerve fiber
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the graph.</li>
 </ol>
 <div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2399,7 +2481,7 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -2414,7 +2496,8 @@ Click here to see the Rguroo dialog
 </div>
 </div>
 <div class="rg-iframe-wrapper" tabindex="0">
-<p><iframe src="Rguroo_html_output/Numerical_description/Histogram_7/Histogram_7.html" class="rg-iframe" title="Denisty Plot for Successive Nerve Pulses"> </iframe></p>
+<iframe src="Rguroo_html_output/Numerical_description/Histogram_7/Histogram_7.html" class="rg-iframe" title="Denisty Plot for Successive Nerve Pulses">
+</iframe>
 </div>
 <p>From the graph, the data appears to be skewed right. Most of the time, between successive nerve pulses appear to be around 5 or 10 1/50 second, but there are some times that are 60 1/50 second.</p>
 <div class="cell">
@@ -2425,7 +2508,7 @@ Click here to see the Rguroo dialog
 <img src="Rguroo_outputs/Numerical_Description/nerve_summary_output.png" class="img-fluid figure-img" style="width:70.0%" alt="Five-Number Summary with Mean and Standard Deviation of Nerve Pulses">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Pulse-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.18: Numerical Summary of Time Between Successive Nerve Pulses
+Figure&nbsp;3.19: Numerical Summary of Time Between Successive Nerve Pulses
 </figcaption>
 </figure>
 </div>
@@ -2441,7 +2524,7 @@ Figure&nbsp;3.18: Numerical Summary of Time Between Successive Nerve Pulses
 <img src="Rguroo_outputs/Numerical_Description/nerve_boxplot_output.svg" class="img-fluid figure-img" style="width:70.0%" alt="Boxplot of Nerve Pulses">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nerve-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.19: Boxplot of Time Between Successive Nerve Pulses
+Figure&nbsp;3.20: Boxplot of Time Between Successive Nerve Pulses
 </figcaption>
 </figure>
 </div>
@@ -2505,242 +2588,239 @@ Figure&nbsp;3.19: Boxplot of Time Between Successive Nerve Pulses
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
       }
-      return false;
-    }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
-    }
-    const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
-        }
-        return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
         }
       }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
     }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
     }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
         }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -2748,161 +2828,185 @@ Figure&nbsp;3.19: Boxplot of Time Between Successive Nerve Pulses
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./Graphical Description of Data.html" class="pagination-link" aria-label="Graphical Description of Data">
