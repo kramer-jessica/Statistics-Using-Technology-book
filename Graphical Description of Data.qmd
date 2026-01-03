@@ -3,7 +3,6 @@ title: "Graphical Description of Data"
 format: html
 editor: visual
 number-sections: true
-
 ---
 
 In chapter 1, you were introduced to the concepts of population, which again is a collection of all the measurements from the individuals of interest. Remember, in most cases you can't collect the entire population, so you have to take a sample. Thus, you collect data either through a sample or a census. Now you have a large number of data values. What can you do with them? No one likes to look at just a set of numbers. One thing is to organize the data into a table or graph. Ultimately though, you want to be able to use that graph to interpret the data, to describe the distribution of the data set, and to explore different characteristics of the data. The characteristics that will be discussed in this chapter and the next chapter are:
@@ -32,10 +31,9 @@ Remember, qualitative data are words describing a characteristic of the individu
 
 **Bar graphs or charts** consist of the frequencies on one axis and the categories on the other axis. Drawing the bar graph using Rguroo is performed by importing the dataset (or creating a dataset) and using the Plots toolbox in Rguroo.
 
-
 ### Example: Drawing a Bar Chart
 
-Data was collected for two semesters in a statistics class. Table 1 shows the variables and the first few lines of the data set. The data sets are usually larger than what is shown. 
+Data was collected for two semesters in a statistics class. Table 1 shows the variables and the first few lines of the data set. The data sets are usually larger than what is shown.
 
 ```{r class-data1-table,echo=FALSE}
 #| tbl-alt: "Table showing first 6 rows of statistics class survey dataset"
@@ -45,21 +43,17 @@ Class<-read.csv( "https://krkozak.github.io/MAT160/class_survey.csv")
 knitr::kable(head(Class))
 ```
 
-
-:::{#Importing-Class_Survey1-to-Rguroo.ref-label} :::
-
+::: {#Importing-Class_Survey1-to-Rguroo.ref-label}
 Click to expand the box below to see instructions to import and view the [class_survey1]{.data} dataset.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing class_survey1 to Rguroo"} 
-
-1. Open the **Data** toolbox in Rguroo.  
-2. From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.  
-3. In the top search box, type [kozak]{.typein}, then select the [Statistics Using Technology – Kozak]{.repo} repository.  
-4. In the middle search box, type [class]{.typein}, and select the [class_survey1]{.data} dataset that appears in the lower panel.  
-5. Click the [Import]{.button}. The dataset will be imported into your Rguroo account.  
-6. Click the [Close]{.button} to close the dialog.  
-7. To view the dataset, double-click [class_survey1]{.data} under the **Data** toolbox list.
-
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing class_survey1 to Rguroo"}
+1.  Open the **Data** toolbox in Rguroo.\
+2.  From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.\
+3.  In the top search box, type [kozak]{.typein}, then select the [Statistics Using Technology – Kozak]{.repo} repository.\
+4.  In the middle search box, type [class]{.typein}, and select the [class_survey1]{.data} dataset that appears in the lower panel.\
+5.  Click the [Import]{.button}. The dataset will be imported into your Rguroo account.\
+6.  Click the [Close]{.button} to close the dialog.\
+7.  To view the dataset, double-click [class_survey1]{.data} under the **Data** toolbox list.
 :::
 
 Every data frame has a code book that describes the data set, the source of the data set, and a listing and description of the variables in the data frame.
@@ -96,33 +90,26 @@ References
 
 Kozak, 2019
 
-Using the Class_Survey1 dataset, create a bar graph of vehicle type. 
+Using the Class_Survey1 dataset, create a bar graph of vehicle type.
 
 #### Solution
 
-::: {#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo .ref-label} :::
-
+:::::::::::::::::::::::::::::::: {#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo .ref-label}
 Click to expand the box below see how to create the bar graph for vehicle type.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Bar Graph of Vehicle Type in Rguroo"}
-
+:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Bar Graph of Vehicle Type in Rguroo"}
 **Before you begin:** Make sure you have already imported the [class_survey1]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Class_Survey1-to-Rguroo).
 
-1. Open the **Plots** toolbox in Rguroo.  
-2. Open the [Create Plot]{.dpd} dropdown, and select [Barplot]{.fun}. This opens the Barplot dialog.  
-3. In the Barplot dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.  
-4. Choose the [vehicle]{.var} variable from the [Factor 1]{.dpd} dropdown.     
-5. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the bar graph.
+1.  Open the **Plots** toolbox in Rguroo.\
+2.  Open the [Create Plot]{.dpd} dropdown, and select [Barplot]{.fun}. This opens the Barplot dialog.\
+3.  In the Barplot dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.\
+4.  Choose the [vehicle]{.var} variable from the [Factor 1]{.dpd} dropdown.\
+5.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the bar graph.
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-
-![Bar Graph dialog showing settings for creating bar graph of vehicle type.
-](Rguroo_dialogs/Graphical_Description_of_Data/car_dialog_bargraph_2.png){width=500px}
-
+![Bar Graph dialog showing settings for creating bar graph of vehicle type.](Rguroo_dialogs/Graphical_Description_of_Data/car_dialog_bargraph_2.png){width="500px"}
 :::
-
-:::
-
+::::
 
 ```{r class-data-bar,echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
@@ -132,38 +119,31 @@ Click to expand the box below see how to create the bar graph for vehicle type.
 knitr::include_graphics("Rguroo_outputs/Graphical_Description_of_Data/barplot_vehicle_2.svg")
 ```
 
-
 Description of @fig-class_data is a Bar graph with bars for Audi, Buick, Honda, Hyundai, Mercury, Nissan with height of 1, Dodge and None with height of 2, Jeep, Subaru, Toyota with heights of 3, and Chevrolet and Ford at height of 4.
 
 Notice from @fig-class_data, you can see that Chevrolet and Ford are the more popular car, with Jeep, Subaru, and Toyota not far behind. Many types seems to be the lesser used, and tied for last place. However, more data would help to figure this out.
 
 **All graphs should have labels on each axis and a title for the graph.**
 
-The beauty of data frames with multiple variables is that you can answer many questions from the data. Suppose you want to see if gender makes a difference for the type of car a person drives. If you are a car manufacturer, if you knew that certain genders like certain cars, then you would advertise to the different genders. 
+The beauty of data frames with multiple variables is that you can answer many questions from the data. Suppose you want to see if gender makes a difference for the type of car a person drives. If you are a car manufacturer, if you knew that certain genders like certain cars, then you would advertise to the different genders.
 
-::: {#Creating-Bar-Graph-of-Vehicle-Gender-in-Rguroo .ref-label} :::
-
+::::::::::::::::::::::::::::: {#Creating-Bar-Graph-of-Vehicle-Gender-in-Rguroo .ref-label}
 Click to expand the box below see how to create the bar graph for vehicle type disaggreagated by gender.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Bar Graph of Vehicle Type and Gender in Rguroo"}
-
+:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Bar Graph of Vehicle Type and Gender in Rguroo"}
 **Before you begin:** Make sure you have already imported the [class_survey1]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Class_Survey1-to-Rguroo).
 
-1. Open the **Plots** toolbox in Rguroo.  
-2. Open the [Create Plot]{.dpd} dropdown, and select [Barplot]{.fun}. This opens the Barplot dialog.  
-3. In the Barplot dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.  
-4. Choose the [gender]{.var} variable from the [Factor 1]{.dpd} dropdown. 
-5. Choose the [vehicle]{.var} variable from the [Factor 2]{.dpd} dropdown.   
-5. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the bar graph.
+1.  Open the **Plots** toolbox in Rguroo.\
+2.  Open the [Create Plot]{.dpd} dropdown, and select [Barplot]{.fun}. This opens the Barplot dialog.\
+3.  In the Barplot dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.\
+4.  Choose the [gender]{.var} variable from the [Factor 1]{.dpd} dropdown.
+5.  Choose the [vehicle]{.var} variable from the [Factor 2]{.dpd} dropdown.\
+6.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the bar graph.
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-
-![Bar Graph dialog showing settings for creating bar graph of vehicle type by gender.
-](Rguroo_dialogs/Graphical_Description_of_Data/dialog_vehicle_gender_2.png){width=500px}
-
+![Bar Graph dialog showing settings for creating bar graph of vehicle type by gender.](Rguroo_dialogs/Graphical_Description_of_Data/dialog_vehicle_gender_2.png){width="500px"}
 :::
-
-:::
+::::
 
 ```{r class-data-bar-gender,echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
@@ -179,29 +159,22 @@ Notice a Ford is driven by females more than any other car, while Chevrolet, Mer
 
 Rguroo can also generate relative frequency bar graphs from the same plot toolbox.
 
-::: {#Creating-Relative-Frequency-Bar-Graph-of-Vehicle-in-Rguroo .ref-label} :::
-
+:::::::::::::::::::::::::: {#Creating-Relative-Frequency-Bar-Graph-of-Vehicle-in-Rguroo .ref-label}
 Click to expand the box below see how to create the relative frequency bar graph for vehicle type.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Relative Frequency Bar Graph of Vehicle Type in Rguroo"}
-
+:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Relative Frequency Bar Graph of Vehicle Type in Rguroo"}
 **Before you begin:** Make sure you have already imported the [class_survey1]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Class_Survey1-to-Rguroo).
 
-1. Open the **Plots** toolbox in Rguroo.  
-2. Open the [Create Plot]{.dpd} dropdown, and select [Barplot]{.fun}. This opens the Barplot dialog.  
-3. In the Barplot dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.  
-4. Choose the [vehicle]{.var} variable from the [Factor 1]{.dpd} dropdown. 
-5. Click "proportions.""
-. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the bar graph.
+1.  Open the **Plots** toolbox in Rguroo.\
+2.  Open the [Create Plot]{.dpd} dropdown, and select [Barplot]{.fun}. This opens the Barplot dialog.\
+3.  In the Barplot dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.\
+4.  Choose the [vehicle]{.var} variable from the [Factor 1]{.dpd} dropdown.
+5.  Click "proportions."" . Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the bar graph.
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-
-![Bar Graph dialog showing settings for creating relative frequency bar graph of vehicle type.
-](Rguroo_dialogs/Graphical_Description_of_Data/dialog_rel_freq_vehicle_2.png){width=500px}
-
+![Bar Graph dialog showing settings for creating relative frequency bar graph of vehicle type.](Rguroo_dialogs/Graphical_Description_of_Data/dialog_rel_freq_vehicle_2.png){width="500px"}
 :::
-
-:::
+::::
 
 ```{r class-data-dot-gender,echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
@@ -223,29 +196,22 @@ Data was collected for two semesters in a statistics class drive. The data frame
 
 Draw a pie chart for the variable vehicle.
 
-::: {#Creating-Pie-Chart-of-Vehicle-in-Rguroo .ref-label} :::
-
+::::::::::::::::::::::: {#Creating-Pie-Chart-of-Vehicle-in-Rguroo .ref-label}
 Click to expand the box below see how to create the pie chart for vehicle type.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Pie Chart of Vehicle Type in Rguroo"}
-
+:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Pie Chart of Vehicle Type in Rguroo"}
 **Before you begin:** Make sure you have already imported the [class_survey1]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Class_Survey1-to-Rguroo).
 
-1. Open the **Plots** toolbox in Rguroo.  
-2. Open the [Create Plot]{.dpd} dropdown, and select [Pie Chart]{.fun}. This opens the Pie Chart dialog.  
-3. In the Pie Chart dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.  
-4. Choose the [vehicle]{.var} variable from the [Factor]{.dpd} dropdown. 
-5. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the pie chart.
+1.  Open the **Plots** toolbox in Rguroo.\
+2.  Open the [Create Plot]{.dpd} dropdown, and select [Pie Chart]{.fun}. This opens the Pie Chart dialog.\
+3.  In the Pie Chart dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.\
+4.  Choose the [vehicle]{.var} variable from the [Factor]{.dpd} dropdown.
+5.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the pie chart.
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-
-![Pie Chart dialog showing settings for creating pie chart of vehicle type.
-](Rguroo_dialogs/Graphical_Description_of_Data/dialog_pie_chart_vehicle_2.png){width=500px}
-
+![Pie Chart dialog showing settings for creating pie chart of vehicle type.](Rguroo_dialogs/Graphical_Description_of_Data/dialog_pie_chart_vehicle_2.png){width="500px"}
 :::
-
-:::
-
+::::
 
 ```{r car-data-gender,echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
@@ -257,7 +223,6 @@ knitr::include_graphics("Rguroo_outputs/Graphical_Description_of_Data/pie_chart_
 
 Description of @fig-class_data_point is a pie chart of type of vehicles owned by students (Toyota, Subaru, none, Nissan, Mercury, Jeep, Honda, Ford, Dodge, Chevrolet, and Buick, while males own Toyota, Subaru, Jeep, Hyundai, Dodge, Chevrolet, and Audi). Each vehicle percentage is displayed in the legend on the right.
 
-
 ```{r car-data-gender-jitter,echo=FALSE,eval=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
 #| warning: FALSE
@@ -265,8 +230,6 @@ Description of @fig-class_data_point is a pie chart of type of vehicles owned by
 #| fig-cap: "Cars driven by students in statistics class"
 gf_jitter(vehicle~gender, data=Class, title="Cars driving by students in statistics class", xlab="Gender", ylab="Vehicle")
 ```
-
-
 
 There are many other types of graphs that can be used on qualitative data. There are spreadsheet software packages that will create most of them, and it is better to look at them to see how to create then. It depends on your data as to which may be useful, but the frequecy bar graph, relative frequency bar graph, and pie chart are the most useful.
 
@@ -351,14 +314,13 @@ References John Matic (2013)
 knitr::kable(head(NHANES))
 ```
 
-
 ## Quantitative Data
 
 There are several different graphs for quantitative data. With quantitative data, you can talk about how the data is distributed, called a distribution. The shape of the distribution can be described from the graphs.
 
-**Histogram:** A graph of frequencies (counts) on the vertical axis and classes on the horizontal axis. The height of the rectangles is the frequency and the width is the class width. The width depends on how many classes (bins) are in the histogram. 
+**Histogram:** A graph of frequencies (counts) on the vertical axis and classes on the horizontal axis. The height of the rectangles is the frequency and the width is the class width. The width depends on how many classes (bins) are in the histogram.
 
-**Density Plot:** Similar to a histogram, except smoothing is created to smooth out the graph. The shape is not dependent on the number of bins so the distribution is easier to determine from the density plot. 
+**Density Plot:** Similar to a histogram, except smoothing is created to smooth out the graph. The shape is not dependent on the number of bins so the distribution is easier to determine from the density plot.
 
 **Stem and Leaf Plot:** A graph that organizes numerical data by splitting each value into a "stem" (leading digit(s)) and a "leaf" (the last digit) to show data distribution, frequency, and shape.
 
@@ -370,28 +332,23 @@ Draw a histogram and density plot for the variable the distance a student lives 
 
 #### **Solution**
 
-::: {#Creating-Histogram-of-Distance-in-Rguroo .ref-label} :::
-
+:::::::::::::::::::: {#Creating-Histogram-of-Distance-in-Rguroo .ref-label}
 Click to expand the box below see how to create a histogram for deistance to campus.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Histogram of Distance to Campus in Rguroo"}
-
+:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Histogram of Distance to Campus in Rguroo"}
 **Before you begin:** Make sure you have already imported the [class_survey1]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Class_Survey1-to-Rguroo).
 
-1. Open the **Plots** toolbox in Rguroo.  
-2. Open the [Create Plot]{.dpd} dropdown, and select [Histogram]{.fun}. This opens the Histogram dialog.  
-3. In the Histogram dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.  
-4. Choose the [distance_campus]{.var} variable from the [Variable]{.dpd} dropdown. 
-5. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the histogram.
+1.  Open the **Plots** toolbox in Rguroo.\
+2.  Open the [Create Plot]{.dpd} dropdown, and select [Histogram]{.fun}. This opens the Histogram dialog.\
+3.  In the Histogram dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.\
+4.  Choose the [distance_campus]{.var} variable from the [Variable]{.dpd} dropdown.
+5.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the histogram.
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-
-![Histogram dialog showing settings for creating histogram of distance to campus.
-](Rguroo_dialogs/Graphical_Description_of_Data/dialog_distance_histogram.png){width=500px}
-
+![Histogram dialog showing settings for creating histogram of distance to campus.](Rguroo_dialogs/Graphical_Description_of_Data/dialog_distance_histogram.png){width="500px"}
 :::
+::::
 
-:::
 ```{r distance-campus-hist-cap,echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
 #| warning: FALSE
@@ -402,30 +359,24 @@ knitr::include_graphics("Rguroo_outputs/Graphical_Description_of_Data/histogram_
 
 Description @fig-class_data_histogram is histogram with high part on left and low part on right with several gaps. The graph contains bars.
 
-::: {#Creating-Density-Plot-in-Rguroo .ref-label} :::
-
+::::::::::::::::: {#Creating-Density-Plot-in-Rguroo .ref-label}
 Click to expand the box below see how to create an overlay of the density plot for distance to campus.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Density Plot in Rguroo"}
-
+:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Density Plot in Rguroo"}
 **Before you begin:** Make sure you have already imported the [class_survey1]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Class_Survey1-to-Rguroo).
 
-1. Open the **Plots** toolbox in Rguroo.  
-2. Open the [Create Plot]{.dpd} dropdown, and select [Histogram]{.fun}. This opens the Histogram dialog.  
-3. In the Hisotgram dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.  
-4. Choose the [distance_campus]{.var} variable from the [Variable]{.dpd} dropdown. 
-5. In the type option box, click "density."
-6. In the smoothing box, click "density."
-6. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the density plot.
+1.  Open the **Plots** toolbox in Rguroo.\
+2.  Open the [Create Plot]{.dpd} dropdown, and select [Histogram]{.fun}. This opens the Histogram dialog.\
+3.  In the Hisotgram dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.\
+4.  Choose the [distance_campus]{.var} variable from the [Variable]{.dpd} dropdown.
+5.  In the type option box, click "density."
+6.  In the smoothing box, click "density."
+7.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the density plot.
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-
-![Density dialog showing settings for creating density plot for distance to campus.
-](Rguroo_dialogs/Graphical_Description_of_Data/dialog_distance_density.png){width=500px}
-
+![Density dialog showing settings for creating density plot for distance to campus.](Rguroo_dialogs/Graphical_Description_of_Data/dialog_distance_density.png){width="500px"}
 :::
-
-:::
+::::
 
 ```{r distance-campus-density,echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
@@ -445,10 +396,9 @@ Description of @fig-class_data_density is density graph with high part on left a
 gf_dotplot(~distance_campus, data=Class, title="Distance in miles from the Lone Tree Campus", xlab="Distance (miles)") 
 ```
 
+Notice the histogram and density plot are very similar, but the density plot is smoother. They all tell you similar ideas of the shape of the distribution. Reviewing the graphs you can see that most of the students live within 10 miles of the Lone Tree Campus, in fact most live within 5 miles from the campus. However, there is a student who lives around 50 miles from the Lone Tree Campus. This is a great deal farther from the rest of the data. This value could be considered an outlier.
 
-Notice the histogram and density plot are very similar, but the density plot is smoother. They all tell you similar ideas of the shape of the distribution. Reviewing the graphs you can see that most of the students live within 10 miles of the Lone Tree Campus, in fact most live within 5 miles from the campus. However, there is a student who lives around 50 miles from the Lone Tree Campus. This is a great deal farther from the rest of the data. This value could be considered an outlier. 
-
-An **outlier** is a data value that is far from the rest of the values. It may be an unusual value or a mistake. It is a data value that should be investigated. In this case, the student lived really far from campus, thus the value is not a mistake, and is just very unusual. 
+An **outlier** is a data value that is far from the rest of the values. It may be an unusual value or a mistake. It is a data value that should be investigated. In this case, the student lived really far from campus, thus the value is not a mistake, and is just very unusual.
 
 There are other aspects of a dataset that can be discussed, but first some other concepts need to be introduced.
 
@@ -507,21 +457,19 @@ Tuition<-read.csv( "https://krkozak.github.io/MAT160/Tuition_4_year.csv")
 knitr::kable(head(Tuition))
 ```
 
-:::{#Importing-Tuition-4-Year-to-Rguroo.ref-label} :::
-
+:::::::::::::: {#Importing-Tuition-4-Year-to-Rguroo.ref-label}
 Click to expand the box below to see instructions to import and view the [tuition_4_year]{.data} dataset.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing tuition_4_year to Rguroo"} 
-
-1. Open the **Data** toolbox in Rguroo.  
-2. From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.  
-3. In the top search box, type [kozak]{.typein}, then select the [Statistics Using Technology – Kozak]{.repo} repository.  
-4. In the middle search box, type [tuition]{.typein}, and select the [tuition_4_year]{.data} dataset that appears in the lower panel.  
-5. Click the [Import]{.button}. The dataset will be imported into your Rguroo account.  
-6. Click the [Close]{.button} to close the dialog.  
-7. To view the dataset, double-click [tuition_4_year]{.data} under the **Data** toolbox list.
-
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing tuition_4_year to Rguroo"}
+1.  Open the **Data** toolbox in Rguroo.\
+2.  From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.\
+3.  In the top search box, type [kozak]{.typein}, then select the [Statistics Using Technology – Kozak]{.repo} repository.\
+4.  In the middle search box, type [tuition]{.typein}, and select the [tuition_4_year]{.data} dataset that appears in the lower panel.\
+5.  Click the [Import]{.button}. The dataset will be imported into your Rguroo account.\
+6.  Click the [Close]{.button} to close the dialog.\
+7.  To view the dataset, double-click [tuition_4_year]{.data} under the **Data** toolbox list.
 :::
+
 **Code book for Data Frame Tuition**
 
 **Description** Cost of four year institutions.
@@ -552,30 +500,24 @@ References Chronicle of Higher Education \*, December 31, 2018.
 
 #### **Solution**
 
-::: {#Creating-Density-Plot-in-Rguroo .ref-label} :::
-
+:::::::::::: ref-label
 Click to expand the box below see how to create a density plot of instate tuition.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Density Plot in Rguroo"}
-
+:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Density Plot in Rguroo"}
 **Before you begin:** Make sure you have already imported the [tuition_4_year]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Tuition-4-Year-to-Rguroo).
 
-1. Open the **Plots** toolbox in Rguroo.  
-2. Open the [Create Plot]{.dpd} dropdown, and select [Histogram]{.fun}. This opens the Histogram dialog.  
-3. In the Hisotgram dialog, choose the [tuition_4_year]{.data} dataset from the [Dataset]{.dpd} dropdown.  
-4. Choose the [INSTATE_TUITION]{.var} variable from the [Variable]{.dpd} dropdown. 
-5. In the type option box, click "density."
-6. In the smoothing box, click "density."
-7. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the density plot.
+1.  Open the **Plots** toolbox in Rguroo.\
+2.  Open the [Create Plot]{.dpd} dropdown, and select [Histogram]{.fun}. This opens the Histogram dialog.\
+3.  In the Hisotgram dialog, choose the [tuition_4_year]{.data} dataset from the [Dataset]{.dpd} dropdown.\
+4.  Choose the [INSTATE_TUITION]{.var} variable from the [Variable]{.dpd} dropdown.
+5.  In the type option box, click "density."
+6.  In the smoothing box, click "density."
+7.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the density plot.
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-
-![Density dialog showing settings for creating density plot of instate tuition.
-](Rguroo_dialogs/Graphical_Description_of_Data/dialog_density_tuition_instate_2.png){width=500px}
-
+![Density dialog showing settings for creating density plot of instate tuition.](Rguroo_dialogs/Graphical_Description_of_Data/dialog_density_tuition_instate_2.png){width="500px"}
 :::
-
-:::
+::::
 
 ```{r tuition-instate,echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
@@ -586,31 +528,25 @@ knitr::include_graphics("Rguroo_outputs/Graphical_Description_of_Data/density_tu
 
 Description of the graph is a density with high part on left, then a dip and up to peak in the middle that is lower than the left peak and then the lowest peak on the right .
 
-::: {#Creating-Density-Plot-by-Type-in-Rguroo .ref-label} :::
-
+::::::::: {#Creating-Density-Plot-by-Type-in-Rguroo .ref-label}
 Click to expand the box below see how to create a density plot of instate tuition by type of institution.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Density Plot by Type in Rguroo"}
-
+:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Density Plot by Type in Rguroo"}
 **Before you begin:** Make sure you have already imported the [tuition_4_year]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Tuition-4-Year-to-Rguroo).
 
-1. Open the **Plots** toolbox in Rguroo.  
-2. Open the [Create Plot]{.dpd} dropdown, and select [Histogram]{.fun}. This opens the Histogram dialog.  
-3. In the Hisotgram dialog, choose the [tuition_4_year]{.data} dataset from the [Dataset]{.dpd} dropdown.  
-4. Choose the [INSTATE_TUITION]{.var} variable from the [Variable]{.dpd} dropdown. 
-5. In the "Plot by Group" box, choose the [TYPE]{.var} variable from the [Factor]{.dpd} dropdown.
-6. In the type option box, click "density."
-7. In the smoothing box, click "density."
-8. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the density plot.
+1.  Open the **Plots** toolbox in Rguroo.\
+2.  Open the [Create Plot]{.dpd} dropdown, and select [Histogram]{.fun}. This opens the Histogram dialog.\
+3.  In the Hisotgram dialog, choose the [tuition_4_year]{.data} dataset from the [Dataset]{.dpd} dropdown.\
+4.  Choose the [INSTATE_TUITION]{.var} variable from the [Variable]{.dpd} dropdown.
+5.  In the "Plot by Group" box, choose the [TYPE]{.var} variable from the [Factor]{.dpd} dropdown.
+6.  In the type option box, click "density."
+7.  In the smoothing box, click "density."
+8.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the density plot.
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-
-![Density dialog showing settings for creating density plot of instate tuition.
-](Rguroo_dialogs/Graphical_Description_of_Data/dialog_density_tuition_instate_type_2.png){width=500px}
-
+![Density dialog showing settings for creating density plot of instate tuition.](Rguroo_dialogs/Graphical_Description_of_Data/dialog_density_tuition_instate_type_2.png){width="500px"}
 :::
-
-:::
+::::
 
 ```{r tuition-instate-type,echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
@@ -785,9 +721,11 @@ Sometimes you have two different variables and you want to see if they are relat
 
 Is there a relationship between systolic blood pressure and weight? To answer this question some data is needed. The data frame NHANES contains this data, but given the size of the data frame, it may be not be very useful to look at the graph of all the data. It makes sense to take a sample from the data frame. A random sample is the better type of sample to take. Once the sample is taken, then a scatter plot can be created. The rStudio command for a scatter plot is
 
+```{=html}
 <!-- gf_point(response_variable \~ explanatory_variable, data= Data_Frame)
 
 The sample is @tbl-sample_NHANES. -->
+```
 
 #### **Solution**
 
@@ -829,7 +767,7 @@ Looking at the graph @fig-blood-data, it appears that there is a linear relation
 
 ### **Time-Series**
 
-A time-series plot is a graph showing the data measurements in chronological order, the data being quantitative data. For example, a time-series plot is used to show profits over the last 5 years. 
+A time-series plot is a graph showing the data measurements in chronological order, the data being quantitative data. For example, a time-series plot is used to show profits over the last 5 years.
 
 The purpose of a time-series graph is to look for trends over time. Caution, you must realize that the trend may not continue. Just because you see an increase, doesn't mean the increase will continue forever. As an example, prior to 2007, many people noticed that housing prices were increasing. The belief at the time was that housing prices would continue to increase. However, the housing bubble burst in 2007, and many houses lost value, and haven't recovered.
 
@@ -845,21 +783,19 @@ Australian<- read.csv( "https://krkozak.github.io/MAT160/Australian_financial.cs
 knitr::kable(head(Australian))
 ```
 
-:::{#Importing-Austrailian-Financial-to-Rguroo.ref-label} :::
-
+:::::: {#Importing-Austrailian-Financial-to-Rguroo.ref-label}
 Click to expand the box below to see instructions to import and view the [Australian_financial]{.data} dataset.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Australian_financial to Rguroo"} 
-
-1. Open the **Data** toolbox in Rguroo.  
-2. From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.  
-3. In the top search box, type [kozak]{.typein}, then select the [Statistics Using Technology – Kozak]{.repo} repository.  
-4. In the middle search box, type [Australian]{.typein}, and select the [Australian_financial]{.data} dataset that appears in the lower panel.  
-5. Click the [Import]{.button}. The dataset will be imported into your Rguroo account.  
-6. Click the [Close]{.button} to close the dialog.  
-7. To view the dataset, double-click [Australian_financial]{.data} under the **Data** toolbox list.
-
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Australian_financial to Rguroo"}
+1.  Open the **Data** toolbox in Rguroo.\
+2.  From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.\
+3.  In the top search box, type [kozak]{.typein}, then select the [Statistics Using Technology – Kozak]{.repo} repository.\
+4.  In the middle search box, type [Australian]{.typein}, and select the [Australian_financial]{.data} dataset that appears in the lower panel.\
+5.  Click the [Import]{.button}. The dataset will be imported into your Rguroo account.\
+6.  Click the [Close]{.button} to close the dialog.\
+7.  To view the dataset, double-click [Australian_financial]{.data} under the **Data** toolbox list.
 :::
+
 **Code book for Data frame Australian**
 
 **Description** The data is a range of economic and financial data produced by the Reserve Bank of Australia and other organizations.
@@ -916,30 +852,25 @@ References Reserve Bank of Australia and other organizations
 
 variable, x=total assets of Authorized Deposit-taking Institutions (ADIs)
 
-Looking at the code book, one can see that the variable Assets_ADIs_Total is the variable in the data frame that is of interest here. With a time series plot, the other variable is time. In this case the variable in the data frame that represents time is Date. Notice that the dates are recorded as the months during specific quarters since September 1, 1969. Also notice that the data does not have entries for Assets_ADIs_Total until Mar-90, so our graph will start at this point in time. 
+Looking at the code book, one can see that the variable Assets_ADIs_Total is the variable in the data frame that is of interest here. With a time series plot, the other variable is time. In this case the variable in the data frame that represents time is Date. Notice that the dates are recorded as the months during specific quarters since September 1, 1969. Also notice that the data does not have entries for Assets_ADIs_Total until Mar-90, so our graph will start at this point in time.
 
 Click to expand the box below see how to create a density plot of instate tuition by type of institution.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Time Seires Plot in Rguroo"}
-
+:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Time Seires Plot in Rguroo"}
 **Before you begin:** Make sure you have already imported the [tuition_4_year]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Australian-Financial-to-Rguroo).
 
-1. Open the **Analytics** toolbox in Rguroo.  
-2. Open the [Analysis]{.dpd} dropdown, and select [Time Series]{.fun}. This opens the Time Series dialog.  
-3. In the Time Series dialog, choose the [Australian_financial]{.data} dataset from the [Dataset]{.dpd} dropdown.  
-4. Choose the [Assets_ADIs_total]{.var} variable from the [Variable]{.dpd} dropdown. 
-5. In the "Time Series Plot" box, click "lines."
-6. In the "Time Specification" option box, click "month."
-8. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the time series graph.
+1.  Open the **Analytics** toolbox in Rguroo.\
+2.  Open the [Analysis]{.dpd} dropdown, and select [Time Series]{.fun}. This opens the Time Series dialog.\
+3.  In the Time Series dialog, choose the [Australian_financial]{.data} dataset from the [Dataset]{.dpd} dropdown.\
+4.  Choose the [Assets_ADIs_total]{.var} variable from the [Variable]{.dpd} dropdown.
+5.  In the "Time Series Plot" box, click "lines."
+6.  In the "Time Specification" option box, click "month."
+7.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the time series graph.
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-
-![Time Seires dialog showing settings for creating time series plot of ADI totals.
-](Rguroo_dialogs/Graphical_Description_of_Data/dialog_time_series_ADI_total_2.png){width=500px}
-
+![Time Seires dialog showing settings for creating time series plot of ADI totals.](Rguroo_dialogs/Graphical_Description_of_Data/dialog_time_series_ADI_total_2.png){width="500px"}
 :::
-
-:::
+::::
 
 ```{r Assets,echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
@@ -951,7 +882,7 @@ knitr::include_graphics("Rguroo_outputs/Graphical_Description_of_Data/time_serie
 
 Description of @fig-Australian_data is an increasing time series Graph of Total Assets of Authorized Deposit-taking Institutions from day 2007 to 2016. The first ADI total starts at 0 and goes up to about 4500.
 
-From the graph, total assets of Authorized Deposit-taking Institutions (ADIs) appear to be increasing with a slight dip in the year 2013. 
+From the graph, total assets of Authorized Deposit-taking Institutions (ADIs) appear to be increasing with a slight dip in the year 2013.
 
 Be careful when making a graph. If the vertical axis doesn't start at 0, then the change can look much more dramatic than it really is. For a graph to be useful to the reader, it needs to have a title that explains what the graph contains, the axes should be labeled so the reader knows what each axes represents, each axes should have a scale marked, and it is best if the vertical axis contains 0 to show the relationship.
 
@@ -1178,3 +1109,14 @@ mean_income_2017: mean income of a US household in 2017 CPI-U-RS adjusted dollar
 Source US Census Bureau. (2018, March 06). Data. Retrieved July 21, 2019, from https://www.census.gov/programs-surveys/cps/data-detail.html
 
 References U.S. Census Bureau, Current Population Survey, Annual Social and Economic Supplements.
+::::::
+:::::::::
+::::::::::::
+::::::::::::::
+:::::::::::::::::
+::::::::::::::::::::
+:::::::::::::::::::::::
+::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::
+:::

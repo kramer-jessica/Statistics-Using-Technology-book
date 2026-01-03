@@ -21,14 +21,26 @@ Please note: there are many other types of relationships besides linear that can
 
 ## Regression
 
+### Introduction to Regression and Correlation
+
 When comparing different variables, two questions come to mind: "Is there a relationship between two variables?" and "How strong is that relationship?" These questions can be answered using **regression** and **correlation**. Regression answers whether there is a relationship, (again this book will explore linear relationships only) and correlation answers how strong the linear relationship is. The variable that is used to explain the change (or variability) in the other variable is called the **explanatory variable** or **predictor variable**, while the variable whose variability is being explained is called the **response variable**. In general, variables that help to explain the changes in a response variable are known as **covariates**. To introduce the concepts of regression and correlation, it is easier to look at a set of data.
 
+
+<!--
+::: {.example #determine-relationship title="Determining if there is a Relationship"}
+
 ### Example: Determining if there is a Relationship
+-->
+
+::: {#exm-determine-relationship}
+## Determining if There is a Relationship
 
 Is there a relationship between the alcohol content and the number of calories in 12-ounce beer? To determine if there is one, we explore a dataset of 227 beers, including their alcohol content and their calorie counts (Find Out How Many Calories in Beer?, 2019). @tbl-Beer shows the first five rows of the dataset. 
 
+:::
+
 ```{r chapter-10-beer-data, echo=FALSE}
-#| tbl-alt: "Head of beer data frame"
+#| tbl-alt: "Head of beer Dataset"
 #| label: tbl-Beer
 #| tbl-cap: "Alcohol and Calorie Content in Beer"
 Beer <- read.csv( "https://krkozak.github.io/MAT160/beer_data.csv") 
@@ -36,11 +48,11 @@ knitr::kable(head(Beer))
 ```
 
 
-:::{#Importing-Beer_data-to-Rguroo .ref-label} :::
+**Solution** 
 
 Click to expand the box below to see instructions to import and view the [beer_data]{.data} dataset.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing beer_data to Rguroo"} 
+::: {#Importing-Beer_data-to-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing beer_data to Rguroo"} 
 
 1. Open the **Data** toolbox in Rguroo.  
 2. From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.  
@@ -52,8 +64,8 @@ Click to expand the box below to see instructions to import and view the [beer_d
 
 :::
 
-
-**Code book for data frame Beer**
+::: {#code-book-beer .callout-tip .codebook collapse="true"}
+## Code book for Dataset Beer
 
 **Description** Collection of the most popular beers from large breweries. The data is of the calories, carbs and alcohol of a specific beer. The data is shown for a 12 ounce serving. The collection includes both domestic and import beer. For the imported beers the information is per 12 oz. serving even though many imports come in pints.
 
@@ -71,11 +83,11 @@ This dataset contains the following columns:
 
 [carbs]{.var}: the amount of carbohydrates in the beer (g).
 
-Source: Find Out How Many Calories in Beer? (n.d.). Retrieved July 21, 2019, from ![](https://www.beer100.com/beer-calories/)
+[Source](https://www.beer100.com/beer-calories): Find Out How Many Calories in Beer? (n.d.). Retrieved July 21, 2019. (https://www.beer100.com/beer-calories)
 
 References: (Find Out How Many Calories in Beer?, 2019)
 
-#### Solution
+:::
 
 To aid in figuring out if there is a relationship, it helps to draw a scatterplot of the data. First, it is helpful to state the variables, and since variables in an algebra class are typically represented as $x$ and $y$, those labels will be used here. It helps to state which variable is $x$ (explanatory or predictor) and which is $y$ (response).
 
@@ -89,7 +101,7 @@ $y$ = calories in 12 ounce beer
 
 Click to expand the box below see how to create the scatterplot of calories vs. alcohol content.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Scatterplot of Calories vs. Alcohol Content"}
+:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Scatterplot of Calories vs. Alcohol Content"}
 
 **Before you begin:** Make sure you have already imported the [beer_data]{.data} dataset into your Rguroo account, as shown [here](#Importing-Beer_data-to-Rguroo).
 
@@ -113,7 +125,7 @@ Click the button to save the scatterplot to your Rguroo account.
 
 :::
 
-:::
+::::
 
 ```{r,echo=FALSE}
 #| fig-alt: "Scatter plot of alcohol content versus calories with dots following somewhat along a line"
@@ -126,14 +138,15 @@ knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieScatter.svg")
 
 The scatter plot shown in @fig-Beer-point looks fairly linear.
 
+### Finding the regression line
+
 To find the equation for the linear relationship, the process of regression is used to determine the line that best fits the data (sometimes called the best-fitting line). The process is to draw a line through the data and measure the vertical distance from each point to the line. These distances are called the **residuals**. The regression line is the line that makes the sum of the square of the residuals as small as possible, which is why it is sometimes called the least squares line. The regression line on the scatter plot is displayed in @fig-Beer-point-line.
 
-:::{#Adding-Regression-Line-to-Scatterplot-in-Rguroo .ref-label} :::
 
 Click to expand the box below to see how to add a regression line to the scatterplot.
 
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Adding Regression Line to a Scatterplot"}
+:::: {#Adding-Regression-Line-to-Scatterplot-in-Rguroo  .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Adding Regression Line to a Scatterplot"}
 
 **Before you begin:** Ensure you have created the scatterplot of calories vs. alcohol content in your Rguroo account, as shown [here](#Creating-Scatterplot-of-Calories-vs-Alcohol-Content-in-Rguroo).
 
@@ -149,7 +162,7 @@ Click to expand the box below to see how to add a regression line to the scatter
 
 :::
 
-:::
+::::
 
 ```{r beer10-point-lm, echo=FALSE}
 #| fig-alt: "Scatter plot with regression line on plot"
@@ -160,7 +173,6 @@ Click to expand the box below to see how to add a regression line to the scatter
 knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieScatterLS.svg")
 ```
 
-### Find the regression equation (also known as best fitting line or least squares line)
 
 Given a collection of paired sample data, the regression equation is $\hat{y}=mx+b$, where the slope = $m$ and $y$-intercept = $(0,b)$.
 
@@ -170,9 +182,7 @@ The **residuals** are the difference between the actual observed values of the r
 
 The **independent variable** (the $x$-value) corresponds to the **explanatory** or **predictor** variable, the variable used to predict or explain changes in another variable. The **dependent variable** (the $y$-value) corresponds to the **response** variable—the variable whose values change in relation to the predictor. In our example, alcohol content is the predictor (independent, $x$) variable, and the number of calories is the response (dependent, $y$) variable, since it makes more sense to predict calories from alcohol content rather than vice versa.
 
-::: {#assumption-validity-line .ref-label} :::
-
-**Assumptions for the Validity of the Regression Equation and Line:**
+### Assumptions for the Validity of the Regression Equation and Line {#sec-assumption-validity-line}
 
 1. _Randomness_: The set of ordered pairs is a random sample from the population of all such possible pairs.
 
@@ -181,22 +191,29 @@ The **independent variable** (the $x$-value) corresponds to the **explanatory** 
 The assumption of linearity is essential. If the relationship between the two variables is not linear, then a regression line will not fit the data well. To check linearity, we look at the scatterplot: a roughly straight-line pattern suggests the assumption is reasonable, while a curved pattern suggests it is not. We can also examine the so called residual-versus-fit plot. If the residuals are randomly scattered around the horizontal line $y = 0$ on this plot, the linearity assumption is likely valid. If the residuals show a curved pattern, then the assumption of linearity is likely violated.
 
 
-::: {#assumption-validity-inference .ref-label} :::
-
-**Assumptions for the validity of inference:** 
+### Assumptions for the validity of inference {#sec-assumption-validity-inference} 
 
 3. _Constant Variance_: The variance of the $y$-values should be the same across all $x$-values. 
 
 4. _Normality_: The $y$-values for each fixed value of $x$ should follow a normal distribution.
 
-The assumptions of constant variance and normality are primarily needed for the validity of inference in regression. Inference includes procedures such as constructing confidence intervals and carrying out hypothesis tests. Just as with the confidence intervals and hypothesis tests for means and proportions that you are already familiar with, we can construct confidence intervals and tests of hypotheses for the slope and intercept of the regression line, as well as for predicted values $\hat{y}$. This we will cover in Section @sec-inference-regression.
+The assumptions of constant variance and normality are primarily needed for the validity of inference in regression. Inference includes procedures such as constructing confidence intervals and carrying out hypothesis tests. Just as with the confidence intervals and hypothesis tests for means and proportions that you are already familiar with, we can construct confidence intervals and tests of hypotheses for the slope and intercept of the regression line, as well as for predicted values $\hat{y}$. This we will cover in @sec-inference-regression.
  
 
 To check the constant-variance, we examine the residual-versus-fit plot: if the residuals are scattered with roughly the same vertical spread around the horizontal line $y = 0$ across all fitted-values, the assumption is reasonable. A funnel-shaped pattern suggests that unequal variances. 
 
 To check normality, we look at a histogram or a *normal probability plot* of the residuals. The histogram should appear bell-shaped, and in a normal probability plot the residuals should fall roughly along a straight line; pronounced curvature or outliers indicate that the normality assumption may not be satisfied.
 
-### Example: Find the Equation of the Regression Line
+
+<!-- ### Example: Find the Equation of the Regression Line 
+
+:::{.example #find-regression-equation title="Find the Equation of the Regression Line"}
+
+::: {#exm-find-regression-equation .example title="Find the Equation of the Regression Line"}
+-->
+
+::: {#exm-find-regression-equation}
+## Find the Equation of the Regression Line
 
 Is there a relationship between the alcohol content and the number of calories in 12-ounce beer? To determine if there is one, we examine the sample of beer's alcohol content and calories, portion of which is shown in @tbl-Beer (Find Out How Many Calories in Beer?, 2019).
 
@@ -204,7 +221,9 @@ a.  Find the regression equation between alcohol content and calories.
 b.  Use the regression equation to find the number of calories when the alcohol content is 7%.
 c.  Use the regression equation to find the number of calories when the alcohol content is 14%.
 
-#### Solution
+:::
+
+**Solution**
 
 a.  Find the regression equation between alcohol content and calories.
 
@@ -293,7 +312,7 @@ Fortunately, Rguroo calculates these automatically for you.
 
 Click to expand the box below to see how to obtain the fitted (predicted) values and the residuals.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Obtaining Residuals for the Beer Data"}
+:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Obtaining Residuals for the Beer Data"}
 
 **Before you begin:** Continue with the Rguroo instructions shown [here](#Finding-the-Regression-Equation-in-Rguroo) for obtaining the regression equation.
 
@@ -308,7 +327,7 @@ Click to expand the box below to see how to obtain the fitted (predicted) values
 
 :::
 
-:::
+::::
 
 Click to expand the box below to see the predicted (fitted) values and the residuals for the first 20 cases of the beer data.
 
@@ -459,11 +478,9 @@ Consider the residuals again. According to the data, a beer with 7.0% alcohol ha
 
 One last thing that you may wonder is if imported beer has a different number of calories than domestic beer. The location (imported versus domestic) is a covariate, a third variable that may affects the calorie content. A covariate that is a categorical variable is referred to as a **factor**. You can create a scatterplot that  displays the data separately for each category of this covariate (factor). 
 
-::: {#Creating-Scatterplot-of-Calories-vs-Alcohol-location .ref-label} :::
-
 Click to expand the box below to see how to create a scatterplot of calories vs. alcohol content separated by location.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Scatterplot of Calories vs. Alcohol Content by Location"}
+:::: {#Creating-Scatterplot-of-Calories-vs-Alcohol-location .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Scatterplot of Calories vs. Alcohol Content by Location"}
 
 **Before you begin:** Make sure you have already imported the [beer_data]{.data} dataset into your Rguroo account, as shown [here](#Importing-Beer_data-to-Rguroo).
 
@@ -489,7 +506,7 @@ Click the button to save the scatterplot to your Rguroo account.
 
 :::
 
-:::
+::::
 
 
 ```{r AlcoholCalorieLocationScatter, echo=FALSE}
@@ -517,13 +534,14 @@ gf_point(calories~alcohol, data=Beer, title="Calories versus Alcohol Content of 
 
 **For each problem, state the variables. The datasets in this section are used in the homework for sections 10.2 and 10.3 also.**
 
-1.  When an anthropologist finds skeletal remains, they need to figure out the height of the person. The height of a person (in cm) and the length of their metacarpal bone 1 (in mm) were collected and are in @tbl-Metacarpal ("Prediction of height" 2013). Create a scatter plot and find a regression equation between the height of a person and the length of their metacarpal. Then use the regression equation to find the height of a person for a metacarpal length of 44 mm and for a metacarpal length of 55 mm. Which height that you calculated do you think is closer to the true height of the person? Why?
+1.  When an anthropologist finds skeletal remains, they need to figure out the height of the person. The height of a person (in cm) and the length of their metacarpal bone 1 (in mm) were collected and are in @tbl-Metacarpal ("Prediction of height" 2013). 
+Create a scatter plot and find a regression equation between the height of a person and the length of their metacarpal. Then use the regression equation to find the height of a person for a metacarpal length of 44 mm and for a metacarpal length of 55 mm. Which height that you calculated do you think is closer to the true height of the person? Why?
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [height_vs_metacarp]{.data}.
 
-**Code book for Data Frame Metacarpal is below @tbl-Metacarpal.**
+**Code book for Dataset Metacarpal is below @tbl-Metacarpal.**
 
 </div>
 
@@ -533,28 +551,28 @@ gf_point(calories~alcohol, data=Beer, title="Calories versus Alcohol Content of 
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [house]{.data}.
 
-**Code book for Data Frame House is below @tbl-House.**
+**Code book for Dataset House is below @tbl-House.**
 
 </div>
 
-3.  The World Bank collects information on the life expectancy of a person in each country ("Life expectancy at" 2013) and the fertility rate per woman in the country ("Fertility rate" 2013). The Data Frame for countries for the year 2011 are in @tbl-Fertility. Create a scatter plot of the Data Frame and find a linear regression equation between fertility rate and life expectancy in 2011. Then use the regression equation to find the life expectancy for a country that has a fertility rate of 2.7 and for a country with fertility rate of 8.1. Which life expectancy that you calculated do you think is closer to the true life expectancy? Why?
+3.  The World Bank collects information on the life expectancy of a person in each country ("Life expectancy at" 2013) and the fertility rate per woman in the country ("Fertility rate" 2013). The Dataset for countries for the year 2011 are in @tbl-Fertility. Create a scatter plot of the Dataset and find a linear regression equation between fertility rate and life expectancy in 2011. Then use the regression equation to find the life expectancy for a country that has a fertility rate of 2.7 and for a country with fertility rate of 8.1. Which life expectancy that you calculated do you think is closer to the true life expectancy? Why?
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [Life_exp_fert_rate]{.data}.
 
-**Code book for Data Frame Fertility is below @tbl-Fertility.**
+**Code book for Dataset Fertility is below @tbl-Fertility.**
 
 </div>
 
-4.  The World Bank collected data on the percentage of gross domestic product (GDP) that a country spends on health expenditures (Current health expenditure (% of GDP), 2019), the fertility rate of the country (Fertility rate, total (births per woman), 2019), and the percentage of woman receiving prenatal care (Pregnant women receiving prenatal care (%), 2019). The Data Frame for the countries where this information is available in @tbl-Fert_prenatal. Create a scatter plot of the Data Frame and find a regression equation between percentage spent on health expenditure and the percentage of women receiving prenatal care. Then use the regression equation to find the percent of women receiving prenatal care for a country that spends 5.0% of GDP on health expenditure and for a country that spends 12.0% of GDP. Which prenatal care percentage that you calculated do you think is closer to the true percentage? Why?
+4.  The World Bank collected data on the percentage of gross domestic product (GDP) that a country spends on health expenditures (Current health expenditure (% of GDP), 2019), the fertility rate of the country (Fertility rate, total (births per woman), 2019), and the percentage of woman receiving prenatal care (Pregnant women receiving prenatal care (%), 2019). The Dataset for the countries where this information is available in @tbl-Fert_prenatal. Create a scatter plot of the Dataset and find a regression equation between percentage spent on health expenditure and the percentage of women receiving prenatal care. Then use the regression equation to find the percent of women receiving prenatal care for a country that spends 5.0% of GDP on health expenditure and for a country that spends 12.0% of GDP. Which prenatal care percentage that you calculated do you think is closer to the true percentage? Why?
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [fertility_prenatal]{.data}.
 
 
-**Code book for Data Frame Fert_prenatal is below @tbl-Fert_prenatal.**
+**Code book for Dataset Fert_prenatal is below @tbl-Fert_prenatal.**
 
 </div>
 
@@ -564,8 +582,10 @@ gf_point(calories~alcohol, data=Beer, title="Calories versus Alcohol Content of 
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [baseball]{.data}.
 
+</div>
+
 ```{r chapter-10-baseball-data, echo=FALSE}
-#| tbl-alt: "Head of Heights and Weights of Baseball Players data frame"
+#| tbl-alt: "Head of Heights and Weights of Baseball Players Dataset"
 #| label: tbl-Baseball
 #| tbl-cap: "Heights and Weights of Baseball Players"
 Baseball <- read.csv( "https://krkozak.github.io/MAT160/baseball.csv") 
@@ -573,7 +593,8 @@ knitr::kable(head(Baseball))
 ```
 
 
-**Code book for Data Frame Baseball**
+::: {#code-book-baseball .callout-tip .codebook collapse="true"}
+## Code book for Dataset Baseball
 
 **Description**
 
@@ -581,7 +602,7 @@ The heights and weights of MLB players.
 
 Format
 
-This Data Frame contains the following columns:
+This Dataset contains the following columns:
 
 Player: Player in the sample
 
@@ -589,17 +610,19 @@ height: height of baseball player (inches)
 
 weight: weight of baseball player (pounds)
 
-Source MLB heightsweights. (2013, November 16). Retrieved from http://wiki.stat.ucla.edu/socr/index.php/SOCR_Data_MLB_HeightsWeights
+[Source](http://wiki.stat.ucla.edu/socr/index.php/SOCR_Data_MLB_HeightsWeights) MLB heightsweights. (2013, November 16).
 
-References SOCR Data Frame of MLB Heights Weights from UCLA.
+References SOCR Dataset of MLB Heights Weights from UCLA.
 
-</div>
+:::
 
 6.  Different species have different body weights and brain weights are in @tbl-Body. ("Brain2bodyweight" 2013). Create a scatter plot and find a regression equation between body weights and brain weights. Then use the regression equation to find the brain weight for a species that has a body weight of 62 kg and for a species that has a body weight of 180,000 kg. Which brain weight that you calculated do you think is closer to the true brain weight? Why?
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [body]{.data}.
+
+</div>
 
 ```{r Chapter-10-Body-data, echo=FALSE}
 #| tbl-alt: "Head of Body Weights and Brain Weights of Species"
@@ -609,7 +632,8 @@ Body <- read.csv( "https://krkozak.github.io/MAT160/body.csv")
 knitr::kable(head(Body))
 ```
 
-**Code book for Data Frame Body**
+::: {#code-book-body .callout-tip .codebook collapse="true"}
+## Code book for Dataset Body
 
 **Description**
 
@@ -617,7 +641,7 @@ The body weight, brain weight, and brain/body proportion of different species of
 
 Format
 
-This Data Frame contains the following columns:
+This Dataset contains the following columns:
 
 species: species of animal
 
@@ -631,16 +655,16 @@ Source Brain2bodyweight. (2013, November 16). Retrieved from http://wiki.stat.uc
 
 References SOCR Data of species body weights and brain weights from UCLA.
 
-</div>
+:::
 
-7.  A sample of hot dogs was taken and the amount of sodium (in mg) and calories were measured. ("Data hotdogs" 2013) The Data Frame are in @tbl-Hotdog. Create a scatter plot and find a regression equation between amount of calories and amount of sodium. Then use the regression equation to find the amount of sodium a hot dog has if it is 170 calories and if it is 120 calories. Which sodium level that you calculated do you think is closer to the true sodium level? Why?
+7.  A sample of hot dogs was taken and the amount of sodium (in mg) and calories were measured. ("Data hotdogs" 2013) The Dataset are in @tbl-Hotdog. Create a scatter plot and find a regression equation between amount of calories and amount of sodium. Then use the regression equation to find the amount of sodium a hot dog has if it is 170 calories and if it is 120 calories. Which sodium level that you calculated do you think is closer to the true sodium level? Why?
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [hotdog]{.data}.
 
 
-**Code book for data frame Hotdog is below @tbl-Hotdog.**
+**Code book for Dataset Hotdog is below @tbl-Hotdog.**
 
 </div>
 
@@ -649,6 +673,8 @@ References SOCR Data of species body weights and brain weights from UCLA.
 <div tabindex="0" style="width:85%; margin:auto;">
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [agriculture]{.data}.
+
+</div>
 
 
 ```{r chapter-10-agricultue-data, echo=FALSE}
@@ -659,7 +685,8 @@ Agriculture <- read.csv( "https://krkozak.github.io/MAT160/agriculture.csv")
 knitr::kable(head(Agriculture))
 ```
 
-**Code book for Data Frame Agriculture**
+::: {#code-book-agriculture .callout-tip .codebook collapse="true"}
+## Code book for Dataset Agriculture**
 
 **Description**
 
@@ -667,7 +694,7 @@ The per capita income and percent in different industries in European countries
 
 Format
 
-This Data Frame contains the following columns:
+This Dataset contains the following columns:
 
 country: country in Europe
 
@@ -679,17 +706,19 @@ industry: percentage of workforce in industry
 
 services: percentage of workforce in services
 
-Source OECD economic development. (2013, December 04). Retrieved from http://lib.stat.cmu.edu/DASL/Datafiles/oecdat.html
+[Source](http://lib.stat.cmu.edu/DASL/Datafiles/oecdat.html) OECD economic development. (2013, December 04).
 
 References Data And Story Library
 
-</div>
+:::
 
 9.  Cigarette smoking and cancer have been linked. The number of deaths per one hundred thousand from bladder cancer and the number of cigarettes sold per capita in 1960 are in the dataset [cancer_1]{.data} ("Smoking and cancer" 2013). The first six rows of the data is shown in @tbl-Cancerbladder. Create a scatter plot and find a regression equation between number of cigarettes smoked and number of deaths from bladder cancer. Then use the regression equation to find the number of deaths from bladder cancer when the cigarette sales were 20 per capita and when the cigarette sales were 6 per capita. Which number of deaths that you calculated do you think is closer to the true number? Why?
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cancer_1]{.data}.
+
+</div>
 
 ```{r chapter-10-cancer-data, echo=FALSE}
 #| tbl-alt: "Head of Number of Cigarettes and Number of Bladder Cancer Deaths"
@@ -699,13 +728,14 @@ Cancer <- read.csv( "https://krkozak.github.io/MAT160/cancer_1.csv")
 knitr::kable(head(Cancer))
 ```
 
-**Code book for Data Frame Cancer**
+::: {#code-book-cancer .callout-tip .codebook collapse="true"}
+## Code book for Dataset Cancer
 
-**Description** This data frame contains the number of cigarette sales (per Capita), number of cancer Deaths (per 100 Thousand) from bladder, lung, kidney, and leukemia.
+**Description** This Dataset contains the number of cigarette sales (per Capita), number of cancer Deaths (per 100 Thousand) from bladder, lung, kidney, and leukemia.
 
 Format
 
-This Data Frame contains the following columns:
+This Dataset contains the following columns:
 
 state: state in US
 
@@ -719,17 +749,19 @@ kidney: number of deaths per 100 thousand from kidney cancer
 
 leukemia: number of deaths per 100 thousand from leukemia
 
-Source Smoking and cancer. (2013, December 04). Retrieved from http://lib.stat.cmu.edu/DASL/Datafiles/cigcancerdat.html
+[Source](http://lib.stat.cmu.edu/DASL/Datafiles/cigcancerdat.html) Smoking and cancer. (2013, December 04).
 
 References Data And Story Library
 
-</div>
+:::
 
 10. The weight of a car can influence the mileage that the car can obtain. A random sample of cars' weights and mileage was collected and the first six rows are shown in @tbl-Cars ("us auto mileage," 2019). Create a scatter plot and find a regression equation between weight of cars and mileage. Then use the regression equation to find the mileage on a car that weighs 3800 pounds and on a car that weighs 2000 pounds. Which mileage that you calculated do you think is closer to the true mileage? Why?
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cars]{.data}.
+
+</div>
 
 ```{r chapter-10-cars-data, echo=FALSE}
 #| tbl-alt: "Head of Weights and Mileages of Carss"
@@ -739,13 +771,16 @@ Cars<- read.csv( "https://krkozak.github.io/MAT160/cars.csv")
 knitr::kable(head(Cars))
 ```
 
-**Code book for Data Frame Cars**
+::: {#code-book-cars .callout-tip .codebook collapse="true"}
+## Code book for Dataset Cars
 
-**Description** Variation in gasoline mileage among makes and models of automobiles is influenced substantially by the weight and horsepower of the vehicles. When miles per gallon and horsepower are transformed to logarithms, the linearity of the regression is improved. A negative second order term is required to fit the logarithmic mileage to weight relation. If the logged variables are standardized, the coefficients of the first order terms indicate the standard units change in log mileage per one standard unit change in the predictor variable at the (logarithmic) mean. This change is constant in the case of mileage to horsepower, but not for mileage to weight. The coefficient of the second order weight term indicates the change in standardized slope associated with a one standard deviation increase in the logarithm of weight.
+**Description** 
+
+Variation in gasoline mileage among makes and models of automobiles is influenced substantially by the weight and horsepower of the vehicles. When miles per gallon and horsepower are transformed to logarithms, the linearity of the regression is improved. A negative second order term is required to fit the logarithmic mileage to weight relation. If the logged variables are standardized, the coefficients of the first order terms indicate the standard units change in log mileage per one standard unit change in the predictor variable at the (logarithmic) mean. This change is constant in the case of mileage to horsepower, but not for mileage to weight. The coefficient of the second order weight term indicates the change in standardized slope associated with a one standard deviation increase in the logarithm of weight.
 
 Format
 
-This Data Frame contains the following columns:
+This Dataset contains the following columns:
 
 make: the type of car
 
@@ -763,9 +798,7 @@ Source (n.d.). Retrieved July 21, 2019, from https://www3.nd.edu/\~busiforc/hand
 
 References R.M. Heavenrich, J.D. Murrell, and K.H. Hellman, Light Duty Automotive Technology and Fuel Economy Trends Through 1991, U.S. Environmental Protection Agency, 1991 (EPA/AA/CTAB/91-02).
 
-</div>
-
-\*\*\ \*\*
+:::
 
 ## Correlation 
 
@@ -785,12 +818,15 @@ The sign of $r$ describes the direction of the relationship. A positive correlat
 $r$ is always between $-1$ and 1. $r$ = $-1$ means there is a perfect negative linear correlation and $r$ = 1 means there is a perfect positive correlation. The closer $r$ is to 1 or $-1$, the stronger the correlation. The closer $r$ is to 0, the weaker the correlation. CAREFUL: $r$ = 0 does not mean there is no correlation. It just means there is **no linear correlation**. There might be a very strong curved pattern.
 -->
 
-
-### Example: Calculating the Linear Correlation Coefficient, $r$
+::: {#exm-correlation-interpretation}
+## Calculating the Linear Correlation Coefficient, $r$
 
 How strong is the positive relationship between alcohol content and the number of calories in a 12-ounce beer? To answer this question, compute the correlation between alcohol content and calories using the [beer]{.data} dataset (“Calories in Beer,” 2011). The first six rows of this dataset are shown in @tbl-Beer. Use Rguroo to find the correlation coefficient and then interpret its value.
 
-#### Solution
+:::
+
+
+** Solution** 
 
 You can obtain the correlation coefficient, $r$, in Rguroo from the output of the [Linear Regression]{.fun} function. To obtain this value for the beer example, follow the steps for creating a linear regression model [here](#Finding-the-Regression-Equation-in-Rguroo).
 
@@ -833,11 +869,13 @@ The proportion of the variation that is explained by the model is $R^2=\frac{\te
 
 This is known as the **coefficient of determination**.
 
-### Example: Find the coefficient of determination $R^2$
+:::{#exm-coefficient-determination}
+## Calculating the Coefficient of Determination, $R^2$
 
 How well does the alcohol content of a beer explain the variability in the number of calories in 12-ounce beer? To determine this, use the sample of beer's alcohol content and calories (Find Out How Many Calories in Beer?, 2019) in the [beer]{.data} dataset. The first six rows of this dataset is shown in @tbl-Beer.
+:::
 
-#### Solution
+**Solution**
 
 You can obtain the coefficient of determination, $R^2$, in Rguroo from the output of the [Linear Regression]{.fun} function. To obtain the coefficient of determination for the beer example, follow the steps for creating a linear regression model [here](#Finding-the-Regression-Equation-in-Rguroo).
 
@@ -882,7 +920,8 @@ The **linear correlation coefficient** is a number that describes the strength o
 
 One common mistake people make is to assume that because there is a correlation between two variables, then one variable causes the other. This is usually not the case. That would be like saying the amount of alcohol in the beer causes it to have a certain number of calories. However, fermentation of sugars is what causes the alcohol content. The more sugars you have, the more alcohol can be made, and the more sugar, the higher the calories. It is actually the amount of sugar that causes both. Do not confuse the idea of correlation with the concept of causation. Just because two variables are correlated does not mean one causes the other to happen. However, the new theory is showing that if you have a relationship between two variables and a strong correlation, and you can show that there are no other variables that could explain the change, then you can show causation. This is how doctors have shown that smoking causes kidney cancer. Just realize that proving that one caused the other is a difficult process, and causation should not be just assumed.
 
-### Example: Correlation Versus Causation
+::: {#exm-correlation-causation}
+## Correlation Versus Causation Examples
 
 <!--We probably should reconsider these two examples.-->
 
@@ -892,13 +931,15 @@ There is probably some other factor causing both of them to increase at the same
 
 b.  A study shows that there is a correlation between people who have had a root canal and those that have cancer. Does that mean having a root canal causes cancer?
 
+:::
+
 Just because there is positive correlation doesn't mean that one caused the other. It turns out that there is a positive correlation between eating carrots and cancer, but that doesn't mean that eating carrots causes cancer. In other words, there are lots of relationships you can find between two variables, but that doesn't mean that one caused the other.
 
 Remember a correlation only means a pattern exists. It does not mean that one variable causes the other variable to change.
 
 ### Homework for Correlation Section
 
-**For each problem, state the random variables.The Data Frame in this section are in section 10.1 and will be used in section 10.3.**
+**For each problem, state the random variables.The Dataset in this section are in section 10.1 and will be used in section 10.3.**
 
 1.  When an anthropologist finds skeletal remains, they need to figure out the height of the person. The height of a person (in cm) and the length of their metacarpal bone 1 (in mm) were collected. The data are in the [height_vs_metacarp]{.data} dataset, and the first six rows of the data are shown in @tbl-Metacarpal ("Prediction of height," 2013). Find the coefficient of determination and the correlation coefficient, then interpret both.
 
@@ -907,7 +948,7 @@ Remember a correlation only means a pattern exists. It does not mean that one va
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [height_vs_metacarp]{.data}.
 
 
-**Code book for Data Frame Metacarpal is below** @tbl-Metacarpal.
+**Code book for Dataset Metacarpal is below** @tbl-Metacarpal.
 
 </div>
 
@@ -918,7 +959,7 @@ Remember a correlation only means a pattern exists. It does not mean that one va
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [house]{.data}.
 
 
-**Code book for Data Frame House is below @tbl-House.**
+**Code book for Dataset House is below @tbl-House.**
 
 </div>
 
@@ -928,7 +969,7 @@ Remember a correlation only means a pattern exists. It does not mean that one va
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [Life_exp_fert_rate]{.data}.
 
-**Code book for Data Frame Fertility is below @tbl-Fertility.**
+**Code book for Dataset Fertility is below @tbl-Fertility.**
 
 </div>
 
@@ -940,7 +981,7 @@ Remember a correlation only means a pattern exists. It does not mean that one va
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [fertility_prenatal]{.data}.
 
 
-**Code book for Data Frame Fert_prenatal is below @tbl-Fert_prenatal.**
+**Code book for Dataset Fert_prenatal is below @tbl-Fert_prenatal.**
 
 </div>
 
@@ -950,7 +991,7 @@ Remember a correlation only means a pattern exists. It does not mean that one va
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [baseball]{.data}.
 
-**Code book for Data Frame Baseball is below @tbl-Baseball.**
+**Code book for Dataset Baseball is below @tbl-Baseball.**
 
 </div>
 
@@ -960,7 +1001,7 @@ Remember a correlation only means a pattern exists. It does not mean that one va
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [body]{.data}.
 
-**Code book for Data Frame Body is below @tbl-Body.**
+**Code book for Dataset Body is below @tbl-Body.**
 
 </div>
 
@@ -970,7 +1011,7 @@ Remember a correlation only means a pattern exists. It does not mean that one va
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [hotdog]{.data}.
 
-**Code book for data frame Hotdog is below @tbl-Hotdog.**
+**Code book for Dataset Hotdog is below @tbl-Hotdog.**
 
 </div>
 
@@ -981,7 +1022,7 @@ Remember a correlation only means a pattern exists. It does not mean that one va
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [agriculture]{.data}.
 
-**Code book for Data Frame Agriculture is @tbl-Agriculture.**
+**Code book for Dataset Agriculture is @tbl-Agriculture.**
 
 </div>
 
@@ -991,7 +1032,7 @@ Remember a correlation only means a pattern exists. It does not mean that one va
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cancer_1]{.data}.
 
-**Code book for Data Frame Cancer is below @tbl-Cancer.**
+**Code book for Dataset Cancer is below @tbl-Cancer.**
 
 </div>
 
@@ -1001,7 +1042,7 @@ Remember a correlation only means a pattern exists. It does not mean that one va
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cars]{.data}.
 
-**Code book for Data Frame Cars is below @tbl-Cars.**
+**Code book for Dataset Cars is below @tbl-Cars.**
 
 </div>
 
@@ -1034,7 +1075,7 @@ summary(lm_out) #lm_out is the name you gave the linear model
 
 Is there a relationship between the alcohol content and the number of calories in 12-ounce beer? To determine if there is a sample of beer's alcohol content and calories (Find Out How Many Calories in Beer?, 2019), in @tbl-Beer. Find the standard error of the estimate.
 
-**Code book for data frame Beer is below @tbl-Beer.**
+**Code book for Dataset Beer is below @tbl-Beer.**
 
 #### Solution
 
@@ -1139,7 +1180,7 @@ $H_a: \text{the slope is not zero}$
 
 Also, state $\alpha$, the significance level for your test.
 
-3.  State and check the conditions for the hypothesis test, as explained in the sections [Assumptions for Validity of the Regression Equation and Line](#assumption-validity-line) and [Assumptions for Validity of Inference](#assumption-validity-inference).
+3.  State and check the conditions for the hypothesis test, as explained in @sec-assumption-validity-line (Assumptions for Validity of the Regression Equation and Line) and @sec-assumption-validity-inference (Assumptions for Validity of Inference).
 
 4.  Find the test statistic and p-value
 
@@ -1222,7 +1263,7 @@ There is enough evidence to show that there is a correlation between alcohol con
 
 ### Homework for Inference for Regression and Correlation Section
 
-**For each problem, state the random variables. The Data Frame in this section are in the homework for section 10.1 and were also used in section 10.2.**
+**For each problem, state the random variables. The Dataset in this section are in the homework for section 10.1 and were also used in section 10.2.**
 
 1.  When an anthropologist finds skeletal remains, they need to figure out the height of the person. The height of a person (in cm) and the length of their metacarpal bone 1 (in mm) were collected. The data are in the [height_vs_metacarp]{.data} dataset, and the first six rows of the data are shown in @tbl-Metacarpal ("Prediction of height," 2013).
 
@@ -1230,7 +1271,7 @@ There is enough evidence to show that there is a correlation between alcohol con
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [height_vs_metacarp]{.data}.
 
-**Code book for Data Frame Metacarpal is below @tbl-Metacarpal.**
+**Code book for Dataset Metacarpal is below @tbl-Metacarpal.**
 
 a.  Compute a 99% prediction interval for height of a person with a metacarpal length of 44 mm.
 b.  Test at the 1% level for a correlation or linear relationship between length of metacarpal bone 1 and height of a person.
@@ -1243,7 +1284,7 @@ b.  Test at the 1% level for a correlation or linear relationship between length
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [house]{.data}.
 
-**Code book for Data Frame House is below @tbl-House.**
+**Code book for Dataset House is below @tbl-House.**
 
 <!-- a.  Find the standard error of the estimate. -->
 a.  Compute a 95% prediction interval for the rental income on a house worth \\\$230,000.
@@ -1257,7 +1298,7 @@ b.  Test at the 5% level for a correlation or linear relationship between house 
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [Life_exp_fert_rate]{.data}.
 
-**Code book for Data Frame Fertility is below @tbl-Fertility.**
+**Code book for Dataset Fertility is below @tbl-Fertility.**
 
 </div>
 
@@ -1273,7 +1314,7 @@ b.  Test at the 1% level for a correlation or linear relationship between fertil
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [fertility_prenatal]{.data}.
 
 
-**Code book for Data Frame Fert_prenatal is below @tbl-Fert_prenatal.**
+**Code book for Dataset Fert_prenatal is below @tbl-Fert_prenatal.**
 
 </div>
 
@@ -1288,7 +1329,7 @@ b.  Test at the 5% level for a correlation or linear relationship between percen
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [baseball]{.data}.
 
-**Code book for Data Frame Baseball is below @tbl-Baseball.**
+**Code book for Dataset Baseball is below @tbl-Baseball.**
 
 </div>
 
@@ -1303,7 +1344,7 @@ b.  Test at the 5% level for a correlation or linear relationship between height
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [body]{.data}.
 
-**Code book for Data Frame Body is below @tbl-Body.**
+**Code book for Dataset Body is below @tbl-Body.**
 
 </div>
 
@@ -1318,7 +1359,7 @@ b.  Test at the 1% level for a correlation or linear relationship between body w
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [hotdog]{.data}.
 
-**Code book for data frame Hotdog is below @tbl-Hotdog.**
+**Code book for Dataset Hotdog is below @tbl-Hotdog.**
 
 </div>
 
@@ -1334,7 +1375,7 @@ b.  Test at the 5% level for a correlation or linear relationship between amount
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [agriculture]{.data}.
 
-**Code book for Data Frame Agriculture is @tbl-Agriculture.**
+**Code book for Dataset Agriculture is @tbl-Agriculture.**
 
 </div>
 
@@ -1348,7 +1389,7 @@ c.  Test at the 5% level for a correlation or linear relationship between percen
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cancer_1]{.data}.
 
-**Code book for Data Frame Cancer is below @tbl-Cancer.**
+**Code book for Dataset Cancer is below @tbl-Cancer.**
 
 </div>
 
@@ -1362,7 +1403,7 @@ b.  Test at the 1% level for a correlation or linear relationship between cigare
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cars]{.data}.
 
-**Code book for Data Frame Cars is below @tbl-Cars.**
+**Code book for Dataset Cars is below @tbl-Cars.**
 
 </div>
 
