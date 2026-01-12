@@ -23,7 +23,7 @@ The **mean** is the arithmetic average of the numbers. This is the center that m
 
 There are no symbols for the mode and the median, but the mean is used a great deal, so statisticians gave it a symbol. There are actually two symbols: one for the population mean (parameter) and one for the sample mean (statistic). In most cases, you cannot find the population parameter, because you don't have values for the entire population, so you use the sample mean (statistic) to estimate the population mean (parameter).
 
- **Population Mean**
+<!-- **Population Mean**
 
 $\mu=\frac{\sum{x}}{N}$, pronounced mu
 
@@ -43,11 +43,22 @@ $x$ represents a data value.
 
 $\sum{x}$ means to add up all of the data values.
 
-The value for $\bar{x}$ is used to estimate $\mu$, since $\mu$ can't be calculated in most situations.
+The value for $\bar{x}$ is used to estimate $\mu$, since $\mu$ can't be calculated in most situations. -->
 
-### Example: Finding the Mean and Median using Rguroo {#example-mean-median-cats}
+### Population Mean and Sample Mean
 
-Suppose a vet wants to find the average weight of cats. The weights (in kg) of 144 cats are  given in a dataset named [cats]{.data}. The first six rows of this dataset are shown in @tbl-Cats.
+Because the mean is used extensively in statistics, it has special notation that distinguishes between a population and a sample. The **population mean**, denoted by the Greek letter $\mu$ (pronounced ``mu"), represents the true average of an entire population. It is calculated using the formula $\mu=\frac{\sum{x}}{N}$, where $N$ is the total number of values in the population, $x$ represents each individual data value, and $\sum{x}$ means to add up all the data values. In practice, we rarely know the population mean because we typically cannot collect data from every member of a population.
+
+Instead, we work with samples and calculate the **sample mean**, denoted by $\bar{x}$ (pronounced ``x-bar"). The sample mean uses the same calculation process as the population mean but with different notation: $\bar{x}=\frac{\sum{x}}{n}$, where $n$ is the number of values in the sample. Notice that we use a lowercase $n$ for sample size and an uppercase $N$ for population size. The sample mean $\bar{x}$ serves as our best estimate of the unknown population mean $\mu$. This relationship between sample statistics and population parameters is fundamental to inferential statistics -- we use what we observe in a sample to make informed conclusions about the larger population.
+
+<!-- ### Example: Finding the Mean and Median using Rguroo {#example-mean-median-cats} -->
+
+::: {#exm-mean-median-cats}
+## Finding the Mean and Median Using Rguroo
+
+Suppose a vet wants to find the average weight of cats. The weights (in kg) of 144 cats are  given in a dataset named [cats]{.data}. Find the mean and median of the weight of a cat. The first six rows of this dataset are shown in @tbl-Cats. 
+
+:::
 
 ```{r cats5-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of cats dataset"
@@ -63,6 +74,8 @@ knitr::kable(head(cats))
 #??cats
 ```
 
+**Solution**
+
 Click to expand the box below to see instructions to import and view the [cats]{.data} dataset in your **Data** Toolbox in Rguroo.
 
 ::: {#Importing-cats-to-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing cats to Data Toolbox"}
@@ -77,14 +90,11 @@ Click to expand the box below to see instructions to import and view the [cats]{
 
 Looking at the data frame for cats weights, @tbl-Cats, you see that there are several variables. A Code Book describes the dataset, explains what the variables are including the units, and the source of the data frame. The code book for the [cats]{.data} is below.
 
-**Code book for cats data frame**
+::: {#code-book-cats .callout-tip .codebook collapse="true"}
+## Code book for cats Dataset
 
 ![Code book for cats data frame](code_book_cats.jpg){fig-alt="Code book cats Dataframe"}
-
-
-Find the mean and median of the weight of a cat.
-
-#### **Solution**
+:::
 
 Before starting any mathematics problem, it is always a good idea to define the unknown in the problem. In statistics, you want to define the variable. The symbol for the variable is $x$.
 
@@ -93,13 +103,14 @@ The variable is $x$ = weight of a cat
 Click to expand the box below see how to calculate the mean and median in Rguroo.
 
 :::: {#Calculating-summary-stats-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Calculating the Mean and Median Weight of Cats"}
+
 **Before you begin:** Make sure you have already imported the [cats]{.data} dataset into your **Data** Toolbox, as was shown [here](#Importing-cats-to-Rguroo).
 
 1.  Open the **Data** toolbox.\
 2.  Click on the [Functions]{.dpd} dropdown, and select [Summary Statistic]{.fun}. This opens the [Basic Summary Statistic]{.dialog}.\
 3.  From the [Dataset]{.dpd} dropdown, select the [cats]{.data} dataset.\
 4.  From the [Numerical]{.dpd} dropdown, select the [Bwt]{.var} variable. \
-5.  In the **Statistics** section of the dialog, select the checkbox for Mean and Median.\
+5.  In the **Statistics** section of the dialog, select the checkbox for [Mean]{.des} and [Median]{.des}.\
 6.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the summary statistics which is shown in @fig-summary-cats.
 
 ::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
@@ -130,11 +141,13 @@ The mean weight is 2.72 kg.
 
 The median weight is 2.7 kg also. It appears the average weight of all cats in this dataset is 2.7 kg.
 
-### Example: Finding Mean and Median with Factor
+::: {#exm-mean-median-cats-factor}
+## Finding Mean and Median with Factor
 
 Suppose you want to know if male cats weigh more than female cats. Looking at the variables, you notice that there is a variable for the sex of the cat. You can look at the weights of males and females separately.
+:::
 
-#### **Solution**
+**Solution**
 
 Click to expand the box below see how to calculate the mean and median, separated by sex, in Rguroo.
 
@@ -146,7 +159,7 @@ Click to expand the box below see how to calculate the mean and median, separate
 3.  From the [Dataset]{.dpd} dropdown, select the [cats]{.data} dataset.\
 4.  From the [Numerical]{.dpd} dropdown, select the [Bwt]{.var} variable.
 5.  From the [Factor 1]{.dpd} dropdown, select the [Sex]{.des} factor.
-6.  In the **Statistics** section of the dialog, select the checkbox for Mean and Median.\
+6.  In the **Statistics** section of the dialog, select the checkbox for [Mean]{.des} and [Median]{.des}.\
 7.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the summary statistics.
 
 ::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
@@ -169,15 +182,17 @@ knitr::include_graphics("Rguroo_outputs/Numerical_Description/cat_wt_sex_output.
 
 Notice that the female cats' mean weight is 2.36 kg and the male cats' mean weight is 2.9 kg. The median weight of female cats is 2.3 kg and for males it is 2.9 kg. So it does appear that male cats weigh a bit more than the female cats.
 
-There are many different summary statistics that can be found. An example is the minimum and maximum value. In this example, you will see how to find the min and max values and then filter them out of a dataset to see what effect they have on the mean and median.
+There are many different summary statistics that can be found. An example is the minimum and maximum value. In the next example, you will see how to find the min and max values and then filter them out of a dataset to see what effect they have on the mean and median.
 
-### Example: Effect of Extreme Values on Mean and Median {#example-effect-extreme-values}
+::: {#exm-effect-extreme-values}
+## Effect of Extreme Values on Mean and Median
 
 Find the minimum and maximum values of cats weights.
+:::
 
-#### **Solution**
+**Solution**
 
-The steps to find the minimum and the maximum in Rguroo are similar to finding the mean and median. In the **Statistics** section of the dialog, select the checkbox for Minimum and Maximum.
+The steps to find the minimum and the maximum in Rguroo are similar to finding the mean and median. In the **Statistics** section of the dialog, select the checkbox for [Minimum]{.des} and [Maximum]{.des}.
 
 @fig-max-min-cats shows the Basic Summary Statistic Dialog and Output from Rguroo for the minimum and maximum of cats body weight.
 
@@ -261,7 +276,7 @@ df_stats(~Bwt, data=nomin, mean, median)
 
 The mean without the minimum value is 2.75 kg, and the median is 2.7 kg.
 
-From [this](#example-effect-extreme-values) example, the mean of the [cats]{.data} dataset with all the values is 2.72 kg, while the median is 2.7 kg. Notice that when the maximum value was excluded from the dataset, the mean decreased slightly but the median didn't change, and when the minimum value was excluded from the dataset, the mean increased a little but the median didn't change. This shows that the mean is affected by extreme values, while the median is not. We say the median is a resistant measure of center because it isn't affected by extreme values as much.
+From [this](#example-effect-extreme-values) example, the mean of the [cats]{.data} dataset with all the values is 2.72 kg, while the median is 2.7 kg. Notice that when the maximum value was excluded from the dataset, the mean decreased slightly but the median did not change, and when the minimum value was excluded from the dataset, the mean increased a little but the median did not change. This shows that the mean is affected by extreme values, while the median is not. We say the median is a resistant measure of center because it is not affected by extreme values as much.
 
 An outlier is a data value that is very different from the rest of the data. It can be really high or really low. An extreme value may be an outlier if it is far enough from the center. If there are extreme values in the data, the median is a better measure of the center than the mean. If there are no extreme values, the mean and the median will be similar so most people use the mean. The mean is not a resistant measure because it is affected by extreme values. The median is a resistant measure because it not affected by extreme values.
 
@@ -286,25 +301,36 @@ To understand how different measures of center relate to skewed or symmetric dis
 #| warning: FALSE
 #| label: fig-centers-dist
 #| fig-cap: "Mean, median, mode as related to distribution"
-#| out-width: "70%"
-knitr::include_graphics("images/centers_distribution.png")
+#| out-width: "80%"
+knitr::include_graphics("images/centers_distribution_new.png")
 ```
-
-One type of average is a weighted average. Weighted averages are commonly used in situations where some components matter more than others. For example, a teacher may use a weighted average when calculating a student’s final course grade. Homework, quizzes, and exams may all contribute to the final grade, but exams might count more because they measure overall understanding more directly. In this case, exams are given more weight than homework, so they have a larger impact on the final grade. Similarly, employers may use weighted averages in performance evaluations when some aspects of a job are more important than others.
-As an example, a full time teacher at a community college may be evaluated on their service to the college, their service to the community, whether their paperwork is turned in on time, and their teaching. However, teaching is much more important than whether their paperwork is turned in on time. When the evaluation is completed, more weight needs to be given to the teaching and less to the paperwork. This is a weighted average.
-
 
 ### Weighted Average
 
+<!-- Another type of average is a weighted average. Weighted averages are commonly used in situations where some components matter more than others. For example, a teacher may use a weighted average when calculating a student’s final course grade. Homework, quizzes, and exams may all contribute to the final grade, but exams might count more because they measure overall understanding more directly. In this case, exams are given more weight than homework, so they have a larger impact on the final grade. Similarly, employers may use weighted averages in performance evaluations when some aspects of a job are more important than others.
+As an example, a full time teacher at a community college may be evaluated on their service to the college, their service to the community, whether their paperwork is turned in on time, and their teaching. However, teaching is much more important than whether their paperwork is turned in on time. When the evaluation is completed, more weight needs to be given to the teaching and less to the paperwork. This is a weighted average.
+
 $\text{weighted average}=\frac{\sum{x*w}}{\sum{w}}$,
 
-where $w$ is the weight of the data value $x$.
+where $w$ is the weight of the data value $x$. -->
 
-### Example: Weighted Average
+Another type of average is a weighted average. Weighted averages are commonly used in situations where some components matter more than others. For example, a teacher may use a weighted average when calculating a student's final course grade. Homework, quizzes, and exams may all contribute to the final grade, but exams might count more because they measure overall understanding more directly. In this case, exams are given more weight than homework, so they have a larger impact on the final grade. Similarly, employers may use weighted averages in performance evaluations when some aspects of a job are more important than others.
+
+As an example, a full-time teacher at a community college may be evaluated on their service to the college, their service to the community, whether their paperwork is turned in on time, and their teaching. However, teaching is much more important than whether their paperwork is turned in on time. When the evaluation is completed, more weight needs to be given to the teaching and less to the paperwork. This is a weighted average.
+
+To calculate a weighted average, each data value is multiplied by its weight (the number representing its importance), then these products are added together. Finally, this sum is divided by the total of all the weights. The formula captures this process:
+
+$\text{weighted average}=\frac{\sum{x \cdot w}}{\sum{w}}$
+
+where $x$ represents each data value and $w$ represents the weight (or importance) assigned to that value.
+
+::: {#exm-weighted-average}
+## Calculating Weighted Average
 
 In your biology class, your final grade is based on several components: a lab score, scores on two major tests, and your score on the final exam. Each component is graded out of 100 points. The lab score is worth 15% of the course grade, the two exams are worth 25% each, and the final exam is worth 35% of the course. Suppose you earned scores of 95 on the labs, 83 and 76 on the two exams, and 84 on the final exam. Compute your weighted average for the course.
+:::
 
-#### **Solution**
+**Solution**
 
 Variable: $x$ = score
 
@@ -360,15 +386,18 @@ weighted.mean(x,w)
 
 Your weighted mean in the biology class is 83.4%. Using the traditional grading scale, you have a B in the class.
 
-### Example: Weighted Average
+
+::: {#exm-weighted-average-faculty-ratings}
+## Calculating Weighted Averages
 
 The faculty evaluation process at John Jingle University rates a faculty member on the following activities: teaching, publishing, committee service, community service, and submitting paperwork in a timely manner. The process involves reviewing student evaluations, peer evaluations, and supervisor evaluation for each teacher and awarding him/her a score on a scale from 1 to 10 (with 10 being the best). The weights for each activity are 20 for teaching, 18 for publishing, 6 for committee service, 4 for community service, and 2 for paperwork.
 
 a)  One faculty member had the following ratings: 8 for teaching, 9 for publishing, 2 for committee work, 1 for community service, and 8 for paperwork. Compute the weighted average of the evaluation.
 b)  Another faculty member had ratings of 6 for teaching, 8 for publishing, 9 for committee work, 10 for community service, and 10 for paperwork. Compute the weighted average of the evaluation.
 c)  Which faculty member had the higher average evaluation?
+:::
 
-#### **Solution**
+**Solution**
 
 a)  One faculty member had the following ratings: 8 for teaching, 9 for publishing, 2 for committee work, 1 for community service, and 8 for paperwork. Compute the weighted average of the evaluation.
 
@@ -437,13 +466,23 @@ c)  Which faculty member had the higher average evaluation?
 
     The second faculty member has a higher average evaluation.
 
-The last thing to mention is which average is used on which type of data.
+<!-- The last thing to mention is which average is used on which type of data.
 
 Mode can be found on nominal, ordinal, interval, and ratio data, since the mode is just the data value that occurs most often. You are just counting the data values.
 
 Median can be found on ordinal, interval, and ratio data, since you need to put the data in order. As long as there is order to the data you can find the median.
 
-Mean can be found on interval and ratio data, since you must have numbers to add together.
+Mean can be found on interval and ratio data, since you must have numbers to add together. -->
+
+### Choosing the Appropriate Measure of Center
+
+Different measures of center work with different types of data. The type of data you have determines which measures of center are appropriate to use.
+
+The **mode** can be used with any type of data -- nominal, ordinal, interval, or ratio -- because it simply identifies which value appears most frequently. Since finding the mode only requires counting how often each value occurs, it works regardless of whether the data has numerical meaning or can be ordered.
+
+The **median** can be used with ordinal, interval, and ratio data. To find the median, you must arrange the data values in order from smallest to largest (or vice versa). This means the data must have a meaningful order or ranking. Nominal data, which has categories with no natural order (like colors or types of pets), cannot have a median calculated.
+
+The **mean** can only be used with interval and ratio data because calculating it requires adding the data values together and dividing by the count. This mathematical operation only makes sense when the data values are actual numbers with meaningful numerical differences between them. For example, you can calculate the mean temperature or mean income, but you cannot calculate a mean for categories like favorite ice cream flavors or shirt sizes.
 
 ### Homework for Measures of Center Section
 
@@ -472,23 +511,25 @@ Cholesterol<-read.csv( "https://krkozak.github.io/MAT160/cholesterol.csv")
 knitr::kable(head(Cholesterol))
 ```
 
-**Code book for Data Frame Cholesterol**
+::: {#code-book-cholesterol .callout-tip .codebook collapse="true"}
+## Code book for Cholesterol Dataset
 
-**Description** Cholesterol levels were collected from patients a certain number of days after they had a heart attack
+**Description** A study was conducted at a major north eastern American medical centre regarding blood cholesterol levels and heart-attack incidents. A total of 28 heart-attack patients had their cholesterol levels measured two days, 4 days, and 14 days after the attack. In addition, cholesterol levels were recorded for a control group of 30 people who had not had a heart attack. The units of cholesterol measurement are not given in the original reference but are presumably mg/dL of blood.
 
 This data frame contains the following columns:
 
-Patient: Patient number
+[Patient]{.var}: Patient number
 
-day2: Cholesterol level of patient 2 days after heart attack. (mg/dL)
+[day2]{.var}: Cholesterol level of patient 2 days after heart attack. (mg/dL)
 
-day4: Cholesterol level of patient 4 days after heart attack. (mg/dL)
+[day4]{.var}: Cholesterol level of patient 4 days after heart attack. (mg/dL)
 
-day14: Cholesterol level of patient 14 days after heart attack. (mg/dL)
+[day14]{.var}: Cholesterol level of patient 14 days after heart attack. (mg/dL)
 
-Source Ryan, B. F., Joiner, B. L., & Ryan, Jr, T. A. (1985). Cholesterol levels after heart attack. Retrieved from [here](https://gksmyth.github.io/ozdasl/general/cholest.html)
+[Source](https://gksmyth.github.io/ozdasl/general/cholest.html) Ryan, B. F., Joiner, B. L., & Ryan, Jr, T. A. (1985). Cholesterol levels after heart attack.
 
 References Ryan, Joiner & Ryan, Jr, 1985
+:::
 
 2.  The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are given in a dataset named [length]{.data}. The first six rows of this datset are listed in @tbl-Length (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.
 
@@ -504,21 +545,24 @@ Length<-read.csv( "https://krkozak.github.io/MAT160/length.csv")
 knitr::kable(head(Length))
 ```
 
-**Code book for data frame Length**
+::: {#code-book-length .callout-tip .codebook collapse="true"}
+## Code book for Length Dataset
 
-**Description** Rivers in New Zealand, the lengths of river and what body of water the river flows into
+**Description** The data records the length of rivers in the South Island of New Zealand. The lengths are given in kilometres. The second variable, FlowsInto, indicates whether the river flows into the Pacific Ocean (0) or the Tasman Sea (1).
 
 This data frame contains the following columns:
 
-River: Name of the river
+[River]{.var}: Name of the river
 
-length: how long the river is in kilometers
+[length]{.var}: how long the river is in kilometers
 
-flowsto: what body of water the river flows into Pacific Ocean is Pacific and the Tasman Sea is Tasman
+[flowsto]{.var}: what body of water the river flows into Pacific Ocean is Pacific and the Tasman Sea is Tasman
 
-Source Lee, A. (1994). Data analysis: An introduction based on r. Auckland. Retrieved from [here](https://gksmyth.github.io/ozdasl/oz/nzrivers.html)
+[Source](https://gksmyth.github.io/ozdasl/oz/nzrivers.html) Lee, A. (1994). Data analysis: An introduction based on r. Auckland. 
 
 References Lee, A. (1994). Data analysis: An introduction based on r. Auckland.
+
+:::
 
 3.  Print-O-Matic printing company's employees have salaries that are contained in a dataset named [pay]{.data}. The first six rows of these data are given in @tbl-Pay.
 
@@ -534,19 +578,22 @@ Pay<-read.csv( "https://krkozak.github.io/MAT160/pay.csv")
 knitr::kable(head(Pay))
 ```
 
-**Code book for data frame Pay**
+::: {#code-book-pay .callout-tip .codebook collapse="true"}
+## Code book for Pay Dataset
 
 **Description** Salaries of Print-O-Matic printing company's employees
 
 This data frame contains the following columns:
 
-employee:employees position in the company
+[employee]{.var}:employees position in the company
 
-salary: salary of that employee (Australian dollars (AUD))
+[salary]{.var}: salary of that employee (Australian dollars (AUD))
 
 Source John Matic provided the data from a company he worked with. The company's name is fictitious, but the data is from an actual company.
 
 References John Matic (2013)
+
+:::
 
 a.  Find the mean and median.
 
@@ -573,8 +620,6 @@ d.  If you were the CEO, who is answering concerns from the union that employees
 
 e.  If you were a platen worker, who believes that the employees need a raise, which average (mean or median) using the complete dataset would you prefer? Why?
 
-<!-- -->
-
 4.  Print-O-Matic printing company spends specific amounts on fixed costs every month. These costs are listed in the dataset [cost]{.data}. The first six rows of the data are shown in @tbl-Cost.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
@@ -588,26 +633,28 @@ e.  If you were a platen worker, who believes that the employees need a raise, w
 Cost<-read.csv( "https://krkozak.github.io/MAT160/cost.csv") 
 knitr::kable(head(Cost))
 ```
-
-**Code book for data frame Cost**
+::: {#code-book-cost .callout-tip .codebook collapse="true"}
+## Code book for Cost Dataset
 
 **Description** fixed monthly charges for Print-0-Matic printing company
 
 This data frame contains the following columns:
 
-charges: Categories of monthly fixed charges
+[charges]{.var}: Categories of monthly fixed charges
 
-cost: fixed month costs (AUD)
+[cost]{.var}: fixed month costs (AUD)
 
 Source John Matic provided the data from a company he worked with. The company's name is fictitious, but the data is from an actual company.
 
 References John Matic (2013)
 
+:::
+
 a.  Find the mean and median.
 
 b.  Find the mean and median with the bank charges removed.
 
-c.  What happened to the mean and median when the bank charges was removed? Why?
+c.  What happened to the mean and median when the bank charges were removed? Why?
 
 d.  If it is your job to oversee the fixed costs, which average (mean or median) using the complete dataset would you prefer to use when submitting a report to administration to show that costs are low? Why?
 
@@ -637,25 +684,38 @@ e.  If it is your job to find places in the budget to reduce costs, which averag
 
 ## Measures of Spread
 
-Variability is an important idea in statistics. If you were to measure the height of everyone in your classroom, the resulting observations will generally have different values. That means not every student has the same height. Thus there is variability in people's heights. If you were to take a sample of the income level of people in a town, every sample gives you different information. <!-- There is variability between samples too. --> Variability describes how the data are spread out. If the data are very close to each other, then there is low variability. If the data are very spread out, then there is high variability. How do you measure variability? It would be good to have a number that measures it. This section will describe some of the different measures of variability, also known as measures of variation.
+<!-- Variability is an important idea in statistics. If you were to measure the height of everyone in your classroom, the resulting observations will generally have different values. That means not every student has the same height. Thus, there is variability in people's heights. If you were to take a sample of the income level of people in a town, every sample gives you different information.  There is variability between samples too.  Variability describes how the data are spread out. If the data are very close to each other, then there is low variability. If the data are very spread out, then there is high variability. How do you measure variability? It would be good to have a number that measures it. This section will describe some of the different measures of variability, also known as measures of variation.
 
-In the [Example: Finding the Mean and Median using Rguroo](#example-mean-median-cats), the average weight of a cat was calculated to be 2.72 kg. How much does this tell you about the weight of all cats? Can you tell if most of the weights were close to 2.72 kg or were the weights really spread out? The highest weight and the lowest weight are known, but is there more that you can tell? All you know is that the center of the weights is 2.72 kg.
+In the [example](#exm-mean-median-cats), the average weight of a cat was calculated to be 2.72 kg. How much does this tell you about the weight of all cats? Can you tell if most of the weights were close to 2.72 kg or were the weights really spread out? The highest weight and the lowest weight are known, but is there more that you can tell? All you know is that the center of the weights is 2.72 kg.
 
-You need more information.
+You need more information. -->
+
+Variability is a fundamental concept in statistics that describes how spread out data values are from each other. Consider measuring the height of everyone in your classroom -- you'll quickly notice that not everyone has the same height. Some students are taller, some are shorter, and there's a range of heights in between. This spread in the data is what we call variability. The same principle applies to other measurements: if you sampled the income levels of people in a town, you'd find that incomes vary widely from person to person.
+
+Understanding variability helps us describe datasets more completely. When data values are clustered closely together, we say there is low variability. When data values are spread far apart, we say there is high variability. To quantify this spread, we need numerical measures that capture how dispersed the data are. This section introduces several measures of variability, also known as measures of variation or spread.
+
+Recall the [example](#exm-mean-median-cats) where we calculated the average weight of a cat to be 2.72 kg. While this tells us the center of the data, it doesn't tell us the whole story. Were most cats close to this weight, or did weights vary dramatically? We know the highest and lowest weights, but what about everything in between? Understanding only the center leaves important questions unanswered.
+
+To fully describe a dataset, we need measures of both center and spread. The measures of variability discussed in this section provide that additional information.
+
 
 The **range** of a set of data is the difference between the highest and lowest data values (the maximum and minimum values). The **interval** refers to the lowest and highest values themselves. The range is a single value while the interval consists of two values.
 
-### Example: Range
+::: {#exm-range}
+## Calculating the Range
 
-From [Example: Effect of Extreme Values on Mean and Median], the maximum is 3.9 kg and the minimum is 2 kg. So the range is $3.9-2=1.9 kg$. But what does that tell you? You don't know if the weights are really spread out, or if they are close together.
+**Solution**
+From the [example](#exm-effect-extreme-values), the maximum weight of a cat was 3.9 kg and the minimum was 2 kg. So the range is $3.9-2=1.9 kg$. But what does that tell you? You don't know if the weights are really spread out, or if they are close together.
 
-Unfortunately, the range does not provide a very accurate picture of variability. A better way to describe how the data are spread out is needed. Instead of looking only at the distance between the highest and lowest values, we can look at how far each data value is from the mean. This distance is called a **deviation**.
+:::
+
+<!-- Unfortunately, the range does not provide a very accurate picture of variability. A better way to describe how the data are spread out is needed. Instead of looking only at the distance between the highest and lowest values, we can look at how far each data value is from the mean. This distance is called a **deviation**.
 
 You might want to find an average of these deviations. This leads to calculating a value called the **variance**. The symbol for the population variance is $\sigma^2$, where $\sigma$ is the Greek letter sigma. The population variance is the average squared distance of each data value from the mean of the data. 
 
-In practice, however, people usually use and report the square root of the variance, which is called **standard deviation**. <!-- NOT TRUE This gives you the average distance from the mean. --> The population standard deviation is denoted with the symbol $\sigma$. The reason for taking the square root is that the variance is measured in squared units. For example, if the data are measured in kilograms (kg), then the variance is measured in kg-squared. The standard deviation, on the other hand, is measured in the same units as the original data. So if the data are in kg, the standard deviation is also in kg, which makes it easier to interpret.
+In practice, however, people usually use and report the square root of the variance, which is called **standard deviation**.  NOT TRUE This gives you the average distance from the mean.  The population standard deviation is denoted with the symbol $\sigma$. The reason for taking the square root is that the variance is measured in squared units. For example, if the data are measured in kilograms (kg), then the variance is measured in kg-squared. The standard deviation, on the other hand, is measured in the same units as the original data. So if the data are in kg, the standard deviation is also in kg, which makes it easier to interpret.
 
-<!-- NOT TRUE The standard deviation is the average (mean) distance from a data point to the mean. It can be thought of as how much a typical data point differs from the mean.-->
+ NOT TRUE The standard deviation is the average (mean) distance from a data point to the mean. It can be thought of as how much a typical data point differs from the mean
 
 To estimate the population variance, we use the so called **sample variance**. The sample variance is denoted by $s^2$.
 
@@ -667,17 +727,61 @@ The **population variance** formula: $\sigma^2 = \frac{\sum\left(x-\mu \right)^2
 
 The **population standard deviation** formula: $\sigma =\sqrt{ \frac{\sum\left(x-\mu \right)^2}{N}}$
 
-Both the sample variance and sample standard deviation can be found using technology.
+Both the sample variance and sample standard deviation can be found using technology. -->
 <!--df_stats(\~variable, data=data_frame, var, sd)
 
 The next example will demonstrate this command.
 -->
 
-### Example: Finding the Standard Deviation
+Unfortunately, the range does not provide a very accurate picture of variability because it only considers two values: the highest and lowest. A better approach is to examine how far each data value is from the mean. This distance from the mean is called a **deviation**. By looking at all the deviations together, we get a much more complete picture of how spread out the data are.
+
+### Variance and Standard Deviation
+
+To measure the overall spread of data, statisticians calculate the average of these squared deviations, which is called the **variance**. The variance gives us a single number that captures how dispersed the data values are from the mean. For a population, the variance is denoted by $\sigma^2$ (where $\sigma$ is the Greek letter sigma).
+
+The **population variance** is calculated using the formula:
+
+$$\sigma^2 = \frac{\sum\left(x-\mu \right)^2}{N}$$
+
+where $\mu$ is the population mean, $N$ is the population size, and $\sum$ means to sum all the squared deviations.
+
+While variance is mathematically useful, it has one drawback: it's measured in squared units. For example, if your data are heights measured in centimeters, the variance would be in square centimeters (cm $^2$), which is difficult to interpret. To solve this problem, we take the square root of the variance to get the **standard deviation**, denoted by $\sigma$ for a population.
+
+The **population standard deviation** is:
+
+$$\sigma =\sqrt{ \frac{\sum\left(x-\mu \right)^2}{N}}$$
+
+The standard deviation is measured in the same units as the original data, making it much easier to understand and communicate. If your data are in kilograms, the standard deviation is also in kilograms.
+
+### Sample Variance and Sample Standard Deviation
+
+Since we typically work with samples rather than entire populations, we need sample versions of these measures. The **sample variance**, denoted by $s^2$, is calculated similarly to the population variance but with one important difference: we divide by $n-1$ instead of $n$.
+
+The **sample variance** is:
+
+$$s^2=\frac{\sum\left(x-\bar{x}\right)^2}{n-1}$$
+
+where $\bar{x}$ is the sample mean and $n$ is the sample size.
+
+The reason we use $n-1$ instead of $n$ relates to a statistical concept called degrees of freedom. Using $n-1$ makes the sample variance a better estimate of the population variance. While the mathematical reasoning is complex, the practical result is that dividing by $n-1$ corrects for the bias that would occur if we divided by $n$.
+
+The **sample standard deviation** is simply the square root of the sample variance:
+
+$$s=\sqrt{ \frac{\sum\left(x-\bar{x}\right)^2}{n-1}}$$
+
+Like the population standard deviation, the sample standard deviation is measured in the same units as the original data.
+
+### Computing Variance and Standard Deviation
+
+While understanding these formulas is important, in practice you'll typically use technology (such as Rguroo or statistical software) to calculate variance and standard deviation. These tools handle the computations quickly and accurately, allowing you to focus on interpreting the results.
+
+::: {#exm-standard-deviation}
+## Calculating the Standard Deviation
 
 For the dataset [cats]{.data} (@tbl-Cats) find the variance and standard derivation for weight of cats. Then find the variance and standard deviation separated by sex of the cat.
+:::
 
-#### **Solution**
+ **Solution**
 
  When using Rguroo, you would perform the similar steps as described in calculation mean and median[here](#Calculating-summary-stats-in-Rguroo), and select [standard deviation]{.def} and [variance]{.def}, as shown in the figure @fig-sd-dialog.
 
@@ -726,25 +830,58 @@ df_stats(Bwt~Sex, data=cats, mean, var, sd)
 
 You can see that the mean weight of females cats is 2.36 kg, the variance is 0.075 $kg^2$, and the standard deviation is 0.27 kg. For males cats, the mean is 2.9 kg, the variance is 0.22 $kg^2$, and the standard deviation is 0.47 kg. This means that female cats weigh less than males and since the variance and standard deviations are much less for female cats than males cats, female cats' weights are more consistent than male cats.
 
-In general a "small" variance and standard deviation means the data is close together (more consistent) and a "large" variance and standard deviation means the data is spread out (less consistent). Sometimes you want consistent data and sometimes you don't. As an example if you are making bolts, you want the lengths to be very consistent so you want a small standard deviation. On the other hand, if you are administering a test to evaluate pilot ability, you want the test scores to show enough variability to distinguish strong candidates from weaker ones. If nearly everyone scores about the same, the standard deviation will be small and it will be difficult to tell who performs better. A larger standard deviation indicates that scores are more spread out, making it easier to differentiate between high-performing and low-performing candidates.
+
+<!-- In general a "small" variance and standard deviation means the data is close together (more consistent) and a "large" variance and standard deviation means the data is spread out (less consistent). Sometimes you want consistent data and sometimes you don't. As an example if you are making bolts, you want the lengths to be very consistent so you want a small standard deviation. On the other hand, if you are administering a test to evaluate pilot ability, you want the test scores to show enough variability to distinguish strong candidates from weaker ones. If nearly everyone scores about the same, the standard deviation will be small and it will be difficult to tell who performs better. A larger standard deviation indicates that scores are more spread out, making it easier to differentiate between high-performing and low-performing candidates.
 
 What do “small” and “large” standard deviation mean? To a bicyclist whose average speed is 20 mph, $s = 20$ mph is huge. To an airplane whose average speed is 500 mph, $s = 20$ mph is small. The “size” of the variation depends on the size of the numbers in the problem and the mean. Another situation where it makes sense to describe a standard deviation as small or large is when comparing two different samples, such as in [Example: Finding the Standard Deviation]. When two samples are measured on the same scale, the sample with the smaller standard deviation shows less spread in its data than the sample with the larger standard deviation.
 
-Many textbooks present an alternative computational formula for calculating the standard deviation. While this formula can be efficient for performing calculations, it does not provide much insight into what the standard deviation represents or how it is constructed. Historically, this computational formula was useful when standard deviations were calculated by hand, since it simplified the arithmetic. Today, however, computers perform these calculations quickly and accurately. For this reason, the computational formula is no longer necessary for routine work. To develop a clear understanding of what the standard deviation measures, it is better to focus on the definition-based formula. When a numerical answer is needed, using a computer is the most practical approach.
+Many textbooks present an alternative computational formula for calculating the standard deviation. While this formula can be efficient for performing calculations, it does not provide much insight into what the standard deviation represents or how it is constructed. Historically, this computational formula was useful when standard deviations were calculated by hand, since it simplified the arithmetic. Today, however, computers perform these calculations quickly and accurately. For this reason, the computational formula is no longer necessary for routine work. To develop a clear understanding of what the standard deviation measures, it is better to focus on the definition-based formula. When a numerical answer is needed, using a computer is the most practical approach. -->
+
+### Interpreting Variance and Standard Deviation
+
+In general, a "small" variance and standard deviation indicate that data values are close together and more consistent, while a "large" variance and standard deviation indicate that data values are spread out and less consistent. Whether you want high or low variability depends on the context.
+
+For example, if you're manufacturing bolts, you want the lengths to be very consistent. A small standard deviation means the bolts are nearly identical, which is ideal. On the other hand, if you're administering a test to evaluate pilot ability, you want the test scores to show enough variability to distinguish strong candidates from weaker ones. If nearly everyone scores about the same, the standard deviation will be small and it will be difficult to identify the best pilots. A larger standard deviation indicates that scores are more spread out, making it easier to differentiate between high-performing and low-performing candidates.
+
+### What Makes a Standard Deviation "Small" or "Large"?
+
+The meaning of "small" and "large" depends on the context and scale of your data. To a bicyclist whose average speed is 20 mph, a standard deviation of $s = 20$ mph is huge -- it would mean speeds vary wildly from nearly stopped to 40 mph. To an airplane whose average speed is 500 mph, a standard deviation of $s = 20$ mph is quite small, representing only minor variations in cruising speed. The "size" of the standard deviation must always be interpreted relative to the mean and the nature of what you're measuring.
+
+Standard deviations are also meaningful when comparing two samples measured on the same scale. For instance, in the previous [example](#exm-standard-deviation), the sample with the smaller standard deviation shows less spread in its data than the sample with the larger standard deviation.
+
+### A Note on Computational Formulas
+
+Many textbooks present an alternative computational formula for calculating the standard deviation. While this formula was historically useful for hand calculations because it simplified the arithmetic, it does not provide insight into what the standard deviation represents. Today, statistical software and calculators compute standard deviations quickly and accurately, making the computational formula unnecessary for routine work. For developing a clear understanding of what the standard deviation measures, the definition-based formula presented earlier is more instructive. In practice, you should use technology to obtain numerical answers.
 
 
-### **Use of Standard Deviation**
+### Using the Standard Deviation
 <!--
 One of the uses of the standard deviation is to describe how values are a population is distributed. This describes where much of the data is for most distributions. A general rule is that about 95% of the data is within 2 standard deviations of the mean. This is not perfect, but is works for many distributions. There are rules like the empirical rule and Chebyshev's theorem that give you more detailed percentages, but 95% in 2 standard deviations is a very good approximation.
 
 -->
-The standard deviation helps describe where the data tend to lie relative to the mean. When the data are symmetric and have most values clustered around a typical center, the empirical rule provides a helpful guideline. It says that about 68% of the data fall within one standard deviation of the mean, about 95% fall within two standard deviations, and about 99.7% fall within three standard deviations. These percentages are not exact, but they often give a reasonable picture of where most of the data lie.
 
-For data that are not symmetric, other rules can still be used. Chebyshev’s rule gives a minimum proportion of the data that must lie within a certain number of standard deviations of the mean, regardless of the overall shape of the distribution. The results from this rule are usually less precise than those from the empirical rule, but they apply to a much wider range of situations.
+The standard deviation helps describe where the data tend to lie relative to the mean. When the data are symmetric and have most values clustered around a typical center, the empirical rule provides a helpful guideline. It says that about 68% of the data fall within one standard deviation of the mean, about 95% fall within two standard deviations, and about 99.7% fall within three standard deviations. These percentages are not exact, but they often give a reasonable picture of where most of the data lie. @fig-empirical-rule shows how data is distributed according to the empirical rule for a symmetric, bell-shaped distribution.
 
-### Example: the general rule
+```{r, echo = FALSE}
+#| label: fig-empirical-rule
+#| fig-cap: "The Empirical Rule (68-95-99.7 Rule) showing the percentage of data within standard deviations of the mean for symmetric distributions"
+#| fig-alt: "Bell curve showing shaded regions for 68%, 95%, and 99.7% of data within 1, 2, and 3 standard deviations from the mean"
+knitr::include_graphics("images/empirical_rule.png")
+```
 
-In the dataset [Tornado_OK]{.data}, the U.S. Weather Service has provided information about the total monthly/annual number of reported tornadoes in Oklahoma for the years 1950 to 2018 (US Department of Commerce & Noaa, 2016). The first six rows of the dataset are shown in @tbl-Tornado.
+For data that are not symmetric, other rules can still be used. Chebyshev's rule gives a minimum proportion of the data that must lie within a certain number of standard deviations of the mean, regardless of the overall shape of the distribution. The results from this rule are usually less precise than those from the empirical rule, but they apply to a much wider range of situations. @fig-chebyshev-rule illustrates Chebyshev's rule, which guarantees at least 75% of data within 2 standard deviations and at least 89% within 3 standard deviations, regardless of distribution shape.
+
+```{r, echo = FALSE}
+#| label: fig-chebyshev-rule
+#| fig-cap: "Chebyshev's Rule showing minimum percentages of data within k standard deviations of the mean for any distribution"
+#| fig-alt: "Non-symmetric distribution showing shaded regions for at least 75% within 2 standard deviations and at least 89% within 3 standard deviations"
+knitr::include_graphics("images/chebyshev_rule.png")
+```
+
+::: {#exm-empirical-rule}
+## Using the Empirical Rule
+
+In the dataset [Tornado_OK]{.data}, the U.S. Weather Service has provided information about the total monthly/annual number of reported tornadoes in Oklahoma for the years 1950 to 2018 (US Department of Commerce & Noaa, 2016). The first six rows of the dataset are shown in @tbl-Tornado. Find the general interval that contains about 95% of the data.
 
 ```{r tornado-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Tornado dataset"
@@ -753,28 +890,27 @@ In the dataset [Tornado_OK]{.data}, the U.S. Weather Service has provided inform
 Tornado<-read.csv("https://krkozak.github.io/MAT160/Tornado_OK.csv") 
 knitr::kable(head(Tornado))
 ```
-
-**Code book for data frame Tornado**
+::: {#code-book-tornado .callout-tip .codebook collapse="true"}
+## Code book for Tornado Dataset
 
 **Description** The U.S. Weather Service has collected data on the monthly and annual number of tornadoes in Oklahoma.
 
 This data frame contains the following columns:
 
-Year: Year from 1950-2018
+[Year]{.var}: Year from 1950-2018
 
-Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec: Tornado numbers in each moth of the year
+[Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]{.var}: Tornado numbers in each moth of the year
 
-Annual: Total number of tornadoes for each year
+[Annual]{.var}: Total number of tornadoes for each year
 
-Source US Department of Commerce, & Noaa. (2016, November 15). 1950 Oklahoma Tornadoes. Retrieved from https://www.weather.gov/oun/tornadodata-ok-1950
+[Source](https://www.weather.gov/oun/tornadodata-ok-1950) US Department of Commerce, & Noaa. (2016, November 15). 1950 Oklahoma Tornadoes.
 
 References The data was supplied by The U.S. Weather Service
+:::
+:::
+**Solution**
 
-Find the general interval that contains about 95% of the data.
-
-#### **Solution**
-
-Import the [Torando_OK]{.data} dataset from the ??? repository into your Data toolbox on Rguroo.
+Import the [Torando_OK]{.data} dataset from the [Kozak]{.repo} repository into your Data toolbox on Rguroo.
 
 Variable: $x$ = number of **annual** tornadoes in Oklahoma
 
@@ -800,24 +936,51 @@ The mean is $\mu=56$ tornadoes and the standard deviation is $\sigma=27.6$ torna
 
 Therefore, we can say that about 95% of the years have between 0.8 or 1 and 111 tornadoes in Oklahoma.
 
-The general rule says that about 95% of the data is within two standard deviations of the mean. That percentage is fairly high. There isn't much data outside two standard deviations. A rule that can be followed is that if a data value is within two standard deviations, then that value is a common data value. If the data value is outside two standard deviations of the mean, either above or below, then the number is uncommon. It could even be called unusual. An easy calculation that you can do to figure it out is to find the difference between the data point and the mean, and then divide that answer by the standard deviation. The resulting value is called the z-value, and it has the formula
+
+<!-- The general rule says that about 95% of the data is within two standard deviations of the mean. That percentage is fairly high. There isn't much data outside two standard deviations. A rule that can be followed is that if a data value is within two standard deviations, then that value is a common data value. If the data value is outside two standard deviations of the mean, either above or below, then the number is uncommon. It could even be called unusual. An easy calculation that you can do to figure it out is to find the difference between the data point and the mean, and then divide that answer by the standard deviation. The resulting value is called the z-value, and it has the formula
 
 $z=\frac{x-\mu}{\sigma}$.
 
-If you don't know the population mean, $\mu$, and the population standard deviation, $\sigma$, then use the sample mean, $\bar{x}$, and the sample standard deviation, $s$, to estimate the population parameter values. Realize that using the sample standard deviation may not actually be very accurate.
+If you don't know the population mean, $\mu$, and the population standard deviation, $\sigma$, then use the sample mean, $\bar{x}$, and the sample standard deviation, $s$, to estimate the population parameter values. Realize that using the sample standard deviation may not actually be very accurate.-->
 
-### Example: Determining If a Value Is Unusual
+### Identifying Unusual Values with Standard Deviation
+
+The empirical rule tells us that about 95% of data in a symmetric distribution falls within two standard deviations of the mean. This means that data values outside this range are relatively rare -- they occur in only about 5% of cases. We can use this insight to classify data values as common or unusual:
+
+- **Common values**: Data values within two standard deviations of the mean (the middle 95%)
+- **Unusual values**: Data values more than two standard deviations away from the mean (the outer 5%)
+
+To determine whether a specific data value is common or unusual, we need to measure how many standard deviations it is from the mean. This standardized distance is called a **z-score** (or z-value), and it is calculated using the formula:
+
+$$z=\frac{x-\mu}{\sigma}$$
+
+where $x$ is the data value, $\mu$ is the population mean, and $\sigma$ is the population standard deviation.
+
+The z-score tells us how many standard deviations a data value is from the mean. For example, a z-score of 2.5 means the data value is 2.5 standard deviations above the mean, while a z-score of -1.8 means the data value is 1.8 standard deviations below the mean. Using our rule of thumb:
+
+- If $|z| \leq 2$ (z-score is between -2 and 2), the value is **common**
+- If $|z| > 2$ (z-score is less than -2 or greater than 2), the value is **unusual**
+
+In practice, we rarely know the true population parameters $\mu$ and $\sigma$. Instead, we use the sample mean $\bar{x}$ and sample standard deviation $s$ to estimate them:
+
+$$z=\frac{x-\bar{x}}{s}$$
+
+While this sample-based z-score provides a good approximation, keep in mind that it is an estimate and may be less accurate when working with small samples.
+
+::: {#exm-unusual-value}
+## Determining If a Value Is Unusual
 
 a.  In 1974, there were 45 tornadoes in Oklahoma. Is this value unusual? Why or why not?
 b.  In 1999, there were 145 tornadoes in the Oklahoma. Is this value unusual? Why or why not?
+:::
 
-#### **Solution**
+**Solution**
 
 a.  In 1974, there were 45 tornadoes in Oklahoma. Is this value unusual? Why or why not?
 
     Variable: $x$ = number of tornadoes in Oklahoma
 
-To answer this question, first find how many standard deviations 45 is from the mean. From [Example: the general rule], we know $\mu=56$ and $\sigma=27.6$. For $x$=45, $z=\frac{45-56}{27.6}=-0.399$
+To answer this question, first find how many standard deviations 45 is from the mean. From this [example](#exm-empirical-rule), we know $\mu=56$ and $\sigma=27.6$. For $x$=45, $z=\frac{45-56}{27.6}=-0.399$
 
 Since this value is between -2 and 2, then it is not unusual to have 45 tornadoes in a year in Oklahoma. The z value is negative, so that means that 45 is less than the mean number of tornadoes.
 
@@ -878,40 +1041,41 @@ Since this value is more than 2, then it is unusual to have only 145 tornadoes i
 Pulse<-read.csv("https://krkozak.github.io/MAT160/pulse.csv")
 knitr::kable(head(Pulse))
 ```
+::: {#code-book-pulse .callout-tip .codebook collapse="true"}
+## Code book for Pulse Dataset
 
-**Code book for data frame Pulse**
-
-Description Students in an introductory statistics class (MS212 taught by Professor John Eccleston and Dr Richard Wilson at The University of Queensland) participated in a simple experiment. The students took their own pulse rate. They were then asked to flip a coin. If the coin came up heads, they were to run in place for one minute. Otherwise they sat for one minute. Then everyone took their pulse again. The pulse rates and other physiological and lifestyle data are given in the data.
+**Description:** Students in an introductory statistics class (MS212 taught by Professor John Eccleston and Dr Richard Wilson at The University of Queensland) participated in a simple experiment. The students took their own pulse rate. They were then asked to flip a coin. If the coin came up heads, they were to run in place for one minute. Otherwise they sat for one minute. Then everyone took their pulse again. The pulse rates and other physiological and lifestyle data are given in the data.
 
 Five class groups between 1993 and 1998 participated in the experiment. The lecturer, Richard Wilson, was concerned that some students would choose the less strenuous option of sitting rather than running even if their coin came up heads, In the years 1995-1998 a different method of random assignment was used. In these years, data forms were handed out to the class before the experiment. The forms were pre-assigned to either running or non-running and there were an equal number of each. In 1995 and 1998 not all of the forms were returned so the numbers running and sitting was still not entirely controlled.
 
 This data frame contains the following columns:
 
-height: height of subject in cm
+[height]{.var}: height of subject in cm
 
-weight: weight of subject in kg
+[weight]{.var}: weight of subject in kg
 
-age: age of subject in years
+[age]{.var}: age of subject in years
 
-gender: sex of subject, male, female
+[gender]{.var}: sex of subject, male, female
 
-Smokes: whether a subject regularly smokes, yes means does smoke, no means does not smoke
+[Smokes]{.var}: whether a subject regularly smokes, yes means does smoke, no means does not smoke
 
-alcohol: whether a subject regularly drinks alcohol, yes means the person does, no means the person does not
+[alcohol]{.var}: whether a subject regularly drinks alcohol, yes means the person does, no means the person does not
 
-exercise: whether a subject exercises, low, moderate, high
+[exercise]{.var}: whether a subject exercises, low, moderate, high
 
-ran: whether a subject ran one minute between pulse measurements (ran) or sat between pulse measurement (sat)
+[ran]{.var}: whether a subject ran one minute between pulse measurements (ran) or sat between pulse measurement (sat)
 
-pulse_before: the pulse rate before a subject either ran or sat (bpm)
+[pulse_before]{.var}: the pulse rate before a subject either ran or sat (bpm)
 
-pulse_after: the pulse rate after a subject either ran or sat (bpm)
+[pulse_after]{.var}: the pulse rate after a subject either ran or sat (bpm)
 
-year: what year the data was collected (93-98)
+[year]{.var}: what year the data was collected (93-98)
 
-Source Pulse rates before and after exercise. (2013, September 25). Retrieved from [here](https://gksmyth.github.io/ozdasl/oz/ms212.html)
+[Source](https://gksmyth.github.io/ozdasl/oz/ms212.html) Pulse rates before and after exercise. (2013, September 25).
 
 References The data was supplied by Dr Richard J. Wilson, Department of Mathematics, University of Queensland.
+:::
 
 Create a data frame that contains only males, who drink alcohol, but do not smoke. Then compare the pulse before and the pulse after using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread. Create the new dataset and save as [pulse_males]{.data} by subsetting the [pulse]{.data} data using the steps described here. See @fig-subset-pulse for the Data Subset Dialog.
 
@@ -949,23 +1113,26 @@ Reiki<- read.csv( "https://krkozak.github.io/MAT160/reki.csv")
 knitr::kable(head(Reiki))
 ```
 
-**Code book for data frame Reiki**
+::: {#code-book-reiki .callout-tip .codebook collapse="true"}
+## Code book for Reiki Dataset
 
 **Description** The purpose of this study was to explore the usefulness of Reiki as an adjuvant to opioid therapy in the management of pain. Since no studies in this area could be found, a pilot study was carried out involving 20 volunteers experiencing pain at 55 sites for a variety of reasons, including cancer. All Reiki treatments were provided by a certified second-degree Reiki therapist. Pain was measured using both a visual analogue scale (VAS) and a Likert scale immediately before and after the Reiki treatment. Both instruments showed a highly significant (p \< 0.0001) reduction in pain following the Reiki treatment.
 
 This data frame contains the following columns:
 
-vas.before: pain measured using a visual analogue scale (VAS) before Reiki treatment
+[vas.before]{.var}: pain measured using a visual analogue scale (VAS) before Reiki treatment
 
-vas.after: pain measured using a visual analogue scale (VAS) after Reiki treatment
+[vas.after]{.var}: pain measured using a visual analogue scale (VAS) after Reiki treatment
 
-likert_before: pain measured using a likert before Reiki treatment
+[likert_before]{.var}: pain measured using a likert before Reiki treatment
 
-likert_after: pain measured using a likert after Reiki treatment
+[likert_after]{.var}: pain measured using a likert after Reiki treatment
 
-Source Olson, K., & Hanson, J. (1997). Using reiki to manage pain: a preliminary report. Cancer Prev Control, 1(2), 108-13. Retrieved from [here](http://www.ncbi.nlm.nih.gov/pubmed/9765732)
+[Source](http://www.ncbi.nlm.nih.gov/pubmed/9765732) Olson, K., & Hanson, J. (1997). Using reiki to manage pain: a preliminary report. Cancer Prev Control, 1(2), 108-13.
 
 References\*\* Using Reiki to manage pain: a preliminary report. Olson K1, Hanson J., Cancer Prev Control 1997, Jun; 1(2): 108-13.
+
+:::
 
 Since the data was collected both before and after the treatment for all of the units of observations, you want to look at the effect size of the treatment. You want to find the difference between before and after for the pain scale. First you must create a new data frame that adds a column for the difference in before and after. This data is known as paired data. To create the new column in a new data frame called Newreiki use the following steps
 
@@ -994,7 +1161,7 @@ Newreiki<-Reiki |>
 knitr::kable(head(Newreiki))
 ```
 
-Now find the mean and standard deviation of the vas.diff variable in Newreiki. Perform similar commands to create the likert.diff variable. Then find the mean and standard deviation for likert.diff, and compare and contrast the vas and likert methods for describing pain.
+Now find the mean and standard deviation of the [vas.diff]{.var} variable in [Newreiki]{.data}. Perform similar commands to create the [likert.diff]{.var} variable. Then find the mean and standard deviation for [likert.diff]{.var}, and compare and contrast the vas and likert methods for describing pain.
 
 8.  Yearly rainfall amounts (in millimeters) in Sydney, Australia, are in @tbl-Rainfall (Annual maximums of, 2013). a. Calculate the mean and standard deviation. b. Suppose Sydney, Australia received 300 mm of rainfall in a year. Would this be unusual?
 
@@ -1010,7 +1177,8 @@ Rainfall<-read.csv("https://krkozak.github.io/MAT160/rainfall.csv")
 knitr::kable(head(Rainfall))
 ```
 
-**Code book for data frame Rainfall**
+::: {#code-book-rainfall .callout-tip .codebook collapse="true"}
+## Code book for Rainfall Dataset
 
 **Description** Daily rainfall (in millimeters) was recorded over a 47-year period in Turramurra, Sydney, Australia. For each year, the wettest day was identified (that having the greatest rainfall). The data show the rainfall recorded for the 47 annual maxima.
 
@@ -1018,9 +1186,11 @@ This data frame contains the following columns:
 
 amount: daily rainfall (mm)
 
-Source Annual maximums of daily rainfall in Sydney. (2013, September 25). Retrieved from [here](https://gksmyth.github.io/ozdasl/oz/sydrain.html).
+[Source](https://gksmyth.github.io/ozdasl/oz/sydrain.html) Annual maximums of daily rainfall in Sydney. (2013, September 25).
 
 References Rayner J.C.W. and Best D.J. (1989) Smooth tests of goodness of fit. Oxford: Oxford University Press. Hand D.J., Daly F., Lunn A.D., McConway K.J., Ostrowski E. (1994). A Handbook of Small datasets. London: Chapman & Hall. dataset 157. Thanks to Jim Irish of the University of Technology, Sydney, for assistance in identifying the correct units for this data.
+
+:::
 
 ## Ranking
 
@@ -1028,12 +1198,15 @@ Along with the center and the variability, another useful numerical measure is t
 
 The $k^{th}$ **percentile** is the data value that has k% of the data at or below that value.
 
-### Example: Interpreting Percentile
+::: {#exm-interpreting-percentile}
+## Interpreting Percentile
 
 a.  What does a score of the $90^{th}$ percentile mean?
 b.  What does a score of the $70^{th}$ percentile mean?
 
-#### **Solution**
+:::
+
+**Solution**
 
 a.  What does a score of the $90^{th}$ percentile mean?
 
@@ -1043,19 +1216,38 @@ b.  What does a score of the $70^{th}$ percentile mean?
 
     This means that 70% of the scores were at or below this score.
 
-### Example: Percentile Versus Score
+::: {#exm-percentile-vs-score}
+## Percentile Versus Score
 
 If the test was out of 100 points and you scored at the $80^{th}$ percentile, what was your score on the test?
 
-#### **Solution**
+:::
+
+**Solution**
 
 You don't know! All you know is that you scored the same as or better than 80% of the people who took the test. If all the scores were really low, you could have still failed the test. On the other hand, if many of the scores were high you could have gotten a 95% or more.
 
-There are special percentiles called **quartiles**. Quartiles are numbers that divide the data into fourths. One fourth (or a quarter) of the data falls between consecutive quartiles.
+<!--There are special percentiles called **quartiles**. Quartiles are numbers that divide the data into fourths. One fourth (or a quarter) of the data falls between consecutive quartiles.
 
 ### **To find the quartiles**:
 
-To find the quartiles in Rguroo, you use the same steps as finding the mean, standard deviation, and variation in Summary Stasitic as described [here](#Calculating-summary-stats-in-Rguroo).
+To find the quartiles in Rguroo, you use the same steps as finding the mean, standard deviation, and variation in Summary Stasitic as described [here](#Calculating-summary-stats-in-Rguroo). -->
+
+### Quartiles: Dividing Data into Fourths
+
+While the median divides a dataset into two equal halves, we can also divide data into four equal parts using **quartiles**. Quartiles are special percentiles that split the data into fourths, with one quarter (25%) of the data falling between each consecutive quartile. Just as the median helps us understand the center of the data, quartiles help us understand how the data is distributed across its entire range.
+
+There are three quartiles that divide the data into four equal groups:
+
+- **First quartile (Q1)**: 25% of the data falls below this value
+- **Second quartile (Q2)**: 50% of the data falls below this value (this is the median)
+- **Third quartile (Q3)**: 75% of the data falls below this value
+
+Together, these quartiles give us a more complete picture of the data's distribution than the median alone.
+
+**Finding Quartiles in Rguroo**
+
+To find the quartiles in Rguroo, you use the same steps as finding the mean, standard deviation, and variation in Summary Statistic as described [here](#Calculating-summary-stats-in-Rguroo). In the Statistics section of the dialog, simply select the checkboxes for Q1, Q2 (Median), and Q3.
 
 <!-- df_stats(\~variable, data=data_frame, summary) -->
 
@@ -1068,7 +1260,7 @@ To find the quartiles in Rguroo, you use the same steps as finding the mean, sta
 knitr::include_graphics("Rguroo_dialogs/Numerical_description/quartiles_dialog.png")
 ```
 
-If you record the quartiles together with the maximum and minimum you have five numbers. This is known as the five-number summary. The five-number summary consists of the minimum, the first quartile ($Q1$), the median, the third quartile ($Q3$), and the maximum (in that order).
+<!-- If you record the quartiles together with the maximum and minimum you have five numbers. This is known as the five-number summary. The five-number summary consists of the minimum, the first quartile ($Q1$), the median, the third quartile ($Q3$), and the maximum (in that order).
 
 The interquartile range, $IQR$, is the difference between the first and third quartiles, $Q1$ and $Q3$. Half of the data (50%) falls in the interquartile range. If the $IQR$ is "large" the data is spread out and if the $IQR$ is "small" the data is closer together.
 
@@ -1082,13 +1274,95 @@ A boxplot (or box-and-whisker plot) is a graphical display of the five-number su
 
 An alternate form of a boxplot, known as a modified boxplot, shortens the whiskers so that the left whisker extends only to the smallest value greater than the **lower fence** and the right whisker extends only to the largest value less than the **upper fence**. Any values beyond these fences are considered outliers and are shown separately using markers such as dots, circles, or asterisks.
 
-If the data are **symmetrical**, then the box plot will be visibly symmetrical around the median line. If the distribution is skewed to the left or to the right, the whisker on the skewed side will tend to be longer, and the median will be shifted away from the center of the box in the opposite direction. <!-- THIS IS NOT TRUE SINCE THIS CAN HAPPEN FOR NON_UNIFORM DISTRIBUTIONS If the plot is symmetrical, and the four quartiles are all about the same length, then the data are likely a near **uniform** distribution. --> If a boxplot is symmetrical and the whiskers are noticeably longer than the distances from $Q_1$ to the median and from the median to $Q_3$, the distribution may be bell-shaped, with more data concentrated near the center and thinner tails. However, this pattern alone is not sufficient to conclude that the distribution is bell-shaped.
+If the data are **symmetrical**, then the box plot will be visibly symmetrical around the median line. If the distribution is skewed to the left or to the right, the whisker on the skewed side will tend to be longer, and the median will be shifted away from the center of the box in the opposite direction.THIS IS NOT TRUE SINCE THIS CAN HAPPEN FOR NON_UNIFORM DISTRIBUTIONS If the plot is symmetrical, and the four quartiles are all about the same length, then the data are likely a near **uniform** distribution. --> 
+<!-- If a boxplot is symmetrical and the whiskers are noticeably longer than the distances from $Q_1$ to the median and from the median to $Q_3$, the distribution may be bell-shaped, with more data concentrated near the center and thinner tails. However, this pattern alone is not sufficient to conclude that the distribution is bell-shaped. -->
 
-### Example: Five-number Summary and Boxplot
+### The Five-Number Summary
 
-Find the five-number summary, the interquartile range (\*IQR\*), and draw a box-and-whiskers plot for the weight of cats @tbl-Cats.
+To get a comprehensive picture of how data is distributed, statisticians often use the **five-number summary**, which consists of five key values arranged in order:
 
-#### **Solution**
+1. **Minimum**: The smallest value in the dataset
+2. **First quartile (Q1)**: The value below which 25% of the data falls
+3. **Median (Q2)**: The middle value that splits the data into 50% below and above
+4. **Third quartile (Q3)**: The value below which 75% of the data falls
+5. **Maximum**: The largest value in the dataset
+
+Together, these five numbers give us a complete snapshot of the data's spread from lowest to highest.
+
+### Interquartile Range (IQR)
+
+The **interquartile range (IQR)** measures the spread of the middle 50% of the data. It is calculated as:
+
+$$IQR = Q_3 - Q_1$$
+
+The IQR tells us how spread out the central portion of the data is. A large IQR indicates that the middle half of the data is widely spread, while a small IQR suggests the data is more tightly clustered around the median. Because the IQR focuses on the middle 50% of the data, it is not affected by extreme values, making it a robust measure of spread.
+
+### Identifying Outliers Using the IQR
+
+The IQR can also help us identify **outliers** -- data values that are unusually far from the rest of the data. To do this, we create boundaries called **fences**:
+
+- **Lower fence** = $Q_1 - 1.5 \times IQR$
+- **Upper fence** = $Q_3 + 1.5 \times IQR$
+
+Any data value below the lower fence or above the upper fence is considered a potential outlier. These values are far enough from the bulk of the data that they warrant special attention, as they may represent unusual observations, measurement errors, or genuinely exceptional cases.
+
+### Boxplots: Visualizing the Five-Number Summary
+
+A **boxplot** (also called a box-and-whisker plot) provides a visual representation of the five-number summary and makes it easy to see the distribution of data at a glance. Here's how to read a boxplot:
+
+**Basic boxplot structure:**
+- A rectangular **box** extends from Q1 to Q3, containing the middle 50% of the data
+- A line inside the box marks the **median**
+- **Whiskers** (lines) extend from the box to the minimum and maximum values
+- The horizontal axis shows the scale of the variable being measured
+
+**Modified boxplot (more common):**
+In a modified boxplot, the whiskers are shortened to show only the data within the fences:
+- The left whisker extends to the smallest value that is still above the lower fence
+- The right whisker extends to the largest value that is still below the upper fence
+- **Outliers** beyond the fences are shown as individual points (dots, circles, or asterisks)
+
+This modified version makes it easier to spot outliers and see the typical range of the data.
+
+### Interpreting Shape from Boxplots
+
+Boxplots also reveal information about the shape of the distribution. @fig-boxplot-comparison illustrates how different distribution shapes appear in boxplots.
+
+```{r,echo=FALSE}
+#| fig-alt: "example of skewed right, symmetric, and skewed left boxplots"
+#| warning: FALSE
+#| label: fig-boxplot-comparison
+#| fig-cap: "Comparing Shapes of Boxplots"
+#| fig-subcap: 
+#|  - "Boxplots showing three distribution shapes"
+#|  - "Corresponding histograms for comparison"
+#| out-width: "70%"
+knitr::include_graphics(c("images/boxplot_comparison.png","images/boxplot_histogram_comparison.png"))
+```
+
+**Symmetric distribution:**
+- The box appears balanced around the median
+- Both whiskers are approximately the same length
+- The median line is near the center of the box
+
+**Skewed left:**
+- The left whisker is noticeably longer than the right
+- The median is shifted toward the right side of the box (toward Q3)
+
+**Skewed right:**
+- The right whisker is noticeably longer than the left
+- The median is shifted toward the left side of the box (toward Q1)
+
+If a boxplot is symmetric with long whiskers relative to the size of the box, the distribution may have a bell shape with data concentrated near the center and thin tails. However, a symmetric boxplot alone is not sufficient to confirm a bell-shaped distribution.
+
+::: {#exm-fivenumbersummary-boxplots}
+## Five-number Summary and Boxplot
+
+Find the five-number summary, the interquartile range ($IQR$), and draw a box-and-whiskers plot for the weight of cats @tbl-Cats.
+
+:::
+
+**Solution**
 
 Variable: $x$ = weight of cats
 
@@ -1153,17 +1427,20 @@ This is a modified boxplot which shows the outliers in the data.
 
 There are no outliers since there are no dots outside of the fences.
 
-### Example: Separating based on a factor
+::: {#exm-boxplots-factor}
+## Separating based on a factor
 
 Find the five-number summary of the weights of cats separated by the sex of the cat. Then create a box plot of the weights of cats for each sex of the cat.
 
-#### **Solution**
+:::
+
+**Solution**
 
 Variable: $x_1$ = weight of female cat
 
 Variable: $x_2$ = weight of male cat
 
-The five-number summary separated based on gender can be found in a similar way to [Example: Five-number Summary and Boxplot]:
+The five-number summary separated based on gender can be found in a similar way as in the previous [example](#exm-fivenumbersummary-boxplots):
 
 ```{r statistics-cats2-sex, echo = FALSE, eval = FALSE}
 df_stats(~Bwt|Sex, data=cats, summary)
@@ -1205,7 +1482,8 @@ gf_boxplot(~Bwt|Sex, data=cats, title="Weights of Cats", xlab="Body Weight in (k
 
 Notice that the weights of female cats has a median less than male cats, and in fact it can be seen that the $Q1$ to $Q3$ of the female cats is less than the $Q1$ to $Q3$ of the male cats.
 
-### Example: Putting it all together
+::: {#exm-putting-it-together}
+## Putting it all together
 
 The time (in 1/50 seconds) between successive pulses along a nerve fiber ("Time between nerve," 2013) are given in @tbl-Nerve.
 
@@ -1217,7 +1495,8 @@ Nerve<-read.csv( "https://krkozak.github.io/MAT160/Nerve_pulse.csv")
 knitr::kable(head(Nerve))
 ```
 
-**Code book for data frame Nerve**
+::: {#code-book-nerve .callout-tip .codebook collapse="true"}
+## Code book for Nerve Dataset
 
 **Description** The data gives the time between 800 successive pulses along a nerve fiber. There are 799 observations rounded to the nearest half in units of 1/50 second.
 
@@ -1225,7 +1504,7 @@ This data frame contains the following columns:
 
 time: time between successive Pulses along a nerve fiber, 1/50 second.
 
-Source Time between nerve pulses. (2019, July 3). Retrieved from here (https://gksmyth.github.io/ozdasl/general/nerve.html)
+[Source](https://gksmyth.github.io/ozdasl/general/nerve.html) Time between nerve pulses. (2019, July 3).
 
 References Fatt, P., and Katz, B. (1952). Spontaneous subthreshold activity at motor nerve endings. Journal of Physiology 117, 109-128.
 
@@ -1233,7 +1512,11 @@ Cox, D. R., and Lewis, P. A. W. (1966). The Statistical Analysis of Series of Ev
 
 Jorgensen, B. (1982). The Generalized Inverse-Gaussian Distribution. Springer-Verlag.
 
-#### **Solution**
+:::
+
+:::
+
+**Solution**
 
 **Before you begin:** Make sure you have already imported the [nerve]{.data} dataset into your **Data** Toolbox, located in the [Statistics Using Technology - Kozak]{.repo}.
 
@@ -1312,7 +1595,7 @@ The boxplot reveals multiple high outliers. The median shows a typical pulse int
 
 ### Homework for Ranking Section
 
-**Use Technology on all problems. State the variable on all problems.**
+**Use Rguroo on all problems. State the variable on all problems.**
 
 1.  Suppose you take a standardized test and you are in the $10^{th}$ percentile. What does this percentile mean? Can you say that you failed the test? Explain.
 
