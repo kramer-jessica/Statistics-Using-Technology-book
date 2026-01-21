@@ -52,3 +52,34 @@
 }{%
   \end{qcalloutbox}
 }
+
+% --- Example / Solution environments (for filters/example-solution.lua) ---
+\usepackage{xparse}
+
+% Choose chapter-based numbering when chapters exist, otherwise section-based.
+\makeatletter
+\@ifundefined{c@chapter}{%
+  \newcounter{example}[section]
+  \renewcommand{\theexample}{\thesection.\arabic{example}}
+}{%
+  \newcounter{example}[chapter]
+  \renewcommand{\theexample}{\thechapter.\arabic{example}}
+}
+\makeatother
+
+% \begin{Example}{<id>}[<optional title>] ... \end{Example}
+\NewDocumentEnvironment{Example}{ m o }{%
+  \refstepcounter{example}%
+  \label{#1}%
+  \begin{qcalloutbox}{Example~\theexample\IfValueT{#2}{: #2}}%
+}{%
+  \end{qcalloutbox}%
+}
+
+% \begin{Solution}{<id>} ... \end{Solution}
+\NewDocumentEnvironment{Solution}{ m }{%
+  \begin{qcalloutbox}{Solution to Example~\ref{#1}}%
+}{%
+  \end{qcalloutbox}%
+}
+

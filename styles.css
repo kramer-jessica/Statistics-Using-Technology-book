@@ -5,49 +5,123 @@
 
 /* ---------- General Focus & Accessibility ---------- */
 :focus {
-  outline: 3px solid #56B4E9; /* Sky blue */
+  outline: 3px solid #56B4E9;
+  /* Sky blue */
   outline-offset: 2px;
 }
-a { text-decoration: underline; }
-a:focus, a:hover { text-decoration-thickness: 2px; }
+
+a {
+  text-decoration: underline;
+}
+
+a:focus,
+a:hover {
+  text-decoration-thickness: 2px;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
+
 @media (prefers-contrast: more) {
-  .step { border-color: #0072B2; }
+  .step {
+    border-color: #0072B2;
+  }
 }
+
 @media (forced-colors: active) {
-  .step { background: Canvas; border-color: CanvasText; }
-  :focus { outline: 2px solid Highlight; }
+  .step {
+    background: Canvas;
+    border-color: CanvasText;
+  }
+
+  :focus {
+    outline: 2px solid Highlight;
+  }
 }
+
 @media print {
-  .step { background: #fff; border-color: #000; }
+  .step {
+    background: #fff;
+    border-color: #000;
+  }
 }
 
 /* ---------- Macro Classes (inline styling) ---------- */
 /* Okabe–Ito palette:
    Blue #0072B2, Sky Blue #56B4E9, Bluish Green #009E73,
    Orange #E69F00, Vermillion #D55E00, Reddish Purple #CC79A7, Black #000000 */
-.var   { color:#0072B2; font-style:italic; }           /* Variables */
-.def   { color:#CC79A7; font-style:italic; }           /* Defined terms */
-.des   { color:#E69F00; }                              /* Descriptors / UI labels */
-.data  { color:#56B4E9; font-style:italic; }           /* Datasets */
-.dpd   { color:#009E73; font-style:italic; }           /* Dropdown selections */
-.fun   { color:#D55E00; font-style:italic; }           /* Functions */
-.dialog{ color:#0072B2; font-weight:700; }             /* Dialog names */
-.repo  { color:#009E73; font-weight:700; font-style:italic; } /* Repositories */
-.ans   { color:#000000; font-weight:700; }             /* Answers */
+.var {
+  color: #0072B2;
+  font-style: italic;
+}
+
+/* Variables */
+.def {
+  color: #CC79A7;
+  font-style: italic;
+}
+
+/* Defined terms */
+.des {
+  color: #E69F00;
+}
+
+/* Descriptors / UI labels */
+.data {
+  color: #56B4E9;
+  font-style: italic;
+}
+
+/* Datasets */
+.dpd {
+  color: #009E73;
+  font-style: italic;
+}
+
+/* Dropdown selections */
+.fun {
+  color: #D55E00;
+  font-style: italic;
+}
+
+/* Functions */
+.dialog {
+  color: #0072B2;
+  font-weight: 700;
+}
+
+/* Dialog names */
+.repo {
+  color: #009E73;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Repositories */
+.ans {
+  color: #000000;
+  font-weight: 700;
+}
+
+/* Answers */
 
 /* Text typed into a textbox or input field (light blue + black text) */
 .typein {
-  color: #000000;                /* pure black for maximum contrast */
+  color: #000000;
+  /* pure black for maximum contrast */
   font-family: "Courier New", "Lucida Console", monospace;
-  font-weight: 500;              /* medium weight — readable but not heavy */
-  background-color: #FAFCFF;     /* extremely light blue background */
+  font-weight: 500;
+  /* medium weight — readable but not heavy */
+  background-color: #FAFCFF;
+  /* extremely light blue background */
   padding: 2px 6px;
   border-radius: 4px;
-  border: 1px solid #E3F0FF;     /* subtle blue-gray border */
+  border: 1px solid #E3F0FF;
+  /* subtle blue-gray border */
 }
 
 /* Inline button (very light gray, subtle, color-blind friendly) */
@@ -59,17 +133,22 @@ a:focus, a:hover { text-decoration-thickness: 2px; }
   font-weight: 500;
   padding: 2px 6px;
   border-radius: 6px;
-  background-color: #F5F5F5;    /* very light gray background */
-  color: #333333;               /* dark gray text */
-  border: 1px solid #D0D0D0;    /* subtle soft-gray border */
+  background-color: #F5F5F5;
+  /* very light gray background */
+  color: #333333;
+  /* dark gray text */
+  border: 1px solid #D0D0D0;
+  /* subtle soft-gray border */
   text-decoration: none;
 }
 
 .button:hover,
 .button:focus {
-  background-color: #E8E8E8;    /* slightly darker on hover */
+  background-color: #E8E8E8;
+  /* slightly darker on hover */
   color: #1A1A1A;
-  outline: 2px solid #56B4E9;   /* visible focus outline (sky blue) */
+  outline: 2px solid #56B4E9;
+  /* visible focus outline (sky blue) */
   outline-offset: 1px;
 }
 
@@ -79,8 +158,11 @@ a:focus, a:hover { text-decoration-thickness: 2px; }
 
 /* High-contrast / forced-color adjustments */
 @media (prefers-contrast: more) {
-  .button { border-width: 2px; }
+  .button {
+    border-width: 2px;
+  }
 }
+
 @media (forced-colors: active) {
   .button {
     forced-color-adjust: auto;
@@ -92,19 +174,27 @@ a:focus, a:hover { text-decoration-thickness: 2px; }
 
 /* ---------- Step Box (HTML) ---------- */
 .step {
-  background-color: #F5FAFF;   /* very light sky */
-  border: 2px solid #B3D7FF;   /* sky border */
+  background-color: #F5FAFF;
+  /* very light sky */
+  border: 2px solid #B3D7FF;
+  /* sky border */
   padding: 1rem;
   border-radius: 10px;
   margin: 1rem 0;
 }
+
 /* Allow keyboard focus on step boxes */
-.step:focus { outline: 3px solid #56B4E9; }
+.step:focus {
+  outline: 3px solid #56B4E9;
+}
+
 .step .step-title {
   margin-top: 0;
   font-weight: 700;
-  color: #0072B2; /* blue */
+  color: #0072B2;
+  /* blue */
 }
+
 /* Keep images tidy inside step boxes */
 .step img {
   display: block;
@@ -116,13 +206,20 @@ a:focus, a:hover { text-decoration-thickness: 2px; }
 
 /* ---------- Figures & Captions ---------- */
 /* Quarto emits <figure class="figure"> with <figcaption class="figure-caption"> */
-.figure, figure { text-align: center; }
-.figure-caption, figcaption {
+.figure,
+figure {
+  text-align: center;
+}
+
+.figure-caption,
+figcaption {
   text-align: center;
   font-style: italic;
 }
+
 /* Ensure images in Quarto figure wrappers don’t overflow */
-.quarto-figure img, figure img {
+.quarto-figure img,
+figure img {
   display: block;
   margin: .5rem auto;
   max-width: 100%;
@@ -133,8 +230,10 @@ a:focus, a:hover { text-decoration-thickness: 2px; }
 /* Light gray background with navy border for all callouts */
 .callout,
 .callout .callout-content {
-  background-color: #FBFBFB !important;   /* very light gray */
-  border: 2px solid #3286dbff !important; /* navy-ish border */
+  background-color: #FBFBFB !important;
+  /* very light gray */
+  border: 2px solid #3286dbff !important;
+  /* navy-ish border */
   border-radius: 8px !important;
   padding: 0.75em 1em;
 }
@@ -148,14 +247,17 @@ a:focus, a:hover { text-decoration-thickness: 2px; }
 /* ---------- Specific Callout Types ---------- */
 /* Nested TIP callouts (if you use a tip inside another callout) */
 .callout .callout-tip .callout-content {
-  border-color: #E69F00 !important; /* orange */
+  border-color: #E69F00 !important;
+  /* orange */
 }
 
 /* Inner callouts with custom border (add .inner-callout in QMD) */
 .callout.inner-callout,
 .callout.inner-callout .callout-content {
-  border: 2px solid #f6bc5fff !important;   /* reddish purple border */
-  background-color: #f2f5f6ff !important;   /* very light pink/purple tint */
+  border: 2px solid #f6bc5fff !important;
+  /* reddish purple border */
+  background-color: #f2f5f6ff !important;
+  /* very light pink/purple tint */
 }
 
 /* ---------- Embedded Rguroo HTML output (iframe) ---------- */
@@ -171,9 +273,11 @@ a:focus, a:hover { text-decoration-thickness: 2px; }
 /* Make the iframe fill the box nicely */
 .rg-iframe {
   width: 100%;
-  height: 600px; /* adjust as you like */
+  height: 600px;
+  /* adjust as you like */
   border: none;
 }
+
 /* ---------- Dataset Box ---------- */
 .datasetbox {
   text-align: center;
@@ -183,4 +287,40 @@ a:focus, a:hover { text-decoration-thickness: 2px; }
   padding: 15px;
   background-color: #F8FAFC;
   /* light gray-blue */
+}
+
+/* put theorem title on its own line */
+.theorem.example .theorem-title {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+/* Style the Example block container */
+.theorem.example {
+  border: 1px solid #bfbfbf;
+  border-left: 4px solid #4f6fad;
+  background-color: #f8f9fc;
+  padding: 1em 1.25em;
+  margin: 1.5em 0;
+  border-radius: 4px;
+}
+
+/* Title styling */
+.theorem.example .theorem-title {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.75em;
+}
+
+/* Body spacing */
+.theorem.example .theorem-body {
+  margin-top: 0.5em;
+}
+
+/* Codebook callout: override the global callout !important styles */
+.callout.callout-tip.codebook,
+.callout.callout-tip.codebook .callout-content {
+  border: 2px solid #129985ff !important;
+  border-left: 2px solid #129985ff !important;
+  background-color: #f8f9fc !important;
 }
