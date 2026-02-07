@@ -113,7 +113,7 @@ Kozak, 2019
 2. Open the [Analysis]{.dpd} dropdown, and select [Tabulation]{.fun} and [Categorical]{.fun}. This opens the Data Tabulation dialog.  
 3. In the Data Tabulation dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.  
 4. Choose the [vehicle]{.var} variable from the [Factor 1]{.dpd} dropdown.  For frequency, select counts. For realtive frequency, select proportions.    
-5. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the frequecy distribution.
+5. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the frequency distribution.
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
 
@@ -190,7 +190,7 @@ Use the [class_survey1]{.data} to create a bar chart of vehicle type by gender.
 
 **Solution**
 
-Click to expand the box below see how to create the bar graph for vehicle type disaggreagated by gender.
+Click to expand the box below see how to create the bar graph for vehicle type disaggregated by gender.
 
 :::: {#Creating-Bar-Graph-of-Vehicle-Gender-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Bar Graph of Vehicle Type and Gender in Rguroo"}
 
@@ -262,11 +262,11 @@ Click to expand the box below see how to create the relative frequency bar graph
 knitr::include_graphics("Rguroo_outputs/Graphical_Description_of_Data/barplot_rel_freq_vehicle_2.svg")
 ```
 
-Description of @fig-class_data_dot-car is a realtive frequency bar graph of vehicles showing the vehicle types on the horizontal axis and proportions (relative frequency) on the vertical axis.
+Description of @fig-class_data_dot-car is a relative frequency bar graph of vehicles showing the vehicle types on the horizontal axis and proportions (relative frequency) on the vertical axis.
 
 Notice that a frequency bar graph and relative frequency bar graph give you similar information.
 
-Another type of graph that is also useful for qualitative data is a pie chart. A pie chart is a circular graph where each slice represents a percentage of the whole, proportional to the numerical value it represents. Pie charts aloow for easy visualization of how each part contrinbutes to the whole.
+Another type of graph that is also useful for qualitative data is a pie chart. A pie chart is a circular graph where each slice represents a percentage of the whole, proportional to the numerical value it represents. Pie charts allow for easy visualization of how each part contributes to the whole.
 
 ::: {#exm-drawing-a-pie-chart}
 ## Drawing a Pie Chart for Vehicle Type
@@ -315,7 +315,7 @@ Description of @fig-class_data_point is a pie chart of type of vehicles owned by
 gf_jitter(vehicle~gender, data=Class, title="Cars driving by students in statistics class", xlab="Gender", ylab="Vehicle")
 ```
 
-There are many other types of graphs that can be used on qualitative data. There are spreadsheet software packages that will create most of them, and it is better to look at them to see how to create them. It depends on your data as to which may be useful, but the frequecy bar graph, relative frequency bar graph, and pie chart are the most useful.
+There are many other types of graphs that can be used on qualitative data. There are spreadsheet software packages that will create most of them, and it is better to look at them to see how to create them. It depends on your data as to which may be useful, but the frequency bar graph, relative frequency bar graph, and pie chart are the most useful.
 
 ### Homework for Qualitative Data Section
 
@@ -438,11 +438,11 @@ knitr::kable(head(NHANES))
 
 As with qualitative data, it is also advantageous to organize quantitative data since the long list of raw data is usually long and does not provide insight into the sample or population.
 
-Frequency and relative frequecy distributions can also be used on quantitative data, where the categories are numerical values that occur in the data with their corresponding frequency counts or proportions.  However, most dataset values are varied where there are too many different data values and a regular frequency or relative frequeny distribution would be meaningless.
+Frequency and relative frequency distributions can also be used on quantitative data, where the categories are numerical values that occur in the data with their corresponding frequency counts or proportions.  However, most dataset values are varied where there are too many different data values and a regular frequency or relative frequeny distribution would be meaningless.
 
 For quantitative data that is largely spread, we can group the data values into classes, also known as binning. When you group data into classes/bins, you create a **grouped frequency distribution**.
 
-Lower and upper class limits define the boundaries of each class in a grouped frequency distribution. The **lower class limit** is the smallest value that can belong to a class, while the **upper class limit** is the largest value that can belong to that same class. Together, these limits specify exactly which data values fall into each interval. Most of the time, classes are displayed using interval notation.  For example, suppose we wanted to group the ages of students into a group from 20-25.  This could be displayed using interval notation, [20,25). This interval would capture every student whos age is 20 to 25 years, including 20 years old, but not 25 years old. These limits keep the classes organized, prevent overlap, and ensure every data point has a clear place within the distribution.
+Lower and upper class limits define the boundaries of each class in a grouped frequency distribution. The **lower class limit** is the smallest value that can belong to a class, while the **upper class limit** is the largest value that can belong to that same class. Together, these limits specify exactly which data values fall into each interval. Most of the time, classes are displayed using interval notation.  For example, suppose we wanted to group the ages of students into a group from 20-25.  This could be displayed using interval notation, [20,25). This interval would capture every student whose age is 20 to 25 years, including 20 years old, but not 25 years old. These limits keep the classes organized, prevent overlap, and ensure every data point has a clear place within the distribution.
 
 Each class has a **class width**, the size of the class (or the number of values within each class).  If you have a grouped frequency distribution, the class width can be determined by subtracting two consecutive lower class limits.  
 
@@ -467,7 +467,7 @@ Click to expand the box below see how to create a grouped frequency distribution
 2. Open the [Analysis]{.dpd} dropdown, and select [Tabulation]{.fun} and [Numerical (Binning)]{.fun}. This opens the Binning dialog.  
 3. In the Binning dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.  
 4. Choose the [distance_campus]{.var} variable from the [Factor 1]{.dpd} dropdown.  **Note:** For frequency, select counts. For realtive frequency, select proportions.    
-5. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the frequecy distribution.
+5. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the frequency distribution.
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
 
@@ -521,7 +521,6 @@ Click to expand the box below see how to create a histogram for distance to camp
 :::
 ::::
 
-::::
 ```{r distance-campus-hist-cap,echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
 #| warning: FALSE
@@ -577,7 +576,7 @@ An **outlier** is a data value that is far from the rest of the values. It may b
 
 ### Shapes of the distribution:
 
-When you look at a distribution, look at the basic shape. There are some basic shapes that are seen in histograms. Realize though that some distributions have no shape. The common shapes are bell-shape, skewed, and uniform. Another interest is how many peaks a graph may have. This is known as modal.
+When you look at a distribution, look at the basic shape. There are some basic shapes that are seen in histograms. Realize though that some distributions have no shape. The common shapes are bell-shape, skewed (right or left), and uniform. Another interest is how many peaks a graph may have. This is known as modal.
 
 Bell-shape means that you can fold the graph in half down the middle and the two sides will line up. You can think of the two sides as being mirror images of each other. Skewed means one "tail" of the graph is longer than the other. The graph is skewed in the direction of the longer tail (backwards from what you would expect). A uniform graph has all the bars the same height.
 
@@ -611,7 +610,7 @@ This graph is skewed to the right:
 
 ![Skewed Right Graph](Rguroo_outputs/Graphical_Description_of_Data/skewed_right.png){width=60% fig-alt="small bars on right"}
 
-A skewed right histogram has most of its highest bars on the left side, with the heights tapering off gradually as you move to the right. The bulk of the data forms a tall block on the left, while a long, stretched‑out tail extends as you move right.The most frequently occuring data sits closer to the left, and the right tail is noticeably longer and thinner than the left.
+A skewed right histogram has most of its highest bars on the left side, with the heights tapering off gradually as you move to the right. The bulk of the data forms a tall block on the left, while a long, stretched‑out tail extends as you move right.The most frequently occurring data sits closer to the left, and the right tail is noticeably longer and thinner than the left.
 
 **Graph: Skewed Left Distribution**
 
@@ -619,7 +618,7 @@ This graph is skewed to the left:
 
 ![Skewed Left Graph](Rguroo_outputs/Graphical_Description_of_Data/skewed_left2.png){width=60% fig-alt="small bars on left"}
 
-A skewed left histogram has most of its highest bars on the right side, with the heights tapering off gradually as you move to the left. The bulk of the data forms a tall block on the right, while a long, stretched‑out tail extends as you move left.The most frequently occuring data sits closer to the right, and the left tail is noticeably longer and thinner than the left.
+A skewed left histogram has most of its highest bars on the right side, with the heights tapering off gradually as you move to the left. The bulk of the data forms a tall block on the right, while a long, stretched‑out tail extends as you move left.The most frequently occurring data sits closer to the right, and the left tail is noticeably longer and thinner than the left.
 
 **Uniform Distribution**
 
@@ -719,7 +718,7 @@ Click to expand the box below see how to create a density plot of instate tuitio
 knitr::include_graphics("Rguroo_outputs/Graphical_Description_of_Data/density_tuition_instate_2.svg")
 ```
 
-This denisty plot of instate tuition shows the highest peak on left, then a dip and up to a smaller peak in the middle that is lower than the left peak. Then the bar heights gradually decrease as you move to the right. Due to the characteristics of the graph, the distribution is skewed right.
+This density plot of instate tuition shows the highest peak on left, then a dip and up to a smaller peak in the middle that is lower than the left peak. Then the bar heights gradually decrease as you move to the right. Due to the characteristics of the graph, the distribution is skewed right.
 
 Click to expand the box below see how to create a density plot of instate tuition by type of institution.
 
@@ -746,7 +745,7 @@ Click to expand the box below see how to create a density plot of instate tuitio
 #| fig-alt: "See the description of the graph below the graph"
 #| warning: FALSE
 #| label: fig-tuition_data_density
-#| fig-cap: "Instate Tuition at all Four Year institions"
+#| fig-cap: "Instate Tuition at all Four Year institutions"
 knitr::include_graphics("Rguroo_outputs/Graphical_Description_of_Data/density_tuition_instate_type_2.svg")
 ```
 
@@ -856,7 +855,7 @@ Africa <- Density |>
 knitr::kable(head(Africa))
 ```
 
-3.  The Affordable Care Act created a market place for individuals to purchase health care plans. The first six rows of the dataset showing the premiums for a 27 year old (in 2014) for the different levels health insurance are given in @tbl-Insurance (\\"Health insurance marketplace,\\" 2013). Create a density plot of bronze_lowest, then silver_lowest, and gold_lowest all on the same aces. <!--Use \|\> or %\>% at the end of each command. Describe the story the graphs tells.-->
+3.  The Affordable Care Act created a market place for individuals to purchase health care plans. The first six rows of the dataset showing the premiums for a 27 year old (in 2014) for the different levels health insurance are given in @tbl-Insurance (\\"Health insurance marketplace,\\" 2013). Create a density plot of bronze_lowest, then silver_lowest, and gold_lowest all on the same axes. <!--Use \|\> or %\>% at the end of each command. Describe the story the graphs tells.-->
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
@@ -958,6 +957,7 @@ Sometimes you have two different variables and you want to see if they are relat
 
 Data was collected from a sleep study conducted on college students. Is there a relationship between average amount of sleep and GPA? To answer this question, we can look at data where these two variables were collected and examine the data on a scatterplot.
 
+:::
 
 **Solution**
 
@@ -1131,7 +1131,7 @@ Looking at the code book, one can see that the variable Assets_ADIs_Total is the
 
 Click to expand the box below see how to create a density plot of instate tuition by type of institution.
 
-:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Time Seires Plot in Rguroo"}
+:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Time Series Plot in Rguroo"}
 
 **Before you begin:** Make sure you have already imported the [Australian_financial]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Australian-Financial-to-Rguroo).
 
@@ -1367,7 +1367,7 @@ References Australian Institute of Criminology, 1999.The data was contributed by
 
 :::
 
-6.  The economic crisis of 2008 affected many countries, though some more than others. Some people in Australia have claimed that Australia wasn't hurt that badly from the crisis. The forst 6 rows for the dataset containing bank assets (in billions of Australia dollars (AUD)) of the Reserve Bank of Australia (RBA) for the time period of September 1 1969, through March 1 2019, are contained in @bl-Australian (Reserve Bank of Australia, 2019). Create a time-series plot of the assets of the RBA and interpret any findings.
+6.  The economic crisis of 2008 affected many countries, though some more than others. Some people in Australia have claimed that Australia wasn't hurt that badly from the crisis. The first 6 rows for the dataset containing bank assets (in billions of Australia dollars (AUD)) of the Reserve Bank of Australia (RBA) for the time period of September 1 1969, through March 1 2019, are contained in @bl-Australian (Reserve Bank of Australia, 2019). Create a time-series plot of the assets of the RBA and interpret any findings.
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
