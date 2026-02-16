@@ -15,27 +15,44 @@ Fert_prenatal<- read.csv( "https://krkozak.github.io/MAT160/fertility_prenatal.c
 Hotdog<-read.csv( "https://krkozak.github.io/MAT160/hotdog_beef_poultry.csv") 
 ```
 
-The previous chapter looked at comparing populations to see if there is a difference between the two. That involved two random variables that are similar measures. This chapter will look at two random variables that do not need to be similar measures, and see if there is a relationship between the two or more variables. To do this, you look at regression, which finds the linear relationship, and correlation, which measures the strength of a linear relationship.
+**Before you begin, Click to expand the box below to review the process for importing a dataset.**
 
-Please note: there are many other types of relationships besides linear that can be found for the data. This book will only explore linear, but realize that there are other relationships that can be used to describe data.
+::: {#Importing-Beer_data-to-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Data to Rguroo"} 
+
+1. Open the **Data** toolbox in Rguroo.  
+2. From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.  
+3. In the top search box, type [kozak]{.typein}, then select the [Statistics Using Technology – Kozak]{.repo} repository.  
+4. In the middle search box, type the first few letters of the dataset name, and choose your desired dataset name that appears in the lower panel.  
+5. Click the [Import]{.button}. The dataset will be imported to your Rguroo account.
+6. Click [Close]{.button} to exit the dialog.  
+7. To view the dataset, double-click the dataset name under the **Data** toolbox list.
+
+:::
+
+
+
+
+The previous chapter focused on comparing populations to determine whether there is a difference between them. In those situations, we examined two random variables that measured the same or very similar quantities. In this chapter, we shift our focus to situations where the variables do not need to measure the same thing. Instead of comparing groups, we investigate whether a relationship exists between two or more variables. To study this relationship, we use regression to model the linear relationship between variables and correlation to measure the strength and direction of that linear relationship.
+
+There are many types of relationships that can exist between variables, not just linear ones. In this book, we will focus only on linear relationships. However, it is important to recognize that other types of relationships can also be used to describe and model data, depending on the situation.
 
 ## Regression
 
 ### Introduction to Regression and Correlation
 
-When comparing different variables, two questions come to mind: "Is there a relationship between two variables?" and "How strong is that relationship?" These questions can be answered using **regression** and **correlation**. Regression answers whether there is a relationship, (again this book will explore linear relationships only) and correlation answers how strong the linear relationship is. The variable that is used to explain the change (or variability) in the other variable is called the **explanatory variable** or **predictor variable**, while the variable whose variability is being explained is called the **response variable**. In general, variables that help to explain the changes in a response variable are known as **covariates**. To introduce the concepts of regression and correlation, it is easier to look at a set of data.
+When comparing different variables, two questions naturally arise: “Is there a relationship between the variables?” and “How strong is that relationship?” These questions can be answered using regression and correlation. Regression helps determine whether a relationship exists (in this book, we focus only on linear relationships), while correlation measures the strength of the linear relationship.
 
+When comparing different variables, two questions naturally arise: “Is there a relationship between the variables?” and “How strong is that relationship?” These questions can be answered using **regression** and **correlation**. Regression helps determine whether a relationship exists (in this book, we focus only on linear relationships), while correlation measures the strength of the linear relationship.
 
-<!--
-::: {.example #determine-relationship title="Determining if there is a Relationship"}
-
-### Example: Determining if there is a Relationship
--->
+To better understand these ideas, it is helpful to clearly define the roles the variables play in this analysis. The **response** variable is the variable whose variability we are trying to explain or predict. The variable used to explain the change (or variability) in the response variable is called the **explanatory variable** or **predictor variable**. More generally, any variables that help explain changes in a response variable are referred to as **predictors** or **covariates**. To introduce the concepts of regression and correlation more fully, it is helpful to examine a set of data.
 
 ::: {#exm-determine-relationship}
 ## Determining if There is a Relationship
 
-Is there a relationship between the alcohol content and the number of calories in 12-ounce beer? To determine if there is one, we explore a dataset of 227 beers, including their alcohol content and their calorie counts (Find Out How Many Calories in Beer?, 2019). @tbl-Beer shows the first five rows of the dataset. 
+Is there a relationship between the alcohol content and the number of calories in a 12-ounce beer? To determine whether such a relationship exists, we examine a dataset of 227 beers that includes their alcohol content and calorie counts (Find Out How Many Calories in Beer?, 2019). 
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [beer_data]{.data}.
+Table @tbl-Beer displays the first five rows of the dataset. A complete description of the variables is provided in the  [dataset code book](#code-book-beer) that follows.
 
 :::
 
@@ -43,28 +60,12 @@ Is there a relationship between the alcohol content and the number of calories i
 #| tbl-alt: "Head of beer Dataset"
 #| label: tbl-Beer
 #| tbl-cap: "Alcohol and Calorie Content in Beer"
-Beer <- read.csv( "https://krkozak.github.io/MAT160/beer_data.csv") 
+Beer <- read.csv( '/Users/mori/CSU Fullerton Dropbox/Mortaza Jamshidian/Statistics Text Using Rguroo Positron/Statistics-Using-Technology-book/Datasets Revised or New/beer_data.csv') 
 knitr::kable(head(Beer))
 ```
 
-
-**Solution** 
-
-Click to expand the box below to see instructions to import and view the [beer_data]{.data} dataset.
-
-::: {#Importing-Beer_data-to-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing beer_data to Rguroo"} 
-
-1. Open the **Data** toolbox in Rguroo.  
-2. From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.  
-3. In the top search box, type [kozak]{.typein}, then select the [Statistics Using Technology – Kozak]{.repo} repository.  
-4. In the middle search box, type [beer]{.typein}, then select the [beer_data]{.data} dataset that appears in the lower panel.  
-5. Click the [Import]{.button} button to import the dataset into your Rguroo account.
-6. Click [Close]{.button} to exit the dialog.  
-7. To view the dataset, double-click the dataset name "[beer_data]{.data}" in the **Data** toolbox list.
-
-:::
-
 ::: {#code-book-beer .callout-tip .codebook collapse="true"}
+
 ## Code book for Dataset Beer
 
 **Description** Collection of the most popular beers from large breweries. The data is of the calories, carbs and alcohol of a specific beer. The data is shown for a 12 ounce serving. The collection includes both domestic and import beer. For the imported beers the information is per 12 oz. serving even though many imports come in pints.
@@ -77,7 +78,7 @@ This dataset contains the following columns:
 
 [location]{.var}: whether the beer is brewed in the U.S. (domestic) or brewed in another country (import).
 
-[alcohol]{.var}: the alcohol content of the beer.
+[alcohol]{.var}: the percent alcohol content of the beer.
 
 [calories]{.var}: the number of calories in the beer.
 
@@ -89,39 +90,38 @@ References: (Find Out How Many Calories in Beer?, 2019)
 
 :::
 
-To aid in figuring out if there is a relationship, it helps to draw a scatterplot of the data. First, it is helpful to state the variables, and since variables in an algebra class are typically represented as $x$ and $y$, those labels will be used here. It helps to state which variable is $x$ (explanatory or predictor) and which is $y$ (response).
+**Solution** 
+
+To aid in figuring out if there is a relationship between the alcohol content and the number of calories, it helps to draw a scatter plot of the data. First, it is helpful to state the variables, and since variables in an algebra class are typically represented as $x$ and $y$, we use those labels  here. It helps to state which variable is $x$ (explanatory or predictor) and which is $y$ (response).
 
 State variables
 
-$x$ = alcohol content in the beer
+$x$ = percent alcohol content in the beer; [alcohol]{.var}
 
-$y$ = calories in 12 ounce beer
+$y$ = number of calories in 12 ounce beer; [calories]{.var}
 
-::: {#Creating-Scatterplot-of-Calories-vs-Alcohol-Content-in-Rguroo .ref-label} :::
 
-Click to expand the box below see how to create the scatterplot of calories vs. alcohol content.
-
-:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Scatterplot of Calories vs. Alcohol Content"}
+:::: {#Creating-scatterplot-of-Calories-vs-Alcohol-Content-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating scatter plot of Calories vs. Alcohol Content"}
 
 **Before you begin:** Make sure you have already imported the [beer_data]{.data} dataset into your Rguroo account, as shown [here](#Importing-Beer_data-to-Rguroo).
 
 1. Open the **Plots** toolbox in Rguroo.  
-2. Open the [Create Plot]{.dpd} dropdown and select [Scatterplot]{.fun}. This opens the Scatterplot dialog.  
-3. In the Scatterplot dialog, choose the [beer_data]{.data} dataset from the [Dataset]{.dpd} dropdown.  
+2. Open the [Create Plot]{.dpd} dropdown and select [scatter plot]{.fun}. This opens the scatter plot dialog.  
+3. In the scatter plot dialog, choose the [beer_data]{.data} dataset from the [Dataset]{.dpd} dropdown.  
 4. Choose the [alcohol]{.var} variable from the [Predictor (x)]{.dpd} dropdown.  
 5. Choose the [calories]{.var} variable from the [Response (y)]{.dpd} dropdown.  
 6. **(Optional)** In the **Label** section of the dialog:  
    - Enter [Calories versus Alcohol Content in Beer]{.typein} in the [Title]{.des} textbox.  
    - Enter [Alcohol Content]{.typein} in the [X-Axis]{.des} textbox.  
    - Enter [Number of Calories]{.typein} in the [Y-Axis]{.des} textbox.  
-7. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the scatterplot.
-8. In the ![Save as](Rguroo_Icons/save_as.png) textbox, enter the name [AlcoholCalorieScatter]{.typein} for the scatterplot.
-Click the button to save the scatterplot to your Rguroo account.
+7. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the scatter plot.
+8. In the ![Save as](Rguroo_Icons/save_as.png) textbox, enter the name [AlcoholCalorieScatter]{.typein} for the scatter plot.
+Click the button to save the scatter plot to your Rguroo account.
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
 
-![Scatterplot dialog showing settings for plotting alcohol content versus calories.
-](Rguroo_dialogs/Regression/Scatterplot_dialog.png){width=500px}
+![scatter plot dialog showing settings for plotting alcohol content versus calories.
+](Rguroo_dialogs/Regression/scatterplot_dialog.png){width=500px}
 
 :::
 
@@ -136,83 +136,46 @@ Click the button to save the scatterplot to your Rguroo account.
 knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieScatter.svg")
 ```
 
-The scatter plot shown in @fig-Beer-point looks fairly linear.
+The scatter plot shown in @fig-Beer-point looks fairly linear, meaning the points tend to fall along a straight-line pattern rather than a curved one.
 
 ### Finding the regression line
 
-To find the equation for the linear relationship, the process of regression is used to determine the line that best fits the data (sometimes called the best-fitting line). The process is to draw a line through the data and measure the vertical distance from each point to the line. These distances are called the **residuals**. The regression line is the line that makes the sum of the square of the residuals as small as possible, which is why it is sometimes called the least squares line. The regression line on the scatter plot is displayed in @fig-Beer-point-line.
-
-
-Click to expand the box below to see how to add a regression line to the scatterplot.
-
-
-:::: {#Adding-Regression-Line-to-Scatterplot-in-Rguroo  .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Adding Regression Line to a Scatterplot"}
-
-**Before you begin:** Ensure you have created the scatterplot of calories vs. alcohol content in your Rguroo account, as shown [here](#Creating-Scatterplot-of-Calories-vs-Alcohol-Content-in-Rguroo).
-
-1. Open the Rguroo tab containing your scatterplot of calories vs. alcohol content by double-clicking the name [AlcoholCalorieScatter]{.des} in the **Plots** toolbox list. 
-2. Open the [Basics]{.diag} dialog by clicking the ![](Rguroo_Icons/basics.png) button.  
-3. In the **Superimpose** section of the dialog, select the checkbox [LS Line]{.des}.  
-4. Click the **preview icon** ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the scatterplot with the regression line.
-5. Click the ![Save as](Rguroo_Icons/save_as.png) button to save the updated scatterplot as [AlcoholCalorieScatterLS]{.typein}.
-
-::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-
-![Scatterplot dialog for adding a least-squares line to a plot of alcohol content versus calorie counts](Rguroo_dialogs/Regression/Scatterplot_dialog_LS.png){width=500px}
-
-:::
-
-::::
+To find the equation for the linear relationship, the process of regression is used to determine the line that best fits the data (sometimes called the best-fitting line). The process is to draw a line through the data and measure the vertical distance from each point to the line. These distances are called the **residuals**. The regression line is the line that makes the sum of the square of the residuals as small as possible, which is why it is sometimes called the least squares line. @fig-Beer-point-line displays the regression line on the scatter plot of the Number of Calories versus Alcohol Content.
 
 ```{r beer10-point-lm, echo=FALSE}
 #| fig-alt: "Scatter plot with regression line on plot"
 #| warning: FALSE
 #| label: fig-Beer-point-line
 #| fig-cap: "Scatter Plot of Beer Data with Regression Line"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieScatterLS.svg")
 ```
 
+To add a regression (least squares) line to the scatter plot in Rguroo, you simply select the checkbox [LS Line]{.des} in the **superimpose** section of the [Scatterplot]{.dialog} dialog, as shown in @fig-scatterplot_dialog_LS. 
 
-Given a collection of paired sample data, the regression equation is $\hat{y}=mx+b$, where the slope = $m$ and $y$-intercept = $(0,b)$.
+```{r scatterplot_dialog_LS, echo=FALSE}
+#| fig-alt: "Rguroo Dialog Showing How to Add a Regression Line"
+#| warning: FALSE
+#| label: fig-scatterplot_dialog_LS
+#| fig-cap: "Rguroo Dialog Showing How to Add a Regression Line"
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_dialogs/Regression/scatterplot_dialog_LS.png")
+```
 
-As we will show, to find the linear model using Rguroo, we use the [Linear Regression]{.fun} function in the **Analytics** toolbox. 
 
-The **residuals** are the difference between the actual observed values of the response and the corresponding estimated (predicted) values, namely $\text{residual} = y - \hat{y}$.
+Given a collection of paired sample data, the regression equation is $\hat{y}=b +mx$, where the slope = $m$ and the $y$-intercept = $(0,b)$. 
+
 
 The **independent variable** (the $x$-value) corresponds to the **explanatory** or **predictor** variable, the variable used to predict or explain changes in another variable. The **dependent variable** (the $y$-value) corresponds to the **response** variable—the variable whose values change in relation to the predictor. In our example, alcohol content is the predictor (independent, $x$) variable, and the number of calories is the response (dependent, $y$) variable, since it makes more sense to predict calories from alcohol content rather than vice versa.
 
-### Assumptions for the Validity of the Regression Equation and Line {#sec-assumption-validity-line}
+The **residuals** are the difference between the actual observed values of the response and the corresponding estimated (predicted) values, namely $\text{residual} = y - \hat{y}$.
 
-1. _Randomness_: The set of ordered pairs is a random sample from the population of all such possible pairs.
+As we will show, the [Linear Regression]{.fun} function in the Analytics toolbox is used in Rguroo to fit a linear model, producing both the equation of the regression line and the associated residuals.
 
-2. _Linearity_: For a given $x$-value, the distribution of $y$-values has a mean that lies on the least squares line.
-
-The assumption of linearity is essential. If the relationship between the two variables is not linear, then a regression line will not fit the data well. To check linearity, we look at the scatterplot: a roughly straight-line pattern suggests the assumption is reasonable, while a curved pattern suggests it is not. We can also examine the so called residual-versus-fit plot. If the residuals are randomly scattered around the horizontal line $y = 0$ on this plot, the linearity assumption is likely valid. If the residuals show a curved pattern, then the assumption of linearity is likely violated.
-
-
-### Assumptions for the validity of inference {#sec-assumption-validity-inference} 
-
-3. _Constant Variance_: The variance of the $y$-values should be the same across all $x$-values. 
-
-4. _Normality_: The $y$-values for each fixed value of $x$ should follow a normal distribution.
-
-The assumptions of constant variance and normality are primarily needed for the validity of inference in regression. Inference includes procedures such as constructing confidence intervals and carrying out hypothesis tests. Just as with the confidence intervals and hypothesis tests for means and proportions that you are already familiar with, we can construct confidence intervals and tests of hypotheses for the slope and intercept of the regression line, as well as for predicted values $\hat{y}$. This we will cover in @sec-inference-regression.
- 
-
-To check the constant-variance, we examine the residual-versus-fit plot: if the residuals are scattered with roughly the same vertical spread around the horizontal line $y = 0$ across all fitted-values, the assumption is reasonable. A funnel-shaped pattern suggests that unequal variances. 
-
-To check normality, we look at a histogram or a *normal probability plot* of the residuals. The histogram should appear bell-shaped, and in a normal probability plot the residuals should fall roughly along a straight line; pronounced curvature or outliers indicate that the normality assumption may not be satisfied.
-
-
-<!-- ### Example: Find the Equation of the Regression Line 
-
-:::{.example #find-regression-equation title="Find the Equation of the Regression Line"}
-
-::: {#exm-find-regression-equation .example title="Find the Equation of the Regression Line"}
--->
+### The Regression Equation and Prediction
 
 ::: {#exm-find-regression-equation}
+
 ## Find the Equation of the Regression Line
 
 Is there a relationship between the alcohol content and the number of calories in 12-ounce beer? To determine if there is one, we examine the sample of beer's alcohol content and calories, portion of which is shown in @tbl-Beer (Find Out How Many Calories in Beer?, 2019).
@@ -233,11 +196,9 @@ $x$ = alcohol content in the beer
 
 $y$ = calories in 12 ounce beer
 
-::: {#Finding-the-Regression-Equation-in-Rguroo .ref-label} :::
-
 Click to expand the box below to see how to obtain the regression equation.
 
-::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Finding the Regression Equation for the Beer Data"}
+:::: {#Finding-the-Regression-Equation-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Finding the Regression Equation for the Beer Data"}
 **Before you begin:** Make sure you have already imported the [beer_data]{.data} dataset into your Rguroo account, as shown [here](#Importing-Beer_data-to-Rguroo).
 
 1. Open the **Analytics** toolbox in Rguroo.  
@@ -266,7 +227,7 @@ Click to expand the box below to see how to obtain the regression equation.
 
 :::
 
-:::
+::::
 
 ```{r chapter-10-beer-lm-model, echo=FALSE, eval=FALSE}
 lm(calories~alcohol, data=Beer)
@@ -289,154 +250,57 @@ From this, rounding the values,  you can see that the y-intercept is 14.5 and th
 
 Remember, this is an estimate for the true regression equation. A different sample would produce a different estimate.
 
-Conditions check:
+What does the slope mean in the context of this problem?
 
-1.  _Randomness_: A random sample of alcohol content and calories was taken.
+The number of calories increases by about 26.72 calories for every 1% increase in alcohol content. In the regression output, the slope is shown as 2672, which looks much larger. This happens because alcohol content is recorded in the data as a decimal rather than a percent. For example, 1% alcohol is written as 0.01 in the dataset. The slope of 2672 therefore represents the change in calories for a 1.00 (or 100%) increase in alcohol content. To interpret the slope in terms of a 1% increase, we divide 2672 by 100, which gives 26.72 calories.
 
-    Check: There is no guarantee that this was a random sample. The data was collected off of a website, and the website does not say how the data was obtained. However, it is a collection of most popular beers from large breweries, so it may be alright that it isn't a random sample.
-
-2. _Linearity_: For a given $x$-value, the distribution of $y$-values has a mean that lies on the least squares line.
-
-Check:
-
-We examine two graphs to check this condition: the scatter plot of $y$ versus $x$ and the residual-versus-fit plot.
-
-i. @fig-Beer-point shows the scatterplot of calories versus alcohol content. This graph is also shown as part of the default output of the [Linear Regression]{.fun} function in Rguroo. This scatterplot looks fairly linear, so this condition appears to be satisfied.
-
-ii.  @fig-Beer-resvsfit shows the residual-versus-fit plot, which is also part of the [Linear Regression]{.fun} function output in Rguroo. The points on this plot are obtained by calculating the fitted values and the residuals for each data point. For each $x$-value, a predicted value for $y$ is computed using the equation of the least squares line; this predicted value is called the *fitted value* and is denoted by $\hat{y}$. The residual is then found by subtracting the fitted value from the observed $y$-value: 
-
-$$
-\mbox{residual} = y - \hat{y}.
-$$
-Fortunately, Rguroo calculates these automatically for you.
-
-Click to expand the box below to see how to obtain the fitted (predicted) values and the residuals.
-
-:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Obtaining Residuals for the Beer Data"}
-
-**Before you begin:** Continue with the Rguroo instructions shown [here](#Finding-the-Regression-Equation-in-Rguroo) for obtaining the regression equation.
-
-1. Open the Rguroo tab containing your regression fit by double-clicking the name [AlcoholCalorieRegress]{.des} in the **Analytics** toolbox list.  
-2. Click the ![](Rguroo_Icons/basics.png) button to open the [Simple Linear Regression]{.diag} dialog.
-3. Select the checkbox [Predictions \& Residuals]{.des}.
-4. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the regression results with residuals.
-5. Click the ![Save as](Rguroo_Icons/save_as.png) button to save the updated regression results as [AlcoholCalorieResiduals]{.typein}.
-
-::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-![Simple Linear Regression dialog: Obtaining Residuals](Rguroo_dialogs/Regression/AlcoholCalorieResidualsDialog1.png){width=500px}
-
-:::
-
-::::
-
-Click to expand the box below to see the predicted (fitted) values and the residuals for the first 20 cases of the beer data.
-
-:::{.callout-note appearance="simple" collapse="true" icon="none" title="Residuals for Alcohol and Calorie Content in Beer"}
-
-```{r AlcoholCalorieResiduals, echo=FALSE}
-#| fig-alt: "Residuals for Alcohol and Calorie Content in Beer from Rguroo"
-#| warning: FALSE
-#| label: tbl-Beer-residuals-rguroo
-#| fig-cap: "Residuals for Alcohol and Calorie Content in Beer from Rguroo"
-#| out-width: "90%"
-
-knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieResiduals.png")
-```
-
-:::
-
-
-```{r chapter-10-beer-residuals, echo=FALSE, eval=FALSE}
-#| tbl-alt: "Residuals for Alcohol and Calorie Content in Beer"
-#| label: tbl-Beer-residuals
-#| tbl-cap: "Residuals for Alcohol and Calorie Content in Beer"
-lm_out_beer<-lm(calories~alcohol, data=Beer) 
-knitr::kable(residuals(lm_out_beer))
-```
-
-
-
-
-```{r AlcoholCalorieResvsFit, echo=FALSE}
-#| fig-alt: "Residuals versus Fitted values plot looks random"
-#| warning: FALSE
-#| label: fig-Beer-resvsfit
-#| fig-cap: "Residuals versus Fitted Values Plot for Beer Data"
-#| out-width: "70%"
-knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieResvsFit.png")
-```
-
-The points shown on the residual-versus-fit plot @fig-Beer-resvsfit appear to be randomly scattered around the horizontal line $y = 0$. There does not appear to be any curved pattern, so this condition appears to be satisfied.
-
-```{r Beer10-point-residuals, echo=FALSE, eval=FALSE}
-#| fig-alt: "Residual plot of beer data, looks random"
-#| warning: FALSE
-#| label: fig-Beer-residuals
-#| fig-cap: "Residual Plot of Beer Data"
-gf_point(residuals(lm_out_beer)~alcohol, data=Beer, title="Residuals for Calories in beer", xlab="Alcohol Content", ylab="Residuals for Number of Calories") 
-```
-
-3. _Constant Variance_: The variance of the $y$-values should be the same across all $x$-values.
-
-Looking again at the residual-versus-fit plot @fig-Beer-resvsfit, the vertical spread of the residuals appears to be roughly the same across all fitted-values. There does not appear to be a funnel-shaped pattern, so this condition appears to be satisfied.
-
-4. _Normality_: The $y$-values for each fixed value of $x$ should follow a normal distribution.
-
-To check this assumption, we examine the normal probability plot of the residuals shown in @fig-Beer-QQ, which is also part of the [Linear Regression]{.fun} function output in Rguroo. In this plot, the residuals fall roughly along a straight line, so this condition appears to be satisfied. More specifically, all points lie within the confidence bands ( shown as red dotted curves), and there is no pronounced curvature or outliers.
-
-```{r AlcoholCalorieQQ, echo=FALSE}
-#| fig-alt: "Normal probability plots. The points seem to be roughly linear."
-#| warning: FALSE
-#| label: fig-Beer-QQ
-#| fig-cap: "Normal Probability Plot for Beer Data"
-#| out-width: "70%"
-knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieQQ.png")
-```
-
+The $y$-intercept in many cases is meaningless. In this case, it means that if a drink has 0 alcohol content, then it would have 14.3 calories which maybe a reasonable value. 
 
 b.  Use the regression equation to find the number of calories when the alcohol content is 7.00%.
 
-To make a prediction, we substitute the given alcohol content (expressed as a decimal) into the regression equation and compute the corresponding fitted value. In this example, we want to predict the number of calories for a beer with 7.00% alcohol content. Since 7.00% expressed as a decimal is 0.07, we substitute $x = 0.07$ into the regression equation:
+To make a prediction, we substitute the given alcohol content (expressed as a decimal) into the regression equation and compute the corresponding fitted value. In this example, we want to predict the number of calories for a beer with 7% alcohol content. Since 7% expressed as a decimal is 0.07, we substitute $x = 0.07$ into the regression equation:
 $$
 \hat{y} = 2672 \times 0.07 + 14.3 = 201.34.
 $$
-This value, 201.34, is the predicted number of calories for a beer whose alcohol content is 7\%. So, if you are drinking a beer that has 7.00\% alcohol content, then it probably has close to 200 calories.
 
-Considering all the data, the mean number of calories is 154.5. However, for beers with 7\% alcohol content, the predicted value of 201 calories is a more appropriate estimate because the beers in the dataset with 7\% alcohol all have between 160 and 231 calories. In this case, the regression equation provides a better estimate than simply using the overall mean.
+This value, 201.34, is the predicted number of calories for a beer whose alcohol content is 7\%. So, if you are drinking a beer that has 7\% alcohol content, then it probably has close to 200 calories.
+
+Considering all the data, the mean number of calories is 154.5. However, for beers with 7\% alcohol content, the predicted value of 201 calories is a more appropriate estimate because the beers in the dataset with 7\% alcohol all have between 160 and 231 calories. Thus, when estimating calories for a specific alcohol content, the regression equation provides a more relevant and accurate estimate than simply using the overall mean.
 
 c.  Use the regression equation to find the number of calories when the alcohol content is 14%.
 
 $$\hat{y}=2672*0.14+14.3=388.38$$
 
-You can obtain predicted values in Rguroo. For example, to get the predicted values for alcohol contents of 7.00% and 14.00%, enter 0.07 and 0.14 (separated by a comma) in the textbox labeled [Predict at new x value(s)]{.des} in the [Simple Linear Regression]{.diag} dialog in Rguroo, as shown in @fig-AlcoholCalorieRegress_pred below.
+You can also use Rguroo to obtain predicted values for specified value of $x$. For example, to get the predicted values for alcohol contents of 7% and 14%, enter 0.07 and 0.14 (separated by a comma) in the textbox labeled [Predict at new x value(s)]{.des} in the [Simple Linear Regression]{.dialog} dialog as shown in @fig-AlcoholCalorieRegress_pred below. 
 
 ```{r AlcoholCalorieRegress_pred, echo=FALSE}
 #| fig-alt: "Predicting calories for alcohol contents of 7.00% and 14.00% in Rguroo"
 #| warning: FALSE
 #| label: fig-AlcoholCalorieRegress_pred
 #| fig-cap: "Predicting Calories for Alcohol Contents of 7.00% and 14.00% in Rguroo"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics(
   "Rguroo_dialogs/Regression/AlcoholCalorieRegress_pred.png")
 ```
 
 
-The predicted values output from Rguroo is shown in @fig-AlcoholCaloriePredOutput below.
+The predicted values output from Rguroo is shown in @fig-AlcoholCaloriePredOutput below. These values are the same as those that we computed using the formula directly.
 
 ```{r AlcoholCaloriePredOutput, echo=FALSE}
 #| fig-alt: "Rguroo output showing predicted calories for alcohol contents of 7.00% and 14.00%"
 #| warning: FALSE
 #| label: fig-AlcoholCaloriePredOutput
 #| fig-cap: "Rguroo Output Showing Predicted Calories for Alcohol Contents of 7.00% and 14.00%"
-#| out-width: "70%"
+#| out-width: "90%"
 knitr::include_graphics(
   "Rguroo_outputs/Regression/AlcoholCaloriePredOutput.png")
 ```
 
+**Extrapolation and Interpolation**
 
 If you are drinking a beer that is 14% alcohol content, then it probably has close to 388 calories. Since, on average, a 12% alcohol beer has 330 calories, you might expect a 14% beer to have more calories than this. However, the maximum alcohol content in our dataset is 12%. The estimate for a 14% beer is therefore an example of **extrapolation**, because it is a prediction for an $x$-value outside the range of the data used to fit the model. It is not a good idea to predict values that fall far outside the range of the original data, because we cannot be sure that the regression relationship remains valid beyond the observed $x$-values.
 
-Notice that 7.00% alcohol is within the range of the original $x$-values. Predicting a value for an $x$-value inside the observed range is called **interpolation**. The 14.00% value is outside that range, and predicting for an $x$-value outside the original data is called **extrapolation**. When you interpolate, you can usually feel confident that the predicted value will be close to the true value because the model was created using data within that range and is intended to describe relationships only there. When you extrapolate, however, you cannot be sure the prediction is close to the true value, because the relationship may change for $x$-values beyond those observed when the model was created.
+Notice that 7% alcohol is within the range of the original $x$-values. Predicting a value for an $x$-value inside the observed range is called **interpolation**. When you interpolate, you can usually feel confident that the predicted value will be close to the true value because the model was created using data within that range and is intended to describe relationships only there. When you extrapolate, however, you cannot be sure the prediction is close to the true value, because the relationship may change for $x$-values beyond those observed when the model was created.
 
 <!-- Discuss: The following example is not clear and its relationship to linear regression is not clear. . So I replaced it.
 
@@ -464,29 +328,153 @@ Height = 30 + 2.5 × 30 = 105 inches,
 a clearly unrealistic value. This illustrates why extrapolation can lead
 to misleading conclusions.
 
-
-What does the slope mean in the context of this problem?
-
-The calories increase by 26.72 for every 1% increase in alcohol content.
-
-The $y$-intercept in many cases is meaningless. In this case, it means that if a drink has 0 alcohol content, then it would have 14.3 calories which maybe a reasonable value. However, consider the model for height versus age discussed above. The $y$-intercept is 30 inches, which would be the predicted height of a newborn baby (age 0). This is not a reasonable value since newborn babies are typically about 20 inches long. So in this case, the $y$-intercept is not meaningful. 
+By the way, the slope of 2.5  here means that for every one year increase in age, the height increases by 2.5 inches. However, in this case, the $y$-intercept is not meaningful. The $y$-intercept is 30 inches, which would be the predicted height of a newborn baby (age 0). This is not a reasonable value since newborn babies are typically about 20 inches long. So in this case, the $y$-intercept is not meaningful. 
 
 <!-- Revised: This may be reasonable, but remember this value is an extrapolation so it may be wrong. (Mynote: actually it is not an extrapolation since 0% is within the range of possible alcohol content) 
 --->
 
 Consider the residuals again. According to the data, a beer with 7.0% alcohol has between 160 and 231 calories. The predicted value is 201 calories. This variation means that the actual value was between 40 calories below and 30 calories above the predicted value. That isn't that far off. Some of the actual values differ by a large amount from the predicted value. This is due to variability in the response variable. The larger the residuals the less the model explains the variability in the response variable. There needs to be a way to calculate how well the model explains the variability in the response variable. This will be explored in the next section.
 
-One last thing that you may wonder is if imported beer has a different number of calories than domestic beer. The location (imported versus domestic) is a covariate, a third variable that may affects the calorie content. A covariate that is a categorical variable is referred to as a **factor**. You can create a scatterplot that  displays the data separately for each category of this covariate (factor). 
 
-Click to expand the box below to see how to create a scatterplot of calories vs. alcohol content separated by location.
+### Checking Assumptions for the Regression Equation {#sec-assumption-validity-line}
 
-:::: {#Creating-Scatterplot-of-Calories-vs-Alcohol-location .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Scatterplot of Calories vs. Alcohol Content by Location"}
+Two assumptions must hold for the least squares regression equation to be valid: **randomness** and **linearity**.
+
+**Randomness**
+
+For the linear regression model to be valid, the set of ordered pairs should be a random sample from the population of all such possible pairs.
+
+The assumption of randomness ensures that the data are representative of the population and that the observed relationship is not the result of a systematic bias in how the data were collected. If the data are not obtained randomly—for example, if certain observations are more likely to be included than others—then the regression results may not generalize beyond the observed data.
+
+For the beer data, do we have a random sample of alcohol content and calories? There is no guarantee that this was a random sample. The data was collected off of a website, and the website does not say how the data was obtained. However, it is a collection of most popular beers from large breweries, so it may be alright that it isn't a random sample.
+
+**Linearity**
+
+The assumption of linearity means that the relationship between the explanatory variable and the response variable can be reasonably described by a straight line. In particular, for any given $x$-value, the average (mean) of the corresponding $y$-values should lie on, or very close to, the least squares regression line. This does not mean that all points fall on the line, but that the overall trend in the data follows a linear pattern.
+
+The assumption of linearity is essential. If the relationship between the two variables is not linear, then a regression line will not fit the data well. To check linearity, we look at the scatter plot: a roughly straight-line pattern suggests the assumption is reasonable, while a curved pattern suggests it is not. We can also examine the so called residual-versus-fit plot. If the residuals are randomly scattered around the horizontal line $y = 0$ on this plot, the linearity assumption is likely valid. If the residuals show a curved pattern, then the assumption of linearity is likely violated.
+
+Is the assumption of linearity valid for the beer data? We examine two graphs to check this condition: the scatter plot of $y$ versus $x$ and the residual-versus-fit plot.
+
+@fig-Beer-point shows the scatter plot of calories versus alcohol content. This graph is also shown as part of the default output of the [Linear Regression]{.fun} function in Rguroo. This scatter plot looks fairly linear, so this condition appears to be satisfied.
+
+@fig-Beer-resvsfit shows the residual-versus-fit plot, which is also part of the [Linear Regression]{.fun} function output in Rguroo. The points on this plot are obtained by calculating the fitted values and the residuals for each data point. For each $x$-value, a predicted value for $y$ is computed using the equation of the least squares line; this predicted value is called the *fitted value* and is denoted by $\hat{y}$. The residual is then found by subtracting the fitted value from the observed $y$-value: 
+
+$$
+\mbox{residual} = y - \hat{y}.
+$$
+
+For the beer data, the points in the residual-versus-fitted plot shown in @fig-Beer-resvsfit appear to be randomly scattered around the horizontal line at zero. There is no apparent curved pattern in the plot, suggesting that the linearity condition is satisfied.
+
+```{r AlcoholCalorieResvsFit, echo=FALSE}
+#| fig-alt: "Residuals versus Fitted values plot looks random"
+#| warning: FALSE
+#| label: fig-Beer-resvsfit
+#| fig-cap: "Residuals versus Fitted Values Plot for Beer Data"
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieResvsFit.png")
+```
+
+
+Rguroo calculates fitted values and residuals automatically. Continuing with the Rguroo instructions for fitting the regression equation to the beer data, shown [here](#Finding-the-Regression-Equation-in-Rguroo), selecting the checkbox [Predictions & Residuals]{.des} in the [Simple Linear Regression]{.dialog} dialog produces a table containing the fitted values (column labeled Predicted Value) and the residuals (column labeled Residual Value). The dialog box used for this step is shown in @fig-AlcoholCalorieResidualsDialog, and the Rguroo output, containing the fitted values and residuals for the first 20 cases of the beer data is given in @tbl-Beer-residuals-rguroo. It is these values that are plotted in @fig-Beer-resvsfit.
+
+```{r AlcoholCalorieResidualsDialog, echo=FALSE}
+#| fig-alt: "Simple Regression Dialog for Showing How to Obtain the Fitted Values and Residuals"
+#| warning: FALSE
+#| label: fig-AlcoholCalorieResidualsDialog
+#| fig-cap: "Simple Regression Dialog for Showing How to Obtain the Fitted Values and Residuals"
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_dialogs/Regression/AlcoholCalorieResidualsDialog1.png")
+```
+
+```{r AlcoholCalorieResiduals, echo=FALSE}
+#| fig-alt: "Fitted Values and Residuals for the first 20 cases of the Beer Data"
+#| warning: FALSE
+#| label: tbl-Beer-residuals-rguroo
+#| fig-cap: "Fitted Values and Residuals for the first 20 cases of the Beer Data"
+#| out-width: "90%"
+
+knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieResiduals.png")
+```
+
+
+
+```{r chapter-10-beer-residuals, echo=FALSE, eval=FALSE}
+#| tbl-alt: "Residuals for Alcohol and Calorie Content in Beer"
+#| label: tbl-Beer-residuals
+#| tbl-cap: "Residuals for Alcohol and Calorie Content in Beer"
+lm_out_beer<-lm(calories~alcohol, data=Beer) 
+knitr::kable(residuals(lm_out_beer))
+```
+
+
+```{r Beer10-point-residuals, echo=FALSE, eval=FALSE}
+#| fig-alt: "Residual plot of beer data, looks random"
+#| warning: FALSE
+#| label: fig-Beer-residuals
+#| fig-cap: "Residual Plot of Beer Data"
+gf_point(residuals(lm_out_beer)~alcohol, data=Beer, title="Residuals for Calories in beer", xlab="Alcohol Content", ylab="Residuals for Number of Calories") 
+```
+
+### Checking Assumptions for Confidence Intervals and Tests {#sec-assumption-validity-inference} 
+
+Just as with inference for means and proportions that you are already familiar with, we can construct confidence intervals and hypothesis tests for the slope and intercept of the regression line, as well as for predicted values $\hat{y}$. These ideas are covered in @sec-inference-regression.
+
+Two assumptions of constant variance and normality are primarily needed for the validity of inference in regression, **constant variance** and **normality**.
+
+**Constant Variance**
+
+The assumption of constant variance is a requirement that the variance of the $y$-values should be the same across all $x$-values. 
+
+To check the constant-variance, we examine the residual-versus-fit plot: if the residuals are scattered with roughly the same vertical spread around the horizontal line $y = 0$ across all fitted-values, the assumption is reasonable. A funnel-shaped pattern suggests that unequal variances. 
+
+@fig-inference-check shows four common patterns in a residual-versus-fitted plot. In panel (a), the residuals are evenly scattered above and below the horizontal line at 0 with roughly the same vertical spread across the fitted values, which is consistent with constant variance. Panels (b) and (c) show fan-shaped patterns, where the spread of the residuals changes as the fitted values change; these patterns suggest non-constant variance. Panel (d) shows a curved pattern in the residuals, which suggests that a straight-line model is not appropriate. In other words, it indicates possible nonlinearity, a violation of the linearity assumption discussed earlier.
+
+
+```{r inference-check, echo=FALSE}
+#| fig-alt: "Various Patterns for Residual Versus Fitted Values"
+#| warning: FALSE
+#| label: fig-inference-check
+#| fig-cap: "Various Patterns for Residual Versus Fitted Values"
+#| out-width: "90%"
+
+knitr::include_graphics("Rguroo_outputs/Regression/Inference_check.png")
+```
+
+
+
+Looking again at the residual-versus-fit plot @fig-Beer-resvsfit for the beer data, the vertical spread of the residuals appears to be roughly the same across all fitted-values. There does not appear to be a funnel-shaped pattern, so this condition appears to be satisfied.
+
+**Normality**  
+
+The normality assumption means that for any fixed value of $x$, the distribution of the corresponding $y$-values is approximately normal. In practice, this means the residuals at each $x$-value should be roughly symmetric and bell-shaped. 
+
+To check normality, we look at a histogram or a *normal probability plot* of the residuals. The histogram should appear bell-shaped, and in a normal probability plot the residuals should fall roughly along a straight line; pronounced curvature or outliers indicate that the normality assumption may not be satisfied.
+
+To check this assumption for the beer data, we examine the normal probability plot of the residuals shown in @fig-Beer-QQ, which is also part of the [Linear Regression]{.fun} function output in Rguroo. In this plot, the residuals fall roughly along a straight line, so this condition appears to be satisfied. More specifically, all points lie within the confidence bands (shown as red dotted curves), and there is no pronounced curvature or outliers.
+
+```{r AlcoholCalorieQQ, echo=FALSE}
+#| fig-alt: "Normal probability plots. The points seem to be roughly linear."
+#| warning: FALSE
+#| label: fig-Beer-QQ
+#| fig-cap: "Normal Probability Plot for Beer Data"
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieQQ.png")
+```
+
+### Regression with Groups
+
+One last thing that you may wonder is if imported beer has a different number of calories than domestic beer. The location (imported versus domestic) is a covariate, a third variable that may affects the calorie content. A covariate that is a categorical variable is referred to as a **factor**. You can create a scatter plot that  displays the data separately for each category of this covariate (factor). 
+
+Click to expand the box below to see how to create a scatter plot of calories vs. alcohol content separated by location.
+
+:::: {#Creating-scatterplot-of-Calories-vs-Alcohol-location .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating scatter plot of Calories vs. Alcohol Content by Location"}
 
 **Before you begin:** Make sure you have already imported the [beer_data]{.data} dataset into your Rguroo account, as shown [here](#Importing-Beer_data-to-Rguroo).
 
 1. Open the **Plots** toolbox in Rguroo.  
-2. Open the [Create Plot]{.dpd} dropdown and select [Scatterplot]{.fun}. This opens the Scatterplot dialog.  
-3. In the Scatterplot dialog, choose the [beer_data]{.data} dataset from the [Dataset]{.dpd} dropdown.  
+2. Open the [Create Plot]{.dpd} dropdown and select [scatter plot]{.fun}. This opens the scatter plot dialog.  
+3. In the scatter plot dialog, choose the [beer_data]{.data} dataset from the [Dataset]{.dpd} dropdown.  
 4. Choose the [alcohol]{.var} variable from the [Predictor (x)]{.dpd} dropdown.  
 5. Choose the [calories]{.var} variable from the [Response (y)]{.dpd} dropdown.
 6. Choose the [location]{.var} variable from the [Factor]{.dpd} dropdown.
@@ -495,14 +483,14 @@ Click to expand the box below to see how to create a scatterplot of calories vs.
    - Enter [Calories versus Alcohol Content in Beer by Location]{.typein} in the [Title]{.des} textbox.  
    - Enter [Alcohol Content]{.typein} in the [X-Axis]{.des} textbox.  
    - Enter [Number of Calories]{.typein} in the [Y-Axis]{.des} textbox.  
-9. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the scatterplot.
-10. In the ![Save as](Rguroo_Icons/save_as.png) textbox, enter the name [AlcoholCalorieLocationScatter]{.typein} for the scatterplot.
-Click the button to save the scatterplot to your Rguroo account.
+9. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the scatter plot.
+10. In the ![Save as](Rguroo_Icons/save_as.png) textbox, enter the name [AlcoholCalorieLocationScatter]{.typein} for the scatter plot.
+Click the button to save the scatter plot to your Rguroo account.
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
 
-![Scatterplot dialog showing settings for plotting alcohol content versus calories by location, including least square lines.
-](Rguroo_dialogs/Regression/Scatterplot_dialog_factor.png){width=500px}
+![scatter plot dialog showing settings for plotting alcohol content versus calories by location, including least square lines.
+](Rguroo_dialogs/Regression/scatterplot_dialog_factor.png){width=500px}
 
 :::
 
@@ -510,11 +498,11 @@ Click the button to save the scatterplot to your Rguroo account.
 
 
 ```{r AlcoholCalorieLocationScatter, echo=FALSE}
-#| fig-alt: "Scatterplot of Calories versus Alcohol Content of Beer separated by Location"
+#| fig-alt: "scatter plot of Calories versus Alcohol Content of Beer separated by Location"
 #| warning: FALSE
 #| label: fig-AlcoholCalorieLocationScatter
 #| fig-cap: "Calories versus Alcohol Content of Beer separated by Location"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieLocationScatter.svg")
 ```
 
@@ -528,7 +516,7 @@ gf_point(calories~alcohol, data=Beer, title="Calories versus Alcohol Content of 
   gf_lm() 
 ```
 
-@fig-AlcoholCalorieLocationScatter shows the scatterplot of calories versus alcohol content separated by location (imported versus domestic). The least squares lines for each location are also shown. Looking at the scatterplot, there doesn't appear to be an affect from domestic or import. This is what is nice about scatter plots, You can visually see a possible relationships.
+@fig-AlcoholCalorieLocationScatter shows the scatter plot of calories versus alcohol content separated by location (imported versus domestic). The least squares lines for each location are also shown. Looking at the scatter plot, there doesn't appear to be an affect from domestic or import. This is what is nice about scatter plots, You can visually see a possible relationships.
 
 ### Homework for Regression Section
 
@@ -657,16 +645,45 @@ References SOCR Data of species body weights and brain weights from UCLA.
 
 :::
 
-7.  A sample of hot dogs was taken and the amount of sodium (in mg) and calories were measured. ("Data hotdogs" 2013) The Dataset are in @tbl-Hotdog. Create a scatter plot and find a regression equation between amount of calories and amount of sodium. Then use the regression equation to find the amount of sodium a hot dog has if it is 170 calories and if it is 120 calories. Which sodium level that you calculated do you think is closer to the true sodium level? Why?
+7.  A sample of hot dogs was taken and the amount of sodium (in mg) and calories were measured. ("Data hotdogs" 2013.) The first six rows of the dataset are shown in @tbl-Hotdog. Create a scatter plot and find a regression equation between amount of calories and amount of sodium. Then use the regression equation to find the amount of sodium a hot dog has if it is 170 calories and if it is 120 calories. Which sodium level that you calculated do you think is closer to the true sodium level? Why?
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [hotdog]{.data}.
 
 
-**Code book for Dataset Hotdog is below @tbl-Hotdog.**
-
 </div>
+
+```{r Chapter10-Hotdog-data, echo=FALSE}
+#| tbl-alt: "Head of Body Weights and Brain Weights of Species"
+#| label: tbl-Hotdog
+#| tbl-cap: "Hotdog Dataset"
+Body <- read.csv( "https://krkozak.github.io/MAT160/hotdog_beef_poultry.csv") 
+knitr::kable(head(Hotdog))
+```
+
+
+::: {#code-book-hotdogs .callout-tip .codebook collapse="true"}
+## Code book for Dataset hotdogs
+
+**Description**
+
+This dataset contains nutritional information for a sample of commercially available hot dogs. The data include calorie counts and sodium content for each hot dog, along with a categorical classification of the hot dog type. The dataset is commonly used to illustrate comparisons of quantitative variables across groups.
+
+Variables  
+[type]{.var}  
+Categorical variable indicating the type of hot dog. Typical categories include Beef, Meat, and Poultry.
+
+[calories]{.var}  
+Quantitative variable giving the number of calories per hot dog.
+
+[sodium]{.var}  
+Quantitative variable giving the sodium content per hot dog, measured in milligrams.
+
+Source  
+The dataset is widely used in introductory statistics textbooks and examples and is often attributed to a Consumer Reports–style nutritional analysis of hot dog brands.
+:::
+
 
 8.  Per capita income in 1960 dollars for European countries and the percent of the labor force that works in agriculture in 1960 are in @tbl-Agriculture ("OECD economic development" 2013). Create a scatter plot and find a regression equation between percent of labor force in agriculture and per capita income. Then use the regression equation to find the per capita income in a country that has 21 percent of labor in agriculture and in a country that has 2 percent of labor in agriculture. Which per capita income that you calculated do you think is closer to the true income? Why?
 
@@ -804,7 +821,7 @@ References R.M. Heavenrich, J.D. Murrell, and K.H. Hellman, Light Duty Automotiv
 
 <!-- Rewrote this section to explain correlation more and how to find it in Rguroo. Also have a smooth transition to R^2 -->
 
-A correlation exists between two variables when the values of one variable are associated with the values of the other variable. Correlation is a word used in everyday life, and many people think they understand what it means. What it really means, when stated as a number, is a measure of how strong the linear relationship is between two variables. This measure is called the **correlation coefficient**, or **correlation** for short. It is also called the **Pearson correlation coefficient** after Karl Pearson who developed it. There are many types of patterns (relationships) between variables that one can see in data. Common types of patterns are linear, exponential, logarithmic, or periodic. To see these patterns, you can draw a scatterplot of the data. In this chapter, and generally in this course, we mostly deal with linear relationships.
+A correlation exists between two variables when the values of one variable are associated with the values of the other variable. Correlation is a word used in everyday life, and many people think they understand what it means. What it really means, when stated as a number, is a measure of how strong the linear relationship is between two variables. This measure is called the **correlation coefficient**, or **correlation** for short. It is also called the **Pearson correlation coefficient** after Karl Pearson who developed it. There are many types of patterns (relationships) between variables that one can see in data. Common types of patterns are linear, exponential, logarithmic, or periodic. To see these patterns, you can draw a scatter plot of the data. In this chapter, and generally in this course, we mostly deal with linear relationships.
 
 ### Interpretation of the correlation coefficient
 
@@ -1026,15 +1043,16 @@ Remember a correlation only means a pattern exists. It does not mean that one va
 
 </div>
 
-9.  Cigarette smoking and cancer have been linked. The number of deaths per one hundred thousand from bladder cancer and the number of cigarettes sold per capita in 1960 are given in teh dataset [cancer_1]{.data} with the first six rows showing in  @tbl-Cancer ("Smoking and cancer," 2013). Find the coefficient of determination and the correlation coefficient, then interpret both.
+9.  Cigarette smoking and cancer have been linked. The number of deaths per one hundred thousand from bladder cancer and the number of cigarettes sold per capita in 1960 are given in the dataset [cancer_1]{.data} with the first six rows showing in  @tbl-Cancerbladder ("Smoking and cancer," 2013). Find the coefficient of determination and the correlation coefficient, then interpret both.
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cancer_1]{.data}.
 
-**Code book for Dataset Cancer is below @tbl-Cancer.**
-
 </div>
+
+The codebook for the dataset cancer is given [here](#code-book-cancer)
+
 
 10. The weight of a car can influence the mileage that the car can obtain. A random sample of cars' weights and mileage was collected and are in [cars]{.data} dataset. The first six rows of the data are shown in @tbl-Cars ("us auto mileage," 2019). Find the coefficient of determination and the correlation coefficient, then interpret both.
 
@@ -1118,7 +1136,7 @@ To obtain the prediction interval for the beer example, follow the steps for cre
 #| warning: FALSE
 #| label: fig-AlcoholCalorieRegress_pred_interval
 #| fig-cap: "Rguroo dialog for obtaining prediction interval for calories from alcohol content"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics(
   "Rguroo_dialogs/Regression/AlcoholCalorieRegress_pred_interval.png")
 ```
@@ -1227,7 +1245,7 @@ To obtain the test statistic and p-value, follow the steps for creating a linear
 #| warning: FALSE
 #| label: fig-AlcoholCalorieRegress_test
 #| fig-cap: "Rguroo dialog for testing slope for calories from alcohol content"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics(
   "Rguroo_dialogs/Regression/AlcoholCalorieRegress_test.png")
 
@@ -1383,15 +1401,16 @@ b.  Test at the 5% level for a correlation or linear relationship between amount
 b.  Compute a 90% prediction interval for the per capita income in a country that has 21 percent of labor in agriculture.
 c.  Test at the 5% level for a correlation or linear relationship between percent of labor force in agriculture and per capita income.
 
-9.  Cigarette smoking and cancer have been linked. The number of deaths per one hundred thousand from bladder cancer and the number of cigarettes sold per capita in 1960 are given in teh dataset [cancer_1]{.data} with the first six rows showing in  @tbl-Cancer ("Smoking and cancer," 2013). 
+9.  Cigarette smoking and cancer have been linked. The number of deaths per one hundred thousand from bladder cancer and the number of cigarettes sold per capita in 1960 are given in teh dataset [cancer_1]{.data} with the first six rows showing in  @tbl-Cancerbladder ("Smoking and cancer," 2013). 
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cancer_1]{.data}.
 
-**Code book for Dataset Cancer is below @tbl-Cancer.**
-
 </div>
+
+The codebook for the dataset cancer is given [here](#code-book-cancer)
+
 
 <!-- a.  Find the standard error of the estimate.-->
 a.  Compute a 99% prediction interval for the number of deaths from bladder cancer when the cigarette sales were 20 per capita.
