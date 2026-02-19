@@ -227,6 +227,28 @@ window.Quarto = {
   <li><a href="#regression" id="toc-regression" class="nav-link active" data-scroll-target="#regression"><span class="header-section-number">10.1</span> Regression</a>
   <ul class="collapse">
   <li><a href="#introduction-to-regression-and-correlation" id="toc-introduction-to-regression-and-correlation" class="nav-link" data-scroll-target="#introduction-to-regression-and-correlation"><span class="header-section-number">10.1.1</span> Introduction to Regression and Correlation</a></li>
+  <li><a href="#finding-the-regression-line" id="toc-finding-the-regression-line" class="nav-link" data-scroll-target="#finding-the-regression-line"><span class="header-section-number">10.1.2</span> Finding the regression line</a></li>
+  <li><a href="#the-regression-equation-and-prediction" id="toc-the-regression-equation-and-prediction" class="nav-link" data-scroll-target="#the-regression-equation-and-prediction"><span class="header-section-number">10.1.3</span> The Regression Equation and Prediction</a></li>
+  <li><a href="#sec-assumption-validity-line" id="toc-sec-assumption-validity-line" class="nav-link" data-scroll-target="#sec-assumption-validity-line"><span class="header-section-number">10.1.4</span> Checking Assumptions for the Regression Equation</a></li>
+  <li><a href="#sec-assumption-validity-inference" id="toc-sec-assumption-validity-inference" class="nav-link" data-scroll-target="#sec-assumption-validity-inference"><span class="header-section-number">10.1.5</span> Checking Assumptions for Confidence Intervals and Tests</a></li>
+  <li><a href="#regression-with-groups" id="toc-regression-with-groups" class="nav-link" data-scroll-target="#regression-with-groups"><span class="header-section-number">10.1.6</span> Regression with Groups</a></li>
+  <li><a href="#homework-for-regression-section" id="toc-homework-for-regression-section" class="nav-link" data-scroll-target="#homework-for-regression-section"><span class="header-section-number">10.1.7</span> Homework for Regression Section</a></li>
+  </ul></li>
+  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation"><span class="header-section-number">10.2</span> Correlation</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-of-the-correlation-coefficient" id="toc-interpretation-of-the-correlation-coefficient" class="nav-link" data-scroll-target="#interpretation-of-the-correlation-coefficient"><span class="header-section-number">10.2.1</span> Interpretation of the correlation coefficient</a></li>
+  <li><a href="#coefficient-of-determination-r2" id="toc-coefficient-of-determination-r2" class="nav-link" data-scroll-target="#coefficient-of-determination-r2"><span class="header-section-number">10.2.2</span> Coefficient of Determination, <span class="math inline">\(R^2\)</span></a></li>
+  <li><a href="#causation" id="toc-causation" class="nav-link" data-scroll-target="#causation"><span class="header-section-number">10.2.3</span> Causation</a></li>
+  <li><a href="#homework-for-correlation-section" id="toc-homework-for-correlation-section" class="nav-link" data-scroll-target="#homework-for-correlation-section"><span class="header-section-number">10.2.4</span> Homework for Correlation Section</a></li>
+  </ul></li>
+  <li><a href="#sec-inference-regression" id="toc-sec-inference-regression" class="nav-link" data-scroll-target="#sec-inference-regression"><span class="header-section-number">10.3</span> Inference for Regression and Correlation</a>
+  <ul class="collapse">
+  <li><a href="#prediction-interval" id="toc-prediction-interval" class="nav-link" data-scroll-target="#prediction-interval"><span class="header-section-number">10.3.1</span> Prediction Interval</a></li>
+  <li><a href="#prediction-interval-for-an-individual-y" id="toc-prediction-interval-for-an-individual-y" class="nav-link" data-scroll-target="#prediction-interval-for-an-individual-y"><span class="header-section-number">10.3.2</span> Prediction Interval for an Individual <span class="math inline">\(y\)</span></a></li>
+  <li><a href="#example-find-the-prediction-interval" id="toc-example-find-the-prediction-interval" class="nav-link" data-scroll-target="#example-find-the-prediction-interval"><span class="header-section-number">10.3.3</span> Example: Find the Prediction Interval</a></li>
+  <li><a href="#hypothesis-test-for-correlation-or-slope" id="toc-hypothesis-test-for-correlation-or-slope" class="nav-link" data-scroll-target="#hypothesis-test-for-correlation-or-slope"><span class="header-section-number">10.3.4</span> Hypothesis Test for Correlation or Slope:</a></li>
+  <li><a href="#example-testing-the-claim-of-a-linear-correlation" id="toc-example-testing-the-claim-of-a-linear-correlation" class="nav-link" data-scroll-target="#example-testing-the-claim-of-a-linear-correlation"><span class="header-section-number">10.3.5</span> Example: Testing the Claim of a Linear Correlation</a></li>
+  <li><a href="#homework-for-inference-for-regression-and-correlation-section" id="toc-homework-for-inference-for-regression-and-correlation-section" class="nav-link" data-scroll-target="#homework-for-inference-for-regression-and-correlation-section"><span class="header-section-number">10.3.6</span> Homework for Inference for Regression and Correlation Section</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -253,113 +275,14 @@ window.Quarto = {
 </header>
 
 
-<p>The previous chapter looked at comparing populations to see if there is a difference between the two. That involved two random variables that are similar measures. This chapter will look at two random variables that do not need to be similar measures, and see if there is a relationship between the two or more variables. To do this, you look at regression, which finds the linear relationship, and correlation, which measures the strength of a linear relationship.</p>
-<p>Please note: there are many other types of relationships besides linear that can be found for the data. This book will only explore linear, but realize that there are other relationships that can be used to describe data.</p>
-<section id="regression" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="regression"><span class="header-section-number">10.1</span> Regression</h2>
-<section id="introduction-to-regression-and-correlation" class="level3" data-number="10.1.1">
-<h3 data-number="10.1.1" class="anchored"><span class="header-section-number">10.1.1</span> Introduction to Regression and Correlation</h3>
-<p>When comparing different variables, two questions come to mind: “Is there a relationship between two variables?” and “How strong is that relationship?” These questions can be answered using <strong>regression</strong> and <strong>correlation</strong>. Regression answers whether there is a relationship, (again this book will explore linear relationships only) and correlation answers how strong the linear relationship is. The variable that is used to explain the change (or variability) in the other variable is called the <strong>explanatory variable</strong> or <strong>predictor variable</strong>, while the variable whose variability is being explained is called the <strong>response variable</strong>. In general, variables that help to explain the changes in a response variable are known as <strong>covariates</strong>. To introduce the concepts of regression and correlation, it is easier to look at a set of data.</p>
-<!--
-::: {.example #determine-relationship title="Determining if there is a Relationship"}
-
-### Example: Determining if there is a Relationship
--->
-<div id="exm-determine-relationship" class="theorem example">
-<p><span class="theorem-title"><strong>Example 10.1 (Determining if There is a Relationship)</strong></span> Is there a relationship between the alcohol content and the number of calories in 12-ounce beer? To determine if there is one, we explore a dataset of 227 beers, including their alcohol content and their calorie counts (Find Out How Many Calories in Beer?, 2019). <a href="#tbl-Beer" class="quarto-xref">Table&nbsp;<span>10.1</span></a> shows the first five rows of the dataset.</p>
-</div>
-<div class="cell" data-tbl-alt="Head of beer Dataset">
-<div id="tbl-Beer" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Head of beer Dataset">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Beer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;10.1: Alcohol and Calorie Content in Beer
-</figcaption>
-<div aria-describedby="tbl-Beer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 38%">
-<col style="width: 19%">
-<col style="width: 11%">
-<col style="width: 10%">
-<col style="width: 11%">
-<col style="width: 7%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">beer</th>
-<th style="text-align: left;">brewery</th>
-<th style="text-align: left;">location</th>
-<th style="text-align: right;">alcohol</th>
-<th style="text-align: right;">calories</th>
-<th style="text-align: right;">carbs</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">American Amber Lager</td>
-<td style="text-align: left;">Straub Brewery</td>
-<td style="text-align: left;">domestic</td>
-<td style="text-align: right;">0.04</td>
-<td style="text-align: right;">136</td>
-<td style="text-align: right;">10.5</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">American Lager</td>
-<td style="text-align: left;">Straub Brewery</td>
-<td style="text-align: left;">domestic</td>
-<td style="text-align: right;">0.04</td>
-<td style="text-align: right;">132</td>
-<td style="text-align: right;">10.5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">American Light</td>
-<td style="text-align: left;">Straub Brewery</td>
-<td style="text-align: left;">domestic</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">96</td>
-<td style="text-align: right;">7.6</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Anchor Porter</td>
-<td style="text-align: left;">Anchor</td>
-<td style="text-align: left;">domestic</td>
-<td style="text-align: right;">0.06</td>
-<td style="text-align: right;">209</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Anchor Steam</td>
-<td style="text-align: left;">Anchor</td>
-<td style="text-align: left;">domestic</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;">153</td>
-<td style="text-align: right;">16.0</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Anheuser Busch Natural Light</td>
-<td style="text-align: left;">Anheuser Busch</td>
-<td style="text-align: left;">domestic</td>
-<td style="text-align: right;">0.04</td>
-<td style="text-align: right;">95</td>
-<td style="text-align: right;">3.2</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</figure>
-</div>
-</div>
-<p><strong>Solution</strong></p>
-<p>Click to expand the box below to see instructions to import and view the <span class="data">beer_data</span> dataset.</p>
-<div id="Importing-Beer_data-to-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing beer_data to Rguroo">
+<p><strong>Before you begin, Click to expand the box below to review the process for importing a dataset.</strong></p>
+<div id="Importing-Beer_data-to-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Data to Rguroo">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Importing beer_data to Rguroo
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Importing Data to Rguroo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -372,14 +295,118 @@ Table&nbsp;10.1: Alcohol and Calorie Content in Beer
 </li>
 <li>In the top search box, type <span class="typein">kozak</span>, then select the <span class="repo">Statistics Using Technology – Kozak</span> repository.<br>
 </li>
-<li>In the middle search box, type <span class="typein">beer</span>, then select the <span class="data">beer_data</span> dataset that appears in the lower panel.<br>
+<li>In the middle search box, type the first few letters of the dataset name, and choose your desired dataset name that appears in the lower panel.<br>
 </li>
-<li>Click the <span class="button">Import</span> button to import the dataset into your Rguroo account.</li>
+<li>Click the <span class="button">Import</span>. The dataset will be imported to your Rguroo account.</li>
 <li>Click <span class="button">Close</span> to exit the dialog.<br>
 </li>
-<li>To view the dataset, double-click the dataset name “<span class="data">beer_data</span>” in the <strong>Data</strong> toolbox list.</li>
+<li>To view the dataset, double-click the dataset name under the <strong>Data</strong> toolbox list.</li>
 </ol>
 </div>
+</div>
+</div>
+<p>The previous chapter focused on comparing populations to determine whether there is a difference between them. In those situations, we examined two random variables that measured the same or very similar quantities. In this chapter, we shift our focus to situations where the variables do not need to measure the same thing. Instead of comparing groups, we investigate whether a relationship exists between two or more variables. To study this relationship, we use regression to model the linear relationship between variables and correlation to measure the strength and direction of that linear relationship.</p>
+<p>There are many types of relationships that can exist between variables, not just linear ones. In this book, we will focus only on linear relationships. However, it is important to recognize that other types of relationships can also be used to describe and model data, depending on the situation.</p>
+<section id="regression" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="regression"><span class="header-section-number">10.1</span> Regression</h2>
+<section id="introduction-to-regression-and-correlation" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="introduction-to-regression-and-correlation"><span class="header-section-number">10.1.1</span> Introduction to Regression and Correlation</h3>
+<p>When comparing different variables, two questions naturally arise: “Is there a relationship between the variables?” and “How strong is that relationship?” These questions can be answered using regression and correlation. Regression helps determine whether a relationship exists (in this book, we focus only on linear relationships), while correlation measures the strength of the linear relationship.</p>
+<p>When comparing different variables, two questions naturally arise: “Is there a relationship between the variables?” and “How strong is that relationship?” These questions can be answered using <strong>regression</strong> and <strong>correlation</strong>. Regression helps determine whether a relationship exists (in this book, we focus only on linear relationships), while correlation measures the strength of the linear relationship.</p>
+<p>To better understand these ideas, it is helpful to clearly define the roles the variables play in this analysis. The <strong>response</strong> variable is the variable whose variability we are trying to explain or predict. The variable used to explain the change (or variability) in the response variable is called the <strong>explanatory variable</strong> or <strong>predictor variable</strong>. More generally, any variables that help explain changes in a response variable are referred to as <strong>predictors</strong> or <strong>covariates</strong>. To introduce the concepts of regression and correlation more fully, it is helpful to examine a set of data.</p>
+<div id="exm-determine-relationship" class="theorem example">
+<p><span class="theorem-title"><strong>Example 10.1 (Determining if There is a Relationship)</strong></span> Is there a relationship between the alcohol content and the number of calories in a 12-ounce beer? To determine whether such a relationship exists, we examine a dataset of 227 beers that includes their alcohol content and calorie counts (Find Out How Many Calories in Beer?, 2019).</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">beer_data</span>. Table <a href="#tbl-Beer" class="quarto-xref">Table&nbsp;<span>10.1</span></a> displays the first five rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-beer">dataset code book</a> that follows.</p>
+</div>
+<div class="cell" data-tbl-alt="Head of beer Dataset">
+<div id="tbl-Beer" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Head of beer Dataset">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Beer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;10.1: Alcohol and Calorie Content in Beer
+</figcaption>
+<div aria-describedby="tbl-Beer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 28%">
+<col style="width: 34%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">X</th>
+<th style="text-align: left;">beer</th>
+<th style="text-align: left;">brewery</th>
+<th style="text-align: left;">location</th>
+<th style="text-align: right;">alcohol</th>
+<th style="text-align: right;">calories</th>
+<th style="text-align: right;">carbs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">American Amber Lager</td>
+<td style="text-align: left;">Straub Brewery</td>
+<td style="text-align: left;">domestic</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">136</td>
+<td style="text-align: right;">10.50</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">American Lager</td>
+<td style="text-align: left;">Straub Brewery</td>
+<td style="text-align: left;">domestic</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">132</td>
+<td style="text-align: right;">10.50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">American Light</td>
+<td style="text-align: left;">Straub Brewery</td>
+<td style="text-align: left;">domestic</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">7.60</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Amstel Light</td>
+<td style="text-align: left;">Amstel Brouwerij B.V. (Holland)</td>
+<td style="text-align: left;">import</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">99</td>
+<td style="text-align: right;">5.33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Anchor Steam</td>
+<td style="text-align: left;">Anchor</td>
+<td style="text-align: left;">domestic</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">153</td>
+<td style="text-align: right;">16.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Anheuser Busch Natural Ice</td>
+<td style="text-align: left;">Anheuser Busch</td>
+<td style="text-align: left;">domestic</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">157</td>
+<td style="text-align: right;">8.90</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
 </div>
 </div>
 <div id="code-book-beer" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -399,7 +426,7 @@ Code book for Dataset Beer
 <p><span class="var">beer</span>: The name of the beer.</p>
 <p><span class="var">brewery</span>: the brewery that brews the beer.</p>
 <p><span class="var">location</span>: whether the beer is brewed in the U.S. (domestic) or brewed in another country (import).</p>
-<p><span class="var">alcohol</span>: the alcohol content of the beer.</p>
+<p><span class="var">alcohol</span>: the percent alcohol content of the beer.</p>
 <p><span class="var">calories</span>: the number of calories in the beer.</p>
 <p><span class="var">carbs</span>: the amount of carbohydrates in the beer (g).</p>
 <p><a href="https://www.beer100.com/beer-calories">Source</a>: Find Out How Many Calories in Beer? (n.d.). Retrieved July 21, 2019. (https://www.beer100.com/beer-calories)</p>
@@ -407,19 +434,18 @@ Code book for Dataset Beer
 </div>
 </div>
 </div>
-<p>To aid in figuring out if there is a relationship, it helps to draw a scatterplot of the data. First, it is helpful to state the variables, and since variables in an algebra class are typically represented as <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, those labels will be used here. It helps to state which variable is <span class="math inline">\(x\)</span> (explanatory or predictor) and which is <span class="math inline">\(y\)</span> (response).</p>
+<p><strong>Solution</strong></p>
+<p>To aid in figuring out if there is a relationship between the alcohol content and the number of calories, it helps to draw a scatter plot of the data. First, it is helpful to state the variables, and since variables in an algebra class are typically represented as <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, we use those labels here. It helps to state which variable is <span class="math inline">\(x\)</span> (explanatory or predictor) and which is <span class="math inline">\(y\)</span> (response).</p>
 <p>State variables</p>
-<p><span class="math inline">\(x\)</span> = alcohol content in the beer</p>
-<p><span class="math inline">\(y\)</span> = calories in 12 ounce beer</p>
-<div id="Creating-Scatterplot-of-Calories-vs-Alcohol-Content-in-Rguroo" class="ref-label">
-<p>Click to expand the box below see how to create the scatterplot of calories vs.&nbsp;alcohol content.</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Scatterplot of Calories vs. Alcohol Content">
+<p><span class="math inline">\(x\)</span> = percent alcohol content in the beer; <span class="var">alcohol</span></p>
+<p><span class="math inline">\(y\)</span> = number of calories in 12 ounce beer; <span class="var">calories</span></p>
+<div id="Creating-scatterplot-of-Calories-vs-Alcohol-Content-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating scatter plot of Calories vs. Alcohol Content">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating Scatterplot of Calories vs.&nbsp;Alcohol Content
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating scatter plot of Calories vs.&nbsp;Alcohol Content
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -429,9 +455,9 @@ Code book for Dataset Beer
 <ol type="1">
 <li>Open the <strong>Plots</strong> toolbox in Rguroo.<br>
 </li>
-<li>Open the <span class="dpd">Create Plot</span> dropdown and select <span class="fun">Scatterplot</span>. This opens the Scatterplot dialog.<br>
+<li>Open the <span class="dpd">Create Plot</span> dropdown and select <span class="fun">scatter plot</span>. This opens the scatter plot dialog.<br>
 </li>
-<li>In the Scatterplot dialog, choose the <span class="data">beer_data</span> dataset from the <span class="dpd">Dataset</span> dropdown.<br>
+<li>In the scatter plot dialog, choose the <span class="data">beer_data</span> dataset from the <span class="dpd">Dataset</span> dropdown.<br>
 </li>
 <li>Choose the <span class="var">alcohol</span> variable from the <span class="dpd">Predictor (x)</span> dropdown.<br>
 </li>
@@ -446,8 +472,8 @@ Code book for Dataset Beer
 <li>Enter <span class="typein">Number of Calories</span> in the <span class="des">Y-Axis</span> textbox.<br>
 </li>
 </ul></li>
-<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the scatterplot.</li>
-<li>In the <img src="Rguroo_Icons/save_as.png" class="img-fluid" alt="Save as"> textbox, enter the name <span class="typein">AlcoholCalorieScatter</span> for the scatterplot. Click the button to save the scatterplot to your Rguroo account.</li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the scatter plot.</li>
+<li>In the <img src="Rguroo_Icons/save_as.png" class="img-fluid" alt="Save as"> textbox, enter the name <span class="typein">AlcoholCalorieScatter</span> for the scatter plot. Click the button to save the scatter plot to your Rguroo account.</li>
 </ol>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -463,8 +489,8 @@ Click here to see the Rguroo dialog
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Rguroo_dialogs/Regression/Scatterplot_dialog.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>Scatterplot dialog showing settings for plotting alcohol content versus calories.</figcaption>
+<p><img src="Rguroo_dialogs/Regression/scatterplot_dialog.png" class="img-fluid figure-img" width="500"></p>
+<figcaption>scatter plot dialog showing settings for plotting alcohol content versus calories.</figcaption>
 </figure>
 </div>
 </div>
@@ -487,63 +513,17 @@ Figure&nbsp;10.1: Calories versus Alcohol Content in Beer
 </div>
 </div>
 </div>
-<p>The scatter plot shown in <a href="#fig-Beer-point" class="quarto-xref">Figure&nbsp;<span>10.1</span></a> looks fairly linear.</p>
+<p>The scatter plot shown in <a href="#fig-Beer-point" class="quarto-xref">Figure&nbsp;<span>10.1</span></a> looks fairly linear, meaning the points tend to fall along a straight-line pattern rather than a curved one.</p>
+</section>
 <section id="finding-the-regression-line" class="level3" data-number="10.1.2">
 <h3 data-number="10.1.2" class="anchored" data-anchor-id="finding-the-regression-line"><span class="header-section-number">10.1.2</span> Finding the regression line</h3>
-<p>To find the equation for the linear relationship, the process of regression is used to determine the line that best fits the data (sometimes called the best-fitting line). The process is to draw a line through the data and measure the vertical distance from each point to the line. These distances are called the <strong>residuals</strong>. The regression line is the line that makes the sum of the square of the residuals as small as possible, which is why it is sometimes called the least squares line. The regression line on the scatter plot is displayed in <a href="#fig-Beer-point-line" class="quarto-xref">Figure&nbsp;<span>10.2</span></a>.</p>
-<p>Click to expand the box below to see how to add a regression line to the scatterplot.</p>
-<div id="Adding-Regression-Line-to-Scatterplot-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Adding Regression Line to a Scatterplot">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Adding Regression Line to a Scatterplot
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Before you begin:</strong> Ensure you have created the scatterplot of calories vs.&nbsp;alcohol content in your Rguroo account, as shown <a href="#Creating-Scatterplot-of-Calories-vs-Alcohol-Content-in-Rguroo">here</a>.</p>
-<ol type="1">
-<li>Open the Rguroo tab containing your scatterplot of calories vs.&nbsp;alcohol content by double-clicking the name <span class="des">AlcoholCalorieScatter</span> in the <strong>Plots</strong> toolbox list.</li>
-<li>Open the <span class="diag">Basics</span> dialog by clicking the <img src="Rguroo_Icons/basics.png" class="img-fluid"> button.<br>
-</li>
-<li>In the <strong>Superimpose</strong> section of the dialog, select the checkbox <span class="des">LS Line</span>.<br>
-</li>
-<li>Click the <strong>preview icon</strong> <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the scatterplot with the regression line.</li>
-<li>Click the <img src="Rguroo_Icons/save_as.png" class="img-fluid" alt="Save as"> button to save the updated scatterplot as <span class="typein">AlcoholCalorieScatterLS</span>.</li>
-</ol>
-<div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Click here to see the Rguroo dialog
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Rguroo_dialogs/Regression/Scatterplot_dialog_LS.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>Scatterplot dialog for adding a least-squares line to a plot of alcohol content versus calorie counts</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<p>To find the equation for the linear relationship, the process of regression is used to determine the line that best fits the data (sometimes called the best-fitting line). The process is to draw a line through the data and measure the vertical distance from each point to the line. These distances are called the <strong>residuals</strong>. The regression line is the line that makes the sum of the square of the residuals as small as possible, which is why it is sometimes called the least squares line. <a href="#fig-Beer-point-line" class="quarto-xref">Figure&nbsp;<span>10.2</span></a> displays the regression line on the scatter plot of the Number of Calories versus Alcohol Content.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-Beer-point-line" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Scatter plot with regression line on plot">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-Beer-point-line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Regression/AlcoholCalorieScatterLS.svg" class="img-fluid figure-img" style="width:70.0%" alt="Scatter plot with regression line on plot">
+<img src="Rguroo_outputs/Regression/AlcoholCalorieScatterLS.svg" class="img-fluid figure-img" style="width:80.0%" alt="Scatter plot with regression line on plot">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Beer-point-line-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10.2: Scatter Plot of Beer Data with Regression Line
@@ -552,34 +532,28 @@ Figure&nbsp;10.2: Scatter Plot of Beer Data with Regression Line
 </div>
 </div>
 </div>
-<p>Given a collection of paired sample data, the regression equation is <span class="math inline">\(\hat{y}=mx+b\)</span>, where the slope = <span class="math inline">\(m\)</span> and <span class="math inline">\(y\)</span>-intercept = <span class="math inline">\((0,b)\)</span>.</p>
-<p>As we will show, to find the linear model using Rguroo, we use the <span class="fun">Linear Regression</span> function in the <strong>Analytics</strong> toolbox.</p>
-<p>The <strong>residuals</strong> are the difference between the actual observed values of the response and the corresponding estimated (predicted) values, namely <span class="math inline">\(\text{residual} = y - \hat{y}\)</span>.</p>
+<p>To add a regression (least squares) line to the scatter plot in Rguroo, you simply select the checkbox <span class="des">LS Line</span> in the <strong>superimpose</strong> section of the <span class="dialog">Scatterplot</span> dialog, as shown in <a href="#fig-scatterplot_dialog_LS" class="quarto-xref">Figure&nbsp;<span>10.3</span></a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-scatterplot_dialog_LS" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Dialog Showing How to Add a Regression Line">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scatterplot_dialog_LS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_dialogs/Regression/scatterplot_dialog_LS.png" class="img-fluid figure-img" style="width:80.0%" alt="Rguroo Dialog Showing How to Add a Regression Line">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatterplot_dialog_LS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.3: Rguroo Dialog Showing How to Add a Regression Line
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Given a collection of paired sample data, the regression equation is <span class="math inline">\(\hat{y}=b +mx\)</span>, where the slope = <span class="math inline">\(m\)</span> and the <span class="math inline">\(y\)</span>-intercept = <span class="math inline">\((0,b)\)</span>.</p>
 <p>The <strong>independent variable</strong> (the <span class="math inline">\(x\)</span>-value) corresponds to the <strong>explanatory</strong> or <strong>predictor</strong> variable, the variable used to predict or explain changes in another variable. The <strong>dependent variable</strong> (the <span class="math inline">\(y\)</span>-value) corresponds to the <strong>response</strong> variable—the variable whose values change in relation to the predictor. In our example, alcohol content is the predictor (independent, <span class="math inline">\(x\)</span>) variable, and the number of calories is the response (dependent, <span class="math inline">\(y\)</span>) variable, since it makes more sense to predict calories from alcohol content rather than vice versa.</p>
+<p>The <strong>residuals</strong> are the difference between the actual observed values of the response and the corresponding estimated (predicted) values, namely <span class="math inline">\(\text{residual} = y - \hat{y}\)</span>.</p>
+<p>As we will show, the <span class="fun">Linear Regression</span> function in the Analytics toolbox is used in Rguroo to fit a linear model, producing both the equation of the regression line and the associated residuals.</p>
 </section>
-<section id="sec-assumption-validity-line" class="level3" data-number="10.1.3">
-<h3 data-number="10.1.3" class="anchored" data-anchor-id="sec-assumption-validity-line"><span class="header-section-number">10.1.3</span> Assumptions for the Validity of the Regression Equation and Line</h3>
-<ol type="1">
-<li><p><em>Randomness</em>: The set of ordered pairs is a random sample from the population of all such possible pairs.</p></li>
-<li><p><em>Linearity</em>: For a given <span class="math inline">\(x\)</span>-value, the distribution of <span class="math inline">\(y\)</span>-values has a mean that lies on the least squares line.</p></li>
-</ol>
-<p>The assumption of linearity is essential. If the relationship between the two variables is not linear, then a regression line will not fit the data well. To check linearity, we look at the scatterplot: a roughly straight-line pattern suggests the assumption is reasonable, while a curved pattern suggests it is not. We can also examine the so called residual-versus-fit plot. If the residuals are randomly scattered around the horizontal line <span class="math inline">\(y = 0\)</span> on this plot, the linearity assumption is likely valid. If the residuals show a curved pattern, then the assumption of linearity is likely violated.</p>
-</section>
-<section id="sec-assumption-validity-inference" class="level3" data-number="10.1.4">
-<h3 data-number="10.1.4" class="anchored"><span class="header-section-number">10.1.4</span> Assumptions for the validity of inference</h3>
-<ol start="3" type="1">
-<li><p><em>Constant Variance</em>: The variance of the <span class="math inline">\(y\)</span>-values should be the same across all <span class="math inline">\(x\)</span>-values.</p></li>
-<li><p><em>Normality</em>: The <span class="math inline">\(y\)</span>-values for each fixed value of <span class="math inline">\(x\)</span> should follow a normal distribution.</p></li>
-</ol>
-<p>The assumptions of constant variance and normality are primarily needed for the validity of inference in regression. Inference includes procedures such as constructing confidence intervals and carrying out hypothesis tests. Just as with the confidence intervals and hypothesis tests for means and proportions that you are already familiar with, we can construct confidence intervals and tests of hypotheses for the slope and intercept of the regression line, as well as for predicted values <span class="math inline">\(\hat{y}\)</span>. This we will cover in <a href="#sec-inference-regression" class="quarto-xref"><span>Section 10.3</span></a>.</p>
-<p>To check the constant-variance, we examine the residual-versus-fit plot: if the residuals are scattered with roughly the same vertical spread around the horizontal line <span class="math inline">\(y = 0\)</span> across all fitted-values, the assumption is reasonable. A funnel-shaped pattern suggests that unequal variances.</p>
-<p>To check normality, we look at a histogram or a <em>normal probability plot</em> of the residuals. The histogram should appear bell-shaped, and in a normal probability plot the residuals should fall roughly along a straight line; pronounced curvature or outliers indicate that the normality assumption may not be satisfied.</p>
-<!-- ### Example: Find the Equation of the Regression Line 
-
-:::{.example #find-regression-equation title="Find the Equation of the Regression Line"}
-
-::: {#exm-find-regression-equation .example title="Find the Equation of the Regression Line"}
--->
+<section id="the-regression-equation-and-prediction" class="level3" data-number="10.1.3">
+<h3 data-number="10.1.3" class="anchored" data-anchor-id="the-regression-equation-and-prediction"><span class="header-section-number">10.1.3</span> The Regression Equation and Prediction</h3>
 <div id="exm-find-regression-equation" class="theorem example">
 <p><span class="theorem-title"><strong>Example 10.2 (Find the Equation of the Regression Line)</strong></span> Is there a relationship between the alcohol content and the number of calories in 12-ounce beer? To determine if there is one, we examine the sample of beer’s alcohol content and calories, portion of which is shown in <a href="#tbl-Beer" class="quarto-xref">Table&nbsp;<span>10.1</span></a> (Find Out How Many Calories in Beer?, 2019).</p>
 <ol type="a">
@@ -595,10 +569,9 @@ Figure&nbsp;10.2: Scatter Plot of Beer Data with Regression Line
 <p>State random variables</p>
 <p><span class="math inline">\(x\)</span> = alcohol content in the beer</p>
 <p><span class="math inline">\(y\)</span> = calories in 12 ounce beer</p>
-<div id="Finding-the-Regression-Equation-in-Rguroo" class="ref-label">
 <p>Click to expand the box below to see how to obtain the regression equation.</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Finding the Regression Equation for the Beer Data">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div id="Finding-the-Regression-Equation-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Finding the Regression Equation for the Beer Data">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -607,7 +580,7 @@ Figure&nbsp;10.2: Scatter Plot of Beer Data with Regression Line
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">beer_data</span> dataset into your Rguroo account, as shown <a href="#Importing-Beer_data-to-Rguroo">here</a>.</p>
 <ol type="1">
@@ -625,7 +598,7 @@ Figure&nbsp;10.2: Scatter Plot of Beer Data with Regression Line
 <li>Click the <img src="Rguroo_Icons/save_as.png" class="img-fluid" alt="Save as"> button to save the regression results as <span class="typein">AlcoholCalorieRegress</span>.</li>
 </ol>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -634,7 +607,7 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -646,7 +619,7 @@ Click here to see the Rguroo dialog
 </div>
 </div>
 <div class="inner-callout callout callout-style-default callout-tip callout-titled" title="Rguroo output: Linear Regression for Beer Data">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -655,7 +628,7 @@ Rguroo output: Linear Regression for Beer Data
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="rg-iframe-wrapper" tabindex="0">
 <p><iframe src="Rguroo_html_output/RegressionHtmlOtput/AlcoholCalorieRegress_docx/AlcoholCalorieRegress.html" class="rg-iframe" title="Rguroo output: Linear Regression for Beer Data"> </iframe></p>
@@ -688,80 +661,116 @@ Table&nbsp;10.2: Data and model summary for Alcohol Content versus Calories
 <p>This table shows various information about the regression analysis. In particular, the last row, labeled “Equation of Least Squares Line,” gives the estimates for the slope and the <span class="math inline">\(y\)</span>-intercept. Note that the equation states <em>calories</em> in place of <span class="math inline">\(y\)</span> and <em>alcohol</em> in place of <span class="math inline">\(x\)</span>.</p>
 <p>From this, rounding the values, you can see that the y-intercept is 14.5 and the slope is 2672.4. So the regression equation is <span class="math inline">\(\hat{y}=2672.4x+14.5\)</span>.</p>
 <p>Remember, this is an estimate for the true regression equation. A different sample would produce a different estimate.</p>
-<p>Conditions check:</p>
-<ol type="1">
-<li><p><em>Randomness</em>: A random sample of alcohol content and calories was taken.</p>
-<p>Check: There is no guarantee that this was a random sample. The data was collected off of a website, and the website does not say how the data was obtained. However, it is a collection of most popular beers from large breweries, so it may be alright that it isn’t a random sample.</p></li>
-<li><p><em>Linearity</em>: For a given <span class="math inline">\(x\)</span>-value, the distribution of <span class="math inline">\(y\)</span>-values has a mean that lies on the least squares line.</p></li>
+<p>What does the slope mean in the context of this problem?</p>
+<p>The number of calories increases by about 26.72 calories for every 1% increase in alcohol content. In the regression output, the slope is shown as 2672, which looks much larger. This happens because alcohol content is recorded in the data as a decimal rather than a percent. For example, 1% alcohol is written as 0.01 in the dataset. The slope of 2672 therefore represents the change in calories for a 1.00 (or 100%) increase in alcohol content. To interpret the slope in terms of a 1% increase, we divide 2672 by 100, which gives 26.72 calories.</p>
+<p>The <span class="math inline">\(y\)</span>-intercept in many cases is meaningless. In this case, it means that if a drink has 0 alcohol content, then it would have 14.3 calories which maybe a reasonable value.</p>
+<ol start="2" type="a">
+<li>Use the regression equation to find the number of calories when the alcohol content is 7.00%.</li>
 </ol>
-<p>Check:</p>
-<p>We examine two graphs to check this condition: the scatter plot of <span class="math inline">\(y\)</span> versus <span class="math inline">\(x\)</span> and the residual-versus-fit plot.</p>
-<ol type="i">
-<li><p><a href="#fig-Beer-point" class="quarto-xref">Figure&nbsp;<span>10.1</span></a> shows the scatterplot of calories versus alcohol content. This graph is also shown as part of the default output of the <span class="fun">Linear Regression</span> function in Rguroo. This scatterplot looks fairly linear, so this condition appears to be satisfied.</p></li>
-<li><p><a href="#fig-Beer-resvsfit" class="quarto-xref">Figure&nbsp;<span>10.3</span></a> shows the residual-versus-fit plot, which is also part of the <span class="fun">Linear Regression</span> function output in Rguroo. The points on this plot are obtained by calculating the fitted values and the residuals for each data point. For each <span class="math inline">\(x\)</span>-value, a predicted value for <span class="math inline">\(y\)</span> is computed using the equation of the least squares line; this predicted value is called the <em>fitted value</em> and is denoted by <span class="math inline">\(\hat{y}\)</span>. The residual is then found by subtracting the fitted value from the observed <span class="math inline">\(y\)</span>-value:</p></li>
+<p>To make a prediction, we substitute the given alcohol content (expressed as a decimal) into the regression equation and compute the corresponding fitted value. In this example, we want to predict the number of calories for a beer with 7% alcohol content. Since 7% expressed as a decimal is 0.07, we substitute <span class="math inline">\(x = 0.07\)</span> into the regression equation: <span class="math display">\[
+\hat{y} = 2672 \times 0.07 + 14.3 = 201.34.
+\]</span></p>
+<p>This value, 201.34, is the predicted number of calories for a beer whose alcohol content is 7%. So, if you are drinking a beer that has 7% alcohol content, then it probably has close to 200 calories.</p>
+<p>Considering all the data, the mean number of calories is 154.5. However, for beers with 7% alcohol content, the predicted value of 201 calories is a more appropriate estimate because the beers in the dataset with 7% alcohol all have between 160 and 231 calories. Thus, when estimating calories for a specific alcohol content, the regression equation provides a more relevant and accurate estimate than simply using the overall mean.</p>
+<ol start="3" type="a">
+<li>Use the regression equation to find the number of calories when the alcohol content is 14%.</li>
 </ol>
-<p><span class="math display">\[
-\mbox{residual} = y - \hat{y}.
-\]</span> Fortunately, Rguroo calculates these automatically for you.</p>
-<p>Click to expand the box below to see how to obtain the fitted (predicted) values and the residuals.</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Obtaining Residuals for the Beer Data">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p><span class="math display">\[\hat{y}=2672*0.14+14.3=388.38\]</span></p>
+<p>You can also use Rguroo to obtain predicted values for specified value of <span class="math inline">\(x\)</span>. For example, to get the predicted values for alcohol contents of 7% and 14%, enter 0.07 and 0.14 (separated by a comma) in the textbox labeled <span class="des">Predict at new x value(s)</span> in the <span class="dialog">Simple Linear Regression</span> dialog as shown in <a href="#fig-AlcoholCalorieRegress_pred" class="quarto-xref">Figure&nbsp;<span>10.4</span></a> below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-AlcoholCalorieRegress_pred" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Predicting calories for alcohol contents of 7.00% and 14.00% in Rguroo">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-AlcoholCalorieRegress_pred-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_dialogs/Regression/AlcoholCalorieRegress_pred.png" class="img-fluid figure-img" style="width:80.0%" alt="Predicting calories for alcohol contents of 7.00% and 14.00% in Rguroo">
 </div>
-<div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Obtaining Residuals for the Beer Data
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Before you begin:</strong> Continue with the Rguroo instructions shown <a href="#Finding-the-Regression-Equation-in-Rguroo">here</a> for obtaining the regression equation.</p>
-<ol type="1">
-<li>Open the Rguroo tab containing your regression fit by double-clicking the name <span class="des">AlcoholCalorieRegress</span> in the <strong>Analytics</strong> toolbox list.<br>
-</li>
-<li>Click the <img src="Rguroo_Icons/basics.png" class="img-fluid"> button to open the <span class="diag">Simple Linear Regression</span> dialog.</li>
-<li>Select the checkbox <span class="des">Predictions &amp; Residuals</span>.</li>
-<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the regression results with residuals.</li>
-<li>Click the <img src="Rguroo_Icons/save_as.png" class="img-fluid" alt="Save as"> button to save the updated regression results as <span class="typein">AlcoholCalorieResiduals</span>.</li>
-</ol>
-<div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Click here to see the Rguroo dialog
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Rguroo_dialogs/Regression/AlcoholCalorieResidualsDialog1.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>Simple Linear Regression dialog: Obtaining Residuals</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-AlcoholCalorieRegress_pred-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.4: Predicting Calories for Alcohol Contents of 7.00% and 14.00% in Rguroo
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>The predicted values output from Rguroo is shown in <a href="#fig-AlcoholCaloriePredOutput" class="quarto-xref">Figure&nbsp;<span>10.5</span></a> below. These values are the same as those that we computed using the formula directly.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-AlcoholCaloriePredOutput" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo output showing predicted calories for alcohol contents of 7.00% and 14.00%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-AlcoholCaloriePredOutput-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Regression/AlcoholCaloriePredOutput.png" class="img-fluid figure-img" style="width:90.0%" alt="Rguroo output showing predicted calories for alcohol contents of 7.00% and 14.00%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-AlcoholCaloriePredOutput-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.5: Rguroo Output Showing Predicted Calories for Alcohol Contents of 7.00% and 14.00%
+</figcaption>
+</figure>
 </div>
 </div>
 </div>
+<p><strong>Extrapolation and Interpolation</strong></p>
+<p>If you are drinking a beer that is 14% alcohol content, then it probably has close to 388 calories. Since, on average, a 12% alcohol beer has 330 calories, you might expect a 14% beer to have more calories than this. However, the maximum alcohol content in our dataset is 12%. The estimate for a 14% beer is therefore an example of <strong>extrapolation</strong>, because it is a prediction for an <span class="math inline">\(x\)</span>-value outside the range of the data used to fit the model. It is not a good idea to predict values that fall far outside the range of the original data, because we cannot be sure that the regression relationship remains valid beyond the observed <span class="math inline">\(x\)</span>-values.</p>
+<p>Notice that 7% alcohol is within the range of the original <span class="math inline">\(x\)</span>-values. Predicting a value for an <span class="math inline">\(x\)</span>-value inside the observed range is called <strong>interpolation</strong>. When you interpolate, you can usually feel confident that the predicted value will be close to the true value because the model was created using data within that range and is intended to describe relationships only there. When you extrapolate, however, you cannot be sure the prediction is close to the true value, because the relationship may change for <span class="math inline">\(x\)</span>-values beyond those observed when the model was created.</p>
+<!-- Discuss: The following example is not clear and its relationship to linear regression is not clear. . So I replaced it.
+
+Another example of extrapolation is when you use regression to come up with an equation to predict the growth of a city, like Flagstaff, AZ. Based on analysis it was determined that the population of Flagstaff would be well over 50,000 by 1995. However, when a census was undertaken in 1995, the population was less than 50,000. This is because they extrapolated and the growth factor they were using had obviously changed from the early 1990's. Growth factors can change for many reasons, such as employment growth, employment stagnation, disease, articles saying great place to live, etc. Realize that when you extrapolate, your predicted value may not be anywhere close to the actual value that you observe.
+-->
+<p>Another example of extrapolation is the relationship between age and height. This relationship is approximately linear only during middle childhood, roughly between ages 2 and 10. Suppose we model height (in inches) as a linear function of age (in years) using the equation</p>
+<p>Height = 30 + 2.5 × Age.</p>
+<p>For example, to predict the height of a child who is 6 years old (an interpolation because 6 is within the 2–10 range), we substitute Age = 6:</p>
+<p>Height = 30 + 2.5 × 6 = 45 inches.</p>
+<p>However, using the same model to predict height at age 30 represents an extrapolation, since age 30 is far outside the range where the linear relationship holds. Substituting Age = 30 gives:</p>
+<p>Height = 30 + 2.5 × 30 = 105 inches,</p>
+<p>a clearly unrealistic value. This illustrates why extrapolation can lead to misleading conclusions.</p>
+<p>By the way, the slope of 2.5 here means that for every one year increase in age, the height increases by 2.5 inches. However, in this case, the <span class="math inline">\(y\)</span>-intercept is not meaningful. The <span class="math inline">\(y\)</span>-intercept is 30 inches, which would be the predicted height of a newborn baby (age 0). This is not a reasonable value since newborn babies are typically about 20 inches long. So in this case, the <span class="math inline">\(y\)</span>-intercept is not meaningful.</p>
+<!-- Revised: This may be reasonable, but remember this value is an extrapolation so it may be wrong. (Mynote: actually it is not an extrapolation since 0% is within the range of possible alcohol content) 
+--->
+<p>Consider the residuals again. According to the data, a beer with 7.0% alcohol has between 160 and 231 calories. The predicted value is 201 calories. This variation means that the actual value was between 40 calories below and 30 calories above the predicted value. That isn’t that far off. Some of the actual values differ by a large amount from the predicted value. This is due to variability in the response variable. The larger the residuals the less the model explains the variability in the response variable. There needs to be a way to calculate how well the model explains the variability in the response variable. This will be explored in the next section.</p>
+</section>
+<section id="sec-assumption-validity-line" class="level3" data-number="10.1.4">
+<h3 data-number="10.1.4" class="anchored" data-anchor-id="sec-assumption-validity-line"><span class="header-section-number">10.1.4</span> Checking Assumptions for the Regression Equation</h3>
+<p>Two assumptions must hold for the least squares regression equation to be valid: <strong>randomness</strong> and <strong>linearity</strong>.</p>
+<p><strong>Randomness</strong></p>
+<p>For the linear regression model to be valid, the set of ordered pairs should be a random sample from the population of all such possible pairs.</p>
+<p>The assumption of randomness ensures that the data are representative of the population and that the observed relationship is not the result of a systematic bias in how the data were collected. If the data are not obtained randomly—for example, if certain observations are more likely to be included than others—then the regression results may not generalize beyond the observed data.</p>
+<p>For the beer data, do we have a random sample of alcohol content and calories? There is no guarantee that this was a random sample. The data was collected off of a website, and the website does not say how the data was obtained. However, it is a collection of most popular beers from large breweries, so it may be alright that it isn’t a random sample.</p>
+<p><strong>Linearity</strong></p>
+<p>The assumption of linearity means that the relationship between the explanatory variable and the response variable can be reasonably described by a straight line. In particular, for any given <span class="math inline">\(x\)</span>-value, the average (mean) of the corresponding <span class="math inline">\(y\)</span>-values should lie on, or very close to, the least squares regression line. This does not mean that all points fall on the line, but that the overall trend in the data follows a linear pattern.</p>
+<p>The assumption of linearity is essential. If the relationship between the two variables is not linear, then a regression line will not fit the data well. To check linearity, we look at the scatter plot: a roughly straight-line pattern suggests the assumption is reasonable, while a curved pattern suggests it is not. We can also examine the so called residual-versus-fit plot. If the residuals are randomly scattered around the horizontal line <span class="math inline">\(y = 0\)</span> on this plot, the linearity assumption is likely valid. If the residuals show a curved pattern, then the assumption of linearity is likely violated.</p>
+<p>Is the assumption of linearity valid for the beer data? We examine two graphs to check this condition: the scatter plot of <span class="math inline">\(y\)</span> versus <span class="math inline">\(x\)</span> and the residual-versus-fit plot.</p>
+<p><a href="#fig-Beer-point" class="quarto-xref">Figure&nbsp;<span>10.1</span></a> shows the scatter plot of calories versus alcohol content. This graph is also shown as part of the default output of the <span class="fun">Linear Regression</span> function in Rguroo. This scatter plot looks fairly linear, so this condition appears to be satisfied.</p>
+<p><a href="#fig-Beer-resvsfit" class="quarto-xref">Figure&nbsp;<span>10.6</span></a> shows the residual-versus-fit plot, which is also part of the <span class="fun">Linear Regression</span> function output in Rguroo. The points on this plot are obtained by calculating the fitted values and the residuals for each data point. For each <span class="math inline">\(x\)</span>-value, a predicted value for <span class="math inline">\(y\)</span> is computed using the equation of the least squares line; this predicted value is called the <em>fitted value</em> and is denoted by <span class="math inline">\(\hat{y}\)</span>. The residual is then found by subtracting the fitted value from the observed <span class="math inline">\(y\)</span>-value:</p>
+<p><span class="math display">\[
+\mbox{residual} = y - \hat{y}.
+\]</span></p>
+<p>For the beer data, the points in the residual-versus-fitted plot shown in <a href="#fig-Beer-resvsfit" class="quarto-xref">Figure&nbsp;<span>10.6</span></a> appear to be randomly scattered around the horizontal line at zero. There is no apparent curved pattern in the plot, suggesting that the linearity condition is satisfied.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-Beer-resvsfit" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Residuals versus Fitted values plot looks random">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Beer-resvsfit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Regression/AlcoholCalorieResvsFit.png" class="img-fluid figure-img" style="width:80.0%" alt="Residuals versus Fitted values plot looks random">
 </div>
-<p>Click to expand the box below to see the predicted (fitted) values and the residuals for the first 20 cases of the beer data.</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="Residuals for Alcohol and Calorie Content in Beer">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Beer-resvsfit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.6: Residuals versus Fitted Values Plot for Beer Data
+</figcaption>
+</figure>
 </div>
-<div class="callout-title-container flex-fill">
-Residuals for Alcohol and Calorie Content in Beer
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<p>Rguroo calculates fitted values and residuals automatically. Continuing with the Rguroo instructions for fitting the regression equation to the beer data, shown <a href="#Finding-the-Regression-Equation-in-Rguroo">here</a>, selecting the checkbox <span class="des">Predictions &amp; Residuals</span> in the <span class="dialog">Simple Linear Regression</span> dialog produces a table containing the fitted values (column labeled Predicted Value) and the residuals (column labeled Residual Value). The dialog box used for this step is shown in <a href="#fig-AlcoholCalorieResidualsDialog" class="quarto-xref">Figure&nbsp;<span>10.7</span></a>, and the Rguroo output, containing the fitted values and residuals for the first 20 cases of the beer data is given in <a href="#tbl-Beer-residuals-rguroo" class="quarto-xref">Table&nbsp;<span>10.3</span></a>. It is these values that are plotted in <a href="#fig-Beer-resvsfit" class="quarto-xref">Figure&nbsp;<span>10.6</span></a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-AlcoholCalorieResidualsDialog" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Simple Regression Dialog for Showing How to Obtain the Fitted Values and Residuals">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-AlcoholCalorieResidualsDialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_dialogs/Regression/AlcoholCalorieResidualsDialog1.png" class="img-fluid figure-img" style="width:80.0%" alt="Simple Regression Dialog for Showing How to Obtain the Fitted Values and Residuals">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-AlcoholCalorieResidualsDialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.7: Simple Regression Dialog for Showing How to Obtain the Fitted Values and Residuals
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 <div class="cell">
 <div id="tbl-Beer-residuals-rguroo" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -772,16 +781,13 @@ Table&nbsp;10.3
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Rguroo_outputs/Regression/AlcoholCalorieResiduals.png" class="img-fluid figure-img" style="width:90.0%" alt="Residuals for Alcohol and Calorie Content in Beer from Rguroo"></p>
-<figcaption>Residuals for Alcohol and Calorie Content in Beer from Rguroo</figcaption>
+<p><img src="Rguroo_outputs/Regression/AlcoholCalorieResiduals.png" class="img-fluid figure-img" style="width:90.0%" alt="Fitted Values and Residuals for the first 20 cases of the Beer Data"></p>
+<figcaption>Fitted Values and Residuals for the first 20 cases of the Beer Data</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </figure>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div id="tbl-Beer-residuals" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Residuals for Alcohol and Calorie Content in Beer">
@@ -796,124 +802,72 @@ Table&nbsp;10.4: Residuals for Alcohol and Calorie Content in Beer
 </div>
 </figure>
 </div>
+</section>
+<section id="sec-assumption-validity-inference" class="level3" data-number="10.1.5">
+<h3 data-number="10.1.5" class="anchored" data-anchor-id="sec-assumption-validity-inference"><span class="header-section-number">10.1.5</span> Checking Assumptions for Confidence Intervals and Tests</h3>
+<p>Just as with inference for means and proportions that you are already familiar with, we can construct confidence intervals and hypothesis tests for the slope and intercept of the regression line, as well as for predicted values <span class="math inline">\(\hat{y}\)</span>. These ideas are covered in <a href="#sec-inference-regression" class="quarto-xref"><span>Section 10.3</span></a>.</p>
+<p>Two assumptions of constant variance and normality are primarily needed for the validity of inference in regression, <strong>constant variance</strong> and <strong>normality</strong>.</p>
+<p><strong>Constant Variance</strong></p>
+<p>The assumption of constant variance is a requirement that the variance of the <span class="math inline">\(y\)</span>-values should be the same across all <span class="math inline">\(x\)</span>-values.</p>
+<p>To check the constant-variance, we examine the residual-versus-fit plot: if the residuals are scattered with roughly the same vertical spread around the horizontal line <span class="math inline">\(y = 0\)</span> across all fitted-values, the assumption is reasonable. A funnel-shaped pattern suggests that unequal variances.</p>
+<p><a href="#fig-inference-check" class="quarto-xref">Figure&nbsp;<span>10.8</span></a> shows four common patterns in a residual-versus-fitted plot. In panel (a), the residuals are evenly scattered above and below the horizontal line at 0 with roughly the same vertical spread across the fitted values, which is consistent with constant variance. Panels (b) and (c) show fan-shaped patterns, where the spread of the residuals changes as the fitted values change; these patterns suggest non-constant variance. Panel (d) shows a curved pattern in the residuals, which suggests that a straight-line model is not appropriate. In other words, it indicates possible nonlinearity, a violation of the linearity assumption discussed earlier.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-Beer-resvsfit" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Residuals versus Fitted values plot looks random">
+<div id="fig-inference-check" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Various Patterns for Residual Versus Fitted Values">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-Beer-resvsfit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Regression/AlcoholCalorieResvsFit.png" class="img-fluid figure-img" style="width:70.0%" alt="Residuals versus Fitted values plot looks random">
+<div aria-describedby="fig-inference-check-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Regression/Inference_check.png" class="img-fluid figure-img" style="width:90.0%" alt="Various Patterns for Residual Versus Fitted Values">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Beer-resvsfit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.3: Residuals versus Fitted Values Plot for Beer Data
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-inference-check-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.8: Various Patterns for Residual Versus Fitted Values
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The points shown on the residual-versus-fit plot <a href="#fig-Beer-resvsfit" class="quarto-xref">Figure&nbsp;<span>10.3</span></a> appear to be randomly scattered around the horizontal line <span class="math inline">\(y = 0\)</span>. There does not appear to be any curved pattern, so this condition appears to be satisfied.</p>
-<ol start="3" type="1">
-<li><em>Constant Variance</em>: The variance of the <span class="math inline">\(y\)</span>-values should be the same across all <span class="math inline">\(x\)</span>-values.</li>
-</ol>
-<p>Looking again at the residual-versus-fit plot <a href="#fig-Beer-resvsfit" class="quarto-xref">Figure&nbsp;<span>10.3</span></a>, the vertical spread of the residuals appears to be roughly the same across all fitted-values. There does not appear to be a funnel-shaped pattern, so this condition appears to be satisfied.</p>
-<ol start="4" type="1">
-<li><em>Normality</em>: The <span class="math inline">\(y\)</span>-values for each fixed value of <span class="math inline">\(x\)</span> should follow a normal distribution.</li>
-</ol>
-<p>To check this assumption, we examine the normal probability plot of the residuals shown in <a href="#fig-Beer-QQ" class="quarto-xref">Figure&nbsp;<span>10.4</span></a>, which is also part of the <span class="fun">Linear Regression</span> function output in Rguroo. In this plot, the residuals fall roughly along a straight line, so this condition appears to be satisfied. More specifically, all points lie within the confidence bands ( shown as red dotted curves), and there is no pronounced curvature or outliers.</p>
+<p>Looking again at the residual-versus-fit plot <a href="#fig-Beer-resvsfit" class="quarto-xref">Figure&nbsp;<span>10.6</span></a> for the beer data, the vertical spread of the residuals appears to be roughly the same across all fitted-values. There does not appear to be a funnel-shaped pattern, so this condition appears to be satisfied.</p>
+<p><strong>Normality</strong></p>
+<p>The normality assumption means that for any fixed value of <span class="math inline">\(x\)</span>, the distribution of the corresponding <span class="math inline">\(y\)</span>-values is approximately normal. In practice, this means the residuals at each <span class="math inline">\(x\)</span>-value should be roughly symmetric and bell-shaped.</p>
+<p>To check normality, we look at a histogram or a <em>normal probability plot</em> of the residuals. The histogram should appear bell-shaped, and in a normal probability plot the residuals should fall roughly along a straight line; pronounced curvature or outliers indicate that the normality assumption may not be satisfied.</p>
+<p>To check this assumption for the beer data, we examine the normal probability plot of the residuals shown in <a href="#fig-Beer-QQ" class="quarto-xref">Figure&nbsp;<span>10.9</span></a>, which is also part of the <span class="fun">Linear Regression</span> function output in Rguroo. In this plot, the residuals fall roughly along a straight line, so this condition appears to be satisfied. More specifically, all points lie within the confidence bands (shown as red dotted curves), and there is no pronounced curvature or outliers.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-Beer-QQ" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Normal probability plots. The points seem to be roughly linear.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-Beer-QQ-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Regression/AlcoholCalorieQQ.png" class="img-fluid figure-img" style="width:70.0%" alt="Normal probability plots. The points seem to be roughly linear.">
+<img src="Rguroo_outputs/Regression/AlcoholCalorieQQ.png" class="img-fluid figure-img" style="width:80.0%" alt="Normal probability plots. The points seem to be roughly linear.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Beer-QQ-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.4: Normal Probability Plot for Beer Data
+Figure&nbsp;10.9: Normal Probability Plot for Beer Data
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<ol start="2" type="a">
-<li>Use the regression equation to find the number of calories when the alcohol content is 7.00%.</li>
-</ol>
-<p>To make a prediction, we substitute the given alcohol content (expressed as a decimal) into the regression equation and compute the corresponding fitted value. In this example, we want to predict the number of calories for a beer with 7.00% alcohol content. Since 7.00% expressed as a decimal is 0.07, we substitute <span class="math inline">\(x = 0.07\)</span> into the regression equation: <span class="math display">\[
-\hat{y} = 2672 \times 0.07 + 14.3 = 201.34.
-\]</span> This value, 201.34, is the predicted number of calories for a beer whose alcohol content is 7%. So, if you are drinking a beer that has 7.00% alcohol content, then it probably has close to 200 calories.</p>
-<p>Considering all the data, the mean number of calories is 154.5. However, for beers with 7% alcohol content, the predicted value of 201 calories is a more appropriate estimate because the beers in the dataset with 7% alcohol all have between 160 and 231 calories. In this case, the regression equation provides a better estimate than simply using the overall mean.</p>
-<ol start="3" type="a">
-<li>Use the regression equation to find the number of calories when the alcohol content is 14%.</li>
-</ol>
-<p><span class="math display">\[\hat{y}=2672*0.14+14.3=388.38\]</span></p>
-<p>You can obtain predicted values in Rguroo. For example, to get the predicted values for alcohol contents of 7.00% and 14.00%, enter 0.07 and 0.14 (separated by a comma) in the textbox labeled <span class="des">Predict at new x value(s)</span> in the <span class="diag">Simple Linear Regression</span> dialog in Rguroo, as shown in <a href="#fig-AlcoholCalorieRegress_pred" class="quarto-xref">Figure&nbsp;<span>10.5</span></a> below.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-AlcoholCalorieRegress_pred" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Predicting calories for alcohol contents of 7.00% and 14.00% in Rguroo">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-AlcoholCalorieRegress_pred-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Regression/AlcoholCalorieRegress_pred.png" class="img-fluid figure-img" style="width:70.0%" alt="Predicting calories for alcohol contents of 7.00% and 14.00% in Rguroo">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-AlcoholCalorieRegress_pred-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.5: Predicting Calories for Alcohol Contents of 7.00% and 14.00% in Rguroo
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>The predicted values output from Rguroo is shown in <a href="#fig-AlcoholCaloriePredOutput" class="quarto-xref">Figure&nbsp;<span>10.6</span></a> below.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-AlcoholCaloriePredOutput" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo output showing predicted calories for alcohol contents of 7.00% and 14.00%">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-AlcoholCaloriePredOutput-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Regression/AlcoholCaloriePredOutput.png" class="img-fluid figure-img" style="width:70.0%" alt="Rguroo output showing predicted calories for alcohol contents of 7.00% and 14.00%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-AlcoholCaloriePredOutput-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.6: Rguroo Output Showing Predicted Calories for Alcohol Contents of 7.00% and 14.00%
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>If you are drinking a beer that is 14% alcohol content, then it probably has close to 388 calories. Since, on average, a 12% alcohol beer has 330 calories, you might expect a 14% beer to have more calories than this. However, the maximum alcohol content in our dataset is 12%. The estimate for a 14% beer is therefore an example of <strong>extrapolation</strong>, because it is a prediction for an <span class="math inline">\(x\)</span>-value outside the range of the data used to fit the model. It is not a good idea to predict values that fall far outside the range of the original data, because we cannot be sure that the regression relationship remains valid beyond the observed <span class="math inline">\(x\)</span>-values.</p>
-<p>Notice that 7.00% alcohol is within the range of the original <span class="math inline">\(x\)</span>-values. Predicting a value for an <span class="math inline">\(x\)</span>-value inside the observed range is called <strong>interpolation</strong>. The 14.00% value is outside that range, and predicting for an <span class="math inline">\(x\)</span>-value outside the original data is called <strong>extrapolation</strong>. When you interpolate, you can usually feel confident that the predicted value will be close to the true value because the model was created using data within that range and is intended to describe relationships only there. When you extrapolate, however, you cannot be sure the prediction is close to the true value, because the relationship may change for <span class="math inline">\(x\)</span>-values beyond those observed when the model was created.</p>
-<!-- Discuss: The following example is not clear and its relationship to linear regression is not clear. . So I replaced it.
-
-Another example of extrapolation is when you use regression to come up with an equation to predict the growth of a city, like Flagstaff, AZ. Based on analysis it was determined that the population of Flagstaff would be well over 50,000 by 1995. However, when a census was undertaken in 1995, the population was less than 50,000. This is because they extrapolated and the growth factor they were using had obviously changed from the early 1990's. Growth factors can change for many reasons, such as employment growth, employment stagnation, disease, articles saying great place to live, etc. Realize that when you extrapolate, your predicted value may not be anywhere close to the actual value that you observe.
--->
-<p>Another example of extrapolation is the relationship between age and height. This relationship is approximately linear only during middle childhood, roughly between ages 2 and 10. Suppose we model height (in inches) as a linear function of age (in years) using the equation</p>
-<p>Height = 30 + 2.5 × Age.</p>
-<p>For example, to predict the height of a child who is 6 years old (an interpolation because 6 is within the 2–10 range), we substitute Age = 6:</p>
-<p>Height = 30 + 2.5 × 6 = 45 inches.</p>
-<p>However, using the same model to predict height at age 30 represents an extrapolation, since age 30 is far outside the range where the linear relationship holds. Substituting Age = 30 gives:</p>
-<p>Height = 30 + 2.5 × 30 = 105 inches,</p>
-<p>a clearly unrealistic value. This illustrates why extrapolation can lead to misleading conclusions.</p>
-<p>What does the slope mean in the context of this problem?</p>
-<p>The calories increase by 26.72 for every 1% increase in alcohol content.</p>
-<p>The <span class="math inline">\(y\)</span>-intercept in many cases is meaningless. In this case, it means that if a drink has 0 alcohol content, then it would have 14.3 calories which maybe a reasonable value. However, consider the model for height versus age discussed above. The <span class="math inline">\(y\)</span>-intercept is 30 inches, which would be the predicted height of a newborn baby (age 0). This is not a reasonable value since newborn babies are typically about 20 inches long. So in this case, the <span class="math inline">\(y\)</span>-intercept is not meaningful.</p>
-<!-- Revised: This may be reasonable, but remember this value is an extrapolation so it may be wrong. (Mynote: actually it is not an extrapolation since 0% is within the range of possible alcohol content) 
---->
-<p>Consider the residuals again. According to the data, a beer with 7.0% alcohol has between 160 and 231 calories. The predicted value is 201 calories. This variation means that the actual value was between 40 calories below and 30 calories above the predicted value. That isn’t that far off. Some of the actual values differ by a large amount from the predicted value. This is due to variability in the response variable. The larger the residuals the less the model explains the variability in the response variable. There needs to be a way to calculate how well the model explains the variability in the response variable. This will be explored in the next section.</p>
-<p>One last thing that you may wonder is if imported beer has a different number of calories than domestic beer. The location (imported versus domestic) is a covariate, a third variable that may affects the calorie content. A covariate that is a categorical variable is referred to as a <strong>factor</strong>. You can create a scatterplot that displays the data separately for each category of this covariate (factor).</p>
-<p>Click to expand the box below to see how to create a scatterplot of calories vs.&nbsp;alcohol content separated by location.</p>
-<div id="Creating-Scatterplot-of-Calories-vs-Alcohol-location" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Scatterplot of Calories vs. Alcohol Content by Location">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+</section>
+<section id="regression-with-groups" class="level3" data-number="10.1.6">
+<h3 data-number="10.1.6" class="anchored" data-anchor-id="regression-with-groups"><span class="header-section-number">10.1.6</span> Regression with Groups</h3>
+<p>One last thing that you may wonder is if imported beer has a different number of calories than domestic beer. The location (imported versus domestic) is a covariate, a third variable that may affects the calorie content. A covariate that is a categorical variable is referred to as a <strong>factor</strong>. You can create a scatter plot that displays the data separately for each category of this covariate (factor).</p>
+<p>Click to expand the box below to see how to create a scatter plot of calories vs.&nbsp;alcohol content separated by location.</p>
+<div id="Creating-scatterplot-of-Calories-vs-Alcohol-location" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating scatter plot of Calories vs. Alcohol Content by Location">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating Scatterplot of Calories vs.&nbsp;Alcohol Content by Location
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating scatter plot of Calories vs.&nbsp;Alcohol Content by Location
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">beer_data</span> dataset into your Rguroo account, as shown <a href="#Importing-Beer_data-to-Rguroo">here</a>.</p>
 <ol type="1">
 <li>Open the <strong>Plots</strong> toolbox in Rguroo.<br>
 </li>
-<li>Open the <span class="dpd">Create Plot</span> dropdown and select <span class="fun">Scatterplot</span>. This opens the Scatterplot dialog.<br>
+<li>Open the <span class="dpd">Create Plot</span> dropdown and select <span class="fun">scatter plot</span>. This opens the scatter plot dialog.<br>
 </li>
-<li>In the Scatterplot dialog, choose the <span class="data">beer_data</span> dataset from the <span class="dpd">Dataset</span> dropdown.<br>
+<li>In the scatter plot dialog, choose the <span class="data">beer_data</span> dataset from the <span class="dpd">Dataset</span> dropdown.<br>
 </li>
 <li>Choose the <span class="var">alcohol</span> variable from the <span class="dpd">Predictor (x)</span> dropdown.<br>
 </li>
@@ -930,11 +884,11 @@ Another example of extrapolation is when you use regression to come up with an e
 <li>Enter <span class="typein">Number of Calories</span> in the <span class="des">Y-Axis</span> textbox.<br>
 </li>
 </ul></li>
-<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the scatterplot.</li>
-<li>In the <img src="Rguroo_Icons/save_as.png" class="img-fluid" alt="Save as"> textbox, enter the name <span class="typein">AlcoholCalorieLocationScatter</span> for the scatterplot. Click the button to save the scatterplot to your Rguroo account.</li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the scatter plot.</li>
+<li>In the <img src="Rguroo_Icons/save_as.png" class="img-fluid" alt="Save as"> textbox, enter the name <span class="typein">AlcoholCalorieLocationScatter</span> for the scatter plot. Click the button to save the scatter plot to your Rguroo account.</li>
 </ol>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -943,12 +897,12 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Rguroo_dialogs/Regression/Scatterplot_dialog_factor.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>Scatterplot dialog showing settings for plotting alcohol content versus calories by location, including least square lines.</figcaption>
+<p><img src="Rguroo_dialogs/Regression/scatterplot_dialog_factor.png" class="img-fluid figure-img" width="500"></p>
+<figcaption>scatter plot dialog showing settings for plotting alcohol content versus calories by location, including least square lines.</figcaption>
 </figure>
 </div>
 </div>
@@ -959,49 +913,50 @@ Click here to see the Rguroo dialog
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-AlcoholCalorieLocationScatter" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Scatterplot of Calories versus Alcohol Content of Beer separated by Location">
+<div id="fig-AlcoholCalorieLocationScatter" class="quarto-float quarto-figure quarto-figure-center anchored" alt="scatter plot of Calories versus Alcohol Content of Beer separated by Location">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-AlcoholCalorieLocationScatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Regression/AlcoholCalorieLocationScatter.svg" class="img-fluid figure-img" style="width:70.0%" alt="Scatterplot of Calories versus Alcohol Content of Beer separated by Location">
+<img src="Rguroo_outputs/Regression/AlcoholCalorieLocationScatter.svg" class="img-fluid figure-img" style="width:80.0%" alt="scatter plot of Calories versus Alcohol Content of Beer separated by Location">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-AlcoholCalorieLocationScatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.7: Calories versus Alcohol Content of Beer separated by Location
+Figure&nbsp;10.10: Calories versus Alcohol Content of Beer separated by Location
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-AlcoholCalorieLocationScatter" class="quarto-xref">Figure&nbsp;<span>10.7</span></a> shows the scatterplot of calories versus alcohol content separated by location (imported versus domestic). The least squares lines for each location are also shown. Looking at the scatterplot, there doesn’t appear to be an affect from domestic or import. This is what is nice about scatter plots, You can visually see a possible relationships.</p>
-<section id="homework-for-regression-section" class="level3" data-number="10.1.5">
-<h3 data-number="10.1.5" class="anchored" data-anchor-id="homework-for-regression-section"><span class="header-section-number">10.1.5</span> Homework for Regression Section</h3>
+<p><a href="#fig-AlcoholCalorieLocationScatter" class="quarto-xref">Figure&nbsp;<span>10.10</span></a> shows the scatter plot of calories versus alcohol content separated by location (imported versus domestic). The least squares lines for each location are also shown. Looking at the scatter plot, there doesn’t appear to be an affect from domestic or import. This is what is nice about scatter plots, You can visually see a possible relationships.</p>
+</section>
+<section id="homework-for-regression-section" class="level3" data-number="10.1.7">
+<h3 data-number="10.1.7" class="anchored" data-anchor-id="homework-for-regression-section"><span class="header-section-number">10.1.7</span> Homework for Regression Section</h3>
 <p><strong>For each problem, state the variables. The datasets in this section are used in the homework for sections 10.2 and 10.3 also.</strong></p>
 <ol type="1">
-<li>When an anthropologist finds skeletal remains, they need to figure out the height of the person. The height of a person (in cm) and the length of their metacarpal bone 1 (in mm) were collected and are in <a href="Graphical Description of Data.html#tbl-Metacarpal" class="quarto-xref">Table&nbsp;<span>2.15</span></a> (“Prediction of height” 2013). Create a scatter plot and find a regression equation between the height of a person and the length of their metacarpal. Then use the regression equation to find the height of a person for a metacarpal length of 44 mm and for a metacarpal length of 55 mm. Which height that you calculated do you think is closer to the true height of the person? Why?</li>
+<li>When an anthropologist finds skeletal remains, they need to figure out the height of the person. The height of a person (in cm) and the length of their metacarpal bone 1 (in mm) were collected and are in <a href="Graphical Description of Data.html#tbl-Metacarpal" class="quarto-xref">Table&nbsp;<span>2.14</span></a> (“Prediction of height” 2013). Create a scatter plot and find a regression equation between the height of a person and the length of their metacarpal. Then use the regression equation to find the height of a person for a metacarpal length of 44 mm and for a metacarpal length of 55 mm. Which height that you calculated do you think is closer to the true height of the person? Why?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">height_vs_metacarp</span>.</p>
-<p><strong>Code book for Dataset Metacarpal is below <a href="Graphical Description of Data.html#tbl-Metacarpal" class="quarto-xref">Table&nbsp;<span>2.15</span></a>.</strong></p>
+<p><strong>Code book for Dataset Metacarpal is below <a href="Graphical Description of Data.html#tbl-Metacarpal" class="quarto-xref">Table&nbsp;<span>2.14</span></a>.</strong></p>
 </div>
 <ol start="2" type="1">
-<li><a href="Graphical Description of Data.html#tbl-House" class="quarto-xref">Table&nbsp;<span>2.16</span></a> contains the value of the house and the amount of rental income in a year that the house brings in (“Capital and rental” 2013). Create a scatter plot and find a regression equation between house value and rental income. Then use the regression equation to find the rental income of a house worth $230,000 and for a house worth $400,000. Which rental income that you calculated do you think is closer to the true rental income? Why?</li>
+<li><a href="Graphical Description of Data.html#tbl-House" class="quarto-xref">Table&nbsp;<span>2.15</span></a> contains the value of the house and the amount of rental income in a year that the house brings in (“Capital and rental” 2013). Create a scatter plot and find a regression equation between house value and rental income. Then use the regression equation to find the rental income of a house worth $230,000 and for a house worth $400,000. Which rental income that you calculated do you think is closer to the true rental income? Why?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">house</span>.</p>
-<p><strong>Code book for Dataset House is below <a href="Graphical Description of Data.html#tbl-House" class="quarto-xref">Table&nbsp;<span>2.16</span></a>.</strong></p>
+<p><strong>Code book for Dataset House is below <a href="Graphical Description of Data.html#tbl-House" class="quarto-xref">Table&nbsp;<span>2.15</span></a>.</strong></p>
 </div>
 <ol start="3" type="1">
-<li>The World Bank collects information on the life expectancy of a person in each country (“Life expectancy at” 2013) and the fertility rate per woman in the country (“Fertility rate” 2013). The Dataset for countries for the year 2011 are in <a href="Graphical Description of Data.html#tbl-Fertility" class="quarto-xref">Table&nbsp;<span>2.17</span></a>. Create a scatter plot of the Dataset and find a linear regression equation between fertility rate and life expectancy in 2011. Then use the regression equation to find the life expectancy for a country that has a fertility rate of 2.7 and for a country with fertility rate of 8.1. Which life expectancy that you calculated do you think is closer to the true life expectancy? Why?</li>
+<li>The World Bank collects information on the life expectancy of a person in each country (“Life expectancy at” 2013) and the fertility rate per woman in the country (“Fertility rate” 2013). The Dataset for countries for the year 2011 are in <a href="Graphical Description of Data.html#tbl-Fertility" class="quarto-xref">Table&nbsp;<span>2.16</span></a>. Create a scatter plot of the Dataset and find a linear regression equation between fertility rate and life expectancy in 2011. Then use the regression equation to find the life expectancy for a country that has a fertility rate of 2.7 and for a country with fertility rate of 8.1. Which life expectancy that you calculated do you think is closer to the true life expectancy? Why?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Life_exp_fert_rate</span>.</p>
-<p><strong>Code book for Dataset Fertility is below <a href="Graphical Description of Data.html#tbl-Fertility" class="quarto-xref">Table&nbsp;<span>2.17</span></a>.</strong></p>
+<p><strong>Code book for Dataset Fertility is below <a href="Graphical Description of Data.html#tbl-Fertility" class="quarto-xref">Table&nbsp;<span>2.16</span></a>.</strong></p>
 </div>
 <ol start="4" type="1">
-<li>The World Bank collected data on the percentage of gross domestic product (GDP) that a country spends on health expenditures (Current health expenditure (% of GDP), 2019), the fertility rate of the country (Fertility rate, total (births per woman), 2019), and the percentage of woman receiving prenatal care (Pregnant women receiving prenatal care (%), 2019). The Dataset for the countries where this information is available in <a href="Graphical Description of Data.html#tbl-Fert_prenatal" class="quarto-xref">Table&nbsp;<span>2.18</span></a>. Create a scatter plot of the Dataset and find a regression equation between percentage spent on health expenditure and the percentage of women receiving prenatal care. Then use the regression equation to find the percent of women receiving prenatal care for a country that spends 5.0% of GDP on health expenditure and for a country that spends 12.0% of GDP. Which prenatal care percentage that you calculated do you think is closer to the true percentage? Why?</li>
+<li>The World Bank collected data on the percentage of gross domestic product (GDP) that a country spends on health expenditures (Current health expenditure (% of GDP), 2019), the fertility rate of the country (Fertility rate, total (births per woman), 2019), and the percentage of woman receiving prenatal care (Pregnant women receiving prenatal care (%), 2019). The Dataset for the countries where this information is available in <a href="Graphical Description of Data.html#tbl-Fert_prenatal" class="quarto-xref">Table&nbsp;<span>2.17</span></a>. Create a scatter plot of the Dataset and find a regression equation between percentage spent on health expenditure and the percentage of women receiving prenatal care. Then use the regression equation to find the percent of women receiving prenatal care for a country that spends 5.0% of GDP on health expenditure and for a country that spends 12.0% of GDP. Which prenatal care percentage that you calculated do you think is closer to the true percentage? Why?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">fertility_prenatal</span>.</p>
-<p><strong>Code book for Dataset Fert_prenatal is below <a href="Graphical Description of Data.html#tbl-Fert_prenatal" class="quarto-xref">Table&nbsp;<span>2.18</span></a>.</strong></p>
+<p><strong>Code book for Dataset Fert_prenatal is below <a href="Graphical Description of Data.html#tbl-Fert_prenatal" class="quarto-xref">Table&nbsp;<span>2.17</span></a>.</strong></p>
 </div>
 <ol start="5" type="1">
 <li>The height and weight of baseball players are in <a href="#tbl-Baseball" class="quarto-xref">Table&nbsp;<span>10.5</span></a> (“MLB heightsweights” 2013). Create a scatter plot and find a regression equation between height and weight of baseball players. Then use the regression equation to find the weight of a baseball player that is 75 inches tall and for a baseball player that is 68 inches tall. Which weight that you calculated do you think is closer to the true weight? Why?</li>
@@ -1064,7 +1019,7 @@ Table&nbsp;10.5: Heights and Weights of Baseball Players
 </div>
 </div>
 <div id="code-book-baseball" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1073,7 +1028,7 @@ Code book for Dataset Baseball
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong></p>
 <p>The heights and weights of MLB players.</p>
@@ -1155,7 +1110,7 @@ Table&nbsp;10.6: Body Weights and Brain Weights of Species
 </div>
 </div>
 <div id="code-book-body" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1164,7 +1119,7 @@ Code book for Dataset Body
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong></p>
 <p>The body weight, brain weight, and brain/body proportion of different species of animals.</p>
@@ -1180,14 +1135,93 @@ Code book for Dataset Body
 </div>
 </div>
 <ol start="7" type="1">
-<li>A sample of hot dogs was taken and the amount of sodium (in mg) and calories were measured. (“Data hotdogs” 2013) The Dataset are in <a href="Two Sample Inference.html#tbl-Hotdog" class="quarto-xref">Table&nbsp;<span>9.9</span></a>. Create a scatter plot and find a regression equation between amount of calories and amount of sodium. Then use the regression equation to find the amount of sodium a hot dog has if it is 170 calories and if it is 120 calories. Which sodium level that you calculated do you think is closer to the true sodium level? Why?</li>
+<li>A sample of hot dogs was taken and the amount of sodium (in mg) and calories were measured. (“Data hotdogs” 2013.) The first six rows of the dataset are shown in <a href="#tbl-Hotdog" class="quarto-xref">Table&nbsp;<span>10.7</span></a>. Create a scatter plot and find a regression equation between amount of calories and amount of sodium. Then use the regression equation to find the amount of sodium a hot dog has if it is 170 calories and if it is 120 calories. Which sodium level that you calculated do you think is closer to the true sodium level? Why?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">hotdog</span>.</p>
-<p><strong>Code book for Dataset Hotdog is below <a href="Two Sample Inference.html#tbl-Hotdog" class="quarto-xref">Table&nbsp;<span>9.9</span></a>.</strong></p>
+</div>
+<div class="cell" data-tbl-alt="Head of Body Weights and Brain Weights of Species">
+<div id="tbl-Hotdog" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Head of Body Weights and Brain Weights of Species">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Hotdog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;10.7: Hotdog Dataset
+</figcaption>
+<div aria-describedby="tbl-Hotdog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">type</th>
+<th style="text-align: right;">calories</th>
+<th style="text-align: right;">sodium</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Beef</td>
+<td style="text-align: right;">186</td>
+<td style="text-align: right;">495</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Beef</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: right;">477</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Beef</td>
+<td style="text-align: right;">176</td>
+<td style="text-align: right;">425</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Beef</td>
+<td style="text-align: right;">149</td>
+<td style="text-align: right;">322</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Beef</td>
+<td style="text-align: right;">184</td>
+<td style="text-align: right;">482</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Beef</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: right;">587</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div id="code-book-hotdogs" class="codebook callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code book for Dataset hotdogs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Description</strong></p>
+<p>This dataset contains nutritional information for a sample of commercially available hot dogs. The data include calorie counts and sodium content for each hot dog, along with a categorical classification of the hot dog type. The dataset is commonly used to illustrate comparisons of quantitative variables across groups.</p>
+<p>Variables<br>
+<span class="var">type</span><br>
+Categorical variable indicating the type of hot dog. Typical categories include Beef, Meat, and Poultry.</p>
+<p><span class="var">calories</span><br>
+Quantitative variable giving the number of calories per hot dog.</p>
+<p><span class="var">sodium</span><br>
+Quantitative variable giving the sodium content per hot dog, measured in milligrams.</p>
+<p>Source<br>
+The dataset is widely used in introductory statistics textbooks and examples and is often attributed to a Consumer Reports–style nutritional analysis of hot dog brands.</p>
+</div>
+</div>
 </div>
 <ol start="8" type="1">
-<li>Per capita income in 1960 dollars for European countries and the percent of the labor force that works in agriculture in 1960 are in <a href="#tbl-Agriculture" class="quarto-xref">Table&nbsp;<span>10.7</span></a> (“OECD economic development” 2013). Create a scatter plot and find a regression equation between percent of labor force in agriculture and per capita income. Then use the regression equation to find the per capita income in a country that has 21 percent of labor in agriculture and in a country that has 2 percent of labor in agriculture. Which per capita income that you calculated do you think is closer to the true income? Why?</li>
+<li>Per capita income in 1960 dollars for European countries and the percent of the labor force that works in agriculture in 1960 are in <a href="#tbl-Agriculture" class="quarto-xref">Table&nbsp;<span>10.8</span></a> (“OECD economic development” 2013). Create a scatter plot and find a regression equation between percent of labor force in agriculture and per capita income. Then use the regression equation to find the per capita income in a country that has 21 percent of labor in agriculture and in a country that has 2 percent of labor in agriculture. Which per capita income that you calculated do you think is closer to the true income? Why?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">agriculture</span>.</p>
@@ -1196,7 +1230,7 @@ Code book for Dataset Body
 <div id="tbl-Agriculture" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Head of Percent of Labor in Agriculture and Per Capita Income for European Countries">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Agriculture-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;10.7: Percent of Labor in Agriculture and Per Capita Income for European Countries
+Table&nbsp;10.8: Percent of Labor in Agriculture and Per Capita Income for European Countries
 </figcaption>
 <div aria-describedby="tbl-Agriculture-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1261,7 +1295,7 @@ Table&nbsp;10.7: Percent of Labor in Agriculture and Per Capita Income for Europ
 </div>
 </div>
 <div id="code-book-agriculture" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1270,7 +1304,7 @@ Code book for Dataset Agriculture**
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong></p>
 <p>The per capita income and percent in different industries in European countries</p>
@@ -1287,7 +1321,7 @@ Code book for Dataset Agriculture**
 </div>
 </div>
 <ol start="9" type="1">
-<li>Cigarette smoking and cancer have been linked. The number of deaths per one hundred thousand from bladder cancer and the number of cigarettes sold per capita in 1960 are in the dataset <span class="data">cancer_1</span> (“Smoking and cancer” 2013). The first six rows of the data is shown in <a href="#tbl-Cancerbladder" class="quarto-xref">Table&nbsp;<span>10.8</span></a>. Create a scatter plot and find a regression equation between number of cigarettes smoked and number of deaths from bladder cancer. Then use the regression equation to find the number of deaths from bladder cancer when the cigarette sales were 20 per capita and when the cigarette sales were 6 per capita. Which number of deaths that you calculated do you think is closer to the true number? Why?</li>
+<li>Cigarette smoking and cancer have been linked. The number of deaths per one hundred thousand from bladder cancer and the number of cigarettes sold per capita in 1960 are in the dataset <span class="data">cancer_1</span> (“Smoking and cancer” 2013). The first six rows of the data is shown in <a href="#tbl-Cancerbladder" class="quarto-xref">Table&nbsp;<span>10.9</span></a>. Create a scatter plot and find a regression equation between number of cigarettes smoked and number of deaths from bladder cancer. Then use the regression equation to find the number of deaths from bladder cancer when the cigarette sales were 20 per capita and when the cigarette sales were 6 per capita. Which number of deaths that you calculated do you think is closer to the true number? Why?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cancer_1</span>.</p>
@@ -1296,7 +1330,7 @@ Code book for Dataset Agriculture**
 <div id="tbl-Cancerbladder" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Head of Number of Cigarettes and Number of Bladder Cancer Deaths">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Cancerbladder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;10.8: Number of Cigarettes and Number of Bladder Cancer Deaths
+Table&nbsp;10.9: Number of Cigarettes and Number of Bladder Cancer Deaths
 </figcaption>
 <div aria-describedby="tbl-Cancerbladder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1368,7 +1402,7 @@ Table&nbsp;10.8: Number of Cigarettes and Number of Bladder Cancer Deaths
 </div>
 </div>
 <div id="code-book-cancer" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1377,7 +1411,7 @@ Code book for Dataset Cancer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> This Dataset contains the number of cigarette sales (per Capita), number of cancer Deaths (per 100 Thousand) from bladder, lung, kidney, and leukemia.</p>
 <p>Format</p>
@@ -1394,7 +1428,7 @@ Code book for Dataset Cancer
 </div>
 </div>
 <ol start="10" type="1">
-<li>The weight of a car can influence the mileage that the car can obtain. A random sample of cars’ weights and mileage was collected and the first six rows are shown in <a href="#tbl-Cars" class="quarto-xref">Table&nbsp;<span>10.9</span></a> (“us auto mileage,” 2019). Create a scatter plot and find a regression equation between weight of cars and mileage. Then use the regression equation to find the mileage on a car that weighs 3800 pounds and on a car that weighs 2000 pounds. Which mileage that you calculated do you think is closer to the true mileage? Why?</li>
+<li>The weight of a car can influence the mileage that the car can obtain. A random sample of cars’ weights and mileage was collected and the first six rows are shown in <a href="#tbl-Cars" class="quarto-xref">Table&nbsp;<span>10.10</span></a> (“us auto mileage,” 2019). Create a scatter plot and find a regression equation between weight of cars and mileage. Then use the regression equation to find the mileage on a car that weighs 3800 pounds and on a car that weighs 2000 pounds. Which mileage that you calculated do you think is closer to the true mileage? Why?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cars</span>.</p>
@@ -1403,7 +1437,7 @@ Code book for Dataset Cancer
 <div id="tbl-Cars" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Head of Weights and Mileages of Carss">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Cars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;10.9: Weights and Mileages of Cars
+Table&nbsp;10.10: Weights and Mileages of Cars
 </figcaption>
 <div aria-describedby="tbl-Cars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1475,7 +1509,7 @@ Table&nbsp;10.9: Weights and Mileages of Cars
 </div>
 </div>
 <div id="code-book-cars" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1484,7 +1518,7 @@ Code book for Dataset Cars
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong></p>
 <p>Variation in gasoline mileage among makes and models of automobiles is influenced substantially by the weight and horsepower of the vehicles. When miles per gallon and horsepower are transformed to logarithms, the linearity of the regression is improved. A negative second order term is required to fit the logarithmic mileage to weight relation. If the logged variables are standardized, the coefficients of the first order terms indicate the standard units change in log mileage per one standard unit change in the predictor variable at the (logarithmic) mean. This change is constant in the case of mileage to horsepower, but not for mileage to weight. The coefficient of the second order weight term indicates the change in standardized slope associated with a one standard deviation increase in the logarithm of weight.</p>
@@ -1502,10 +1536,11 @@ Code book for Dataset Cars
 </div>
 </div>
 </section>
+</section>
 <section id="correlation" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="correlation"><span class="header-section-number">10.2</span> Correlation</h2>
 <!-- Rewrote this section to explain correlation more and how to find it in Rguroo. Also have a smooth transition to R^2 -->
-<p>A correlation exists between two variables when the values of one variable are associated with the values of the other variable. Correlation is a word used in everyday life, and many people think they understand what it means. What it really means, when stated as a number, is a measure of how strong the linear relationship is between two variables. This measure is called the <strong>correlation coefficient</strong>, or <strong>correlation</strong> for short. It is also called the <strong>Pearson correlation coefficient</strong> after Karl Pearson who developed it. There are many types of patterns (relationships) between variables that one can see in data. Common types of patterns are linear, exponential, logarithmic, or periodic. To see these patterns, you can draw a scatterplot of the data. In this chapter, and generally in this course, we mostly deal with linear relationships.</p>
+<p>A correlation exists between two variables when the values of one variable are associated with the values of the other variable. Correlation is a word used in everyday life, and many people think they understand what it means. What it really means, when stated as a number, is a measure of how strong the linear relationship is between two variables. This measure is called the <strong>correlation coefficient</strong>, or <strong>correlation</strong> for short. It is also called the <strong>Pearson correlation coefficient</strong> after Karl Pearson who developed it. There are many types of patterns (relationships) between variables that one can see in data. Common types of patterns are linear, exponential, logarithmic, or periodic. To see these patterns, you can draw a scatter plot of the data. In this chapter, and generally in this course, we mostly deal with linear relationships.</p>
 <section id="interpretation-of-the-correlation-coefficient" class="level3" data-number="10.2.1">
 <h3 data-number="10.2.1" class="anchored" data-anchor-id="interpretation-of-the-correlation-coefficient"><span class="header-section-number">10.2.1</span> Interpretation of the correlation coefficient</h3>
 <p>The correlation coefficient is a number between −1 and 1 and is usually denoted by the letter <span class="math inline">\(r\)</span>. A value of <span class="math inline">\(r = 1\)</span> indicates a perfect positive linear relationship, and a value of <span class="math inline">\(r = -1\)</span> indicates a perfect negative linear relationship. A perfect linear relationship means that all of the data points lie exactly on a straight line.</p>
@@ -1545,7 +1580,7 @@ cor(calories~alcohol, data=Beer)
 ::: {.cell-output .cell-output-stdout}
 
 ```
-[1] 0.9035659
+[1] 0.906709
 ```
 
 
@@ -1649,32 +1684,32 @@ The **linear correlation coefficient** is a number that describes the strength o
 <h3 data-number="10.2.4" class="anchored" data-anchor-id="homework-for-correlation-section"><span class="header-section-number">10.2.4</span> Homework for Correlation Section</h3>
 <p><strong>For each problem, state the random variables.The Dataset in this section are in section 10.1 and will be used in section 10.3.</strong></p>
 <ol type="1">
-<li>When an anthropologist finds skeletal remains, they need to figure out the height of the person. The height of a person (in cm) and the length of their metacarpal bone 1 (in mm) were collected. The data are in the <span class="data">height_vs_metacarp</span> dataset, and the first six rows of the data are shown in <a href="Graphical Description of Data.html#tbl-Metacarpal" class="quarto-xref">Table&nbsp;<span>2.15</span></a> (“Prediction of height,” 2013). Find the coefficient of determination and the correlation coefficient, then interpret both.</li>
+<li>When an anthropologist finds skeletal remains, they need to figure out the height of the person. The height of a person (in cm) and the length of their metacarpal bone 1 (in mm) were collected. The data are in the <span class="data">height_vs_metacarp</span> dataset, and the first six rows of the data are shown in <a href="Graphical Description of Data.html#tbl-Metacarpal" class="quarto-xref">Table&nbsp;<span>2.14</span></a> (“Prediction of height,” 2013). Find the coefficient of determination and the correlation coefficient, then interpret both.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">height_vs_metacarp</span>.</p>
-<p><strong>Code book for Dataset Metacarpal is below</strong> <a href="Graphical Description of Data.html#tbl-Metacarpal" class="quarto-xref">Table&nbsp;<span>2.15</span></a>.</p>
+<p><strong>Code book for Dataset Metacarpal is below</strong> <a href="Graphical Description of Data.html#tbl-Metacarpal" class="quarto-xref">Table&nbsp;<span>2.14</span></a>.</p>
 </div>
 <ol start="2" type="1">
-<li><a href="Graphical Description of Data.html#tbl-House" class="quarto-xref">Table&nbsp;<span>2.16</span></a> contains the first six values of the house and the amount of rental income in a year that the house brings in (“Capital and rental,” 2013). Use the <span class="data">house</span> dataset to find the coefficient of determination and the correlation coefficient, then interpret both.</li>
+<li><a href="Graphical Description of Data.html#tbl-House" class="quarto-xref">Table&nbsp;<span>2.15</span></a> contains the first six values of the house and the amount of rental income in a year that the house brings in (“Capital and rental,” 2013). Use the <span class="data">house</span> dataset to find the coefficient of determination and the correlation coefficient, then interpret both.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">house</span>.</p>
-<p><strong>Code book for Dataset House is below <a href="Graphical Description of Data.html#tbl-House" class="quarto-xref">Table&nbsp;<span>2.16</span></a>.</strong></p>
+<p><strong>Code book for Dataset House is below <a href="Graphical Description of Data.html#tbl-House" class="quarto-xref">Table&nbsp;<span>2.15</span></a>.</strong></p>
 </div>
 <ol start="3" type="1">
-<li>The World Bank collects information on the life expectancy of a person in each country (“Life expectancy at,” 2013) and the fertility rate per woman in the country (“Fertility rate,” 2013). The first siz rows of the <span class="data">Life_exp_fert_rate</span> dataset for countries for the year 2011 are in <a href="Graphical Description of Data.html#tbl-Fertility" class="quarto-xref">Table&nbsp;<span>2.17</span></a>. Use the dataset to find the coefficient of determination and the correlation coefficient, then interpret both.</li>
+<li>The World Bank collects information on the life expectancy of a person in each country (“Life expectancy at,” 2013) and the fertility rate per woman in the country (“Fertility rate,” 2013). The first siz rows of the <span class="data">Life_exp_fert_rate</span> dataset for countries for the year 2011 are in <a href="Graphical Description of Data.html#tbl-Fertility" class="quarto-xref">Table&nbsp;<span>2.16</span></a>. Use the dataset to find the coefficient of determination and the correlation coefficient, then interpret both.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Life_exp_fert_rate</span>.</p>
-<p><strong>Code book for Dataset Fertility is below <a href="Graphical Description of Data.html#tbl-Fertility" class="quarto-xref">Table&nbsp;<span>2.17</span></a>.</strong></p>
+<p><strong>Code book for Dataset Fertility is below <a href="Graphical Description of Data.html#tbl-Fertility" class="quarto-xref">Table&nbsp;<span>2.16</span></a>.</strong></p>
 </div>
 <ol start="4" type="1">
-<li>The World Bank collected data on the percentage of gross domestic product (GDP) that a country spends on health expenditures (Current health expenditure (% of GDP), 2019), the fertility rate of the country (Fertility rate, total (births per woman), 2019), and the percentage of woman receiving prenatal care (Pregnant women receiving prenatal care (%), 2019). The data for the countries where this information is available is in the <span class="data">fertility_prenatal</span> dataset and the first six rows of the data are given in <a href="Graphical Description of Data.html#tbl-Fert_prenatal" class="quarto-xref">Table&nbsp;<span>2.18</span></a>. Find the coefficient of determination and the correlation coefficient between the percentage spent on health expenditure and the percentage of women receiving prenatal care, then interpret both.</li>
+<li>The World Bank collected data on the percentage of gross domestic product (GDP) that a country spends on health expenditures (Current health expenditure (% of GDP), 2019), the fertility rate of the country (Fertility rate, total (births per woman), 2019), and the percentage of woman receiving prenatal care (Pregnant women receiving prenatal care (%), 2019). The data for the countries where this information is available is in the <span class="data">fertility_prenatal</span> dataset and the first six rows of the data are given in <a href="Graphical Description of Data.html#tbl-Fert_prenatal" class="quarto-xref">Table&nbsp;<span>2.17</span></a>. Find the coefficient of determination and the correlation coefficient between the percentage spent on health expenditure and the percentage of women receiving prenatal care, then interpret both.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">fertility_prenatal</span>.</p>
-<p><strong>Code book for Dataset Fert_prenatal is below <a href="Graphical Description of Data.html#tbl-Fert_prenatal" class="quarto-xref">Table&nbsp;<span>2.18</span></a>.</strong></p>
+<p><strong>Code book for Dataset Fert_prenatal is below <a href="Graphical Description of Data.html#tbl-Fert_prenatal" class="quarto-xref">Table&nbsp;<span>2.17</span></a>.</strong></p>
 </div>
 <ol start="5" type="1">
 <li>The height and weight of baseball players are in the <span class="data">baseball</span> dataset and the first six rows of the data are shown in <a href="#tbl-Baseball" class="quarto-xref">Table&nbsp;<span>10.5</span></a> (“MLB heightsweights,” 2013). Find the coefficient of determination and the correlation coefficient, then interpret both.</li>
@@ -1691,32 +1726,32 @@ The **linear correlation coefficient** is a number that describes the strength o
 <p><strong>Code book for Dataset Body is below <a href="#tbl-Body" class="quarto-xref">Table&nbsp;<span>10.6</span></a>.</strong></p>
 </div>
 <ol start="7" type="1">
-<li>A sample of hot dogs was taken and the amount of sodium (in mg) and calories were measured. (“Data hotdogs,” 2013). The data are in <span class="data">hotdog</span> dataset with the first six rows shown in <a href="Two Sample Inference.html#tbl-Hotdog" class="quarto-xref">Table&nbsp;<span>9.9</span></a>. Find the coefficient of determination and the correlation coefficient, then interpret both.</li>
+<li>A sample of hot dogs was taken and the amount of sodium (in mg) and calories were measured. (“Data hotdogs,” 2013). The data are in <span class="data">hotdog</span> dataset with the first six rows shown in <a href="#tbl-Hotdog" class="quarto-xref">Table&nbsp;<span>10.7</span></a>. Find the coefficient of determination and the correlation coefficient, then interpret both.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">hotdog</span>.</p>
-<p><strong>Code book for Dataset Hotdog is below <a href="Two Sample Inference.html#tbl-Hotdog" class="quarto-xref">Table&nbsp;<span>9.9</span></a>.</strong></p>
+<p><strong>Code book for Dataset Hotdog is below <a href="#tbl-Hotdog" class="quarto-xref">Table&nbsp;<span>10.7</span></a>.</strong></p>
 </div>
 <ol start="8" type="1">
-<li>Per capita income in 1960 dollars for European countries and the percent of the labor force that works in agriculture in 1960 are in the dataset <span class="data">agriculture</span>. The first six rows are shon in <a href="#tbl-Agriculture" class="quarto-xref">Table&nbsp;<span>10.7</span></a> (“OECD economic development,” 2013). Find the coefficient of determination and the correlation coefficient, then interpret both.</li>
+<li>Per capita income in 1960 dollars for European countries and the percent of the labor force that works in agriculture in 1960 are in the dataset <span class="data">agriculture</span>. The first six rows are shon in <a href="#tbl-Agriculture" class="quarto-xref">Table&nbsp;<span>10.8</span></a> (“OECD economic development,” 2013). Find the coefficient of determination and the correlation coefficient, then interpret both.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">agriculture</span>.</p>
-<p><strong>Code book for Dataset Agriculture is <a href="#tbl-Agriculture" class="quarto-xref">Table&nbsp;<span>10.7</span></a>.</strong></p>
+<p><strong>Code book for Dataset Agriculture is <a href="#tbl-Agriculture" class="quarto-xref">Table&nbsp;<span>10.8</span></a>.</strong></p>
 </div>
 <ol start="9" type="1">
-<li>Cigarette smoking and cancer have been linked. The number of deaths per one hundred thousand from bladder cancer and the number of cigarettes sold per capita in 1960 are given in teh dataset <span class="data">cancer_1</span> with the first six rows showing in <a href="Chi-Square and ANOVA Tests.html#tbl-Cancer" class="quarto-xref">Table&nbsp;<span>11.15</span></a> (“Smoking and cancer,” 2013). Find the coefficient of determination and the correlation coefficient, then interpret both.</li>
+<li>Cigarette smoking and cancer have been linked. The number of deaths per one hundred thousand from bladder cancer and the number of cigarettes sold per capita in 1960 are given in the dataset <span class="data">cancer_1</span> with the first six rows showing in <a href="#tbl-Cancerbladder" class="quarto-xref">Table&nbsp;<span>10.9</span></a> (“Smoking and cancer,” 2013). Find the coefficient of determination and the correlation coefficient, then interpret both.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cancer_1</span>.</p>
-<p><strong>Code book for Dataset Cancer is below <a href="Chi-Square and ANOVA Tests.html#tbl-Cancer" class="quarto-xref">Table&nbsp;<span>11.15</span></a>.</strong></p>
 </div>
+<p>The codebook for the dataset cancer is given <a href="#code-book-cancer">here</a></p>
 <ol start="10" type="1">
-<li>The weight of a car can influence the mileage that the car can obtain. A random sample of cars’ weights and mileage was collected and are in <span class="data">cars</span> dataset. The first six rows of the data are shown in <a href="#tbl-Cars" class="quarto-xref">Table&nbsp;<span>10.9</span></a> (“us auto mileage,” 2019). Find the coefficient of determination and the correlation coefficient, then interpret both.</li>
+<li>The weight of a car can influence the mileage that the car can obtain. A random sample of cars’ weights and mileage was collected and are in <span class="data">cars</span> dataset. The first six rows of the data are shown in <a href="#tbl-Cars" class="quarto-xref">Table&nbsp;<span>10.10</span></a> (“us auto mileage,” 2019). Find the coefficient of determination and the correlation coefficient, then interpret both.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cars</span>.</p>
-<p><strong>Code book for Dataset Cars is below <a href="#tbl-Cars" class="quarto-xref">Table&nbsp;<span>10.9</span></a>.</strong></p>
+<p><strong>Code book for Dataset Cars is below <a href="#tbl-Cars" class="quarto-xref">Table&nbsp;<span>10.10</span></a>.</strong></p>
 </div>
 <ol start="11" type="1">
 <li><p>There is a correlation between police expenditure and crime rate. Does this mean that spending more money on police causes the crime rate to decrease? Explain your answer.</p></li>
@@ -1777,18 +1812,18 @@ lm(formula = calories ~ alcohol, data = Beer)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--51.869 -11.421  -0.145  11.855  55.473 
+-50.975 -10.989  -0.947  13.025  58.191 
 
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)    
-(Intercept)   14.527      4.577   3.174  0.00171 ** 
-alcohol     2672.359     84.478  31.634  < 2e-16 ***
+(Intercept)  11.8088     5.2103   2.266   0.0247 *  
+alcohol      27.0277     0.9558  28.277   <2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 17.62 on 225 degrees of freedom
-Multiple R-squared:  0.8164,    Adjusted R-squared:  0.8156 
-F-statistic:  1001 on 1 and 225 DF,  p-value: < 2.2e-16
+Residual standard error: 18.22 on 173 degrees of freedom
+Multiple R-squared:  0.8221,    Adjusted R-squared:  0.8211 
+F-statistic: 799.6 on 1 and 173 DF,  p-value: < 2.2e-16
 ```
 
 
@@ -1819,22 +1854,22 @@ The standard error of the estimate is the residual standard error in the output.
 <p>Is there a relationship between the alcohol content and the number of calories in 12-ounce beer? To determine this, use the sample of beer’s alcohol content and calories (Find Out How Many Calories in Beer?, 2019) in the <span class="data">beer</span> dataset. The first six rows of this dataset is shown in <a href="#tbl-Beer" class="quarto-xref">Table&nbsp;<span>10.1</span></a>. Find a 95% prediction interval for the number of calories when the alcohol content is 7.0%.</p>
 <section id="solution" class="level4" data-number="10.3.3.1">
 <h4 data-number="10.3.3.1" class="anchored" data-anchor-id="solution"><span class="header-section-number">10.3.3.1</span> Solution</h4>
-<p>To obtain the prediction interval for the beer example, follow the steps for creating a linear regression model <a href="#Finding-the-Regression-Equation-in-Rguroo">here</a>. Additionally, in the <span class="fun">linear Regression</span> dialog box, enter the value of alcohol content (0.07) in the textbox labeled <span class="des">Predict at new x value(s)</span>. Then click the tab labeled <span class="des">Prediction Interval</span> and select the checkboxes labeled <span class="des">Prediction Interval</span>. These steps are shown in <a href="#fig-AlcoholCalorieRegress_pred_interval" class="quarto-xref">Figure&nbsp;<span>10.8</span></a>.</p>
+<p>To obtain the prediction interval for the beer example, follow the steps for creating a linear regression model <a href="#Finding-the-Regression-Equation-in-Rguroo">here</a>. Additionally, in the <span class="fun">linear Regression</span> dialog box, enter the value of alcohol content (0.07) in the textbox labeled <span class="des">Predict at new x value(s)</span>. Then click the tab labeled <span class="des">Prediction Interval</span> and select the checkboxes labeled <span class="des">Prediction Interval</span>. These steps are shown in <a href="#fig-AlcoholCalorieRegress_pred_interval" class="quarto-xref">Figure&nbsp;<span>10.11</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-AlcoholCalorieRegress_pred_interval" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo dialog for obtaining prediction interval for calories from alcohol content">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-AlcoholCalorieRegress_pred_interval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Regression/AlcoholCalorieRegress_pred_interval.png" class="img-fluid figure-img" style="width:70.0%" alt="Rguroo dialog for obtaining prediction interval for calories from alcohol content">
+<img src="Rguroo_dialogs/Regression/AlcoholCalorieRegress_pred_interval.png" class="img-fluid figure-img" style="width:80.0%" alt="Rguroo dialog for obtaining prediction interval for calories from alcohol content">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-AlcoholCalorieRegress_pred_interval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.8: Rguroo dialog for obtaining prediction interval for calories from alcohol content
+Figure&nbsp;10.11: Rguroo dialog for obtaining prediction interval for calories from alcohol content
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The output containing the prediction interval is shown in <a href="#fig-Beer-pred-interval" class="quarto-xref">Figure&nbsp;<span>10.9</span></a>.</p>
+<p>The output containing the prediction interval is shown in <a href="#fig-Beer-pred-interval" class="quarto-xref">Figure&nbsp;<span>10.12</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-Beer-pred-interval" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo output showing prediction interval for calories from alcohol content">
@@ -1843,7 +1878,7 @@ Figure&nbsp;10.8: Rguroo dialog for obtaining prediction interval for calories f
 <img src="Rguroo_outputs/Regression/Beer-pred-interval.png" class="img-fluid figure-img" style="width:85.0%" alt="Rguroo output showing prediction interval for calories from alcohol content">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Beer-pred-interval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.9: Rguroo output showing prediction interval for calories from alcohol content
+Figure&nbsp;10.12: Rguroo output showing prediction interval for calories from alcohol content
 </figcaption>
 </figure>
 </div>
@@ -1899,7 +1934,7 @@ Computing the prediction interval using r Studio
 <p><span class="math inline">\(H_a: \text{the slope is not zero}\)</span></p>
 <p>Also, state <span class="math inline">\(\alpha\)</span>, the significance level for your test.</p>
 <ol start="3" type="1">
-<li><p>State and check the conditions for the hypothesis test, as explained in <a href="#sec-assumption-validity-line" class="quarto-xref"><span>Section 10.1.3</span></a> (Assumptions for Validity of the Regression Equation and Line) and <a href="#sec-assumption-validity-inference" class="quarto-xref"><span>Section 10.1.4</span></a> (Assumptions for Validity of Inference).</p></li>
+<li><p>State and check the conditions for the hypothesis test, as explained in <a href="#sec-assumption-validity-line" class="quarto-xref"><span>Section 10.1.4</span></a> (Assumptions for Validity of the Regression Equation and Line) and <a href="#sec-assumption-validity-inference" class="quarto-xref"><span>Section 10.1.5</span></a> (Assumptions for Validity of Inference).</p></li>
 <li><p>Find the test statistic and p-value</p></li>
 </ol>
 <p>This will be calculated by Rguroo.</p>
@@ -1935,22 +1970,22 @@ Computing the prediction interval using r Studio
 <ol start="4" type="1">
 <li>Find the test statistic and p-value</li>
 </ol>
-<p>To obtain the test statistic and p-value, follow the steps for creating a linear regression model <a href="#Finding-the-Regression-Equation-in-Rguroo">here</a>. Additionally, in the <span class="fun">linear Regression</span> dialog box, under the <span class="des">Test of Association</span> tab, check the box labeled <span class="des">Slope</span>, and under the <strong>method</strong> section select <span class="des">Theoretical t-statistic</span>. These steps are shown in <a href="#fig-AlcoholCalorieRegress_test" class="quarto-xref">Figure&nbsp;<span>10.10</span></a>. The default value for the significance level is 0.05, so you do not need to change that value. However, if you want to change it, you can do so in the textbox labeled <span class="des">Significance Level</span>.</p>
+<p>To obtain the test statistic and p-value, follow the steps for creating a linear regression model <a href="#Finding-the-Regression-Equation-in-Rguroo">here</a>. Additionally, in the <span class="fun">linear Regression</span> dialog box, under the <span class="des">Test of Association</span> tab, check the box labeled <span class="des">Slope</span>, and under the <strong>method</strong> section select <span class="des">Theoretical t-statistic</span>. These steps are shown in <a href="#fig-AlcoholCalorieRegress_test" class="quarto-xref">Figure&nbsp;<span>10.13</span></a>. The default value for the significance level is 0.05, so you do not need to change that value. However, if you want to change it, you can do so in the textbox labeled <span class="des">Significance Level</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-AlcoholCalorieRegress_test" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo dialog for testing slope for calories from alcohol content">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-AlcoholCalorieRegress_test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Regression/AlcoholCalorieRegress_test.png" class="img-fluid figure-img" style="width:70.0%" alt="Rguroo dialog for testing slope for calories from alcohol content">
+<img src="Rguroo_dialogs/Regression/AlcoholCalorieRegress_test.png" class="img-fluid figure-img" style="width:80.0%" alt="Rguroo dialog for testing slope for calories from alcohol content">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-AlcoholCalorieRegress_test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.10: Rguroo dialog for testing slope for calories from alcohol content
+Figure&nbsp;10.13: Rguroo dialog for testing slope for calories from alcohol content
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The output containing the result of the test shown in <a href="#fig-AlcoholCalorieRegress_test_out" class="quarto-xref">Figure&nbsp;<span>10.11</span></a>.</p>
+<p>The output containing the result of the test shown in <a href="#fig-AlcoholCalorieRegress_test_out" class="quarto-xref">Figure&nbsp;<span>10.14</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-AlcoholCalorieRegress_test_out" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Result of Rguroo hypothesis test for slope for calories from alcohol content">
@@ -1959,7 +1994,7 @@ Figure&nbsp;10.10: Rguroo dialog for testing slope for calories from alcohol con
 <img src="Rguroo_outputs/Regression/AlcoholCalorieRegress_test_out.png" class="img-fluid figure-img" style="width:85.0%" alt="Result of Rguroo hypothesis test for slope for calories from alcohol content">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-AlcoholCalorieRegress_test_out-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.11: AlcoholCalorieRegress_test_out
+Figure&nbsp;10.14: AlcoholCalorieRegress_test_out
 </figcaption>
 </figure>
 </div>
@@ -1980,22 +2015,22 @@ Figure&nbsp;10.11: AlcoholCalorieRegress_test_out
 <h3 data-number="10.3.6" class="anchored" data-anchor-id="homework-for-inference-for-regression-and-correlation-section"><span class="header-section-number">10.3.6</span> Homework for Inference for Regression and Correlation Section</h3>
 <p><strong>For each problem, state the random variables. The Dataset in this section are in the homework for section 10.1 and were also used in section 10.2.</strong></p>
 <ol type="1">
-<li>When an anthropologist finds skeletal remains, they need to figure out the height of the person. The height of a person (in cm) and the length of their metacarpal bone 1 (in mm) were collected. The data are in the <span class="data">height_vs_metacarp</span> dataset, and the first six rows of the data are shown in <a href="Graphical Description of Data.html#tbl-Metacarpal" class="quarto-xref">Table&nbsp;<span>2.15</span></a> (“Prediction of height,” 2013).</li>
+<li>When an anthropologist finds skeletal remains, they need to figure out the height of the person. The height of a person (in cm) and the length of their metacarpal bone 1 (in mm) were collected. The data are in the <span class="data">height_vs_metacarp</span> dataset, and the first six rows of the data are shown in <a href="Graphical Description of Data.html#tbl-Metacarpal" class="quarto-xref">Table&nbsp;<span>2.14</span></a> (“Prediction of height,” 2013).</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">height_vs_metacarp</span>.</p>
-<p><strong>Code book for Dataset Metacarpal is below <a href="Graphical Description of Data.html#tbl-Metacarpal" class="quarto-xref">Table&nbsp;<span>2.15</span></a>.</strong></p>
+<p><strong>Code book for Dataset Metacarpal is below <a href="Graphical Description of Data.html#tbl-Metacarpal" class="quarto-xref">Table&nbsp;<span>2.14</span></a>.</strong></p>
 <ol type="a">
 <li>Compute a 99% prediction interval for height of a person with a metacarpal length of 44 mm.</li>
 <li>Test at the 1% level for a correlation or linear relationship between length of metacarpal bone 1 and height of a person.</li>
 </ol>
 </div>
 <ol start="2" type="1">
-<li><a href="Graphical Description of Data.html#tbl-House" class="quarto-xref">Table&nbsp;<span>2.16</span></a> contains the first six values of the house and the amount of rental income in a year that the house brings in (“Capital and rental,” 2013).</li>
+<li><a href="Graphical Description of Data.html#tbl-House" class="quarto-xref">Table&nbsp;<span>2.15</span></a> contains the first six values of the house and the amount of rental income in a year that the house brings in (“Capital and rental,” 2013).</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">house</span>.</p>
-<p><strong>Code book for Dataset House is below <a href="Graphical Description of Data.html#tbl-House" class="quarto-xref">Table&nbsp;<span>2.16</span></a>.</strong></p>
+<p><strong>Code book for Dataset House is below <a href="Graphical Description of Data.html#tbl-House" class="quarto-xref">Table&nbsp;<span>2.15</span></a>.</strong></p>
 <!-- a.  Find the standard error of the estimate. -->
 <ol type="a">
 <li>Compute a 95% prediction interval for the rental income on a house worth \$230,000.</li>
@@ -2003,11 +2038,11 @@ Figure&nbsp;10.11: AlcoholCalorieRegress_test_out
 </ol>
 </div>
 <ol start="3" type="1">
-<li>The World Bank collects information on the life expectancy of a person in each country (“Life expectancy at,” 2013) and the fertility rate per woman in the country (“Fertility rate,” 2013). The first siz rows of the <span class="data">Life_exp_fert_rate</span> dataset for countries for the year 2011 are in <a href="Graphical Description of Data.html#tbl-Fertility" class="quarto-xref">Table&nbsp;<span>2.17</span></a>.</li>
+<li>The World Bank collects information on the life expectancy of a person in each country (“Life expectancy at,” 2013) and the fertility rate per woman in the country (“Fertility rate,” 2013). The first siz rows of the <span class="data">Life_exp_fert_rate</span> dataset for countries for the year 2011 are in <a href="Graphical Description of Data.html#tbl-Fertility" class="quarto-xref">Table&nbsp;<span>2.16</span></a>.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Life_exp_fert_rate</span>.</p>
-<p><strong>Code book for Dataset Fertility is below <a href="Graphical Description of Data.html#tbl-Fertility" class="quarto-xref">Table&nbsp;<span>2.17</span></a>.</strong></p>
+<p><strong>Code book for Dataset Fertility is below <a href="Graphical Description of Data.html#tbl-Fertility" class="quarto-xref">Table&nbsp;<span>2.16</span></a>.</strong></p>
 </div>
 <!-- a.  Find the standard error of the estimate. -->
 <ol type="a">
@@ -2015,11 +2050,11 @@ Figure&nbsp;10.11: AlcoholCalorieRegress_test_out
 <li>Test at the 1% level for a correlation or linear relationship between fertility rate and life expectancy.</li>
 </ol>
 <ol start="4" type="1">
-<li>The World Bank collected data on the percentage of gross domestic product (GDP) that a country spends on health expenditures (Current health expenditure (% of GDP), 2019), the fertility rate of the country (Fertility rate, total (births per woman), 2019), and the percentage of woman receiving prenatal care (Pregnant women receiving prenatal care (%), 2019). The data for the countries where this information is available is in the <span class="data">fertility_prenatal</span> dataset and the first six rows of the data are given in <a href="Graphical Description of Data.html#tbl-Fert_prenatal" class="quarto-xref">Table&nbsp;<span>2.18</span></a>.</li>
+<li>The World Bank collected data on the percentage of gross domestic product (GDP) that a country spends on health expenditures (Current health expenditure (% of GDP), 2019), the fertility rate of the country (Fertility rate, total (births per woman), 2019), and the percentage of woman receiving prenatal care (Pregnant women receiving prenatal care (%), 2019). The data for the countries where this information is available is in the <span class="data">fertility_prenatal</span> dataset and the first six rows of the data are given in <a href="Graphical Description of Data.html#tbl-Fert_prenatal" class="quarto-xref">Table&nbsp;<span>2.17</span></a>.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">fertility_prenatal</span>.</p>
-<p><strong>Code book for Dataset Fert_prenatal is below <a href="Graphical Description of Data.html#tbl-Fert_prenatal" class="quarto-xref">Table&nbsp;<span>2.18</span></a>.</strong></p>
+<p><strong>Code book for Dataset Fert_prenatal is below <a href="Graphical Description of Data.html#tbl-Fert_prenatal" class="quarto-xref">Table&nbsp;<span>2.17</span></a>.</strong></p>
 </div>
 <!-- a.  Find the standard error of the estimate. -->
 <ol type="a">
@@ -2051,11 +2086,11 @@ Figure&nbsp;10.11: AlcoholCalorieRegress_test_out
 <li>Test at the 1% level for a correlation or linear relationship between body weights and brain weights.</li>
 </ol>
 <ol start="7" type="1">
-<li>A sample of hot dogs was taken and the amount of sodium (in mg) and calories were measured. (“Data hotdogs,” 2013). The data are in <span class="data">hotdog</span> dataset with the first six rows shown in <a href="Two Sample Inference.html#tbl-Hotdog" class="quarto-xref">Table&nbsp;<span>9.9</span></a>.</li>
+<li>A sample of hot dogs was taken and the amount of sodium (in mg) and calories were measured. (“Data hotdogs,” 2013). The data are in <span class="data">hotdog</span> dataset with the first six rows shown in <a href="#tbl-Hotdog" class="quarto-xref">Table&nbsp;<span>10.7</span></a>.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">hotdog</span>.</p>
-<p><strong>Code book for Dataset Hotdog is below <a href="Two Sample Inference.html#tbl-Hotdog" class="quarto-xref">Table&nbsp;<span>9.9</span></a>.</strong></p>
+<p><strong>Code book for Dataset Hotdog is below <a href="#tbl-Hotdog" class="quarto-xref">Table&nbsp;<span>10.7</span></a>.</strong></p>
 </div>
 <!-- a.  Find the standard error of the estimate. -->
 <ol type="a">
@@ -2063,11 +2098,11 @@ Figure&nbsp;10.11: AlcoholCalorieRegress_test_out
 <li>Test at the 5% level for a correlation or linear relationship between amount of calories and amount of sodium.</li>
 </ol>
 <ol start="8" type="1">
-<li>Per capita income in 1960 dollars for European countries and the percent of the labor force that works in agriculture in 1960 are in the dataset <span class="data">agriculture</span>. The first six rows are shon in <a href="#tbl-Agriculture" class="quarto-xref">Table&nbsp;<span>10.7</span></a> (“OECD economic development,” 2013).</li>
+<li>Per capita income in 1960 dollars for European countries and the percent of the labor force that works in agriculture in 1960 are in the dataset <span class="data">agriculture</span>. The first six rows are shon in <a href="#tbl-Agriculture" class="quarto-xref">Table&nbsp;<span>10.8</span></a> (“OECD economic development,” 2013).</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">agriculture</span>.</p>
-<p><strong>Code book for Dataset Agriculture is <a href="#tbl-Agriculture" class="quarto-xref">Table&nbsp;<span>10.7</span></a>.</strong></p>
+<p><strong>Code book for Dataset Agriculture is <a href="#tbl-Agriculture" class="quarto-xref">Table&nbsp;<span>10.8</span></a>.</strong></p>
 </div>
 <!-- a.  Find the standard error of the estimate.-->
 <ol start="2" type="a">
@@ -2075,23 +2110,23 @@ Figure&nbsp;10.11: AlcoholCalorieRegress_test_out
 <li>Test at the 5% level for a correlation or linear relationship between percent of labor force in agriculture and per capita income.</li>
 </ol>
 <ol start="9" type="1">
-<li>Cigarette smoking and cancer have been linked. The number of deaths per one hundred thousand from bladder cancer and the number of cigarettes sold per capita in 1960 are given in teh dataset <span class="data">cancer_1</span> with the first six rows showing in <a href="Chi-Square and ANOVA Tests.html#tbl-Cancer" class="quarto-xref">Table&nbsp;<span>11.15</span></a> (“Smoking and cancer,” 2013).</li>
+<li>Cigarette smoking and cancer have been linked. The number of deaths per one hundred thousand from bladder cancer and the number of cigarettes sold per capita in 1960 are given in teh dataset <span class="data">cancer_1</span> with the first six rows showing in <a href="#tbl-Cancerbladder" class="quarto-xref">Table&nbsp;<span>10.9</span></a> (“Smoking and cancer,” 2013).</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cancer_1</span>.</p>
-<p><strong>Code book for Dataset Cancer is below <a href="Chi-Square and ANOVA Tests.html#tbl-Cancer" class="quarto-xref">Table&nbsp;<span>11.15</span></a>.</strong></p>
 </div>
+<p>The codebook for the dataset cancer is given <a href="#code-book-cancer">here</a></p>
 <!-- a.  Find the standard error of the estimate.-->
 <ol type="a">
 <li>Compute a 99% prediction interval for the number of deaths from bladder cancer when the cigarette sales were 20 per capita.</li>
 <li>Test at the 1% level for a correlation or linear relationship between cigarette smoking and deaths of bladder cancer.</li>
 </ol>
 <ol start="10" type="1">
-<li>The weight of a car can influence the mileage that the car can obtain. A random sample of cars’ weights and mileage was collected and are in <span class="data">cars</span> dataset. The first six rows of the data are shown in <a href="#tbl-Cars" class="quarto-xref">Table&nbsp;<span>10.9</span></a> (“us auto mileage,” 2019).</li>
+<li>The weight of a car can influence the mileage that the car can obtain. A random sample of cars’ weights and mileage was collected and are in <span class="data">cars</span> dataset. The first six rows of the data are shown in <a href="#tbl-Cars" class="quarto-xref">Table&nbsp;<span>10.10</span></a> (“us auto mileage,” 2019).</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cars</span>.</p>
-<p><strong>Code book for Dataset Cars is below <a href="#tbl-Cars" class="quarto-xref">Table&nbsp;<span>10.9</span></a>.</strong></p>
+<p><strong>Code book for Dataset Cars is below <a href="#tbl-Cars" class="quarto-xref">Table&nbsp;<span>10.10</span></a>.</strong></p>
 </div>
 <!-- a.  Find the standard error of the estimate. -->
 <ol type="a">
@@ -2100,11 +2135,6 @@ Figure&nbsp;10.11: AlcoholCalorieRegress_test_out
 </ol>
 
 
-</section>
-</section>
-</div>
-</section>
-</div>
 </section>
 </section>
 
