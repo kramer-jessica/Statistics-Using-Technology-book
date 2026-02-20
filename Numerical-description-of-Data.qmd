@@ -9,6 +9,20 @@ library("mosaic")
 library("MASS")
 ```
 
+**Before you begin, Click to expand the box below to review the process for importing a dataset.**
+
+::: {#Importing-cats-to-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Data to Rguroo"} 
+
+1. Open the **Data** toolbox in Rguroo.  
+2. From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.  
+3. In the top search box, type [kozak]{.typein}, then select the [Statistics Using Technology – Kozak]{.repo} repository.  
+4. In the middle search box, type the first few letters of the dataset name, and choose your desired dataset name that appears in the lower panel.  
+5. Click the [Import]{.button}. The dataset will be imported to your Rguroo account.
+6. Click [Close]{.button} to exit the dialog.  
+7. To view the dataset, double-click the dataset name under the **Data** toolbox list.
+
+:::
+
 Chapter 1 discussed what a population, sample, parameter, and statistic are, as well as how to take different types of samples. Chapter 2 discussed ways to graphically display data. There was also a discussion of important characteristics: center, variations, distribution, outliers, and changing characteristics of the data over time. Distributions and outliers can be identified using graphical means. Finding the center and variation can be done using numerical methods that will be discussed in this chapter. Both graphical and numerical methods are part of a branch of statistics known as **descriptive statistics**. Later, descriptive statistics will be used to make decisions and/or estimate population parameters using methods that are part of the branch called **inferential statistics**.
 
 ## Measures of Center
@@ -56,7 +70,10 @@ Instead, we work with samples and calculate the **sample mean**, denoted by $\ba
 ::: {#exm-mean-median-cats}
 ## Finding the Mean and Median Using Rguroo
 
-Suppose a vet wants to find the average weight of cats. The weights (in kg) of 144 cats are  given in a dataset named [cats]{.data}. Find the mean and median of the weight of a cat. The first six rows of this dataset are shown in @tbl-Cats. 
+Suppose a vet wants to find the average weight of cats. The weights (in kg) of 144 cats are  given in a dataset named [cats]{.data}. Find the mean and median of the weight of a cat. 
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cats]{.data}.
+@tbl-Cats displays the first six rows of the dataset. A complete description of the variables is provided in the  [dataset code book](#code-book-cats) that follows.
 
 :::
 
@@ -76,17 +93,6 @@ knitr::kable(head(cats))
 
 **Solution**
 
-Click to expand the box below to see instructions to import and view the [cats]{.data} dataset in your **Data** Toolbox in Rguroo.
-
-::: {#Importing-cats-to-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing cats to Data Toolbox"}
-1.  Go to the **Data** toolbox.
-2.  From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.
-3.  In the top search box, type [MASS]{.typein}, then select the [MASS]{.repo} repository.
-4.  In the middle search box, type [cats]{.typein}, and select the [cats]{.data} dataset that appears in the lower panel.\
-5.  Click the [Import]{.button} button. The dataset will be imported into your Rguroo account.
-6.  Click the [Close]{.button} button to close the Rguroo dialog.
-7.  To view the dataset, double-click [cats]{.data} under the **Data** toolbox list.
-:::
 
 Looking at the data frame for cats weights, @tbl-Cats, you see that there are several variables. A Code Book describes the dataset, explains what the variables are including the units, and the source of the data frame. The code book for the [cats]{.data} is below.
 
@@ -100,7 +106,7 @@ Before starting any mathematics problem, it is always a good idea to define the 
 
 The variable is $x$ = weight of a cat
 
-Click to expand the box below see how to calculate the mean and median in Rguroo.
+Click to expand the box below to see how to calculate the mean and median in Rguroo.
 
 :::: {#Calculating-summary-stats-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Calculating the Mean and Median Weight of Cats"}
 
@@ -123,7 +129,7 @@ Click to expand the box below see how to calculate the mean and median in Rguroo
 #| warning: FALSE
 #| label: fig-summary-cats
 #| fig-cap: "Mean and Median Weight of Cats"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics("Rguroo_outputs/Numerical_Description/cats_summary_output.png")
 ```
 
@@ -149,7 +155,7 @@ Suppose you want to know if male cats weigh more than female cats. Looking at th
 
 **Solution**
 
-Click to expand the box below see how to calculate the mean and median, separated by sex, in Rguroo.
+Click to expand the box below to see how to calculate the mean and median, separated by sex, in Rguroo.
 
 :::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Calculating the Mean and Median Weight of Cats by Sex"}
 **Before you begin:** Make sure you have already imported the [cats]{.data} dataset into your **Data** Toolbox, as was shown [here](#Importing-cats-to-Rguroo).
@@ -172,7 +178,7 @@ Click to expand the box below see how to calculate the mean and median, separate
 #| warning: FALSE
 #| label: fig-factor-summary-cats
 #| fig-cap: "Mean and Median Weight of Cats by Sex"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics("Rguroo_outputs/Numerical_Description/cat_wt_sex_output.png")
 ```
 
@@ -204,7 +210,7 @@ The steps to find the minimum and the maximum in Rguroo are similar to finding t
 #| fig-subcap: 
 #|   - "Dialog box"
 #|   - "Output results"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics(c("Rguroo_dialogs/Numerical_Description/max_min_dialog.png",
 "Rguroo_outputs/Numerical_Description/max_min_output.png"))
 ```
@@ -276,7 +282,7 @@ df_stats(~Bwt, data=nomin, mean, median)
 
 The mean without the minimum value is 2.75 kg, and the median is 2.7 kg.
 
-From [this](#example-effect-extreme-values) example, the mean of the [cats]{.data} dataset with all the values is 2.72 kg, while the median is 2.7 kg. Notice that when the maximum value was excluded from the dataset, the mean decreased slightly but the median did not change, and when the minimum value was excluded from the dataset, the mean increased a little but the median did not change. This shows that the mean is affected by extreme values, while the median is not. We say the median is a resistant measure of center because it is not affected by extreme values as much.
+From the effect of extremes [example](#exm-effect-extreme-values), the mean of the [cats]{.data} dataset with all the values is 2.72 kg, while the median is 2.7 kg. Notice that when the maximum value was excluded from the dataset, the mean decreased slightly but the median did not change, and when the minimum value was excluded from the dataset, the mean increased a little but the median did not change. This shows that the mean is affected by extreme values, while the median is not. We say the median is a resistant measure of center because it is not affected by extreme values as much.
 
 An outlier is a data value that is very different from the rest of the data. It can be really high or really low. An extreme value may be an outlier if it is far enough from the center. If there are extreme values in the data, the median is a better measure of the center than the mean. If there are no extreme values, the mean and the median will be similar so most people use the mean. The mean is not a resistant measure because it is affected by extreme values. The median is a resistant measure because it not affected by extreme values.
 
@@ -340,9 +346,9 @@ A weighted average can be found using Rguroo. First, we will create a new datase
 1.  Open the **Data** toolbox.\
 2.  Click on the [Data Import]{.dpd} dropdown, and select [Create New Dataset]{.fun}. This opens the [Create New Dataset]{.dialog} dialog. Specify the number of rows and columns  for your new dataset (optional), and click the [Create Dataset]{.button} button. This opens Rguroo's dataset editor.\
 3.  The default variable names will be [Var1]{.var}, [Var2]{.var}, etc. To change the variable name, move your cursor over the variable name in the column header. You will see the Variable Context Menu icon ![variable context menu icon](Rguroo_Icons/four_horizontal_line_icon.png). Click on the icon to open the variable context menu. 
-4. From the variable context menu select the option [Rename]{.des}. This will bring up the [Rename Variable]{.dialog} dialog box. In the dialog box, type in the new name for your variable and press enter. The new name will appear in the column header. Note that variable names cannot have spaces. For this example we use two have two variables; specify the names [score](.var) and [weight](.var) in two columns.\
-4.  Enter your data (score and weights) in the two columns.\
-5.  Enter a name for your dataset in the [Save As]{.des} textbox on the top, and click the [Save as]{.button} button to save your dataset. For this example, name the dataset [biology_grade]{.data}.
+4. From the variable context menu select the option [Rename]{.des}. This will bring up the [Rename Variable]{.dialog} dialog box. In the dialog box, type in the new name for your variable and press enter. The new name will appear in the column header. Note that variable names cannot have spaces. For this example we have two variables; specify the names [score]{.var} and [weight]{.var} in two columns.\
+5.  Enter your data in the two columns.\
+6.  Enter a name for your dataset in the [Save As]{.des} textbox on the top, and click the [Save as]{.button} button to save your dataset. For this example, name the dataset [biology_grade]{.data}.
 
 ::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog and new dataset"}
 ![New Dataset Dialog](Rguroo_dialogs/Numerical_description/new_dataset_dialog.png){width="500px"} ![Biology Class Dataset](Rguroo_outputs/Numerical_Description/biology_dataset.png){width="500px"}
@@ -373,7 +379,7 @@ To calculate the weighted average in Rguroo, you will follow similar steps as de
 #| fig-subcap: 
 #|   - "Basic Summary Statistics Dialog box"
 #|   - "Output results"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics(c("Rguroo_dialogs/Numerical_Description/summary_stat_dialog_weight_mean.png",
 "Rguroo_outputs/Numerical_Description/weight_mean_bio_grade.png"))
 ```
@@ -416,7 +422,7 @@ To find the weighted average using Rguroo, start by creating a new dataset as de
 #| warning: FALSE
 #| label: fig-dataset-ratings
 #| fig-cap: "Faculty Ratings Dataset"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics(c("Rguroo_outputs/Numerical_Description/ex_4_1_8_dataset.png"))
 ```
 
@@ -430,7 +436,7 @@ Calculate the weighted average in Rguroo using the same steps described [here](#
 #| fig-subcap: 
 #|   - "Basic Summary Statistics Dialog box"
 #|   - "Output results"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics(c("Rguroo_dialogs/Numerical_Description/ex_4_1_8_a_dialog.png",
 "Rguroo_outputs/Numerical_Description/ex_4_1_8_a_output.png"))
 ```
@@ -445,7 +451,7 @@ w<-c(20, 18, 6, 4, 2)
 weighted.mean(x,w)
 ```
 
-The weighted mean can be calculated in the same fasion as part (a). In the [Basic Summary Statistics]{.dialog} dialog box select the [faculty_ratings]{.data} from the [dataset]{.dpd} dropdown, select [faculty_b]{.var} in the [Numerical]{.dpd} dropdown, and select [weight]{.var} in the [frequency]{.dpd} dropdown as shown in figure
+The weighted mean can be calculated in the same fashion as part (a). In the [Basic Summary Statistics]{.dialog} dialog box select the [faculty_ratings]{.data} from the [dataset]{.dpd} dropdown, select [faculty_b]{.var} in the [Numerical]{.dpd} dropdown, and select [weight]{.var} in the [frequency]{.dpd} dropdown as shown in figure @fig-faculty_b-weighted_mean.
 
 ```{r,echo=FALSE}
 #| fig-alt: "basic summary statistics dialog box and weighted mean output faculty_b"
@@ -455,7 +461,7 @@ The weighted mean can be calculated in the same fasion as part (a). In the [Basi
 #| fig-subcap: 
 #|   - "Basic Summary Statistics Dialog box"
 #|   - "Output results"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics(c("Rguroo_dialogs/Numerical_Description/ex_4_1_8_b_dialog.png",
 "Rguroo_outputs/Numerical_Description/ex_4_1_8_b_output.png"))
 ```
@@ -499,7 +505,7 @@ The **mean** can only be used with interval and ratio data because calculating i
 #| warning: FALSE
 #| label: fig-kozak-repo
 #| fig-cap: "Repository Search Dialog"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics("Rguroo_dialogs/Numerical_Description/chol_data_repo.png")
 ```
 
@@ -531,7 +537,7 @@ This data frame contains the following columns:
 References Ryan, Joiner & Ryan, Jr, 1985
 :::
 
-2.  The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are given in a dataset named [length]{.data}. The first six rows of this datset are listed in @tbl-Length (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.
+2.  The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are given in a dataset named [length]{.data}. The first six rows of this dataset are listed in @tbl-Length (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [length]{.data}.
@@ -548,7 +554,7 @@ knitr::kable(head(Length))
 ::: {#code-book-length .callout-tip .codebook collapse="true"}
 ## Code book for Length Dataset
 
-**Description** The data records the length of rivers in the South Island of New Zealand. The lengths are given in kilometres. The second variable, FlowsInto, indicates whether the river flows into the Pacific Ocean (0) or the Tasman Sea (1).
+**Description** The data records the length of rivers in the South Island of New Zealand. The lengths are given in kilometres. The second variable, FlowsInto, indicates whether the river flows into the Pacific Ocean or the Tasman Sea.
 
 This data frame contains the following columns:
 
@@ -616,7 +622,7 @@ b.  Find the mean and median with the CEOs salaries removed. Hint: You can filte
 
 c.  What happened to the mean and median when the CEO's salary was removed? Why?
 
-d.  If you were the CEO, who is answering concerns from the union that employees are underpaid, which average (mean or median) using the complete dataset of the complete dataset would you prefer? Why?
+d.  If you were the CEO, who is answering concerns from the union that employees are underpaid, which average (mean or median) of the complete dataset would you prefer? Why?
 
 e.  If you were a platen worker, who believes that the employees need a raise, which average (mean or median) using the complete dataset would you prefer? Why?
 
@@ -676,7 +682,7 @@ e.  If it is your job to find places in the budget to reduce costs, which averag
 
 7.  An employee at Coconino Community College (CCC) is evaluated based on goal setting and accomplishments toward the goals, job effectiveness, competencies, and CCC core values. Suppose for a specific employee, goal 1 has a weight of 30%, goal 2 has a weight of 20%, job effectiveness has a weight of 25%, competency 1 has a weight of 4%, competency 2 has a weight of 3%, competency 3 has a weight of 3%, competency 4 has a weight of 3%, competency 5 has a weight of 2%, and core values has a weight of 10%. Suppose the employee has scores of 3.0 for goal 1, 3.0 for goal 2, 2.0 for job effectiveness, 3.0 for competency 1, 2.0 for competency 2, 2.0 for competency 3, 3.0 for competency 4, 4.0 for competency 5, and 3.0 for core values. Find the weighted average score for this employee. If an employee has a score less than 2.5, they must have a Performance Enhancement Plan written. Does this employee need a plan?
 
-8.  An employee at Coconino Community College (CCC) is evaluated based on goal setting and accomplishments toward goals, job effectiveness, competencies, CCC core values. Suppose for a specific employee, goal 1 has a weight of 20%, goal 2 has a weight of 20%, goal 3 has a weight of 10%, job effectiveness has a weight of 25%, competency 1 has a weight of 4%, competency 2 has a weight of 3%, competency 3 has a weight of 3%, competency 4 has a weight of 5%, and core values has a weight of 10%. Suppose the employee has scores of 2.0 for goal 1, 2.0 for goal 2, 3.0 for goal 3, 2.0 for job effectiveness, 2.0 for competency 1, 3.0 for competency 2, 2.0 for competency 3, 3.0 for competency 4, and 4.0 for core values. Find the weighted average score for this employee. If an employee that has a score less than 2.5, they must have a Performance Enhancement Plan written. Does this employee need a plan?
+8.  An employee at Coconino Community College (CCC) is evaluated based on goal setting and accomplishments toward goals, job effectiveness, competencies, CCC core values. Suppose for a specific employee, goal 1 has a weight of 20%, goal 2 has a weight of 20%, goal 3 has a weight of 10%, job effectiveness has a weight of 25%, competency 1 has a weight of 4%, competency 2 has a weight of 3%, competency 3 has a weight of 3%, competency 4 has a weight of 5%, and core values has a weight of 10%. Suppose the employee has scores of 2.0 for goal 1, 2.0 for goal 2, 3.0 for goal 3, 2.0 for job effectiveness, 2.0 for competency 1, 3.0 for competency 2, 2.0 for competency 3, 3.0 for competency 4, and 4.0 for core values. Find the weighted average score for this employee. If an employee has a score less than 2.5, they must have a Performance Enhancement Plan written. Does this employee need a plan?
 
 9.  A statistics class has the following activities and weights for determining a grade in the course: test 1 worth 15% of the grade, test 2 worth 15% of the grade, test 3 worth 15% of the grade, homework worth 10% of the grade, semester project worth 20% of the grade, and the final exam worth 25% of the grade. If a student receives an 85 on test 1, a 76 on test 2, an 83 on test 3, a 74 on the homework, a 65 on the project, and a 79 on the final, what grade did the student earn in the course?
 
@@ -703,11 +709,12 @@ The **range** of a set of data is the difference between the highest and lowest 
 
 ::: {#exm-range}
 ## Calculating the Range
+Calculate the range of the body weight of cats.
+:::
 
 **Solution**
-From the [example](#exm-effect-extreme-values), the maximum weight of a cat was 3.9 kg and the minimum was 2 kg. So the range is $3.9-2=1.9 kg$. But what does that tell you? You don't know if the weights are really spread out, or if they are close together.
+From the effect of extreme values [example](#exm-effect-extreme-values), the maximum weight of a cat was 3.9 kg and the minimum was 2 kg. So the range is $3.9-2=1.9$ kg. But what does that tell you? You don't know if the weights are really spread out, or if they are close together.
 
-:::
 
 <!-- Unfortunately, the range does not provide a very accurate picture of variability. A better way to describe how the data are spread out is needed. Instead of looking only at the distance between the highest and lowest values, we can look at how far each data value is from the mean. This distance is called a **deviation**.
 
@@ -778,19 +785,19 @@ While understanding these formulas is important, in practice you'll typically us
 ::: {#exm-standard-deviation}
 ## Calculating the Standard Deviation
 
-For the dataset [cats]{.data} (@tbl-Cats) find the variance and standard derivation for weight of cats. Then find the variance and standard deviation separated by sex of the cat.
+For the dataset [cats]{.data} (@tbl-Cats) find the variance and standard deviation for weight of cats. Then find the variance and standard deviation separated by sex of the cat.
 :::
 
  **Solution**
 
- When using Rguroo, you would perform the similar steps as described in calculation mean and median[here](#Calculating-summary-stats-in-Rguroo), and select [standard deviation]{.def} and [variance]{.def}, as shown in the figure @fig-sd-dialog.
+ When using Rguroo, you would perform similar steps as described in calculation mean and median [example](#Calculating-summary-stats-in-Rguroo), and select [standard deviation]{.def} and [variance]{.def}, as shown in the figure @fig-sd-dialog.
 
 ```{r,echo=FALSE}
 #| fig-alt: "Dialog box for standard deviation and variance"
 #| warning: FALSE
 #| label: fig-sd-dialog
 #| fig-cap: "Basic Summary Statistic Dialog for Standard Deviation and Variance "
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics("Rguroo_dialogs/Numerical_Description/sd_var_cats_dialog.png")
 ```
 
@@ -798,19 +805,19 @@ knitr::include_graphics("Rguroo_dialogs/Numerical_Description/sd_var_cats_dialog
 df_stats(~Bwt, data=cats, var, sd) 
 ```
 
-The output is shown in @fig-sd-output. The variance for all cats is 0.24 $kg^2$ and the standard deviation is 0.49 kg.
+The output is shown in @fig-sd-output. The variance for all cats is 0.24 kg$^2$ and the standard deviation is 0.49 kg.
 
 ```{r,echo=FALSE}
 #| fig-alt: "Standard Deviation and Variance of Cats Weights"
 #| warning: FALSE
 #| label: fig-sd-output
 #| fig-cap: "Standard Deviation and Variance of Weights of Cats"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics("Rguroo_outputs/Numerical_Description/sd_var_cats_output.png")
 ```
 
 
-To find out the mean, variance, and standard deviation for each sex of the cats, we use a similar function as in @fig-sd-dialog and select sex from the [Factor 1]{.dpd} dropdown, as shown in @fig-spread-sex
+To find out the mean, variance, and standard deviation for each sex of the cats, we use a similar function as in @fig-sd-dialog and select sex from the [Factor 1]{.dpd} dropdown, as shown in @fig-spread-sex.
 
 ```{r,echo=FALSE}
 #| fig-alt: "Mean, Standard Deviation, Variance of Cats Weights by Sex"
@@ -820,7 +827,7 @@ To find out the mean, variance, and standard deviation for each sex of the cats,
 #| fig-subcap: 
 #|   - "Basic Summaries Dialog"
 #|   - "Basic Summaries Output"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics(c("Rguroo_dialogs/Numerical_description/cat_sex_sdvarmean_dialog.png","Rguroo_outputs/Numerical_Description/cat_sex_sdvarmean_output.png"))
 ```
 
@@ -828,7 +835,7 @@ knitr::include_graphics(c("Rguroo_dialogs/Numerical_description/cat_sex_sdvarmea
 df_stats(Bwt~Sex, data=cats, mean, var, sd) 
 ```
 
-You can see that the mean weight of females cats is 2.36 kg, the variance is 0.075 $kg^2$, and the standard deviation is 0.27 kg. For males cats, the mean is 2.9 kg, the variance is 0.22 $kg^2$, and the standard deviation is 0.47 kg. This means that female cats weigh less than males and since the variance and standard deviations are much less for female cats than males cats, female cats' weights are more consistent than male cats.
+You can see that the mean weight of females cats is 2.36 kg, the variance is 0.075 kg$^2$, and the standard deviation is 0.27 kg. For males cats, the mean is 2.9 kg, the variance is 0.22 kg$^2$, and the standard deviation is 0.47 kg. This means that female cats weigh less than males and since the variance and standard deviations are much less for female cats than males cats, female cats' weights are more consistent than male cats.
 
 
 <!-- In general a "small" variance and standard deviation means the data is close together (more consistent) and a "large" variance and standard deviation means the data is spread out (less consistent). Sometimes you want consistent data and sometimes you don't. As an example if you are making bolts, you want the lengths to be very consistent so you want a small standard deviation. On the other hand, if you are administering a test to evaluate pilot ability, you want the test scores to show enough variability to distinguish strong candidates from weaker ones. If nearly everyone scores about the same, the standard deviation will be small and it will be difficult to tell who performs better. A larger standard deviation indicates that scores are more spread out, making it easier to differentiate between high-performing and low-performing candidates.
@@ -882,6 +889,7 @@ knitr::include_graphics("images/chebyshev_rule.png")
 ## Using the Empirical Rule
 
 In the dataset [Tornado_OK]{.data}, the U.S. Weather Service has provided information about the total monthly/annual number of reported tornadoes in Oklahoma for the years 1950 to 2018 (US Department of Commerce & Noaa, 2016). The first six rows of the dataset are shown in @tbl-Tornado. Find the general interval that contains about 95% of the data.
+:::
 
 ```{r tornado-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Tornado dataset"
@@ -890,6 +898,7 @@ In the dataset [Tornado_OK]{.data}, the U.S. Weather Service has provided inform
 Tornado<-read.csv("https://krkozak.github.io/MAT160/Tornado_OK.csv") 
 knitr::kable(head(Tornado))
 ```
+
 ::: {#code-book-tornado .callout-tip .codebook collapse="true"}
 ## Code book for Tornado Dataset
 
@@ -899,7 +908,7 @@ This data frame contains the following columns:
 
 [Year]{.var}: Year from 1950-2018
 
-[Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]{.var}: Tornado numbers in each moth of the year
+[Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]{.var}: Tornado numbers in each month of the year
 
 [Annual]{.var}: Total number of tornadoes for each year
 
@@ -907,12 +916,12 @@ This data frame contains the following columns:
 
 References The data was supplied by The U.S. Weather Service
 :::
-:::
+
 **Solution**
 
-Import the [Torando_OK]{.data} dataset from the [Kozak]{.repo} repository into your Data toolbox on Rguroo.
+Import the [Tornado_OK]{.data} dataset from the [Kozak]{.repo} repository into your Data toolbox on Rguroo using these [directions](#Importing-cats-to-Rguroo).
 
-Variable: $x$ = number of **annual** tornadoes in Oklahoma
+Variable: $x$ = number of [annual]{.var} tornadoes in Oklahoma
 
 Find the mean and standard deviation as in @fig-tornado-ex:
 
@@ -921,14 +930,14 @@ df_stats(~Annual, data=Tornado, mean, sd)
 ```
 
 ```{r,echo=FALSE}
-#| fig-alt: "Rguroo Dialog Box and Output for Mean and Standard Deivation of Annual Tornados"
+#| fig-alt: "Rguroo Dialog Box and Output for Mean and Standard Deviation of Annual Tornadoes"
 #| warning: FALSE
 #| label: fig-tornado-ex
-#| fig-cap: "Mean and Standard Deviation of Annual Tornados"
+#| fig-cap: "Mean and Standard Deviation of Annual Tornadoes"
 #| fig-subcap: 
 #|   - "Basic Summaries Dialog"
 #|   - "Basic Summaries Output"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics(c("Rguroo_dialogs/Numerical_description/tornado_dialog.png","Rguroo_outputs/Numerical_Description/tornado_output.png"))
 ```
 
@@ -969,7 +978,6 @@ While this sample-based z-score provides a good approximation, keep in mind that
 
 ::: {#exm-unusual-value}
 ## Determining If a Value Is Unusual
-
 a.  In 1974, there were 45 tornadoes in Oklahoma. Is this value unusual? Why or why not?
 b.  In 1999, there were 145 tornadoes in the Oklahoma. Is this value unusual? Why or why not?
 :::
@@ -980,7 +988,7 @@ a.  In 1974, there were 45 tornadoes in Oklahoma. Is this value unusual? Why or 
 
     Variable: $x$ = number of tornadoes in Oklahoma
 
-To answer this question, first find how many standard deviations 45 is from the mean. From this [example](#exm-empirical-rule), we know $\mu=56$ and $\sigma=27.6$. For $x$=45, $z=\frac{45-56}{27.6}=-0.399$
+To answer this question, first find how many standard deviations 45 is from the mean. From the previous [example](#exm-empirical-rule), we know $\mu=56$ and $\sigma=27.6$. For $x$=45, $z=\frac{45-56}{27.6}=-0.399$
 
 Since this value is between -2 and 2, then it is not unusual to have 45 tornadoes in a year in Oklahoma. The z value is negative, so that means that 45 is less than the mean number of tornadoes.
 
@@ -990,11 +998,11 @@ b.  In 1999, there were 145 tornadoes in the Oklahoma. Is this value unusual? Wh
 
 For this question the $x$ = 145, $z=\frac{145-56}{27.6}=3.22$
 
-Since this value is more than 2, then it is unusual to have only 145 tornadoes in a year in Oklahoma.
+Since this value is more than 2, then it is unusual to have 145 tornadoes in a year in Oklahoma.
 
 ### Homework for Measures of Spread Section
 
-**Use Technology on all problems. State the variable on all problems.**
+**Use Rguroo on all problems. State the variable on all problems.**
 
 1.  Cholesterol levels were collected from patients certain days after they had a heart attack and are in @tbl-Cholesterol. Find the mean, median, range, variance, and standard deviation for cholesterol levels 2 days after the heart attack.
 
@@ -1004,7 +1012,7 @@ Since this value is more than 2, then it is unusual to have only 145 tornadoes i
 **Code book for Data Frame Cholesterol** is below @tbl-Cholesterol.
 :::
 
-2.  The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in @tbl-Length (Lee, 1994). Find the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Pacific Ocean and the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Tasman Sea. Compare and contrast the length of rivers that flow to the Pacific Ocean versus the ones that flow into the Tasman Sea using both measures of spread and measures of variability.
+2.  The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in @tbl-Length (Lee, 1994). Find the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Pacific Ocean and the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Tasman Sea. Compare and contrast the length of rivers that flow to the Pacific Ocean versus the ones that flow into the Tasman Sea using both measures of center and measures of variability.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [length]{.data}.
@@ -1023,7 +1031,7 @@ Since this value is more than 2, then it is unusual to have only 145 tornadoes i
 4.  Print-O-Matic printing company spends specific amounts on fixed costs every month. The costs of those fixed costs are in @tbl-Cost. Find the mean, median, range, variance, and standard deviation for the fixed costs.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pay]{.data}.
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cost]{.data}.
 
 **Code book for Data frame Cost** is below @tbl-Cost.
 :::
@@ -1056,7 +1064,7 @@ This data frame contains the following columns:
 
 [age]{.var}: age of subject in years
 
-[gender]{.var}: sex of subject, male, female
+[gender]{.var}: male or female
 
 [Smokes]{.var}: whether a subject regularly smokes, yes means does smoke, no means does not smoke
 
@@ -1084,7 +1092,7 @@ Create a data frame that contains only males, who drink alcohol, but do not smok
 #| warning: FALSE
 #| label: fig-subset-pulse
 #| fig-cap: "Subsetting Dialog Box"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics("Rguroo_dialogs/Numerical_description/pulse_subset_dialog.png")
 ```
 
@@ -1120,9 +1128,9 @@ knitr::kable(head(Reiki))
 
 This data frame contains the following columns:
 
-[vas.before]{.var}: pain measured using a visual analogue scale (VAS) before Reiki treatment
+[VAS.before]{.var}: pain measured using a visual analogue scale (VAS) before Reiki treatment
 
-[vas.after]{.var}: pain measured using a visual analogue scale (VAS) after Reiki treatment
+[VAS.after]{.var}: pain measured using a visual analogue scale (VAS) after Reiki treatment
 
 [likert_before]{.var}: pain measured using a likert before Reiki treatment
 
@@ -1142,9 +1150,9 @@ Since the data was collected both before and after the treatment for all of the 
 1.  Open the **Data** toolbox.\
 2.  Click on the [Functions]{.dpd} dropdown, and select [Transform]{.fun}. This opens the [Data Transform]{.dialog} dialog.\
 3.  From the [Dataset]{.dpd} dropdown, select the [Reiki_pain]{.data} dataset.\
-4.  Click on the plus sign icon ![plus icon](Rguroo_Icons/add.png) in the Variable column and type [vas.diff]{.var}. The variable’s name appears in the list labeled Retuned Variable on the right side.\
+4.  Click on the plus sign icon ![plus icon](Rguroo_Icons/add.png) in the Variable column and type [vas.diff]{.var}. The variable’s name appears in the list labeled Returned Variable on the right side.\
 5.  In the middle text field type your R function (transformation). To write a variable name, you can either type it or double-click on the variable name in the Returned Variable list. Double click [VAS.before]{.var} enter minus(-) and double click [VAS.after]{.var}.
-6.  When you are done with your selection, click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the scatterplot.
+6.  When you are done with your selection, click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the transformed dataset.
 7.  In Save As... name the new dataset Newreiki and click the [Save As...]{.button}.
 
 ::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
@@ -1184,7 +1192,7 @@ knitr::kable(head(Rainfall))
 
 This data frame contains the following columns:
 
-amount: daily rainfall (mm)
+[amount]{.var}: daily rainfall (mm)
 
 [Source](https://gksmyth.github.io/ozdasl/oz/sydrain.html) Annual maximums of daily rainfall in Sydney. (2013, September 25).
 
@@ -1200,7 +1208,6 @@ The $k^{th}$ **percentile** is the data value that has k% of the data at or belo
 
 ::: {#exm-interpreting-percentile}
 ## Interpreting Percentile
-
 a.  What does a score of the $90^{th}$ percentile mean?
 b.  What does a score of the $70^{th}$ percentile mean?
 
@@ -1256,7 +1263,7 @@ To find the quartiles in Rguroo, you use the same steps as finding the mean, sta
 #| warning: FALSE
 #| label: fig-cats-quartiles
 #| fig-cap: "Quartiles for Bodyweight of Cats"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics("Rguroo_dialogs/Numerical_description/quartiles_dialog.png")
 ```
 
@@ -1336,7 +1343,7 @@ Boxplots also reveal information about the shape of the distribution. @fig-boxpl
 #| fig-subcap: 
 #|  - "Boxplots showing three distribution shapes"
 #|  - "Corresponding histograms for comparison"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics(c("images/boxplot_comparison.png","images/boxplot_histogram_comparison.png"))
 ```
 
@@ -1380,7 +1387,7 @@ df_stats(~Bwt, data=cats, summary)
 #| fig-subcap: 
 #|   - "Basic Summary Dialog Box"
 #|   - "Five-Number Summary Output"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics(c("Rguroo_dialogs/Numerical_description/cats_5numsum_dialog.png","Rguroo_outputs/Numerical_Description/cats_5numsum_output.png"))
 ```
 
@@ -1388,7 +1395,7 @@ knitr::include_graphics(c("Rguroo_dialogs/Numerical_description/cats_5numsum_dia
 
 Minimum: 2 kg $Q1$: 2.3 kg Median: 2.7 kg $Q3$: 3.025 kg Maximum: 3.9 kg
 
-To find the interquartile range, $IQR$ find \$Q3-Q1\$, so $IQR=3.025-2.3=0.725 kg$
+To find the interquartile range, $IQR$ find $Q3-Q1$, so $IQR=3.025-2.3=0.725 kg$
 
 Click to expand the box below to see instructions to create a boxplot of the [cats]{.data} dataset in Rguroo.
 
@@ -1454,7 +1461,7 @@ df_stats(~Bwt|Sex, data=cats, summary)
 #| fig-subcap: 
 #|   - "Basic Summary Dialog Box"
 #|   - "Five-Number Summary Output"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics(c("Rguroo_dialogs/Numerical_description/5summary_cats_sex_dialog.png","Rguroo_outputs/Numerical_Description/cats_5summ_sex_output.png"))
 ```
 
@@ -1486,6 +1493,7 @@ Notice that the weights of female cats has a median less than male cats, and in 
 ## Putting it all together
 
 The time (in 1/50 seconds) between successive pulses along a nerve fiber ("Time between nerve," 2013) are given in @tbl-Nerve.
+:::
 
 ```{r nerve-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Nerve dataset"
@@ -1502,7 +1510,7 @@ knitr::kable(head(Nerve))
 
 This data frame contains the following columns:
 
-time: time between successive Pulses along a nerve fiber, 1/50 second.
+[time]{.var}: time between successive Pulses along a nerve fiber, 1/50 second.
 
 [Source](https://gksmyth.github.io/ozdasl/general/nerve.html) Time between nerve pulses. (2019, July 3).
 
@@ -1514,11 +1522,8 @@ Jorgensen, B. (1982). The Generalized Inverse-Gaussian Distribution. Springer-Ve
 
 :::
 
-:::
 
 **Solution**
-
-**Before you begin:** Make sure you have already imported the [nerve]{.data} dataset into your **Data** Toolbox, located in the [Statistics Using Technology - Kozak]{.repo}.
 
 First, it might be useful to look at a visualization of the data, so create a density plot
 
@@ -1532,13 +1537,13 @@ gf_density(~time, data=Nerve, title="Time between Successive Nerve Pulses", xlab
 
 Click to expand the box below to see instructions to create a density plot of the [nerve]{.data} dataset in Rguroo.
 
-:::: {#Creating-a-density-plot-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a Density PLot of the Time Between Successive Nerve Pulses"}
+:::: {#Creating-a-density-plot-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a Density Plot of the Time Between Successive Nerve Pulses"}
 **Before you begin:** Make sure you have already imported the [nerve]{.data} dataset into your **Data** Toolbox, as was shown [here](#Importing-cats-to-Rguroo).
 
 1.  Open the **Plots** toolbox.\
 2.  Click on the [Create Plot]{.dpd} dropdown menu and choose the [Histogram]{.fun} function. The Histogram dialog will open.
 3.  From the [Dataset]{.dpd} dropdown, select the [nerve]{.data} dataset.\
-4.  Move the [pulse]{.var} variables to the Selected column.\
+4.  Move the [time]{.var} variables to the Selected column.\
 5.  Select density in Type and density in Smoothing additional options.
 6.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the graph.
 
@@ -1548,7 +1553,7 @@ Click to expand the box below to see instructions to create a density plot of th
 ::::
 
 ::: {.rg-iframe-wrapper tabindex="0"}
-<iframe src="Rguroo_html_output/Numerical_description/Histogram_7/Histogram_7.html" class="rg-iframe" title="Denisty Plot for Successive Nerve Pulses">
+<iframe src="Rguroo_html_output/Numerical_description/Histogram_7/Histogram_7.html" class="rg-iframe" title="Density Plot for Successive Nerve Pulses">
 
 </iframe>
 :::
@@ -1564,7 +1569,7 @@ df_stats(~time, data=Nerve, mean, median, sd, summary)
 #| warning: FALSE
 #| label: fig-Pulse-summary
 #| fig-cap: "Numerical Summary of Time Between Successive Nerve Pulses"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics("Rguroo_outputs/Numerical_Description/nerve_summary_output.png")
 ```
 
@@ -1585,13 +1590,13 @@ gf_boxplot(~time, data=Nerve, title="Nerve Pulses", xlab="Time (1/50 second)")
 #| warning: FALSE
 #| label: fig-nerve-boxplot
 #| fig-cap: "Boxplot of Time Between Successive Nerve Pulses"
-#| out-width: "70%"
+#| out-width: "80%"
 knitr::include_graphics("Rguroo_outputs/Numerical_Description/nerve_boxplot_output.svg")
 ```
 
 <!-- Rewrote: Since there are many dots outside the upper fence the data has many outliers. From all of this information, one could say that nerve pulses between successive pulses is around 11 1/50 second, with a spread of 19.5 1/50 second. Most of the values are round 11 1/50 second, but they are not very consistent. The density plot and boxplot show that there is a great deal of spread of the data and it is skewed to the right. This means mostly the speed is around 11 1/50 second, but there is a great deal of variability in the values. -->
 
-The boxplot reveals multiple high outliers. The median shows a typical pulse interval of 11 1/50 seconds, with an IQR of 19.5 1/50 seconds indicating substantial variability. The right skew visible in both plots confirms that while most pulses occur consistently around 11 1/50 seconds, occasional longer delays create the high outliers.
+The boxplot reveals multiple high outliers. The mean shows a typical pulse interval of 11 1/50 seconds, with an IQR of 19.5 1/50 seconds indicating substantial variability. The right skew visible in both plots confirms that while most pulses occur consistently around 11 1/50 seconds, occasional longer delays create the high outliers.
 
 ### Homework for Ranking Section
 
@@ -1643,7 +1648,7 @@ Find the five-number summary and interquartile range (IQR) for the lengths of ri
 
 Create a data frame that contains only people who drink alcohol, but do not smoke. Then find the five number summary and draw a boxplot for both males and females separately.
 
-9.  To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson & Hanson, 1997) and the data is in @tbl-Reiki.
+9.  To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a Likert scale immediately before and after the Reiki treatment (Olson & Hanson, 1997) and the data is in @tbl-Reiki.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [Reiki_pain]{.data}.

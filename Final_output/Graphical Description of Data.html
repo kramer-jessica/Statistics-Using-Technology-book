@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -197,17 +226,21 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#qualitative-data" id="toc-qualitative-data" class="nav-link active" data-scroll-target="#qualitative-data"><span class="header-section-number">2.1</span> Qualitative Data</a>
   <ul class="collapse">
-  <li><a href="#homework-for-qualitative-data-section" id="toc-homework-for-qualitative-data-section" class="nav-link" data-scroll-target="#homework-for-qualitative-data-section"><span class="header-section-number">2.1.1</span> Homework for Qualitative Data Section</a></li>
+  <li><a href="#organizing-qualitative-data" id="toc-organizing-qualitative-data" class="nav-link" data-scroll-target="#organizing-qualitative-data"><span class="header-section-number">2.1.1</span> Organizing Qualitative Data</a></li>
+  <li><a href="#graphical-displays-of-qualitative-data" id="toc-graphical-displays-of-qualitative-data" class="nav-link" data-scroll-target="#graphical-displays-of-qualitative-data"><span class="header-section-number">2.1.2</span> Graphical Displays of Qualitative Data</a></li>
+  <li><a href="#homework-for-qualitative-data-section" id="toc-homework-for-qualitative-data-section" class="nav-link" data-scroll-target="#homework-for-qualitative-data-section"><span class="header-section-number">2.1.3</span> Homework for Qualitative Data Section</a></li>
   </ul></li>
   <li><a href="#quantitative-data" id="toc-quantitative-data" class="nav-link" data-scroll-target="#quantitative-data"><span class="header-section-number">2.2</span> Quantitative Data</a>
   <ul class="collapse">
-  <li><a href="#shapes-of-the-distribution" id="toc-shapes-of-the-distribution" class="nav-link" data-scroll-target="#shapes-of-the-distribution"><span class="header-section-number">2.2.1</span> Shapes of the distribution:</a></li>
-  <li><a href="#examples-of-graphs" id="toc-examples-of-graphs" class="nav-link" data-scroll-target="#examples-of-graphs"><span class="header-section-number">2.2.2</span> Examples of graphs:</a></li>
-  <li><a href="#homework-for-quantitative-data-section" id="toc-homework-for-quantitative-data-section" class="nav-link" data-scroll-target="#homework-for-quantitative-data-section"><span class="header-section-number">2.2.3</span> Homework for Quantitative Data Section</a></li>
+  <li><a href="#organizing-quantitative-data" id="toc-organizing-quantitative-data" class="nav-link" data-scroll-target="#organizing-quantitative-data"><span class="header-section-number">2.2.1</span> Organizing Quantitative Data</a></li>
+  <li><a href="#graphical-displays-of-quantitative-data" id="toc-graphical-displays-of-quantitative-data" class="nav-link" data-scroll-target="#graphical-displays-of-quantitative-data"><span class="header-section-number">2.2.2</span> Graphical Displays of Quantitative Data</a></li>
+  <li><a href="#shapes-of-the-distribution" id="toc-shapes-of-the-distribution" class="nav-link" data-scroll-target="#shapes-of-the-distribution"><span class="header-section-number">2.2.3</span> Shapes of the distribution:</a></li>
+  <li><a href="#examples-of-graphs" id="toc-examples-of-graphs" class="nav-link" data-scroll-target="#examples-of-graphs"><span class="header-section-number">2.2.4</span> Examples of graphs:</a></li>
+  <li><a href="#homework-for-quantitative-data-section" id="toc-homework-for-quantitative-data-section" class="nav-link" data-scroll-target="#homework-for-quantitative-data-section"><span class="header-section-number">2.2.5</span> Homework for Quantitative Data Section</a></li>
   </ul></li>
   <li><a href="#other-graphical-representations-of-data" id="toc-other-graphical-representations-of-data" class="nav-link" data-scroll-target="#other-graphical-representations-of-data"><span class="header-section-number">2.3</span> Other Graphical Representations of Data</a>
   <ul class="collapse">
-  <li><a href="#scatter-plot-or-point-plot" id="toc-scatter-plot-or-point-plot" class="nav-link" data-scroll-target="#scatter-plot-or-point-plot"><span class="header-section-number">2.3.1</span> Scatter Plot or Point Plot</a></li>
+  <li><a href="#point-plots-or-scatter-plot" id="toc-point-plots-or-scatter-plot" class="nav-link" data-scroll-target="#point-plots-or-scatter-plot"><span class="header-section-number">2.3.1</span> Point Plots or Scatter Plot</a></li>
   <li><a href="#time-series" id="toc-time-series" class="nav-link" data-scroll-target="#time-series"><span class="header-section-number">2.3.2</span> <strong>Time-Series</strong></a></li>
   <li><a href="#homework-for-other-graphical-representations-of-data-section" id="toc-homework-for-other-graphical-representations-of-data-section" class="nav-link" data-scroll-target="#homework-for-other-graphical-representations-of-data-section"><span class="header-section-number">2.3.3</span> Homework for Other Graphical Representations of Data Section</a></li>
   </ul></li>
@@ -236,25 +269,58 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>In chapter 1, you were introduced to the concepts of population, which again is a collection of all the measurements from the individuals of interest. Remember, in most cases you can’t collect the entire population, so you have to take a sample. Thus, you collect data either through a sample or a census. Now you have a large number of data values. What can you do with them? No one likes to look at just a set of numbers. One thing is to organize the data into a table or graph. Ultimately though, you want to be able to use that graph to interpret the data, to describe the distribution of the data set, and to explore different characteristics of the data. The characteristics that will be discussed in this chapter and the next chapter are:</p>
+<p><strong>Before you begin, review the process for importing a dataset.</strong> Click on the box below to expand the directions for importing a dataset into your Data Toolbox.</p>
+<div id="Importing-Data-to-Rguroo-Chapter-2" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Data to Rguroo">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Importing Data to Rguroo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ol type="1">
-<li>Center: middle of the data set, also known as the average.</li>
-<li>Variation: how much the data varies.</li>
-<li>Distribution: shape of the data (symmetric, uniform, or skewed).</li>
-<li>Qualitative data: analysis of the data <strong>MJ: What do you mean?</strong></li>
-<li>Outliers: data values that are far from the majority of the data.</li>
-<li>Time: changing characteristics of the data over time.</li>
+<li>Open the <strong>Data</strong> toolbox in Rguroo.<br>
+</li>
+<li>From the <span class="dpd">Data Import</span> dropdown, select <span class="fun">Dataset Repository</span>.<br>
+</li>
+<li>In the top search box, type <span class="typein">kozak</span>, then select the <span class="repo">Statistics Using Technology – Kozak</span> repository.<br>
+</li>
+<li>In the middle search box, type the first few letters of the dataset, and choose your dataset that appears in the lower panel.<br>
+</li>
+<li>Click the <span class="button">Import</span>. The dataset will be imported into your Rguroo account.<br>
+</li>
+<li>Click the <span class="button">Close</span> to close the dialog.<br>
+</li>
+<li>To view the dataset, double-click the dataset under the <strong>Data</strong> toolbox list.</li>
 </ol>
+</div>
+</div>
+</div>
+<p>In chapter 1, you were introduced to the concepts of population, which again is a collection of all the measurements from the individuals of interest. Remember, in most cases you can’t collect the entire population, so you have to take a sample. Thus, you collect data either through a sample or a census. Now you have a large number of data values. What can you do with them? No one likes to look at just a set of numbers. One thing is to organize the data into a table or graph. Ultimately though, you want to be able to use that graph to interpret the data, to describe the distribution of the data set, and to explore different characteristics of the data. <!--**I didn't think we needed any of this.** The characteristics that will be discussed in this chapter and the next chapter are:--></p>
+<!--1.  Center: middle of the data set, also known as the average.
+2.  Variation: how much the data varies.
+3.  Distribution: shape of the data (symmetric, uniform, or skewed).
+4.  Qualitative data: analysis of the data
+5.  Outliers: data values that are far from the majority of the data.
+6.  Time: changing characteristics of the data over time.-->
 <p>This chapter will focus on organizing data, creating graphs of the data, and using the graphs to understand aspects of the data.</p>
 <p>This textbook uses Rguroo to perform all graphical and descriptive statistics, and all statistical inference. When using Rguroo, you will need to either import a dataset from a repository or create a dataset. For directions on how to create a dataset in Rguroo, please refer to Chapter 0.</p>
 <section id="qualitative-data" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="qualitative-data"><span class="header-section-number">2.1</span> Qualitative Data</h2>
-<p>Remember, qualitative data are usually words describing a characteristic of the individual. Once you’ve gathered raw data, the real work begins. A long list of observations doesn’t tell you much on its own. Raw data is usually messy, unstructured, and difficult to understand or use. The next step is to organize the data in a way that reveals patterns and meaning. A simple way to organize qualitative data is to create a frequency distribution or relative frequency distribution. Both of these are tables which organize non‑numerical categories into groups and shows how often each category occurs.</p>
-<p>A <strong>frequency distribution for qualitative data</strong> is a table that lists each category with its corresponding frequency. The <strong>frequency</strong> of a category is the <strong>number of observations</strong> that fall into that category.</p>
-<p>A <strong>relative frequency distribution for qualitative data</strong> is a table that lists each category with its corresponding relative frequency. Relative frequency is the <strong>proportion of observations</strong> that fall into a category. Relative frequencies can be in the form of a proportion or a percentage.</p>
+<p>Remember, qualitative data are words describing a characteristic of the individual. Once you’ve gathered raw data, the real work begins. A long list of observations doesn’t tell you much on its own. Raw data are usually messy, unstructured, and difficult to understand or use. The next step is to organize the data in a way that reveals patterns and meaning.</p>
+<section id="organizing-qualitative-data" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="organizing-qualitative-data"><span class="header-section-number">2.1.1</span> Organizing Qualitative Data</h3>
+<p>A simple way to organize qualitative data is to create a table, called a frequency distribution or relative frequency distribution. Both of these organize non‑numerical categories into groups and show how often each category occurs.</p>
+<p>A <strong>frequency distribution for qualitative data</strong> is a table that lists each category with its corresponding frequency.</p>
+<p>A <strong>relative frequency distribution for qualitative data</strong> is a table that lists each category with its corresponding relative frequency. Relative frequencies are calculated by dividing the frequency of each category by the total frequency. Relative frequencies can be in the form of a reduced fraction, proportion, or a percentage.</p>
 <p>These displays of qualitative data help you quickly see which categories are most common, how the data is spread across different groups, and whether any categories stand out as unusually frequent or rare.</p>
 <div id="exm-creating-a-frequency-and-relative-frequency-distribution" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.1 (Creating a Frequency and Relative Frequency Distribution)</strong></span> Data was collected for two semesters in a statistics class. <a href="#tbl-Class" class="quarto-xref">Table&nbsp;<span>2.1</span></a> shows the variables and the first 6 rows of the data set. The data sets are usually larger than what is shown. Create a frequency distribution and relative frequency distribution for vehicle type. <strong>MJ I think we should bring the codebook right after the dataset upload or even here that we are showing a portion of the data</strong></p>
+<p><span class="theorem-title"><strong>Example 2.1 (Creating a Frequency and Relative Frequency Distribution)</strong></span> Data was collected for two semesters in a statistics class. Create a frequency distribution and relative frequency distribution for <span class="var">vehicle</span> type.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">class_survey1</span>. <a href="#tbl-Class" class="quarto-xref">Table&nbsp;<span>2.1</span></a> shows the variables and the first 6 rows of the data set. A complete description of the variables is provided in the <a href="#code-book-class">dataset code book</a> that follows.</p>
 </div>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of statistics class survey dataset">
 <div id="tbl-Class" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of statistics class survey dataset">
@@ -355,37 +421,6 @@ Table&nbsp;2.1: Class Survey
 </figure>
 </div>
 </div>
-<p>Click to expand the box below to see instructions to import and view the <span class="data">class_survey1</span> dataset.</p>
-<div id="Importing-Class_Survey1-to-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing class_survey1 to Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Importing class_survey1 to Rguroo
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Open the <strong>Data</strong> toolbox in Rguroo.<br>
-</li>
-<li>From the <span class="dpd">Data Import</span> dropdown, select <span class="fun">Dataset Repository</span>.<br>
-</li>
-<li>In the top search box, type <span class="typein">kozak</span>, then select the <span class="repo">Statistics Using Technology – Kozak</span> repository.<br>
-</li>
-<li>In the middle search box, type <span class="typein">class</span>, and select the <span class="data">class_survey1</span> dataset that appears in the lower panel.<br>
-</li>
-<li>Click the <span class="button">Import</span>. The dataset will be imported into your Rguroo account.<br>
-</li>
-<li>Click the <span class="button">Close</span> to close the dialog.<br>
-</li>
-<li>To view the dataset, double-click <span class="data">class_survey1</span> under the <strong>Data</strong> toolbox list.</li>
-</ol>
-</div>
-</div>
-</div>
 <p>Every data frame has a code book that describes the data set, the source of the data set, and a listing and description of the variables in the data frame. Click the box below to expand the codebook for the dataset <span class="data">class_survey1</span>.</p>
 <div id="code-book-class" class="codebook callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -418,6 +453,7 @@ Code book for Class Survey1 Dataset
 </div>
 </div>
 <p><strong>Solution</strong></p>
+<p>Click to expand the box below see how to create a frequency and relative frequency distribution for <span class="var">vehicle</span> type.</p>
 <div id="Creating-Frequency-Distribution-of-Vehicle-Type-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Frequency and Relative Frequency Distributions of Vehicle Type in Rguroo">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -430,7 +466,7 @@ Code book for Class Survey1 Dataset
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Class_Survey1-to-Rguroo">here</a>.</p>
+<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Data-to-Rguroo-Chapter-2">here</a>.</p>
 <ol type="1">
 <li>Open the <strong>Analytics</strong> toolbox in Rguroo.<br>
 </li>
@@ -440,7 +476,7 @@ Code book for Class Survey1 Dataset
 </li>
 <li>Choose the <span class="var">vehicle</span> variable from the <span class="dpd">Factor 1</span> dropdown. For frequency, select counts. For realtive frequency, select proportions.<br>
 </li>
-<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the frequecy distribution.</li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the frequency distribution.</li>
 </ol>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -456,7 +492,7 @@ Click here to see the Rguroo dialog
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_frequency_distribution_vehicle.png" class="img-fluid figure-img" width="500"></p>
+<p><img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_vehicle_freq_dist.png" class="img-fluid figure-img" width="500"></p>
 <figcaption>Data Tabulation dialog showing settings for creating frequency distribtion of vehicle type.</figcaption>
 </figure>
 </div>
@@ -466,26 +502,45 @@ Click here to see the Rguroo dialog
 </div>
 </div>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Rguroo_outputs/Graphical_Description_of_Data/frequency_distribution_vehicle.png" class="img-fluid figure-img" style="width:80.0%" alt="a list of vehicles with the corresponding counts"></p>
-<figcaption>Frequency Distribution for Vehicle Type</figcaption>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-freq_dist" class="quarto-float quarto-figure quarto-figure-center anchored" alt="a list of vehicles with the corresponding counts">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-freq_dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Graphical_Description_of_Data/frequency_distribution_vehicle.png" class="img-fluid figure-img" alt="a list of vehicles with the corresponding counts">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-freq_dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Frequency Distribution for Vehicle Type
+</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Rguroo_outputs/Graphical_Description_of_Data/rel_frequency_distribution_vehicle.png" class="img-fluid figure-img" style="width:80.0%" alt="a list of vehicles with the corresponding proportions"></p>
-<figcaption>Relative Frequency Distribution for Vehicle Type</figcaption>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-rel_freq_dist" class="quarto-float quarto-figure quarto-figure-center anchored" alt="a list of vehicles with the corresponding proportions">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rel_freq_dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Graphical_Description_of_Data/rel_frequency_distribution_vehicle.png" class="img-fluid figure-img" alt="a list of vehicles with the corresponding proportions">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rel_freq_dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Relative Frequency Distribution for Vehicle Type
+</figcaption>
 </figure>
 </div>
-<p><strong>Graphical Displays of Qualitative Data</strong></p>
+</div>
+</div>
+</section>
+<section id="graphical-displays-of-qualitative-data" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="graphical-displays-of-qualitative-data"><span class="header-section-number">2.1.2</span> Graphical Displays of Qualitative Data</h3>
 <p>Another way to display data is with a graph. There are several different graphs that are used for qualitative data. Typical qualitative graphs include bar graphs, Pareto charts, and pie charts. Bar graphs can be created using a statistical program like Rguroo.</p>
 <p><strong>Bar graphs or Bar charts</strong> consist of the frequencies or relative frequencies on one axis and the categories on the other axis. Drawing the bar graph using Rguroo is performed by importing the dataset (or creating a dataset) and using the Plots toolbox in Rguroo.</p>
 <div id="exm-drawing-a-bar-chart" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.2 (Drawing a Bar Chart)</strong></span> Use the <span class="data">class_survey1</span> to create a bar chart of vehicle type.</p>
+<p><span class="theorem-title"><strong>Example 2.2 (Drawing a Bar Chart)</strong></span> Use the <span class="data">class_survey1</span> to create a bar chart of <span class="var">vehicle</span> type.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">class_survey1</span>. A complete description of the variables is provided in the <a href="#code-book-class">dataset code book</a>.</p>
 </div>
 <p><strong>Solution</strong></p>
-<p>Click to expand the box below see how to create the bar graph for vehicle type.</p>
+<p>Click to expand the box below see how to create the bar graph for <span class="var">vehicle</span> type.</p>
 <div id="Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Bar Graph of Vehicle Type in Rguroo">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -498,7 +553,7 @@ Click here to see the Rguroo dialog
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Class_Survey1-to-Rguroo">here</a>.</p>
+<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Data-to-Rguroo-Chapter-2">here</a>.</p>
 <ol type="1">
 <li>Open the <strong>Plots</strong> toolbox in Rguroo.<br>
 </li>
@@ -509,8 +564,18 @@ Click here to see the Rguroo dialog
 <li>Choose the <span class="var">vehicle</span> variable from the <span class="dpd">Factor 1</span> dropdown.<br>
 </li>
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the bar graph.</li>
+<li><strong>(Optional)</strong> In the <strong>Label</strong> section of the dialog:
+<ul>
+<li>Enter <span class="typein">Bar Graph for Vehicle Type</span> in the <span class="des">Title</span> textbox.<br>
+</li>
+<li>Enter <span class="typein">Vehicle Type</span> in the <span class="des">X-Axis</span> textbox.<br>
+</li>
+<li>Enter <span class="typein">Number of Vehicles</span> in the <span class="des">Y-Axis</span> textbox.<br>
+</li>
+</ul></li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the bar graph.</li>
+<li>In the <img src="Rguroo_Icons/save_as.png" class="img-fluid" alt="Save as"> textbox, enter the name <span class="typein">VehicleBarGraph</span> for the bar graph. Click the button to save the bar graph to your Rguroo account.</li>
 </ol>
-<p><strong>Optional</strong> You can change the title and names for the x and y axes in the Barplot dialog box. To do this, simply type in the titles for each in the <strong>Label</strong> boxes. <strong>MJ I think while it is optional, students should be encouraged to put meaningful labeles and title. It would be a good idea that in this plot we also add appropriate labels</strong></p>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -537,51 +602,166 @@ Click here to see the Rguroo dialog
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-class_data" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
+<div id="fig-bar_graph" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-class_data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-bar_graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="Rguroo_outputs/Graphical_Description_of_Data/barplot_vehicle_2.svg" class="img-fluid figure-img" alt="See the description of the graph below the graph">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-class_data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: Bar graph of vehicles driven by students in statistics class
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bar_graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: Bar graph of vehicles driven by students in statistics class
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-class_data" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> is a Bar graph with bars for Audi, Buick, Honda, Hyundai, Mercury, Nissan with height of 1, Dodge and None with height of 2, Jeep, Subaru, Toyota with heights of 3, and Chevrolet and Ford at height of 4.</p>
-<p>Notice from <a href="#fig-class_data" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>, you can see that Chevrolet and Ford are the more popular car, with Jeep, Subaru, and Toyota not far behind. Many types seems to be the lesser used, and tied for last place. However, more data would help to figure this out.</p>
+<p><a href="#fig-bar_graph" class="quarto-xref">Figure&nbsp;<span>2.3</span></a> is a Bar graph with bars for Audi, Buick, Honda, Hyundai, Mercury, Nissan with height of 1, Dodge and None with height of 2, Jeep, Subaru, Toyota with heights of 3, and Chevrolet and Ford at height of 4.</p>
+<p>Notice from <a href="#fig-bar_graph" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>, you can see that Chevrolet and Ford are the more popular car, with Jeep, Subaru, and Toyota not far behind. Many types seem to be less commonly used, and tied for last place. However, more data would help to figure this out.</p>
 <p><strong>All graphs should have labels on each axis and a title for the graph.</strong></p>
-<p>The beauty of data frames with multiple variables is that you can answer many questions from the data. Suppose you want to see if gender makes a difference for the type of car a person drives. If you are a car manufacturer, if you knew that certain genders like certain cars, then you would advertise to the different genders.</p>
-<div id="exm-drawing-a-bar-chart-by-gender" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.3 (Drawing a Bar Chart of Vehicle Type by Gender)</strong></span> Use the <span class="data">class_survey1</span> to create a bar chart of vehicle type by gender.</p>
+<p>Another version of a bar graph that is useful is a relative frequency bar graph. A relative frequency bar graph gives you a clear way to compare how different categories or values occur, especially when working with datasets of different sizes. By converting raw counts into proportions, the graph highlights patterns that might otherwise be hidden. This makes it a powerful tool for spotting meaningful relationships in data, comparing data of different sizes, and communicating those insights in a way that’s easy for others to understand.</p>
+<p>Rguroo can generate a relative frequency bar graph from the same plot toolbox.</p>
+<div id="exm-drawing-a-relative-frequency-bar-chart" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.3 (Drawing a Relative Frequency Bar Chart for Vehicle Type)</strong></span> Use the <span class="data">class_survey1</span> to create a relative frequency bar chart of <span class="var">vehicle</span> type.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">class_survey1</span>. A complete description of the variables is provided in the <a href="#code-book-class">dataset code book</a>.</p>
 </div>
 <p><strong>Solution</strong></p>
-<p>Click to expand the box below see how to create the bar graph for vehicle type disaggreagated by gender.</p>
-<div id="Creating-Bar-Graph-of-Vehicle-Gender-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Bar Graph of Vehicle Type and Gender in Rguroo">
+<p>To create a relative frequency bar graph, follow the directions for creating a bar graph <a href="#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo">here</a>. Then click proportion to change frequency to relative frequency. Don’t forget to change your y-axis label to proportion as well.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-rel_freq_dialog" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog box for creating a relative frequency distribution">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rel_freq_dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_rel_freq_vehicle_2.png" class="img-fluid figure-img" style="width:80.0%" alt="Dialog box for creating a relative frequency distribution">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rel_freq_dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.4: Dialog Box for Relative Frequency Bar Graph
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-class_data_dot-car" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-class_data_dot-car-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Graphical_Description_of_Data/barplot_rel_freq_vehicle_2.svg" class="img-fluid figure-img" alt="See the description of the graph below the graph">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-class_data_dot-car-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.5: Relative Frequency bar graph of vehicles driven by students in statistics class
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-class_data_dot-car" class="quarto-xref">Figure&nbsp;<span>2.5</span></a> is a relative frequency bar graph of vehicles showing the vehicle types on the horizontal axis and proportions (relative frequency) on the vertical axis.</p>
+<p>Notice that a frequency bar graph and relative frequency bar graph give you similar information. However, a relative frequency bar graph shows you the proportions of the total vehicles.</p>
+<p>The beauty of data frames with multiple variables is that you can answer many questions from the data. Suppose you want to see if gender makes a difference for the type of car a person drives. If you are a car manufacturer, if you knew that certain genders like certain cars, then you would advertise to the different genders.</p>
+<div id="exm-drawing-a-bar-chart-by-gender" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.4 (Drawing a Bar Chart of Vehicle Type by Gender)</strong></span> Use the <span class="data">class_survey1</span> to create a bar chart of <span class="var">vehicle</span> type by <span class="var">gender</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">class_survey1</span>. A complete description of the variables is provided in the <a href="#code-book-class">dataset code book</a>.</p>
+</div>
+<p><strong>Solution</strong></p>
+<p>To create a bar graph of <span class="var">vehicle</span> by <span class="var">gender</span>, follow the directions for creating a bar graph <a href="#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo">here</a>. Then, in the barplot dialog box, select the <span class="var">gender</span> variable from the <span class="dpd">Factor 1</span> dropdown and the <span class="var">vehicle</span> variable from the <span class="dpd">Factor 2</span> dropdown. Don’t forget to title your graph appropriately. A picture of the dialog box is shown below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-dialog_vehicle_gender" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog box for bar graph of vehicle type by gender">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dialog_vehicle_gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_vehicle_gender_2.png" class="img-fluid figure-img" style="width:80.0%" alt="Dialog box for bar graph of vehicle type by gender">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dialog_vehicle_gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.6: Dialog Box for Bar graph of Vehicles Driven by Gender
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-class_data_bar_gender" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-class_data_bar_gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Graphical_Description_of_Data/barplot_vehicle_gender_2.svg" class="img-fluid figure-img" alt="See the description of the graph below the graph">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-class_data_bar_gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.7: Bar graph of Vehicles driven by students in statistics class, disaggregated by gender
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-class_data_bar_gender" class="quarto-xref">Figure&nbsp;<span>2.7</span></a> is a bar graph of number of vehicles separated by female and male. Audi and male has height of 1, Buick and female has a height of 1, Chevrolet and male and Chevrolet and female have heights of 2, Dodge and male and Dodge and female has heights of 1, Ford and female has a height of 4, Honda and female has a height of 1, Hyundai and male has a height of 1, Jeep and male has a height of 2 while Jeep and female has a height of 1, Mercury and female has a height of 1, Nissan and female has a height of 1, no car and female has a height of 2, Subaru and female has a height of 1, Subaru and male has a height of 2, Toyota and female has a height of 1, and Toyota and male has a height of 2.</p>
+<p>Notice a Ford is driven by females more than any other car, while Chevrolet, Mercury, and Subaru cars are equally driven by males. Obviously a larger sample would be needed to make any conclusions from this data.</p>
+<p>Another form of a bar graph that disaggregates by a factor is called a stacked bar graph. A stacked bar graph shows how different sub‑groups contribute to an overall total by stacking the segments on top of each other within each bar.</p>
+<div id="exm-drawing-a-bar-chart-by-gender-stacked" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.5 (Drawing a Stacked Bar Chart of Vehicle Type by Gender)</strong></span> Use the <span class="data">class_survey1</span> to create a stacked bar chart of <span class="var">vehicle</span> type by <span class="var">gender</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">class_survey1</span>. A complete description of the variables is provided in the <a href="#code-book-class">dataset code book</a>.</p>
+</div>
+<p><strong>Solution</strong></p>
+<p>To create a bar graph of <span class="var">vehicle</span> by <span class="var">gender</span>, follow the directions for creating a bar graph <a href="#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo">here</a>. Then, in the barplot dialog box, select the <span class="var">gender</span> variable from the <span class="dpd">Factor 1</span> dropdown and the <span class="var">vehicle</span> variable from the <span class="dpd">Factor 2</span> dropdown. To make it a stacked bar graph, click the “stacked” button. Don’t forget to title your graph appropriately. A picture of the dialog box is shown below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-dialog_vehicle_gender_stacked" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog box for stacked bar graph of vehicle type by gender">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dialog_vehicle_gender_stacked-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_stacked_bar_vehicle_gender.png" class="img-fluid figure-img" style="width:80.0%" alt="Dialog box for stacked bar graph of vehicle type by gender">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dialog_vehicle_gender_stacked-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.8: Dialog Box for Stacked Bar graph of Vehicles Driven by Gender
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-vehicle_gender_stacked" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-vehicle_gender_stacked-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Graphical_Description_of_Data/stacked_bar_vehicle_gender.svg" class="img-fluid figure-img" alt="See the description of the graph below the graph">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vehicle_gender_stacked-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.9: Stacked Bar graph of Vehicles Driven by Gender
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Another type of graph that is also useful for qualitative data is a pie chart. A pie chart is a circular graph where each slice represents a percentage of the whole, proportional to the numerical value it represents. Pie charts allow for easy visualization of how each part contributes to the whole.</p>
+<div id="exm-drawing-a-pie-chart" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.6 (Drawing a Pie Chart for Vehicle Type)</strong></span> Use the <span class="data">class_survey1</span> to create a pie chart of <span class="var">vehicle</span> type.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">class_survey1</span>. A complete description of the variables is provided in the <a href="#code-book-class">dataset code book</a>.</p>
+</div>
+<p><strong>Solution</strong></p>
+<p>Click to expand the box below see how to create the pie chart for vehicle type.</p>
+<div id="Creating-Pie-Chart-of-Vehicle-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Pie Chart of Vehicle Type in Rguroo">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating Bar Graph of Vehicle Type and Gender in Rguroo
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating Pie Chart of Vehicle Type in Rguroo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Class_Survey1-to-Rguroo">here</a>.</p>
+<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Data-to-Rguroo-Chapter-2">here</a>.</p>
 <ol type="1">
 <li>Open the <strong>Plots</strong> toolbox in Rguroo.<br>
 </li>
-<li>Open the <span class="dpd">Create Plot</span> dropdown, and select <span class="fun">Barplot</span>. This opens the Barplot dialog.<br>
+<li>Open the <span class="dpd">Create Plot</span> dropdown, and select <span class="fun">Pie Chart</span>. This opens the Pie Chart dialog.<br>
 </li>
-<li>In the Barplot dialog, choose the <span class="data">class_survey1</span> dataset from the <span class="dpd">Dataset</span> dropdown.<br>
+<li>In the Pie Chart dialog, choose the <span class="data">class_survey1</span> dataset from the <span class="dpd">Dataset</span> dropdown.<br>
 </li>
-<li>Choose the <span class="var">gender</span> variable from the <span class="dpd">Factor 1</span> dropdown.</li>
-<li>Choose the <span class="var">vehicle</span> variable from the <span class="dpd">Factor 2</span> dropdown.<br>
+<li>Choose the <span class="var">vehicle</span> variable from the <span class="dpd">Factor</span> dropdown.</li>
+<li><strong>(Optional)</strong> In the <strong>Label</strong> section of the dialog:
+<ul>
+<li>Enter <span class="typein">Pie Chart for Vehicle Type</span> in the <span class="des">Title</span> textbox.<br>
 </li>
-<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the bar graph.</li>
+</ul></li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the pie chart.</li>
+<li>In the <img src="Rguroo_Icons/save_as.png" class="img-fluid" alt="Save as"> textbox, enter the name <span class="typein">VehiclePieChart</span> for the pie chart. Click the button to save the pie chart to your Rguroo account.</li>
 </ol>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
@@ -597,147 +777,6 @@ Click here to see the Rguroo dialog
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_vehicle_gender_2.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>Bar Graph dialog showing settings for creating bar graph of vehicle type by gender.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-class_data_dodge" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-class_data_dodge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Graphical_Description_of_Data/barplot_vehicle_gender_2.svg" class="img-fluid figure-img" alt="See the description of the graph below the graph">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-class_data_dodge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.2: Bar graph of Vehicles driven by students in statistics class, disaggregated by gender
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p><a href="#fig-class_data_dodge" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> is a bar graph of number of vehicles separated by female and male. Audi and male has height of 1, Buick and female has a height of 1, Chevrolet and male and Chevrolet and female have heights of 2, Dodge and male and Dodge and female has heights of 1, Ford and female has a height of 4, Honda and female has a height of 1, Hyundai and male has a height of 1, Jeep and male has a height of 2 while Jeep and female has a height of 1, Mercury and female has a height of 1, Nissan and female has a height of 1, no car and female has a height of 2, Subaru and female has a height of 1, Subaru and male has a height of 2, Toyota and female has a height of 1, and Toyota and male has a height of 2.</p>
-<p>Notice a Ford is driven by females more than any other car, while Chevrolet, Mercury, and Subaru cars are equally driven by males. Obviously a larger sample would be needed to make any conclusions from this data.</p>
-<p>Another version of a bar graph that is useful is a relative frequency bar graph. A relative frequency bar graph gives you a clear way to compare how different categories or values occur, especially when working with datasets of different sizes. By converting raw counts into proportions, the graph highlights patterns that might otherwise be hidden. This makes it a powerful tool for spotting meaningful relationships in data, comparing data of different sizes, and communicating those insights in a way that’s easy for others to understand.</p>
-<p>Rguroo can generate a relative frequency bar graph from the same plot toolbox.</p>
-<div id="exm-drawing-a-relative-frequency-bar-chart" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.4 (Drawing a Relative Frequency Bar Chart for Vehicle Type)</strong></span> Use the <span class="data">class_survey1</span> to create a relative frequency bar chart of vehicle type.</p>
-</div>
-<p><strong>Solution</strong></p>
-<p>Click to expand the box below see how to create the relative frequency bar graph for vehicle type.</p>
-<div id="Creating-Relative-Frequency-Bar-Graph-of-Vehicle-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Relative Frequency Bar Graph of Vehicle Type in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating Relative Frequency Bar Graph of Vehicle Type in Rguroo
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Class_Survey1-to-Rguroo">here</a>.</p>
-<ol type="1">
-<li>Open the <strong>Plots</strong> toolbox in Rguroo.<br>
-</li>
-<li>Open the <span class="dpd">Create Plot</span> dropdown, and select <span class="fun">Barplot</span>. This opens the Barplot dialog.<br>
-</li>
-<li>In the Barplot dialog, choose the <span class="data">class_survey1</span> dataset from the <span class="dpd">Dataset</span> dropdown.<br>
-</li>
-<li>Choose the <span class="var">vehicle</span> variable from the <span class="dpd">Factor 1</span> dropdown.</li>
-<li>Click “proportions.”</li>
-<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the bar graph.</li>
-</ol>
-<div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Click here to see the Rguroo dialog
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_rel_freq_vehicle_2.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>Bar Graph dialog showing settings for creating relative frequency bar graph of vehicle type.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-class_data_dot-car" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-class_data_dot-car-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Graphical_Description_of_Data/barplot_rel_freq_vehicle_2.svg" class="img-fluid figure-img" alt="See the description of the graph below the graph">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-class_data_dot-car-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.3: Relative Frequency bar graph of vehicles driven by students in statistics class
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p><a href="#fig-class_data_dot-car" class="quarto-xref">Figure&nbsp;<span>2.3</span></a> is a realtive frequency bar graph of vehicles showing the vehicle types on the horizontal axis and proportions (relative frequency) on the vertical axis.</p>
-<p>Notice that a frequency bar graph and relative frequency bar graph give you similar information.</p>
-<p><strong>MJ I think it is also instructive to give the relative frequency bargraph when comparing male and females, since if the number of males and females are not equal, this graph would make more sense and the difference should be pointed out between the relative frequency abd frequency bar graph for this case. A stacked barplot would vbe good to have.</strong></p>
-<p>Another type of graph that is also useful for qualitative data is a pie chart. A pie chart is a circular graph where each slice represents a percentage of the whole, proportional to the numerical value it represents. Pie charts aloow for easy visualization of how each part contrinbutes to the whole.</p>
-<div id="exm-drawing-a-pie-chart" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.5 (Drawing a Pie Chart for Vehicle Type)</strong></span> Use the <span class="data">class_survey1</span> to create a pie chart of vehicle type.</p>
-</div>
-<p><strong>Solution</strong></p>
-<p>Click to expand the box below see how to create the pie chart for vehicle type.</p>
-<div id="Creating-Pie-Chart-of-Vehicle-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Pie Chart of Vehicle Type in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating Pie Chart of Vehicle Type in Rguroo
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Class_Survey1-to-Rguroo">here</a>.</p>
-<ol type="1">
-<li>Open the <strong>Plots</strong> toolbox in Rguroo.<br>
-</li>
-<li>Open the <span class="dpd">Create Plot</span> dropdown, and select <span class="fun">Pie Chart</span>. This opens the Pie Chart dialog.<br>
-</li>
-<li>In the Pie Chart dialog, choose the <span class="data">class_survey1</span> dataset from the <span class="dpd">Dataset</span> dropdown.<br>
-</li>
-<li>Choose the <span class="var">vehicle</span> variable from the <span class="dpd">Factor</span> dropdown.</li>
-<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the pie chart.</li>
-</ol>
-<div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Click here to see the Rguroo dialog
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
 <p><img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_pie_chart_vehicle_2.png" class="img-fluid figure-img" width="500"></p>
 <figcaption>Pie Chart dialog showing settings for creating pie chart of vehicle type.</figcaption>
 </figure>
@@ -750,27 +789,28 @@ Click here to see the Rguroo dialog
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-class_data_point" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
+<div id="fig-class_pie_chart" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-class_data_point-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-class_pie_chart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="Rguroo_outputs/Graphical_Description_of_Data/pie_chart_vehicle_2.svg" class="img-fluid figure-img" alt="See the description of the graph below the graph">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-class_data_point-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.4: Pie chart of vehicles driven by students in statistics class
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-class_pie_chart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.10: Pie chart of vehicles driven by students in statistics class
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-class_data_point" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> is a pie chart of type of vehicles owned by students (Toyota, Subaru, none, Nissan, Mercury, Jeep, Honda, Ford, Dodge, Chevrolet, and Buick, Hyundai, and Audi). Each vehicle percentage is displayed in the legend on the right.</p>
-<p>There are many other types of graphs that can be used on qualitative data. There are spreadsheet software packages that will create most of them, and it is better to look at them to see how to create them. It depends on your data as to which may be useful, but the frequecy bar graph, relative frequency bar graph, and pie chart are the most useful.</p>
-<section id="homework-for-qualitative-data-section" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="homework-for-qualitative-data-section"><span class="header-section-number">2.1.1</span> Homework for Qualitative Data Section</h3>
+<p><a href="#fig-class_pie_chart" class="quarto-xref">Figure&nbsp;<span>2.10</span></a> is a pie chart of type of vehicles owned by students (Toyota, Subaru, none, Nissan, Mercury, Jeep, Honda, Ford, Dodge, Chevrolet, and Buick, Hyundai, and Audi). Each vehicle percentage is displayed in the legend on the right.</p>
+<p>There are many other types of graphs that can be used on qualitative data. There are spreadsheet software packages that will create most of them, and it is better to look at them to see how to create them. It depends on your data as to which may be useful, but the frequency bar graph, relative frequency bar graph, and pie chart are the most useful.</p>
+</section>
+<section id="homework-for-qualitative-data-section" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="homework-for-qualitative-data-section"><span class="header-section-number">2.1.3</span> Homework for Qualitative Data Section</h3>
 <ol type="1">
 <li>Eyeglassomatic manufactures eyeglasses for different retailers. The first six rows of the number of lenses for different activities is in <a href="#tbl-eyeglasses" class="quarto-xref">Table&nbsp;<span>2.2</span></a>.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Eyeglasses</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Eyglasses</span>.</p>
 </div>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Eyeglasses dataset">
 <div id="tbl-eyeglasses" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Eyeglasses dataset">
@@ -813,7 +853,7 @@ Table&nbsp;2.2: Head of Eyeglasses Data frame
 </div>
 </div>
 <div id="code-book-eyeglasses" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -822,7 +862,7 @@ Code book for Eyeglasses Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Activities that an Eyeglass company performs when making eyeglasses, Grind means ground the lenses and put them in frames, multicoat means put tinting or coatings on lenses and then put them in frames, assemble means received frames and lenses from other sources and put them together, make frames means made the frames and put lenses in from other sources, receive finished means received glasses from other source unknown means do not know where the lenses came from.</p>
 <p>Format</p>
@@ -835,13 +875,41 @@ Code book for Eyeglasses Dataset
 </div>
 <p>Make a bar chart of this data. State any findings you can see from the graph.</p>
 <ol start="2" type="1">
-<li>Data was collected for two semesters in a statistics class drive. The data frame is in <a href="#tbl-Class" class="quarto-xref">Table&nbsp;<span>2.1</span></a>.</li>
+<li>Data was collected for two semesters in a statistics class drive. Create a bar graph of the variable ice cream. State any findings you can see from the graphs. The data frame is in <a href="#tbl-Class" class="quarto-xref">Table&nbsp;<span>2.1</span></a>.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">class_survey1</span>.</p>
 </div>
-<p><strong>Code book for the Data Frame Class is found below <a href="#tbl-Class" class="quarto-xref">Table&nbsp;<span>2.1</span></a>.</strong></p>
-<p>Create a bar graph of the variable ice cream. State any findings you can see from the graphs.</p>
+<div id="code-book-class" class="codebook callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code book for Class Survey1 Dataset
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Description</strong> The dataset gives survey results from two semesters of statistics classes at Coconino Community College in the years 2018-2019.</p>
+<p>Format</p>
+<p>This data frame contains the following columns:</p>
+<p>vehicle: Type of car a student drives</p>
+<p>gender: Self declared gender of a student</p>
+<p>distance_campus: how far a student lives from the Lone Tree Campus of Coconino Community College (miles)</p>
+<p>ice_cream: favorite ice cream flavor</p>
+<p>rent: How much a student pays in rent</p>
+<p>major: Students declared major</p>
+<p>height: height of the student (inches)</p>
+<p>winter: Student’s opinion of winter (Love it, Like it, Don’t like, No opinion)</p>
+<p>Source</p>
+<p>Kozak K (2019). Survey results form surveys collected in statistics class at Coconino Community College.</p>
+<p>References</p>
+<p>Kozak, 2019</p>
+</div>
+</div>
+</div>
 <ol start="3" type="1">
 <li>The number of deaths in the US due to carbon monoxide (CO) poisoning from generators from the years 1999 to 2011 are in <a href="#tbl-Area" class="quarto-xref">Table&nbsp;<span>2.3</span></a> (Hinatov, 2012). Create a bar chart of this data. State any findings you see from the graph.</li>
 </ol>
@@ -894,7 +962,36 @@ Table&nbsp;2.3: Head of Area Data frame
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">class_survey1</span>.</p>
 </div>
-<p><strong>Code book for the Data Frame Class is found below <a href="#tbl-Class" class="quarto-xref">Table&nbsp;<span>2.1</span></a>.</strong></p>
+<div id="code-book-class" class="codebook callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code book for Class Survey1 Dataset
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Description</strong> The dataset gives survey results from two semesters of statistics classes at Coconino Community College in the years 2018-2019.</p>
+<p>Format</p>
+<p>This data frame contains the following columns:</p>
+<p>vehicle: Type of car a student drives</p>
+<p>gender: Self declared gender of a student</p>
+<p>distance_campus: how far a student lives from the Lone Tree Campus of Coconino Community College (miles)</p>
+<p>ice_cream: favorite ice cream flavor</p>
+<p>rent: How much a student pays in rent</p>
+<p>major: Students declared major</p>
+<p>height: height of the student (inches)</p>
+<p>winter: Student’s opinion of winter (Love it, Like it, Don’t like, No opinion)</p>
+<p>Source</p>
+<p>Kozak K (2019). Survey results form surveys collected in statistics class at Coconino Community College.</p>
+<p>References</p>
+<p>Kozak, 2019</p>
+</div>
+</div>
+</div>
 <ol start="5" type="1">
 <li>Eyeglassomatic manufactures eyeglasses for different retailers. They test to see how many defective lenses they made during the time period of January 1 to March 31. The table <a href="#tbl-Defects" class="quarto-xref">Table&nbsp;<span>2.4</span></a> gives the defect and the number of defects. Create a bar chart of the data and then describe what this tells you about what causes the most defects.</li>
 </ol>
@@ -942,7 +1039,7 @@ Table&nbsp;2.4: Head of Defects Data frame
 </div>
 </div>
 <div id="code-book-defects" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -951,7 +1048,7 @@ Code book for Defects Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Types of defects that an Eyeglass company sees in the lenses they make into eyeglasses.</p>
 <p>Format</p>
@@ -967,19 +1064,22 @@ Code book for Defects Dataset
 </section>
 <section id="quantitative-data" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="quantitative-data"><span class="header-section-number">2.2</span> Quantitative Data</h2>
-<p>As with qualitative data, it is also advantageous to organize quantitative data since the long list of raw data usually does not provide insight into the sample or population.</p>
-<p>Frequency and relative frequecy distributions can also be used on quantitative data, where the categories are numerical values that occur in the data with their corresponding frequency counts or proportions. However, most dataset values are varied where there are too many different data values and a regular frequency or relative frequeny distribution would be meaningless.</p>
-<p>For quantitative data that is largely spread, we can group the data values into classes, also known as binning. When you group data into classes/bins, you create a <strong>grouped frequency distribution</strong>.</p>
-<p>Lower and upper class limits define the boundaries of each class in a grouped frequency distribution. The <strong>lower class limit</strong> is the smallest value that can belong to a class, while the <strong>upper class limit</strong> is the largest value that can belong to that same class. Together, these limits specify exactly which data values fall into each interval. Most of the time, classes are displayed using interval notation. For example, suppose we wanted to group the ages of students into a group from 20-25. This could be displayed using interval notation, [20,25). This interval would capture every student whos age is 20 to 25 years, including 20 years old, but not 25 years old. These limits keep the classes organized, prevent overlap, and ensure every data point has a clear place within the distribution.</p>
-<p>Each class has a <strong>class width</strong>, and an associated size of the class (or the number of values within the class). If you have a grouped frequency distribution, the class width can be determined by subtracting the lower-class limit from the upper-class limit.</p>
+<p>As with qualitative data, it is also advantageous to organize quantitative data since the long list of raw data is usually long and does not provide insight into the sample or population.</p>
+<section id="organizing-quantitative-data" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="organizing-quantitative-data"><span class="header-section-number">2.2.1</span> Organizing Quantitative Data</h3>
+<p>Frequency and relative frequency distributions can also be used for quantitative data, where the categories are numerical values that occur in the data with their corresponding frequency counts or proportions. However, most datasets contain many distinct values, so a regular frequency or relative frequency distribution would be meaningless.</p>
+<p>For quantitative data that are widely spread, we can group the data values into classes, also known as binning. When you group data into classes/bins, you create a <strong>grouped frequency distribution</strong>.</p>
+<p>Lower and upper class limits define the boundaries of each class in a grouped frequency distribution. The <strong>lower class limit</strong> is the smallest value that can belong to a class, while the <strong>upper class limit</strong> is the largest value that can belong to that same class. Together, these limits specify exactly which data values fall into each interval. Most of the time, classes are displayed using interval notation. For example, suppose we wanted to group the ages of students into a group from 20-25. This could be displayed using interval notation, [20,25). This interval would capture every student whose age is 20 to 25 years, including 20 years old, but not 25 years old. These limits keep the classes organized, prevent overlap, and ensure every data point has a clear place within the distribution.</p>
+<p>Each class has a <strong>class width</strong>, the size of the class (or the number of values within each class). If you have a grouped frequency distribution, the class width can be determined by subtracting two consecutive lower class limits.</p>
 <p>Rguroo has three automatic methods to calculate the number of bins; however, we will use Freedman–Diaconis since is usually the most reliable with messy real-world data. Manual calculation of bins is also possible in Rguroo.</p>
 <div id="exm-grouped-frequency-distribution" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.6 (Creating a Grouped Frequency Distribution)</strong></span> Use the <span class="data">class_survey1</span> to create a grouped frequency distribution for the distance a student lives from the Lone Tree Campus of Coconino Community College .</p>
+<p><span class="theorem-title"><strong>Example 2.7 (Creating a Grouped Frequency Distribution)</strong></span> Use the <span class="data">class_survey1</span> to create a grouped frequency distribution for the distance a student lives from the Lone Tree Campus of Coconino Community College.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">class_survey1</span>. A complete description of the variables is provided in the <a href="#code-book-class">dataset code book</a>.</p>
 </div>
 <p><strong>Solution</strong></p>
-<p>Click to expand the box below see how to create a grouped frequency distribution for distance to campus.</p>
+<p>Click to expand the box below see how to create a grouped frequency distribution for <span class="var">distance_campus</span>.</p>
 <div id="Creating-Grouped-Frequency-Distribution-of-Distance-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Grouped Frequency Distribution in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -988,9 +1088,9 @@ Code book for Defects Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Class_Survey1-to-Rguroo">here</a>.</p>
+<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Data-to-Rguroo-Chapter-2">here</a>.</p>
 <ol type="1">
 <li>Open the <strong>Analytics</strong> toolbox in Rguroo.<br>
 </li>
@@ -1000,10 +1100,10 @@ Code book for Defects Dataset
 </li>
 <li>Choose the <span class="var">distance_campus</span> variable from the <span class="dpd">Factor 1</span> dropdown. <strong>Note:</strong> For frequency, select counts. For realtive frequency, select proportions.<br>
 </li>
-<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the frequecy distribution.</li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the frequency distribution.</li>
 </ol>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1012,7 +1112,7 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1026,26 +1126,76 @@ Click here to see the Rguroo dialog
 </div>
 </div>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Rguroo_outputs/Graphical_Description_of_Data/gfd_distance.png" class="img-fluid figure-img" style="width:80.0%" alt="a list of vehicles with the corresponding proportions"></p>
-<figcaption>Grouped Frequency Distribution for Distance to Campus</figcaption>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-gfd_distance_campus" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gfd_distance_campus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Graphical_Description_of_Data/gfd_distance.png" class="img-fluid figure-img" style="width:80.0%" alt="See the description of the graph below the graph">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gfd_distance_campus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.11: Grouped Frequency Distribution for Distance_Campus
+</figcaption>
 </figure>
 </div>
-<p>The grouped frequency distribution above used the default method, Freedman-Diaconis, creating 11 classes. Each class has a class width of 5. Now that the data is organized, it is easily seen that most students live within 5 miles of campus. There are also two students who live farther from campus than the rest of the class: one lives between 25 and 30 miles from campus, and another lives between 50 and 55 miles from campus.</p>
-<p><strong>Graphical Displays of Quantitative Data</strong></p>
+</div>
+</div>
+<p>The grouped frequency distribution above used the default method, Freedman-Diaconis, creating 11 classes. Each class has a class width of 5. Now that the data is organized, it is easily seen that most students live within 15 miles of campus. There are also two students who live farther from campus than the rest of the class.</p>
+<p>As mentioned above, Rguroo also allows for manual creation of bins. If we wanted a specific number of bins, we could manually enter that in the Binning toolbox under Bins. In order to manually choose the bins, we need to determine two things: the starting value for the first class and the class width.</p>
+<p>To manually find the class width, calculate the following and then round up to a nice number.</p>
+<p><span class="math inline">\(\text{class width}=\frac{\text{maximum value - minimum value}}{\text{number of classes}}\)</span></p>
+<p>After you have determined the class width, choose a starting value that is the minimum value in the data or lower than the minimum value.</p>
+<div id="exm-grouped-frequency-distribution-6-classes" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2.8 (Creating a Grouped Frequency Distribution with Specified Number of Classes)</strong></span> Use the <span class="data">class_survey1</span> to create a grouped frequency distribution with 6 classes for the distance a student lives from the Lone Tree Campus of Coconino Community College.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">class_survey1</span>. A complete description of the variables is provided in the <a href="#code-book-class">dataset code book</a>.</p>
+</div>
+<p><strong>Solution</strong></p>
+<p>To create a grouped frequency distribution with 6 classes, we need to calculate the class width. For this variable the maximum value is 50 and the minimum value is 0.6. Use these values in the class width formula to find the class width.</p>
+<p><span class="math inline">\(\text{class width}=\frac{50-0.6}{6}=8.233\)</span></p>
+<p>Next, we round the class width up to a nice number, such as class width = 10. Now we need a starting value. Since the minimum value was 0.6, we can use 0 as the starting value just as we did in the last grouped frequency distribution. Enter the information in the Binning dialog box as shown in the image below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-gfd_dialog_distance_campus" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog box for grouped frequency distribution with 6 classes starting at 0 and class width of 10">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gfd_dialog_distance_campus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_gfd_distance_6_classes.png" class="img-fluid figure-img" style="width:80.0%" alt="Dialog box for grouped frequency distribution with 6 classes starting at 0 and class width of 10">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gfd_dialog_distance_campus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.12: Dialog Box for Grouped Frequency Distribution for Distance_Campus with 6 Classes
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-gfd_distance_campus_6_classes" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Grouped frequency distribution with 6 classes starting at 0 and class width of 10">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gfd_distance_campus_6_classes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Graphical_Description_of_Data/gfd_distance_6_classes.png" class="img-fluid figure-img" style="width:80.0%" alt="Grouped frequency distribution with 6 classes starting at 0 and class width of 10">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gfd_distance_campus_6_classes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.13: Grouped Frequency Distribution for Distance_Campus with 6 Classes
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="graphical-displays-of-quantitative-data" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="graphical-displays-of-quantitative-data"><span class="header-section-number">2.2.2</span> Graphical Displays of Quantitative Data</h3>
 <p>There are several different graphical displays for quantitative data. With quantitative data, you can talk about how the data is distributed, called a distribution. In addition, the shape of the distribution can be described from the graphs.</p>
 <p><strong>Histogram:</strong> A graph of frequencies (counts) on the vertical axis and classes on the horizontal axis. The height of the rectangles is the frequency (or relative frequency) and the width of the rectangle is called the class width. The width depends on how many values (bins) are in the histogram.</p>
 <p><strong>Density Plot:</strong> Similar to a histogram, except smoothing is created to smooth out the graph. The shape is not dependent on the number of bins so the distribution is easier to determine from the density plot.</p>
 <p><strong>Stem and Leaf Plot:</strong> A graph that organizes numerical data by splitting each value into a “stem” (leading digit(s)) and a “leaf” (the last digit) to show data distribution, frequency, and shape.</p>
 <div id="exm-drawing-a-histogram-density-plot" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.7 (Drawing Histogram and Density Plot for Distance from Campus)</strong></span> Data was collected for two semesters in a statistics class drive. The data frame is in <a href="#tbl-Class" class="quarto-xref">Table&nbsp;<span>2.1</span></a> and the code book is below the data frame. <strong>MJ Need to link specifically to the codebook when referencing</strong></p>
-<p>Draw a histogram and density plot for the variable the distance a student lives from the Lone Tree Campus of Coconino Community College. Describe the story the graphs tell.</p>
+<p><span class="theorem-title"><strong>Example 2.9 (Drawing Histogram and Density Plot for Distance from Campus)</strong></span> Data was collected for two semesters in a statistics class. Draw a histogram and density plot for the variable the distance a student lives from the Lone Tree Campus of Coconino Community College. Describe the story the graphs tell.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">class_survey1</span>. A complete description of the variables is provided in the <a href="#code-book-class">dataset code book</a>.</p>
 </div>
 <p><strong>Solution</strong></p>
 <p>Click to expand the box below see how to create a histogram for distance to campus.</p>
 <div id="Creating-Histogram-of-Distance-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Histogram of Distance to Campus in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1054,9 +1204,9 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Class_Survey1-to-Rguroo">here</a>.</p>
+<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Data-to-Rguroo-Chapter-2">here</a>.</p>
 <ol type="1">
 <li>Open the <strong>Plots</strong> toolbox in Rguroo.<br>
 </li>
@@ -1066,10 +1216,21 @@ Click here to see the Rguroo dialog
 </li>
 <li>Choose the <span class="var">distance_campus</span> variable from the <span class="dpd">Variable</span> dropdown.</li>
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the histogram.</li>
+<li><strong>(Optional)</strong> In the <strong>Label</strong> section of the dialog:
+<ul>
+<li>Enter <span class="typein">Histogram for Distance to Campus</span> in the <span class="des">Title</span> textbox.<br>
+</li>
+<li>Enter <span class="typein">Distance (in miles)</span> in the <span class="des">X-Axis</span> textbox.<br>
+</li>
+<li>Enter <span class="typein">Number of Students</span> in the <span class="des">Y-Axis</span> textbox.<br>
+</li>
+</ul></li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the histogram.</li>
+<li>In the <img src="Rguroo_Icons/save_as.png" class="img-fluid" alt="Save as"> textbox, enter the name <span class="typein">DistanceHistogram</span> for the histogram. Click the button to save the histogram to your Rguroo account.</li>
 </ol>
 <p><strong>MJ We should add title and label for axes</strong></p>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1078,7 +1239,7 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1101,60 +1262,26 @@ Click here to see the Rguroo dialog
 <img src="Rguroo_outputs/Graphical_Description_of_Data/histogram_distance_2.svg" class="img-fluid figure-img" alt="See the description of the graph below the graph">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-class_data_histogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.5: Distance in miles from the Lone Tree Campus
+Figure&nbsp;2.14: Distance in miles from the Lone Tree Campus
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Description <a href="#fig-class_data_histogram" class="quarto-xref">Figure&nbsp;<span>2.5</span></a> is histogram with high part on left and low part on right with several gaps. The graph contains bars.</p>
-<p>Click to expand the box below see how to create an overlay of the density plot for distance to campus.</p>
-<div id="Creating-Density-Plot-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Density Plot in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p><a href="#fig-class_data_histogram" class="quarto-xref">Figure&nbsp;<span>2.14</span></a> is a histogram with the highest bar on left and lowest bars on right with several gaps. This histogram shows that most students live within approximately 15 miles of campus.</p>
+<p>To create an overlay of the density plot for <span class="var">distance_campus</span>, follow the directions for creating a histogram <a href="#Creating-Histogram-of-Distance-in-Rguroo">here</a>.</p>
+<p>Once you are in the histogram dialog box, edit the options in the Type and Smoothing boxes by selecting “density” in both. An image of the revised dialog box is shown below. Remember to change your title and y-axis to reflect that this is now a density plot.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-class_data_density_dialog" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog box for density plot">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-class_data_density_dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_distance_density.png" class="img-fluid figure-img" style="width:80.0%" alt="Dialog box for density plot">
 </div>
-<div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating Density Plot in Rguroo
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-20" class="callout-20-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Class_Survey1-to-Rguroo">here</a>.</p>
-<ol type="1">
-<li>Open the <strong>Plots</strong> toolbox in Rguroo.<br>
-</li>
-<li>Open the <span class="dpd">Create Plot</span> dropdown, and select <span class="fun">Histogram</span>. This opens the Histogram dialog.<br>
-</li>
-<li>In the Hisotgram dialog, choose the <span class="data">class_survey1</span> dataset from the <span class="dpd">Dataset</span> dropdown.<br>
-</li>
-<li>Choose the <span class="var">distance_campus</span> variable from the <span class="dpd">Variable</span> dropdown.</li>
-<li>In the type option box, click “density.”</li>
-<li>In the smoothing box, click “density.”</li>
-<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the density plot.</li>
-</ol>
-<div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Click here to see the Rguroo dialog
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_distance_density.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>Density dialog showing settings for creating density plot for distance to campus.</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-class_data_density_dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.15: Dialog Box for Density Plot for Distance in miles from the Lone Tree Campus
+</figcaption>
 </figure>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -1166,73 +1293,112 @@ Click here to see the Rguroo dialog
 <img src="Rguroo_outputs/Graphical_Description_of_Data/density_distance_2.svg" class="img-fluid figure-img" alt="See the description of the graph below the graph">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-class_data_density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.6: Distance in miles from the Lone Tree Campus
+Figure&nbsp;2.16: Density Plot for Distance in miles from the Lone Tree Campus
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Description of <a href="#fig-class_data_density" class="quarto-xref">Figure&nbsp;<span>2.6</span></a> is density graph with high part on left and low part on right with several gaps. The graph is smooth.</p>
-<p>Notice the histogram and density plot are very similar, but the density plot is smoother. They all tell you similar ideas of the shape of the distribution. Reviewing the graphs you can see that most of the students live within 10 miles of the Lone Tree Campus, in fact most live within 5 miles from the campus. However, there is a student who lives around 50 miles from the Lone Tree Campus. This is a great deal farther from the rest of the data. This value could be considered an outlier.</p>
+<p><a href="#fig-class_data_density" class="quarto-xref">Figure&nbsp;<span>2.16</span></a> is a density plot showing the overlay of the smooth density curve. Notice the histogram and density plot are very similar, but the density plot is smoother. Both the histogram and density plot give you similar insights about the shape of the distribution; however, the smooth density curve highlights the underlying shape of the distribution by smoothing out the jaggedness of the histogram. Reviewing the graphs you can see that most of the students live within 15 miles of the Lone Tree Campus, in fact most live within 5 miles from the campus. However, there is a student who lives around 50 miles from the Lone Tree Campus. This is a great deal farther from the rest of the data. This value could be considered an outlier.</p>
 <p>An <strong>outlier</strong> is a data value that is far from the rest of the values. It may be an unusual value or a mistake. It is a data value that should be investigated. In this case, the student lived really far from campus, thus the value is not a mistake, and is just very unusual.</p>
-<section id="shapes-of-the-distribution" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="shapes-of-the-distribution"><span class="header-section-number">2.2.1</span> Shapes of the distribution:</h3>
-<p>When you look at a distribution, look at the basic shape. There are some basic shapes that are seen in histograms. Realize though that some distributions have no shape. The common shapes are bell-shape, skewed, and uniform. Another interest is how many peaks a graph may have. This is known as modal.</p>
-<p>A symmetric shape means that you can fold the graph in half down the middle and the two sides will line up. You can think of the two sides as being mirror images of each other.A special case of a symmetric shape is a bell shape, where the graph has a single peak in the center and the two sides decrease smoothly and evenly as you move away from that center. Skewed means one “tail” of the graph is longer than the other. The graph is skewed in the direction of the longer tail (backwards from what you would expect). A uniform graph has all the bars the same height. <strong>MJ The description of skewed needs more clarification. Also, it would be good to have graphs to show examples that clarifies the ideas heer. I see that this happens later in Section 2.2.2</strong></p>
+</section>
+<section id="shapes-of-the-distribution" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="shapes-of-the-distribution"><span class="header-section-number">2.2.3</span> Shapes of the distribution:</h3>
+<p>When you look at a distribution, look at the basic shape. There are some basic shapes that are seen in histograms. Realize though that some distributions have no shape. The common shapes are bell-shape, skewed (right or left), and uniform. Another interest is how many peaks a graph may have. This is known as modal.</p>
 <p>Modal refers to the number of peaks. A unimodal distribution has one peak, and a bimodal distribution has two peaks. Usually, if a graph has more than two peaks, it suggests that the data come from multiple groups with different characteristics related to the measured variable.</p>
-<!--- MJ Thisis incorrect. I replaced it: Usually if a graph has more than two peaks, the modal information is not longer of interest. -->
 <p>Examining the shape of a distribution gives you a deeper understanding of how your data behaves beyond simple averages or totals. The shape reveals patterns, such as whether values cluster tightly, spread out widely, lean to one side, or form multiple peaks. These aspect that can influence how you interpret results. By paying attention to features like symmetry, skewness, and unusual gaps or spikes, you gain insight into underlying trends, potential outliers, and the most appropriate statistical methods to use.</p>
 <p>Other important features to consider are how spread out is the data, and where the center of the graph is. These concepts will be explored in Chapter 3.</p>
 </section>
-<section id="examples-of-graphs" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="examples-of-graphs"><span class="header-section-number">2.2.2</span> Examples of graphs:</h3>
+<section id="examples-of-graphs" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="examples-of-graphs"><span class="header-section-number">2.2.4</span> Examples of graphs:</h3>
 <p><strong>Bell-Shape</strong></p>
 <p>This graph is bell-shape:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Rguroo_outputs/Graphical_Description_of_Data/symmetric.png" class="img-fluid figure-img" style="width:60.0%" alt="one side looks like other"></p>
-<figcaption>Bell Shape Graph</figcaption>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-bell_shape" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bell_shape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Graphical_Description_of_Data/symmetric.png" class="img-fluid figure-img" style="width:80.0%" alt="See the description of the graph below the graph">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bell_shape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.17: Bell Shape Graph
+</figcaption>
 </figure>
 </div>
-<p>A bell-shape histogram has a balanced, mirror‑like appearance, with the bars rising to a peak near the center and then decreasing at roughly the same rate on both sides. The left and right halves of the distribution look similar in both height and spread, so if you folded the graph down the middle, the two sides would line up closely. There are no long tails pulling the shape in one direction, and the overall pattern often forms a smooth, mound‑shaped curve. Note that bell-shape doesn’t require perfect symmetry.</p>
+</div>
+</div>
+<p><a href="#fig-bell_shape" class="quarto-xref">Figure&nbsp;<span>2.17</span></a> is a bell-shaped histogram. Bell shaped graphs have a balanced, mirror‑like appearance, with the bars rising to a peak near the center and then decreasing at roughly the same rate on both sides. The left and right halves of the distribution look similar in both height and spread, so if you folded the graph down the middle, the two sides would line up closely. There are no long tails pulling the shape in one direction, and the overall pattern often forms a smooth, mound‑shaped curve. Note that bell-shape doesn’t require perfect symmetry.</p>
 <p><strong>Bimodal</strong></p>
 <p>This graph is bimodal:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Rguroo_outputs/Graphical_Description_of_Data/bimodal_symmetric.png" class="img-fluid figure-img" style="width:60.0%" alt="two bars high, and one side looks like other"></p>
-<figcaption>Bimodal Graph</figcaption>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-bimodal" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bimodal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Graphical_Description_of_Data/bimodal_symmetric.png" class="img-fluid figure-img" style="width:80.0%" alt="See the description of the graph below the graph">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bimodal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.18: Bimodal Graph
+</figcaption>
 </figure>
 </div>
-<p>A bimodal histogram has two distinct peaks, meaning the bars rise to form one cluster of high values, dip down in the middle, and then rise again to form a second cluster. Visually, the histogram looks like a pair of hills or humps separated by a noticeable valley. In this histogram, the overall shape is symmetric; however, this is not a requirement for a bimodal graph. In addition, the separation between the peaks can be sharp or gradual.</p>
+</div>
+</div>
+<p><a href="#fig-bimodal" class="quarto-xref">Figure&nbsp;<span>2.18</span></a> is a bimodal histogram which has two distinct peaks, meaning the bars rise to form one cluster of high values, dip down in the middle, and then rise again to form a second cluster. Visually, the histogram looks like a pair of hills or humps separated by a noticeable valley. In this histogram, the overall shape is symmetric; however, this is not a requirement for a bimodal graph. In addition, the separation between the peaks can be sharp or gradual.</p>
 <p><strong>Skewed Right</strong></p>
 <p>This graph is skewed to the right:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Rguroo_outputs/Graphical_Description_of_Data/skewed_right.png" class="img-fluid figure-img" style="width:60.0%" alt="small bars on right"></p>
-<figcaption>Skewed Right Graph</figcaption>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-skewed_right" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-skewed_right-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Graphical_Description_of_Data/skewed_right.png" class="img-fluid figure-img" style="width:80.0%" alt="See the description of the graph below the graph">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-skewed_right-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.19: Skewed Right Graph
+</figcaption>
 </figure>
 </div>
-<p>A skewed right histogram has most of its highest bars on the left side, with the heights tapering off gradually as you move to the right. The bulk of the data forms a tall block on the left, while a long, stretched‑out tail extends as you move right.The most frequently occuring data sits closer to the left, and the right tail is noticeably longer and thinner than the left.</p>
-<p><strong>Graph: Skewed Left Distribution</strong></p>
+</div>
+</div>
+<p><a href="#fig-skewed_right" class="quarto-xref">Figure&nbsp;<span>2.19</span></a> is a skewed right histogram that has most of its highest bars on the left side, with the heights tapering off gradually as you move to the right. The bulk of the data forms a tall block on the left, while a long, stretched‑out tail extends as you move right. The most frequently occurring data sits closer to the left, and the right tail is noticeably longer and thinner than the left.</p>
+<p><strong>Skewed Left Distribution</strong></p>
 <p>This graph is skewed to the left:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Rguroo_outputs/Graphical_Description_of_Data/skewed_left2.png" class="img-fluid figure-img" style="width:60.0%" alt="small bars on left"></p>
-<figcaption>Skewed Left Graph</figcaption>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-skewed_left" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-skewed_left-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Graphical_Description_of_Data/skewed_left2.png" class="img-fluid figure-img" style="width:80.0%" alt="See the description of the graph below the graph">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-skewed_left-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.20: Skewed Left Graph
+</figcaption>
 </figure>
 </div>
-<p>A skewed left histogram has most of its highest bars on the right side, with the heights tapering off gradually as you move to the left. The bulk of the data forms a tall block on the right, while a long, stretched‑out tail extends as you move left.The most frequently occuring data sits closer to the right, and the left tail is noticeably longer and thinner than the left.</p>
+</div>
+</div>
+<p><a href="#fig-skewed_left" class="quarto-xref">Figure&nbsp;<span>2.20</span></a> is a skewed left histogram that has most of its highest bars on the right side, with the heights tapering off gradually as you move to the left. The bulk of the data forms a tall block on the right, while a long, stretched‑out tail extends as you move left.The most frequently occurring data sits closer to the right, and the left tail is noticeably longer and thinner than the left.</p>
 <p><strong>Uniform Distribution</strong></p>
 <p>This graph is uniform:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Rguroo_outputs/Graphical_Description_of_Data/uniform.png" class="img-fluid figure-img" style="width:60.0%" alt="All bars same height"></p>
-<figcaption>Uniform Graph</figcaption>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-uniform" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-uniform-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Graphical_Description_of_Data/uniform.png" class="img-fluid figure-img" style="width:80.0%" alt="See the description of the graph below the graph">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-uniform-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.21: Uniform Graph
+</figcaption>
 </figure>
 </div>
-<p>A uniform histogram has bars that are all roughly the same height, giving the graph a flat, even appearance across the entire range of values. No single interval stands out as especially common or rare; instead, the data are spread evenly, with each bar occurring at about the same frequency. Visually, it looks like a row of nearly level rectangles, without peaks, clusters, or noticeable patterns. Note that the graph above is perfectly uniform (all heights of the bars are equal); however, this is not a requirement to be uniform.</p>
+</div>
+</div>
+<p><a href="#fig-uniform" class="quarto-xref">Figure&nbsp;<span>2.21</span></a> is a uniform histogram that has bars that are all roughly the same height, giving the graph a flat, even appearance across the entire range of values. No single interval stands out as especially common or rare; instead, the data are spread evenly, with each bar occurring at about the same frequency. Visually, it looks like a row of nearly level rectangles, without peaks, clusters, or noticeable patterns. Note that the graph above is perfectly uniform (all heights of the bars are equal); however, this is not a requirement to be uniform.</p>
 <div id="exm-drawing-a-histogram-density-plot-tuition" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.8 (Drawing Histogram and Density Plot for Tuition)</strong></span> Data was collected from the Chronicle of Higher Education for tuition from public four year colleges, private four year colleges, and for profit four year colleges. The first 6 rows of the data frame is in <a href="#tbl-Tuition" class="quarto-xref">Table&nbsp;<span>2.5</span></a>. Draw a density plot of instate tuition levels for all four year institutions, and describe the shape of the distribution. Then separate the density plot for instate tuition based on type of institution. Describe any findings from the graph.</p>
+<p><span class="theorem-title"><strong>Example 2.10 (Drawing Histogram and Density Plot for Tuition)</strong></span> Data was collected from the Chronicle of Higher Education for tuition from public four year colleges, private four year colleges, and for profit four year colleges. The first 6 rows of the data frame is in <a href="#tbl-Tuition" class="quarto-xref">Table&nbsp;<span>2.5</span></a>. Draw a density plot of instate tuition levels for all four year institutions, and describe the shape of the distribution. Then separate the density plot for instate tuition based on type of institution. Describe any findings from the graph.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">tuition_4_year</span>. <a href="#tbl-Tuition" class="quarto-xref">Table&nbsp;<span>2.5</span></a> displays the first five rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-tuition">dataset code book</a> that follows.</p>
 </div>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Tuition dataset with difference column added">
 <div id="tbl-Tuition" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Tuition dataset with difference column added">
@@ -1333,39 +1499,8 @@ Table&nbsp;2.5: Head of Tuition Data Frame
 </figure>
 </div>
 </div>
-<p>Click to expand the box below to see instructions to import and view the <span class="data">tuition_4_year</span> dataset.</p>
-<div id="Importing-Tuition-4-Year-to-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing tuition_4_year to Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Importing tuition_4_year to Rguroo
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-21" class="callout-21-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Open the <strong>Data</strong> toolbox in Rguroo.<br>
-</li>
-<li>From the <span class="dpd">Data Import</span> dropdown, select <span class="fun">Dataset Repository</span>.<br>
-</li>
-<li>In the top search box, type <span class="typein">kozak</span>, then select the <span class="repo">Statistics Using Technology – Kozak</span> repository.<br>
-</li>
-<li>In the middle search box, type <span class="typein">tuition</span>, and select the <span class="data">tuition_4_year</span> dataset that appears in the lower panel.<br>
-</li>
-<li>Click the <span class="button">Import</span>. The dataset will be imported into your Rguroo account.<br>
-</li>
-<li>Click the <span class="button">Close</span> to close the dialog.<br>
-</li>
-<li>To view the dataset, double-click <span class="data">tuition_4_year</span> under the <strong>Data</strong> toolbox list.</li>
-</ol>
-</div>
-</div>
-</div>
 <div id="code-book-tuition" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1374,7 +1509,7 @@ Code book for Tuition Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Cost of four year institutions.</p>
 <p>Format</p>
@@ -1393,70 +1528,55 @@ Code book for Tuition Dataset
 </div>
 </div>
 <p><strong>Solution</strong></p>
-<p>Click to expand the box below see how to create a density plot of instate tuition.</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Density Plot in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">tuition_4_year</span> dataset into your Rguroo account, as was shown <a href="#Importing-Data-to-Rguroo-Chapter-2">here</a>.</p>
+<p>To create create a density plot, follow the directions for creating a histogram <a href="#Creating-Histogram-of-Distance-in-Rguroo">here</a>. For this example, you will select the <span class="data">tuition_4_year</span> dataset from the <span class="dpd">Dataset</span> dropdown, and choose the <span class="var">INSTATE_TUITION</span> variable from the <span class="dpd">Variable</span> dropdown. Since this is a density plot, remember to select “density” in both the Type and Smoothing boxes. Also, rememeber to label your graph appropriately. An image of the dialog box is shown below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-dialog_density_instate_tuition" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog Box for Density Plot of Instate Tuition">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dialog_density_instate_tuition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_density_tuition_instate_2.png" class="img-fluid figure-img" style="width:80.0%" alt="Dialog Box for Density Plot of Instate Tuition">
 </div>
-<div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating Density Plot in Rguroo
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-24" class="callout-24-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">tuition_4_year</span> dataset into your Rguroo account, as was shown <a href="#Importing-Tuition-4-Year-to-Rguroo">here</a>.</p>
-<ol type="1">
-<li>Open the <strong>Plots</strong> toolbox in Rguroo.<br>
-</li>
-<li>Open the <span class="dpd">Create Plot</span> dropdown, and select <span class="fun">Histogram</span>. This opens the Histogram dialog.<br>
-</li>
-<li>In the Hisotgram dialog, choose the <span class="data">tuition_4_year</span> dataset from the <span class="dpd">Dataset</span> dropdown.<br>
-</li>
-<li>Choose the <span class="var">INSTATE_TUITION</span> variable from the <span class="dpd">Variable</span> dropdown.</li>
-<li>In the type option box, click “density.”</li>
-<li>In the smoothing box, click “density.”</li>
-<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the density plot.</li>
-</ol>
-<div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Click here to see the Rguroo dialog
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-23" class="callout-23-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_density_tuition_instate_2.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>Density dialog showing settings for creating density plot of instate tuition.</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dialog_density_instate_tuition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.22: Dialog Box for Density Plot of Instate Tuition
+</figcaption>
 </figure>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Rguroo_outputs/Graphical_Description_of_Data/density_tuition_instate_2.svg" class="img-fluid figure-img" alt="See the description of the graph below the graph"></p>
-<figcaption>Density Plot for Instate Tuition Levels at all Four-Year Colleges</figcaption>
+<div id="fig-density_instate_tuition" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-density_instate_tuition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Graphical_Description_of_Data/density_tuition_instate_2.svg" class="img-fluid figure-img" alt="See the description of the graph below the graph">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-density_instate_tuition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.23: Density Plot for Instate Tuition Levels at all Four-Year Colleges
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>This denisty plot of instate tuition shows the highest peak on left, then a dip and up to a smaller peak in the middle that is lower than the left peak. Then the bar heights gradually decrease as you move to the right. Due to the characteristics of the graph, the distribution is skewed right.</p>
+<p><a href="#fig-density_instate_tuition" class="quarto-xref">Figure&nbsp;<span>2.23</span></a> is a density plot of instate tuition that has the highest peak on left, then a dip and up to a smaller peak in the middle that is lower than the left peak. Then the bar heights gradually decrease as you move to the right. Due to the characteristics of the graph, the distribution is skewed right.</p>
+<p>To create a density plot of instate tuition by type, go to the Basics tab and open your Histogram dialog box. Leave everything you have for creating the density plot. In the “Plot by Group” box, choose the <span class="var">TYPE</span> variable from the <span class="dpd">Factor</span> dropdown. An image of the dialog box is shown below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-density_instate_tuition_type" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog Box for Density Plot of Instate Tuition by Type">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-density_instate_tuition_type-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_density_tuition_instate_type_2.png" class="img-fluid figure-img" style="width:80.0%" alt="Dialog Box for Density Plot of Instate Tuition by Type">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-density_instate_tuition_type-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.24: Dialog Box for Density Plot of Instate Tuition by Type
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 <p>Click to expand the box below see how to create a density plot of instate tuition by type of institution.</p>
 <div id="Creating-Density-Plot-by-Type-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Density Plot by Type in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1465,9 +1585,9 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">tuition_4_year</span> dataset into your Rguroo account, as was shown <a href="#Importing-Tuition-4-Year-to-Rguroo">here</a>.</p>
+<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">tuition_4_year</span> dataset into your Rguroo account, as was shown <a href="#Importing-Data-to-Rguroo-Chapter-2">here</a>.</p>
 <ol type="1">
 <li>Open the <strong>Plots</strong> toolbox in Rguroo.<br>
 </li>
@@ -1482,7 +1602,7 @@ Click here to see the Rguroo dialog
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the density plot.</li>
 </ol>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1491,7 +1611,7 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1507,24 +1627,24 @@ Click here to see the Rguroo dialog
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-tuition_data_density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
+<div id="fig-tuition_data_density_type" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-tuition_data_density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Graphical_Description_of_Data/density_tuition_instate_type_2.svg" class="img-fluid figure-img" alt="See the description of the graph below the graph">
+<div aria-describedby="fig-tuition_data_density_type-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Graphical_Description_of_Data/density_tuition_instate_type_2.svg" class="img-fluid figure-img" style="width:90.0%" alt="See the description of the graph below the graph">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tuition_data_density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.7: Instate Tuition at all Four Year institions
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tuition_data_density_type-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.25: Instate Tuition at all Four Year institutions
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Description of <a href="#fig-tuition_data_density" class="quarto-xref">Figure&nbsp;<span>2.7</span></a> is a density plots separated by for profit 4 year with peak on left, private 4 year with peak in the middle, and public 4 year colleges with peak on the left. Public 4 year has the highest peak, with for profit 4 year is lower, and then private 4 year with the lowest peak.</p>
-<p>The distribution for instate tuition is skewed right, with no gaps. Most institutions in state is less than $20,000 per year though some go as high as $60,000 per year. When separated by public versus private and for profit, most public are much less than $20,000 per year while private four year cost around $30,000 per year, and for profit are around $20,000 per year.</p>
-<p>There are other types of graphs for quantitative data. They will be explored in the next section.</p>
+<p><a href="#fig-tuition_data_density_type" class="quarto-xref">Figure&nbsp;<span>2.25</span></a> shows density plots for instate tuition, separated by for‑profit, private nonprofit, and public 4‑year colleges. The <span class="var">for_profit_4_year</span> plot has the highest peak on left, the <span class="var">private_4_year</span> plot has the highest peak in the middle, and the <span class="var">public_4_year</span> plot has the highest peak on the left. Public 4 year has the highest peak, with for profit 4 year is lower, and then private 4 year with the lowest peak Because these are density plots, the height of each curve reflects how concentrated the data are in different tuition ranges, and the shape reveals where most institutions fall.</p>
+<p>The density plots reveal distinct tuition patterns across the three types of 4‑year institutions. Public colleges have the lowest in‑state tuition, with most schools clustering around $10,000 and relatively little variation, indicating that public tuition is both affordable and fairly consistent nationwide. For‑profit colleges fall in the middle, with tuition centered near $20,000 and a moderately narrow spread, suggesting that many of these institutions charge similar amounts, though a few are more expensive. Private nonprofit colleges stand out as the most costly group, with a peak around $35,000 and a wide distribution that stretches toward much higher tuition levels. This broad spread shows that private colleges vary substantially in price, with some moderately priced and others extremely expensive. Looking at the density curves by type of institution makes it clear that public colleges are the most affordable, for‑profit colleges occupy a middle ground, and private nonprofit colleges are the most expensive and most variable in their tuition levels.</p>
+<p>Boxplots are another type of visual display for quantitative data that allows for comparison of two groups. However, boxplots require a few simple calculations, so they will be explored in the next section.</p>
 </section>
-<section id="homework-for-quantitative-data-section" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="homework-for-quantitative-data-section"><span class="header-section-number">2.2.3</span> Homework for Quantitative Data Section</h3>
+<section id="homework-for-quantitative-data-section" class="level3" data-number="2.2.5">
+<h3 data-number="2.2.5" class="anchored" data-anchor-id="homework-for-quantitative-data-section"><span class="header-section-number">2.2.5</span> Homework for Quantitative Data Section</h3>
 <ol type="1">
 <li>The first six rows of the weekly median incomes of males and females for specific occupations, are given in <a href="#tbl-wages" class="quarto-xref">Table&nbsp;<span>2.6</span></a> (CPS News Releases. (n.d.). Retrieved July 8, 2019, from https://www.bls.gov/cps/). Create a density plot for males and females. Discuss any findings from the graph. <!-- Note: to put two graphs on the same axis, type the piping symbol \|\> (base r) or %\>% (magrittr package) (Note: \|\> and %\>% are piping symbols that can be thought of as "and then") at the end of the first command and then type the command for the second graph on the next line. Also, use fill="pick a color" in the command to plot the graphs with different colors so the two graphs can be easier to distinguish.--></li>
 </ol>
@@ -1623,7 +1743,7 @@ Table&nbsp;2.6: Head of Wages Data frame
 </div>
 </div>
 <div id="code-book-wages" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1632,7 +1752,7 @@ Code book for Wages Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Median weekly earnings of full-time wage and salary workers by detailed occupation and sex. The Current Population Survey (CPS) is a monthly survey of households conducted by the Bureau of Census for the Bureau of Labor Statistics. It provides a comprehensive body of data on the labor force, employment, unemployment, persons not in the labor force, hours of work, earnings, and other demographic and labor force characteristics.</p>
 <p>Format</p>
@@ -2187,7 +2307,7 @@ Table&nbsp;2.7: Head of Density Data frame
 </div>
 </div>
 <div id="code-book-density" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2196,7 +2316,7 @@ Code book for Density Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Population density of all countries in the world</p>
 <p>Format</p>
@@ -2224,7 +2344,7 @@ Table&nbsp;2.8: Head of Africa Data frame
 </figure>
 </div>
 <ol start="3" type="1">
-<li>The Affordable Care Act created a market place for individuals to purchase health care plans. The first six rows of the dataset showing the premiums for a 27 year old (in 2014) for the different levels health insurance are given in <a href="#tbl-Insurance" class="quarto-xref">Table&nbsp;<span>2.9</span></a> (\“Health insurance marketplace,\” 2013). Create a density plot of bronze_lowest, then silver_lowest, and gold_lowest all on the same aces. <!--Use \|\> or %\>% at the end of each command. Describe the story the graphs tells.--></li>
+<li>The Affordable Care Act created a market place for individuals to purchase health care plans. The first six rows of the dataset showing the premiums for a 27 year old (in 2014) for the different levels health insurance are given in <a href="#tbl-Insurance" class="quarto-xref">Table&nbsp;<span>2.9</span></a> (\“Health insurance marketplace,\” 2013). Create a density plot of bronze_lowest, then silver_lowest, and gold_lowest all on the same axes. <!--Use \|\> or %\>% at the end of each command. Describe the story the graphs tells.--></li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">insurance</span>.</p>
@@ -2361,7 +2481,7 @@ Table&nbsp;2.9: Head of Insurance Data frame
 </div>
 </div>
 <div id="code-book-insurance" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2370,7 +2490,7 @@ Code book for Insurance Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The Affordable Care Act created a market place for individuals to purchase health care plans.The data is from 2014.</p>
 <p>Format</p>
@@ -2488,289 +2608,53 @@ Table&nbsp;2.11: Head of First Test Data frame
 </section>
 <section id="other-graphical-representations-of-data" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="other-graphical-representations-of-data"><span class="header-section-number">2.3</span> Other Graphical Representations of Data</h2>
-<p>There are many other types of graphs. Some of the more common ones are the scatter plot (point plot), and a time-series plot. There are also many different graphs that have emerged lately for qualitative data. Many are found in publications and websites. The following is a description of a scatterplot, and the time-series plot.</p>
-<section id="scatter-plot-or-point-plot" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="scatter-plot-or-point-plot"><span class="header-section-number">2.3.1</span> Scatter Plot or Point Plot</h3>
-<p>Sometimes you have two different variables and you want to see if they are related in any way. A scatter plot helps you to see what the relationship would look like. A scatter plot is plotting the ordered pairs on the cartesian coordinate system (x-y axis).</p>
+<p>There are many other types of graphs. Some of the more common ones are the point plot (scatter plot), and a time-series plot. There are also many different graphs that have emerged lately for qualitative data. Many are found in publications and websites. The following is a description of the point plot (scatter plot), and the time-series plot.</p>
+<section id="point-plots-or-scatter-plot" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="point-plots-or-scatter-plot"><span class="header-section-number">2.3.1</span> Point Plots or Scatter Plot</h3>
+<p>Sometimes you have two different variables and you want to see if they are related in any way. A scatter plot helps you to see what the relationship would look like. A scatter plot displays the ordered pairs on the cartesian coordinate system (x-y axis).</p>
 <div id="exm-scatter-plot" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.9 (Creating a Scatter Plot)</strong></span> Data was collected from a sleep study conducted on college students. Is there a relationship between average amount of sleep and GPA? To answer this question, we can look at data where these two variables were collected and examine the data on a scatterplot.</p>
+<p><span class="theorem-title"><strong>Example 2.11 (Creating a Scatter Plot)</strong></span> Data was collected from a simulation study about motorcycle accidents used to test crash helmets.The study recorded the head acceleration after impact. Is there a relationship between head acceleration and time after impact?</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">MASS</span>, with the dataset name <span class="data">mcycle</span>. <a href="#tbl-Tuition" class="quarto-xref">Table&nbsp;<span>2.5</span></a> displays the first five rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-mcycle">dataset code book</a> that follows.</p>
 </div>
-<p><strong>Solution</strong></p>
-<p>Click to expand the box below see how to import and view the <span class="data">SleepStudy</span>. dataset.</p>
-<div id="Importing-Sleep-Study-Data" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing SleepStudy data to Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Importing SleepStudy data to Rguroo
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-30" class="callout-30-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Open the <strong>Data</strong> toolbox in Rguroo.<br>
-</li>
-<li>From the <span class="dpd">Data Import</span> dropdown, select <span class="fun">Dataset Repository</span>.<br>
-</li>
-<li>In the top search box, type <span class="typein">kozak</span>, then select the <span class="repo">Statistics Using Technology – Kozak</span> repository.<br>
-</li>
-<li>In the middle search box, type <span class="typein">sleep</span>, and select the <span class="data">SleepStudy</span> dataset that appears in the lower panel.<br>
-</li>
-<li>Click the <span class="button">Import</span>. The dataset will be imported into your Rguroo account.<br>
-</li>
-<li>Click the <span class="button">Close</span> to close the dialog.<br>
-</li>
-<li>To view the dataset, double-click <span class="data">SleepStudy</span> under the <strong>Data</strong> toolbox list.</li>
-</ol>
-</div>
-</div>
-</div>
-<p><strong>MJ Is there a codebook for this datatse?</strong></p>
-<div class="cell" data-tbl-alt="Table showing first 6 rows of sample from Pulse_Rate dataset">
-<div id="tbl-sleepstudy" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of sample from Pulse_Rate dataset">
+<div class="cell" data-tbl-alt="Table showing first 6 rows of sample from mcycle dataset">
+<div id="tbl-mcycle" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of sample from mcycle dataset">
 <figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-sleepstudy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.12: Head of SleepStudy Data frame
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mcycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.12: Head of mcycle Data frame
 </figcaption>
-<div aria-describedby="tbl-sleepstudy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="tbl-mcycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 2%">
-<col style="width: 3%">
-<col style="width: 2%">
-<col style="width: 4%">
-<col style="width: 3%">
-<col style="width: 1%">
-<col style="width: 4%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 4%">
-<col style="width: 3%">
-<col style="width: 5%">
-<col style="width: 4%">
-<col style="width: 2%">
-<col style="width: 2%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 2%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 4%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 3%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: right;">Gender</th>
-<th style="text-align: right;">ClassYear</th>
-<th style="text-align: left;">LarkOwl</th>
-<th style="text-align: right;">NumEarlyClass</th>
-<th style="text-align: right;">EarlyClass</th>
-<th style="text-align: right;">GPA</th>
-<th style="text-align: right;">ClassesMissed</th>
-<th style="text-align: right;">CognitionZscore</th>
-<th style="text-align: right;">PoorSleepQuality</th>
-<th style="text-align: right;">DepressionScore</th>
-<th style="text-align: right;">AnxietyScore</th>
-<th style="text-align: right;">StressScore</th>
-<th style="text-align: left;">DepressionStatus</th>
-<th style="text-align: left;">AnxietyStatus</th>
-<th style="text-align: left;">Stress</th>
-<th style="text-align: right;">DASScore</th>
-<th style="text-align: right;">Happiness</th>
-<th style="text-align: left;">AlcoholUse</th>
-<th style="text-align: right;">Drinks</th>
-<th style="text-align: right;">WeekdayBed</th>
-<th style="text-align: right;">WeekdayRise</th>
-<th style="text-align: right;">WeekdaySleep</th>
-<th style="text-align: right;">WeekendBed</th>
-<th style="text-align: right;">WeekendRise</th>
-<th style="text-align: right;">WeekendSleep</th>
-<th style="text-align: right;">AverageSleep</th>
-<th style="text-align: right;">AllNighter</th>
+<th style="text-align: right;">times</th>
+<th style="text-align: right;">accel</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Neither</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3.60</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">-0.26</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: left;">normal</td>
-<td style="text-align: left;">normal</td>
-<td style="text-align: left;">normal</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: left;">Moderate</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">25.75</td>
-<td style="text-align: right;">8.70</td>
-<td style="text-align: right;">7.70</td>
-<td style="text-align: right;">25.75</td>
-<td style="text-align: right;">9.50</td>
-<td style="text-align: right;">5.88</td>
-<td style="text-align: right;">7.18</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">2.4</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Neither</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3.24</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1.39</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">normal</td>
-<td style="text-align: left;">normal</td>
-<td style="text-align: left;">normal</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: left;">Moderate</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">25.70</td>
-<td style="text-align: right;">8.20</td>
-<td style="text-align: right;">6.80</td>
-<td style="text-align: right;">26.00</td>
-<td style="text-align: right;">10.00</td>
-<td style="text-align: right;">7.25</td>
-<td style="text-align: right;">6.93</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">2.6</td>
+<td style="text-align: right;">-1.3</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Owl</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2.97</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">0.38</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: left;">moderate</td>
-<td style="text-align: left;">severe</td>
-<td style="text-align: left;">normal</td>
-<td style="text-align: right;">45</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: left;">Light</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">27.44</td>
-<td style="text-align: right;">6.55</td>
-<td style="text-align: right;">3.00</td>
-<td style="text-align: right;">28.00</td>
-<td style="text-align: right;">12.59</td>
-<td style="text-align: right;">10.09</td>
-<td style="text-align: right;">5.02</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">-2.7</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Lark</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3.76</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1.39</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">normal</td>
-<td style="text-align: left;">normal</td>
-<td style="text-align: left;">normal</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: left;">Light</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">23.50</td>
-<td style="text-align: right;">7.17</td>
-<td style="text-align: right;">6.77</td>
-<td style="text-align: right;">27.00</td>
-<td style="text-align: right;">8.00</td>
-<td style="text-align: right;">7.25</td>
-<td style="text-align: right;">6.90</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">3.6</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Owl</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3.20</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">1.22</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: left;">normal</td>
-<td style="text-align: left;">severe</td>
-<td style="text-align: left;">normal</td>
-<td style="text-align: right;">46</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: left;">Moderate</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">25.90</td>
-<td style="text-align: right;">8.67</td>
-<td style="text-align: right;">6.09</td>
-<td style="text-align: right;">23.75</td>
-<td style="text-align: right;">9.50</td>
-<td style="text-align: right;">7.00</td>
-<td style="text-align: right;">6.35</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">-2.7</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Neither</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3.50</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">-0.04</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: left;">moderate</td>
-<td style="text-align: left;">moderate</td>
-<td style="text-align: left;">high</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: left;">Abstain</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">23.80</td>
-<td style="text-align: right;">8.95</td>
-<td style="text-align: right;">9.05</td>
-<td style="text-align: right;">26.00</td>
-<td style="text-align: right;">10.75</td>
-<td style="text-align: right;">9.00</td>
-<td style="text-align: right;">9.04</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">6.2</td>
+<td style="text-align: right;">-2.7</td>
 </tr>
 </tbody>
 </table>
@@ -2779,12 +2663,37 @@ Table&nbsp;2.12: Head of SleepStudy Data frame
 </figure>
 </div>
 </div>
+<div id="code-book-mcycle" class="codebook callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code book for Mcycle Dataset
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Description:</strong> A data frame giving a series of measurements of head acceleration in a simulated motorcycle accident, used to test crash helmets.</p>
+<p>Format</p>
+<p>This data frame contains the following columns:</p>
+<p>times: the time after impact measured in milliseconds.</p>
+<p>accel: head acceleration measured in gravitational acceleration (g).</p>
+<p>Source Silverman, B. W. (1985) Some aspects of the spline smoothing approach to non-parametric curve fitting. Journal of the Royal Statistical Society series B 47, 1–52.</p>
+<p>References Venables, W. N. and Ripley, B. D. (1999) Modern Applied Statistics with S-PLUS. Third Edition. Springer.</p>
+</div>
+</div>
+</div>
+<p><strong>Solution</strong></p>
+<p>To answer this question, we can examine the data on a scatterplot and look for patterns.</p>
 <p>Preliminary: State the explanatory variable and the response variable</p>
-<p>Let x=explanatory variable = Average sleep per night (in hours)</p>
-<p>y=response variable = GPA</p>
-<p>Click to expand the box below see how to create a scatterplot of average sleep per night versus GPA.</p>
+<p>Let:</p>
+<p><span class="math inline">\(x\)</span>=explanatory variable = time after impact (in ms)</p>
+<p><span class="math inline">\(y\)</span>=response variable = head acceleration (in g)</p>
+<p>Click to expand the box below see how to create a scatterplot of time since impact versus head acceleration.</p>
 <div id="Creating-Scatter-Plot-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Scatter Plot in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2793,22 +2702,31 @@ Table&nbsp;2.12: Head of SleepStudy Data frame
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">SleepStudy</span> dataset into your Rguroo account, as was shown <a href="#Importing-Sleep-Study">here</a>.</p>
+<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">mcycle</span> dataset into your Rguroo account, as was shown <a href="#Importing-Data-to-Rguroo-Chapter-2">here</a>. This dataset is in the repository MASS.</p>
 <ol type="1">
 <li>Open the <strong>Plots</strong> toolbox in Rguroo.<br>
 </li>
 <li>Open the <span class="dpd">Create Plot</span> dropdown, and select <span class="fun">Scatter Plot</span>. This opens the Scatter Plot dialog.<br>
 </li>
-<li>In the Scatter Plot dialog, choose the <span class="data">SleepStudy</span> dataset from the <span class="dpd">Dataset</span> dropdown.<br>
+<li>In the Scatter Plot dialog, choose the <span class="data">mcycle</span> dataset from the <span class="dpd">Dataset</span> dropdown.<br>
 </li>
-<li>Choose the <span class="var">AverageSleep</span> variable from the <span class="dpd">Predictor (x)</span> dropdown.</li>
-<li>Choose the <span class="var">GPA</span> variable from the <span class="dpd">Response (y)</span> dropdown.</li>
+<li>Choose the <span class="var">times</span> variable from the <span class="dpd">Predictor (x)</span> dropdown.</li>
+<li>Choose the <span class="var">accel</span> variable from the <span class="dpd">Response (y)</span> dropdown.</li>
+<li><strong>(Optional)</strong> In the <strong>Label</strong> section of the dialog:
+<ul>
+<li>Enter <span class="typein">Scatterplot of Head Acceleration vs.&nbsp;Time After Impact</span> in the <span class="des">Title</span> textbox.<br>
+</li>
+<li>Enter <span class="typein">Time After Impact (milliseconds)</span> in the <span class="des">X-Axis</span> textbox.<br>
+</li>
+<li>Enter <span class="typein">Head Acceleration (g)</span> in the <span class="des">Y-Axis</span> textbox.<br>
+</li>
+</ul></li>
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the scatter plot.</li>
 </ol>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2817,12 +2735,12 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_sleepstudy.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>Scatter plot dialog showing settings for creating scatter plot of average sleep versus GPA.</figcaption>
+<p><img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_scatterplot_mcycle.png" class="img-fluid figure-img" width="500"></p>
+<figcaption>Scatter plot dialog showing settings for creating scatter plot of time versus head acceleration.</figcaption>
 </figure>
 </div>
 </div>
@@ -2833,27 +2751,27 @@ Click here to see the Rguroo dialog
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-sleep-study" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
+<div id="fig-mcycle" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-sleep-study-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Graphical_Description_of_Data/scatterplot_sleep_study.svg" class="img-fluid figure-img" alt="See the description of the graph below the graph">
+<div aria-describedby="fig-mcycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Graphical_Description_of_Data/scatterplot_mcycle.svg" class="img-fluid figure-img" alt="See the description of the graph below the graph">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sleep-study-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.8: GPA versus Average Sleep
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mcycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.26: Time versus Head Acceleration
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Description of <a href="#fig-sleep-study" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> is a scatter plot with dots all over the plot.</p>
-<p>Looking at the graph <a href="#fig-sleep-study" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> there does not appear to be a linear relationship between average sleep per night and GPA.</p>
+<p><a href="#fig-mcycle" class="quarto-xref">Figure&nbsp;<span>2.26</span></a> shows how head acceleration changes after an impact. At first, the acceleration stays close to zero, meaning the head hasn’t begun to move yet. Around 20 milliseconds, there is a sudden and dramatic drop to about –120 g, indicating a rapid backward motion caused by the initial force of the impact. Immediately afterward, the acceleration rebounds sharply upward to more than +60 g, showing the head snapping forward. Following this, the acceleration values fluctuate between negative and positive g’s, but gradually settle toward zero. This suggests that the head’s motion is slowing down and returning to a stable state. Overall, the pattern reflects a typical impact response: an initial delay, a strong backward acceleration, a forward rebound, and then diminishing movement over time. Although this scatterplot shows a relationship between time after impact and head acceleration, the pattern does not follow a simple linear shape.</p>
 </section>
 <section id="time-series" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="time-series"><span class="header-section-number">2.3.2</span> <strong>Time-Series</strong></h3>
 <p>A time-series plot is a graph showing the data measurements in chronological order, the data being quantitative data. For example, a time-series plot is used to show profits over the last 5 years.</p>
 <p>The purpose of a time-series graph is to look for trends over time. Caution, you must realize that the trend may not continue. Just because you see an increase, doesn’t mean the increase will continue forever. As an example, prior to 2007, many people noticed that housing prices were increasing. The belief at the time was that housing prices would continue to increase. However, the housing bubble burst in 2007, and many houses lost value, and haven’t recovered.</p>
 <div id="exm-time-series" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.10 (Creating a Time Series Plot)</strong></span> The first 6 rows of bank assets (in billions of Australia dollars (AUD)) of the Reserve Bank of Australia (RBA) and other financial organizations for the time period of September 1 1969, through March 1 2019, are contained in table <a href="#tbl-Australian" class="quarto-xref">Table&nbsp;<span>2.13</span></a> (Reserve Bank of Australia, 2019). Create a time-series plot of the total assets of Authorized Deposit-taking Institutions (ADIs) and interpret any findings.</p>
+<p><span class="theorem-title"><strong>Example 2.12 (Creating a Time Series Plot)</strong></span> Bank assets (in billions of Australia dollars (AUD)) were recorded from the Reserve Bank of Australia and other financial organizations for the time period of September 1 1969, through March 1 2019. Create a time-series plot of the total assets of Authorized Deposit-taking Institutions (ADIs), variable <span class="var">Assets_ADIs_Total</span>, and interpret any findings.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Australian_financial</span>. <a href="#tbl-Australian" class="quarto-xref">Table&nbsp;<span>2.13</span></a> displays the first five rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-australian">dataset code book</a> that follows.</p>
 </div>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Australian dataset">
 <div id="tbl-Australian" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Australian dataset">
@@ -3050,39 +2968,8 @@ Table&nbsp;2.13: Head of Australian Data frame
 </figure>
 </div>
 </div>
-<p>Click to expand the box below to see instructions to import and view the <span class="data">Australian_financial</span> dataset.</p>
-<div id="Importing-Austrailian-Financial-to-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Australian_financial to Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Importing Australian_financial to Rguroo
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-33" class="callout-33-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Open the <strong>Data</strong> toolbox in Rguroo.<br>
-</li>
-<li>From the <span class="dpd">Data Import</span> dropdown, select <span class="fun">Dataset Repository</span>.<br>
-</li>
-<li>In the top search box, type <span class="typein">kozak</span>, then select the <span class="repo">Statistics Using Technology – Kozak</span> repository.<br>
-</li>
-<li>In the middle search box, type <span class="typein">Australian</span>, and select the <span class="data">Australian_financial</span> dataset that appears in the lower panel.<br>
-</li>
-<li>Click the <span class="button">Import</span>. The dataset will be imported into your Rguroo account.<br>
-</li>
-<li>Click the <span class="button">Close</span> to close the dialog.<br>
-</li>
-<li>To view the dataset, double-click <span class="data">Australian_financial</span> under the <strong>Data</strong> toolbox list.</li>
-</ol>
-</div>
-</div>
-</div>
 <div id="code-book-australian" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3091,7 +2978,7 @@ Code book for Australian Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The data is a range of economic and financial data produced by the Reserve Bank of Australia and other organizations.</p>
 <p>Format</p>
@@ -3122,22 +3009,21 @@ Code book for Australian Dataset
 </div>
 </div>
 <p><strong>Solution</strong></p>
-<p>variable, x=total assets of Authorized Deposit-taking Institutions (ADIs)</p>
-<p>Looking at the code book, one can see that the variable Assets_ADIs_Total is the variable in the data frame that is of interest here. With a time series plot, the other variable is time. In this case the variable in the data frame that represents time is Date. Notice that the dates are recorded as the months during specific quarters since September 1, 1969. Also notice that the data does not have entries for Assets_ADIs_Total until Mar-90, so our graph will start at this point in time.</p>
+<p>Looking at the code book, one can see that the variable <span class="var">Assets_ADIs_Total</span> is the variable in the data frame that is of interest here. With a time series plot, the other variable is time. In this case the variable in the data frame that represents time is <span class="var">Date</span>. Notice that the dates are recorded as the months during specific quarters since September 1, 1969.</p>
 <p>Click to expand the box below see how to create a density plot of instate tuition by type of institution.</p>
-<div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Time Seires Plot in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Time Series Plot in Rguroo">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating Time Seires Plot in Rguroo
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating Time Series Plot in Rguroo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-36" class="callout-36-contents callout-collapse collapse">
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">Australian_financial</span> dataset into your Rguroo account, as was shown <a href="#Importing-Australian-Financial-to-Rguroo">here</a>.</p>
+<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">Austrailian_financial</span> dataset into your Rguroo account, as was shown <a href="#Importing-Data-to-Rguroo-Chapter-2">here</a>.</p>
 <ol type="1">
 <li>Open the <strong>Analytics</strong> toolbox in Rguroo.<br>
 </li>
@@ -3151,7 +3037,7 @@ Code book for Australian Dataset
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the time series graph.</li>
 </ol>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3160,7 +3046,7 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-35" class="callout-35-contents callout-collapse collapse">
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -3182,15 +3068,13 @@ Click here to see the Rguroo dialog
 <img src="Rguroo_outputs/Graphical_Description_of_Data/time_series_plot_ADI_total_2.svg" class="img-fluid figure-img" alt="See the description of the graph below the graph">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Australian_data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.9: Total Assets of Authorized Deposit-taking Institutions
+Figure&nbsp;2.27: Total Assets of Authorized Deposit-taking Institutions
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Description of <a href="#fig-Australian_data" class="quarto-xref">Figure&nbsp;<span>2.9</span></a> is an increasing time series Graph of Total Assets of Authorized Deposit-taking Institutions from day 2007 to 2016. The first ADI total starts at 0 and goes up to about 4500.</p>
-<p>From the graph, total assets of Authorized Deposit-taking Institutions (ADIs) appear to be increasing with a slight dip in the year 2013.</p>
-<p>Be careful when making a graph. If the vertical axis doesn’t start at 0, then the change can look much more dramatic than it really is. For a graph to be useful to the reader, it needs to have a title that explains what the graph contains, the axes should be labeled so the reader knows what each axes represents, each axes should have a scale marked, and it is best if the vertical axis contains 0 to show the relationship.</p>
+<p><a href="#fig-Australian_data" class="quarto-xref">Figure&nbsp;<span>2.27</span></a> is an generally increasing time series graph of Total Assets of Authorized Deposit-taking Institutions from day 2007 to 2016. Notice that the time series graph seems to be flat until approximately 2007. Upon inspecting the dataset, there are no entries for Assets_ADIs_Total until Mar-90, so our graph will start at this point in time.The first ADI total starts at 0 and goes up to about 4500. From the graph, total assets of Authorized Deposit-taking Institutions (ADIs) appear to be increasing over time, with a slight dip in the year 2013.</p>
 </section>
 <section id="homework-for-other-graphical-representations-of-data-section" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="homework-for-other-graphical-representations-of-data-section"><span class="header-section-number">2.3.3</span> Homework for Other Graphical Representations of Data Section</h3>
@@ -3248,7 +3132,7 @@ Table&nbsp;2.14: Head of Metacarpal Data frame
 </div>
 </div>
 <div id="code-book-metacarpal" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3257,7 +3141,7 @@ Code book for Metacarpal Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-37" class="callout-37-contents callout-collapse collapse">
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> When anthropologists analyze human skeletal remains, an important piece of information is living stature. Since skeletons are commonly based on statistical methods that utilize measurements on small bones. The following data was presented in a paper in the American Journal of Physical Anthropology to validate one such method.</p>
 <p>Format</p>
@@ -3324,7 +3208,7 @@ Table&nbsp;2.15: Head of House Data frame
 </div>
 </div>
 <div id="code-book-house" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3333,7 +3217,7 @@ Code book for House Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-38" class="callout-38-contents callout-collapse collapse">
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The data show the capital value and annual rental value of domestic properties in Auckland in 1991.</p>
 <p>Format</p>
@@ -3443,7 +3327,7 @@ Table&nbsp;2.16: Head of Fertility Data frame
 </div>
 </div>
 <div id="code-book-fertility" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3452,7 +3336,7 @@ Code book for Fertility Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-39" class="callout-39-contents callout-collapse collapse">
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Data is from the World Bank on the life expectancy of countries and the fertility rates in those countries.</p>
 <p>Format</p>
@@ -4407,7 +4291,7 @@ Table&nbsp;2.17: Head of Fert_prenatal Data frame
 </div>
 </div>
 <div id="code-book-fertility-prenatal" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4416,7 +4300,7 @@ Code book for Fertility Prenatal Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-40" class="callout-40-contents callout-collapse collapse">
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Data is from the World Bank on money spent on expenditure of countries and the percentage of women receiving prenatal care in those countries.</p>
 <p>Format</p>
@@ -4487,7 +4371,7 @@ Table&nbsp;2.18: Head of Firearm Data frame
 </div>
 </div>
 <div id="code-book-firearm-rate" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4496,7 +4380,7 @@ Code book for Firearm Rate Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-41" class="callout-41-contents callout-collapse collapse">
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The data give the number of deaths caused by firearms in Australia from 1983 to 1997, expressed as a rate per 100,000 of population.</p>
 <p>Format</p>
@@ -4509,7 +4393,7 @@ Code book for Firearm Rate Dataset
 </div>
 </div>
 <ol start="6" type="1">
-<li>The economic crisis of 2008 affected many countries, though some more than others. Some people in Australia have claimed that Australia wasn’t hurt that badly from the crisis. The forst 6 rows for the dataset containing bank assets (in billions of Australia dollars (AUD)) of the Reserve Bank of Australia (RBA) for the time period of September 1 1969, through March 1 2019, are contained in <span class="citation" data-cites="bl-Australian">@bl-Australian</span> (Reserve Bank of Australia, 2019). Create a time-series plot of the assets of the RBA and interpret any findings.</li>
+<li>The economic crisis of 2008 affected many countries, though some more than others. Some people in Australia have claimed that Australia wasn’t hurt that badly from the crisis. The first 6 rows for the dataset containing bank assets (in billions of Australia dollars (AUD)) of the Reserve Bank of Australia (RBA) for the time period of September 1 1969, through March 1 2019, are contained in <span class="citation" data-cites="bl-Australian">@bl-Australian</span> (Reserve Bank of Australia, 2019). Create a time-series plot of the assets of the RBA and interpret any findings.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Australian_financial</span>.</p>
@@ -4685,7 +4569,7 @@ Table&nbsp;2.19: Head of CPI Data frame
 </div>
 </div>
 <div id="code-book-cpi" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4694,7 +4578,7 @@ Code book for CPI Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-42" class="callout-42-contents callout-collapse collapse">
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> This table of Consumer Price Index (CPI) data is based upon a 1982 base of 100.</p>
 <p>Format</p>
@@ -4799,7 +4683,7 @@ Table&nbsp;2.20: Head of US_income Data frame
 </div>
 </div>
 <div id="code-book-us-income" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4808,7 +4692,7 @@ Code book for US Income Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-43" class="callout-43-contents callout-collapse collapse">
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> This table is of US mean and median incomes in both current dollars and in 2017 dollars.</p>
 <p>Format</p>
