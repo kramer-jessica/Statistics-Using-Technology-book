@@ -630,9 +630,9 @@ Format
 
 This Dataset contains the following columns:
 
-Player: Player in the sample
+[Player]{.var}: Player in the sample
 
-height: height of baseball player (inches)
+[height]{.var}: height of baseball player (inches)
 
 weight: weight of baseball player (pounds)
 
@@ -680,13 +680,13 @@ Format
 
 This Dataset contains the following columns:
 
-species: species of animal
+[species]{.var}: species of animal
 
-bodyweight: the body weight of the species (kg)
+[bodyweight]{.var}: the body weight of the species (kg)
 
-brainweight: the brain weight of the species (kg)
+[brainweight]{.var}: the brain weight of the species (kg)
 
-brainbodyproportion: the ratio of brain weight to body weight of the species
+[brainbodyproportion]{.var}: the ratio of brain weight to body weight of the species
 
 Source Brain2bodyweight. (2013, November 16). Retrieved from http://wiki.stat.ucla.edu/socr/index.php/SOCR_Data_Brain2BodyWeight
 
@@ -778,7 +778,7 @@ knitr::kable(head(Agriculture))
 ```
 
 ::: {#code-book-agriculture .callout-tip .codebook collapse="true"}
-## Code book for Dataset Agriculture**
+## Code book for Dataset Agriculture
 
 **Description**
 
@@ -788,15 +788,15 @@ Format
 
 This Dataset contains the following columns:
 
-country: country in Europe
+[country]{.var}: country in Europe
 
-percapita: per captia income
+[percapita]{.var}: per captia income
 
-agriculture: percentage of workforce in agriculture
+[agriculture:]{.var} percentage of workforce in agriculture
 
-industry: percentage of workforce in industry
+[industry]{.var}: percentage of workforce in industry
 
-services: percentage of workforce in services
+[services]{.var}: percentage of workforce in services
 
 [Source](http://lib.stat.cmu.edu/DASL/Datafiles/oecdat.html) OECD economic development. (2013, December 04).
 
@@ -840,17 +840,17 @@ Format
 
 This Dataset contains the following columns:
 
-state: state in US
+[state]{.var}: state in US
 
-cig: the number of cigarette sales (per capita)
+[cig]{.var}: the number of cigarette sales (per capita)
 
-bladder: number of deaths per 100 thousand from bladder cancer
+[bladder]{.var}: number of deaths per 100 thousand from bladder cancer
 
-lung: number of deaths per 100 thousand from lung cancer
+[lung]{.var}: number of deaths per 100 thousand from lung cancer
 
-kidney: number of deaths per 100 thousand from kidney cancer
+[kidney]{.var}: number of deaths per 100 thousand from kidney cancer
 
-leukemia: number of deaths per 100 thousand from leukemia
+[leukemia]{.var}: number of deaths per 100 thousand from leukemia
 
 [Source](http://lib.stat.cmu.edu/DASL/Datafiles/cigcancerdat.html) Smoking and cancer. (2013, December 04).
 
@@ -900,17 +900,17 @@ Format
 
 This Dataset contains the following columns:
 
-make: the type of car
+[make]{.var}: the type of car
 
-vol: cubic feet of cab space
+[vol]{.var}: cubic feet of cab space
 
-hp: engine horsepower
+[hp]{.var}: engine horsepower
 
-npg: the average mileage of the car
+[npg]{.var}: the average mileage of the car
 
-sp: top speed (mph)
+[sp]{.var}: top speed (mph)
 
-wt: the weight of the car (100 pounds)
+[wt]{.var}: the weight of the car (100 pounds)
 
 Source (n.d.). Retrieved July 21, 2019, from https://www3.nd.edu/\~busiforc/handouts/Data and Stories/regression/us auto mileage/usautomileage.html
 
@@ -948,12 +948,9 @@ In practice, there is no universal rule for what counts as “strong” or “we
 ## Calculating the Linear Correlation Coefficient, $r$
 
 How strong is the positive relationship between alcohol content and the number of calories in a 12-ounce beer? To answer this question, compute the correlation coefficient between alcohol content and calories using the [beer]{.data} dataset (“Calories in Beer,” 2011). The first six rows of this dataset are shown in @tbl-Beer. Use Rguroo to calculate the correlation coefficient and interpret its value in context.
-
-
 :::
 
-
-** Solution** 
+**Solution**
 
 You can obtain the correlation coefficient, $r$, in Rguroo from the output of the [Linear Regression]{.fun} function. To find this value for the beer example, follow the steps for creating a linear regression model [here](#Finding-the-Regression-Equation-in-Rguroo).
 
