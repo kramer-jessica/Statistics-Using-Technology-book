@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Graphical Description of Data – Statistics Using Technology: Rguroo Edition</title>
+<title>2&nbsp; Graphical Description of Data – Introductory Statistics: A Conceptual Approach Using Rguroo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -126,7 +126,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Statistics Using Technology: Rguroo Edition</a> 
+      <a href="./">Introductory Statistics: A Conceptual Approach Using Rguroo</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -240,7 +240,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#other-graphical-representations-of-data" id="toc-other-graphical-representations-of-data" class="nav-link" data-scroll-target="#other-graphical-representations-of-data"><span class="header-section-number">2.3</span> Other Graphical Representations of Data</a>
   <ul class="collapse">
-  <li><a href="#point-plots-or-scatter-plot" id="toc-point-plots-or-scatter-plot" class="nav-link" data-scroll-target="#point-plots-or-scatter-plot"><span class="header-section-number">2.3.1</span> Point Plots or Scatter Plot</a></li>
+  <li><a href="#scatter-plot-or-point-plot" id="toc-scatter-plot-or-point-plot" class="nav-link" data-scroll-target="#scatter-plot-or-point-plot"><span class="header-section-number">2.3.1</span> Scatter Plot or Point Plot</a></li>
   <li><a href="#time-series" id="toc-time-series" class="nav-link" data-scroll-target="#time-series"><span class="header-section-number">2.3.2</span> <strong>Time-Series</strong></a></li>
   <li><a href="#homework-for-other-graphical-representations-of-data-section" id="toc-homework-for-other-graphical-representations-of-data-section" class="nav-link" data-scroll-target="#homework-for-other-graphical-representations-of-data-section"><span class="header-section-number">2.3.3</span> Homework for Other Graphical Representations of Data Section</a></li>
   </ul></li>
@@ -304,7 +304,7 @@ window.Quarto = {
 <!--1.  Center: middle of the data set, also known as the average.
 2.  Variation: how much the data varies.
 3.  Distribution: shape of the data (symmetric, uniform, or skewed).
-4.  Qualitative data: analysis of the data
+4.  Qualitative data: analysis of the data **MJ: What do you mean?**
 5.  Outliers: data values that are far from the majority of the data.
 6.  Time: changing characteristics of the data over time.-->
 <p>This chapter will focus on organizing data, creating graphs of the data, and using the graphs to understand aspects of the data.</p>
@@ -421,7 +421,7 @@ Table&nbsp;2.1: Class Survey
 </figure>
 </div>
 </div>
-<p>Every data frame has a code book that describes the data set, the source of the data set, and a listing and description of the variables in the data frame. Click the box below to expand the codebook for the dataset <span class="data">class_survey1</span>.</p>
+<p>======= &gt;&gt;&gt;&gt;&gt;&gt;&gt; 83ab28c987b2fa7347d5831e203dd0b9989bccda Every data frame has a code book that describes the data set, the source of the data set, and a listing and description of the variables in the data frame. Click the box below to expand the codebook for the dataset <span class="data">class_survey1</span>.</p>
 <div id="code-book-class" class="codebook callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -468,6 +468,15 @@ Code book for Class Survey1 Dataset
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Data-to-Rguroo-Chapter-2">here</a>.</p>
 <ol type="1">
+<li>Open the <strong>Analytics</strong> toolbox in Rguroo.<br>
+</li>
+<li>Open the <span class="dpd">Analysis</span> dropdown, and select <span class="fun">Tabulation</span> and <span class="fun">Categorical</span>. This opens the Data Tabulation dialog.<br>
+</li>
+<li>In the Data Tabulation dialog, choose the <span class="data">class_survey1</span> dataset from the <span class="dpd">Dataset</span> dropdown.<br>
+</li>
+<li>Choose the <span class="var">vehicle</span> variable from the <span class="dpd">Factor 1</span> dropdown. For frequency, select counts. For realtive frequency, select proportions.<br>
+</li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the frequecy distribution.</li>
 <li>Open the <strong>Analytics</strong> toolbox in Rguroo.<br>
 </li>
 <li>Open the <span class="dpd">Analysis</span> dropdown, and select <span class="fun">Tabulation</span> and <span class="fun">Categorical</span>. This opens the Data Tabulation dialog.<br>
@@ -620,10 +629,60 @@ Figure&nbsp;2.3: Bar graph of vehicles driven by students in statistics class
 <p>Another version of a bar graph that is useful is a relative frequency bar graph. A relative frequency bar graph gives you a clear way to compare how different categories or values occur, especially when working with datasets of different sizes. By converting raw counts into proportions, the graph highlights patterns that might otherwise be hidden. This makes it a powerful tool for spotting meaningful relationships in data, comparing data of different sizes, and communicating those insights in a way that’s easy for others to understand.</p>
 <p>Rguroo can generate a relative frequency bar graph from the same plot toolbox.</p>
 <div id="exm-drawing-a-relative-frequency-bar-chart" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.3 (Drawing a Relative Frequency Bar Chart for Vehicle Type)</strong></span> Use the <span class="data">class_survey1</span> to create a relative frequency bar chart of <span class="var">vehicle</span> type.</p>
+<p><span class="theorem-title"><strong>Example 2.3 (Drawing a Relative Frequency Bar Chart for Vehicle Type)</strong></span> Use the <span class="data">class_survey1</span> to create a bar chart of vehicle type by gender. Use the <span class="data">class_survey1</span> to create a relative frequency bar chart of <span class="var">vehicle</span> type.</p>
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">class_survey1</span>. A complete description of the variables is provided in the <a href="#code-book-class">dataset code book</a>.</p>
 </div>
 <p><strong>Solution</strong></p>
+<p>Click to expand the box below see how to create the bar graph for vehicle type disaggreagated by gender.</p>
+<div id="Creating-Bar-Graph-of-Vehicle-Gender-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Bar Graph of Vehicle Type and Gender in Rguroo">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating Bar Graph of Vehicle Type and Gender in Rguroo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Class_Survey1-to-Rguroo">here</a>.</p>
+<ol type="1">
+<li>Open the <strong>Plots</strong> toolbox in Rguroo.<br>
+</li>
+<li>Open the <span class="dpd">Create Plot</span> dropdown, and select <span class="fun">Barplot</span>. This opens the Barplot dialog.<br>
+</li>
+<li>In the Barplot dialog, choose the <span class="data">class_survey1</span> dataset from the <span class="dpd">Dataset</span> dropdown.<br>
+</li>
+<li>Choose the <span class="var">gender</span> variable from the <span class="dpd">Factor 1</span> dropdown.</li>
+<li>Choose the <span class="var">vehicle</span> variable from the <span class="dpd">Factor 2</span> dropdown.<br>
+</li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the bar graph.</li>
+</ol>
+<div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Click here to see the Rguroo dialog
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Rguroo_dialogs/Graphical_Description_of_Data/dialog_vehicle_gender_2.png" class="img-fluid figure-img" width="500"></p>
+<figcaption>Bar Graph dialog showing settings for creating bar graph of vehicle type by gender.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <p>To create a relative frequency bar graph, follow the directions for creating a bar graph <a href="#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo">here</a>. Then click proportion to change frequency to relative frequency. Don’t forget to change your y-axis label to proportion as well.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -690,7 +749,7 @@ Figure&nbsp;2.7: Bar graph of Vehicles driven by students in statistics class, d
 </div>
 </div>
 </div>
-<p><a href="#fig-class_data_bar_gender" class="quarto-xref">Figure&nbsp;<span>2.7</span></a> is a bar graph of number of vehicles separated by female and male. Audi and male has height of 1, Buick and female has a height of 1, Chevrolet and male and Chevrolet and female have heights of 2, Dodge and male and Dodge and female has heights of 1, Ford and female has a height of 4, Honda and female has a height of 1, Hyundai and male has a height of 1, Jeep and male has a height of 2 while Jeep and female has a height of 1, Mercury and female has a height of 1, Nissan and female has a height of 1, no car and female has a height of 2, Subaru and female has a height of 1, Subaru and male has a height of 2, Toyota and female has a height of 1, and Toyota and male has a height of 2.</p>
+<p><span class="quarto-unresolved-ref">?fig-class_data_dodge</span> is a bar graph of number of vehicles separated by female and male. Audi and male has height of 1, Buick and female has a height of 1, Chevrolet and male and Chevrolet and female have heights of 2, Dodge and male and Dodge and female has heights of 1, Ford and female has a height of 4, Honda and female has a height of 1, Hyundai and male has a height of 1, Jeep and male has a height of 2 while Jeep and female has a height of 1, Mercury and female has a height of 1, Nissan and female has a height of 1, no car and female has a height of 2, Subaru and female has a height of 1, Subaru and male has a height of 2, Toyota and female has a height of 1, and Toyota and male has a height of 2. <a href="#fig-class_data_bar_gender" class="quarto-xref">Figure&nbsp;<span>2.7</span></a> is a bar graph of number of vehicles separated by female and male. Audi and male has height of 1, Buick and female has a height of 1, Chevrolet and male and Chevrolet and female have heights of 2, Dodge and male and Dodge and female has heights of 1, Ford and female has a height of 4, Honda and female has a height of 1, Hyundai and male has a height of 1, Jeep and male has a height of 2 while Jeep and female has a height of 1, Mercury and female has a height of 1, Nissan and female has a height of 1, no car and female has a height of 2, Subaru and female has a height of 1, Subaru and male has a height of 2, Toyota and female has a height of 1, and Toyota and male has a height of 2.</p>
 <p>Notice a Ford is driven by females more than any other car, while Chevrolet, Mercury, and Subaru cars are equally driven by males. Obviously a larger sample would be needed to make any conclusions from this data.</p>
 <p>Another form of a bar graph that disaggregates by a factor is called a stacked bar graph. A stacked bar graph shows how different sub‑groups contribute to an overall total by stacking the segments on top of each other within each bar.</p>
 <div id="exm-drawing-a-bar-chart-by-gender-stacked" class="theorem example">
@@ -735,7 +794,7 @@ Figure&nbsp;2.9: Stacked Bar graph of Vehicles Driven by Gender
 <p><strong>Solution</strong></p>
 <p>Click to expand the box below see how to create the pie chart for vehicle type.</p>
 <div id="Creating-Pie-Chart-of-Vehicle-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Pie Chart of Vehicle Type in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -744,7 +803,7 @@ Figure&nbsp;2.9: Stacked Bar graph of Vehicles Driven by Gender
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Data-to-Rguroo-Chapter-2">here</a>.</p>
 <ol type="1">
@@ -764,7 +823,7 @@ Figure&nbsp;2.9: Stacked Bar graph of Vehicles Driven by Gender
 <li>In the <img src="Rguroo_Icons/save_as.png" class="img-fluid" alt="Save as"> textbox, enter the name <span class="typein">VehiclePieChart</span> for the pie chart. Click the button to save the pie chart to your Rguroo account.</li>
 </ol>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -773,7 +832,7 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -853,7 +912,7 @@ Table&nbsp;2.2: Head of Eyeglasses Data frame
 </div>
 </div>
 <div id="code-book-eyeglasses" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -862,7 +921,7 @@ Code book for Eyeglasses Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Activities that an Eyeglass company performs when making eyeglasses, Grind means ground the lenses and put them in frames, multicoat means put tinting or coatings on lenses and then put them in frames, assemble means received frames and lenses from other sources and put them together, make frames means made the frames and put lenses in from other sources, receive finished means received glasses from other source unknown means do not know where the lenses came from.</p>
 <p>Format</p>
@@ -880,8 +939,8 @@ Code book for Eyeglasses Dataset
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">class_survey1</span>.</p>
 </div>
-<div id="code-book-class" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="codebook callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -890,7 +949,7 @@ Code book for Class Survey1 Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The dataset gives survey results from two semesters of statistics classes at Coconino Community College in the years 2018-2019.</p>
 <p>Format</p>
@@ -962,8 +1021,8 @@ Table&nbsp;2.3: Head of Area Data frame
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">class_survey1</span>.</p>
 </div>
-<div id="code-book-class" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="codebook callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -972,7 +1031,7 @@ Code book for Class Survey1 Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The dataset gives survey results from two semesters of statistics classes at Coconino Community College in the years 2018-2019.</p>
 <p>Format</p>
@@ -1039,7 +1098,7 @@ Table&nbsp;2.4: Head of Defects Data frame
 </div>
 </div>
 <div id="code-book-defects" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1048,7 +1107,7 @@ Code book for Defects Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Types of defects that an Eyeglass company sees in the lenses they make into eyeglasses.</p>
 <p>Format</p>
@@ -1064,7 +1123,7 @@ Code book for Defects Dataset
 </section>
 <section id="quantitative-data" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="quantitative-data"><span class="header-section-number">2.2</span> Quantitative Data</h2>
-<p>As with qualitative data, it is also advantageous to organize quantitative data since the long list of raw data is usually long and does not provide insight into the sample or population.</p>
+<p>As with qualitative data, it is also advantageous to organize quantitative data since the long list of raw data usually does not provide insight into the sample or population.</p>
 <section id="organizing-quantitative-data" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="organizing-quantitative-data"><span class="header-section-number">2.2.1</span> Organizing Quantitative Data</h3>
 <p>Frequency and relative frequency distributions can also be used for quantitative data, where the categories are numerical values that occur in the data with their corresponding frequency counts or proportions. However, most datasets contain many distinct values, so a regular frequency or relative frequency distribution would be meaningless.</p>
@@ -1079,7 +1138,7 @@ Code book for Defects Dataset
 <p><strong>Solution</strong></p>
 <p>Click to expand the box below see how to create a grouped frequency distribution for <span class="var">distance_campus</span>.</p>
 <div id="Creating-Grouped-Frequency-Distribution-of-Distance-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Grouped Frequency Distribution in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1088,7 +1147,7 @@ Code book for Defects Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Data-to-Rguroo-Chapter-2">here</a>.</p>
 <ol type="1">
@@ -1103,7 +1162,7 @@ Code book for Defects Dataset
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the frequency distribution.</li>
 </ol>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1112,7 +1171,7 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1195,7 +1254,7 @@ Figure&nbsp;2.13: Grouped Frequency Distribution for Distance_Campus with 6 Clas
 <p><strong>Solution</strong></p>
 <p>Click to expand the box below see how to create a histogram for distance to campus.</p>
 <div id="Creating-Histogram-of-Distance-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Histogram of Distance to Campus in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1204,7 +1263,7 @@ Figure&nbsp;2.13: Grouped Frequency Distribution for Distance_Campus with 6 Clas
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">class_survey1</span> dataset into your Rguroo account, as was shown <a href="#Importing-Data-to-Rguroo-Chapter-2">here</a>.</p>
 <ol type="1">
@@ -1228,9 +1287,8 @@ Figure&nbsp;2.13: Grouped Frequency Distribution for Distance_Campus with 6 Clas
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the histogram.</li>
 <li>In the <img src="Rguroo_Icons/save_as.png" class="img-fluid" alt="Save as"> textbox, enter the name <span class="typein">DistanceHistogram</span> for the histogram. Click the button to save the histogram to your Rguroo account.</li>
 </ol>
-<p><strong>MJ We should add title and label for axes</strong></p>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1239,7 +1297,7 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1253,7 +1311,6 @@ Click here to see the Rguroo dialog
 </div>
 </div>
 </div>
-<p>::::</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-class_data_histogram" class="quarto-float quarto-figure quarto-figure-center anchored" alt="See the description of the graph below the graph">
@@ -1500,7 +1557,7 @@ Table&nbsp;2.5: Head of Tuition Data Frame
 </div>
 </div>
 <div id="code-book-tuition" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1509,7 +1566,7 @@ Code book for Tuition Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Cost of four year institutions.</p>
 <p>Format</p>
@@ -1576,7 +1633,7 @@ Figure&nbsp;2.24: Dialog Box for Density Plot of Instate Tuition by Type
 </div>
 <p>Click to expand the box below see how to create a density plot of instate tuition by type of institution.</p>
 <div id="Creating-Density-Plot-by-Type-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Density Plot by Type in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1585,7 +1642,7 @@ Figure&nbsp;2.24: Dialog Box for Density Plot of Instate Tuition by Type
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">tuition_4_year</span> dataset into your Rguroo account, as was shown <a href="#Importing-Data-to-Rguroo-Chapter-2">here</a>.</p>
 <ol type="1">
@@ -1602,7 +1659,7 @@ Figure&nbsp;2.24: Dialog Box for Density Plot of Instate Tuition by Type
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the density plot.</li>
 </ol>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1611,7 +1668,7 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1743,7 +1800,7 @@ Table&nbsp;2.6: Head of Wages Data frame
 </div>
 </div>
 <div id="code-book-wages" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1752,7 +1809,7 @@ Code book for Wages Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Median weekly earnings of full-time wage and salary workers by detailed occupation and sex. The Current Population Survey (CPS) is a monthly survey of households conducted by the Bureau of Census for the Bureau of Labor Statistics. It provides a comprehensive body of data on the labor force, employment, unemployment, persons not in the labor force, hours of work, earnings, and other demographic and labor force characteristics.</p>
 <p>Format</p>
@@ -2307,7 +2364,7 @@ Table&nbsp;2.7: Head of Density Data frame
 </div>
 </div>
 <div id="code-book-density" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2316,7 +2373,7 @@ Code book for Density Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Population density of all countries in the world</p>
 <p>Format</p>
@@ -2481,7 +2538,7 @@ Table&nbsp;2.9: Head of Insurance Data frame
 </div>
 </div>
 <div id="code-book-insurance" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2490,7 +2547,7 @@ Code book for Insurance Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The Affordable Care Act created a market place for individuals to purchase health care plans.The data is from 2014.</p>
 <p>Format</p>
@@ -2608,14 +2665,15 @@ Table&nbsp;2.11: Head of First Test Data frame
 </section>
 <section id="other-graphical-representations-of-data" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="other-graphical-representations-of-data"><span class="header-section-number">2.3</span> Other Graphical Representations of Data</h2>
-<p>There are many other types of graphs. Some of the more common ones are the point plot (scatter plot), and a time-series plot. There are also many different graphs that have emerged lately for qualitative data. Many are found in publications and websites. The following is a description of the point plot (scatter plot), and the time-series plot.</p>
-<section id="point-plots-or-scatter-plot" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="point-plots-or-scatter-plot"><span class="header-section-number">2.3.1</span> Point Plots or Scatter Plot</h3>
+<p>There are many other types of graphs. Some of the more common ones are the scatter plot (point plot), and a time-series plot. There are also many different graphs that have emerged lately for qualitative data. Many are found in publications and websites. The following is a description of a scatterplot, and the time-series plot.</p>
+<section id="scatter-plot-or-point-plot" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="scatter-plot-or-point-plot"><span class="header-section-number">2.3.1</span> Scatter Plot or Point Plot</h3>
 <p>Sometimes you have two different variables and you want to see if they are related in any way. A scatter plot helps you to see what the relationship would look like. A scatter plot displays the ordered pairs on the cartesian coordinate system (x-y axis).</p>
 <div id="exm-scatter-plot" class="theorem example">
 <p><span class="theorem-title"><strong>Example 2.11 (Creating a Scatter Plot)</strong></span> Data was collected from a simulation study about motorcycle accidents used to test crash helmets.The study recorded the head acceleration after impact. Is there a relationship between head acceleration and time after impact?</p>
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">MASS</span>, with the dataset name <span class="data">mcycle</span>. <a href="#tbl-Tuition" class="quarto-xref">Table&nbsp;<span>2.5</span></a> displays the first five rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-mcycle">dataset code book</a> that follows.</p>
 </div>
+<p><strong>MJ Is there a codebook for this datatse?</strong></p>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of sample from mcycle dataset">
 <div id="tbl-mcycle" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of sample from mcycle dataset">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -2663,8 +2721,26 @@ Table&nbsp;2.12: Head of mcycle Data frame
 </figure>
 </div>
 </div>
+<p>======= Data was collected from a simulation study about motorcycle accidents used to test crash helmets.The study recorded the head acceleration after impact. Is there a relationship between head acceleration and time after impact?</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">MASS</span>, with the dataset name <span class="data">mcycle</span>. <a href="#tbl-Tuition" class="quarto-xref">Table&nbsp;<span>2.5</span></a> displays the first five rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-mcycle">dataset code book</a> that follows.</p>
+<p>:::</p>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>83ab28c987b2fa7347d5831e203dd0b9989bccda</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <div id="code-book-mcycle" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2673,7 +2749,7 @@ Code book for Mcycle Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description:</strong> A data frame giving a series of measurements of head acceleration in a simulated motorcycle accident, used to test crash helmets.</p>
 <p>Format</p>
@@ -2693,7 +2769,7 @@ Code book for Mcycle Dataset
 <p><span class="math inline">\(y\)</span>=response variable = head acceleration (in g)</p>
 <p>Click to expand the box below see how to create a scatterplot of time since impact versus head acceleration.</p>
 <div id="Creating-Scatter-Plot-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Scatter Plot in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2702,10 +2778,19 @@ Code book for Mcycle Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">mcycle</span> dataset into your Rguroo account, as was shown <a href="#Importing-Data-to-Rguroo-Chapter-2">here</a>. This dataset is in the repository MASS.</p>
 <ol type="1">
+<li>Open the <strong>Plots</strong> toolbox in Rguroo.<br>
+</li>
+<li>Open the <span class="dpd">Create Plot</span> dropdown, and select <span class="fun">Scatter Plot</span>. This opens the Scatter Plot dialog.<br>
+</li>
+<li>In the Scatter Plot dialog, choose the <span class="data">SleepStudy</span> dataset from the <span class="dpd">Dataset</span> dropdown.<br>
+</li>
+<li>Choose the <span class="var">AverageSleep</span> variable from the <span class="dpd">Predictor (x)</span> dropdown.</li>
+<li>Choose the <span class="var">GPA</span> variable from the <span class="dpd">Response (y)</span> dropdown.</li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the scatter plot.</li>
 <li>Open the <strong>Plots</strong> toolbox in Rguroo.<br>
 </li>
 <li>Open the <span class="dpd">Create Plot</span> dropdown, and select <span class="fun">Scatter Plot</span>. This opens the Scatter Plot dialog.<br>
@@ -2726,7 +2811,7 @@ Code book for Mcycle Dataset
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the scatter plot.</li>
 </ol>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2735,7 +2820,7 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -2969,7 +3054,7 @@ Table&nbsp;2.13: Head of Australian Data frame
 </div>
 </div>
 <div id="code-book-australian" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2978,7 +3063,7 @@ Code book for Australian Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The data is a range of economic and financial data produced by the Reserve Bank of Australia and other organizations.</p>
 <p>Format</p>
@@ -3012,7 +3097,7 @@ Code book for Australian Dataset
 <p>Looking at the code book, one can see that the variable <span class="var">Assets_ADIs_Total</span> is the variable in the data frame that is of interest here. With a time series plot, the other variable is time. In this case the variable in the data frame that represents time is <span class="var">Date</span>. Notice that the dates are recorded as the months during specific quarters since September 1, 1969.</p>
 <p>Click to expand the box below see how to create a density plot of instate tuition by type of institution.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Time Series Plot in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3021,7 +3106,7 @@ Code book for Australian Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">Austrailian_financial</span> dataset into your Rguroo account, as was shown <a href="#Importing-Data-to-Rguroo-Chapter-2">here</a>.</p>
 <ol type="1">
@@ -3037,7 +3122,7 @@ Code book for Australian Dataset
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the time series graph.</li>
 </ol>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3046,7 +3131,7 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -3132,7 +3217,7 @@ Table&nbsp;2.14: Head of Metacarpal Data frame
 </div>
 </div>
 <div id="code-book-metacarpal" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3141,7 +3226,7 @@ Code book for Metacarpal Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> When anthropologists analyze human skeletal remains, an important piece of information is living stature. Since skeletons are commonly based on statistical methods that utilize measurements on small bones. The following data was presented in a paper in the American Journal of Physical Anthropology to validate one such method.</p>
 <p>Format</p>
@@ -3208,7 +3293,7 @@ Table&nbsp;2.15: Head of House Data frame
 </div>
 </div>
 <div id="code-book-house" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3217,7 +3302,7 @@ Code book for House Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The data show the capital value and annual rental value of domestic properties in Auckland in 1991.</p>
 <p>Format</p>
@@ -3327,7 +3412,7 @@ Table&nbsp;2.16: Head of Fertility Data frame
 </div>
 </div>
 <div id="code-book-fertility" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3336,7 +3421,7 @@ Code book for Fertility Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Data is from the World Bank on the life expectancy of countries and the fertility rates in those countries.</p>
 <p>Format</p>
@@ -4291,7 +4376,7 @@ Table&nbsp;2.17: Head of Fert_prenatal Data frame
 </div>
 </div>
 <div id="code-book-fertility-prenatal" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4300,7 +4385,7 @@ Code book for Fertility Prenatal Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Data is from the World Bank on money spent on expenditure of countries and the percentage of women receiving prenatal care in those countries.</p>
 <p>Format</p>
@@ -4371,7 +4456,7 @@ Table&nbsp;2.18: Head of Firearm Data frame
 </div>
 </div>
 <div id="code-book-firearm-rate" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4380,7 +4465,7 @@ Code book for Firearm Rate Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The data give the number of deaths caused by firearms in Australia from 1983 to 1997, expressed as a rate per 100,000 of population.</p>
 <p>Format</p>
@@ -4569,7 +4654,7 @@ Table&nbsp;2.19: Head of CPI Data frame
 </div>
 </div>
 <div id="code-book-cpi" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4578,7 +4663,7 @@ Code book for CPI Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div id="callout-36" class="callout-36-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> This table of Consumer Price Index (CPI) data is based upon a 1982 base of 100.</p>
 <p>Format</p>
@@ -4683,7 +4768,7 @@ Table&nbsp;2.20: Head of US_income Data frame
 </div>
 </div>
 <div id="code-book-us-income" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -4692,7 +4777,7 @@ Code book for US Income Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-35" class="callout-35-contents callout-collapse collapse">
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> This table is of US mean and median incomes in both current dollars and in 2017 dollars.</p>
 <p>Format</p>
