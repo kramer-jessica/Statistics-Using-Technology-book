@@ -62,3 +62,21 @@ function Span(el)
 
   return el
 end
+-- Handle solution blocks (Divs) for PDF/LaTeX
+function Div(el)
+  if not FORMAT:match("latex") then
+    return nil
+  end
+
+  if el.classes:includes("solution") then
+    local blocks = {}
+    table.insert(blocks, pandoc.RawBlock("tex", "\\begin{solution}"))
+    for _, b in ipairs(el.content) do
+      table.insert(blocks, b)
+    end
+    table.insert(blocks, pandoc.RawBlock("tex", "\\end{solution}"))
+    return blocks
+  end
+
+  return nil
+end

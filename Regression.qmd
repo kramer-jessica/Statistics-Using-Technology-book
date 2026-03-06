@@ -87,7 +87,7 @@ References: (Find Out How Many Calories in Beer?, 2019)
 
 :::
 
-**Solution** 
+::: {.solution}
 
 To aid in figuring out if there is a relationship between the alcohol content and the number of calories, it helps to draw a scatterplot of the data. First, it is helpful to clearly state the variables. Following the convention used in algebra, we represent the variables as $x$ and $y$, where $x$ denotes the explanatory (or predictor) variable and $y$ denotes the response variable.
 
@@ -134,6 +134,7 @@ knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieScatter.svg")
 ```
 
 The scatterplot shown in @fig-Beer-point looks fairly linear, meaning the points tend to fall along a straight-line pattern rather than a curved one.
+:::
 
 ### Finding the regression line
 
@@ -192,7 +193,7 @@ c. Use the regression equation to find the number of calories when the alcohol c
 d. Use the regression equation to find the number of calories when the alcohol content is 14%.This is the predicted value or the fitted value at $x=14$.
 :::
 
-**Solution**
+::: {.solution}
 
 _a. Finding the regression equation_
 
@@ -305,6 +306,8 @@ The predicted values from Rguroo are shown in @fig-AlcoholCaloriePredOutput belo
 knitr::include_graphics(
   "Rguroo_outputs/Regression/AlcoholCaloriePredOutput.png")
 ```
+
+:::
 
 ### Extrapolation and Interpolation
 
@@ -950,11 +953,13 @@ In practice, there is no universal rule for what counts as “strong” or “we
 How strong is the positive relationship between alcohol content and the number of calories in a 12-ounce beer? To answer this question, compute the correlation coefficient between alcohol content and calories using the [beer]{.data} dataset (“Calories in Beer,” 2011). The first six rows of this dataset are shown in @tbl-Beer. Use Rguroo to calculate the correlation coefficient and interpret its value in context.
 :::
 
-**Solution**
+::: {.solution}
 
 You can obtain the correlation coefficient, $r$, in Rguroo from the output of the [Linear Regression]{.fun} function. To find this value for the beer example, follow the steps for creating a linear regression model [here](#Finding-the-Regression-Equation-in-Rguroo).
 
 For these data, the correlation coefficient between alcohol content and calories is 0.9036. This value appears in the **Data and Model Summary** table of Rguroo's regression output in the row labeled [Pearson Correlation (r)]{.des}; see @tbl-Beer-lm-model. Since $r = 0.9036$ is close to 1, it indicates a strong positive linear relationship between alcohol content and calories. Because $r$ is positive, the direction of the relationship is positive: as alcohol content increases, the number of calories tends to increase.
+
+:::
 
 
 ### Coefficient of Determination, $R^2$ {#sec-coef-determination}
@@ -993,12 +998,13 @@ This quantity is called the **coefficient of determination**.
 How well does the alcohol content of a beer explain the variability in the number of calories in a 12-ounce beer? To answer this question, use the sample of beer's alcohol content and calories in the [beer]{.data} dataset. The first six rows of this dataset is shown in @tbl-Beer.
 :::
 
-**Solution**
+::: {.solution}
 
 You can obtain the coefficient of determination, $R^2$, in Rguroo from the output of the [Linear Regression]{.fun} function. To find the coefficient of determination for the beer example, follow the steps for creating a linear regression model [here](#Finding-the-Regression-Equation-in-Rguroo).
 
 For these data, the coefficient of determination between alcohol content and calories is 0.8164. This value appears in the **Data and Model Summary** table of Rguroo's regression output in the row labeled [Coefficient of Determination (R-squared)]{.des}; see @tbl-Beer-lm-model. Here, $R^2 = 0.8164$, meaning that 81.64% of the variability in calories is explained by alcohol content, while 18.36% is not explained by the model.
 
+:::
 
 There is a relationship between correlation coefficient $r$ and the coefficient of determination $R^2$, namely $r = \pm\sqrt{R^2}$.
 The question is which sign, plus ($+$) or minus ($-$), should be used. If the relationship is positive (that is, the slope of the regression line is positive), use the $+$ sign. If the relationship is negative (the slope is negative), use the $-$ sign. In other words, assign to $r$ the same sign as the slope of the linear regression line.
@@ -1257,7 +1263,7 @@ To determine this, use the sample of beer's alcohol content and calories (Find O
 
 :::
 
-**Solution**
+::: {.solution}
 
 To obtain the prediction interval for the beer example, follow the steps for creating a linear regression model [here](#Finding-the-Regression-Equation-in-Rguroo). Additionally, in the [linear Regression]{.fun} dialog box, enter the value of alcohol content 7 in the textbox labeled [Predict at new x value(s)]{.des}. Then open the tab labeled [Prediction Interval]{.button} and select the checkboxes labeled [Prediction Interval]{.des} inside the tab. Additionally, in the **Methods** section select [Theory Based]{.des}; These steps are shown in @fig-AlcoholCalorieRegress_pred_interval. 
 
@@ -1287,6 +1293,8 @@ knitr::include_graphics(
 The value 201.592 is the model’s predicted number of calories for a beer with 7% alcohol. Of course, this single number is only an estimate, and individual beers with 7% alcohol may have somewhat more or fewer calories. To account for this natural variability, we use a prediction interval. The prediction interval is shown in the columns labeled **Lower Pred Limit (2.5%)** and **Upper Pred Limit (97.5%)**. These values indicate that we can be 95% confident that the actual number of calories for a beer with 7% alcohol lies between 166.7 and 236.5. This range is called a 95% prediction interval.
 
 You can obtain prediction intervals for other alcohol contents by entering different values in the textbox labeled [Predict at new x value(s)]{.des} in the [Linear Regression]{.fun} dialog box. You can also change the confidence level using the textbox labeled [Confidence Level]{.des} in the [Confidence Interval]{.des} tab.
+
+:::
 
 It is important to check the assumptions under whicha prediction interval is valid. These assumptions are given in @sec-assumption-validity-inference (Assumptions for Validity of Inference).
 
@@ -1326,7 +1334,7 @@ Is there a linear relationship, or correlation, between the alcohol content and 
 
 :::
 
-**Solution**
+::: {.solution}
 
 The variables that we are consdeing are $x$ = alcohol content in the beer and $y$ = calories in 12 ounce beer, and the null and alternative hypotheses are
 
@@ -1383,6 +1391,7 @@ Notice that the $t$-statistics and $p$-values reported for the slope and correla
 
 Here, the $p$-value of $8.84 \times 10^{-85}$ is far smaller than the significance level of 0.05 (5%). Therefore, we reject the null hypothesis and conclude that there is sufficient evidence of a linear correlation between alcohol content and the number of calories in a 12-ounce bottle of beer.
 
+:::
 
 ### Checking Assumptions for Confidence Intervals and Tests {#sec-assumption-validity-inference} 
 
