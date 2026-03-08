@@ -102,7 +102,7 @@ Kozak, 2019
 :::
 
 
-**Solution**
+::::: {.solution}
 
 Click to expand the box below see how to create a frequency and relative frequency distribution for [vehicle]{.var} type.
 
@@ -146,12 +146,13 @@ knitr::include_graphics(
 )
 ```
 
+:::::
 
 ### Graphical Displays of Qualitative Data
 
-Another way to display data is with a graph. There are several different graphs that are used for qualitative data. Typical qualitative graphs include bar graphs, Pareto charts, and pie charts.  
+Another way to display data is with a graph. There are several different graphs that are used for qualitative data. Typical qualitative graphs include barplots, Pareto charts, and pie charts.  
 
-**Bar graphs or barplots** consist of the frequencies on one axis and the categories on the other axis. Drawing the barplot using Rguroo is performed by importing the dataset (or creating a dataset) and using the **Plots** toolbox in Rguroo.
+**Barplots or barplots** consist of the frequencies on one axis and the categories on the other axis. Drawing the barplot using Rguroo is performed by importing the dataset (or creating a dataset) and using the **Plots** toolbox in Rguroo.
 
 ::: {#exm-drawing-a-bar-chart}
 ## Drawing a Barplot 
@@ -163,11 +164,11 @@ Use the [class_survey1]{.data} dataset to create a barplot of [vehicle]{.var} ty
 :::
 
 
-**Solution**
+::::: {.solution}
 
-Click to expand the box below see how to create the bar graph for [vehicle]{.var} type.
+Click to expand the box below see how to create the barplot for [vehicle]{.var} type.
 
-:::: {#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Bar Graph of Vehicle Type in Rguroo"}
+:::: {#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Barplot of Vehicle Type in Rguroo"}
 
 **Before you begin:** Make sure you have already imported the [class_survey1]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Data-to-Rguroo-Chapter-2).
 
@@ -175,42 +176,43 @@ Click to expand the box below see how to create the bar graph for [vehicle]{.var
 2. Open the [Create Plot]{.dpd} dropdown, and select [Barplot]{.fun}. This opens the [Barplot]{.dialog} dialog.  
 3. In the [Barplot]{.dialog} dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.  
 4. Choose the [vehicle]{.var} variable from the [Factor 1]{.dpd} dropdown.     
-5. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the bar graph.
+5. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the barplot.
 6. In the **Label** section of the dialog:  
-   - Enter [Bar Graph for Vehicle Type]{.typein} in the [Title]{.des} textbox.  
+   - Enter [Barplot for Vehicle Type]{.typein} in the [Title]{.des} textbox.  
    - Enter [Vehicle Type]{.typein} in the [X-Axis]{.des} textbox.  
    - Enter [Number of Vehicles]{.typein} in the [Y-Axis]{.des} textbox.  
 7. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the barplot.
-8. In the ![Save as](Rguroo_Icons/save_as.png) textbox, enter the name [VehicleBarGraph]{.typein} for the bar graph.
+8. In the ![Save as](Rguroo_Icons/save_as.png) textbox, enter the name [VehicleBarGraph]{.typein} for the barplot.
 Click the button to save the barplot to your Rguroo account.
 
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-![Barplot dialog showing settings for creating bar graph of vehicle type.](Rguroo_dialogs/Graphical_Description_of_Data/car_dialog_bargraph_2.png){width="500px"}
+![Barplot dialog showing settings for creating barplot of vehicle type.](Rguroo_dialogs/Graphical_Description_of_Data/car_dialog_bargraph_2.png){width="500px"}
 :::
 
 ::::
-
 
 ```{r,echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
 #| warning: FALSE
 #| label: fig-bar_graph
-#| fig-cap: "Bar graph of vehicles driven by students in statistics class"
+#| fig-cap: "Barplot of vehicles driven by students in statistics class"
 knitr::include_graphics(
   "Rguroo_outputs/Graphical_Description_of_Data/barplot_vehicle_2.svg"
 )
 ```
 
-@fig-bar_graph is a Barplot with bars for Audi, Buick, Honda, Hyundai, Mercury, Nissan with height of 1, Dodge and None with height of 2, Jeep, Subaru, Toyota with heights of 3, and Chevrolet and Ford at height of 4.
+@fig-bar_graph is a barplot with bars for Audi, Buick, Honda, Hyundai, Mercury, Nissan with height of 1, Dodge and None with height of 2, Jeep, Subaru, Toyota with heights of 3, and Chevrolet and Ford at height of 4.
 
 Notice from @fig-bar_graph, that Chevrolet and Ford are the most popular cars, with Jeep, Subaru, and Toyota not far behind. Many other vehicle types seem to be less commonly used, and are tied for the lowest frequency of 1. However, we would need more data to determine whether these differences are meaningful. 
+
+:::::
 
 **All graphs should have labels on each axis and a title for the graph.**
 
 Another version of a barplot that is useful is a relative frequency barplot. A relative frequency barplot gives you a clear way to compare how different categories or values occur, especially when working with datasets of different sizes. By converting raw counts into proportions, the graph highlights patterns that might otherwise be hidden. This makes it a powerful tool for spotting meaningful relationships in data, comparing data of different sizes, and communicating those insights in a way that’s easy for others to understand.
 
-Rguroo can generate a relative frequency bar graph from the same [Barplot]{.dialog] in the **Plot** toolbox.
+Rguroo can generate a relative frequency barplot from the same [Barplot]{.dialog] in the **Plot** toolbox.
 
 ::: {#exm-drawing-a-relative-frequency-bar-chart}
 ## Drawing a Relative Frequency Barplot for Vehicle Type
@@ -221,15 +223,15 @@ Use the [class_survey1]{.data} dataset to create a relative frequency barplot of
 
 :::
 
-**Solution**
+::: {.solution}
 
-To create a relative frequency bar graph, follow the directions for creating a bar graph [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, select the [proportion]{.des} checkbox to obtain a relative frequency barplot.  Don't forget to change your y-axis label to proportion as well.
+To create a relative frequency barplot, follow the directions for creating a barplot [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, select the [proportion]{.des} checkbox to obtain a relative frequency barplot.  Don't forget to change your y-axis label to proportion as well.
 
 ```{r,echo=FALSE}
 #| fig-alt: "Dialog box for creating a relative frequency distribution"
 #| warning: FALSE
 #| label: fig-rel_freq_dialog
-#| fig-cap: "Dialog Box for Relative Frequency Bar Graph"
+#| fig-cap: "Dialog Box for Relative Frequency Barplot"
 #| out.width: "80%"
 knitr::include_graphics(
   "Rguroo_dialogs/Graphical_Description_of_Data/dialog_rel_freq_vehicle_2.png"
@@ -241,36 +243,39 @@ knitr::include_graphics(
 #| fig-alt: "See the description of the graph below the graph"
 #| warning: FALSE
 #| label: fig-class_data_dot-car
-#| fig-cap: "Relative Frequency bar graph of vehicles driven by students in statistics class"
+#| fig-cap: "Relative Frequency Barplot of vehicles driven by students in statistics class"
 knitr::include_graphics(
   "Rguroo_outputs/Graphical_Description_of_Data/barplot_rel_freq_vehicle_2.svg"
 )
 ```
 
-@fig-class_data_dot-car is a relative frequency bar graph of vehicles showing the vehicle types on the horizontal axis and proportions (relative frequency) on the vertical axis.
 
-Notice that a frequency bar graph and relative frequency bar graph give you similar information. However, a relative frequency bar graph shows you the proportions of the total vehicles.
+@fig-class_data_dot-car is a relative frequency barplot of vehicles showing the vehicle types on the horizontal axis and proportions (relative frequency) on the vertical axis.
+
+Notice that a frequency barplot and relative frequency barplot give you similar information. However, a relative frequency barplot shows you the proportions of the total vehicles.
+
+:::
 
 The beauty of datasets with multiple variables is that you can answer many questions from the data. Suppose you want to see if gender makes a difference for the type of car a person drives. If you are a car manufacturer, if you knew that certain genders like certain cars, then you would advertise to the different genders.
 
 ::: {#exm-drawing-a-bar-chart-by-gender}
-## Drawing a Bar Chart of Vehicle Type by Gender
+## Drawing a Barplot of Vehicle Type by Gender
 
-Use the [class_survey1]{.data} to create a bar chart of [vehicle]{.var} type by [gender]{.var}.
+Use the [class_survey1]{.data} to create a barplot of [vehicle]{.var} type by [gender]{.var}.
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}. A complete description of the variables is provided in the [dataset code book](#code-book-class).
 
 :::
 
-**Solution**
+::: {.solution}
 
-To create a bar graph of [vehicle]{.var} by [gender]{.var}, follow the directions for creating a bar graph [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, in the barplot dialog box, select the [gender]{.var} variable from the [Factor 1]{.dpd} dropdown and the [vehicle]{.var} variable from the [Factor 2]{.dpd} dropdown.  Don't forget to title your graph appropriately. A picture of the dialog box is shown below.
+To create a barplot of [vehicle]{.var} by [gender]{.var}, follow the directions for creating a barplot [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, in the barplot dialog box, select the [gender]{.var} variable from the [Factor 1]{.dpd} dropdown and the [vehicle]{.var} variable from the [Factor 2]{.dpd} dropdown.  Don't forget to title your graph appropriately. A picture of the dialog box is shown below.
 
 ```{r,echo=FALSE}
-#| fig-alt: "Dialog box for bar graph of vehicle type by gender"
+#| fig-alt: "Dialog box for Barplot of vehicle type by gender"
 #| warning: FALSE
 #| label: fig-dialog_vehicle_gender
-#| fig-cap: "Dialog Box for Bar graph of Vehicles Driven by Gender"
+#| fig-cap: "Dialog Box for Barplot of Vehicles Driven by Gender"
 #| out.width: "80%"
 knitr::include_graphics(
   "Rguroo_dialogs/Graphical_Description_of_Data/dialog_vehicle_gender_2.png"
@@ -282,7 +287,7 @@ knitr::include_graphics(
 #| fig-alt: "See the description of the graph below the graph"
 #| warning: FALSE
 #| label: fig-class_data_bar_gender
-#| fig-cap: "Bar graph of Vehicles driven by students in statistics class, disaggregated by gender"
+#| fig-cap: "Barplot of Vehicles driven by students in statistics class, disaggregated by gender"
 knitr::include_graphics(
   "Rguroo_outputs/Graphical_Description_of_Data/barplot_vehicle_gender_2.svg"
 )
@@ -292,26 +297,28 @@ knitr::include_graphics(
 
 Overall, we see some differences in vehicle preferences by gender, but the counts are small, so we should be cautious about drawing strong conclusions. 
 
-**Need to Discuss this Example**Another form of a bar graph that disaggregates by a factor is called a stacked bar graph. A stacked bar graph shows how different sub‑groups contribute to an overall total by stacking the segments on top of each other within each bar.
+:::
+
+**Need to Discuss this Example**Another form of a barplot that disaggregates by a factor is called a stacked barplot. A stacked barplot shows how different sub‑groups contribute to an overall total by stacking the segments on top of each other within each bar.
 
 ::: {#exm-drawing-a-bar-chart-by-gender-stacked}
-## Drawing a Stacked Bar Chart of Vehicle Type by Gender
+## Drawing a Stacked Barplot of Vehicle Type by Gender
 
-Use the [class_survey1]{.data} dataset to create a stacked bar chart of [vehicle]{.var} type by [gender]{.var}.
+Use the [class_survey1]{.data} dataset to create a stacked barplot of [vehicle]{.var} type by [gender]{.var}.
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}. A complete description of the variables is provided in the [dataset code book](#code-book-class).
 
 :::
 
-**Solution**
+::: {.solution}
 
-To create a bar graph of [vehicle]{.var} by [gender]{.var}, follow the directions for creating a bar graph [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, in the barplot dialog box, select the [gender]{.var} variable from the [Factor 1]{.dpd} dropdown and the [vehicle]{.var} variable from the [Factor 2]{.dpd} dropdown.  To make it a stacked bar graph, click the "stacked" option. Don't forget to title your graph appropriately. A picture of the dialog box is shown below.
+To create a barplot of [vehicle]{.var} by [gender]{.var}, follow the directions for creating a barplot [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, in the barplot dialog box, select the [gender]{.var} variable from the [Factor 1]{.dpd} dropdown and the [vehicle]{.var} variable from the [Factor 2]{.dpd} dropdown.  To make it a stacked barplot, click the "stacked" option. Don't forget to title your graph appropriately. A picture of the dialog box is shown below.
 
 ```{r,echo=FALSE}
-#| fig-alt: "Dialog box for stacked bar graph of vehicle type by gender"
+#| fig-alt: "Dialog box for stacked Barplot of vehicle type by gender"
 #| warning: FALSE
 #| label: fig-dialog_vehicle_gender_stacked
-#| fig-cap: "Dialog Box for Stacked Bar graph of Vehicles Driven by Gender"
+#| fig-cap: "Dialog Box for Stacked Barplot of Vehicles Driven by Gender"
 #| out.width: "80%"
 knitr::include_graphics(
   "Rguroo_dialogs/Graphical_Description_of_Data/dialog_stacked_bar_vehicle_gender.png"
@@ -323,11 +330,13 @@ knitr::include_graphics(
 #| fig-alt: "See the description of the graph below the graph"
 #| warning: FALSE
 #| label: fig-vehicle_gender_stacked
-#| fig-cap: "Stacked Bar graph of Vehicles Driven by Gender"
+#| fig-cap: "Stacked Barplot of Vehicles Driven by Gender"
 knitr::include_graphics(
   "Rguroo_outputs/Graphical_Description_of_Data/stacked_bar_vehicle_gender.svg"
 )
 ```
+
+:::
 
 Another type of graph that is also useful for qualitative data is a pie chart. A pie chart is a circular graph where each slice represents a percentage of the whole, proportional to the numerical value it represents. Pie charts allow for easy visualization of how each part contributes to the whole.
 
@@ -340,7 +349,7 @@ Use the [class_survey1]{.data} dataset to create a pie chart of [vehicle]{.var} 
 
 :::
 
-**Solution**
+::::: {.solution}
 
 Click to expand the box below see how to create the pie chart for vehicle type.
 
@@ -377,6 +386,8 @@ knitr::include_graphics(
 
 @fig-class_pie_chart is a pie chart of type of vehicles owned by students (Toyota, Subaru, none, Nissan, Mercury, Jeep, Honda, Ford, Dodge, Chevrolet, and Buick, Hyundai, and Audi). Each vehicle percentage is displayed in the legend on the right.
 
+:::::
+
 
 ```{r car-data-gender-jitter,echo=FALSE,eval=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
@@ -392,7 +403,7 @@ gf_jitter(
 )
 ```
 
-There are many other types of graphs that can be used to display qualitative data. The choice of graphs depends on your data and what you want to emphasize, but the frequency bar graph, relative frequency bar graph, and pie chart are the most commonly used and most useful.
+There are many other types of graphs that can be used to display qualitative data. The choice of graphs depends on your data and what you want to emphasize, but the frequency barplot, relative frequency barplot, and pie chart are the most commonly used and most useful.
 
 ### Homework for Qualitative Data Section
 
@@ -625,7 +636,7 @@ Use the [class_survey1]{.data} to create a grouped frequency distribution for th
 
 :::
 
-**Solution**
+::::: {.solution}
 
 Click to expand the box below see how to create a grouped frequency distribution for [distance_campus]{.var}.
 
@@ -663,6 +674,8 @@ knitr::include_graphics(
 
 The grouped frequency distribution above used the default method, Freedman-Diaconis, creating 11 classes.  Each class has a class width of 5. Now that the data is organized, it is easily seen that most students live within 15 miles of campus. There are also two students who live farther from campus than the rest of the class.
 
+:::::
+
 As mentioned above, Rguroo also allows us to manually create bins. If we want a specific number of bins, we can enter the desired number in the **Binning** toolbox dialog by selecting [Number]{.des} under the **Bins** section and typing in the number of bins we want. 
 
 Another option in Rguroo is to choose the starting value for the first class and the class width. To manually find the class width, calculate the following and then round up to a nice number.
@@ -683,7 +696,7 @@ Use the [class_survey1]{.data} to create a grouped frequency distribution with 6
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}. A complete description of the variables is provided in the [dataset code book](#code-book-class).
 :::
 
-**Solution**
+::: {.solution}
 
 To create a grouped frequency distribution with 6 classes, we need to calculate the class width. For this variable the maximum value is 50 and the minimum value is 0.6.  Use these values in the class width formula to find the class width. 
 
@@ -713,7 +726,7 @@ knitr::include_graphics(
 )
 ```
 
-
+:::
 
 ### Graphical Displays of Quantitative Data
 
@@ -736,7 +749,7 @@ Data was collected for two semesters in a statistics class. Draw a histogram and
 :::
 
 
-**Solution**
+::::: {.solution}
 
 Click to expand the box below see how to create a histogram for distance to campus.
 
@@ -802,6 +815,8 @@ knitr::include_graphics(
 Notice the histogram and density plot are very similar, but the density plot is smoother. Both the histogram and density plot give you similar insights about the shape of the distribution; however, the smooth density curve highlights the underlying shape of the distribution by smoothing out the jaggedness of the histogram.  
 
 Reviewing the graphs you can see that most of the students live within 15 miles of the Lone Tree Campus, in fact most live within 5 miles from the campus. However, there is a student who lives around 50 miles from the Lone Tree Campus and another lives between 20 to 25 miles away. These  distances are much further than the rest of the data and they can be considered an outliers. 
+
+:::::
 
 An **outlier** is a data value that is far from the rest of the values. It may be an unusual value or a mistake. It is a data value that should be investigated. In our example, the two students lived really far from campus, thus the value is not a mistake, and is just very unusual.
 
@@ -946,7 +961,7 @@ References Chronicle of Higher Education \*, December 31, 2018.
 
 :::
 
-**Solution**
+::: {.solution}
 
 **Before you begin:** Make sure you have already imported the [tuition_4_year]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Data-to-Rguroo-Chapter-2).
 
@@ -1006,6 +1021,8 @@ knitr::include_graphics(
 The density plots reveal distinct tuition patterns across the three types of 4year institutions. Public colleges have the lowest instate tuition, with most schools clustering around $10,000 and relatively little variation, indicating that public tuition is generally affordable and fairly consistent nationwide. Forprofit colleges fall in the middle, with tuition centered near $20,000 and a moderate spread, suggesting that many of these institutions charge similar amounts, although a few are more expensive.  
 
 Private nonprofit colleges stand out as the most costly group, with a peak around $35,000 and a wide distribution that extends to much higher tuition levels. This broad spread shows that private colleges vary substantially in price, with some moderately priced and others extremely expensive. Comparing the density curves by type of institution makes it clear that public colleges are the most affordable, forprofit colleges occupy a middle ground, and private nonprofit colleges are the most expensive and most variable in their tuition levels. 
+
+:::
 
 ### Homework for Quantitative Data Section
 
@@ -1291,7 +1308,7 @@ Venables, W. N. and Ripley, B. D. (1999) Modern Applied Statistics with S-PLUS. 
 
 :::
 
-**Solution**
+::::: {.solution}
 
 To answer this question, we can examine the data on a scatterplot and look for patterns. 
 
@@ -1340,6 +1357,8 @@ knitr::include_graphics(
 ```
 
 @fig-mcycle shows how head acceleration changes after an impact. At first, the acceleration stays close to zero, meaning the head hasn’t begun to move yet. Around 20 milliseconds, there is a sudden and dramatic drop to about –120 g, indicating a rapid backward motion caused by the initial force of the impact. Immediately afterward, the acceleration rebounds sharply upward to more than +60 g, showing the head snapping forward. Following this, the acceleration values fluctuate between negative and positive g's, but gradually settle toward zero. This suggests that the head’s motion is slowing down and returning to a stable state. Overall, the pattern reflects a typical impact response: an initial delay, a strong backward acceleration, a forward rebound, and then diminishing movement over time. Although this scatterplot shows a relationship between time after impact and head acceleration, the pattern does not follow a simple linear shape.
+
+:::::
 
 ### **Time-Series Plot**
 
@@ -1422,8 +1441,7 @@ References Reserve Bank of Australia and other organizations
 
 :::
 
-**Solution**
-
+::::: {.solution}
 Looking at the code book, one can see that the variable [Assets_ADIs_Total]{.var} is the variable in the dataset that is of interest here. With a time series plot, the other variable is time. In this case the variable in the dataset that represents time is [Date]{.var}. Notice that the dates are recorded as the months during specific quarters since September 1, 1969. 
 
 Click to expand the box below see how to create a density plot of instate tuition by type of institution.
@@ -1457,6 +1475,8 @@ knitr::include_graphics(
 ```
 
 @fig-Australian_data is an generally increasing time series graph of Total Assets of Authorized Deposit-taking Institutions from day 2007 to 2016. Notice that the time series graph seems to be flat until approximately 2007.  Upon inspecting the dataset, there are no entries for Assets_ADIs_Total until Mar-90, so our graph will start at this point in time.The first ADI total starts at 0 and goes up to about 4500. From the graph, total assets of Authorized Deposit-taking Institutions (ADIs) appear to be increasing over time, with a slight dip in the year 2013.
+
+:::::
 
 ### Homework for Other Graphical Representations of Data Section
 
