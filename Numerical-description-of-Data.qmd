@@ -65,7 +65,7 @@ knitr::kable(head(cats))
 
 
 
-**Solution**
+:::{.solution}
 
 
 Looking at the dataset for cats weights, @tbl-Cats, you see that there are several variables. A Code Book describes the dataset, explains what the variables are including the units, and the source of the dataset. The code book for the [cats]{.data} is below.
@@ -117,6 +117,7 @@ The mean weight is 2.72 kg.
 ```
 
 The median weight is 2.7 kg also. It appears the average weight of all cats in this dataset is 2.7 kg.
+:::
 
 ::: {#exm-mean-median-cats-factor}
 ## Finding Mean and Median with Factor
@@ -127,7 +128,7 @@ Suppose you want to know if male cats weigh more than female cats. Looking at th
 @tbl-Cats displays the first six rows of the dataset. A complete description of the variables is provided in the  [dataset code book](#code-book-cats) that follows.
 :::
 
-**Solution**
+:::{.solution}
 
 Click to expand the box below to see how to calculate the mean and median, separated by sex, in Rguroo.
 
@@ -161,6 +162,7 @@ knitr::include_graphics("Rguroo_outputs/Numerical_Description/cat_wt_sex_output.
 ```
 
 Notice that the female cats' mean weight is 2.36 kg and the male cats' mean weight is 2.9 kg. The median weight of female cats is 2.3 kg and for males it is 2.9 kg. So it does appear that male cats weigh a bit more than the female cats.
+:::
 
 There are many different summary statistics that can be found. An example is the minimum and maximum value. In the next example, you will see how to find the min and max values and then filter them out of a dataset to see what effect they have on the mean and median.
 
@@ -173,7 +175,7 @@ Find the minimum and maximum values of cats weights.
 @tbl-Cats displays the first six rows of the dataset. A complete description of the variables is provided in the  [dataset code book](#code-book-cats) that follows.
 :::
 
-**Solution**
+:::{.solution}
 
 The steps to find the minimum and the maximum in Rguroo are similar to finding the mean and median described [here](#Calculating-summary-stats-in-Rguroo). In the **Statistics** section of the dialog, select the checkbox for [Minimum]{.des} and [Maximum]{.des}.
 
@@ -243,6 +245,7 @@ The mean without the maximum value is 2.70 kg, and the median is 2.7 kg.
 The mean without the minimum value is 2.75 kg, and the median is 2.7 kg.
 
 From the effect of extremes [example](#exm-effect-extreme-values), the mean of the [cats]{.data} dataset with all the values is 2.72 kg, while the median is 2.7 kg. Notice that when the maximum value was excluded from the dataset, the mean decreased slightly but the median did not change, and when the minimum value was excluded from the dataset, the mean increased a little but the median did not change. This shows that the mean is affected by extreme values, while the median is not. We say the median is a resistant measure of center because it is not affected by extreme values as much.
+:::
 
 An **extreme value** is a data value that is much higher or much lower than the rest of the data. When extreme values are present, the median is generally a better measure of center than the mean because the median is not pulled by those values. When there are no extreme values, the mean and median tend to be similar, and the mean is commonly used. This is because the mean is **not resistant** — it is affected by extreme values, which can pull it higher or lower. The median, on the other hand, is **resistant** — it remains stable even when extreme values are present in the data.
 
@@ -286,7 +289,7 @@ where $x$ represents each data value and $w$ represents the weight (or importanc
 In your biology class, your final grade is based on several components: a lab score, scores on two major tests, and your score on the final exam. Each component is graded out of 100 points. The lab score is worth 15% of the course grade, the two exams are worth 25% each, and the final exam is worth 35% of the course. Suppose you earned scores of 95 on the labs, 83 and 76 on the two exams, and 84 on the final exam. Compute your weighted average for the course.
 :::
 
-**Solution**
+:::{.solution}
 
 Variable: $x$ = score
 
@@ -324,6 +327,7 @@ knitr::include_graphics(c("Rguroo_dialogs/Numerical_Description/summary_stat_dia
 
 Your weighted mean in the biology class is 83.4%. Using the traditional grading scale, you have a B in the class.
 
+:::
 
 ::: {#exm-weighted-average-faculty-ratings}
 ## Calculating Weighted Averages
@@ -335,7 +339,7 @@ b)  Another faculty member had ratings of 6 for teaching, 8 for publishing, 9 fo
 c)  Which faculty member had the higher average evaluation?
 :::
 
-**Solution**
+:::{.solution}
 
 a)  Variable: $x$ = rating, $w$ = weight
 
@@ -389,6 +393,8 @@ The weighted average for this employee is 7.56.
 c)  Which faculty member had the higher average evaluation?
 
     The second faculty member has a higher average evaluation.
+
+:::
 
 ### Homework for Measures of Center Section
 
@@ -539,6 +545,7 @@ e.  If you were a platen worker, who believes that the employees need a raise, w
 Cost<-read.csv( "https://krkozak.github.io/MAT160/cost.csv") 
 knitr::kable(head(Cost))
 ```
+
 ::: {#code-book-cost .callout-tip .codebook collapse="true"}
 ## Code book for Cost Dataset
 
@@ -611,9 +618,11 @@ Calculate the range of the body weight of cats.
 @tbl-Cats displays the first six rows of the dataset. A complete description of the variables is provided in the  [dataset code book](#code-book-cats) that follows.
 :::
 
-**Solution**
+:::{.solution}
+
 From the effect of extreme values [example](#exm-effect-extreme-values), the maximum weight of a cat was 3.9 kg and the minimum was 2 kg. So the range is $3.9-2=1.9$ kg. But what does that tell you? You don't know if the weights are really spread out, or if they are close together.
 
+:::
 
 Unfortunately, the range does not provide a very accurate picture of variability because it only considers two values: the highest and lowest. A better approach is to examine how far each data value is from the mean. This distance from the mean is called a **deviation**. By looking at all the deviations together, we get a much more complete picture of how spread out the data are.
 
@@ -668,7 +677,7 @@ For the dataset [cats]{.data} find the variance and standard deviation for weigh
 @tbl-Cats displays the first six rows of the dataset. A complete description of the variables is provided in the  [dataset code book](#code-book-cats) that follows.
 :::
 
- **Solution**
+:::{.solution}
 
  When using Rguroo, you would perform similar steps as described in calculation mean and median [example](#Calculating-summary-stats-in-Rguroo), and select [standard deviation]{.def} and [variance]{.def}, as shown in the figure @fig-sd-dialog.
 
@@ -711,6 +720,7 @@ knitr::include_graphics(c("Rguroo_dialogs/Numerical_description/cat_sex_sdvarmea
 
 You can see that the mean weight of females cats is 2.36 kg, the variance is 0.075 kg$^2$, and the standard deviation is 0.27 kg. For males cats, the mean is 2.9 kg, the variance is 0.22 kg$^2$, and the standard deviation is 0.47 kg. This means that female cats weigh less than males and since the variance and standard deviations are much less for female cats than males cats, female cats' weights are more consistent than male cats.
 
+:::
 
 ### Interpreting Variance and Standard Deviation
 
@@ -782,7 +792,7 @@ This dataset contains the following columns:
 References The data was supplied by The U.S. Weather Service
 :::
 
-**Solution**
+:::{.solution}
 
 Import the [Tornado_OK]{.data} dataset from the [Kozak]{.repo} repository into your Data toolbox on Rguroo using these [directions](#Importing-cats-to-Rguroo).
 
@@ -807,6 +817,7 @@ The mean is $\bar{x}=56$ tornadoes and the standard deviation is $s=27.6$ tornad
 
 Therefore, we can say that about 95% of the years have between 0.8 or 1 and 111 tornadoes in Oklahoma.
 
+:::
 
 ### Identifying Unusual Values with Standard Deviation
 
@@ -844,7 +855,7 @@ b.  In 1999, there were 145 tornadoes in the Oklahoma. Is this value unusual? Wh
 @tbl-Tornado displays the first six rows of the dataset. A complete description of the variables is provided in the  [dataset code book](#code-book-tornado) that follows.
 :::
 
-**Solution**
+:::{.solution}
 
 a. Variable: $x$ = number of tornadoes in Oklahoma
 
@@ -857,6 +868,8 @@ b. Variable: $x$ = number of tornadoes in Oklahoma
 For this question the $x$ = 145, $z=\frac{145-56}{27.6}=3.22$
 
 Since the $z$ value is more than 2, then it would be considered unusual to have 145 tornadoes in a year in Oklahoma.
+
+:::
 
 ### Homework for Measures of Spread Section
 
@@ -996,7 +1009,7 @@ This dataset contains the following columns:
 
 [Source](http://www.ncbi.nlm.nih.gov/pubmed/9765732) Olson, K., & Hanson, J. (1997). Using reiki to manage pain: a preliminary report. Cancer Prev Control, 1(2), 108-13.
 
-References\*\* Using Reiki to manage pain: a preliminary report. Olson K1, Hanson J., Cancer Prev Control 1997, Jun; 1(2): 108-13.
+References: Using Reiki to manage pain: a preliminary report. Olson K1, Hanson J., Cancer Prev Control 1997, Jun; 1(2): 108-13.
 
 :::
 
@@ -1199,7 +1212,7 @@ Find the five-number summary, the interquartile range ($IQR$), and draw a box-an
 
 :::
 
-**Solution**
+::: {.solution}
 
 Variable: $x$ = weight of cats
 
@@ -1242,6 +1255,8 @@ Click to expand the box below to see instructions to create a boxplot of the [ca
 
 This is a modified boxplot which shows the outliers in the data.
 
+
+
 ```{r cats1-data-box, eval = FALSE, echo = FALSE}
 #| fig-alt: "box plot of weight of Cats median 2.7, Q1 at 2.3, lower fence at 2.0, Q3 at 3.0, upper fence at 3.8."
 #| warning: FALSE
@@ -1259,6 +1274,9 @@ This is a modified boxplot which shows the outliers in the data.
 
 There are no outliers since there are no dots outside of the fences.
 
+:::
+
+
 ::: {#exm-boxplots-factor}
 ## Separating based on a factor
 
@@ -1269,7 +1287,7 @@ Find the five-number summary of the weights of cats separated by the sex of the 
 
 :::
 
-**Solution**
+::: {.solution}
 
 Variable: $x_1$ = weight of female cat
 
@@ -1314,6 +1332,9 @@ gf_boxplot(~Bwt|Sex, data=cats, title="Weights of Cats", xlab="Body Weight in (k
 
 Notice that the weights of female cats has a median less than male cats, and in fact it can be seen that the $Q1$ to $Q3$ of the female cats is less than the $Q1$ to $Q3$ of the male cats.
 
+:::
+
+
 ::: {#exm-putting-it-together}
 ## Putting it all together
 
@@ -1351,7 +1372,7 @@ Jorgensen, B. (1982). The Generalized Inverse-Gaussian Distribution. Springer-Ve
 :::
 
 
-**Solution**
+::: {.solution}
 
 First, it might be useful to look at a visualization of the data, so create a density plot
 
@@ -1424,6 +1445,9 @@ knitr::include_graphics("Rguroo_outputs/Numerical_Description/nerve_boxplot_outp
 
 
 The boxplot reveals multiple high outliers. The mean shows a typical pulse interval of 11 1/50 seconds, with an IQR of 19.5 1/50 seconds indicating substantial variability. The right skew visible in both plots confirms that while most pulses occur consistently around 11 1/50 seconds, occasional longer delays create the high outliers.
+
+:::
+
 
 ### Homework for Ranking Section
 
