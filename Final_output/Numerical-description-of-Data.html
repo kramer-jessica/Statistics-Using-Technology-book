@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Numerical Description of Data – Statistics Using Technology: Rguroo Edition</title>
+<title>3&nbsp; Numerical Description of Data – Introductory Statistics: A Conceptual Approach Using Rguroo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -126,7 +126,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Statistics Using Technology: Rguroo Edition</a> 
+      <a href="./">Introductory Statistics: A Conceptual Approach Using Rguroo</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -228,8 +228,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#population-mean-and-sample-mean" id="toc-population-mean-and-sample-mean" class="nav-link" data-scroll-target="#population-mean-and-sample-mean"><span class="header-section-number">3.1.1</span> Population Mean and Sample Mean</a></li>
   <li><a href="#weighted-average" id="toc-weighted-average" class="nav-link" data-scroll-target="#weighted-average"><span class="header-section-number">3.1.2</span> Weighted Average</a></li>
-  <li><a href="#choosing-the-appropriate-measure-of-center" id="toc-choosing-the-appropriate-measure-of-center" class="nav-link" data-scroll-target="#choosing-the-appropriate-measure-of-center"><span class="header-section-number">3.1.3</span> Choosing the Appropriate Measure of Center</a></li>
-  <li><a href="#homework-for-measures-of-center-section" id="toc-homework-for-measures-of-center-section" class="nav-link" data-scroll-target="#homework-for-measures-of-center-section"><span class="header-section-number">3.1.4</span> Homework for Measures of Center Section</a></li>
+  <li><a href="#homework-for-measures-of-center-section" id="toc-homework-for-measures-of-center-section" class="nav-link" data-scroll-target="#homework-for-measures-of-center-section"><span class="header-section-number">3.1.3</span> Homework for Measures of Center Section</a></li>
   </ul></li>
   <li><a href="#measures-of-spread" id="toc-measures-of-spread" class="nav-link" data-scroll-target="#measures-of-spread"><span class="header-section-number">3.2</span> Measures of Spread</a>
   <ul class="collapse">
@@ -238,10 +237,9 @@ window.Quarto = {
   <li><a href="#computing-variance-and-standard-deviation" id="toc-computing-variance-and-standard-deviation" class="nav-link" data-scroll-target="#computing-variance-and-standard-deviation"><span class="header-section-number">3.2.3</span> Computing Variance and Standard Deviation</a></li>
   <li><a href="#interpreting-variance-and-standard-deviation" id="toc-interpreting-variance-and-standard-deviation" class="nav-link" data-scroll-target="#interpreting-variance-and-standard-deviation"><span class="header-section-number">3.2.4</span> Interpreting Variance and Standard Deviation</a></li>
   <li><a href="#what-makes-a-standard-deviation-small-or-large" id="toc-what-makes-a-standard-deviation-small-or-large" class="nav-link" data-scroll-target="#what-makes-a-standard-deviation-small-or-large"><span class="header-section-number">3.2.5</span> What Makes a Standard Deviation “Small” or “Large”?</a></li>
-  <li><a href="#a-note-on-computational-formulas" id="toc-a-note-on-computational-formulas" class="nav-link" data-scroll-target="#a-note-on-computational-formulas"><span class="header-section-number">3.2.6</span> A Note on Computational Formulas</a></li>
-  <li><a href="#using-the-standard-deviation" id="toc-using-the-standard-deviation" class="nav-link" data-scroll-target="#using-the-standard-deviation"><span class="header-section-number">3.2.7</span> Using the Standard Deviation</a></li>
-  <li><a href="#identifying-unusual-values-with-standard-deviation" id="toc-identifying-unusual-values-with-standard-deviation" class="nav-link" data-scroll-target="#identifying-unusual-values-with-standard-deviation"><span class="header-section-number">3.2.8</span> Identifying Unusual Values with Standard Deviation</a></li>
-  <li><a href="#homework-for-measures-of-spread-section" id="toc-homework-for-measures-of-spread-section" class="nav-link" data-scroll-target="#homework-for-measures-of-spread-section"><span class="header-section-number">3.2.9</span> Homework for Measures of Spread Section</a></li>
+  <li><a href="#using-the-standard-deviation" id="toc-using-the-standard-deviation" class="nav-link" data-scroll-target="#using-the-standard-deviation"><span class="header-section-number">3.2.6</span> Using the Standard Deviation</a></li>
+  <li><a href="#identifying-unusual-values-with-standard-deviation" id="toc-identifying-unusual-values-with-standard-deviation" class="nav-link" data-scroll-target="#identifying-unusual-values-with-standard-deviation"><span class="header-section-number">3.2.7</span> Identifying Unusual Values with Standard Deviation</a></li>
+  <li><a href="#homework-for-measures-of-spread-section" id="toc-homework-for-measures-of-spread-section" class="nav-link" data-scroll-target="#homework-for-measures-of-spread-section"><span class="header-section-number">3.2.8</span> Homework for Measures of Spread Section</a></li>
   </ul></li>
   <li><a href="#ranking" id="toc-ranking" class="nav-link" data-scroll-target="#ranking"><span class="header-section-number">3.3</span> Ranking</a>
   <ul class="collapse">
@@ -278,42 +276,51 @@ window.Quarto = {
 </header>
 
 
+<p><strong>Before you begin, Click to expand the box below to review the process for importing a dataset.</strong></p>
+<div id="Importing-cats-to-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Data to Rguroo">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Importing Data to Rguroo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Open the <strong>Data</strong> toolbox in Rguroo.<br>
+</li>
+<li>From the <span class="dpd">Data Import</span> dropdown, select <span class="fun">Dataset Repository</span>.<br>
+</li>
+<li>In the top search box, type <span class="typein">kozak</span>, then select the <span class="repo">Statistics Using Technology – Kozak</span> repository.<br>
+</li>
+<li>In the middle search box, type the first few letters of the dataset name, and choose your desired dataset name that appears in the lower panel.<br>
+</li>
+<li>Click the <span class="button">Import</span>. The dataset will be imported to your Rguroo account.</li>
+<li>Click <span class="button">Close</span> to exit the dialog.<br>
+</li>
+<li>To view the dataset, double-click the dataset name under the <strong>Data</strong> toolbox list.</li>
+</ol>
+</div>
+</div>
+</div>
 <p>Chapter 1 discussed what a population, sample, parameter, and statistic are, as well as how to take different types of samples. Chapter 2 discussed ways to graphically display data. There was also a discussion of important characteristics: center, variations, distribution, outliers, and changing characteristics of the data over time. Distributions and outliers can be identified using graphical means. Finding the center and variation can be done using numerical methods that will be discussed in this chapter. Both graphical and numerical methods are part of a branch of statistics known as <strong>descriptive statistics</strong>. Later, descriptive statistics will be used to make decisions and/or estimate population parameters using methods that are part of the branch called <strong>inferential statistics</strong>.</p>
 <section id="measures-of-center" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="measures-of-center"><span class="header-section-number">3.1</span> Measures of Center</h2>
 <p>This section focuses on measures of central tendency. Many times you are asking what to expect on average. For example, when you pick a major, you would probably ask how much you can expect to earn in that field. If you are thinking of relocating to a new town, you might ask how much you can expect to pay for housing. If you are planting vegetables in the spring, you might want to know how long it will be until you can harvest. These questions, and many more, can be answered by knowing the center of the data. There are three measures of the “center” of the data: the mode, median, and mean. Any of the values can be referred to as an “average.”</p>
 <p>The <strong>mode</strong> is the data value that occurs most frequently in the data. To find it, you count how often each data value occurs, and then determine which value occurs most often. If there is a tie between two values for the most number of times, then both values are the mode and the data are called bimodal (two modes). If every data value occurs the same number of times, there is no mode. If there are more than two values that appear the most times, then usually there is no mode. The mode is not always a useful measure of center, especially when a dataset has more than one mode.</p>
 <p>The <strong>median</strong> is the data value in the middle of a sorted list of data. To find the median, you arrange the data in order and then determine which value is in the middle of the data values.</p>
-<p>The <strong>mean</strong> is the arithmetic average of the numbers. This is the center that most people call the average, though all three – mean, median, and mode – really are averages.</p>
-<p>There are no symbols for the mode and the median, but the mean is used a great deal, so statisticians gave it a symbol. There are actually two symbols: one for the population mean (parameter) and one for the sample mean (statistic). In most cases, you cannot find the population parameter, because you don’t have values for the entire population, so you use the sample mean (statistic) to estimate the population mean (parameter).</p>
-<!-- **Population Mean**
-
-$\mu=\frac{\sum{x}}{N}$, pronounced mu
-
-$N$ is the size of the population.
-
-$x$ represents a data value.
-
-$\sum{x}$ means to add up all of the data values.
-
-**Sample Mean**
-
-$\bar{x}=\frac{\sum{x}}{n}$, pronounced x bar.
-
-$n$ is the size of the sample.
-
-$x$ represents a data value.
-
-$\sum{x}$ means to add up all of the data values.
-
-The value for $\bar{x}$ is used to estimate $\mu$, since $\mu$ can't be calculated in most situations. -->
+<p>The <strong>mean</strong> is the arithmetic average of the numbers. The mean, median, and mode are all measures of center, although the word ‘average’ is most commonly used to refer to the mean.</p>
+<p>In this course, we work primarily with numerical data (interval and ratio), so our focus will be on the mean and median as measures of center. The mode is more commonly used with categorical data, where it identifies the most frequently occurring category. While the mean and median both require numerical values, the key difference is that the mean uses every data value in its calculation, making it sensitive to extreme values, whereas the median depends only on the position of the middle value.</p>
 <section id="population-mean-and-sample-mean" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="population-mean-and-sample-mean"><span class="header-section-number">3.1.1</span> Population Mean and Sample Mean</h3>
 <p>Because the mean is used extensively in statistics, it has special notation that distinguishes between a population and a sample. The <strong>population mean</strong>, denoted by the Greek letter <span class="math inline">\(\mu\)</span> (pronounced ``mu”), represents the true average of an entire population. It is calculated using the formula <span class="math inline">\(\mu=\frac{\sum{x}}{N}\)</span>, where <span class="math inline">\(N\)</span> is the total number of values in the population, <span class="math inline">\(x\)</span> represents each individual data value, and <span class="math inline">\(\sum{x}\)</span> means to add up all the data values. In practice, we rarely know the population mean because we typically cannot collect data from every member of a population.</p>
 <p>Instead, we work with samples and calculate the <strong>sample mean</strong>, denoted by <span class="math inline">\(\bar{x}\)</span> (pronounced ``x-bar”). The sample mean uses the same calculation process as the population mean but with different notation: <span class="math inline">\(\bar{x}=\frac{\sum{x}}{n}\)</span>, where <span class="math inline">\(n\)</span> is the number of values in the sample. Notice that we use a lowercase <span class="math inline">\(n\)</span> for sample size and an uppercase <span class="math inline">\(N\)</span> for population size. The sample mean <span class="math inline">\(\bar{x}\)</span> serves as our best estimate of the unknown population mean <span class="math inline">\(\mu\)</span>. This relationship between sample statistics and population parameters is fundamental to inferential statistics – we use what we observe in a sample to make informed conclusions about the larger population.</p>
-<!-- ### Example: Finding the Mean and Median using Rguroo {#example-mean-median-cats} -->
 <div id="exm-mean-median-cats" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.1 (Finding the Mean and Median Using Rguroo)</strong></span> Suppose a vet wants to find the average weight of cats. The weights (in kg) of 144 cats are given in a dataset named <span class="data">cats</span>. Find the mean and median of the weight of a cat. The first six rows of this dataset are shown in <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a>.</p>
+<p><span class="theorem-title"><strong>Example 3.1 (Finding the Mean and Median Using Rguroo)</strong></span> Suppose a vet wants to find the average weight of cats. The weights (in kg) of 144 cats are given in a dataset named <span class="data">cats</span>. Find the mean and median of the weight of a cat.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cats</span>. <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-cats">dataset code book</a> that follows.</p>
 </div>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of cats dataset">
 <div id="tbl-Cats" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of cats dataset">
@@ -369,35 +376,8 @@ Table&nbsp;3.1: Head of Cats
 </figure>
 </div>
 </div>
-<!-- The head command shows the variable names and the first few unit of observation rows -->
-<p><strong>Solution</strong></p>
-<p>Click to expand the box below to see instructions to import and view the <span class="data">cats</span> dataset in your <strong>Data</strong> Toolbox in Rguroo.</p>
-<div id="Importing-cats-to-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing cats to Data Toolbox">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Importing cats to Data Toolbox
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Go to the <strong>Data</strong> toolbox.</li>
-<li>From the <span class="dpd">Data Import</span> dropdown, select <span class="fun">Dataset Repository</span>.</li>
-<li>In the top search box, type <span class="typein">MASS</span>, then select the <span class="repo">MASS</span> repository.</li>
-<li>In the middle search box, type <span class="typein">cats</span>, and select the <span class="data">cats</span> dataset that appears in the lower panel.<br>
-</li>
-<li>Click the <span class="button">Import</span> button. The dataset will be imported into your Rguroo account.</li>
-<li>Click the <span class="button">Close</span> button to close the Rguroo dialog.</li>
-<li>To view the dataset, double-click <span class="data">cats</span> under the <strong>Data</strong> toolbox list.</li>
-</ol>
-</div>
-</div>
-</div>
-<p>Looking at the data frame for cats weights, <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a>, you see that there are several variables. A Code Book describes the dataset, explains what the variables are including the units, and the source of the data frame. The code book for the <span class="data">cats</span> is below.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>Looking at the dataset for cats weights, <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a>, you see that there are several variables. A Code Book describes the dataset, explains what the variables are including the units, and the source of the dataset. The code book for the <span class="data">cats</span> is below.</p>
 <div id="code-book-cats" class="codebook callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -413,7 +393,7 @@ Code book for cats Dataset
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="code_book_cats.jpg" class="img-fluid figure-img" alt="Code book cats Dataframe"></p>
-<figcaption>Code book for cats data frame</figcaption>
+<figcaption>Code book for cats dataset</figcaption>
 </figure>
 </div>
 </div>
@@ -421,7 +401,7 @@ Code book for cats Dataset
 </div>
 <p>Before starting any mathematics problem, it is always a good idea to define the unknown in the problem. In statistics, you want to define the variable. The symbol for the variable is <span class="math inline">\(x\)</span>.</p>
 <p>The variable is <span class="math inline">\(x\)</span> = weight of a cat</p>
-<p>Click to expand the box below see how to calculate the mean and median in Rguroo.</p>
+<p>Click to expand the box below to see how to calculate the mean and median in Rguroo.</p>
 <div id="Calculating-summary-stats-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Calculating the Mean and Median Weight of Cats">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -477,7 +457,7 @@ Click here to see the Rguroo dialog
 <div id="fig-summary-cats" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Mean and Median Output from Rguroo">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-summary-cats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Numerical_Description/cats_summary_output.png" class="img-fluid figure-img" style="width:70.0%" alt="Mean and Median Output from Rguroo">
+<img src="Rguroo_outputs/Numerical_Description/cats_summary_output.png" class="img-fluid figure-img" style="width:80.0%" alt="Mean and Median Output from Rguroo">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-summary-cats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.1: Mean and Median Weight of Cats
@@ -487,13 +467,14 @@ Figure&nbsp;3.1: Mean and Median Weight of Cats
 </div>
 </div>
 <p>The mean weight is 2.72 kg.</p>
-<!-- Median: To find with r Studio, perform the command: -->
 <p>The median weight is 2.7 kg also. It appears the average weight of all cats in this dataset is 2.7 kg.</p>
+</div>
 <div id="exm-mean-median-cats-factor" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.2 (Finding Mean and Median with Factor)</strong></span> Suppose you want to know if male cats weigh more than female cats. Looking at the variables, you notice that there is a variable for the sex of the cat. You can look at the weights of males and females separately.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cats</span>. <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-cats">dataset code book</a> that follows.</p>
 </div>
-<p><strong>Solution</strong></p>
-<p>Click to expand the box below see how to calculate the mean and median, separated by sex, in Rguroo.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>Click to expand the box below to see how to calculate the mean and median, separated by sex, in Rguroo.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Calculating the Mean and Median Weight of Cats by Sex">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -549,7 +530,7 @@ Click here to see the Rguroo dialog
 <div id="fig-factor-summary-cats" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Mean and Median by Sex Output from Rguroo">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-factor-summary-cats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Numerical_Description/cat_wt_sex_output.png" class="img-fluid figure-img" style="width:70.0%" alt="Mean and Median by Sex Output from Rguroo">
+<img src="Rguroo_outputs/Numerical_Description/cat_wt_sex_output.png" class="img-fluid figure-img" style="width:80.0%" alt="Mean and Median by Sex Output from Rguroo">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-factor-summary-cats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.2: Mean and Median Weight of Cats by Sex
@@ -559,12 +540,14 @@ Figure&nbsp;3.2: Mean and Median Weight of Cats by Sex
 </div>
 </div>
 <p>Notice that the female cats’ mean weight is 2.36 kg and the male cats’ mean weight is 2.9 kg. The median weight of female cats is 2.3 kg and for males it is 2.9 kg. So it does appear that male cats weigh a bit more than the female cats.</p>
+</div>
 <p>There are many different summary statistics that can be found. An example is the minimum and maximum value. In the next example, you will see how to find the min and max values and then filter them out of a dataset to see what effect they have on the mean and median.</p>
 <div id="exm-effect-extreme-values" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.3 (Effect of Extreme Values on Mean and Median)</strong></span> Find the minimum and maximum values of cats weights.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cats</span>. <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-cats">dataset code book</a> that follows.</p>
 </div>
-<p><strong>Solution</strong></p>
-<p>The steps to find the minimum and the maximum in Rguroo are similar to finding the mean and median. In the <strong>Statistics</strong> section of the dialog, select the checkbox for <span class="des">Minimum</span> and <span class="des">Maximum</span>.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>The steps to find the minimum and the maximum in Rguroo are similar to finding the mean and median described <a href="#Calculating-summary-stats-in-Rguroo">here</a>. In the <strong>Statistics</strong> section of the dialog, select the checkbox for <span class="des">Minimum</span> and <span class="des">Maximum</span>.</p>
 <p><a href="#fig-max-min-cats" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> shows the Basic Summary Statistic Dialog and Output from Rguroo for the minimum and maximum of cats body weight.</p>
 <div class="cell">
 <div id="fig-max-min-cats" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -574,7 +557,7 @@ Figure&nbsp;3.2: Mean and Median Weight of Cats by Sex
 <div id="fig-max-min-cats-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog and Output from Rguroo for Maximum and Minimum">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-max-min-cats-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Numerical_Description/max_min_dialog.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-max-min-cats" alt="Dialog and Output from Rguroo for Maximum and Minimum">
+<img src="Rguroo_dialogs/Numerical_Description/max_min_dialog.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-max-min-cats" alt="Dialog and Output from Rguroo for Maximum and Minimum">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-max-min-cats-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Dialog box
@@ -586,7 +569,7 @@ Figure&nbsp;3.2: Mean and Median Weight of Cats by Sex
 <div id="fig-max-min-cats-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog and Output from Rguroo for Maximum and Minimum">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-max-min-cats-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Numerical_Description/max_min_output.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-max-min-cats" alt="Dialog and Output from Rguroo for Maximum and Minimum">
+<img src="Rguroo_outputs/Numerical_Description/max_min_output.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-max-min-cats" alt="Dialog and Output from Rguroo for Maximum and Minimum">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-max-min-cats-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Output results
@@ -601,7 +584,7 @@ Figure&nbsp;3.3: Maximum and Minimum Weight of Cats
 </figure>
 </div>
 </div>
-<p>The minimum weight of a cat in this data frame is 2 kg and the maximum weight of a cat is 3.9 kg.</p>
+<p>The minimum weight of a cat in this dataset is 2 kg and the maximum weight of a cat is 3.9 kg.</p>
 <p>You can create two new datasets in Rguroo by subsetting (filtering). One dataset will exclude the maximum value and include values less than 3.9, and the other will exclude the minimum value and include values greater than 2.</p>
 <p>Click to expand the box below to see how to obtain a subset of the <span class="data">cats</span> dataset in Rguroo that includes values less than 3.9 kg.</p>
 <div id="Subsetting-Data-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Subsetting the cats Dataset">
@@ -643,7 +626,7 @@ Click here to see the Rguroo dialog
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><img src="Rguroo_dialogs/Numerical_description/subset_nomax_cats.png" class="img-fluid" width="500" alt="Logical Expression Dialog in Rguroo"> <img src="Rguroo_dialogs/Numerical_description/logical_subset_nomax.png" class="img-fluid" width="500" alt="Data Subset Dialog in Rguroo"> <img src="Rguroo_outputs/Numerical_Description/save_data_nomax.png" class="img-fluid" alt="Save As… Dataset View"></p>
+<p><img src="Rguroo_dialogs/Numerical_description/logical_subset_nomax.png" class="img-fluid" width="500" alt="Data Subset Dialog in Rguroo"> <img src="Rguroo_dialogs/Numerical_description/subset_nomax_cats.png" class="img-fluid" width="500" alt="Logical Expression Dialog in Rguroo"> <img src="Rguroo_outputs/Numerical_Description/save_data_nomax.png" class="img-fluid" alt="Save As… Dataset View"></p>
 </div>
 </div>
 </div>
@@ -665,22 +648,17 @@ Figure&nbsp;3.4: Logical Expression Dialog for Removing the Minimum Weight of Ca
 </div>
 </div>
 </div>
-<!-- The \<- is the way to indicate to r what the dataset nomin is equivalent to what follows the symbol. Notice that it doesn't look like anything happened, but new datasets were created in the background.-->
 <p>Now you can find the mean and median of each new dataset using the steps described <a href="#Calculating-summary-stats-in-Rguroo">here</a> using the new datasets <span class="data">cats_nomax</span> and <span class="data">cats_nomin</span>.</p>
 <p>The mean without the maximum value is 2.70 kg, and the median is 2.7 kg.</p>
 <p>The mean without the minimum value is 2.75 kg, and the median is 2.7 kg.</p>
-<p>From <a href="#example-effect-extreme-values">this</a> example, the mean of the <span class="data">cats</span> dataset with all the values is 2.72 kg, while the median is 2.7 kg. Notice that when the maximum value was excluded from the dataset, the mean decreased slightly but the median did not change, and when the minimum value was excluded from the dataset, the mean increased a little but the median did not change. This shows that the mean is affected by extreme values, while the median is not. We say the median is a resistant measure of center because it is not affected by extreme values as much.</p>
-<p>An outlier is a data value that is very different from the rest of the data. It can be really high or really low. An extreme value may be an outlier if it is far enough from the center. If there are extreme values in the data, the median is a better measure of the center than the mean. If there are no extreme values, the mean and the median will be similar so most people use the mean. The mean is not a resistant measure because it is affected by extreme values. The median is a resistant measure because it not affected by extreme values.</p>
+<p>From the effect of extremes <a href="#exm-effect-extreme-values">example</a>, the mean of the <span class="data">cats</span> dataset with all the values is 2.72 kg, while the median is 2.7 kg. Notice that when the maximum value was excluded from the dataset, the mean decreased slightly but the median did not change, and when the minimum value was excluded from the dataset, the mean increased a little but the median did not change. This shows that the mean is affected by extreme values, while the median is not. We say the median is a resistant measure of center because it is not affected by extreme values as much.</p>
+</div>
+<p>An <strong>extreme value</strong> is a data value that is much higher or much lower than the rest of the data. When extreme values are present, the median is generally a better measure of center than the mean because the median is not pulled by those values. When there are no extreme values, the mean and median tend to be similar, and the mean is commonly used. This is because the mean is <strong>not resistant</strong> — it is affected by extreme values, which can pull it higher or lower. The median, on the other hand, is <strong>resistant</strong> — it remains stable even when extreme values are present in the data.</p>
+<p>Later in this chapter, you will learn a formal method for determining whether an extreme value qualifies as an <strong>outlier</strong> — a data point that falls far enough from the rest of the data to be flagged as unusual.</p>
 <p>You need to be aware that people generally choose the measure of center that best supports their claim. When you read an article in the newspaper and it talks about the “average” it usually means the mean but sometimes it refers to the median. Some articles will use the word “median” instead of “average” to be more specific. If you need to make an important decision and the information says “average”, it would be wise to ask if the “average” is the mean or the median before you decide.</p>
-<p>As an example, suppose that a company wants to use the mean salary as the average salary for the company. This is because the high salaries of the administrators will pull the mean higher. The company can say that employees are paid well because the average is high. However, the employees want to use the median since it discounts the extreme values of the administration and gives a lower measure of the average. This makes the salaries seem lower and suggests that a raise is in order.</p>
-<!--
-Why use the mean instead of the median? The reason is because when multiple samples are taken from the same population, the sample means tend to be more consistent than other measures of the center.
--->
+<p>As an example, suppose that a company wants to report the mean salary as the average salary for the company. The high salaries of the administrators will pull the mean upward, making the average appear higher. The company can then say that employees are paid well because the average is high. However, the employees would prefer to use the median since it is not affected as much by the extreme administrative salaries and gives a lower measure of center. This makes the salaries appear lower and suggests that a raise is in order.</p>
 <p>Why use the mean instead of the median? Imagine repeatedly taking different samples from the same population. Some samples may include more large values, while others may include more small values. When we calculate the mean for each sample, some sample means will overestimate the true center of the population and others will underestimate it. Over many samples, these overestimates and underestimates tend to balance out. The median, however, can tend to underestimate or overestimate the center more often in one direction, depending on how the middle values fall in the samples. Because of this, the mean does not systematically overestimate or underestimate the center of the population, making it a reliable measure of center.</p>
 <p>To understand how different measures of center relate to skewed or symmetric distributions, see <a href="#fig-centers-dist" class="quarto-xref">Figure&nbsp;<span>3.5</span></a>. For a left-skewed distribution, the mean is smaller than the median. For a right-skewed distribution, the mean is larger than the median. For a symmetric distribution, the mean and the median are the same.</p>
-<!--
-@fig-centers-dist**:** **Mean, Median, Mode as Related to a Distribution**
--->
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-centers-dist" class="quarto-float quarto-figure quarto-figure-center anchored" alt="skewed left graph with mean, median,mode lines, then symmetric graph with all three the same line, then skewed right graph with mode, median, mean lines">
@@ -698,12 +676,6 @@ Figure&nbsp;3.5: Mean, median, mode as related to distribution
 </section>
 <section id="weighted-average" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="weighted-average"><span class="header-section-number">3.1.2</span> Weighted Average</h3>
-<!-- Another type of average is a weighted average. Weighted averages are commonly used in situations where some components matter more than others. For example, a teacher may use a weighted average when calculating a student’s final course grade. Homework, quizzes, and exams may all contribute to the final grade, but exams might count more because they measure overall understanding more directly. In this case, exams are given more weight than homework, so they have a larger impact on the final grade. Similarly, employers may use weighted averages in performance evaluations when some aspects of a job are more important than others.
-As an example, a full time teacher at a community college may be evaluated on their service to the college, their service to the community, whether their paperwork is turned in on time, and their teaching. However, teaching is much more important than whether their paperwork is turned in on time. When the evaluation is completed, more weight needs to be given to the teaching and less to the paperwork. This is a weighted average.
-
-$\text{weighted average}=\frac{\sum{x*w}}{\sum{w}}$,
-
-where $w$ is the weight of the data value $x$. -->
 <p>Another type of average is a weighted average. Weighted averages are commonly used in situations where some components matter more than others. For example, a teacher may use a weighted average when calculating a student’s final course grade. Homework, quizzes, and exams may all contribute to the final grade, but exams might count more because they measure overall understanding more directly. In this case, exams are given more weight than homework, so they have a larger impact on the final grade. Similarly, employers may use weighted averages in performance evaluations when some aspects of a job are more important than others.</p>
 <p>As an example, a full-time teacher at a community college may be evaluated on their service to the college, their service to the community, whether their paperwork is turned in on time, and their teaching. However, teaching is much more important than whether their paperwork is turned in on time. When the evaluation is completed, more weight needs to be given to the teaching and less to the paperwork. This is a weighted average.</p>
 <p>To calculate a weighted average, each data value is multiplied by its weight (the number representing its importance), then these products are added together. Finally, this sum is divided by the total of all the weights. The formula captures this process:</p>
@@ -712,8 +684,8 @@ where $w$ is the weight of the data value $x$. -->
 <div id="exm-weighted-average" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.4 (Calculating Weighted Average)</strong></span> In your biology class, your final grade is based on several components: a lab score, scores on two major tests, and your score on the final exam. Each component is graded out of 100 points. The lab score is worth 15% of the course grade, the two exams are worth 25% each, and the final exam is worth 35% of the course. Suppose you earned scores of 95 on the labs, 83 and 76 on the two exams, and 84 on the final exam. Compute your weighted average for the course.</p>
 </div>
-<p><strong>Solution</strong></p>
-<p>Variable: <span class="math inline">\(x\)</span> = score</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>Variable: <span class="math inline">\(x\)</span> = score</p>
 <p>A weighted average can be found using Rguroo. First, we will create a new dataset in Rguroo. Click to expand the box below to see how to create a new dataset in Rguroo:</p>
 <div id="Creating-new-dataset" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a New Dataset">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
@@ -733,9 +705,9 @@ where $w$ is the weight of the data value $x$. -->
 <li>Click on the <span class="dpd">Data Import</span> dropdown, and select <span class="fun">Create New Dataset</span>. This opens the <span class="dialog">Create New Dataset</span> dialog. Specify the number of rows and columns for your new dataset (optional), and click the <span class="button">Create Dataset</span> button. This opens Rguroo’s dataset editor.<br>
 </li>
 <li>The default variable names will be <span class="var">Var1</span>, <span class="var">Var2</span>, etc. To change the variable name, move your cursor over the variable name in the column header. You will see the Variable Context Menu icon <img src="Rguroo_Icons/four_horizontal_line_icon.png" class="img-fluid" alt="variable context menu icon">. Click on the icon to open the variable context menu.</li>
-<li>From the variable context menu select the option <span class="des">Rename</span>. This will bring up the <span class="dialog">Rename Variable</span> dialog box. In the dialog box, type in the new name for your variable and press enter. The new name will appear in the column header. Note that variable names cannot have spaces. For this example we use two have two variables; specify the names <a href=".var">score</a> and <a href=".var">weight</a> in two columns.<br>
+<li>From the variable context menu select the option <span class="des">Rename</span>. This will bring up the <span class="dialog">Rename Variable</span> dialog box. In the dialog box, type in the new name for your variable and press enter. The new name will appear in the column header. Note that variable names cannot have spaces. For this example we have two variables; specify the names <span class="var">score</span> and <span class="var">weight</span> in two columns.<br>
 </li>
-<li>Enter your data (score and weights) in the two columns.<br>
+<li>Enter your data in the two columns.<br>
 </li>
 <li>Enter a name for your dataset in the <span class="des">Save As</span> textbox on the top, and click the <span class="button">Save as</span> button to save your dataset. For this example, name the dataset <span class="data">biology_grade</span>.</li>
 </ol>
@@ -758,17 +730,6 @@ Click here to see the Rguroo dialog and new dataset
 </div>
 </div>
 </div>
-<!-- The commands for finding the weighted mean using RStudio is as follows:
-
-x\<-c(type in the scores with commas in between)
-
-w\<-c(type in the weights as decimals with commas in between
-
-weighted.mean(x,w)
-
-The **x** and **w** represent the variables, \<- means make the variables equivalent to what follows, the c( means combine all the values in the () as one combined variable.
-
-For this example, the commands would be -->
 <p>To calculate the weighted average in Rguroo, you will follow similar steps as described <a href="#Calculating-summary-stats-in-Rguroo">here</a>. In the <span class="dialog">Basic Summary Statistics</span> dialog box select the <span class="data">biology_grade</span> from the <span class="dpd">dataset</span> dropdown, select <span class="var">score</span> in the <span class="dpd">Numerical</span> dropdown, and select <span class="var">weight</span> in the <span class="dpd">frequency</span> dropdown as shown in figure <a href="#fig-weighted-mean" class="quarto-xref">Figure&nbsp;<span>3.6</span></a>.</p>
 <div class="cell">
 <div id="fig-weighted-mean" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -778,7 +739,7 @@ For this example, the commands would be -->
 <div id="fig-weighted-mean-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="basic summary statistics dialog box and weighted mean output">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-weighted-mean-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Numerical_Description/summary_stat_dialog_weight_mean.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-weighted-mean" alt="basic summary statistics dialog box and weighted mean output">
+<img src="Rguroo_dialogs/Numerical_Description/summary_stat_dialog_weight_mean.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-weighted-mean" alt="basic summary statistics dialog box and weighted mean output">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-weighted-mean-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Basic Summary Statistics Dialog box
@@ -790,7 +751,7 @@ For this example, the commands would be -->
 <div id="fig-weighted-mean-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="basic summary statistics dialog box and weighted mean output">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-weighted-mean-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Numerical_Description/weight_mean_bio_grade.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-weighted-mean" alt="basic summary statistics dialog box and weighted mean output">
+<img src="Rguroo_outputs/Numerical_Description/weight_mean_bio_grade.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-weighted-mean" alt="basic summary statistics dialog box and weighted mean output">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-weighted-mean-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Output results
@@ -806,6 +767,7 @@ Figure&nbsp;3.6: Weighted Mean of Biology Grade
 </div>
 </div>
 <p>Your weighted mean in the biology class is 83.4%. Using the traditional grading scale, you have a B in the class.</p>
+</div>
 <div id="exm-weighted-average-faculty-ratings" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.5 (Calculating Weighted Averages)</strong></span> The faculty evaluation process at John Jingle University rates a faculty member on the following activities: teaching, publishing, committee service, community service, and submitting paperwork in a timely manner. The process involves reviewing student evaluations, peer evaluations, and supervisor evaluation for each teacher and awarding him/her a score on a scale from 1 to 10 (with 10 being the best). The weights for each activity are 20 for teaching, 18 for publishing, 6 for committee service, 4 for community service, and 2 for paperwork.</p>
 <ol type="a">
@@ -814,18 +776,18 @@ Figure&nbsp;3.6: Weighted Mean of Biology Grade
 <li>Which faculty member had the higher average evaluation?</li>
 </ol>
 </div>
-<p><strong>Solution</strong></p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
 <ol type="a">
-<li>One faculty member had the following ratings: 8 for teaching, 9 for publishing, 2 for committee work, 1 for community service, and 8 for paperwork. Compute the weighted average of the evaluation.</li>
+<li>Variable: <span class="math inline">\(x\)</span> = rating, <span class="math inline">\(w\)</span> = weight</li>
 </ol>
-<p>Variable: <span class="math inline">\(x\)</span> = rating, <span class="math inline">\(w\)</span> = weight</p>
 <p>To find the weighted average using Rguroo, start by creating a new dataset as described <a href="#Creating-new-dataset">here</a>. The new dataset, including weights and scores for each faculty, is shown in the figure <a href="#fig-dataset-ratings" class="quarto-xref">Figure&nbsp;<span>3.7</span></a> below.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-dataset-ratings" class="quarto-float quarto-figure quarto-figure-center anchored" alt="new dataset for weight of category in a and b">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dataset-ratings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Numerical_Description/ex_4_1_8_dataset.png" class="img-fluid figure-img" style="width:70.0%" alt="new dataset for weight of category in a and b">
+<img src="Rguroo_outputs/Numerical_Description/ex_4_1_8_dataset.png" class="img-fluid figure-img" style="width:80.0%" alt="new dataset for weight of category in a and b">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dataset-ratings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.7: Faculty Ratings Dataset
@@ -843,7 +805,7 @@ Figure&nbsp;3.7: Faculty Ratings Dataset
 <div id="fig-faculty_a-weighted_mean-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="basic summary statistics dialog box and weighted mean output faculty_a">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-faculty_a-weighted_mean-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Numerical_Description/ex_4_1_8_a_dialog.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-faculty_a-weighted_mean" alt="basic summary statistics dialog box and weighted mean output faculty_a">
+<img src="Rguroo_dialogs/Numerical_Description/ex_4_1_8_a_dialog.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-faculty_a-weighted_mean" alt="basic summary statistics dialog box and weighted mean output faculty_a">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-faculty_a-weighted_mean-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Basic Summary Statistics Dialog box
@@ -855,7 +817,7 @@ Figure&nbsp;3.7: Faculty Ratings Dataset
 <div id="fig-faculty_a-weighted_mean-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="basic summary statistics dialog box and weighted mean output faculty_a">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-faculty_a-weighted_mean-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Numerical_Description/ex_4_1_8_a_output.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-faculty_a-weighted_mean" alt="basic summary statistics dialog box and weighted mean output faculty_a">
+<img src="Rguroo_outputs/Numerical_Description/ex_4_1_8_a_output.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-faculty_a-weighted_mean" alt="basic summary statistics dialog box and weighted mean output faculty_a">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-faculty_a-weighted_mean-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Output results
@@ -872,9 +834,8 @@ Figure&nbsp;3.8: Weighted Mean of Faculty Ratings
 </div>
 <p>The weighted average is 7.08.</p>
 <ol start="2" type="a">
-<li>Another faculty member had ratings of 6 for teaching, 8 for publishing, 9 for committee work, 10 for community service, and 10 for paperwork. Compute the weighted average of the evaluation.</li>
+<li>The weighted mean can be calculated in the same fashion as part (a). In the <span class="dialog">Basic Summary Statistics</span> dialog box select the <span class="data">faculty_ratings</span> from the <span class="dpd">dataset</span> dropdown, select <span class="var">faculty_b</span> in the <span class="dpd">Numerical</span> dropdown, and select <span class="var">weight</span> in the <span class="dpd">frequency</span> dropdown as shown in figure <a href="#fig-faculty_b-weighted_mean" class="quarto-xref">Figure&nbsp;<span>3.9</span></a>.</li>
 </ol>
-<p>The weighted mean can be calculated in the same fasion as part (a). In the <span class="dialog">Basic Summary Statistics</span> dialog box select the <span class="data">faculty_ratings</span> from the <span class="dpd">dataset</span> dropdown, select <span class="var">faculty_b</span> in the <span class="dpd">Numerical</span> dropdown, and select <span class="var">weight</span> in the <span class="dpd">frequency</span> dropdown as shown in figure</p>
 <div class="cell">
 <div id="fig-faculty_b-weighted_mean" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -883,7 +844,7 @@ Figure&nbsp;3.8: Weighted Mean of Faculty Ratings
 <div id="fig-faculty_b-weighted_mean-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="basic summary statistics dialog box and weighted mean output faculty_b">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-faculty_b-weighted_mean-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Numerical_Description/ex_4_1_8_b_dialog.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-faculty_b-weighted_mean" alt="basic summary statistics dialog box and weighted mean output faculty_b">
+<img src="Rguroo_dialogs/Numerical_Description/ex_4_1_8_b_dialog.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-faculty_b-weighted_mean" alt="basic summary statistics dialog box and weighted mean output faculty_b">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-faculty_b-weighted_mean-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Basic Summary Statistics Dialog box
@@ -895,7 +856,7 @@ Figure&nbsp;3.8: Weighted Mean of Faculty Ratings
 <div id="fig-faculty_b-weighted_mean-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="basic summary statistics dialog box and weighted mean output faculty_b">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-faculty_b-weighted_mean-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Numerical_Description/ex_4_1_8_b_output.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-faculty_b-weighted_mean" alt="basic summary statistics dialog box and weighted mean output faculty_b">
+<img src="Rguroo_outputs/Numerical_Description/ex_4_1_8_b_output.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-faculty_b-weighted_mean" alt="basic summary statistics dialog box and weighted mean output faculty_b">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-faculty_b-weighted_mean-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Output results
@@ -915,23 +876,10 @@ Figure&nbsp;3.9: Weighted Mean of Faculty Ratings
 <li><p>Which faculty member had the higher average evaluation?</p>
 <p>The second faculty member has a higher average evaluation.</p></li>
 </ol>
-<!-- The last thing to mention is which average is used on which type of data.
-
-Mode can be found on nominal, ordinal, interval, and ratio data, since the mode is just the data value that occurs most often. You are just counting the data values.
-
-Median can be found on ordinal, interval, and ratio data, since you need to put the data in order. As long as there is order to the data you can find the median.
-
-Mean can be found on interval and ratio data, since you must have numbers to add together. -->
+</div>
 </section>
-<section id="choosing-the-appropriate-measure-of-center" class="level3" data-number="3.1.3">
-<h3 data-number="3.1.3" class="anchored" data-anchor-id="choosing-the-appropriate-measure-of-center"><span class="header-section-number">3.1.3</span> Choosing the Appropriate Measure of Center</h3>
-<p>Different measures of center work with different types of data. The type of data you have determines which measures of center are appropriate to use.</p>
-<p>The <strong>mode</strong> can be used with any type of data – nominal, ordinal, interval, or ratio – because it simply identifies which value appears most frequently. Since finding the mode only requires counting how often each value occurs, it works regardless of whether the data has numerical meaning or can be ordered.</p>
-<p>The <strong>median</strong> can be used with ordinal, interval, and ratio data. To find the median, you must arrange the data values in order from smallest to largest (or vice versa). This means the data must have a meaningful order or ranking. Nominal data, which has categories with no natural order (like colors or types of pets), cannot have a median calculated.</p>
-<p>The <strong>mean</strong> can only be used with interval and ratio data because calculating it requires adding the data values together and dividing by the count. This mathematical operation only makes sense when the data values are actual numbers with meaningful numerical differences between them. For example, you can calculate the mean temperature or mean income, but you cannot calculate a mean for categories like favorite ice cream flavors or shirt sizes.</p>
-</section>
-<section id="homework-for-measures-of-center-section" class="level3" data-number="3.1.4">
-<h3 data-number="3.1.4" class="anchored" data-anchor-id="homework-for-measures-of-center-section"><span class="header-section-number">3.1.4</span> Homework for Measures of Center Section</h3>
+<section id="homework-for-measures-of-center-section" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="homework-for-measures-of-center-section"><span class="header-section-number">3.1.3</span> Homework for Measures of Center Section</h3>
 <p><strong>Use Rguroo on all problems. State the variable on all problems.</strong></p>
 <ol type="1">
 <li>Cholesterol levels were collected from patients a certain number of days after they had a heart attack and the first six rows of the data are shown in <a href="#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>. Find the mean and median for cholesterol levels 2 days after the heart attack.</li>
@@ -944,7 +892,7 @@ Mean can be found on interval and ratio data, since you must have numbers to add
 <div id="fig-kozak-repo" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Repository search">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-kozak-repo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Numerical_Description/chol_data_repo.png" class="img-fluid figure-img" style="width:70.0%" alt="Repository search">
+<img src="Rguroo_dialogs/Numerical_Description/chol_data_repo.png" class="img-fluid figure-img" style="width:80.0%" alt="Repository search">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kozak-repo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.10: Repository Search Dialog
@@ -1027,7 +975,7 @@ Code book for Cholesterol Dataset
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> A study was conducted at a major north eastern American medical centre regarding blood cholesterol levels and heart-attack incidents. A total of 28 heart-attack patients had their cholesterol levels measured two days, 4 days, and 14 days after the attack. In addition, cholesterol levels were recorded for a control group of 30 people who had not had a heart attack. The units of cholesterol measurement are not given in the original reference but are presumably mg/dL of blood.</p>
-<p>This data frame contains the following columns:</p>
+<p>This dataset contains the following columns:</p>
 <p><span class="var">Patient</span>: Patient number</p>
 <p><span class="var">day2</span>: Cholesterol level of patient 2 days after heart attack. (mg/dL)</p>
 <p><span class="var">day4</span>: Cholesterol level of patient 4 days after heart attack. (mg/dL)</p>
@@ -1038,7 +986,7 @@ Code book for Cholesterol Dataset
 </div>
 </div>
 <ol start="2" type="1">
-<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are given in a dataset named <span class="data">length</span>. The first six rows of this datset are listed in <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.</li>
+<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are given in a dataset named <span class="data">length</span>. The first six rows of this dataset are listed in <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">length</span>.</p>
@@ -1109,8 +1057,8 @@ Code book for Length Dataset
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Description</strong> The data records the length of rivers in the South Island of New Zealand. The lengths are given in kilometres. The second variable, FlowsInto, indicates whether the river flows into the Pacific Ocean (0) or the Tasman Sea (1).</p>
-<p>This data frame contains the following columns:</p>
+<p><strong>Description</strong> The data records the length of rivers in the South Island of New Zealand. The lengths are given in kilometres. The second variable, FlowsInto, indicates whether the river flows into the Pacific Ocean or the Tasman Sea.</p>
+<p>This dataset contains the following columns:</p>
 <p><span class="var">River</span>: Name of the river</p>
 <p><span class="var">length</span>: how long the river is in kilometers</p>
 <p><span class="var">flowsto</span>: what body of water the river flows into Pacific Ocean is Pacific and the Tasman Sea is Tasman</p>
@@ -1185,7 +1133,7 @@ Code book for Pay Dataset
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Salaries of Print-O-Matic printing company’s employees</p>
-<p>This data frame contains the following columns:</p>
+<p>This dataset contains the following columns:</p>
 <p><span class="var">employee</span>:employees position in the company</p>
 <p><span class="var">salary</span>: salary of that employee (Australian dollars (AUD))</p>
 <p>Source John Matic provided the data from a company he worked with. The company’s name is fictitious, but the data is from an actual company.</p>
@@ -1249,7 +1197,7 @@ Click here to see the Dataset Editor filtering process
 </div>
 <ol start="3" type="a">
 <li><p>What happened to the mean and median when the CEO’s salary was removed? Why?</p></li>
-<li><p>If you were the CEO, who is answering concerns from the union that employees are underpaid, which average (mean or median) using the complete dataset of the complete dataset would you prefer? Why?</p></li>
+<li><p>If you were the CEO, who is answering concerns from the union that employees are underpaid, which average (mean or median) of the complete dataset would you prefer? Why?</p></li>
 <li><p>If you were a platen worker, who believes that the employees need a raise, which average (mean or median) using the complete dataset would you prefer? Why?</p></li>
 </ol>
 <ol start="4" type="1">
@@ -1318,7 +1266,7 @@ Code book for Cost Dataset
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> fixed monthly charges for Print-0-Matic printing company</p>
-<p>This data frame contains the following columns:</p>
+<p>This dataset contains the following columns:</p>
 <p><span class="var">charges</span>: Categories of monthly fixed charges</p>
 <p><span class="var">cost</span>: fixed month costs (AUD)</p>
 <p>Source John Matic provided the data from a company he worked with. The company’s name is fictitious, but the data is from an actual company.</p>
@@ -1356,7 +1304,7 @@ Code book for Cost Dataset
 </div>
 <ol start="7" type="1">
 <li><p>An employee at Coconino Community College (CCC) is evaluated based on goal setting and accomplishments toward the goals, job effectiveness, competencies, and CCC core values. Suppose for a specific employee, goal 1 has a weight of 30%, goal 2 has a weight of 20%, job effectiveness has a weight of 25%, competency 1 has a weight of 4%, competency 2 has a weight of 3%, competency 3 has a weight of 3%, competency 4 has a weight of 3%, competency 5 has a weight of 2%, and core values has a weight of 10%. Suppose the employee has scores of 3.0 for goal 1, 3.0 for goal 2, 2.0 for job effectiveness, 3.0 for competency 1, 2.0 for competency 2, 2.0 for competency 3, 3.0 for competency 4, 4.0 for competency 5, and 3.0 for core values. Find the weighted average score for this employee. If an employee has a score less than 2.5, they must have a Performance Enhancement Plan written. Does this employee need a plan?</p></li>
-<li><p>An employee at Coconino Community College (CCC) is evaluated based on goal setting and accomplishments toward goals, job effectiveness, competencies, CCC core values. Suppose for a specific employee, goal 1 has a weight of 20%, goal 2 has a weight of 20%, goal 3 has a weight of 10%, job effectiveness has a weight of 25%, competency 1 has a weight of 4%, competency 2 has a weight of 3%, competency 3 has a weight of 3%, competency 4 has a weight of 5%, and core values has a weight of 10%. Suppose the employee has scores of 2.0 for goal 1, 2.0 for goal 2, 3.0 for goal 3, 2.0 for job effectiveness, 2.0 for competency 1, 3.0 for competency 2, 2.0 for competency 3, 3.0 for competency 4, and 4.0 for core values. Find the weighted average score for this employee. If an employee that has a score less than 2.5, they must have a Performance Enhancement Plan written. Does this employee need a plan?</p></li>
+<li><p>An employee at Coconino Community College (CCC) is evaluated based on goal setting and accomplishments toward goals, job effectiveness, competencies, CCC core values. Suppose for a specific employee, goal 1 has a weight of 20%, goal 2 has a weight of 20%, goal 3 has a weight of 10%, job effectiveness has a weight of 25%, competency 1 has a weight of 4%, competency 2 has a weight of 3%, competency 3 has a weight of 3%, competency 4 has a weight of 5%, and core values has a weight of 10%. Suppose the employee has scores of 2.0 for goal 1, 2.0 for goal 2, 3.0 for goal 3, 2.0 for job effectiveness, 2.0 for competency 1, 3.0 for competency 2, 2.0 for competency 3, 3.0 for competency 4, and 4.0 for core values. Find the weighted average score for this employee. If an employee has a score less than 2.5, they must have a Performance Enhancement Plan written. Does this employee need a plan?</p></li>
 <li><p>A statistics class has the following activities and weights for determining a grade in the course: test 1 worth 15% of the grade, test 2 worth 15% of the grade, test 3 worth 15% of the grade, homework worth 10% of the grade, semester project worth 20% of the grade, and the final exam worth 25% of the grade. If a student receives an 85 on test 1, a 76 on test 2, an 83 on test 3, a 74 on the homework, a 65 on the project, and a 79 on the final, what grade did the student earn in the course?</p></li>
 <li><p>A statistics class has the following activities and weights for determining a grade in the course: test 1 worth 15% of the grade, test 2 worth 15% of the grade, test 3 worth 15% of the grade, homework worth 10% of the grade, semester project worth 20% of the grade, and the final exam worth 25% of the grade. If a student receives a 92 on test 1, an 85 on test 2, a 95 on test 3, a 92 on the homework, a 55 on the project, and an 83 on the final, what grade did the student earn in the course?</p></li>
 </ol>
@@ -1364,46 +1312,22 @@ Code book for Cost Dataset
 </section>
 <section id="measures-of-spread" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="measures-of-spread"><span class="header-section-number">3.2</span> Measures of Spread</h2>
-<!-- Variability is an important idea in statistics. If you were to measure the height of everyone in your classroom, the resulting observations will generally have different values. That means not every student has the same height. Thus, there is variability in people's heights. If you were to take a sample of the income level of people in a town, every sample gives you different information.  There is variability between samples too.  Variability describes how the data are spread out. If the data are very close to each other, then there is low variability. If the data are very spread out, then there is high variability. How do you measure variability? It would be good to have a number that measures it. This section will describe some of the different measures of variability, also known as measures of variation.
-
-In the [example](#exm-mean-median-cats), the average weight of a cat was calculated to be 2.72 kg. How much does this tell you about the weight of all cats? Can you tell if most of the weights were close to 2.72 kg or were the weights really spread out? The highest weight and the lowest weight are known, but is there more that you can tell? All you know is that the center of the weights is 2.72 kg.
-
-You need more information. -->
 <p>Variability is a fundamental concept in statistics that describes how spread out data values are from each other. Consider measuring the height of everyone in your classroom – you’ll quickly notice that not everyone has the same height. Some students are taller, some are shorter, and there’s a range of heights in between. This spread in the data is what we call variability. The same principle applies to other measurements: if you sampled the income levels of people in a town, you’d find that incomes vary widely from person to person.</p>
 <p>Understanding variability helps us describe datasets more completely. When data values are clustered closely together, we say there is low variability. When data values are spread far apart, we say there is high variability. To quantify this spread, we need numerical measures that capture how dispersed the data are. This section introduces several measures of variability, also known as measures of variation or spread.</p>
 <p>Recall the <a href="#exm-mean-median-cats">example</a> where we calculated the average weight of a cat to be 2.72 kg. While this tells us the center of the data, it doesn’t tell us the whole story. Were most cats close to this weight, or did weights vary dramatically? We know the highest and lowest weights, but what about everything in between? Understanding only the center leaves important questions unanswered.</p>
 <p>To fully describe a dataset, we need measures of both center and spread. The measures of variability discussed in this section provide that additional information.</p>
 <p>The <strong>range</strong> of a set of data is the difference between the highest and lowest data values (the maximum and minimum values). The <strong>interval</strong> refers to the lowest and highest values themselves. The range is a single value while the interval consists of two values.</p>
 <div id="exm-range" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.6 (Calculating the Range)</strong></span> <strong>Solution</strong> From the <a href="#exm-effect-extreme-values">example</a>, the maximum weight of a cat was 3.9 kg and the minimum was 2 kg. So the range is <span class="math inline">\(3.9-2=1.9 kg\)</span>. But what does that tell you? You don’t know if the weights are really spread out, or if they are close together.</p>
+<p><span class="theorem-title"><strong>Example 3.6 (Calculating the Range)</strong></span> Calculate the range of the body weight of cats.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cats</span>. <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-cats">dataset code book</a> that follows.</p>
 </div>
-<!-- Unfortunately, the range does not provide a very accurate picture of variability. A better way to describe how the data are spread out is needed. Instead of looking only at the distance between the highest and lowest values, we can look at how far each data value is from the mean. This distance is called a **deviation**.
-
-You might want to find an average of these deviations. This leads to calculating a value called the **variance**. The symbol for the population variance is $\sigma^2$, where $\sigma$ is the Greek letter sigma. The population variance is the average squared distance of each data value from the mean of the data. 
-
-In practice, however, people usually use and report the square root of the variance, which is called **standard deviation**.  NOT TRUE This gives you the average distance from the mean.  The population standard deviation is denoted with the symbol $\sigma$. The reason for taking the square root is that the variance is measured in squared units. For example, if the data are measured in kilograms (kg), then the variance is measured in kg-squared. The standard deviation, on the other hand, is measured in the same units as the original data. So if the data are in kg, the standard deviation is also in kg, which makes it easier to interpret.
-
- NOT TRUE The standard deviation is the average (mean) distance from a data point to the mean. It can be thought of as how much a typical data point differs from the mean
-
-To estimate the population variance, we use the so called **sample variance**. The sample variance is denoted by $s^2$.
-
-The **sample variance** formula: $s^2=\frac{\sum\left(x-\bar{x}\right)^2}{n-1}$, where $\bar{x}$ is the sample mean, $n$ is the sample size, and $\sum{}$ means to find the sum of the values. The $n-1$ on the bottom has to do with a concept called degrees of freedom. Basically, it makes the sample variance a better approximation of the population variance.
-
-The **sample standard deviation** formula: $s=\sqrt{ \frac{\sum\left(x-\bar{x}\right)^2}{n-1}}$.
-
-The **population variance** formula: $\sigma^2 = \frac{\sum\left(x-\mu \right)^2}{N}$, where  $\sigma^2$ represents the population variance, $\mu$ is the population mean, and $N$ is the size of the population.
-
-The **population standard deviation** formula: $\sigma =\sqrt{ \frac{\sum\left(x-\mu \right)^2}{N}}$
-
-Both the sample variance and sample standard deviation can be found using technology. -->
-<!--df_stats(\~variable, data=data_frame, var, sd)
-
-The next example will demonstrate this command.
--->
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>From the effect of extreme values <a href="#exm-effect-extreme-values">example</a>, the maximum weight of a cat was 3.9 kg and the minimum was 2 kg. So the range is <span class="math inline">\(3.9-2=1.9\)</span> kg. But what does that tell you? You don’t know if the weights are really spread out, or if they are close together.</p>
+</div>
 <p>Unfortunately, the range does not provide a very accurate picture of variability because it only considers two values: the highest and lowest. A better approach is to examine how far each data value is from the mean. This distance from the mean is called a <strong>deviation</strong>. By looking at all the deviations together, we get a much more complete picture of how spread out the data are.</p>
 <section id="variance-and-standard-deviation" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="variance-and-standard-deviation"><span class="header-section-number">3.2.1</span> Variance and Standard Deviation</h3>
-<p>To measure the overall spread of data, statisticians calculate the average of these squared deviations, which is called the <strong>variance</strong>. The variance gives us a single number that captures how dispersed the data values are from the mean. For a population, the variance is denoted by <span class="math inline">\(\sigma^2\)</span> (where <span class="math inline">\(\sigma\)</span> is the Greek letter sigma).</p>
+<p>To measure the overall spread of data, statisticians calculate the average of the squared deviations from the mean, which is called the <strong>variance</strong>. The variance gives us a single number that captures how dispersed the data values are from the mean. For a population, the variance is denoted by <span class="math inline">\(\sigma^2\)</span> (where <span class="math inline">\(\sigma\)</span> is the Greek letter sigma).</p>
 <p>The <strong>population variance</strong> is calculated using the formula:</p>
 <p><span class="math display">\[\sigma^2 = \frac{\sum\left(x-\mu \right)^2}{N}\]</span></p>
 <p>where <span class="math inline">\(\mu\)</span> is the population mean, <span class="math inline">\(N\)</span> is the population size, and <span class="math inline">\(\sum\)</span> means to sum all the squared deviations.</p>
@@ -1422,21 +1346,23 @@ The next example will demonstrate this command.
 <p>The <strong>sample standard deviation</strong> is simply the square root of the sample variance:</p>
 <p><span class="math display">\[s=\sqrt{ \frac{\sum\left(x-\bar{x}\right)^2}{n-1}}\]</span></p>
 <p>Like the population standard deviation, the sample standard deviation is measured in the same units as the original data.</p>
+<p>In most real-world situations, we work with samples rather than entire populations, so the <strong>sample variance</strong> (<span class="math inline">\(s^2\)</span>) and <strong>sample standard deviation</strong> (<span class="math inline">\(s\)</span>) are the measures we use most often in this course. Although we have provided the formulas for the population variance (<span class="math inline">\(\sigma^2\)</span>) and population standard deviation (<span class="math inline">\(\sigma\)</span>) for reference, our examples and Rguroo instructions will focus on the sample versions. If you ever need to compute population variance or standard deviation, they can be calculated using the <span class="fun">Numerical Summaries</span> function in Rguroo under the <strong>Analytics</strong> toolbox.</p>
 </section>
 <section id="computing-variance-and-standard-deviation" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="computing-variance-and-standard-deviation"><span class="header-section-number">3.2.3</span> Computing Variance and Standard Deviation</h3>
 <p>While understanding these formulas is important, in practice you’ll typically use technology (such as Rguroo or statistical software) to calculate variance and standard deviation. These tools handle the computations quickly and accurately, allowing you to focus on interpreting the results.</p>
 <div id="exm-standard-deviation" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.7 (Calculating the Standard Deviation)</strong></span> For the dataset <span class="data">cats</span> (<a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a>) find the variance and standard derivation for weight of cats. Then find the variance and standard deviation separated by sex of the cat.</p>
+<p><span class="theorem-title"><strong>Example 3.7 (Calculating the Standard Deviation)</strong></span> For the dataset <span class="data">cats</span> find the variance and standard deviation for weight of cats. Then find the variance and standard deviation separated by sex of the cat.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cats</span>. <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-cats">dataset code book</a> that follows.</p>
 </div>
-<p><strong>Solution</strong></p>
-<p>When using Rguroo, you would perform the similar steps as described in calculation mean and median<a href="#Calculating-summary-stats-in-Rguroo">here</a>, and select <span class="def">standard deviation</span> and <span class="def">variance</span>, as shown in the figure <a href="#fig-sd-dialog" class="quarto-xref">Figure&nbsp;<span>3.11</span></a>.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>When using Rguroo, you would perform similar steps as described in calculation mean and median <a href="#Calculating-summary-stats-in-Rguroo">example</a>, and select <span class="def">standard deviation</span> and <span class="def">variance</span>, as shown in the figure <a href="#fig-sd-dialog" class="quarto-xref">Figure&nbsp;<span>3.11</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-sd-dialog" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog box for standard deviation and variance">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sd-dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Numerical_Description/sd_var_cats_dialog.png" class="img-fluid figure-img" style="width:70.0%" alt="Dialog box for standard deviation and variance">
+<img src="Rguroo_dialogs/Numerical_Description/sd_var_cats_dialog.png" class="img-fluid figure-img" style="width:80.0%" alt="Dialog box for standard deviation and variance">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sd-dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.11: Basic Summary Statistic Dialog for Standard Deviation and Variance
@@ -1445,13 +1371,13 @@ Figure&nbsp;3.11: Basic Summary Statistic Dialog for Standard Deviation and Vari
 </div>
 </div>
 </div>
-<p>The output is shown in <a href="#fig-sd-output" class="quarto-xref">Figure&nbsp;<span>3.12</span></a>. The variance for all cats is 0.24 <span class="math inline">\(kg^2\)</span> and the standard deviation is 0.49 kg.</p>
+<p>The output is shown in <a href="#fig-sd-output" class="quarto-xref">Figure&nbsp;<span>3.12</span></a>. The variance for all cats is 0.24 kg<span class="math inline">\(^2\)</span> and the standard deviation is 0.49 kg.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-sd-output" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Standard Deviation and Variance of Cats Weights">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sd-output-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Numerical_Description/sd_var_cats_output.png" class="img-fluid figure-img" style="width:70.0%" alt="Standard Deviation and Variance of Cats Weights">
+<img src="Rguroo_outputs/Numerical_Description/sd_var_cats_output.png" class="img-fluid figure-img" style="width:80.0%" alt="Standard Deviation and Variance of Cats Weights">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sd-output-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.12: Standard Deviation and Variance of Weights of Cats
@@ -1460,7 +1386,7 @@ Figure&nbsp;3.12: Standard Deviation and Variance of Weights of Cats
 </div>
 </div>
 </div>
-<p>To find out the mean, variance, and standard deviation for each sex of the cats, we use a similar function as in <a href="#fig-sd-dialog" class="quarto-xref">Figure&nbsp;<span>3.11</span></a> and select sex from the <span class="dpd">Factor 1</span> dropdown, as shown in <a href="#fig-spread-sex" class="quarto-xref">Figure&nbsp;<span>3.13</span></a></p>
+<p>To find out the mean, variance, and standard deviation for each sex of the cats, we use a similar function as in <a href="#fig-sd-dialog" class="quarto-xref">Figure&nbsp;<span>3.11</span></a> and select sex from the <span class="dpd">Factor 1</span> dropdown, as shown in <a href="#fig-spread-sex" class="quarto-xref">Figure&nbsp;<span>3.13</span></a>.</p>
 <div class="cell">
 <div id="fig-spread-sex" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1469,7 +1395,7 @@ Figure&nbsp;3.12: Standard Deviation and Variance of Weights of Cats
 <div id="fig-spread-sex-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Mean, Standard Deviation, Variance of Cats Weights by Sex">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-spread-sex-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Numerical_description/cat_sex_sdvarmean_dialog.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-spread-sex" alt="Mean, Standard Deviation, Variance of Cats Weights by Sex">
+<img src="Rguroo_dialogs/Numerical_description/cat_sex_sdvarmean_dialog.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-spread-sex" alt="Mean, Standard Deviation, Variance of Cats Weights by Sex">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-spread-sex-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Basic Summaries Dialog
@@ -1481,7 +1407,7 @@ Figure&nbsp;3.12: Standard Deviation and Variance of Weights of Cats
 <div id="fig-spread-sex-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Mean, Standard Deviation, Variance of Cats Weights by Sex">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-spread-sex-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Numerical_Description/cat_sex_sdvarmean_output.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-spread-sex" alt="Mean, Standard Deviation, Variance of Cats Weights by Sex">
+<img src="Rguroo_outputs/Numerical_Description/cat_sex_sdvarmean_output.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-spread-sex" alt="Mean, Standard Deviation, Variance of Cats Weights by Sex">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-spread-sex-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Basic Summaries Output
@@ -1496,12 +1422,8 @@ Figure&nbsp;3.13: Mean, Standard Deviation, and Variance of Weights of Cats by S
 </figure>
 </div>
 </div>
-<p>You can see that the mean weight of females cats is 2.36 kg, the variance is 0.075 <span class="math inline">\(kg^2\)</span>, and the standard deviation is 0.27 kg. For males cats, the mean is 2.9 kg, the variance is 0.22 <span class="math inline">\(kg^2\)</span>, and the standard deviation is 0.47 kg. This means that female cats weigh less than males and since the variance and standard deviations are much less for female cats than males cats, female cats’ weights are more consistent than male cats.</p>
-<!-- In general a "small" variance and standard deviation means the data is close together (more consistent) and a "large" variance and standard deviation means the data is spread out (less consistent). Sometimes you want consistent data and sometimes you don't. As an example if you are making bolts, you want the lengths to be very consistent so you want a small standard deviation. On the other hand, if you are administering a test to evaluate pilot ability, you want the test scores to show enough variability to distinguish strong candidates from weaker ones. If nearly everyone scores about the same, the standard deviation will be small and it will be difficult to tell who performs better. A larger standard deviation indicates that scores are more spread out, making it easier to differentiate between high-performing and low-performing candidates.
-
-What do “small” and “large” standard deviation mean? To a bicyclist whose average speed is 20 mph, $s = 20$ mph is huge. To an airplane whose average speed is 500 mph, $s = 20$ mph is small. The “size” of the variation depends on the size of the numbers in the problem and the mean. Another situation where it makes sense to describe a standard deviation as small or large is when comparing two different samples, such as in [Example: Finding the Standard Deviation]. When two samples are measured on the same scale, the sample with the smaller standard deviation shows less spread in its data than the sample with the larger standard deviation.
-
-Many textbooks present an alternative computational formula for calculating the standard deviation. While this formula can be efficient for performing calculations, it does not provide much insight into what the standard deviation represents or how it is constructed. Historically, this computational formula was useful when standard deviations were calculated by hand, since it simplified the arithmetic. Today, however, computers perform these calculations quickly and accurately. For this reason, the computational formula is no longer necessary for routine work. To develop a clear understanding of what the standard deviation measures, it is better to focus on the definition-based formula. When a numerical answer is needed, using a computer is the most practical approach. -->
+<p>You can see that the mean weight of females cats is 2.36 kg, the variance is 0.075 kg<span class="math inline">\(^2\)</span>, and the standard deviation is 0.27 kg. For males cats, the mean is 2.9 kg, the variance is 0.22 kg<span class="math inline">\(^2\)</span>, and the standard deviation is 0.47 kg. This means that female cats weigh less than males and since the variance and standard deviations are much less for female cats than males cats, female cats’ weights are more consistent than male cats.</p>
+</div>
 </section>
 <section id="interpreting-variance-and-standard-deviation" class="level3" data-number="3.2.4">
 <h3 data-number="3.2.4" class="anchored" data-anchor-id="interpreting-variance-and-standard-deviation"><span class="header-section-number">3.2.4</span> Interpreting Variance and Standard Deviation</h3>
@@ -1511,18 +1433,10 @@ Many textbooks present an alternative computational formula for calculating the 
 <section id="what-makes-a-standard-deviation-small-or-large" class="level3" data-number="3.2.5">
 <h3 data-number="3.2.5" class="anchored" data-anchor-id="what-makes-a-standard-deviation-small-or-large"><span class="header-section-number">3.2.5</span> What Makes a Standard Deviation “Small” or “Large”?</h3>
 <p>The meaning of “small” and “large” depends on the context and scale of your data. To a bicyclist whose average speed is 20 mph, a standard deviation of <span class="math inline">\(s = 20\)</span> mph is huge – it would mean speeds vary wildly from nearly stopped to 40 mph. To an airplane whose average speed is 500 mph, a standard deviation of <span class="math inline">\(s = 20\)</span> mph is quite small, representing only minor variations in cruising speed. The “size” of the standard deviation must always be interpreted relative to the mean and the nature of what you’re measuring.</p>
-<p>Standard deviations are also meaningful when comparing two samples measured on the same scale. For instance, in the previous <a href="#exm-standard-deviation">example</a>, the sample with the smaller standard deviation shows less spread in its data than the sample with the larger standard deviation.</p>
+<p>Standard deviations are also meaningful when comparing two samples measured on the same scale. For instance, in the previous <a href="#exm-standard-deviation">example</a>, female cats had a standard deviation of 0.27 kg while male cats had a standard deviation of 0.47 kg. Because both groups are measured in kilograms, we can directly compare these values and conclude that female cat weights are more consistent (less spread out) than male cat weights.</p>
 </section>
-<section id="a-note-on-computational-formulas" class="level3" data-number="3.2.6">
-<h3 data-number="3.2.6" class="anchored" data-anchor-id="a-note-on-computational-formulas"><span class="header-section-number">3.2.6</span> A Note on Computational Formulas</h3>
-<p>Many textbooks present an alternative computational formula for calculating the standard deviation. While this formula was historically useful for hand calculations because it simplified the arithmetic, it does not provide insight into what the standard deviation represents. Today, statistical software and calculators compute standard deviations quickly and accurately, making the computational formula unnecessary for routine work. For developing a clear understanding of what the standard deviation measures, the definition-based formula presented earlier is more instructive. In practice, you should use technology to obtain numerical answers.</p>
-</section>
-<section id="using-the-standard-deviation" class="level3" data-number="3.2.7">
-<h3 data-number="3.2.7" class="anchored" data-anchor-id="using-the-standard-deviation"><span class="header-section-number">3.2.7</span> Using the Standard Deviation</h3>
-<!--
-One of the uses of the standard deviation is to describe how values are a population is distributed. This describes where much of the data is for most distributions. A general rule is that about 95% of the data is within 2 standard deviations of the mean. This is not perfect, but is works for many distributions. There are rules like the empirical rule and Chebyshev's theorem that give you more detailed percentages, but 95% in 2 standard deviations is a very good approximation.
-
--->
+<section id="using-the-standard-deviation" class="level3" data-number="3.2.6">
+<h3 data-number="3.2.6" class="anchored" data-anchor-id="using-the-standard-deviation"><span class="header-section-number">3.2.6</span> Using the Standard Deviation</h3>
 <p>The standard deviation helps describe where the data tend to lie relative to the mean. When the data are symmetric and have most values clustered around a typical center, the empirical rule provides a helpful guideline. It says that about 68% of the data fall within one standard deviation of the mean, about 95% fall within two standard deviations, and about 99.7% fall within three standard deviations. These percentages are not exact, but they often give a reasonable picture of where most of the data lie. <a href="#fig-empirical-rule" class="quarto-xref">Figure&nbsp;<span>3.14</span></a> shows how data is distributed according to the empirical rule for a symmetric, bell-shaped distribution.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1554,7 +1468,9 @@ Figure&nbsp;3.15: Chebyshev’s Rule showing minimum percentages of data within 
 </div>
 </div>
 <div id="exm-empirical-rule" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.8 (Using the Empirical Rule)</strong></span> In the dataset <span class="data">Tornado_OK</span>, the U.S. Weather Service has provided information about the total monthly/annual number of reported tornadoes in Oklahoma for the years 1950 to 2018 (US Department of Commerce &amp; Noaa, 2016). The first six rows of the dataset are shown in <a href="#tbl-Tornado" class="quarto-xref">Table&nbsp;<span>3.6</span></a>. Find the general interval that contains about 95% of the data.</p>
+<p><span class="theorem-title"><strong>Example 3.8 (Using the Empirical Rule)</strong></span> In the dataset <span class="data">Tornado_OK</span>, the U.S. Weather Service has provided information about the total monthly/annual number of reported tornadoes in Oklahoma for the years 1950 to 2018 (US Department of Commerce &amp; Noaa, 2016). Find the general interval that contains about 95% of the data.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Tornado_OK</span>. <a href="#tbl-Tornado" class="quarto-xref">Table&nbsp;<span>3.6</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-tornado">dataset code book</a> that follows.</p>
+</div>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Tornado dataset">
 <div id="tbl-Tornado" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Tornado dataset">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1715,29 +1631,28 @@ Code book for Tornado Dataset
 <div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The U.S. Weather Service has collected data on the monthly and annual number of tornadoes in Oklahoma.</p>
-<p>This data frame contains the following columns:</p>
+<p>This dataset contains the following columns:</p>
 <p><span class="var">Year</span>: Year from 1950-2018</p>
-<p><span class="var">Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec</span>: Tornado numbers in each moth of the year</p>
+<p><span class="var">Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec</span>: Tornado numbers in each month of the year</p>
 <p><span class="var">Annual</span>: Total number of tornadoes for each year</p>
 <p><a href="https://www.weather.gov/oun/tornadodata-ok-1950">Source</a> US Department of Commerce, &amp; Noaa. (2016, November 15). 1950 Oklahoma Tornadoes.</p>
 <p>References The data was supplied by The U.S. Weather Service</p>
 </div>
 </div>
 </div>
-</div>
-<p><strong>Solution</strong></p>
-<p>Import the <span class="data">Torando_OK</span> dataset from the <span class="repo">Kozak</span> repository into your Data toolbox on Rguroo.</p>
-<p>Variable: <span class="math inline">\(x\)</span> = number of <strong>annual</strong> tornadoes in Oklahoma</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>Import the <span class="data">Tornado_OK</span> dataset from the <span class="repo">Kozak</span> repository into your Data toolbox on Rguroo using these <a href="#Importing-cats-to-Rguroo">directions</a>.</p>
+<p>Variable: <span class="math inline">\(x\)</span> = number of <span class="var">annual</span> tornadoes in Oklahoma</p>
 <p>Find the mean and standard deviation as in <a href="#fig-tornado-ex" class="quarto-xref">Figure&nbsp;<span>3.16</span></a>:</p>
 <div class="cell">
 <div id="fig-tornado-ex" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tornado-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="fig-tornado-ex-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Dialog Box and Output for Mean and Standard Deivation of Annual Tornados">
+<div id="fig-tornado-ex-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Dialog Box and Output for Mean and Standard Deviation of Annual Tornadoes">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-tornado-ex-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Numerical_description/tornado_dialog.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-tornado-ex" alt="Rguroo Dialog Box and Output for Mean and Standard Deivation of Annual Tornados">
+<img src="Rguroo_dialogs/Numerical_description/tornado_dialog.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-tornado-ex" alt="Rguroo Dialog Box and Output for Mean and Standard Deviation of Annual Tornadoes">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tornado-ex-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Basic Summaries Dialog
@@ -1746,10 +1661,10 @@ Code book for Tornado Dataset
 </div>
 </div>
 <div class="cell-output-display">
-<div id="fig-tornado-ex-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Dialog Box and Output for Mean and Standard Deivation of Annual Tornados">
+<div id="fig-tornado-ex-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Dialog Box and Output for Mean and Standard Deviation of Annual Tornadoes">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-tornado-ex-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Numerical_Description/tornado_output.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-tornado-ex" alt="Rguroo Dialog Box and Output for Mean and Standard Deivation of Annual Tornados">
+<img src="Rguroo_outputs/Numerical_Description/tornado_output.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-tornado-ex" alt="Rguroo Dialog Box and Output for Mean and Standard Deviation of Annual Tornadoes">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tornado-ex-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Basic Summaries Output
@@ -1759,30 +1674,26 @@ Code book for Tornado Dataset
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tornado-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.16: Mean and Standard Deviation of Annual Tornados
+Figure&nbsp;3.16: Mean and Standard Deviation of Annual Tornadoes
 </figcaption>
 </figure>
 </div>
 </div>
-<p>The mean is <span class="math inline">\(\mu=56\)</span> tornadoes and the standard deviation is <span class="math inline">\(\sigma=27.6\)</span> tornadoes. The interval will be <span class="math inline">\(\mu\pm2\times\sigma=56\pm(2\times27.6)=(0.8,111.2)\)</span></p>
+<p>The mean is <span class="math inline">\(\bar{x}=56\)</span> tornadoes and the standard deviation is <span class="math inline">\(s=27.6\)</span> tornadoes. The interval will be <span class="math inline">\(\bar{x}\pm2\times s=56\pm(2\times27.6)=(0.8,111.2)\)</span></p>
 <p>Therefore, we can say that about 95% of the years have between 0.8 or 1 and 111 tornadoes in Oklahoma.</p>
-<!-- The general rule says that about 95% of the data is within two standard deviations of the mean. That percentage is fairly high. There isn't much data outside two standard deviations. A rule that can be followed is that if a data value is within two standard deviations, then that value is a common data value. If the data value is outside two standard deviations of the mean, either above or below, then the number is uncommon. It could even be called unusual. An easy calculation that you can do to figure it out is to find the difference between the data point and the mean, and then divide that answer by the standard deviation. The resulting value is called the z-value, and it has the formula
-
-$z=\frac{x-\mu}{\sigma}$.
-
-If you don't know the population mean, $\mu$, and the population standard deviation, $\sigma$, then use the sample mean, $\bar{x}$, and the sample standard deviation, $s$, to estimate the population parameter values. Realize that using the sample standard deviation may not actually be very accurate.-->
+</div>
 </section>
-<section id="identifying-unusual-values-with-standard-deviation" class="level3" data-number="3.2.8">
-<h3 data-number="3.2.8" class="anchored" data-anchor-id="identifying-unusual-values-with-standard-deviation"><span class="header-section-number">3.2.8</span> Identifying Unusual Values with Standard Deviation</h3>
+<section id="identifying-unusual-values-with-standard-deviation" class="level3" data-number="3.2.7">
+<h3 data-number="3.2.7" class="anchored" data-anchor-id="identifying-unusual-values-with-standard-deviation"><span class="header-section-number">3.2.7</span> Identifying Unusual Values with Standard Deviation</h3>
 <p>The empirical rule tells us that about 95% of data in a symmetric distribution falls within two standard deviations of the mean. This means that data values outside this range are relatively rare – they occur in only about 5% of cases. We can use this insight to classify data values as common or unusual:</p>
 <ul>
 <li><strong>Common values</strong>: Data values within two standard deviations of the mean (the middle 95%)</li>
 <li><strong>Unusual values</strong>: Data values more than two standard deviations away from the mean (the outer 5%)</li>
 </ul>
-<p>To determine whether a specific data value is common or unusual, we need to measure how many standard deviations it is from the mean. This standardized distance is called a <strong>z-score</strong> (or z-value), and it is calculated using the formula:</p>
+<p>To determine whether a specific data value is common or unusual, we need to measure how many standard deviations it is from the mean. This standardized distance is called a <strong>z-score</strong> (or <span class="math inline">\(z\)</span>-value), and it is calculated using the formula:</p>
 <p><span class="math display">\[z=\frac{x-\mu}{\sigma}\]</span></p>
 <p>where <span class="math inline">\(x\)</span> is the data value, <span class="math inline">\(\mu\)</span> is the population mean, and <span class="math inline">\(\sigma\)</span> is the population standard deviation.</p>
-<p>The z-score tells us how many standard deviations a data value is from the mean. For example, a z-score of 2.5 means the data value is 2.5 standard deviations above the mean, while a z-score of -1.8 means the data value is 1.8 standard deviations below the mean. Using our rule of thumb:</p>
+<p>The <span class="math inline">\(z\)</span>-score tells us how many standard deviations a data value is from the mean. For example, a <span class="math inline">\(z\)</span>-score of 2.5 means the data value is 2.5 standard deviations above the mean, while a <span class="math inline">\(z\)</span>-score of -1.8 means the data value is 1.8 standard deviations below the mean. Using our rule of thumb:</p>
 <ul>
 <li>If <span class="math inline">\(|z| \leq 2\)</span> (z-score is between -2 and 2), the value is <strong>common</strong></li>
 <li>If <span class="math inline">\(|z| &gt; 2\)</span> (z-score is less than -2 or greater than 2), the value is <strong>unusual</strong></li>
@@ -1791,29 +1702,30 @@ If you don't know the population mean, $\mu$, and the population standard deviat
 <p><span class="math display">\[z=\frac{x-\bar{x}}{s}\]</span></p>
 <p>While this sample-based z-score provides a good approximation, keep in mind that it is an estimate and may be less accurate when working with small samples.</p>
 <div id="exm-unusual-value" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.9 (Determining If a Value Is Unusual)</strong></span> &nbsp;</p>
+<p><span class="theorem-title"><strong>Example 3.9 (Determining If a Value Is Unusual)</strong></span> Using the tornado dataset from the previous <a href="#exm-empirical-rule">example</a>, where the mean number of annual tornadoes in Oklahoma is 56 and the standard deviation is 27.6, determine whether each of the following values is unusual by calculating its <span class="math inline">\(z\)</span>-score.</p>
 <ol type="a">
 <li>In 1974, there were 45 tornadoes in Oklahoma. Is this value unusual? Why or why not?</li>
 <li>In 1999, there were 145 tornadoes in the Oklahoma. Is this value unusual? Why or why not?</li>
 </ol>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Tornado_OK</span>. <a href="#tbl-Tornado" class="quarto-xref">Table&nbsp;<span>3.6</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-tornado">dataset code book</a> that follows.</p>
 </div>
-<p><strong>Solution</strong></p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span></p>
 <ol type="a">
-<li><p>In 1974, there were 45 tornadoes in Oklahoma. Is this value unusual? Why or why not?</p>
-<p>Variable: <span class="math inline">\(x\)</span> = number of tornadoes in Oklahoma</p></li>
+<li>Variable: <span class="math inline">\(x\)</span> = number of tornadoes in Oklahoma</li>
 </ol>
-<p>To answer this question, first find how many standard deviations 45 is from the mean. From this <a href="#exm-empirical-rule">example</a>, we know <span class="math inline">\(\mu=56\)</span> and <span class="math inline">\(\sigma=27.6\)</span>. For <span class="math inline">\(x\)</span>=45, <span class="math inline">\(z=\frac{45-56}{27.6}=-0.399\)</span></p>
-<p>Since this value is between -2 and 2, then it is not unusual to have 45 tornadoes in a year in Oklahoma. The z value is negative, so that means that 45 is less than the mean number of tornadoes.</p>
+<p>To answer this question, first find how many standard deviations 45 is from the mean. From the previous <a href="#exm-empirical-rule">example</a>, we know <span class="math inline">\(\bar{x}=56\)</span> and <span class="math inline">\(s=27.6\)</span>. For <span class="math inline">\(x\)</span>=45, <span class="math inline">\(z=\frac{45-56}{27.6}=-0.399\)</span></p>
+<p>Since this value is between -2 and 2, then it is not unusual to have 45 tornadoes in a year in Oklahoma. The <span class="math inline">\(z\)</span> value is negative, so that means that 45 is less than the mean number of tornadoes.</p>
 <ol start="2" type="a">
-<li><p>In 1999, there were 145 tornadoes in the Oklahoma. Is this value unusual? Why or why not?</p>
-<p>Variable: <span class="math inline">\(x\)</span> = number of tornadoes in Oklahoma</p></li>
+<li>Variable: <span class="math inline">\(x\)</span> = number of tornadoes in Oklahoma</li>
 </ol>
 <p>For this question the <span class="math inline">\(x\)</span> = 145, <span class="math inline">\(z=\frac{145-56}{27.6}=3.22\)</span></p>
-<p>Since this value is more than 2, then it is unusual to have only 145 tornadoes in a year in Oklahoma.</p>
+<p>Since the <span class="math inline">\(z\)</span> value is more than 2, then it would be considered unusual to have 145 tornadoes in a year in Oklahoma.</p>
+</div>
 </section>
-<section id="homework-for-measures-of-spread-section" class="level3" data-number="3.2.9">
-<h3 data-number="3.2.9" class="anchored" data-anchor-id="homework-for-measures-of-spread-section"><span class="header-section-number">3.2.9</span> Homework for Measures of Spread Section</h3>
-<p><strong>Use Technology on all problems. State the variable on all problems.</strong></p>
+<section id="homework-for-measures-of-spread-section" class="level3" data-number="3.2.8">
+<h3 data-number="3.2.8" class="anchored" data-anchor-id="homework-for-measures-of-spread-section"><span class="header-section-number">3.2.8</span> Homework for Measures of Spread Section</h3>
+<p><strong>Use Rguroo on all problems. State the variable on all problems.</strong></p>
 <ol type="1">
 <li>Cholesterol levels were collected from patients certain days after they had a heart attack and are in <a href="#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>. Find the mean, median, range, variance, and standard deviation for cholesterol levels 2 days after the heart attack.</li>
 </ol>
@@ -1822,28 +1734,28 @@ If you don't know the population mean, $\mu$, and the population standard deviat
 <p><strong>Code book for Data Frame Cholesterol</strong> is below <a href="#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>.</p>
 </div>
 <ol start="2" type="1">
-<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Find the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Pacific Ocean and the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Tasman Sea. Compare and contrast the length of rivers that flow to the Pacific Ocean versus the ones that flow into the Tasman Sea using both measures of spread and measures of variability.</li>
+<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Find the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Pacific Ocean and the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Tasman Sea. Compare and contrast the length of rivers that flow to the Pacific Ocean versus the ones that flow into the Tasman Sea using both measures of center and measures of variability.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">length</span>.</p>
-<p><strong>Code book for data frame Length</strong> is below <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a>.</p>
+<p><strong>Code book for dataset Length</strong> is below <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a>.</p>
 </div>
 <ol start="3" type="1">
 <li>Print-O-Matic printing company’s employees have salaries that are contained in <a href="#tbl-Pay" class="quarto-xref">Table&nbsp;<span>3.4</span></a>. Find the mean, median, range, variance, and standard deviation for the salaries of all employees.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">pay</span>.</p>
-<p><strong>Code book for data frame Pay</strong> below <a href="#tbl-Pay" class="quarto-xref">Table&nbsp;<span>3.4</span></a>.</p>
+<p><strong>Code book for dataset Pay</strong> below <a href="#tbl-Pay" class="quarto-xref">Table&nbsp;<span>3.4</span></a>.</p>
 </div>
 <ol start="4" type="1">
 <li>Print-O-Matic printing company spends specific amounts on fixed costs every month. The costs of those fixed costs are in <a href="#tbl-Cost" class="quarto-xref">Table&nbsp;<span>3.5</span></a>. Find the mean, median, range, variance, and standard deviation for the fixed costs.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">pay</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cost</span>.</p>
 <p><strong>Code book for Data frame Cost</strong> is below <a href="#tbl-Cost" class="quarto-xref">Table&nbsp;<span>3.5</span></a>.</p>
 </div>
 <ol start="5" type="1">
-<li>The data frame Pulse <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute.</li>
+<li>The dataset Pulse <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">pulse</span>.</p>
@@ -1985,11 +1897,11 @@ Code book for Pulse Dataset
 <div class="callout-body-container callout-body">
 <p><strong>Description:</strong> Students in an introductory statistics class (MS212 taught by Professor John Eccleston and Dr Richard Wilson at The University of Queensland) participated in a simple experiment. The students took their own pulse rate. They were then asked to flip a coin. If the coin came up heads, they were to run in place for one minute. Otherwise they sat for one minute. Then everyone took their pulse again. The pulse rates and other physiological and lifestyle data are given in the data.</p>
 <p>Five class groups between 1993 and 1998 participated in the experiment. The lecturer, Richard Wilson, was concerned that some students would choose the less strenuous option of sitting rather than running even if their coin came up heads, In the years 1995-1998 a different method of random assignment was used. In these years, data forms were handed out to the class before the experiment. The forms were pre-assigned to either running or non-running and there were an equal number of each. In 1995 and 1998 not all of the forms were returned so the numbers running and sitting was still not entirely controlled.</p>
-<p>This data frame contains the following columns:</p>
+<p>This dataset contains the following columns:</p>
 <p><span class="var">height</span>: height of subject in cm</p>
 <p><span class="var">weight</span>: weight of subject in kg</p>
 <p><span class="var">age</span>: age of subject in years</p>
-<p><span class="var">gender</span>: sex of subject, male, female</p>
+<p><span class="var">gender</span>: male or female</p>
 <p><span class="var">Smokes</span>: whether a subject regularly smokes, yes means does smoke, no means does not smoke</p>
 <p><span class="var">alcohol</span>: whether a subject regularly drinks alcohol, yes means the person does, no means the person does not</p>
 <p><span class="var">exercise</span>: whether a subject exercises, low, moderate, high</p>
@@ -2002,13 +1914,13 @@ Code book for Pulse Dataset
 </div>
 </div>
 </div>
-<p>Create a data frame that contains only males, who drink alcohol, but do not smoke. Then compare the pulse before and the pulse after using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread. Create the new dataset and save as <span class="data">pulse_males</span> by subsetting the <span class="data">pulse</span> data using the steps described here. See <a href="#fig-subset-pulse" class="quarto-xref">Figure&nbsp;<span>3.17</span></a> for the Data Subset Dialog.</p>
+<p>Create a dataset that contains only males, who drink alcohol, but do not smoke. Then compare the pulse before and the pulse after using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread. Create the new dataset and save as <span class="data">pulse_males</span> by subsetting the <span class="data">pulse</span> data using the steps described here. See <a href="#fig-subset-pulse" class="quarto-xref">Figure&nbsp;<span>3.17</span></a> for the Data Subset Dialog.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-subset-pulse" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Dialog Box for Subsetting Pulse Data">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-subset-pulse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Numerical_description/pulse_subset_dialog.png" class="img-fluid figure-img" style="width:70.0%" alt="Rguroo Dialog Box for Subsetting Pulse Data">
+<img src="Rguroo_dialogs/Numerical_description/pulse_subset_dialog.png" class="img-fluid figure-img" style="width:80.0%" alt="Rguroo Dialog Box for Subsetting Pulse Data">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-subset-pulse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.17: Subsetting Dialog Box
@@ -2141,7 +2053,7 @@ Table&nbsp;3.8: Head of Pulse Rates of Nonsmoking Males Before and After Exercis
 </div>
 </div>
 <ol start="6" type="1">
-<li><p>The data frame Pulse <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute. Create a data frame that contains females, who do not smoke but do drink alcohol. Compare the pulse rate before and after exercise using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread.</p></li>
+<li><p>The dataset Pulse <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute. Create a dataset that contains females, who do not smoke but do drink alcohol. Compare the pulse rate before and after exercise using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread.</p></li>
 <li><p>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997) and the data is in <a href="#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>.</p></li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
@@ -2221,17 +2133,17 @@ Code book for Reiki Dataset
 <div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The purpose of this study was to explore the usefulness of Reiki as an adjuvant to opioid therapy in the management of pain. Since no studies in this area could be found, a pilot study was carried out involving 20 volunteers experiencing pain at 55 sites for a variety of reasons, including cancer. All Reiki treatments were provided by a certified second-degree Reiki therapist. Pain was measured using both a visual analogue scale (VAS) and a Likert scale immediately before and after the Reiki treatment. Both instruments showed a highly significant (p &lt; 0.0001) reduction in pain following the Reiki treatment.</p>
-<p>This data frame contains the following columns:</p>
-<p><span class="var">vas.before</span>: pain measured using a visual analogue scale (VAS) before Reiki treatment</p>
-<p><span class="var">vas.after</span>: pain measured using a visual analogue scale (VAS) after Reiki treatment</p>
+<p>This dataset contains the following columns:</p>
+<p><span class="var">VAS.before</span>: pain measured using a visual analogue scale (VAS) before Reiki treatment</p>
+<p><span class="var">VAS.after</span>: pain measured using a visual analogue scale (VAS) after Reiki treatment</p>
 <p><span class="var">likert_before</span>: pain measured using a likert before Reiki treatment</p>
 <p><span class="var">likert_after</span>: pain measured using a likert after Reiki treatment</p>
 <p><a href="http://www.ncbi.nlm.nih.gov/pubmed/9765732">Source</a> Olson, K., &amp; Hanson, J. (1997). Using reiki to manage pain: a preliminary report. Cancer Prev Control, 1(2), 108-13.</p>
-<p>References** Using Reiki to manage pain: a preliminary report. Olson K1, Hanson J., Cancer Prev Control 1997, Jun; 1(2): 108-13.</p>
+<p>References: Using Reiki to manage pain: a preliminary report. Olson K1, Hanson J., Cancer Prev Control 1997, Jun; 1(2): 108-13.</p>
 </div>
 </div>
 </div>
-<p>Since the data was collected both before and after the treatment for all of the units of observations, you want to look at the effect size of the treatment. You want to find the difference between before and after for the pain scale. First you must create a new data frame that adds a column for the difference in before and after. This data is known as paired data. To create the new column in a new data frame called Newreiki use the following steps</p>
+<p>Since the data was collected both before and after the treatment for all of the units of observations, you want to look at the effect size of the treatment. You want to find the difference between before and after for the pain scale. First you must create a new dataset that adds a column for the difference in before and after. This data is known as paired data. To create the new column in a new dataset called Newreiki use the following steps</p>
 <div id="Transforming-Data-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a New Variable in the Reiki_pain Dataset">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -2252,10 +2164,10 @@ Code book for Reiki Dataset
 </li>
 <li>From the <span class="dpd">Dataset</span> dropdown, select the <span class="data">Reiki_pain</span> dataset.<br>
 </li>
-<li>Click on the plus sign icon <img src="Rguroo_Icons/add.png" class="img-fluid" alt="plus icon"> in the Variable column and type <span class="var">vas.diff</span>. The variable’s name appears in the list labeled Retuned Variable on the right side.<br>
+<li>Click on the plus sign icon <img src="Rguroo_Icons/add.png" class="img-fluid" alt="plus icon"> in the Variable column and type <span class="var">vas.diff</span>. The variable’s name appears in the list labeled Returned Variable on the right side.<br>
 </li>
 <li>In the middle text field type your R function (transformation). To write a variable name, you can either type it or double-click on the variable name in the Returned Variable list. Double click <span class="var">VAS.before</span> enter minus(-) and double click <span class="var">VAS.after</span>.</li>
-<li>When you are done with your selection, click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see a preview of the scatterplot.</li>
+<li>When you are done with your selection, click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the transformed dataset.</li>
 <li>In Save As… name the new dataset Newreiki and click the <span class="button">Save As…</span>.</li>
 </ol>
 <div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
@@ -2405,8 +2317,8 @@ Code book for Rainfall Dataset
 <div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Daily rainfall (in millimeters) was recorded over a 47-year period in Turramurra, Sydney, Australia. For each year, the wettest day was identified (that having the greatest rainfall). The data show the rainfall recorded for the 47 annual maxima.</p>
-<p>This data frame contains the following columns:</p>
-<p>amount: daily rainfall (mm)</p>
+<p>This dataset contains the following columns:</p>
+<p><span class="var">amount</span>: daily rainfall (mm)</p>
 <p><a href="https://gksmyth.github.io/ozdasl/oz/sydrain.html">Source</a> Annual maximums of daily rainfall in Sydney. (2013, September 25).</p>
 <p>References Rayner J.C.W. and Best D.J. (1989) Smooth tests of goodness of fit. Oxford: Oxford University Press. Hand D.J., Daly F., Lunn A.D., McConway K.J., Ostrowski E. (1994). A Handbook of Small datasets. London: Chapman &amp; Hall. dataset 157. Thanks to Jim Irish of the University of Technology, Sydney, for assistance in identifying the correct units for this data.</p>
 </div>
@@ -2417,50 +2329,27 @@ Code book for Rainfall Dataset
 <section id="ranking" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="ranking"><span class="header-section-number">3.3</span> Ranking</h2>
 <p>Along with the center and the variability, another useful numerical measure is the ranking of a number. A <strong>percentile</strong> is a measure of ranking. It represents a location measurement of a data value to the rest of the values. Many standardized tests give the results as a percentile. Doctors also use percentiles to track a child’s growth.</p>
-<p>The <span class="math inline">\(k^{th}\)</span> <strong>percentile</strong> is the data value that has k% of the data at or below that value.</p>
-<div id="exm-interpreting-percentile" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.10 (Interpreting Percentile)</strong></span> &nbsp;</p>
-<ol type="a">
-<li>What does a score of the <span class="math inline">\(90^{th}\)</span> percentile mean?</li>
-<li>What does a score of the <span class="math inline">\(70^{th}\)</span> percentile mean?</li>
-</ol>
-</div>
-<p><strong>Solution</strong></p>
-<ol type="a">
-<li><p>What does a score of the <span class="math inline">\(90^{th}\)</span> percentile mean?</p>
-<p>This means that 90% of the scores were at or below this score. (A person did the same as or better than 90% of the test takers.)</p></li>
-<li><p>What does a score of the <span class="math inline">\(70^{th}\)</span> percentile mean?</p>
-<p>This means that 70% of the scores were at or below this score.</p></li>
-</ol>
-<div id="exm-percentile-vs-score" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.11 (Percentile Versus Score)</strong></span> If the test was out of 100 points and you scored at the <span class="math inline">\(80^{th}\)</span> percentile, what was your score on the test?</p>
-</div>
-<p><strong>Solution</strong></p>
-<p>You don’t know! All you know is that you scored the same as or better than 80% of the people who took the test. If all the scores were really low, you could have still failed the test. On the other hand, if many of the scores were high you could have gotten a 95% or more.</p>
-<!--There are special percentiles called **quartiles**. Quartiles are numbers that divide the data into fourths. One fourth (or a quarter) of the data falls between consecutive quartiles.
-
-### **To find the quartiles**:
-
-To find the quartiles in Rguroo, you use the same steps as finding the mean, standard deviation, and variation in Summary Stasitic as described [here](#Calculating-summary-stats-in-Rguroo). -->
+<p>The <span class="math inline">\(k^{th}\)</span> <strong>percentile</strong> is the data value that has <span class="math inline">\(k%\)</span> of the data at or below that value.</p>
+<p>For instance, a score at the <span class="math inline">\(90^{th}\)</span> percentile means that 90% of the scores were at or below this score — in other words, the person did the same as or better than 90% of the test takers. A score at the <span class="math inline">\(70^{th}\)</span> percentile means that 70% of the scores were at or below this score.</p>
+<p>It is important to understand that a percentile is a ranking, not a score. If a test was out of 100 points and you scored at the <span class="math inline">\(80^{th}\)</span> percentile, that does not mean you earned 80 points. It means you scored the same as or better than 80% of the people who took the test. If all the scores were really low, you could have still failed the test. On the other hand, if many of the scores were high you could have gotten a 95% or more. The percentile tells you how you compared to others, not what your actual score was.</p>
 <section id="quartiles-dividing-data-into-fourths" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="quartiles-dividing-data-into-fourths"><span class="header-section-number">3.3.1</span> Quartiles: Dividing Data into Fourths</h3>
 <p>While the median divides a dataset into two equal halves, we can also divide data into four equal parts using <strong>quartiles</strong>. Quartiles are special percentiles that split the data into fourths, with one quarter (25%) of the data falling between each consecutive quartile. Just as the median helps us understand the center of the data, quartiles help us understand how the data is distributed across its entire range.</p>
 <p>There are three quartiles that divide the data into four equal groups:</p>
 <ul>
-<li><strong>First quartile (Q1)</strong>: 25% of the data falls below this value</li>
-<li><strong>Second quartile (Q2)</strong>: 50% of the data falls below this value (this is the median)</li>
-<li><strong>Third quartile (Q3)</strong>: 75% of the data falls below this value</li>
+<li><strong>First quartile (Q1)</strong>: At least 25% of the data values are less than or equal to <span class="math inline">\(Q1\)</span></li>
+<li><strong>Second quartile (Q2)</strong>: At least 50% of the data values are less than or equal to <span class="math inline">\(Q2\)</span> (this is the median)</li>
+<li><strong>Third quartile (Q3)</strong>: At least 75% of the data values are less than or equal to <span class="math inline">\(Q3\)</span></li>
 </ul>
 <p>Together, these quartiles give us a more complete picture of the data’s distribution than the median alone.</p>
 <p><strong>Finding Quartiles in Rguroo</strong></p>
 <p>To find the quartiles in Rguroo, you use the same steps as finding the mean, standard deviation, and variation in Summary Statistic as described <a href="#Calculating-summary-stats-in-Rguroo">here</a>. In the Statistics section of the dialog, simply select the checkboxes for Q1, Q2 (Median), and Q3.</p>
-<!-- df_stats(\~variable, data=data_frame, summary) -->
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-cats-quartiles" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog for Basic Summary to find Quartiles for Cats Bodyweight in Rguroo">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cats-quartiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Numerical_description/quartiles_dialog.png" class="img-fluid figure-img" style="width:70.0%" alt="Dialog for Basic Summary to find Quartiles for Cats Bodyweight in Rguroo">
+<img src="Rguroo_dialogs/Numerical_description/quartiles_dialog.png" class="img-fluid figure-img" style="width:80.0%" alt="Dialog for Basic Summary to find Quartiles for Cats Bodyweight in Rguroo">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cats-quartiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.18: Quartiles for Bodyweight of Cats
@@ -2469,31 +2358,15 @@ Figure&nbsp;3.18: Quartiles for Bodyweight of Cats
 </div>
 </div>
 </div>
-<!-- If you record the quartiles together with the maximum and minimum you have five numbers. This is known as the five-number summary. The five-number summary consists of the minimum, the first quartile ($Q1$), the median, the third quartile ($Q3$), and the maximum (in that order).
-
-The interquartile range, $IQR$, is the difference between the first and third quartiles, $Q1$ and $Q3$. Half of the data (50%) falls in the interquartile range. If the $IQR$ is "large" the data is spread out and if the $IQR$ is "small" the data is closer together.
-
-Determining probable outliers from $IQR$: **fences**
-
-A value that is less than $Q1-1.5*IQR$ (this value is often referred to as a **lower fence**) is considered an outlier.
-
-Similarly, a value that is more than $Q3+1.5*IQR$ (the **upper fence**) is considered an outlier.
-
-A boxplot (or box-and-whisker plot) is a graphical display of the five-number summary. It can be drawn vertically or horizontally. In the horizontal form, the plot consists of a rectangular box that extends from $Q_1$ to $Q_3$, with a line inside the box marking the median. Lines called whiskers extend horizontally from each end of the box to the minimum and maximum values. The horizontal axis is a number line that shows the values of the variable being displayed, with appropriate tick marks and a label. A title is often included above the plot.
-
-An alternate form of a boxplot, known as a modified boxplot, shortens the whiskers so that the left whisker extends only to the smallest value greater than the **lower fence** and the right whisker extends only to the largest value less than the **upper fence**. Any values beyond these fences are considered outliers and are shown separately using markers such as dots, circles, or asterisks.
-
-If the data are **symmetrical**, then the box plot will be visibly symmetrical around the median line. If the distribution is skewed to the left or to the right, the whisker on the skewed side will tend to be longer, and the median will be shifted away from the center of the box in the opposite direction.THIS IS NOT TRUE SINCE THIS CAN HAPPEN FOR NON_UNIFORM DISTRIBUTIONS If the plot is symmetrical, and the four quartiles are all about the same length, then the data are likely a near **uniform** distribution. -->
-<!-- If a boxplot is symmetrical and the whiskers are noticeably longer than the distances from $Q_1$ to the median and from the median to $Q_3$, the distribution may be bell-shaped, with more data concentrated near the center and thinner tails. However, this pattern alone is not sufficient to conclude that the distribution is bell-shaped. -->
 </section>
 <section id="the-five-number-summary" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="the-five-number-summary"><span class="header-section-number">3.3.2</span> The Five-Number Summary</h3>
 <p>To get a comprehensive picture of how data is distributed, statisticians often use the <strong>five-number summary</strong>, which consists of five key values arranged in order:</p>
 <ol type="1">
 <li><strong>Minimum</strong>: The smallest value in the dataset</li>
-<li><strong>First quartile (Q1)</strong>: The value below which 25% of the data falls</li>
-<li><strong>Median (Q2)</strong>: The middle value that splits the data into 50% below and above</li>
-<li><strong>Third quartile (Q3)</strong>: The value below which 75% of the data falls</li>
+<li><strong>First quartile (Q1)</strong>: The value at or below which at least 25% of the data falls</li>
+<li><strong>Median (Q2)</strong>: The value at or below which at least 50% of the data falls</li>
+<li><strong>Third quartile (Q3)</strong>: The value at or below which at least 75% of the data falls</li>
 <li><strong>Maximum</strong>: The largest value in the dataset</li>
 </ol>
 <p>Together, these five numbers give us a complete snapshot of the data’s spread from lowest to highest.</p>
@@ -2506,7 +2379,7 @@ If the data are **symmetrical**, then the box plot will be visibly symmetrical a
 </section>
 <section id="identifying-outliers-using-the-iqr" class="level3" data-number="3.3.4">
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="identifying-outliers-using-the-iqr"><span class="header-section-number">3.3.4</span> Identifying Outliers Using the IQR</h3>
-<p>The IQR can also help us identify <strong>outliers</strong> – data values that are unusually far from the rest of the data. To do this, we create boundaries called <strong>fences</strong>:</p>
+<p>The IQR can also help us identify <strong>outliers</strong> – data values that are unusually far from the rest of the data. To do identify potential outliers using the IQR, we create boundaries called <strong>fences</strong>:</p>
 <ul>
 <li><strong>Lower fence</strong> = <span class="math inline">\(Q_1 - 1.5 \times IQR\)</span></li>
 <li><strong>Upper fence</strong> = <span class="math inline">\(Q_3 + 1.5 \times IQR\)</span></li>
@@ -2531,7 +2404,7 @@ If the data are **symmetrical**, then the box plot will be visibly symmetrical a
 <div id="fig-boxplot-comparison-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="example of skewed right, symmetric, and skewed left boxplots">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-boxplot-comparison-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/boxplot_comparison.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-boxplot-comparison" alt="example of skewed right, symmetric, and skewed left boxplots">
+<img src="images/boxplot_comparison.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-boxplot-comparison" alt="example of skewed right, symmetric, and skewed left boxplots">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-boxplot-comparison-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Boxplots showing three distribution shapes
@@ -2543,7 +2416,7 @@ If the data are **symmetrical**, then the box plot will be visibly symmetrical a
 <div id="fig-boxplot-comparison-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="example of skewed right, symmetric, and skewed left boxplots">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-boxplot-comparison-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/boxplot_histogram_comparison.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-boxplot-comparison" alt="example of skewed right, symmetric, and skewed left boxplots">
+<img src="images/boxplot_histogram_comparison.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-boxplot-comparison" alt="example of skewed right, symmetric, and skewed left boxplots">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-boxplot-comparison-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Corresponding histograms for comparison
@@ -2563,10 +2436,11 @@ Figure&nbsp;3.19: Comparing Shapes of Boxplots
 <p><strong>Skewed right:</strong> - The right whisker is noticeably longer than the left - The median is shifted toward the left side of the box (toward Q1)</p>
 <p>If a boxplot is symmetric with long whiskers relative to the size of the box, the distribution may have a bell shape with data concentrated near the center and thin tails. However, a symmetric boxplot alone is not sufficient to confirm a bell-shaped distribution.</p>
 <div id="exm-fivenumbersummary-boxplots" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.12 (Five-number Summary and Boxplot)</strong></span> Find the five-number summary, the interquartile range (<span class="math inline">\(IQR\)</span>), and draw a box-and-whiskers plot for the weight of cats <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a>.</p>
+<p><span class="theorem-title"><strong>Example 3.10 (Five-number Summary and Boxplot)</strong></span> Find the five-number summary, the interquartile range (<span class="math inline">\(IQR\)</span>), and draw a box-and-whiskers plot for the weight of cats <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cats</span>. <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-cats">dataset code book</a> that follows.</p>
 </div>
-<p><strong>Solution</strong></p>
-<p>Variable: <span class="math inline">\(x\)</span> = weight of cats</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>Variable: <span class="math inline">\(x\)</span> = weight of cats</p>
 <p>To compute the five-number summary on Rguroo, use summary statistic and select the appropriate statistics as shown in <a href="#fig-cats-5numsum" class="quarto-xref">Figure&nbsp;<span>3.20</span></a></p>
 <div class="cell">
 <div id="fig-cats-5numsum" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -2576,7 +2450,7 @@ Figure&nbsp;3.19: Comparing Shapes of Boxplots
 <div id="fig-cats-5numsum-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Five-Number Summary for Cats Bodyweight">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-cats-5numsum-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Numerical_description/cats_5numsum_dialog.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-cats-5numsum" alt="Five-Number Summary for Cats Bodyweight">
+<img src="Rguroo_dialogs/Numerical_description/cats_5numsum_dialog.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-cats-5numsum" alt="Five-Number Summary for Cats Bodyweight">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cats-5numsum-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Basic Summary Dialog Box
@@ -2588,7 +2462,7 @@ Figure&nbsp;3.19: Comparing Shapes of Boxplots
 <div id="fig-cats-5numsum-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Five-Number Summary for Cats Bodyweight">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-cats-5numsum-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Numerical_Description/cats_5numsum_output.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-cats-5numsum" alt="Five-Number Summary for Cats Bodyweight">
+<img src="Rguroo_outputs/Numerical_Description/cats_5numsum_output.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-cats-5numsum" alt="Five-Number Summary for Cats Bodyweight">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cats-5numsum-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Five-Number Summary Output
@@ -2603,9 +2477,8 @@ Figure&nbsp;3.20: Five-Number Summary for Bodyweight of Cats
 </figure>
 </div>
 </div>
-<!-- Note rStudio also calculates the mean as part of the summary command, but the five-number summary is just the five numbers: -->
 <p>Minimum: 2 kg <span class="math inline">\(Q1\)</span>: 2.3 kg Median: 2.7 kg <span class="math inline">\(Q3\)</span>: 3.025 kg Maximum: 3.9 kg</p>
-<p>To find the interquartile range, <span class="math inline">\(IQR\)</span> find $Q3-Q1$, so <span class="math inline">\(IQR=3.025-2.3=0.725 kg\)</span></p>
+<p>To find the interquartile range, <span class="math inline">\(IQR\)</span> find <span class="math inline">\(Q3-Q1\)</span>, so <span class="math inline">\(IQR=3.025-2.3=0.725 kg\)</span></p>
 <p>Click to expand the box below to see instructions to create a boxplot of the <span class="data">cats</span> dataset in Rguroo.</p>
 <div id="Creating-a-boxplot-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a Boxplot of the Bodyweight of Cats">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
@@ -2654,18 +2527,19 @@ Click here to see the Rguroo dialog
 </div>
 </div>
 </div>
-<!-- gf_boxplot(\~variable, data=data_frame) -->
 <p>This is a modified boxplot which shows the outliers in the data.</p>
 <div class="rg-iframe-wrapper" tabindex="0">
 <iframe src="Rguroo_html_output/Numerical_description/Boxplot_12/Boxplot_12.html" class="rg-iframe" title="Boxplot for Weight of Cats">
 </iframe>
 </div>
 <p>There are no outliers since there are no dots outside of the fences.</p>
-<div id="exm-boxplots-factor" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.13 (Separating based on a factor)</strong></span> Find the five-number summary of the weights of cats separated by the sex of the cat. Then create a box plot of the weights of cats for each sex of the cat.</p>
 </div>
-<p><strong>Solution</strong></p>
-<p>Variable: <span class="math inline">\(x_1\)</span> = weight of female cat</p>
+<div id="exm-boxplots-factor" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.11 (Separating based on a factor)</strong></span> Find the five-number summary of the weights of cats separated by the sex of the cat. Then create a box plot of the weights of cats for each sex of the cat.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cats</span>. <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-cats">dataset code book</a> that follows.</p>
+</div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>Variable: <span class="math inline">\(x_1\)</span> = weight of female cat</p>
 <p>Variable: <span class="math inline">\(x_2\)</span> = weight of male cat</p>
 <p>The five-number summary separated based on gender can be found in a similar way as in the previous <a href="#exm-fivenumbersummary-boxplots">example</a>:</p>
 <div class="cell">
@@ -2676,7 +2550,7 @@ Click here to see the Rguroo dialog
 <div id="fig-cats-5numsumsex-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Five-Number Summary of weight of Cats female lower 2.0, Q1 22, Median 2.3, Q3 3.0, upper 3.0, male 2.0, 2.5, 2.9, 3, 3.8">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-cats-5numsumsex-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Numerical_description/5summary_cats_sex_dialog.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-cats-5numsumsex" alt="Five-Number Summary of weight of Cats female lower 2.0, Q1 22, Median 2.3, Q3 3.0, upper 3.0, male 2.0, 2.5, 2.9, 3, 3.8">
+<img src="Rguroo_dialogs/Numerical_description/5summary_cats_sex_dialog.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-cats-5numsumsex" alt="Five-Number Summary of weight of Cats female lower 2.0, Q1 22, Median 2.3, Q3 3.0, upper 3.0, male 2.0, 2.5, 2.9, 3, 3.8">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cats-5numsumsex-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Basic Summary Dialog Box
@@ -2688,7 +2562,7 @@ Click here to see the Rguroo dialog
 <div id="fig-cats-5numsumsex-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Five-Number Summary of weight of Cats female lower 2.0, Q1 22, Median 2.3, Q3 3.0, upper 3.0, male 2.0, 2.5, 2.9, 3, 3.8">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-cats-5numsumsex-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Numerical_Description/cats_5summ_sex_output.png" class="img-fluid figure-img" style="width:70.0%" data-ref-parent="fig-cats-5numsumsex" alt="Five-Number Summary of weight of Cats female lower 2.0, Q1 22, Median 2.3, Q3 3.0, upper 3.0, male 2.0, 2.5, 2.9, 3, 3.8">
+<img src="Rguroo_outputs/Numerical_Description/cats_5summ_sex_output.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-cats-5numsumsex" alt="Five-Number Summary of weight of Cats female lower 2.0, Q1 22, Median 2.3, Q3 3.0, upper 3.0, male 2.0, 2.5, 2.9, 3, 3.8">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cats-5numsumsex-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Five-Number Summary Output
@@ -2712,8 +2586,11 @@ Figure&nbsp;3.21: Five-Number Summary for Bodyweight of Cats by Sex
 </iframe>
 </div>
 <p>Notice that the weights of female cats has a median less than male cats, and in fact it can be seen that the <span class="math inline">\(Q1\)</span> to <span class="math inline">\(Q3\)</span> of the female cats is less than the <span class="math inline">\(Q1\)</span> to <span class="math inline">\(Q3\)</span> of the male cats.</p>
+</div>
 <div id="exm-putting-it-together" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.14 (Putting it all together)</strong></span> The time (in 1/50 seconds) between successive pulses along a nerve fiber (“Time between nerve,” 2013) are given in <a href="#tbl-Nerve" class="quarto-xref">Table&nbsp;<span>3.12</span></a>.</p>
+<p><span class="theorem-title"><strong>Example 3.12 (Putting it all together)</strong></span> The time (in 1/50 seconds) between successive pulses along a nerve fiber (“Time between nerve,” 2013) are given in <a href="#tbl-Nerve" class="quarto-xref">Table&nbsp;<span>3.12</span></a>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">nerve</span>. <a href="#tbl-Nerve" class="quarto-xref">Table&nbsp;<span>3.12</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-nerve">dataset code book</a> that follows.</p>
+</div>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Nerve dataset">
 <div id="tbl-Nerve" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Nerve dataset">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -2767,8 +2644,8 @@ Code book for Nerve Dataset
 <div id="callout-25" class="callout-25-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The data gives the time between 800 successive pulses along a nerve fiber. There are 799 observations rounded to the nearest half in units of 1/50 second.</p>
-<p>This data frame contains the following columns:</p>
-<p>time: time between successive Pulses along a nerve fiber, 1/50 second.</p>
+<p>This dataset contains the following columns:</p>
+<p><span class="var">time</span>: time between successive Pulses along a nerve fiber, 1/50 second.</p>
 <p><a href="https://gksmyth.github.io/ozdasl/general/nerve.html">Source</a> Time between nerve pulses. (2019, July 3).</p>
 <p>References Fatt, P., and Katz, B. (1952). Spontaneous subthreshold activity at motor nerve endings. Journal of Physiology 117, 109-128.</p>
 <p>Cox, D. R., and Lewis, P. A. W. (1966). The Statistical Analysis of Series of Events. Methuen, London.</p>
@@ -2776,18 +2653,16 @@ Code book for Nerve Dataset
 </div>
 </div>
 </div>
-</div>
-<p><strong>Solution</strong></p>
-<p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">nerve</span> dataset into your <strong>Data</strong> Toolbox, located in the <span class="repo">Statistics Using Technology - Kozak</span>.</p>
-<p>First, it might be useful to look at a visualization of the data, so create a density plot</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>First, it might be useful to look at a visualization of the data, so create a density plot</p>
 <p>Click to expand the box below to see instructions to create a density plot of the <span class="data">nerve</span> dataset in Rguroo.</p>
-<div id="Creating-a-density-plot-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a Density PLot of the Time Between Successive Nerve Pulses">
+<div id="Creating-a-density-plot-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a Density Plot of the Time Between Successive Nerve Pulses">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating a Density PLot of the Time Between Successive Nerve Pulses
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating a Density Plot of the Time Between Successive Nerve Pulses
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2800,7 +2675,7 @@ Code book for Nerve Dataset
 <li>Click on the <span class="dpd">Create Plot</span> dropdown menu and choose the <span class="fun">Histogram</span> function. The Histogram dialog will open.</li>
 <li>From the <span class="dpd">Dataset</span> dropdown, select the <span class="data">nerve</span> dataset.<br>
 </li>
-<li>Move the <span class="var">pulse</span> variables to the Selected column.<br>
+<li>Move the <span class="var">time</span> variables to the Selected column.<br>
 </li>
 <li>Select density in Type and density in Smoothing additional options.</li>
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the graph.</li>
@@ -2830,7 +2705,7 @@ Click here to see the Rguroo dialog
 </div>
 </div>
 <div class="rg-iframe-wrapper" tabindex="0">
-<iframe src="Rguroo_html_output/Numerical_description/Histogram_7/Histogram_7.html" class="rg-iframe" title="Denisty Plot for Successive Nerve Pulses">
+<iframe src="Rguroo_html_output/Numerical_description/Histogram_7/Histogram_7.html" class="rg-iframe" title="Density Plot for Successive Nerve Pulses">
 </iframe>
 </div>
 <p>From the graph, the data appears to be skewed right. Most of the time, between successive nerve pulses appear to be around 5 or 10 1/50 second, but there are some times that are 60 1/50 second.</p>
@@ -2839,7 +2714,7 @@ Click here to see the Rguroo dialog
 <div id="fig-Pulse-summary" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Five-Number Summary with Mean and Standard Deviation of Nerve Pulses">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-Pulse-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Numerical_Description/nerve_summary_output.png" class="img-fluid figure-img" style="width:70.0%" alt="Five-Number Summary with Mean and Standard Deviation of Nerve Pulses">
+<img src="Rguroo_outputs/Numerical_Description/nerve_summary_output.png" class="img-fluid figure-img" style="width:80.0%" alt="Five-Number Summary with Mean and Standard Deviation of Nerve Pulses">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Pulse-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.22: Numerical Summary of Time Between Successive Nerve Pulses
@@ -2855,7 +2730,7 @@ Figure&nbsp;3.22: Numerical Summary of Time Between Successive Nerve Pulses
 <div id="fig-nerve-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Boxplot of Nerve Pulses">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-nerve-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Numerical_Description/nerve_boxplot_output.svg" class="img-fluid figure-img" style="width:70.0%" alt="Boxplot of Nerve Pulses">
+<img src="Rguroo_outputs/Numerical_Description/nerve_boxplot_output.svg" class="img-fluid figure-img" style="width:80.0%" alt="Boxplot of Nerve Pulses">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nerve-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.23: Boxplot of Time Between Successive Nerve Pulses
@@ -2864,8 +2739,8 @@ Figure&nbsp;3.23: Boxplot of Time Between Successive Nerve Pulses
 </div>
 </div>
 </div>
-<!-- Rewrote: Since there are many dots outside the upper fence the data has many outliers. From all of this information, one could say that nerve pulses between successive pulses is around 11 1/50 second, with a spread of 19.5 1/50 second. Most of the values are round 11 1/50 second, but they are not very consistent. The density plot and boxplot show that there is a great deal of spread of the data and it is skewed to the right. This means mostly the speed is around 11 1/50 second, but there is a great deal of variability in the values. -->
-<p>The boxplot reveals multiple high outliers. The median shows a typical pulse interval of 11 1/50 seconds, with an IQR of 19.5 1/50 seconds indicating substantial variability. The right skew visible in both plots confirms that while most pulses occur consistently around 11 1/50 seconds, occasional longer delays create the high outliers.</p>
+<p>The boxplot reveals multiple high outliers. The mean shows a typical pulse interval of 11 1/50 seconds, with an IQR of 19.5 1/50 seconds indicating substantial variability. The right skew visible in both plots confirms that while most pulses occur consistently around 11 1/50 seconds, occasional longer delays create the high outliers.</p>
+</div>
 </section>
 <section id="homework-for-ranking-section" class="level3" data-number="3.3.7">
 <h3 data-number="3.3.7" class="anchored" data-anchor-id="homework-for-ranking-section"><span class="header-section-number">3.3.7</span> Homework for Ranking Section</h3>
@@ -2887,7 +2762,7 @@ Figure&nbsp;3.23: Boxplot of Time Between Successive Nerve Pulses
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">length</span>.</p>
-<p><strong>Code book for data frame Length</strong> below <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a>.</p>
+<p><strong>Code book for dataset Length</strong> below <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a>.</p>
 </div>
 <p>Find the five-number summary and interquartile range (IQR) for the lengths of rivers that go to the Pacific Ocean and ones that go to the Tasman Sea, and draw a boxplot of both.</p>
 <ol start="7" type="1">
@@ -2895,24 +2770,24 @@ Figure&nbsp;3.23: Boxplot of Time Between Successive Nerve Pulses
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">pay</span>.</p>
-<p><strong>Code book for data frame Pay</strong> below <a href="#tbl-Pay" class="quarto-xref">Table&nbsp;<span>3.4</span></a>.</p>
+<p><strong>Code book for dataset Pay</strong> below <a href="#tbl-Pay" class="quarto-xref">Table&nbsp;<span>3.4</span></a>.</p>
 </div>
 <ol start="8" type="1">
-<li>The data frame Pulse <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after after the subject ran in place for one minute.</li>
+<li>The dataset Pulse <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after after the subject ran in place for one minute.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">pulse</span>.</p>
-<p><strong>Code book for data frame Pulse</strong> below <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a>.</p>
+<p><strong>Code book for dataset Pulse</strong> below <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a>.</p>
 </div>
-<p>Create a data frame that contains only people who drink alcohol, but do not smoke. Then find the five number summary and draw a boxplot for both males and females separately.</p>
+<p>Create a dataset that contains only people who drink alcohol, but do not smoke. Then find the five number summary and draw a boxplot for both males and females separately.</p>
 <ol start="9" type="1">
-<li>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997) and the data is in <a href="#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>.</li>
+<li>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a Likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997) and the data is in <a href="#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Reiki_pain</span>.</p>
-<p><strong>Code book for data frame Reiki</strong> below <a href="#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>.</p>
+<p><strong>Code book for dataset Reiki</strong> below <a href="#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>.</p>
 </div>
-<p>Find the five number summary for both the before and after VAS scores and draw boxplots of before and after VAS scores. <!--To draw two boxplots at the same time, after the command to create the first box plot type the piping symbol \|\> (base r) or %\>% (magrittr package) before pressing enter. (Note: \|\> and %\>% are piping symbols that can be thought of as "and then.") Then type the command for the second boxplot after the + symbol or on the next line in the r chunk if using an rmd or qmd file. Then press enter. You may want to graph each boxplot as a different color. To do this, the command would be gf_boxplot(\~variable, data=data_frame, color="red", xlab="type a label") You can pick any color you want. Just replace the word red with the color you want to use.--></p>
+<p>Find the five number summary for both the before and after VAS scores and draw boxplots of before and after VAS scores.</p>
 <p>Compare and contrast the before and after VAS scores.</p>
 
 
