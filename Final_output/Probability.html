@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.9.29">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Probability – Statistics Using Technology: Rguroo Edition</title>
+<title>4&nbsp; Probability – Introductory Statistics: A Conceptual Approach Using Rguroo</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -21,8 +24,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +37,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -66,15 +70,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <link href="./Discrete Probability Distribution.html" rel="next">
 <link href="./Numerical-description-of-Data.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dfa48a90d809c806c7ea2d5aecd9fc66.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-87aed0b8589e23e45aa8556edf37a91b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -117,7 +122,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -136,7 +141,7 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -160,7 +165,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Statistics Using Technology: Rguroo Edition</a> 
+      <a href="./">Introductory Statistics: A Conceptual Approach Using Rguroo</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -258,13 +263,16 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#empirical-probability" id="toc-empirical-probability" class="nav-link active" data-scroll-target="#empirical-probability"><span class="header-section-number">4.1</span> Empirical Probability</a>
+  <li><a href="#fundamentals-of-probability" id="toc-fundamentals-of-probability" class="nav-link active" data-scroll-target="#fundamentals-of-probability"><span class="header-section-number">4.1</span> Fundamentals of Probability</a>
   <ul class="collapse">
-  <li><a href="#experimental-probabilities" id="toc-experimental-probabilities" class="nav-link" data-scroll-target="#experimental-probabilities"><span class="header-section-number">4.1.1</span> <strong>Experimental Probabilities</strong></a></li>
-  <li><a href="#example-statistics-class-survey" id="toc-example-statistics-class-survey" class="nav-link" data-scroll-target="#example-statistics-class-survey"><span class="header-section-number">4.1.2</span> Example: Statistics class survey</a></li>
-  <li><a href="#homework-for-empirical-probability-section" id="toc-homework-for-empirical-probability-section" class="nav-link" data-scroll-target="#homework-for-empirical-probability-section"><span class="header-section-number">4.1.3</span> Homework for Empirical Probability Section</a></li>
+  <li><a href="#random-processes-and-experiments" id="toc-random-processes-and-experiments" class="nav-link" data-scroll-target="#random-processes-and-experiments"><span class="header-section-number">4.1.1</span> Random Processes and Experiments</a></li>
+  <li><a href="#outcomes-sample-spaces-and-events" id="toc-outcomes-sample-spaces-and-events" class="nav-link" data-scroll-target="#outcomes-sample-spaces-and-events"><span class="header-section-number">4.1.2</span> Outcomes, Sample Spaces, and Events</a></li>
+  <li><a href="#probability-definition-and-rules" id="toc-probability-definition-and-rules" class="nav-link" data-scroll-target="#probability-definition-and-rules"><span class="header-section-number">4.1.3</span> Probability: Definition and Rules</a></li>
+  <li><a href="#two-approaches-to-calculate-probability" id="toc-two-approaches-to-calculate-probability" class="nav-link" data-scroll-target="#two-approaches-to-calculate-probability"><span class="header-section-number">4.1.4</span> Two Approaches to Calculate Probability</a></li>
+  <li><a href="#simulation-exploring-probability-with-rguroo" id="toc-simulation-exploring-probability-with-rguroo" class="nav-link" data-scroll-target="#simulation-exploring-probability-with-rguroo"><span class="header-section-number">4.1.5</span> Simulation: Exploring Probability with Rguroo</a></li>
+  <li><a href="#homework-for-empirical-probability-section" id="toc-homework-for-empirical-probability-section" class="nav-link" data-scroll-target="#homework-for-empirical-probability-section"><span class="header-section-number">4.1.6</span> Homework for Empirical Probability Section</a></li>
   </ul></li>
-  <li><a href="#theoretical-probability" id="toc-theoretical-probability" class="nav-link" data-scroll-target="#theoretical-probability"><span class="header-section-number">4.2</span> Theoretical Probability</a>
+  <li><a href="#theoretical-probability-1" id="toc-theoretical-probability-1" class="nav-link" data-scroll-target="#theoretical-probability-1"><span class="header-section-number">4.2</span> Theoretical Probability</a>
   <ul class="collapse">
   <li><a href="#example-equally-likely-outcomes" id="toc-example-equally-likely-outcomes" class="nav-link" data-scroll-target="#example-equally-likely-outcomes"><span class="header-section-number">4.2.1</span> Example: Equally Likely Outcomes</a></li>
   <li><a href="#example-calculating-theoretical-probabilities" id="toc-example-calculating-theoretical-probabilities" class="nav-link" data-scroll-target="#example-calculating-theoretical-probabilities"><span class="header-section-number">4.2.2</span> Example: Calculating Theoretical Probabilities</a></li>
@@ -323,136 +331,438 @@ window.Quarto = {
 </header>
 
 
-<p>Understanding probabilities are important in life. Examples of mundane questions that probability can answer for you are if you need to carry an umbrella or wear a heavy coat on a given day. More important questions that probability can help with are your chances that the car you are buying will need more maintenance, your chances of passing a class, your chances of winning the lottery, your chances of being in a car accident, and the chances that the U.S. will be attacked by terrorists. Most people do not have a very good understanding of probability, so they worry about being attacked by a terrorist but not about being in a car accident. The probability of being in a terrorist attack is much smaller than the probability of being in a car accident, thus it actually would make more sense to worry about driving. Also, the chance of you winning the lottery is very small, yet many people will spend their money on lottery tickets. Yet, if instead they saved the money that they spend on the lottery, they would have more money. In general, events that have a low probability (under 5%) are unlikely to occur. Whereas if an event has a high probability of happening (over 80%), then there is a good chance that the event will happen. This chapter will present some of the theory that you need to help make a determination of whether an event is likely to happen or not.</p>
-<p>One story about how probability theory was developed is that a gambler wanted to know when to bet more and when to bet less. He talked to a couple of friends of his that happened to be mathematicians. Their names were Pierre de Fermat and Blaise Pascal. Since then many other mathematicians have worked to develop probability theory. There are actually two types of probability, <strong>Empirical Probability</strong> and <strong>Theoretical Probability</strong> that have been developed since the start of probability.</p>
-<section id="empirical-probability" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="empirical-probability"><span class="header-section-number">4.1</span> Empirical Probability</h2>
-<p>Empirical probabilities are found by actually conducting an experiment many times and counting the number of times the event happens. To understand how this is performed, first some definitions are needed.</p>
-<p><strong>Outcomes</strong>: the results of an experiment</p>
-<p><strong>Event</strong>: a set of certain outcomes of an experiment that you want to have happen</p>
-<p><strong>Sample Space</strong>: collection of all possible outcomes of the experiment. Usually denoted as <span class="math inline">\(SS\)</span>.</p>
-<p><strong>Event space</strong>: the set of outcomes that make up an event. The symbol is usually a capital letter.</p>
-<p><strong>Frequency</strong>: how often an event happens</p>
-<p><strong>Relative Frequency</strong>: the frequency divided by the number of times the experiment is repeated</p>
-<p>Start with an experiment. Suppose that the experiment is rolling a die. The sample space is {1, 2, 3, 4, 5, 6}. The event that you want is to get a 6, and the event space is {6}. To do this, roll a die 10 times. When you do that, you get a 6 two times. Based on this experiment, the probability of getting a 6 is 2 out of 10 or 1/5. To get more accuracy, repeat the experiment more times. It is easiest to put this in a table, where *n* represents the number of times the experiment is repeated. When you put the number of 6s found over the number of times you repeat the experiment, this is the relative frequency.</p>
-<div class="cell" data-tbl-alt="Table showing trials from die experiment">
-<div id="tbl-Die" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing trials from die experiment">
+<p>Every day you encounter uncertainty. Will it rain during your commute? Is a new medication likely to help a patient? Does a positive test result mean someone actually has a disease? Should a business stock more inventory before a holiday weekend? Although these questions cannot be answered with certainty, probability gives us a mathematical framework for making informed decisions about them.</p>
+<p>Probability is not just an abstract mathematical topic. It is the foundation of all of statistics. When we collect data and draw conclusions, we are always asking: <em>How likely is it that what I observed happened by chance?</em> Without understanding probability, we cannot answer that question honestly.</p>
+<p>Probability is the “language” that connects data to decisions. Every confidence interval, every hypothesis test, and every statistical claim you will encounter in this course rests on the ideas in this chapter. Taking the time to build a solid foundation here will make the rest of the course much more meaningful.</p>
+<p>The ideas in this chapter appear across every discipline. A criminologist asks: what is the likelihood that an eyewitness identification is correct? A nurse asks: if I screen 100 patients, how many will test positive by chance alone? An economist asks: what is the probability that a recession will occur in the next two years? A political scientist asks: what is the chance a polling result reflects the true opinions of voters? These are all probability questions.</p>
+<p>This chapter begins with the fundamental vocabulary and rules of probability, builds toward a distinction between two major approaches to calculating probabilities, and introduces how technology — specifically <strong>Rguroo</strong> — can be used to simulate random processes and explore probability in a hands-on way.</p>
+<section id="fundamentals-of-probability" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="fundamentals-of-probability"><span class="header-section-number">4.1</span> Fundamentals of Probability</h2>
+<section id="random-processes-and-experiments" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="random-processes-and-experiments"><span class="header-section-number">4.1.1</span> Random Processes and Experiments</h3>
+<p>Some things in life are <strong>deterministic</strong>. For example, if you drop a ball, you can calculate exactly where it will land. But many things are <strong>random</strong>, meaning the outcome is not fully predictable in advance no matter how much information you have.</p>
+<p>A <strong>random process</strong> is any process or phenomenon in which individual outcomes are unpredictable, even though a pattern of outcomes tends to emerge over a large number of repetitions.</p>
+<p><strong>Examples of random processes you encounter:</strong></p>
+<ul>
+<li>Flipping a coin — you cannot predict whether it will land heads or tails on any single flip</li>
+<li>Drawing a card from a shuffled deck</li>
+<li>Whether a patient responds to a treatment</li>
+<li>Whether it rains on a given day in your city</li>
+<li>Whether a product coming off an assembly line is defective</li>
+<li>Which political candidate a randomly selected voter supports</li>
+</ul>
+<p>A probability experiment (often shortened to just <em>experiment</em>) is any random process we observe and record. This is different from the everyday use of the word “experiment.” An <strong>experiment</strong> is any process whose result is determined by chance. The experiment must be well-defined: you must be able to describe every possible result in advance.</p>
+<p><strong>Examples:</strong></p>
+<div id="tbl-experiments" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table listing everyday descriptions alongside their corresponding probability experiment definitions">
 <figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Die-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.1: trials for Die Experiment
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-experiments-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.1: Examples of experiments in probability
 </figcaption>
-<div aria-describedby="tbl-Die-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<div aria-describedby="tbl-experiments-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: right;">n</th>
-<th style="text-align: right;">number_of_6s</th>
-<th style="text-align: right;">relative_frequency</th>
+<th>Everyday Description</th>
+<th>Probability Experiment</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0.200</td>
+<td>Roll a six-sided die</td>
+<td>Observe which face (1–6) lands face up</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">0.120</td>
+<td>Ask a student their major</td>
+<td>Record the declared major of one randomly selected student</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">0.180</td>
+<td>Test whether a lightbulb is defective</td>
+<td>Inspect one lightbulb and record: defective or not defective</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">500</td>
-<td style="text-align: right;">81</td>
-<td style="text-align: right;">0.162</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1000</td>
-<td style="text-align: right;">163</td>
-<td style="text-align: right;">0.163</td>
+<td>Check today’s high temperature</td>
+<td>Record whether the high exceeds 90°F</td>
 </tr>
 </tbody>
 </table>
 </div>
+</figure>
+</div>
+<hr>
+</section>
+<section id="outcomes-sample-spaces-and-events" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="outcomes-sample-spaces-and-events"><span class="header-section-number">4.1.2</span> Outcomes, Sample Spaces, and Events</h3>
+<p>Every probability experiment produces a result. An <strong>outcome</strong> is a single possible result of a probability experiment. When you roll a die, getting a 3 is one outcome. When you flip a coin, getting heads is one outcome. Outcomes must cover every possibility and cannot overlap; no two outcomes can occur at the same time in a single trial.</p>
+<p>The <strong>sample space</strong> is the complete list of all possible outcomes. If outcomes are the individual items, the sample space is the entire collection. We write it using set notation with curly braces and usually label it <span class="math inline">\(S\)</span>.</p>
+<p>An <strong>event</strong> is any group of outcomes we are interested in. Events are subsets of the sample space and are built from outcomes. We usually name events with capital letters like <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, or <span class="math inline">\(C\)</span>. A <strong>simple event</strong> contains exactly one outcome. A <strong>compound event</strong> contains more than one outcome.</p>
+<div id="exm-roll-die" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.1 (Rolling a Die)</strong></span> Consider rolling a fair six-sided die once.</p>
+<ul>
+<li>The <strong>outcomes</strong> are the six individual faces: 1, 2, 3, 4, 5, and 6.</li>
+<li>The <strong>sample space</strong> is <span class="math inline">\(S = \{1, 2, 3, 4, 5, 6\}\)</span>.</li>
+<li>Let <span class="math inline">\(A =\)</span> rolling an even number. Then <span class="math inline">\(A = \{2, 4, 6\}\)</span> is a <strong>compound event</strong> made up of three outcomes from the sample space.</li>
+<li>Let <span class="math inline">\(B =\)</span> rolling a 5. Then <span class="math inline">\(B = \{5\}\)</span> is a <strong>simple event</strong> made up of one outcome.</li>
+<li>Let <span class="math inline">\(C =\)</span> rolling a number greater than 4. Then <span class="math inline">\(C = \{5, 6\}\)</span>.</li>
+</ul>
+<p>Notice that <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span> are all built from the same six outcomes in <span class="math inline">\(S\)</span>. The sample space does not change; only the question we are asking changes.</p>
+</div>
+<p>Two special events come up often. A <strong>certain event</strong> contains every outcome in the sample space and will always occur. For example, rolling a number between 1 and 6 on a standard die is a certain event. An <strong>impossible event</strong> contains no outcomes at all and is written as the empty set, <span class="math inline">\(\emptyset\)</span>. Rolling a 9 on a standard die is an impossible event.</p>
+</section>
+<section id="probability-definition-and-rules" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="probability-definition-and-rules"><span class="header-section-number">4.1.3</span> Probability: Definition and Rules</h3>
+<p>Now that we know what outcomes, sample spaces, and events are, we can define probability itself, establish the rules every probability must follow, and understand how probabilities behave when an experiment is repeated many times.</p>
+<p>The <strong>probability</strong> of an event <span class="math inline">\(A\)</span>, written <span class="math inline">\(P(A)\)</span> (read “probability of A”), is a number between 0 and 1 (inclusive) that represents how likely A is to occur. <span class="math display">\[0 \leq P(A) \leq 1   \text{ for any event } A\]</span></p>
+<p>Probabilities can be expressed as fractions, decimals, or percentages. For example, <span class="math inline">\(P(A) = 1/4 = 0.25 = 25\%\)</span>.</p>
+<p>When we say an event has a probability of 0.30, we mean: if we were to repeat this experiment a very large number of times under the same conditions, about 30% of those repetitions would result in that event occurring. Probability does not tell us what will happen on any single trial; it tells us about long-run patterns.</p>
+<p>Before we can calculate a probability, we need to ask a key question: are the outcomes in our sample space equally likely? This matters because it determines how we find probabilities.</p>
+<p>Outcomes are <strong>equally likely</strong> when every outcome in the sample space has the same probability of occurring. No outcome is favored over any other.</p>
+<div id="exm-equally-likely" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.2 (Are the Outcomes Equally Likely?)</strong></span> For each experiment, decide whether the outcomes are equally likely.</p>
+<p><strong>(a)</strong> Rolling a <em>fair</em> die: <strong>Yes.</strong> Each face has the same chance of landing face up.</p>
+<p><strong>(b)</strong> Flipping a <em>weighted</em> coin where heads is twice as likely as tails: <strong>No.</strong> Heads and tails do not have equal chances.</p>
+<p><strong>(c)</strong> Selecting a ball from a bag containing 4 red balls and 4 blue balls (all the same size): <strong>Yes.</strong> Each individual ball is equally likely to be selected.</p>
+<p><strong>(d)</strong> Selecting a ball from a bag containing 4 red balls and <em>8</em> blue balls (all the same size): <strong>No.</strong> Blue balls are more likely to be drawn because there are more of them.</p>
+<p><strong>(e)</strong> Testing whether the next customer at a coffee shop orders a hot or cold drink: <strong>Probably not.</strong> Without data, we cannot assume customers are equally split between the two options.</p>
+</div>
+<p>When outcomes are not equally likely, you cannot use simple counting to find probabilities. You must use observed data instead. This leads us to the two approaches to probability covered in <a href="#two-approaches-to-calculate-probability">Section 4.1.4</a>.</p>
+<p>A <strong>probability model</strong> lists the possible outcomes of a probability experiment and each outcome’s probability. Every valid probability model must satisfy two rules. These are not optional; they are requirements that any set of numbers must meet in order to qualify as probabilities.</p>
+<p><strong>Rule 1: Probability is always between 0 and 1 (inclusive)</strong> <span class="math display">\[0 \leq P(A) \leq 1   \text{ for every event } A\]</span></p>
+<p>No probability can be negative. No probability can be greater than 1. If you calculate a probability outside this range, you have made an error.</p>
+<p><strong>Rule 2: The probabilities of all outcomes in the sample space must sum to 1</strong> <span class="math display">\[\sum P(\text{all outcomes}) = 1\]</span></p>
+<p>This means that something always happens. When you list all possible outcomes of an experiment, their probabilities must add up to exactly 1, or 100%.</p>
+<div id="exm-equally-likely" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.3 (Verifying Probability Rules)</strong></span> A psychology researcher studies the types of social media platforms used most frequently by college students. Based on survey data, she estimates the following probabilities:</p>
+<div id="tbl-socialmedia" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing estimated probabilities for five social media platform categories including Instagram, TikTok, Snapchat, X Twitter, and Other or None">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-socialmedia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.2: Estimated probabilities for most-used social media platform
+</figcaption>
+<div aria-describedby="tbl-socialmedia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Platform</th>
+<th>Estimated Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Instagram</td>
+<td>0.34</td>
+</tr>
+<tr class="even">
+<td>TikTok</td>
+<td>0.28</td>
+</tr>
+<tr class="odd">
+<td>Snapchat</td>
+<td>0.18</td>
+</tr>
+<tr class="even">
+<td>X (Twitter)</td>
+<td>0.11</td>
+</tr>
+<tr class="odd">
+<td>Other / None</td>
+<td>0.09</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Verify this satisifies the rules of probability model.</p>
+</div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>Verify Rule 1: Each probability is between 0 and 1.</p>
+<p>Verify Rule 2: <span class="math inline">\(0.34 + 0.28 + 0.18 + 0.11 + 0.09 = 1.00\)</span></p>
+<p>Both rules are satisfied, so this is a valid probability model.</p>
+</div>
+<div id="exm-missing-prob" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.4 (Finding a Missing Probability)</strong></span> A weather forecasting model gives the following probabilities for tomorrow’s weather in a coastal city:</p>
+<div id="tbl-weather" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing weather probability model with probabilities for Sunny, Partly Cloudy, and Rain, and a missing probability for Overcast">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-weather-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.3: Weather probability model with missing value
+</figcaption>
+<div aria-describedby="tbl-weather-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Weather</th>
+<th>Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sunny</td>
+<td>0.45</td>
+</tr>
+<tr class="even">
+<td>Partly Cloudy</td>
+<td>0.30</td>
+</tr>
+<tr class="odd">
+<td>Overcast</td>
+<td>?</td>
+</tr>
+<tr class="even">
+<td>Rain</td>
+<td>0.12</td>
+</tr>
+</tbody>
+</table>
 </div>
 </figure>
 </div>
 </div>
-<p>Notice that as <span class="math inline">\(n\)</span> increased, the relative frequency seems to approach a number. It looks like it is approaching 0.163. You can say that the probability of getting a 6 is approximately 0.163. If you want more accuracy, then increase <span class="math inline">\(n\)</span> even more.</p>
-<p>These probabilities are called <strong>experimental probabilities</strong> since they are found by actually doing the experiment. They come about from the relative frequencies and give an approximation of the true probability. The approximate probability of an event <span class="math inline">\(A\)</span>, <span class="math inline">\(P(A)\)</span>, is</p>
-<section id="experimental-probabilities" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="experimental-probabilities"><span class="header-section-number">4.1.1</span> <strong>Experimental Probabilities</strong></h3>
-<p><span class="math inline">\(P(A)=\frac{\text{number of times} }{ \text{number of times experiment is conducted}}\)</span></p>
-<p>For the event of getting a 6, the probability would be</p>
-<p><span class="math inline">\(P(6)=\frac{163}{1000}=0.163\)</span>.</p>
-<p>You must do experimental probabilities whenever it is not possible to calculate probabilities using other means. An example is if you want to find the probability that a family has 5 children, you would have to actually look at many families, and count how many have 5 children. Then you could calculate the probability. Another example is if you want to figure out if a die is fair. You would have to roll the die many times and count how often each side comes up. Make sure you repeat an experiment many times, because otherwise you will not be able to estimate the true probability. This is due to the law of large numbers.</p>
-<p><strong>Law of large numbers</strong>: as <span class="math inline">\(n\)</span> increases, the relative frequency tends towards the actual probability value.</p>
-<p>Note: probability, relative frequency, percentage, and proportion are all different words for the same concept. Also, probabilities can be given as percentages, decimals, or fractions.</p>
-<p>To find probabilities from data, you can take a data frame and count the number of values for each outcome.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>Since all probabilities must sum to 1:</p>
+<p><span class="math display">\[P(\text{Overcast}) = 1 - 0.45 - 0.30 - 0.12 = 0.13\]</span></p>
+<p>There is a 13% chance of overcast skies tomorrow.</p>
+</div>
 </section>
-<section id="example-statistics-class-survey" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="example-statistics-class-survey"><span class="header-section-number">4.1.2</span> Example: Statistics class survey</h3>
-<p>Data was collected for two semesters in a statistics class. The data frame in is in <a href="Graphical Description of Data.html#tbl-Class" class="quarto-xref">Table&nbsp;<span>2.1</span></a>.</p>
-<p>Find the probability (proportion) of people who like Cookie Dough ice cream.</p>
-<section id="solution" class="level4" data-number="4.1.2.1">
-<h4 data-number="4.1.2.1" class="anchored" data-anchor-id="solution"><span class="header-section-number">4.1.2.1</span> <strong>Solution</strong></h4>
-<p>To count the number of people who like cookie dough ice cream, use the following command in r Studio:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(<span class="sc">~</span>ice_cream, <span class="at">data=</span>Class, <span class="at">margins=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>ice_cream
-          Butter Pecan              Chocolate    Chocolate Brownie.  
-                     2                      2                      1 
-                coffee           Cookie Dough      Cookies and Cream 
-                     1                      6                      1 
-               Mint CC           Moose Tracks                   none 
-                     6                      1                      1 
-            Rocky Road                Sherbet Strawberry and banana  
-                     2                      2                      1 
-               Vanilla                  Total 
-                     1                     27 </code></pre>
+<section id="two-approaches-to-calculate-probability" class="level3" data-number="4.1.4">
+<h3 data-number="4.1.4" class="anchored" data-anchor-id="two-approaches-to-calculate-probability"><span class="header-section-number">4.1.4</span> Two Approaches to Calculate Probability</h3>
+<p>There are two fundamental ways to determine the probability of an event.</p>
+<p><strong>Relative Frequency (Empirical) Probability</strong></p>
+<p>The first approach is based on observation and data. We actually conduct the experiment many times, or use existing data, and measure how often the event occurs. The resulting probability estimate is called the <strong>relative frequency</strong> or <strong>empirical probability</strong>.</p>
+<p>Recall from Chapter 2, the <strong>relative frequency</strong> of an event is the number of times of times it occurs out of the total number of trials: <span class="math display">\[\text{Relative Frequency of A} = \dfrac{\text{Number of times A occurred}}{\text{Total number of trials}}\]</span></p>
+<p>This is the empirical approach to probability. It is based on observed data rather than assumptions. The relative frequency gives an estimate of the true probability, and that estimate improves as the number of trials increases.</p>
+<div id="exm-empirical-prob" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.5 (Empirical Probability from Survey Data)</strong></span> The General Social Survey (GSS) is a national survey conducted regularly in the United States. In a recent survey, 1,832 out of 2,867 respondents reported that they use social media daily. What is the probability a randomly selected U.S. adult uses social media?</p>
 </div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>This estimate is based on observed data, so it is an empirical probability and we would use relative frequency to find the probability</p>
+<p><span class="math display">\[ P(\text{uses social media daily}) \approx \dfrac{1832}{2867} \approx 0.639\]</span></p>
+<p>We estimate there is about a 63.9% chance that a randomly selected U.S. adult uses social media daily.</p>
 </div>
-<p>From this tally, it can be seen that 6 people like cookie dough ice cream. The probability that someone likes cookie dough is thus 6 divided by the number of people in the data frame, the Total. Instead of dividing, the following command will find the proportions for you. Proportions are just probabilities.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(<span class="sc">~</span>ice_cream, <span class="at">data=</span>Class, <span class="at">format=</span><span class="st">"proportion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>ice_cream
-          Butter Pecan              Chocolate    Chocolate Brownie.  
-            0.07407407             0.07407407             0.03703704 
-                coffee           Cookie Dough      Cookies and Cream 
-            0.03703704             0.22222222             0.03703704 
-               Mint CC           Moose Tracks                   none 
-            0.22222222             0.03703704             0.03703704 
-            Rocky Road                Sherbet Strawberry and banana  
-            0.07407407             0.07407407             0.03703704 
-               Vanilla 
-            0.03703704 </code></pre>
+<p><em>When Would You Use Empirical Probability</em></p>
+<ul>
+<li>Outcomes are not equally likely and you do not know the true proportions</li>
+<li>The experiment involves real-world behavior that must be measured</li>
+<li>You want to check whether a theoretical model, like a fair coin, matches reality</li>
+</ul>
+<p><strong>Theoretical Probability</strong></p>
+<p>The second approach is used when we know the structure of the experiment and can assume all outcomes are equally likely. Rather than collecting data, we count the outcomes.</p>
+<p>If all outcomes in the sample space are <em>equally likely</em>, the probability of event <span class="math inline">\(A\)</span> is: <span class="math display">\[P(A) = \dfrac{\text{Number of outcomes in } A}{\text{Total number of outcomes in }S}\]</span></p>
+<p>This is called the <strong>classical</strong> or <strong>theoretical</strong> probability. It is calculated by reasoning about the structure of the experiment; no data collection is required.</p>
+<div id="exm-theoretical-prob" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.6 (Theoretical Probability)</strong></span> A fair six-sided die is rolled. Sample space: <span class="math inline">\(S = \{1, 2, 3, 4, 5, 6\}\)</span>, with 6 equally likely outcomes. Find the following probabilities.</p>
+<p><strong>(a)</strong> P(rolling a 4)</p>
+<p><strong>(b)</strong> P(rolling an even number)</p>
+<p><strong>(c)</strong> P(rolling a number &gt; 4)</p>
+<p><strong>(d)</strong> P(rolling a number &lt; 10)</p>
+<p><strong>(e)</strong> P(rolling a 7)</p>
 </div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span><strong>(a)</strong> The event space for the event “rolling a 4” is <span class="math inline">\(A= \{4\}\)</span>. Using the theoretical probability formula, <span class="math display">\[P(\text{rolling a }4) = P(A) = \frac{1}{6} \approx 0.167\]</span></p>
+<p><strong>(b)</strong> The event space for the event “rolling an even number” is <span class="math inline">\(B = \{2,4,6\}\)</span>. Then, the probability is <span class="math display">\[ P(\text{rolling an even number}) = P(B) = \frac{3}{6} = \frac{1}{2} = 0.5\]</span></p>
+<p><strong>(c)</strong> The event space for the event “rolling a number &gt; 4” is <span class="math inline">\(C = \{5,6\}\)</span>. The probability of event <span class="math inline">\(C\)</span> is</p>
+<p><span class="math display">\[P(\text{rolling a number }&gt; 4) = P(C) = \frac{2}{6} = \frac{1}{3} \approx 0.333\]</span></p>
+<p><strong>(d)</strong> The event space for the event “rolling a number &lt; 10” is <span class="math inline">\(D = \{1,2,3,4,5,6\} = S\)</span>. The probability of event <span class="math inline">\(D\)</span> is</p>
+<p><span class="math display">\[ P(\text{rolling a number }&lt; 10)=P(D) = \frac{6}{6} = 1\]</span></p>
+<p>which makes this a certain event. <strong>(e)</strong> The event space for the event “rolling a 7” is <span class="math inline">\(E = \{\emptyset\}\)</span>. Therefore, the probability of event <span class="math inline">\(E\)</span> is</p>
+<p><span class="math display">\[P(\text{rolling a }7) = P(E) = \frac{0}{6} = 0\]</span></p>
+<p>which makes this an impossible event.</p>
 </div>
-<p>So the probability that a person in the class likes cookie dough ice cream is 0.22.</p>
+<p>You might wonder: if I flip a coin just 10 times and get 7 heads, does that mean the probability of heads is 0.70? The <strong>Law of Large Numbers</strong> answers this question.</p>
+<p>The <strong>Law of Large Numbers</strong> states that as the number of trials, <span class="math inline">\(n\)</span>, of a random experiment increases, the relative frequency of an event gets closer and closer to the true probability of that event. <span class="math display">\[\text{As } n \rightarrow \infty, \quad \dfrac{\text{frequency of A}}{n} \rightarrow P(A)\]</span></p>
+<p>With a small number of trials, expect significant variation from the true probability. With a large number of trials, the relative frequency will closely approximate it.</p>
 </section>
-</section>
-<section id="homework-for-empirical-probability-section" class="level3" data-number="4.1.3">
-<h3 data-number="4.1.3" class="anchored" data-anchor-id="homework-for-empirical-probability-section"><span class="header-section-number">4.1.3</span> Homework for Empirical Probability Section</h3>
+<section id="simulation-exploring-probability-with-rguroo" class="level3" data-number="4.1.5">
+<h3 data-number="4.1.5" class="anchored" data-anchor-id="simulation-exploring-probability-with-rguroo"><span class="header-section-number">4.1.5</span> Simulation: Exploring Probability with Rguroo</h3>
+<p>One of the most powerful ways to build intuition about probability is through <strong>simulation</strong>: using technology to repeat a random experiment thousands of times quickly and observing the results. Simulation makes the Law of Large Numbers visible and concrete.</p>
+<p>A <strong>simulation</strong> uses a computer to imitate a random process many times. By observing the outcomes of a large number of simulated trials, we can estimate probabilities and explore how random processes behave. Simulations are especially useful when:</p>
+<ul>
+<li>Theoretical probabilities are difficult to calculate</li>
+<li>We want to visualize the Law of Large Numbers</li>
+<li>We want to explore what random variation really looks like</li>
+</ul>
+<div id="exm-simulation-die-roll" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.7 (Simulating a Die Roll)</strong></span> Suppose you want to explore whether a fair six-sided die actually produces each face with equal frequency. The theoretical probability of rolling any single face is <span class="math inline">\(1/6 \approx 0.167\)</span>. But does that hold up when you actually simulate rolls? And how many trials do you need before the results start to look balanced?</p>
+<p>You can investigate this using Rguroo’s simulation tool.</p>
+</div>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>Click to expand the box below to see how to use Rguroo to simulate rolling a six-sided die.</p>
+<div id="simulating-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Simulating in Rguroo">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span><img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Simulating in Rguroo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ol type="1">
-<li>The number of M&amp;M’s of each color that were found in a packet is in <a href="#tbl-MaM" class="quarto-xref">Table&nbsp;<span>4.2</span></a> (M&amp;M’s Color Distribution Analysis, 2019).</li>
+<li>Open the <strong>Probability-Simulation</strong> toolbox.<br>
+</li>
+<li>Click on the <span class="dpd">Probability</span> dropdown, and select <span class="fun">Random Generator</span>. This opens the <span class="dialog">Random Number Generator</span> dialog.<br>
+</li>
+<li>From the <span class="dpd">Distribution</span> dropdown, select <span class="fun">Discrete Uniform</span>. This tells Rguroo to treat all values in a range as equally likely.<br>
+</li>
+<li>In the <span class="des">Minimum</span> field, enter 1. In the <span class="des">Maximum</span> field, enter 6. This sets up the six equally likely outcomes of a die roll.<br>
+</li>
+<li>In the <span class="des">Sample Size</span> field, enter 600 for the first run.<br>
+</li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the sample.</li>
+<li>Click the <img src="Rguroo_Icons/save_as.png" class="img-fluid" alt="Save as"> button to save the sample results as <span class="typein">DieRollSim</span>.</li>
 </ol>
+<div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click here to see the Rguroo dialog
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Rguroo_dialogs/Probability/simulation_dialog.png" class="img-fluid figure-img" width="500"></p>
+<figcaption>Simulation dialog in Rguroo</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>We can create and examine a barplot of the resulting sample as seen in <a href="#fig-sim-barplot" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>. Each bar represents one face of the die (1 through 6). The height of each bar shows the relative frequency of that face in your simulation.</p>
+<div class="cell">
+<div id="fig-sim-barplot" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sim-barplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div id="fig-sim-barplot-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Screenshot of the barplot output showing six bars, one per face, with relative frequencies annotated for each">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sim-barplot-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_dialogs/Probability/sim_barplot_dialog.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-sim-barplot" alt="Screenshot of the barplot output showing six bars, one per face, with relative frequencies annotated for each">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sim-barplot-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Dialog box
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div id="fig-sim-barplot-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Screenshot of the barplot output showing six bars, one per face, with relative frequencies annotated for each">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sim-barplot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Probability/die_sim_barplot.png" class="img-fluid figure-img" style="width:80.0%" data-ref-parent="fig-sim-barplot" alt="Screenshot of the barplot output showing six bars, one per face, with relative frequencies annotated for each">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sim-barplot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Barplot
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sim-barplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: Simulated relative frequencies for 600 rolls of a fair die
+</figcaption>
+</figure>
+</div>
+</div>
+<p>With 600 simulated rolls, your barplot will likely show some variation across the six faces. Some faces may appear more than others, and the relative frequencies will probably range from around 0.15 to 0.18 rather than all landing exactly at 0.167. This is normal and expected with a moderate number of trials.</p>
+<p>If we repeat the simulation with 6,000 trials (set <span class="des">Sample Size</span> field equal to 6000), and compare the barplots we should notice the barplot of 6,000 trials should be more uniform. The relative frequencies will cluster more tightly around 0.167 for each face, and the differences between bars will shrink.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-6000-sim" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Screenshot of the barplot of n = 6,000 trials, showing the bars becoming more uniform as n increases">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6000-sim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Probability/sim_6000_barplot.png" class="img-fluid figure-img" style="width:80.0%" alt="Screenshot of the barplot of n = 6,000 trials, showing the bars becoming more uniform as n increases">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6000-sim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.2: Simulated relative frequencies for 6000 rolls of a fair die
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>This is the <strong>Law of Large Numbers</strong> in action. With a small number of trials, random variation produces noticeable differences between the outcomes. With a large number of trials, those differences smooth out and the relative frequencies converge toward the theoretical probability of <span class="math inline">\(1/6 \approx 0.167\)</span>.</p>
+</div>
+</section>
+<section id="homework-for-empirical-probability-section" class="level3" data-number="4.1.6">
+<h3 data-number="4.1.6" class="anchored" data-anchor-id="homework-for-empirical-probability-section"><span class="header-section-number">4.1.6</span> Homework for Empirical Probability Section</h3>
+<ol type="1">
+<li>An instructor reports the following model for letter grades in her course. Determine if this represents a probabillity model.</li>
+</ol>
+<div id="tbl-lettergrades" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing estimated probabilities for five letter grades: A, B, C, D, and F">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-lettergrades-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.4: Estimated probabilities for letter grades
+</figcaption>
+<div aria-describedby="tbl-lettergrades-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Grade</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Probability</td>
+<td>0.22</td>
+<td>0.35</td>
+<td>0.28</td>
+<td>0.10</td>
+<td>0.08</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<ol start="2" type="1">
+<li><p>A researcher in criminal justice records the type of crime in a randomly selected case from a county court database. The categories are: Violent, Property, Drug, and Other.</p>
+<ol type="a">
+<li>List the sample space.<br>
+</li>
+<li>Based on county data, <span class="math inline">\(P(\text{Violent}) = 0.19\)</span>, <span class="math inline">\(P(\text{Property}) = 0.41\)</span>, <span class="math inline">\(P(\text{Drug}) = 0.27\)</span>. Find <span class="math inline">\(P(\text{Other})\)</span>.<br>
+</li>
+<li>Verify that this is a valid probability model.</li>
+</ol></li>
+<li><p>Two fair coins are flipped. List the sample space using ordered pairs (e.g., HH, HT, …). Then find:</p>
+<ol type="a">
+<li><span class="math inline">\(P(\text{exactly one head})\)</span><br>
+</li>
+<li><span class="math inline">\(P(\text{at least one tail})\)</span><br>
+</li>
+<li><span class="math inline">\(P(\text{no heads})\)</span><br>
+</li>
+<li><span class="math inline">\(P(\text{two heads or two tails})\)</span></li>
+</ol></li>
+<li><p>The number of M&amp;M’s of each color that were found in 48 packets. The first six rows of these data are given in <a href="#tbl-MaM" class="quarto-xref">Table&nbsp;<span>4.5</span></a> (M&amp;M’s Color Distribution Analysis, 2019). Find the probability of choosing each color based on this data frame.</p></li>
+</ol>
+<div tabindex="0" style="width:85%; margin:auto;">
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">M_and_Ms</span>.</p>
+</div>
 <div class="cell" data-tbl-alt="Table showing M&amp;M Distribution">
 <div id="tbl-MaM" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing M&amp;M Distribution">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-MaM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.2: M&amp;M Distribution
+Table&nbsp;4.5: M&amp;M Distribution
 </figcaption>
 <div aria-describedby="tbl-MaM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">color</th>
@@ -498,35 +808,53 @@ Table&nbsp;4.2: M&amp;M Distribution
 </figure>
 </div>
 </div>
-<p><strong>Code book for Data Frame MaM</strong></p>
+<div id="code-book-MaM" class="codebook callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Code book for M_and_Ms Dataset
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p><strong>Description</strong> An analysis of the colors in a case of M&amp;M’s to see if they match the published percentages</p>
 <p>Usage MaM</p>
 <p>Format</p>
 <p>This data frame contains the following columns:</p>
-<p>color: color of M&amp;Ms</p>
-<p>type: The type of M&amp;M such as plain, peanut, peanut butter</p>
-<p>pack: which pack the M&amp;Ms came from.</p>
-<p>Source M&amp;M’s Color Distribution Analysis. (n.d.). Retrieved July 11, 2019, from https://joshmadison.com/2007/12/02/mms-color-distribution-analysis/</p>
+<p><span class="var">color</span>: color of M&amp;Ms</p>
+<p><span class="var">type</span>: The type of M&amp;M such as plain, peanut, peanut butter</p>
+<p><span class="var">pack</span>: which pack the M&amp;Ms came from.</p>
+<p><a href="https://joshmadison.com/2007/12/02/mms-color-distribution-analysis/">Source</a> M&amp;M’s Color Distribution Analysis. (n.d.). Retrieved July 11, 2019.</p>
 <p>References Josh Madison, 2019</p>
-<p>Find the probability of choosing each color based on this data frame.</p>
+</div>
+</div>
+</div>
 <ol start="2" type="1">
-<li>Eyeglassomatic manufactures eyeglasses for different retailers. They test to see how many defective lenses they made the time period of January 1 to March 31. The defect and the number of defects is in <a href="Graphical Description of Data.html#tbl-Defects" class="quarto-xref">Table&nbsp;<span>2.4</span></a>.</li>
+<li>Eyeglassomatic manufactures eyeglasses for different retailers. They test to see how many defective lenses they made the time period of January 1 to March 31. The defect and the number of defects is in <a href="Graphical Description of Data.html#tbl-Defects" class="quarto-xref">Table&nbsp;<span>2.5</span></a>. Find the probability of each defect type based on this data.</li>
 </ol>
-<p><strong>Code book for Data Frame Defects</strong> below <a href="Graphical Description of Data.html#tbl-Defects" class="quarto-xref">Table&nbsp;<span>2.4</span></a>.</p>
-<p>Find the probability of each defect type based on this data.</p>
-<ol start="3" type="1">
+<div tabindex="0" style="width:85%; margin:auto;">
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">defects</span>.</p>
+</div>
+<p><strong>Code book for Data Frame Defects</strong> below <a href="Graphical Description of Data.html#tbl-Defects" class="quarto-xref">Table&nbsp;<span>2.5</span></a>.</p>
+<ol start="5" type="1">
 <li><p>In Australia in 1995, of the 2907 indigenous people in prison 17 of them died. In that same year, of the 14501 non-indigenous people in prison 42 of them died (\“Aboriginal deaths in,\” 2013). Find the probability that an indigenous person dies in prison and the probability that a non-indigenous person dies in prison. Compare these numbers and discuss what the numbers may mean.</p></li>
-<li><p>A project conducted by the Australian Federal Office of Road Safety asked people many questions about their cars. One question was the reason that a person chooses a given car, and that data is in <a href="#tbl-Car_pref" class="quarto-xref">Table&nbsp;<span>4.3</span></a> (Car Preferences, 2019).</p></li>
+<li><p>A project conducted by the Australian Federal Office of Road Safety asked people many questions about their cars. One question was the reason that a person chooses a given car, and the first six rows of that data is in <a href="#tbl-Car_pref" class="quarto-xref">Table&nbsp;<span>4.6</span></a> (Car Preferences, 2019). Find the probability a person chooses a car for each of the given reasons.</p></li>
 </ol>
+<div tabindex="0" style="width:85%; margin:auto;">
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">carprefs</span>.</p>
+</div>
 <div class="cell" data-tbl-alt="Table showing reason for choosing a car">
 <div id="tbl-Car_pref" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing reason for choosing a car">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Car_pref-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.3: Reason for Choosing a Car
+Table&nbsp;4.6: Reason for Choosing a Car
 </figcaption>
 <div aria-describedby="tbl-Car_pref-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 1%">
 <col style="width: 1%">
@@ -729,42 +1057,57 @@ Table&nbsp;4.3: Reason for Choosing a Car
 </figure>
 </div>
 </div>
-<p><strong>Code book for Data Frame Car_pref</strong></p>
+<div id="code-book-carprefs" class="codebook callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Code book for carprefs Dataset
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p><strong>Description</strong> These data were collected as part of a project for the Federal Office for Road Safety conducted by the Research Institute of Gender and Health at the University of Newcastle. There is evidence that women drivers who are involved in motor vehicle accidents are more likely than men to be injured. A possible reason is that women often drive smaller cars that provide less protection in a collision. One of the aims of the project was to examine preferences for cars among men and women and investigate the extent to which safety was a factor in determining preferences. The survey was conducted by research assistants who asked people in car parks to participate and administered a structured questionnaire. They were instructed to obtain data from men and women with small, medium and large cars, with 50 people per group for a total of 300 respondents. (The sample size was based on power requirements for another part of the survey that involved anthropometric measurements.) The research assistants approached people in car parks of the University of Newcastle and nearby shopping centers during December 1997 and January 1998.</p>
 <p>Usage Car_pref</p>
 <p>Format</p>
 <p>This data frame contains the following columns:</p>
-<p>ID: Identification number of respondent</p>
-<p>Age: Age of respondent (years)</p>
-<p>Sex: female, male</p>
-<p>LicYr: Time they have held a full driving licence, in years and months (years)</p>
-<p>LicMth: Time they have held a full driving licence, in years and months (months)</p>
-<p>ActCar: Make, model and year of car most often driven, coded to size of car small, medium, large</p>
-<p>Kids5: Children under five, yes, no</p>
-<p>Kids6: Children 6 to 16, yes, no</p>
-<p>PrefCar: Preferred car, coded to size of car small, medium, large</p>
-<p>Car15k: Preferred type of car if cost \$15000, small new car; large second-hand car</p>
-<p>Reason: safety, reliability, cost, performance, comfort, looks</p>
-<p>Cost: How important is cost when buying a car? not important, little importance, important, very important</p>
-<p>Reliable: How important is reliability …?</p>
-<p>Perform: How important is performance …?</p>
-<p>Fuel: How important is fuel consumption …?</p>
-<p>Safety: How important is safety …?</p>
-<p>AC/PS: How important is air conditioning/power steering …?</p>
-<p>Park: How important is ease of parking …?</p>
-<p>Room: How important is space/roominess …?</p>
-<p>Doors: How important is the number of doors …?</p>
-<p>Prestige: How important is prestige/style …?</p>
-<p>Colour: How important is colour …?</p>
-<p>Source</p>
-<p>Car Preferences. (n.d.). Retrieved July 11, 2019, from http://www.statsci.org/data/oz/carprefs.html</p>
+<p><span class="var">ID</span>: Identification number of respondent</p>
+<p><span class="var">Age</span>: Age of respondent (years)</p>
+<p><span class="var">Sex</span>: female, male</p>
+<p><span class="var">LicYr</span>: Time they have held a full driving licence, in years and months (years)</p>
+<p><span class="var">LicMth</span>: Time they have held a full driving licence, in years and months (months)</p>
+<p><span class="var">ActCar</span>: Make, model and year of car most often driven, coded to size of car small, medium, large</p>
+<p><span class="var">Kids5</span>: Children under five, yes, no</p>
+<p><span class="var">Kids6</span>: Children 6 to 16, yes, no</p>
+<p><span class="var">PrefCar</span>: Preferred car, coded to size of car small, medium, large</p>
+<p><span class="var">Car15k</span>: Preferred type of car if cost \$15000, small new car; large second-hand car</p>
+<p><span class="var">Reason</span>: safety, reliability, cost, performance, comfort, looks</p>
+<p><span class="var">Cost</span>: How important is cost when buying a car? not important, little importance, important, very important</p>
+<p><span class="var">Reliable</span>: How important is reliability …?</p>
+<p><span class="var">Perform</span>: How important is performance …?</p>
+<p><span class="var">Fuel</span>: How important is fuel consumption …?</p>
+<p><span class="var">Safety</span>: How important is safety …?</p>
+<p><span class="var">AC/PS</span>: How important is air conditioning/power steering …?</p>
+<p><span class="var">Park</span>: How important is ease of parking …?</p>
+<p><span class="var">Room</span>: How important is space/roominess …?</p>
+<p><span class="var">Doors</span>: How important is the number of doors …?</p>
+<p><span class="var">Prestige</span>: How important is prestige/style …?</p>
+<p><span class="var">Colour</span>: How important is colour …?</p>
+<p><a href="http://www.statsci.org/data/oz/carprefs.html">Source</a> Car Preferences. (n.d.). Retrieved July 11, 2019.</p>
 <p>References</p>
 <p>The data was contributed to OzDASL by Professor Annette Dobson, University of Queensland. Information on the data set was originally provided by Jenny Powers.</p>
-<p>Find the probability a person chooses a car for each of the given reasons.</p>
+</div>
+</div>
+</div>
+<ol start="7" type="1">
+<li>Using Rguroo’s Simulation tool ( From the <span class="dpd">Distribution</span> dropdown, select <span class="fun">Bernoulli Trial</span>.), simulate flipping a fair coin with p = 0.5. Run simulations with n = 20, 100, 500, and 5,000. For each run, record the relative frequency of heads. Create a table of your results and write 2 to 3 sentences describing how the relative frequency changes as n increases.</li>
+</ol>
 </section>
 </section>
-<section id="theoretical-probability" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="theoretical-probability"><span class="header-section-number">4.2</span> Theoretical Probability</h2>
+<section id="theoretical-probability-1" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="theoretical-probability-1"><span class="header-section-number">4.2</span> Theoretical Probability</h2>
 <p>It is not always feasible to conduct an experiment over and over again, so it would be better to be able to find the probabilities without conducting the experiment. These probabilities are called <strong>Theoretical Probabilities</strong>.</p>
 <p>To be able to do theoretical probabilities, there is an assumption that you need to consider. It is that all of the outcomes in the sample space need to be **equally likely outcomes**. This means that every outcome of the experiment needs to have the same chance of happening.</p>
 <section id="example-equally-likely-outcomes" class="level3" data-number="4.2.1">
@@ -777,8 +1120,8 @@ Table&nbsp;4.3: Reason for Choosing a Car
 <li>Picking a card from a deck.</li>
 <li>Rolling a die to see if it is fair.</li>
 </ol>
-<section id="solution-1" class="level4" data-number="4.2.1.1">
-<h4 data-number="4.2.1.1" class="anchored" data-anchor-id="solution-1"><span class="header-section-number">4.2.1.1</span> <strong>Solution</strong></h4>
+<section id="solution" class="level4" data-number="4.2.1.1">
+<h4 data-number="4.2.1.1" class="anchored" data-anchor-id="solution"><span class="header-section-number">4.2.1.1</span> <strong>Solution</strong></h4>
 <ol type="a">
 <li><p>Rolling a fair die.</p>
 <p>Since the die is fair, every side of the die has the same chance of coming up. The outcomes are the different sides, so each outcome is equally likely</p></li>
@@ -808,8 +1151,8 @@ Table&nbsp;4.3: Reason for Choosing a Car
 <li>What is the probability of getting a foot?</li>
 <li>What is the probability of each outcome? What is the sum of these probabilities?</li>
 </ol>
-<section id="solution-2" class="level4" data-number="4.2.2.1">
-<h4 data-number="4.2.2.1" class="anchored" data-anchor-id="solution-2"><span class="header-section-number">4.2.2.1</span> Solution</h4>
+<section id="solution-1" class="level4" data-number="4.2.2.1">
+<h4 data-number="4.2.2.1" class="anchored" data-anchor-id="solution-1"><span class="header-section-number">4.2.2.1</span> Solution</h4>
 <ol type="a">
 <li><p>What is the sample space?</p>
 <p>There are several different sample spaces you can do. One is SS={0, 1, 2} where you are counting the number of heads. However, the outcomes are not equally likely since you can get one head by getting a head on the first flip and a tail on the second or a tail on the first flip and a head on the second. There are 2 ways to get that outcome and only one way to get the other outcomes. Instead it might be better to give the sample space as listing what can happen on each flip. Let H = head and T = tail, and list which can happen on each flip.</p>
@@ -854,8 +1197,8 @@ Table&nbsp;4.3: Reason for Choosing a Car
 <li>What is the probability of getting a Jack and an Ace?</li>
 <li>What is the probability of getting a Jack and an Ace?</li>
 </ol>
-<section id="solution-3" class="level4" data-number="4.2.4.1">
-<h4 data-number="4.2.4.1" class="anchored" data-anchor-id="solution-3"><span class="header-section-number">4.2.4.1</span> <strong>Solution</strong></h4>
+<section id="solution-2" class="level4" data-number="4.2.4.1">
+<h4 data-number="4.2.4.1" class="anchored" data-anchor-id="solution-2"><span class="header-section-number">4.2.4.1</span> <strong>Solution</strong></h4>
 <ol type="a">
 <li><p>What is the sample space?</p>
 <p><span class="math inline">\(SS\)</span> = {2S, 3S, 4S, 5S, 6S, 7S, 8S, 9S, 10S, JS, QS, KS, AS, 2C, 3C, 4C, 5C, 6C, 7C, 8C, 9C, 10C, JC, QC, KC, AC, 2D, 3D, 4D, 5D, 6D, 7D, 8D, 9D, 10D, JD, QD, KD, AD, 2H, 3H, 4H, 5H, 6H, 7H, 8H, 9H, 10H, JH, QH, KH, AH}</p></li>
@@ -894,8 +1237,8 @@ Table&nbsp;4.3: Reason for Choosing a Car
 <li>What is the probability that you will hear an Elton John or a Taylor Swift song?</li>
 <li>What is the probability that you will hear a country song or a U2 song?</li>
 </ol>
-<section id="solution-4" class="level4" data-number="4.2.5.1">
-<h4 data-number="4.2.5.1" class="anchored" data-anchor-id="solution-4"><span class="header-section-number">4.2.5.1</span> <strong>Solution</strong></h4>
+<section id="solution-3" class="level4" data-number="4.2.5.1">
+<h4 data-number="4.2.5.1" class="anchored" data-anchor-id="solution-3"><span class="header-section-number">4.2.5.1</span> <strong>Solution</strong></h4>
 <ol type="a">
 <li><p>What is the probability that you will hear a Faith Hill song?</p>
 <p>There are 4 Faith Hill songs out of the 67 songs, so <span class="math inline">\(P(\text{Faith Hill})=\frac{4}{67}\)</span></p></li>
@@ -925,8 +1268,8 @@ Table&nbsp;4.3: Reason for Choosing a Car
 <li>Suppose you know the probability of not getting the flu is 0.24. What is the probability of getting the flu?</li>
 <li>In an experiment of picking a card from a deck, what is the probability of not getting a card that is a Queen?</li>
 </ol>
-<section id="solution-5" class="level4" data-number="4.2.6.1">
-<h4 data-number="4.2.6.1" class="anchored" data-anchor-id="solution-5"><span class="header-section-number">4.2.6.1</span> <strong>Solution</strong></h4>
+<section id="solution-4" class="level4" data-number="4.2.6.1">
+<h4 data-number="4.2.6.1" class="anchored" data-anchor-id="solution-4"><span class="header-section-number">4.2.6.1</span> <strong>Solution</strong></h4>
 <ol type="a">
 <li><p>Suppose you know that the probability of it raining today is 0.45. What is the probability of it not raining?</p>
 <p>Since not raining is the complement of raining, then <span class="math inline">\(P(\text{not raining})=1-P(\text{raining}) = 1-0.45=0.55\)</span></p></li>
@@ -945,8 +1288,8 @@ Table&nbsp;4.3: Reason for Choosing a Car
 <li>In an experiment of rolling a fair die one time, find the probability of rolling at most a 4 on the die.</li>
 <li>In an experiment of pulling a card from a fair deck, find the probability of pulling at least a 5 (ace is a high card in this example).</li>
 </ol>
-<section id="solution-6" class="level4" data-number="4.2.7.1">
-<h4 data-number="4.2.7.1" class="anchored" data-anchor-id="solution-6"><span class="header-section-number">4.2.7.1</span> <strong>Solution</strong></h4>
+<section id="solution-5" class="level4" data-number="4.2.7.1">
+<h4 data-number="4.2.7.1" class="anchored" data-anchor-id="solution-5"><span class="header-section-number">4.2.7.1</span> <strong>Solution</strong></h4>
 <ol type="a">
 <li><p>In an experiment of rolling a fair die one time, find the probability of rolling at most a 4 on the die.</p>
 <p>The sample space for this experiment is {1, 2, 3, 4, 5, 6}. You want the event of getting at most a 4, which is the same as thinking of getting 4 or less. The event space is {1, 2, 3, 4}. The probability is <span class="math inline">\(P(\text{at most a 4})=\frac{4}{6}\)</span></p>
@@ -980,8 +1323,8 @@ Table&nbsp;4.3: Reason for Choosing a Car
 <li>What is the probability of getting a sum of 5 and sum of 7?</li>
 <li>What is the probability of getting a sum of 5 or sum of 7?</li>
 </ol>
-<section id="solution-7" class="level4" data-number="4.2.9.1">
-<h4 data-number="4.2.9.1" class="anchored" data-anchor-id="solution-7"><span class="header-section-number">4.2.9.1</span> <strong>Solution</strong></h4>
+<section id="solution-6" class="level4" data-number="4.2.9.1">
+<h4 data-number="4.2.9.1" class="anchored" data-anchor-id="solution-6"><span class="header-section-number">4.2.9.1</span> <strong>Solution</strong></h4>
 <ol type="a">
 <li><p>What is the sample space?</p>
 <p>As with the other examples you need to come up with a sample space that has equally likely outcomes. One sample space is to list the sums possible on each roll. That sample space would look like: <span class="math inline">\(SS\)</span> = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}. However, there are more ways to get a sum of 7 then there are to get a sum of 2, so these outcomes are not equally likely. Another thought is to list the possibilities on each roll. As an example you could roll the dice and on the first die you could get a <span class="math inline">\(1\)</span>. The other die could be any number between <span class="math inline">\(1\)</span> and <span class="math inline">\(6\)</span>, but say it is a <span class="math inline">\(1\)</span> also. Then this outcome would look like (1,1). Similarly, you could get (1, 2), (1, 3), (1,4), (1, 5), or (1, 6). Also, you could get a 2, 3, 4, 5, or 6 on the first die instead. Putting this all together, you get the sample space:</p>
@@ -1035,8 +1378,8 @@ Table&nbsp;4.3: Reason for Choosing a Car
 <li>Find the actual odds against a natural.</li>
 <li>If the casino pays 1:1, how much profit does the casino make on a \$10 bet?</li>
 </ol>
-<section id="solution-8" class="level4" data-number="4.2.11.1">
-<h4 data-number="4.2.11.1" class="anchored" data-anchor-id="solution-8"><span class="header-section-number">4.2.11.1</span> <strong>Solution</strong></h4>
+<section id="solution-7" class="level4" data-number="4.2.11.1">
+<h4 data-number="4.2.11.1" class="anchored" data-anchor-id="solution-7"><span class="header-section-number">4.2.11.1</span> <strong>Solution</strong></h4>
 <ol type="a">
 <li><p>Find the probability of a natural.</p>
 <p>A natural is a 7 or 11. The sample space is</p>
@@ -1165,8 +1508,8 @@ Table&nbsp;4.3: Reason for Choosing a Car
 <li>Suppose you pick a card from a deck. What is the probability of getting a Spade, given that the card is a Jack?</li>
 <li>Suppose you pick a card from a deck. What is the probability of getting an Ace, given the card is a Queen?</li>
 </ol>
-<section id="solution-9" class="level4" data-number="4.3.1.1">
-<h4 data-number="4.3.1.1" class="anchored" data-anchor-id="solution-9"><span class="header-section-number">4.3.1.1</span> <strong>Solution</strong></h4>
+<section id="solution-8" class="level4" data-number="4.3.1.1">
+<h4 data-number="4.3.1.1" class="anchored" data-anchor-id="solution-8"><span class="header-section-number">4.3.1.1</span> <strong>Solution</strong></h4>
 <ol type="a">
 <li><p>Suppose you roll two dice. What is the probability of getting a sum of 5, given that the first die is a 2?</p>
 <p>Since you know that the first die is a 2, then this is your restricted sample space, <span class="math inline">\(R\)</span> = {(2,1), (2,2), (2,3), (2,4), (2,5), (2,6)} Out of this restricted sample space, the way to get a sum of 5 is {(2,3)}. Thus</p>
@@ -1199,8 +1542,8 @@ Table&nbsp;4.3: Reason for Choosing a Car
 <li>Suppose you have two children via separate births. Are the events “the first is a boy” and “the second is a girl” independent?</li>
 <li>Suppose you flip a coin 50 times and get a head every time, what is the probability of getting a head on the next flip?</li>
 </ol>
-<section id="solution-10" class="level4" data-number="4.3.2.1">
-<h4 data-number="4.3.2.1" class="anchored" data-anchor-id="solution-10"><span class="header-section-number">4.3.2.1</span> <strong>Solution</strong></h4>
+<section id="solution-9" class="level4" data-number="4.3.2.1">
+<h4 data-number="4.3.2.1" class="anchored" data-anchor-id="solution-9"><span class="header-section-number">4.3.2.1</span> <strong>Solution</strong></h4>
 <ol type="a">
 <li><p>Suppose you roll two dice. Are the events “sum of 7” and “first die is a 3” independent?</p>
 <p>To determine if they are independent, you need to see if <span class="math inline">\(P(\text{sum of 7| first die a 3}=P(\text{sum of 7})\)</span> or the other way around. It doesn’t matter which order these are calculated in, so pick whichever is easier. sum of 7 = {(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)} first die is a 3 = {(3,1), (3,2), (3,3), (3,4), (3,5), (3,6)} <span class="math inline">\(P(\text{sum of 7| first die a 3})\)</span> means that you assume that first die is a 3 has happened. The restricted sample space is the first die is a 3, <span class="math inline">\(R\)</span> = {(3,1), (3,2), (3,3), (3,4), (3,5), (3,6)} In this restricted sample space, the way for a sum of 7 to happen is {(3,4)}, so <span class="math inline">\(P(\text{sum of 7| first die a 3})=\frac{1}{6}\)</span> The <span class="math inline">\(P(\text{sum of 7})=\frac{6}{36}=\frac{1}{6}\)</span>. Since <span class="math inline">\(P(\text{sum of 7| first die a 3})=P(\text{sum of 7})\)</span>, the “sum of 7” and “first die is a 3” are independent events.</p></li>
@@ -1240,8 +1583,8 @@ Table&nbsp;4.3: Reason for Choosing a Car
 <li>Suppose you pick three cards from a deck, what is the probability that they are all Queens if the cards are not replaced after they are picked?</li>
 <li>Suppose you pick three cards from a deck, what is the probability that they are all Queens if the cards are replaced after they are picked and before the next card is picked?</li>
 </ol>
-<section id="solution-11" class="level4" data-number="4.3.4.1">
-<h4 data-number="4.3.4.1" class="anchored" data-anchor-id="solution-11"><span class="header-section-number">4.3.4.1</span> <strong>Solution</strong></h4>
+<section id="solution-10" class="level4" data-number="4.3.4.1">
+<h4 data-number="4.3.4.1" class="anchored" data-anchor-id="solution-10"><span class="header-section-number">4.3.4.1</span> <strong>Solution</strong></h4>
 <ol type="a">
 <li><p>Suppose you pick three cards from a deck, what is the probability that they are all Queens if the cards are not replaced after they are picked?</p>
 <p>This sample space is too large to write out, so using the multiplication rule makes sense. Since the cards are not replaced, then the probability will change for the second and third cards. They are dependent events. This means that on the second draw there is one less Queen and one less card, and on the third draw there are two less Queens and 2 less cards.</p>
@@ -1254,11 +1597,11 @@ Table&nbsp;4.3: Reason for Choosing a Car
 </section>
 <section id="example-application-problem" class="level3" data-number="4.3.5">
 <h3 data-number="4.3.5" class="anchored" data-anchor-id="example-application-problem"><span class="header-section-number">4.3.5</span> Example: Application Problem</h3>
-<p>A project conducted by the Australian Federal Office of Road Safety asked people many questions about their cars. One question was the reason that a person chooses a given car, and that data is in <a href="#tbl-Car_pref" class="quarto-xref">Table&nbsp;<span>4.3</span></a> (Car Preferences, 2019).</p>
-<p><strong>Code book for Data Frame Car_pref</strong> is below <a href="#tbl-Car_pref" class="quarto-xref">Table&nbsp;<span>4.3</span></a>.</p>
+<p>A project conducted by the Australian Federal Office of Road Safety asked people many questions about their cars. One question was the reason that a person chooses a given car, and that data is in <a href="#tbl-Car_pref" class="quarto-xref">Table&nbsp;<span>4.6</span></a> (Car Preferences, 2019).</p>
+<p><strong>Code book for Data Frame Car_pref</strong> is below <a href="#tbl-Car_pref" class="quarto-xref">Table&nbsp;<span>4.6</span></a>.</p>
 <p>A contingency table, is a cross tabulation of the data into different categories. As an example, a contingency table of if the person has children under 5 and their current car is below, the following command in R Studio can be used to create this table.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(<span class="sc">~</span>Kids5<span class="sc">+</span>ActCar, <span class="at">data=</span>Car_pref, <span class="at">margins=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(<span class="sc">~</span>Kids5<span class="sc">+</span>ActCar, <span class="at">data=</span>Car_pref, <span class="at">margins=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       ActCar
 Kids5   large medium small Total
@@ -1276,8 +1619,8 @@ Kids5   large medium small Total
 <li>Find the probability that a person questioned has children under 5 given that they have a large car.</li>
 <li>Are the events that a person questioned has a “large car” and “kids under 5” independent events? Why or why not?</li>
 </ol>
-<section id="solution-12" class="level4" data-number="4.3.5.1">
-<h4 data-number="4.3.5.1" class="anchored" data-anchor-id="solution-12"><span class="header-section-number">4.3.5.1</span> <strong>Solution</strong></h4>
+<section id="solution-11" class="level4" data-number="4.3.5.1">
+<h4 data-number="4.3.5.1" class="anchored" data-anchor-id="solution-11"><span class="header-section-number">4.3.5.1</span> <strong>Solution</strong></h4>
 <ol type="a">
 <li><p>Find the probability that a person questioned has kids under 5.</p>
 <p>First, you need to find the number of people questioned. Add the first row, there are 150 people who did not have kids under 5. Adding the second row, there are 29 people who do have kids under 5. Also, you can add the columns. There are 100 people who have large cars, 100 people who have medium cars, and 100 who have small cars. Adding either the row totals or the columns totals, gives you 300 people in the study. Out of the 300 people, 29 people had kids under 5. So the</p>
@@ -1344,12 +1687,12 @@ Kids5   large medium small Total
 <li><p>You flip a coin six times. What is the probability that all six of them are heads?</p></li>
 <li><p>You pick three cards from a deck with replacing the card each time before picking the next card. What is the probability that all three cards are kings?</p></li>
 <li><p>You pick three cards from a deck without replacing a card before picking the next card. What is the probability that all three cards are kings?</p></li>
-<li><p>A project conducted by the Australian Federal Office of Road Safety asked people many questions about their cars. One question was the reason that a person chooses a given car, and that data is in <a href="#tbl-Car_pref" class="quarto-xref">Table&nbsp;<span>4.3</span></a> (Car Preferences, 2019).</p></li>
+<li><p>A project conducted by the Australian Federal Office of Road Safety asked people many questions about their cars. One question was the reason that a person chooses a given car, and that data is in <a href="#tbl-Car_pref" class="quarto-xref">Table&nbsp;<span>4.6</span></a> (Car Preferences, 2019).</p></li>
 </ol>
-<p><strong>Code book for Data Frame Car_pref</strong> is below <a href="#tbl-Car_pref" class="quarto-xref">Table&nbsp;<span>4.3</span></a>.</p>
+<p><strong>Code book for Data Frame Car_pref</strong> is below <a href="#tbl-Car_pref" class="quarto-xref">Table&nbsp;<span>4.6</span></a>.</p>
 <p>The contingency table for the sex of a person and the size car the person prefers is in table below</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(<span class="sc">~</span>PreferCar<span class="sc">+</span>Sex, <span class="at">data=</span>Car_pref, <span class="at">margins=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tally</span>(<span class="sc">~</span>PreferCar<span class="sc">+</span>Sex, <span class="at">data=</span>Car_pref, <span class="at">margins=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         Sex
 PreferCar female male Total
@@ -1374,16 +1717,16 @@ PreferCar female male Total
 <li>Researchers watched groups of dolphins off the coast of Ireland in 1998 to determine what activities the dolphins partake in at certain times of the day (Activities of Dolphin Groups, 2019). The numbers in table \#4.3.5 represent the number of groups of dolphins that were partaking in an activity at certain times of days.</li>
 </ol>
 <div class="cell" data-tbl-alt="Table showing dolphin activities">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Dolphin<span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/dolphins.csv"</span>) </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Dolphin))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Dolphin<span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">"https://krkozak.github.io/MAT160/dolphins.csv"</span>) </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(Dolphin))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-Dolphin" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing dolphin activities">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Dolphin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.4: Dolphin Activity
+Table&nbsp;4.7: Dolphin Activity
 </figcaption>
 <div aria-describedby="tbl-Dolphin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">activity</th>
@@ -1454,16 +1797,16 @@ Table&nbsp;4.4: Dolphin Activity
 <section id="example-multiplication-rule-in-counting" class="level3" data-number="4.4.2">
 <h3 data-number="4.4.2" class="anchored" data-anchor-id="example-multiplication-rule-in-counting"><span class="header-section-number">4.4.2</span> Example: Multiplication Rule in Counting</h3>
 <p>A menu offers a choice of 3 salads, 8 main dishes, and 5 desserts. How many different meals consisting of one salad, one main dish, and one dessert are possible?</p>
-<section id="solution-13" class="level4" data-number="4.4.2.1">
-<h4 data-number="4.4.2.1" class="anchored" data-anchor-id="solution-13"><span class="header-section-number">4.4.2.1</span> <strong>Solution</strong></h4>
+<section id="solution-12" class="level4" data-number="4.4.2.1">
+<h4 data-number="4.4.2.1" class="anchored" data-anchor-id="solution-12"><span class="header-section-number">4.4.2.1</span> <strong>Solution</strong></h4>
 <p>There are three tasks, picking a salad, a main dish, and a dessert. The salad task can be done 3 ways, the main dish task can be done 8 ways, and the dessert task can be done 5 ways. The ways to pick a salad, main dish, and dessert are <span class="math inline">\(3*8*5=120\)</span>.</p>
 </section>
 </section>
 <section id="example-multiplication-rule-in-counting-1" class="level3" data-number="4.4.3">
 <h3 data-number="4.4.3" class="anchored" data-anchor-id="example-multiplication-rule-in-counting-1"><span class="header-section-number">4.4.3</span> Example: Multiplication Rule in Counting</h3>
 <p>How many three letter “words” can be made from the letters a, b, and c with no letters repeating? A “word” is just an ordered group of letters. It doesn’t have to be a real word in a dictionary.</p>
-<section id="solution-14" class="level4" data-number="4.4.3.1">
-<h4 data-number="4.4.3.1" class="anchored" data-anchor-id="solution-14"><span class="header-section-number">4.4.3.1</span> <strong>Solution</strong></h4>
+<section id="solution-13" class="level4" data-number="4.4.3.1">
+<h4 data-number="4.4.3.1" class="anchored" data-anchor-id="solution-13"><span class="header-section-number">4.4.3.1</span> <strong>Solution</strong></h4>
 <p>There are three tasks that must be done in this case. The tasks are to pick the first letter, then the second letter, and then the third letter. The first task can be done 3 ways since there are 3 letters. The second task can be done 2 ways, since the first task took one of the letters. The third task can be done 1 way, since the first and second task took two of the letters. There are <span class="math inline">\(3*2*1=6\)</span></p>
 <p>In <a href="#example-multiplication-rule">Example: Multiplication Rule</a>, the solution was found by find <span class="math inline">\(3*2*1\)</span>. Many counting problems involve multiplying a list of decreasing numbers. This is called a <strong>factorial</strong>. There is a special symbol for this.</p>
 </section>
@@ -1474,7 +1817,7 @@ Table&nbsp;4.4: Dolphin Activity
 <p>As an example: <span class="math inline">\(5!=5*4*3*2*1=120\)</span> <span class="math inline">\(8!=8*7*6*5*4*3*2*1=40320\)</span></p>
 <p><strong>0 factorial</strong> is defined to be <span class="math inline">\(0!=1\)</span> and <strong>1 factorial</strong> is defined to be <span class="math inline">\(1!=1\)</span>. In rStudio, the command for factorial is factorial(number). As an example <span class="math inline">\(7!\)</span> using r Studio would be</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">7</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5040</code></pre>
 </div>
@@ -1515,239 +1858,243 @@ Table&nbsp;4.4: Dolphin Activity
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        return container.innerHTML
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1755,185 +2102,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./Numerical-description-of-Data.html" class="pagination-link" aria-label="Numerical Description of Data">

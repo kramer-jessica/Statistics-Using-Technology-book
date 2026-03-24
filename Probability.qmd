@@ -11,81 +11,350 @@ Eyeglasses<-read.csv( "https://krkozak.github.io/MAT160/eyglasses.csv")
 Defects<- read.csv( "https://krkozak.github.io/MAT160/defects.csv") 
 ```
 
-Understanding probabilities are important in life. Examples of mundane questions that probability can answer for you are if you need to carry an umbrella or wear a heavy coat on a given day. More important questions that probability can help with are your chances that the car you are buying will need more maintenance, your chances of passing a class, your chances of winning the lottery, your chances of being in a car accident, and the chances that the U.S. will be attacked by terrorists. Most people do not have a very good understanding of probability, so they worry about being attacked by a terrorist but not about being in a car accident. The probability of being in a terrorist attack is much smaller than the probability of being in a car accident, thus it actually would make more sense to worry about driving. Also, the chance of you winning the lottery is very small, yet many people will spend their money on lottery tickets. Yet, if instead they saved the money that they spend on the lottery, they would have more money. In general, events that have a low probability (under 5%) are unlikely to occur. Whereas if an event has a high probability of happening (over 80%), then there is a good chance that the event will happen. This chapter will present some of the theory that you need to help make a determination of whether an event is likely to happen or not.
+Every day you encounter uncertainty. Will it rain during your commute? Is a new medication likely to help a patient? Does a positive test result mean someone actually has a disease? Should a business stock more inventory before a holiday weekend? Although these questions cannot be answered with certainty, probability gives us a mathematical framework for making informed decisions about them.
 
-One story about how probability theory was developed is that a gambler wanted to know when to bet more and when to bet less. He talked to a couple of friends of his that happened to be mathematicians. Their names were Pierre de Fermat and Blaise Pascal. Since then many other mathematicians have worked to develop probability theory. There are actually two types of probability, **Empirical Probability** and **Theoretical Probability** that have been developed since the start of probability.
+Probability is not just an abstract mathematical topic. It is the foundation of all of statistics. When we collect data and draw conclusions, we are always asking: *How likely is it that what I observed happened by chance?* Without understanding probability, we cannot answer that question honestly.
 
-## Empirical Probability
+Probability is the "language" that connects data to decisions. Every confidence interval, every hypothesis test, and every statistical claim you will encounter in this course rests on the ideas in this chapter. Taking the time to build a solid foundation here will make the rest of the course much more meaningful.
 
-Empirical probabilities are found by actually conducting an experiment many times and counting the number of times the event happens. To understand how this is performed, first some definitions are needed.
+The ideas in this chapter appear across every discipline. A criminologist asks: what is the likelihood that an eyewitness identification is correct? A nurse asks: if I screen 100 patients, how many will test positive by chance alone? An economist asks: what is the probability that a recession will occur in the next two years? A political scientist asks: what is the chance a polling result reflects the true opinions of voters? These are all probability questions.
 
-**Outcomes**: the results of an experiment
+This chapter begins with the fundamental vocabulary and rules of probability, builds toward a distinction between two major approaches to calculating probabilities, and introduces how technology — specifically **Rguroo** — can be used to simulate random processes and explore probability in a hands-on way.
 
-**Event**: a set of certain outcomes of an experiment that you want to have happen
+## Fundamentals of Probability
 
-**Sample Space**: collection of all possible outcomes of the experiment. Usually denoted as $SS$.
+### Random Processes and Experiments
 
-**Event space**: the set of outcomes that make up an event. The symbol is usually a capital letter.
+Some things in life are **deterministic**. For example, if you drop a ball, you can calculate exactly where it will land. But many things are **random**, meaning the outcome is not fully predictable in advance no matter how much information you have.
 
-**Frequency**: how often an event happens
+A **random process** is any process or phenomenon in which individual outcomes are unpredictable, even though a pattern of outcomes tends to emerge over a large number of repetitions.
 
-**Relative Frequency**: the frequency divided by the number of times the experiment is repeated
+**Examples of random processes you encounter:**
 
-Start with an experiment. Suppose that the experiment is rolling a die. The sample space is {1, 2, 3, 4, 5, 6}. The event that you want is to get a 6, and the event space is {6}. To do this, roll a die 10 times. When you do that, you get a 6 two times. Based on this experiment, the probability of getting a 6 is 2 out of 10 or 1/5. To get more accuracy, repeat the experiment more times. It is easiest to put this in a table, where \*n\* represents the number of times the experiment is repeated. When you put the number of 6s found over the number of times you repeat the experiment, this is the relative frequency.
+-   Flipping a coin — you cannot predict whether it will land heads or tails on any single flip
+-   Drawing a card from a shuffled deck
+-   Whether a patient responds to a treatment
+-   Whether it rains on a given day in your city
+-   Whether a product coming off an assembly line is defective
+-   Which political candidate a randomly selected voter supports
 
-```{r die-table, echo=FALSE}
-#| tbl-alt: "Table showing trials from die experiment"
-#| label: tbl-Die
-#| tbl-cap: "trials for Die Experiment"
-Die<- read.csv( "https://krkozak.github.io/MAT160/table_4_1_1.csv") 
-knitr::kable(Die)
+A probability experiment (often shortened to just *experiment*) is any random process we observe and record. This is different from the everyday use of the word "experiment." An **experiment** is any process whose result is determined by chance. The experiment must be well-defined: you must be able to describe every possible result in advance.
+
+**Examples:**
+
+| Everyday Description | Probability Experiment |
+|------------------------------------|------------------------------------|
+| Roll a six-sided die | Observe which face (1–6) lands face up |
+| Ask a student their major | Record the declared major of one randomly selected student |
+| Test whether a lightbulb is defective | Inspect one lightbulb and record: defective or not defective |
+| Check today's high temperature | Record whether the high exceeds 90°F |
+
+: Examples of experiments in probability {#tbl-experiments tbl-alt="Table listing everyday descriptions alongside their corresponding probability experiment definitions"}
+
+------------------------------------------------------------------------
+
+
+### Outcomes, Sample Spaces, and Events
+
+Every probability experiment produces a result. An **outcome** is a single possible result of a probability experiment. When you roll a die, getting a 3 is one outcome. When you flip a coin, getting heads is one outcome. Outcomes must cover every possibility and cannot overlap; no two outcomes can occur at the same time in a single trial.
+
+The **sample space** is the complete list of all possible outcomes. If outcomes are the individual items, the sample space is the entire collection. We write it using set notation with curly braces and usually label it $S$.
+
+An **event** is any group of outcomes we are interested in. Events are subsets of the sample space and are built from outcomes. We usually name events with capital letters like $A$, $B$, or $C$. A **simple event** contains exactly one outcome. A **compound event** contains more than one outcome.
+
+::: {#exm-roll-die}
+## Rolling a Die
+Consider rolling a fair six-sided die once.
+
+- The **outcomes** are the six individual faces: 1, 2, 3, 4, 5, and 6.
+- The **sample space** is $S = \{1, 2, 3, 4, 5, 6\}$.
+- Let $A =$ rolling an even number. Then $A = \{2, 4, 6\}$ is a **compound event** made up of three outcomes from the sample space.
+- Let $B =$ rolling a 5. Then $B = \{5\}$ is a **simple event** made up of one outcome.
+- Let $C =$ rolling a number greater than 4. Then $C = \{5, 6\}$.
+
+
+Notice that $A$, $B$, and $C$ are all built from the same six outcomes in $S$. The sample space does not change; only the question we are asking changes.
+:::
+
+Two special events come up often. A **certain event** contains every outcome in the sample space and will always occur. For example, rolling a number between 1 and 6 on a standard die is a certain event. An **impossible event** contains no outcomes at all and is written as the empty set, $\emptyset$. Rolling a 9 on a standard die is an impossible event.
+
+### Probability: Definition and Rules
+
+Now that we know what outcomes, sample spaces, and events are, we can define probability itself, establish the rules every probability must follow, and understand how probabilities behave when an experiment is repeated many times.
+
+The **probability** of an event $A$, written $P(A)$ (read "probability of A"), is a number between 0 and 1 (inclusive) that represents how likely A is to occur.
+$$0 \leq P(A) \leq 1   \text{ for any event } A$$
+
+Probabilities can be expressed as fractions, decimals, or percentages. For example, $P(A) = 1/4 = 0.25 = 25\%$.
+
+When we say an event has a probability of 0.30, we mean: if we were to repeat this experiment a very large number of times under the same conditions, about 30\% of those repetitions would result in that event occurring. Probability does not tell us what will happen on any single trial; it tells us about long-run patterns.
+
+Before we can calculate a probability, we need to ask a key question: are the outcomes in our sample space equally likely? This matters because it determines how we find probabilities.
+
+Outcomes are **equally likely** when every outcome in the sample space has the same probability of occurring. No outcome is favored over any other.
+
+
+::: {#exm-equally-likely}
+## Are the Outcomes Equally Likely?
+For each experiment, decide whether the outcomes are equally likely.
+
+**(a)** Rolling a *fair* die: **Yes.** Each face has the same chance of landing face up.
+
+**(b)** Flipping a *weighted* coin where heads is twice as likely as tails: **No.** Heads and tails do not have equal chances.
+
+**(c)** Selecting a ball from a bag containing 4 red balls and 4 blue balls (all the same size): **Yes.** Each individual ball is equally likely to be selected.
+
+**(d)** Selecting a ball from a bag containing 4 red balls and *8* blue balls (all the same size): **No.** Blue balls are more likely to be drawn because there are more of them. 
+
+**(e)** Testing whether the next customer at a coffee shop orders a hot or cold drink: **Probably not.** Without data, we cannot assume customers are equally split between the two options.
+:::
+
+When outcomes are not equally likely, you cannot use simple counting to find probabilities. You must use observed data instead. This leads us to the two approaches to probability covered in [Section 4.1.4](#two-approaches-to-calculate-probability).
+
+A **probability model** lists the possible outcomes of a probability experiment and each outcome's probability. Every valid probability model must satisfy two rules. These are not optional; they are requirements that any set of numbers must meet in order to qualify as probabilities.
+
+**Rule 1: Probability is always between 0 and 1 (inclusive)**
+$$0 \leq P(A) \leq 1   \text{ for every event } A$$
+
+No probability can be negative. No probability can be greater than 1. If you calculate a probability outside this range, you have made an error.
+
+**Rule 2: The probabilities of all outcomes in the sample space must sum to 1**
+$$\sum P(\text{all outcomes}) = 1$$
+
+This means that something always happens. When you list all possible outcomes of an experiment, their probabilities must add up to exactly 1, or 100\%.
+
+::: {#exm-equally-likely}
+## Verifying Probability Rules
+A psychology researcher studies the types of social media platforms used most frequently by college students. Based on survey data, she estimates the following probabilities:
+
+| Platform     | Estimated Probability |
+|--------------|-----------------------|
+| Instagram    | 0.34                  |
+| TikTok       | 0.28                  |
+| Snapchat     | 0.18                  |
+| X (Twitter)  | 0.11                  |
+| Other / None | 0.09                  |
+
+: Estimated probabilities for most-used social media platform {#tbl-socialmedia tbl-alt="Table showing estimated probabilities for five social media platform categories including Instagram, TikTok, Snapchat, X Twitter, and Other or None"}
+
+Verify this satisifies the rules of probability model. 
+:::
+
+
+:::{.solution}
+Verify Rule 1: Each probability is between 0 and 1. 
+
+Verify Rule 2: $0.34 + 0.28 + 0.18 + 0.11 + 0.09 = 1.00$
+
+Both rules are satisfied, so this is a valid probability model.
+
+:::
+
+::: {#exm-missing-prob}
+## Finding a Missing Probability
+
+ A weather forecasting model gives the following probabilities for tomorrow's weather in a coastal city:
+
+| Weather       | Probability |
+|---------------|-------------|
+| Sunny         | 0.45        |
+| Partly Cloudy | 0.30        |
+| Overcast      | ?           |
+| Rain          | 0.12        |
+
+: Weather probability model with missing value {#tbl-weather tbl-alt="Table showing weather probability model with probabilities for Sunny, Partly Cloudy, and Rain, and a missing probability for Overcast"}
+:::
+
+:::{.solution}
+Since all probabilities must sum to 1:
+
+$$P(\text{Overcast}) = 1 - 0.45 - 0.30 - 0.12 = 0.13$$
+
+There is a 13% chance of overcast skies tomorrow.
+:::
+
+### Two Approaches to Calculate Probability
+
+There are two fundamental ways to determine the probability of an event.
+
+**Relative Frequency (Empirical) Probability**
+
+The first approach is based on observation and data. We actually conduct the experiment many times, or use existing data, and measure how often the event occurs. The resulting probability estimate is called the **relative frequency** or **empirical probability**.
+
+Recall from Chapter 2, the **relative frequency** of an event is the number of times of times it occurs out of the total number of trials:
+$$\text{Relative Frequency of A} = \dfrac{\text{Number of times A occurred}}{\text{Total number of trials}}$$
+
+This is the empirical approach to probability. It is based on observed data rather than assumptions. The relative frequency gives an estimate of the true probability, and that estimate improves as the number of trials increases.
+
+::: {#exm-empirical-prob}
+## Empirical Probability from Survey Data
+The General Social Survey (GSS) is a national survey conducted regularly in the United States. In a recent survey, 1,832 out of 2,867 respondents reported that they use social media daily. What is the probability a randomly selected U.S. adult uses social media?
+:::
+
+:::{.solution}
+This estimate is based on observed data, so it is an empirical probability and we would use relative frequency to find the probability
+
+$$ P(\text{uses social media daily}) \approx \dfrac{1832}{2867} \approx 0.639$$
+
+We estimate there is about a 63.9\% chance that a randomly selected U.S. adult uses social media daily.
+:::
+
+
+*When Would You Use Empirical Probability*
+
+- Outcomes are not equally likely and you do not know the true proportions
+- The experiment involves real-world behavior that must be measured
+- You want to check whether a theoretical model, like a fair coin, matches reality
+
+**Theoretical Probability**
+
+The second approach is used when we know the structure of the experiment and can assume all outcomes are equally likely. Rather than collecting data, we count the outcomes.
+
+If all outcomes in the sample space are *equally likely*, the probability of event $A$ is:
+$$P(A) = \dfrac{\text{Number of outcomes in } A}{\text{Total number of outcomes in }S}$$
+
+This is called the **classical** or **theoretical** probability. It is calculated by reasoning about the structure of the experiment; no data collection is required.
+
+::: {#exm-theoretical-prob}
+## Theoretical Probability
+A fair six-sided die is rolled. Sample space: $S = \{1, 2, 3, 4, 5, 6\}$, with 6 equally likely outcomes. Find the following probabilities.
+
+**(a)** P(rolling a 4)
+
+**(b)** P(rolling an even number)
+
+**(c)** P(rolling a number > 4)
+
+**(d)** P(rolling a number < 10)
+
+**(e)** P(rolling a 7)
+
+:::
+
+:::{.solution}
+**(a)** The event space for the event "rolling a 4" is $A= \{4\}$. Using the theoretical probability formula, 
+$$P(\text{rolling a }4) = P(A) = \frac{1}{6} \approx 0.167$$
+
+**(b)** The event space for the event "rolling an even number" is $B = \{2,4,6\}$. Then, the probability is
+$$ P(\text{rolling an even number}) = P(B) = \frac{3}{6} = \frac{1}{2} = 0.5$$
+
+**(c)** The event space for the event "rolling a number > 4" is $C = \{5,6\}$. The probability of event $C$ is
+
+$$P(\text{rolling a number }> 4) = P(C) = \frac{2}{6} = \frac{1}{3} \approx 0.333$$
+
+**(d)** The event space for the event "rolling a number < 10" is $D = \{1,2,3,4,5,6\} = S$. The probability of event $D$ is
+
+$$ P(\text{rolling a number }< 10)=P(D) = \frac{6}{6} = 1$$
+
+which makes this a certain event.
+**(e)** The event space for the event "rolling a 7" is $E = \{\emptyset\}$. Therefore, the probability of event $E$ is 
+
+$$P(\text{rolling a }7) = P(E) = \frac{0}{6} = 0$$
+
+which makes this an impossible event. 
+:::
+
+You might wonder: if I flip a coin just 10 times and get 7 heads, does that mean the probability of heads is 0.70? The **Law of Large Numbers** answers this question.
+
+The **Law of Large Numbers** states that as the number of trials, $n$, of a random experiment increases, the relative frequency of an event gets closer and closer to the true probability of that event.
+$$\text{As } n \rightarrow \infty, \quad \dfrac{\text{frequency of A}}{n} \rightarrow P(A)$$
+
+With a small number of trials, expect significant variation from the true probability. With a large number of trials, the relative frequency will closely approximate it.
+
+### Simulation: Exploring Probability with Rguroo
+
+One of the most powerful ways to build intuition about probability is through **simulation**: using technology to repeat a random experiment thousands of times quickly and observing the results. Simulation makes the Law of Large Numbers visible and concrete.
+
+A **simulation** uses a computer to imitate a random process many times. By observing the outcomes of a large number of simulated trials, we can estimate probabilities and explore how random processes behave. Simulations are especially useful when:
+
+- Theoretical probabilities are difficult to calculate
+- We want to visualize the Law of Large Numbers
+- We want to explore what random variation really looks like
+
+::: {#exm-simulation-die-roll}
+## Simulating a Die Roll
+Suppose you want to explore whether a fair six-sided die actually produces each face with equal frequency. The theoretical probability of rolling any single face is $1/6 \approx 0.167$. But does that hold up when you actually simulate rolls? And how many trials do you need before the results start to look balanced?
+
+You can investigate this using Rguroo’s simulation tool.
+:::
+
+:::{.solution}
+Click to expand the box below to see how to use Rguroo to simulate rolling a six-sided die.
+
+::: {#simulating-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Simulating in Rguroo"}
+
+1.  Open the **Probability-Simulation** toolbox.\
+2.  Click on the [Probability]{.dpd} dropdown, and select [Random Generator]{.fun}. This opens the [Random Number Generator]{.dialog} dialog.\
+3.  From the [Distribution]{.dpd} dropdown, select [Discrete Uniform]{.fun}. This tells Rguroo to treat all values in a range as equally likely.\
+4.  In the [Minimum]{.des} field, enter 1. In the [Maximum]{.des} field, enter 6. This sets up the six equally likely outcomes of a die roll.\
+5.  In the [Sample Size]{.des} field, enter 600 for the first run.\
+6.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the sample.
+7. Click the ![Save as](Rguroo_Icons/save_as.png) button to save the sample results as [DieRollSim]{.typein}.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+![Simulation dialog in Rguroo](Rguroo_dialogs/Probability/simulation_dialog.png){width="500px"}
+:::
+:::
+
+
+We can create and examine a barplot of the resulting sample as seen in @fig-sim-barplot. Each bar represents one face of the die (1 through 6). The height of each bar shows the relative frequency of that face in your simulation.
+```{r,echo=FALSE}
+#| fig-alt: "Screenshot of the barplot output showing six bars, one per face, with relative frequencies annotated for each"
+#| warning: FALSE
+#| label: fig-sim-barplot
+#| fig-cap: "Simulated relative frequencies for 600 rolls of a fair die"
+#| fig-subcap: 
+#|   - "Dialog box"
+#|   - "Barplot"
+#| out-width: "80%"
+knitr::include_graphics(c("Rguroo_dialogs/Probability/sim_barplot_dialog.png",
+"Rguroo_outputs/Probability/die_sim_barplot.png"))
 ```
 
-Notice that as $n$ increased, the relative frequency seems to approach a number. It looks like it is approaching 0.163. You can say that the probability of getting a 6 is approximately 0.163. If you want more accuracy, then increase $n$ even more.
+With 600 simulated rolls, your barplot will likely show some variation across the six faces. Some faces may appear more than others, and the relative frequencies will probably range from around 0.15 to 0.18 rather than all landing exactly at 0.167. This is normal and expected with a moderate number of trials.
 
-These probabilities are called **experimental probabilities** since they are found by actually doing the experiment. They come about from the relative frequencies and give an approximation of the true probability. The approximate probability of an event $A$, $P(A)$, is
+If we repeat the simulation with 6,000 trials (set [Sample Size]{.des} field equal to 6000), and compare the barplots we should notice the barplot of 6,000 trials should be more uniform. The relative frequencies will cluster more tightly around 0.167 for each face, and the differences between bars will shrink.
 
-### **Experimental Probabilities**
-
-$P(A)=\frac{\text{number of times} }{ \text{number of times experiment is conducted}}$
-
-For the event of getting a 6, the probability would be
-
-$P(6)=\frac{163}{1000}=0.163$.
-
-You must do experimental probabilities whenever it is not possible to calculate probabilities using other means. An example is if you want to find the probability that a family has 5 children, you would have to actually look at many families, and count how many have 5 children. Then you could calculate the probability. Another example is if you want to figure out if a die is fair. You would have to roll the die many times and count how often each side comes up. Make sure you repeat an experiment many times, because otherwise you will not be able to estimate the true probability. This is due to the law of large numbers.
-
-**Law of large numbers**: as $n$ increases, the relative frequency tends towards the actual probability value.
-
-Note: probability, relative frequency, percentage, and proportion are all different words for the same concept. Also, probabilities can be given as percentages, decimals, or fractions.
-
-To find probabilities from data, you can take a data frame and count the number of values for each outcome.
-
-### Example: Statistics class survey
-
-Data was collected for two semesters in a statistics class. The data frame in is in @tbl-Class.
-
-Find the probability (proportion) of people who like Cookie Dough ice cream.
-
-#### **Solution**
-
-To count the number of people who like cookie dough ice cream, use the following command in r Studio:
-
-```{r class-tally}
-tally(~ice_cream, data=Class, margins=TRUE)
+```{r,echo=FALSE}
+#| fig-alt: "Screenshot of the barplot of n = 6,000 trials, showing the bars becoming more uniform as n increases"
+#| warning: FALSE
+#| label: fig-6000-sim
+#| fig-cap: "Simulated relative frequencies for 6000 rolls of a fair die"
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Probability/sim_6000_barplot.png")
 ```
 
-From this tally, it can be seen that 6 people like cookie dough ice cream. The probability that someone likes cookie dough is thus 6 divided by the number of people in the data frame, the Total. Instead of dividing, the following command will find the proportions for you. Proportions are just probabilities.
+This is the **Law of Large Numbers** in action. With a small number of trials, random variation produces noticeable differences between the outcomes. With a large number of trials, those differences smooth out and the relative frequencies converge toward the theoretical probability of $1/6 \approx 0.167$.
 
-```{r tally-prop-class}
-tally(~ice_cream, data=Class, format="proportion")
-```
-
-So the probability that a person in the class likes cookie dough ice cream is 0.22.
+:::
 
 ### Homework for Empirical Probability Section
 
-1.  The number of M&M's of each color that were found in a packet is in @tbl-MaM (M&M's Color Distribution Analysis, 2019).
+1. An instructor reports the following model for letter grades in her course. Determine if this represents a probabillity model.
+
+| Grade       | A    | B    | C    | D    | F    |
+|-------------|------|------|------|------|------|
+| Probability | 0.22 | 0.35 | 0.28 | 0.10 | 0.08 |  
+: Estimated probabilities for letter grades {#tbl-lettergrades tbl-alt="Table showing estimated probabilities for five letter grades: A, B, C, D, and F"}
+
+2.  A researcher in criminal justice records the type of crime in a randomly selected case from a county court database. The categories are: Violent, Property, Drug, and Other.
+
+    a.  List the sample space.\
+    b.  Based on county data, $P(\text{Violent}) = 0.19$, $P(\text{Property}) = 0.41$, $P(\text{Drug}) = 0.27$. Find $P(\text{Other})$.\
+    c.  Verify that this is a valid probability model.
+
+3. Two fair coins are flipped. List the sample space using ordered pairs (e.g., HH, HT, ...). Then find:
+
+    a.  $P(\text{exactly one head})$\
+    b.  $P(\text{at least one tail})$\
+    c.  $P(\text{no heads})$\
+    d.  $P(\text{two heads or two tails})$
+
+4. The number of M&M's of each color that were found in 48 packets. The first six rows of these data are given in @tbl-MaM (M&M's Color Distribution Analysis, 2019). Find the probability of choosing each color based on this data frame.
+
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [M_and_Ms]{.data}.
+:::
 
 ```{r mam-table, echo=FALSE}
 #| tbl-alt: "Table showing M&M Distribution"
@@ -95,7 +364,8 @@ MaM<- read.csv( "https://krkozak.github.io/MAT160/M_and_Ms.csv")
 knitr::kable(head(MaM))
 ```
 
-**Code book for Data Frame MaM**
+::: {#code-book-MaM .callout-tip .codebook collapse="true"}
+## Code book for M_and_Ms Dataset
 
 **Description** An analysis of the colors in a case of M&M's to see if they match the published percentages
 
@@ -105,27 +375,37 @@ Format
 
 This data frame contains the following columns:
 
-color: color of M&Ms
+[color]{.var}: color of M&Ms
 
-type: The type of M&M such as plain, peanut, peanut butter
+[type]{.var}: The type of M&M such as plain, peanut, peanut butter
 
-pack: which pack the M&Ms came from.
+[pack]{.var}: which pack the M&Ms came from.
 
-Source M&M's Color Distribution Analysis. (n.d.). Retrieved July 11, 2019, from https://joshmadison.com/2007/12/02/mms-color-distribution-analysis/
+[Source](https://joshmadison.com/2007/12/02/mms-color-distribution-analysis/) M&M's Color Distribution Analysis. (n.d.). Retrieved July 11, 2019.
 
 References Josh Madison, 2019
 
-Find the probability of choosing each color based on this data frame.
+:::
 
-2.  Eyeglassomatic manufactures eyeglasses for different retailers. They test to see how many defective lenses they made the time period of January 1 to March 31. The defect and the number of defects is in @tbl-Defects.
+
+2.  Eyeglassomatic manufactures eyeglasses for different retailers. They test to see how many defective lenses they made the time period of January 1 to March 31. The defect and the number of defects is in @tbl-Defects. Find the probability of each defect type based on this data.
+
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [defects]{.data}.
+:::
 
 **Code book for Data Frame Defects** below @tbl-Defects.
 
-Find the probability of each defect type based on this data.
 
-3.  In Australia in 1995, of the 2907 indigenous people in prison 17 of them died. In that same year, of the 14501 non-indigenous people in prison 42 of them died (\\"Aboriginal deaths in,\\" 2013). Find the probability that an indigenous person dies in prison and the probability that a non-indigenous person dies in prison. Compare these numbers and discuss what the numbers may mean.
 
-4.  A project conducted by the Australian Federal Office of Road Safety asked people many questions about their cars. One question was the reason that a person chooses a given car, and that data is in @tbl-Car_pref (Car Preferences, 2019).
+5.  In Australia in 1995, of the 2907 indigenous people in prison 17 of them died. In that same year, of the 14501 non-indigenous people in prison 42 of them died (\\"Aboriginal deaths in,\\" 2013). Find the probability that an indigenous person dies in prison and the probability that a non-indigenous person dies in prison. Compare these numbers and discuss what the numbers may mean.
+
+6.  A project conducted by the Australian Federal Office of Road Safety asked people many questions about their cars. One question was the reason that a person chooses a given car, and the first six rows of that data is in @tbl-Car_pref (Car Preferences, 2019). 
+Find the probability a person chooses a car for each of the given reasons.
+
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [carprefs]{.data}.
+:::
 
 ```{r car-pref-table, echo=FALSE}
 #| tbl-alt: "Table showing reason for choosing a car"
@@ -135,7 +415,8 @@ Car_pref<- read.csv( "https://krkozak.github.io/MAT160/carprefs.csv")
 knitr::kable(head(Car_pref))
 ```
 
-**Code book for Data Frame Car_pref**
+::: {#code-book-carprefs .callout-tip .codebook collapse="true"}
+## Code book for carprefs Dataset
 
 **Description** These data were collected as part of a project for the Federal Office for Road Safety conducted by the Research Institute of Gender and Health at the University of Newcastle. There is evidence that women drivers who are involved in motor vehicle accidents are more likely than men to be injured. A possible reason is that women often drive smaller cars that provide less protection in a collision. One of the aims of the project was to examine preferences for cars among men and women and investigate the extent to which safety was a factor in determining preferences. The survey was conducted by research assistants who asked people in car parks to participate and administered a structured questionnaire. They were instructed to obtain data from men and women with small, medium and large cars, with 50 people per group for a total of 300 respondents. (The sample size was based on power requirements for another part of the survey that involved anthropometric measurements.) The research assistants approached people in car parks of the University of Newcastle and nearby shopping centers during December 1997 and January 1998.
 
@@ -145,59 +426,58 @@ Format
 
 This data frame contains the following columns:
 
-ID: Identification number of respondent
+[ID]{.var}: Identification number of respondent
 
-Age: Age of respondent (years)
+[Age]{.var}: Age of respondent (years)
 
-Sex: female, male
+[Sex]{.var}: female, male
 
-LicYr: Time they have held a full driving licence, in years and months (years)
+[LicYr]{.var}: Time they have held a full driving licence, in years and months (years)
 
-LicMth: Time they have held a full driving licence, in years and months (months)
+[LicMth]{.var}: Time they have held a full driving licence, in years and months (months)
 
-ActCar: Make, model and year of car most often driven, coded to size of car small, medium, large
+[ActCar]{.var}: Make, model and year of car most often driven, coded to size of car small, medium, large
 
-Kids5: Children under five, yes, no
+[Kids5]{.var}: Children under five, yes, no
 
-Kids6: Children 6 to 16, yes, no
+[Kids6]{.var}: Children 6 to 16, yes, no
 
-PrefCar: Preferred car, coded to size of car small, medium, large
+[PrefCar]{.var}: Preferred car, coded to size of car small, medium, large
 
-Car15k: Preferred type of car if cost \\\$15000, small new car; large second-hand car
+[Car15k]{.var}: Preferred type of car if cost \\\$15000, small new car; large second-hand car
 
-Reason: safety, reliability, cost, performance, comfort, looks
+[Reason]{.var}: safety, reliability, cost, performance, comfort, looks
 
-Cost: How important is cost when buying a car? not important, little importance, important, very important
+[Cost]{.var}: How important is cost when buying a car? not important, little importance, important, very important
 
-Reliable: How important is reliability ...?
+[Reliable]{.var}: How important is reliability ...?
 
-Perform: How important is performance ...?
+[Perform]{.var}: How important is performance ...?
 
-Fuel: How important is fuel consumption ...?
+[Fuel]{.var}: How important is fuel consumption ...?
 
-Safety: How important is safety ...?
+[Safety]{.var}: How important is safety ...?
 
-AC/PS: How important is air conditioning/power steering ...?
+[AC/PS]{.var}: How important is air conditioning/power steering ...?
 
-Park: How important is ease of parking ...?
+[Park]{.var}: How important is ease of parking ...?
 
-Room: How important is space/roominess ...?
+[Room]{.var}: How important is space/roominess ...?
 
-Doors: How important is the number of doors ...?
+[Doors]{.var}: How important is the number of doors ...?
 
-Prestige: How important is prestige/style ...?
+[Prestige]{.var}: How important is prestige/style ...?
 
-Colour: How important is colour ...?
+[Colour]{.var}: How important is colour ...?
 
-Source
-
-Car Preferences. (n.d.). Retrieved July 11, 2019, from http://www.statsci.org/data/oz/carprefs.html
+[Source](http://www.statsci.org/data/oz/carprefs.html) Car Preferences. (n.d.). Retrieved July 11, 2019.
 
 References
 
 The data was contributed to OzDASL by Professor Annette Dobson, University of Queensland. Information on the data set was originally provided by Jenny Powers.
+:::
 
-Find the probability a person chooses a car for each of the given reasons.
+7. Using Rguroo’s Simulation tool ( From the [Distribution]{.dpd} dropdown, select [Bernoulli Trial]{.fun}.), simulate flipping a fair coin with p = 0.5. Run simulations with n = 20, 100, 500, and 5,000. For each run, record the relative frequency of heads. Create a table of your results and write 2 to 3 sentences describing how the relative frequency changes as n increases.
 
 ## Theoretical Probability
 
