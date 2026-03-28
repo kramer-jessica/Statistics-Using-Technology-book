@@ -33,7 +33,7 @@ The **mode** is the data value that occurs most frequently in the data. To find 
 
 The **median** is the data value in the middle of a sorted list of data. To find the median, you arrange the data in order and then determine which value is in the middle of the data values.
 
-The **mean** is the arithmetic average of the numbers. The mean, median, and mode are all measures of center, although the word 'average' is most commonly used to refer to the mean.
+The **mean** is the arithmetic average of the numbers. The mean, median, and mode are all measures of center, although the word "average" is most commonly used to refer to the mean.
 
 In this course, we work primarily with numerical data (interval and ratio), so our focus will be on the mean and median as measures of center. The mode is more commonly used with categorical data, where it identifies the most frequently occurring category. While the mean and median both require numerical values, the key difference is that the mean uses every data value in its calculation, making it sensitive to extreme values, whereas the median depends only on the position of the middle value.
 
@@ -63,18 +63,31 @@ knitr::kable(head(cats))
 ```
 
 
+Looking at the dataset for cats weights, @tbl-Cats, you see that there are several variables.  The code book for the [cats]{.data} is below.
+
+::: {#code-book-cats .callout-tip .codebook collapse="true"}
+## Code book for cats Dataset
+
+**Description:** The heart and body weights of samples of male and female cats used for digitalis experiments. The cats were all adult, over 2 kg body weight.
+
+
+**Format:** This data frame contains the following columns:
+
+[sex]{.var}: Factor with levels "F" and "M".
+
+[Bwt]{.var}: body weight in kg.
+
+[Hwt]{.var:} heart weight in g.
+
+**Source:** R. A. Fisher (1947) The analysis of covariance method for the relation between a part and the whole, Biometrics 3, 65–68.
+
+**References:** Venables, W. N. and Ripley, B. D. (2002) Modern Applied Statistics with S. Fourth edition. Springer.
+:::
 
 
 :::{.solution}
 
 
-Looking at the dataset for cats weights, @tbl-Cats, you see that there are several variables. A Code Book describes the dataset, explains what the variables are including the units, and the source of the dataset. The code book for the [cats]{.data} is below.
-
-::: {#code-book-cats .callout-tip .codebook collapse="true"}
-## Code book for cats Dataset
-
-![Code book for cats dataset](code_book_cats.jpg){fig-alt="Code book cats Dataframe"}
-:::
 
 Before starting any mathematics problem, it is always a good idea to define the unknown in the problem. In statistics, you want to define the variable. The symbol for the variable is $x$.
 
@@ -91,7 +104,7 @@ Click to expand the box below to see how to calculate the mean and median in Rgu
 3.  From the [Dataset]{.dpd} dropdown, select the [cats]{.data} dataset.\
 4.  From the [Numerical]{.dpd} dropdown, select the [Bwt]{.var} variable. \
 5.  In the **Statistics** section of the dialog, select the checkbox for [Mean]{.des} and [Median]{.des}.\
-6.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the summary statistics which is shown in @fig-summary-cats.
+6.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the summary statistics which is shown in @fig-summary-cats. 
 
 ::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
 ![Basic Summary Statistic dialog in Rguroo](Rguroo_dialogs/Numerical_description/summary_stat_dia_clean.png){width="500px"}
@@ -177,7 +190,7 @@ Find the minimum and maximum values of cats weights.
 
 :::{.solution}
 
-The steps to find the minimum and the maximum in Rguroo are similar to finding the mean and median described [here](#Calculating-summary-stats-in-Rguroo). In the **Statistics** section of the dialog, select the checkbox for [Minimum]{.des} and [Maximum]{.des}.
+To find the effect of extreme values on the mean and median, we first need to identify the maximum and minimum values. The steps to find the minimum and the maximum in Rguroo are similar to finding the mean and median described [here](#Calculating-summary-stats-in-Rguroo). In the **Statistics** section of the dialog, select the checkbox for [Minimum]{.des} and [Maximum]{.des}.
 
 @fig-max-min-cats shows the Basic Summary Statistic Dialog and Output from Rguroo for the minimum and maximum of cats body weight.
 
@@ -244,7 +257,7 @@ The mean without the maximum value is 2.70 kg, and the median is 2.7 kg.
 
 The mean without the minimum value is 2.75 kg, and the median is 2.7 kg.
 
-From the effect of extremes [example](#exm-effect-extreme-values), the mean of the [cats]{.data} dataset with all the values is 2.72 kg, while the median is 2.7 kg. Notice that when the maximum value was excluded from the dataset, the mean decreased slightly but the median did not change, and when the minimum value was excluded from the dataset, the mean increased a little but the median did not change. This shows that the mean is affected by extreme values, while the median is not. We say the median is a resistant measure of center because it is not affected by extreme values as much.
+The mean of the [cats]{.data} dataset with all the values is 2.72 kg, while the median is 2.7 kg. Notice that when the maximum value was excluded from the dataset, the mean decreased slightly but the median did not change, and when the minimum value was excluded from the dataset, the mean increased a little but the median did not change. This shows that the mean is affected by extreme values, while the median is not. We say the median is a resistant measure of center because it is not affected by extreme values as much.
 :::
 
 An **extreme value** is a data value that is much higher or much lower than the rest of the data. When extreme values are present, the median is generally a better measure of center than the mean because the median is not pulled by those values. When there are no extreme values, the mean and median tend to be similar, and the mean is commonly used. This is because the mean is **not resistant** — it is affected by extreme values, which can pull it higher or lower. The median, on the other hand, is **resistant** — it remains stable even when extreme values are present in the data.
@@ -256,7 +269,7 @@ You need to be aware that people generally choose the measure of center that bes
 As an example, suppose that a company wants to report the mean salary as the average salary for the company. The high salaries of the administrators will pull the mean upward, making the average appear higher. The company can then say that employees are paid well because the average is high. However, the employees would prefer to use the median since it is not affected as much by the extreme administrative salaries and gives a lower measure of center. This makes the salaries appear lower and suggests that a raise is in order.
 
 
-Why use the mean instead of the median? Imagine repeatedly taking different samples from the same population. Some samples may include more large values, while others may include more small values. When we calculate the mean for each sample, some sample means will overestimate the true center of the population and others will underestimate it. Over many samples, these overestimates and underestimates tend to balance out. The median, however, can tend to underestimate or overestimate the center more often in one direction, depending on how the middle values fall in the samples. Because of this, the mean does not systematically overestimate or underestimate the center of the population, making it a reliable measure of center.
+Why use the mean instead of the median? Imagine repeatedly taking different samples from the same population. Some samples may include many large values, while others may include many small values. When we calculate the mean for each sample, some sample means will overestimate the true center of the population and others will underestimate it. Over many samples, these overestimates and underestimates tend to balance out. The median, however, can tend to underestimate or overestimate the center more often in one direction, depending on how the middle values fall in the samples. For this reason, the mean does not systematically overestimate or underestimate the center of the population, making it a reliable measure of center.
 
 
 To understand how different measures of center relate to skewed or symmetric distributions, see @fig-centers-dist. For a left-skewed distribution, the mean is smaller than the median. For a right-skewed distribution, the mean is larger than the median. For a symmetric distribution, the mean and the median are the same.
@@ -304,7 +317,9 @@ A weighted average can be found using Rguroo. First, we will create a new datase
 6.  Enter a name for your dataset in the [Save As]{.des} textbox on the top, and click the [Save as]{.button} button to save your dataset. For this example, name the dataset [biology_grade]{.data}.
 
 ::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog and new dataset"}
-![New Dataset Dialog](Rguroo_dialogs/Numerical_description/new_dataset_dialog.png){width="500px"} ![Biology Class Dataset](Rguroo_outputs/Numerical_Description/biology_dataset.png){width="500px"}
+![New Dataset Dialog](Rguroo_dialogs/Numerical_description/new_dataset_dialog.png){width="500px"} 
+
+![Biology Class Dataset](Rguroo_outputs/Numerical_Description/biology_dataset.png){width="500px"}
 :::
 ::::
 
@@ -342,8 +357,6 @@ c)  Which faculty member had the higher average evaluation?
 :::{.solution}
 
 a)  Variable: $x$ = rating, $w$ = weight
-
-
 
 To find the weighted average using Rguroo, start by creating a new dataset as described [here](#Creating-new-dataset). The new dataset, including weights and scores for each faculty, is shown in the figure @fig-dataset-ratings below.
 
@@ -405,15 +418,6 @@ c)  Which faculty member had the higher average evaluation?
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cholesterol]{.data}.
 :::
-
-```{r,echo=FALSE}
-#| fig-alt: "Repository search"
-#| warning: FALSE
-#| label: fig-kozak-repo
-#| fig-cap: "Repository Search Dialog"
-#| out-width: "80%"
-knitr::include_graphics("Rguroo_dialogs/Numerical_Description/chol_data_repo.png")
-```
 
 ```{r cholesterol2-data,echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Cholesterol dataset"
@@ -597,9 +601,7 @@ e.  If it is your job to find places in the budget to reduce costs, which averag
 
 ## Measures of Spread
 
-
-
-Variability is a fundamental concept in statistics that describes how spread out data values are from each other. Consider measuring the height of everyone in your classroom -- you'll quickly notice that not everyone has the same height. Some students are taller, some are shorter, and there's a range of heights in between. This spread in the data is what we call variability. The same principle applies to other measurements: if you sampled the income levels of people in a town, you'd find that incomes vary widely from person to person.
+Variability is a fundamental concept in statistics that describes how spread out data values are from each other. Consider measuring the height of everyone in your classroom -- you'll quickly notice that not everyone has the same height. Some students are taller, some are shorter, and there's a range of heights in between. This spread in the data is what we call variability. The same principle applies to other measurements. If you sampled the income levels of people in a town, you'd find that incomes vary widely from person to person.
 
 Understanding variability helps us describe datasets more completely. When data values are clustered closely together, we say there is low variability. When data values are spread far apart, we say there is high variability. To quantify this spread, we need numerical measures that capture how dispersed the data are. This section introduces several measures of variability, also known as measures of variation or spread.
 
@@ -739,7 +741,7 @@ Standard deviations are also meaningful when comparing two samples measured on t
 ### Using the Standard Deviation
 
 
-The standard deviation helps describe where the data tend to lie relative to the mean. When the data are symmetric and have most values clustered around a typical center, the empirical rule provides a helpful guideline. It says that about 68% of the data fall within one standard deviation of the mean, about 95% fall within two standard deviations, and about 99.7% fall within three standard deviations. These percentages are not exact, but they often give a reasonable picture of where most of the data lie. @fig-empirical-rule shows how data is distributed according to the empirical rule for a symmetric, bell-shaped distribution.
+The standard deviation helps describe where the data tend to lie relative to the mean. When the data are symmetric and have most values clustered around a typical center, the empirical rule provides a helpful guideline. The Empirical Rule says that about 68% of the data fall within one standard deviation of the mean, about 95% fall within two standard deviations, and about 99.7% fall within three standard deviations. These percentages are not exact, but they often give a reasonable picture of where most of the data lie. @fig-empirical-rule shows how data is distributed according to the empirical rule for a symmetric, bell-shaped distribution.
 
 ```{r, echo = FALSE}
 #| label: fig-empirical-rule
@@ -907,8 +909,7 @@ Since the $z$ value is more than 2, then it would be considered unusual to have 
 **Code book for Data frame Cost** is below @tbl-Cost.
 :::
 
-5.  The dataset Pulse @tbl-Pulse contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute.
-
+5.  The dataset Pulse @tbl-Pulse contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute. Create a dataset that contains only males, who drink alcohol, but do not smoke. Then compare the pulse before and the pulse after using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread. Create the new dataset and save as [pulse_males]{.data} by subsetting the [pulse]{.data} data using the steps described here. See @fig-subset-pulse for the Data Subset Dialog.
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pulse]{.data}.
 :::
@@ -956,7 +957,7 @@ This dataset contains the following columns:
 References The data was supplied by Dr Richard J. Wilson, Department of Mathematics, University of Queensland.
 :::
 
-Create a dataset that contains only males, who drink alcohol, but do not smoke. Then compare the pulse before and the pulse after using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread. Create the new dataset and save as [pulse_males]{.data} by subsetting the [pulse]{.data} data using the steps described here. See @fig-subset-pulse for the Data Subset Dialog.
+
 
 ```{r,echo=FALSE}
 #| fig-alt: "Rguroo Dialog Box for Subsetting Pulse Data"
@@ -978,7 +979,7 @@ knitr::kable(head(Males))
 
 6.  The dataset Pulse @tbl-Pulse contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute. Create a dataset that contains females, who do not smoke but do drink alcohol. Compare the pulse rate before and after exercise using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread.
 
-7.  To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson & Hanson, 1997) and the data is in @tbl-Reiki.
+7.  To determine if Reiki is an effective method for treating pain, a pilot study was carried out in which a certified second-degree Reiki therapist provided treatment to volunteers. Pain was measured using two scales — a visual analogue scale (VAS) and a Likert scale — immediately before and after the Reiki treatment (Olson & Hanson, 1997). The data are in @tbl-Reiki.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [Reiki_pain]{.data}.
@@ -1013,7 +1014,7 @@ References: Using Reiki to manage pain: a preliminary report. Olson K1, Hanson J
 
 :::
 
-Since the data was collected both before and after the treatment for all of the units of observations, you want to look at the effect size of the treatment. You want to find the difference between before and after for the pain scale. First you must create a new dataset that adds a column for the difference in before and after. This data is known as paired data. To create the new column in a new dataset called Newreiki use the following steps
+Since pain was measured on the same individuals both before and after treatment, this is **paired data**. To analyze paired data, we calculate the difference between the before and after measurements for each person. This difference represents the effect of the treatment.
 
 :::: {#Transforming-Data-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a New Variable in the Reiki_pain Dataset"}
 **Before you begin:** Make sure you have already imported the [Reiki_pain]{.data} dataset into your **Data** Toolbox, as was shown [here](#Importing-cats-to-Rguroo).
@@ -1040,7 +1041,12 @@ Newreiki<-Reiki |>
 knitr::kable(head(Newreiki))
 ```
 
-Now find the mean and standard deviation of the [vas.diff]{.var} variable in [Newreiki]{.data}. Perform similar commands to create the [likert.diff]{.var} variable. Then find the mean and standard deviation for [likert.diff]{.var}, and compare and contrast the vas and likert methods for describing pain.
+
+**(a)**: Create a new dataset called [Newreiki]{.data} that adds a column for the difference between the before and after VAS scores. Name this new variable [vas.diff]{.var}. Then find the mean and standard deviation of [vas.diff]{.var}.
+
+**(b)**: Using the same approach, create a variable called [likert.diff]{.var} for the difference between the before and after Likert scores. Find the mean and standard deviation of [likert.diff]{.var}.
+
+**(c)**: Compare the results from Part (a) and Part (b). What do the mean differences tell you about the effectiveness of the Reiki treatment? Do the VAS and Likert scales give similar conclusions?
 
 8.  Yearly rainfall amounts (in millimeters) in Sydney, Australia, are in @tbl-Rainfall (Annual maximums of, 2013). a. Calculate the mean and standard deviation. b. Suppose Sydney, Australia received 300 mm of rainfall in a year. Would this be unusual?
 
@@ -1079,7 +1085,7 @@ represents a location measurement of a data value to the rest of the values.
 Many standardized tests give the results as a percentile. Doctors also use 
 percentiles to track a child's growth.
 
-The $k^{th}$ **percentile** is the data value that has $k%$ of the data at or 
+The $k^{th}$ **percentile** is the data value that has $k\%$ of the data at or 
 below that value.
 
 For instance, a score at the $90^{th}$ percentile means that 90% of the 
@@ -1324,6 +1330,11 @@ Minimum: 2 $Q1$: 2.50 Median: 2.9 $Q3$: 3.2 Maximum: 3.9
 gf_boxplot(~Bwt|Sex, data=cats, title="Weights of Cats", xlab="Body Weight in (kg)") 
 ```
 
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+To create a side-by-side boxplot separated by the sex factor, move the [sex]{.var} factor variable to the Selected column in the Factor Variables section.
+![Boxplot dialog in Rguroo](Rguroo_dialogs/Numerical_description/boxplot_cats_sex_dialog.png){width="500px"}
+:::
+
 ::: {.rg-iframe-wrapper tabindex="0"}
 <iframe src="Rguroo_html_output/Numerical_description/Boxplot_8/Boxplot_8.html" class="rg-iframe" title="Boxplot for Weight of Cats by Sex">
 
@@ -1341,8 +1352,7 @@ Notice that the weights of female cats has a median less than male cats, and in 
 The time (in 1/50 seconds) between successive pulses along a nerve fiber ("Time between nerve," 2013) are given in @tbl-Nerve.
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [nerve]{.data}.
-@tbl-Nerve displays the first six rows of the dataset. A complete description of the variables is provided in the  [dataset code book](#code-book-nerve) that follows.
-:::
+@tbl-Nerve displays the first six rows of the dataset. A complete description of the variables is provided in the [dataset code book](#code-book-nerve) that follows.
 
 ```{r nerve-data, echo = FALSE}
 #| tbl-alt: "Table showing first 6 rows of Nerve dataset"
@@ -1352,37 +1362,18 @@ Nerve<-read.csv( "https://krkozak.github.io/MAT160/Nerve_pulse.csv")
 knitr::kable(head(Nerve))
 ```
 
-::: {#code-book-nerve .callout-tip .codebook collapse="true"}
-## Code book for Nerve Dataset
+Using the [nerve]{.data} dataset:
 
-**Description** The data gives the time between 800 successive pulses along a nerve fiber. There are 799 observations rounded to the nearest half in units of 1/50 second.
-
-This dataset contains the following columns:
-
-[time]{.var}: time between successive Pulses along a nerve fiber, 1/50 second.
-
-[Source](https://gksmyth.github.io/ozdasl/general/nerve.html) Time between nerve pulses. (2019, July 3).
-
-References Fatt, P., and Katz, B. (1952). Spontaneous subthreshold activity at motor nerve endings. Journal of Physiology 117, 109-128.
-
-Cox, D. R., and Lewis, P. A. W. (1966). The Statistical Analysis of Series of Events. Methuen, London.
-
-Jorgensen, B. (1982). The Generalized Inverse-Gaussian Distribution. Springer-Verlag.
-
+a. Create a density plot of the [time]{.var} variable. Describe the shape of the distribution.
+b. Find the mean, median, standard deviation, and five-number summary.
+c. Based on the shape of the distribution, which measure of center is more appropriate — the mean or the median? Explain your reasoning.
+d. Create a boxplot of the [time]{.var} variable. Are there any outliers? How does the boxplot support your answer to part (c)?
 :::
 
 
 ::: {.solution}
 
-First, it might be useful to look at a visualization of the data, so create a density plot
-
-```{r density-data-density, echo = FALSE, eval = FALSE}
-#| fig-alt: "Density plot with peak on left and lower on the right"
-#| warning: FALSE
-#| label: fig-Pulse-density-1
-#| fig-cap: "Weight of Cats Faceted by Sex"
-gf_density(~time, data=Nerve, title="Time between Successive Nerve Pulses", xlab="Time (1/50 second)") 
-```
+**Part (a):** First, create a density plot to visualize the distribution.
 
 Click to expand the box below to see instructions to create a density plot of the [nerve]{.data} dataset in Rguroo.
 
@@ -1392,12 +1383,12 @@ Click to expand the box below to see instructions to create a density plot of th
 1.  Open the **Plots** toolbox.\
 2.  Click on the [Create Plot]{.dpd} dropdown menu and choose the [Histogram]{.fun} function. The Histogram dialog will open.
 3.  From the [Dataset]{.dpd} dropdown, select the [nerve]{.data} dataset.\
-4.  Move the [time]{.var} variables to the Selected column.\
+4.  Move the [time]{.var} variable to the Selected column.\
 5.  Select density in Type and density in Smoothing additional options.
 6.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the graph.
 
 ::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-![Boxplot dialog in Rguroo](Rguroo_dialogs/Numerical_description/nerve_density_dialog.png){width="500px"}
+![Density plot dialog in Rguroo](Rguroo_dialogs/Numerical_description/nerve_density_dialog.png){width="500px"}
 :::
 ::::
 
@@ -1407,12 +1398,9 @@ Click to expand the box below to see instructions to create a density plot of th
 </iframe>
 :::
 
-From the graph, the data appears to be skewed right. Most of the time, between successive nerve pulses appear to be around 5 or 10 1/50 second, but there are some times that are 60 1/50 second.
+The distribution is skewed right. Most of the times between successive nerve pulses are around 5 to 10 (in 1/50 seconds), but there are some values as high as 60.
 
-```{r statistics-nerve, echo = FALSE, eval = FALSE}
-df_stats(~time, data=Nerve, mean, median, sd, summary)
-```
-
+**Part (b):** Using the summary statistics from Rguroo (@fig-Pulse-summary):
 ```{r, echo = FALSE }
 #| fig-alt: "Five-Number Summary with Mean and Standard Deviation of Nerve Pulses"
 #| warning: FALSE
@@ -1422,18 +1410,11 @@ df_stats(~time, data=Nerve, mean, median, sd, summary)
 knitr::include_graphics("Rguroo_outputs/Numerical_Description/nerve_summary_output.png")
 ```
 
-Numerical descriptions might also be useful. Using technology, the mean is 11 1/50 second,the median is 7.5 1/50 second, the standard deviation is 10.5 1/50 second, and the five-number summary is minimum = 0.5, Q1 = 3.5, median = 7.5, Q3 = 15, and maximum = 69 1/50 second.
+The mean is 11 (1/50 seconds), the median is 7.5 (1/50 seconds), and the standard deviation is 10.5 (1/50 seconds). The five-number summary is: minimum = 0.5, Q1 = 3.5, median = 7.5, Q3 = 15, and maximum = 69 (1/50 seconds).
 
-To visualize the five-number summary, create a box plot using the instructions given [here](#Creating-a-boxplot-in-Rguroo).
+**Part (c):** Because the distribution is skewed right, the median (7.5) is a more appropriate measure of center than the mean (11). The mean is pulled to the right by the long tail of high values, making it larger than the median. Since the median is resistant to extreme values, it better represents the typical time between nerve pulses.
 
-```{r nerve-data-box, echo = FALSE, eval = FALSE}
-#| fig-alt: "box plot lower fence 0, Q1 5, median 8, Q3 17, upper fence 31, many outliers above upper fence"
-#| warning: FALSE
-#| label: fig-Nerve-box
-#| fig-cap: "Boxplot of Nerve Pulses"
-gf_boxplot(~time, data=Nerve, title="Nerve Pulses", xlab="Time (1/50 second)")
-```
-
+**Part (d):** Create a boxplot using the instructions given [here](#Creating-a-boxplot-in-Rguroo).
 ```{r, echo = FALSE }
 #| fig-alt: "Boxplot of Nerve Pulses"
 #| warning: FALSE
@@ -1443,8 +1424,7 @@ gf_boxplot(~time, data=Nerve, title="Nerve Pulses", xlab="Time (1/50 second)")
 knitr::include_graphics("Rguroo_outputs/Numerical_Description/nerve_boxplot_output.svg")
 ```
 
-
-The boxplot reveals multiple high outliers. The mean shows a typical pulse interval of 11 1/50 seconds, with an IQR of 19.5 1/50 seconds indicating substantial variability. The right skew visible in both plots confirms that while most pulses occur consistently around 11 1/50 seconds, occasional longer delays create the high outliers.
+The boxplot reveals multiple high outliers above the upper fence. The IQR is Q3 − Q1 = 15 − 3.5 = 11.5 (1/50 seconds), indicating substantial variability. The outliers and the right skew visible in both the density plot and the boxplot confirm that the median is the better measure of center for this dataset — the extreme values pull the mean higher but do not affect the median.
 
 :::
 
@@ -1471,7 +1451,7 @@ The boxplot reveals multiple high outliers. The mean shows a typical pulse inter
 
 Find the five-number summary and interquartile range (IQR) for the cholesterol level on day 2, and draw a boxplot
 
-6.  The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in table @tbl-Length (Lee, 1994).
+6.  The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in table @tbl-Length (Lee, 1994). Find the five-number summary and interquartile range (IQR) for the lengths of rivers that go to the Pacific Ocean and ones that go to the Tasman Sea, and draw a boxplot of both.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [length]{.data}.
@@ -1479,7 +1459,6 @@ Find the five-number summary and interquartile range (IQR) for the cholesterol l
 **Code book for dataset Length** below @tbl-Length.
 :::
 
-Find the five-number summary and interquartile range (IQR) for the lengths of rivers that go to the Pacific Ocean and ones that go to the Tasman Sea, and draw a boxplot of both.
 
 7.  Print-O-Matic printing company's employees have salaries that are contained in @tbl-Pay Find the five number summary and draw a boxplot for the salaries of all employees.
 
@@ -1489,7 +1468,7 @@ Find the five-number summary and interquartile range (IQR) for the lengths of ri
 **Code book for dataset Pay** below @tbl-Pay.
 :::
 
-8.  The dataset Pulse @tbl-Pulse contains various variables about a person including their pulse rates before the subject exercised and after after the subject ran in place for one minute.
+8.  The dataset Pulse @tbl-Pulse contains various variables about a person including their pulse rates before the subject exercised and after after the subject ran in place for one minute. Create a dataset that contains only people who drink alcohol, but do not smoke. Then find the five number summary and draw a boxplot for both males and females separately.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pulse]{.data}.
@@ -1497,9 +1476,9 @@ Find the five-number summary and interquartile range (IQR) for the lengths of ri
 **Code book for dataset Pulse** below @tbl-Pulse.
 :::
 
-Create a dataset that contains only people who drink alcohol, but do not smoke. Then find the five number summary and draw a boxplot for both males and females separately.
 
-9.  To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a Likert scale immediately before and after the Reiki treatment (Olson & Hanson, 1997) and the data is in @tbl-Reiki.
+
+9.  To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a Likert scale immediately before and after the Reiki treatment (Olson & Hanson, 1997) and the data is in @tbl-Reiki. Find the five number summary for both the before and after VAS scores and draw boxplots of before and after VAS scores. Compare and contrast the before and after VAS scores.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [Reiki_pain]{.data}.
@@ -1507,6 +1486,3 @@ Create a dataset that contains only people who drink alcohol, but do not smoke. 
 **Code book for dataset Reiki** below @tbl-Reiki.
 :::
 
-Find the five number summary for both the before and after VAS scores and draw boxplots of before and after VAS scores. 
-
-Compare and contrast the before and after VAS scores.
