@@ -18,11 +18,11 @@ number-sections: true
 
 :::
 
-In chapter 1, you were introduced to the concepts of population, which again is a collection of all the individuals of interest. Remember, in most cases you can’t access the entire population, so you have to take a sample.  Once you collect that sample, you often end up with a large number of data values. What can you do with them? No one likes to look at just a set of numbers. One option is to organize the data into a table or a graph. Ultimately though, you want to be able to use that table or graph to interpret the data, to describe the distribution of the data, and to explore different characteristics of the data.
+In chapter 1, you were introduced to the concepts of population, which again is a collection of all the individuals of interest. Remember, in most cases you can’t access the entire population, so you have to take a sample.  Once you collect that sample, you often end up with a large number of data values. What can you do with them? No one likes to look at just a set of numbers. One option is to organize the data into a table or a graph. Ultimately, you want to be able to use that table or graph to interpret the data, to describe the distribution of the data, and to explore different characteristics of the data.
 
 This chapter will focus on organizing data using tables, creating graphs of the data, and using the tables and graphs to understand various characteristics of the data. 
 
-This textbook uses Rguroo to perform all graphical and descriptive statistics, and all statistical inference. When using Rguroo, you will need to either import a dataset from a repository or create a dataset. For directions on how to create a dataset in Rguroo, please refer to Chapter 0.
+This textbook uses Rguroo to perform all graphical and descriptive statistics, and all statistical inferences. When using Rguroo, you will need to either import a dataset from a repository or create a dataset. For directions on how to create a dataset in Rguroo, please refer to Chapter 0.
 
 ```{r setup2, include=FALSE,echo=FALSE}
 library("mosaicCore")
@@ -32,19 +32,19 @@ library("Lock5Data")
 library("MASS")
 ```
 
-## Qualitative Data
+## Categorical Data
 
-Remember, qualitative data are words describing a characteristic of the individual. Once you’ve gathered raw data, the real work begins. A long list of observations doesn’t tell you much on its own. Raw data are usually messy, unstructured, and difficult to understand or use. The next step is to organize the data in a way that reveals patterns and meaning. 
+Remember, categorical (qualitative) data are words describing a characteristic of the individual. Once you’ve gathered raw data, the real work begins. A long list of observations doesn’t tell you much on its own. Raw data are usually messy, unstructured, and difficult to understand or use. The next step is to organize the data in a way that reveals patterns and meaning. 
 
-### Organizing Qualitative Data
+### Organizing Categorical Data
 
-A simple way to organize qualitative data is to create a table, called a frequency distribution or relative frequency distribution. Both of these organize non‑numerical categories into groups and show how often each category occurs.
+A simple way to organize categorical data is to create a table such as a frequency distribution or a relative frequency distribution. Both of these organize non‑numerical categories into groups and show how often each category occurs.
 
-A **frequency distribution for qualitative data** is a table that lists each category along with its corresponding frequency.
+A **frequency distribution for categorical data** is a table that lists each category along with its corresponding frequency.
 
-A **relative frequency distribution for qualitative data** is a table that lists each category along with its corresponding relative frequency. We calculate relative frequencies by dividing the frequency (count) of each category by the total number of observations. Relative frequencies can be expressed in the form of a reduced fraction, proportion (decimal), or a percentage.
+A **relative frequency distribution for categorical data** is a table that lists each category along with its corresponding relative frequency. We calculate relative frequencies by dividing the frequency (count) of each category by the total number of observations. Relative frequencies can be expressed in the form of a reduced fraction, proportion (decimal), or percentage.
 
-These displays of qualitative data help you quickly see which categories are most common, how the data is spread across different groups, and whether any categories stand out as unusually frequent or rare.
+These displays of categorical data help you quickly see which categories are most common, how the data is spread across different groups, and whether any categories stand out as unusually frequent or rare.
 
 ::: {#exm-creating-a-frequency-and-relative-frequency-distribution}
 ## Creating a Frequency and Relative Frequency Distribution
@@ -77,17 +77,17 @@ This dataset contains the following columns:
 
 [vehicle]{.var}: Type of car a student drives
 
-[gender]{.var}: Self declared gender of a student
+[gender]{.var}: Self-declared gender of a student
 
-[distance_campus]{.var}: how far a student lives from the Lone Tree Campus of Coconino Community College (miles)
+[distance_campus]{.var}: How far a student lives from the Lone Tree Campus of Coconino Community College (miles)
 
-[ice_cream]{.var}: favorite ice cream flavor
+[ice_cream]{.var}: Favorite ice cream flavor
 
 [rent]{.var}: How much a student pays in rent
 
 [major]{.var}: Students declared major
 
-[height]{.var}: height of the student (inches)
+[height]{.var}: Height of the student (inches)
 
 [winter]{.var}: Student's opinion of winter (Love it, Like it, Don't like, No opinion)
 
@@ -102,7 +102,7 @@ Kozak, 2019
 :::
 
 
-::::: {.solution}
+:::{.solution}
 
 Click to expand the box below see how to create a frequency and relative frequency distribution for [vehicle]{.var} type.
 
@@ -113,13 +113,13 @@ Click to expand the box below see how to create a frequency and relative frequen
 1. Open the **Analytics** toolbox in Rguroo.  
 2. Open the [Analysis]{.dpd} dropdown, and select [Tabulation]{.fun} and [Categorical]{.fun}. This opens the Data Tabulation dialog.  
 3. In the Data Tabulation dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.  
-4. Choose the [vehicle]{.var} variable from the [Factor 1]{.dpd} dropdown.  For frequency, select counts. For realtive frequency, select proportions.  
-5. In the textbox that appears in the `Table` column, type in a name for your table.   
+4. Type in a title for your table (the cursor automatically jumps to the Table column). Since this table represents vehicle type, we will use "Frequency Distribution of Vehicle Type" as the title for the frequency distribution and "Relative Frequency Distribution of Vehicle Type" for the relative frequency distribution.
+5. Choose the [vehicle]{.var} variable from the [Factor 1]{.dpd} dropdown.  For frequency, select counts. For relative frequency, select proportions.     
 6. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the frequency distribution.
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
 
-![Data Tabulation dialog showing settings for creating frequency distribtion of vehicle type.
+![Data Tabulation dialog showing settings for creating frequency distribution of vehicle type.
 ](Rguroo_dialogs/Graphical_Description_of_Data/dialog_vehicle_freq_dist.png){width=500px}
 
 :::
@@ -146,13 +146,13 @@ knitr::include_graphics(
 )
 ```
 
-:::::
+:::
 
-### Graphical Displays of Qualitative Data
+### Graphical Displays of Categorical Data
 
-Another way to display data is with a graph. There are several different graphs that are used for qualitative data. Typical qualitative graphs include barplots, Pareto charts, and pie charts.  
+Another way to display data is with a graph. There are several different graphs that are used for categorical data. Typical categorical graphs include bar graphs, Pareto charts, and pie charts.  
 
-**Barplots or barplots** consist of the frequencies on one axis and the categories on the other axis. Drawing the barplot using Rguroo is performed by importing the dataset (or creating a dataset) and using the **Plots** toolbox in Rguroo.
+**Bar graphs or barplots** consist of the frequencies or relative frequencies on one axis and the categories on the other axis. Drawing the barplot using Rguroo is performed by importing the dataset (or creating a dataset) and using the **Plots** toolbox in Rguroo.
 
 ::: {#exm-drawing-a-bar-chart}
 ## Drawing a Barplot 
@@ -164,11 +164,11 @@ Use the [class_survey1]{.data} dataset to create a barplot of [vehicle]{.var} ty
 :::
 
 
-::::: {.solution}
+:::{.solution}
 
-Click to expand the box below see how to create the barplot for [vehicle]{.var} type.
+Click to expand the box below see how to create the bar graph for [vehicle]{.var} type.
 
-:::: {#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Barplot of Vehicle Type in Rguroo"}
+:::: {#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Bar Graph of Vehicle Type in Rguroo"}
 
 **Before you begin:** Make sure you have already imported the [class_survey1]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Data-to-Rguroo-Chapter-2).
 
@@ -176,43 +176,44 @@ Click to expand the box below see how to create the barplot for [vehicle]{.var} 
 2. Open the [Create Plot]{.dpd} dropdown, and select [Barplot]{.fun}. This opens the [Barplot]{.dialog} dialog.  
 3. In the [Barplot]{.dialog} dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.  
 4. Choose the [vehicle]{.var} variable from the [Factor 1]{.dpd} dropdown.     
-5. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the barplot.
+5. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the bar graph.
 6. In the **Label** section of the dialog:  
-   - Enter [Barplot for Vehicle Type]{.typein} in the [Title]{.des} textbox.  
+   - Enter [Bar Graph for Vehicle Type]{.typein} in the [Title]{.des} textbox.  
    - Enter [Vehicle Type]{.typein} in the [X-Axis]{.des} textbox.  
    - Enter [Number of Vehicles]{.typein} in the [Y-Axis]{.des} textbox.  
 7. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the barplot.
-8. In the ![Save as](Rguroo_Icons/save_as.png) textbox, enter the name [VehicleBarGraph]{.typein} for the barplot.
+8. In the ![Save as](Rguroo_Icons/save_as.png) textbox, enter the name [VehicleBarGraph]{.typein} for the bar graph.
 Click the button to save the barplot to your Rguroo account.
 
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-![Barplot dialog showing settings for creating barplot of vehicle type.](Rguroo_dialogs/Graphical_Description_of_Data/car_dialog_bargraph_2.png){width="500px"}
+![Barplot dialog showing settings for creating bar graph of vehicle type.](Rguroo_dialogs/Graphical_Description_of_Data/car_dialog_bargraph_2.png){width="500px"}
 :::
 
 ::::
+
 
 ```{r,echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
 #| warning: FALSE
 #| label: fig-bar_graph
-#| fig-cap: "Barplot of vehicles driven by students in statistics class"
+#| fig-cap: "Bar graph of vehicles driven by students in statistics class"
 knitr::include_graphics(
   "Rguroo_outputs/Graphical_Description_of_Data/barplot_vehicle_2.svg"
 )
 ```
 
-@fig-bar_graph is a barplot with bars for Audi, Buick, Honda, Hyundai, Mercury, Nissan with height of 1, Dodge and None with height of 2, Jeep, Subaru, Toyota with heights of 3, and Chevrolet and Ford at height of 4.
+@fig-bar_graph is a Barplot with bars for Audi, Buick, Honda, Hyundai, Mercury, Nissan with height of 1, Dodge and None with height of 2, Jeep, Subaru, Toyota with heights of 3, and Chevrolet and Ford at height of 4.
 
-Notice from @fig-bar_graph, that Chevrolet and Ford are the most popular cars, with Jeep, Subaru, and Toyota not far behind. Many other vehicle types seem to be less commonly used, and are tied for the lowest frequency of 1. However, we would need more data to determine whether these differences are meaningful. 
+Notice from @fig-bar_graph, that Chevrolet and Ford are the most popular cars, with Jeep, Subaru, and Toyota not far behind. Many other vehicle types seem to be less commonly used, and are tied for the lowest frequency of 1.
 
-:::::
+:::
 
 **All graphs should have labels on each axis and a title for the graph.**
 
-Another version of a barplot that is useful is a relative frequency barplot. A relative frequency barplot gives you a clear way to compare how different categories or values occur, especially when working with datasets of different sizes. By converting raw counts into proportions, the graph highlights patterns that might otherwise be hidden. This makes it a powerful tool for spotting meaningful relationships in data, comparing data of different sizes, and communicating those insights in a way that’s easy for others to understand.
+Another version of a barplot that is useful is a relative frequency barplot. A relative frequency barplot provides a clear way to compare categories by showing the proportion (or percentage) of observations in each category, which is especially useful when comparing datasets of different sizes.  By converting counts into proportions, the graph allows us to compare categories based on their relative sizes rather than their raw counts. This can make differences between categories easier to see, especially when the total number of observations differs across datasets. As a result, relative frequency barplots make it easier to compare groups and clearly communicate those comparisons to others.
 
-Rguroo can generate a relative frequency barplot from the same [Barplot]{.dialog] in the **Plot** toolbox.
+Rguroo can generate a relative frequency bar graph from the same [Barplot]{.dialog} in the **Plot** toolbox.
 
 ::: {#exm-drawing-a-relative-frequency-bar-chart}
 ## Drawing a Relative Frequency Barplot for Vehicle Type
@@ -223,15 +224,15 @@ Use the [class_survey1]{.data} dataset to create a relative frequency barplot of
 
 :::
 
-::: {.solution}
+:::{.solution}
 
-To create a relative frequency barplot, follow the directions for creating a barplot [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, select the [proportion]{.des} checkbox to obtain a relative frequency barplot.  Don't forget to change your y-axis label to proportion as well.
+To create a relative frequency bar graph, follow the directions for creating a bar graph [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, select the [Proportion]{.des} checkbox to obtain a relative frequency barplot.  Don't forget to change your y-axis label to proportion as well.
 
 ```{r,echo=FALSE}
 #| fig-alt: "Dialog box for creating a relative frequency distribution"
 #| warning: FALSE
 #| label: fig-rel_freq_dialog
-#| fig-cap: "Dialog Box for Relative Frequency Barplot"
+#| fig-cap: "Dialog Box for Relative Frequency Bar Graph"
 #| out.width: "80%"
 knitr::include_graphics(
   "Rguroo_dialogs/Graphical_Description_of_Data/dialog_rel_freq_vehicle_2.png"
@@ -243,39 +244,38 @@ knitr::include_graphics(
 #| fig-alt: "See the description of the graph below the graph"
 #| warning: FALSE
 #| label: fig-class_data_dot-car
-#| fig-cap: "Relative Frequency Barplot of vehicles driven by students in statistics class"
+#| fig-cap: "Relative Frequency bar graph of vehicles driven by students in statistics class"
 knitr::include_graphics(
   "Rguroo_outputs/Graphical_Description_of_Data/barplot_rel_freq_vehicle_2.svg"
 )
 ```
 
+@fig-class_data_dot-car is a relative frequency bar graph of vehicles showing the vehicle types on the horizontal axis and proportions (relative frequency) on the vertical axis.
 
-@fig-class_data_dot-car is a relative frequency barplot of vehicles showing the vehicle types on the horizontal axis and proportions (relative frequency) on the vertical axis.
+Notice that a frequency bar graph and relative frequency bar graph give you similar information. However, a relative frequency bar graph shows you the proportions of the total vehicles.
 
-Notice that a frequency barplot and relative frequency barplot give you similar information. However, a relative frequency barplot shows you the proportions of the total vehicles.
+The beauty of datasets with multiple variables is that you can answer many questions from the data. Suppose you want to see if gender makes a difference for the type of car a person drives. If you are a car manufacturer, if you knew that certain genders like certain cars, then you would advertise specific models to the different genders.
 
 :::
 
-The beauty of datasets with multiple variables is that you can answer many questions from the data. Suppose you want to see if gender makes a difference for the type of car a person drives. If you are a car manufacturer, if you knew that certain genders like certain cars, then you would advertise to the different genders.
-
 ::: {#exm-drawing-a-bar-chart-by-gender}
-## Drawing a Barplot of Vehicle Type by Gender
+## Drawing a Bar Chart of Vehicle Type by Gender
 
-Use the [class_survey1]{.data} to create a barplot of [vehicle]{.var} type by [gender]{.var}.
+Use the [class_survey1]{.data} to create a bar chart of [vehicle]{.var} type by [gender]{.var}.
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}. A complete description of the variables is provided in the [dataset code book](#code-book-class).
 
 :::
 
-::: {.solution}
+:::{.solution}
 
-To create a barplot of [vehicle]{.var} by [gender]{.var}, follow the directions for creating a barplot [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, in the barplot dialog box, select the [gender]{.var} variable from the [Factor 1]{.dpd} dropdown and the [vehicle]{.var} variable from the [Factor 2]{.dpd} dropdown.  Don't forget to title your graph appropriately. A picture of the dialog box is shown below.
+To create a bar graph of [vehicle]{.var} by [gender]{.var}, follow the directions for creating a bar graph [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, in the barplot dialog box, select the [gender]{.var} variable from the [Factor 1]{.dpd} dropdown and the [vehicle]{.var} variable from the [Factor 2]{.dpd} dropdown.  Don't forget to title your graph appropriately. A picture of the dialog box is shown below.
 
 ```{r,echo=FALSE}
-#| fig-alt: "Dialog box for Barplot of vehicle type by gender"
+#| fig-alt: "Dialog box for bar graph of vehicle type by gender"
 #| warning: FALSE
 #| label: fig-dialog_vehicle_gender
-#| fig-cap: "Dialog Box for Barplot of Vehicles Driven by Gender"
+#| fig-cap: "Dialog Box for Bar graph of Vehicles Driven by Gender"
 #| out.width: "80%"
 knitr::include_graphics(
   "Rguroo_dialogs/Graphical_Description_of_Data/dialog_vehicle_gender_2.png"
@@ -287,7 +287,7 @@ knitr::include_graphics(
 #| fig-alt: "See the description of the graph below the graph"
 #| warning: FALSE
 #| label: fig-class_data_bar_gender
-#| fig-cap: "Barplot of Vehicles driven by students in statistics class, disaggregated by gender"
+#| fig-cap: "Bar graph of Vehicles driven by students in statistics class, disaggregated by gender"
 knitr::include_graphics(
   "Rguroo_outputs/Graphical_Description_of_Data/barplot_vehicle_gender_2.svg"
 )
@@ -299,26 +299,26 @@ Overall, we see some differences in vehicle preferences by gender, but the count
 
 :::
 
-**Need to Discuss this Example**Another form of a barplot that disaggregates by a factor is called a stacked barplot. A stacked barplot shows how different sub‑groups contribute to an overall total by stacking the segments on top of each other within each bar.
+<!--**Need to Discuss this Example**Another form of a bar graph that disaggregates by a factor is called a stacked bar graph. A stacked bar graph shows how different sub‑groups contribute to an overall total by stacking the segments on top of each other within each bar.
 
 ::: {#exm-drawing-a-bar-chart-by-gender-stacked}
-## Drawing a Stacked Barplot of Vehicle Type by Gender
+## Drawing a Stacked Bar Chart of Vehicle Type by Gender
 
-Use the [class_survey1]{.data} dataset to create a stacked barplot of [vehicle]{.var} type by [gender]{.var}.
+Use the [class_survey1]{.data} dataset to create a stacked bar chart of [vehicle]{.var} type by [gender]{.var}.
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}. A complete description of the variables is provided in the [dataset code book](#code-book-class).
 
 :::
 
-::: {.solution}
+**Solution**
 
-To create a barplot of [vehicle]{.var} by [gender]{.var}, follow the directions for creating a barplot [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, in the barplot dialog box, select the [gender]{.var} variable from the [Factor 1]{.dpd} dropdown and the [vehicle]{.var} variable from the [Factor 2]{.dpd} dropdown.  To make it a stacked barplot, click the "stacked" option. Don't forget to title your graph appropriately. A picture of the dialog box is shown below.
+To create a bar graph of [vehicle]{.var} by [gender]{.var}, follow the directions for creating a bar graph [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, in the barplot dialog box, select the [gender]{.var} variable from the [Factor 1]{.dpd} dropdown and the [vehicle]{.var} variable from the [Factor 2]{.dpd} dropdown.  To make it a stacked bar graph, click the "stacked" option. Don't forget to title your graph appropriately. A picture of the dialog box is shown below.
 
 ```{r,echo=FALSE}
-#| fig-alt: "Dialog box for stacked Barplot of vehicle type by gender"
+#| fig-alt: "Dialog box for stacked bar graph of vehicle type by gender"
 #| warning: FALSE
 #| label: fig-dialog_vehicle_gender_stacked
-#| fig-cap: "Dialog Box for Stacked Barplot of Vehicles Driven by Gender"
+#| fig-cap: "Dialog Box for Stacked Bar graph of Vehicles Driven by Gender"
 #| out.width: "80%"
 knitr::include_graphics(
   "Rguroo_dialogs/Graphical_Description_of_Data/dialog_stacked_bar_vehicle_gender.png"
@@ -330,15 +330,15 @@ knitr::include_graphics(
 #| fig-alt: "See the description of the graph below the graph"
 #| warning: FALSE
 #| label: fig-vehicle_gender_stacked
-#| fig-cap: "Stacked Barplot of Vehicles Driven by Gender"
+#| fig-cap: "Stacked Bar graph of Vehicles Driven by Gender"
 knitr::include_graphics(
   "Rguroo_outputs/Graphical_Description_of_Data/stacked_bar_vehicle_gender.svg"
 )
 ```
 
-:::
+-->
 
-Another type of graph that is also useful for qualitative data is a pie chart. A pie chart is a circular graph where each slice represents a percentage of the whole, proportional to the numerical value it represents. Pie charts allow for easy visualization of how each part contributes to the whole.
+Another type of graph that is also useful for categorical data is a pie chart. A pie chart is a circular graph where each slice represents a percentage of the whole, proportional to the numerical value it represents. Pie charts allow for easy visualization of how each part contributes to the whole.
 
 ::: {#exm-drawing-a-pie-chart}
 ## Drawing a Pie Chart for Vehicle Type
@@ -349,9 +349,9 @@ Use the [class_survey1]{.data} dataset to create a pie chart of [vehicle]{.var} 
 
 :::
 
-::::: {.solution}
+:::{.solution}
 
-Click to expand the box below see how to create the pie chart for vehicle type.
+Click to expand the box below to see how to create the pie chart for vehicle type.
 
 :::: {#Creating-Pie-Chart-of-Vehicle-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Pie Chart of Vehicle Type in Rguroo"}
 
@@ -386,8 +386,9 @@ knitr::include_graphics(
 
 @fig-class_pie_chart is a pie chart of type of vehicles owned by students (Toyota, Subaru, none, Nissan, Mercury, Jeep, Honda, Ford, Dodge, Chevrolet, and Buick, Hyundai, and Audi). Each vehicle percentage is displayed in the legend on the right.
 
-:::::
+From the pie chart, we see that Ford and Chevrolet make up the largest portions of the sample, each accounting for about 15% of the vehicles. Jeep, Subaru, and Toyota each represent about 11%. Several other vehicle types appear only once (about 3.7% each), indicating that most brands are relatively uncommon in this group
 
+:::
 
 ```{r car-data-gender-jitter,echo=FALSE,eval=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
@@ -403,9 +404,9 @@ gf_jitter(
 )
 ```
 
-There are many other types of graphs that can be used to display qualitative data. The choice of graphs depends on your data and what you want to emphasize, but the frequency barplot, relative frequency barplot, and pie chart are the most commonly used and most useful.
+There are many other types of graphs that can be used to display categorical data. The choice of graphs depends on your data and what you want to emphasize, but the frequency bar graph, relative frequency bar graph, and pie chart are the most commonly used and most useful.
 
-### Homework for Qualitative Data Section
+### Homework for Categorical Data Section
 
 1.  Data was collected from Dutch farms about the ecological factors of farm management.  Create a frequency and relative frequency distribution for grassland usage. Describe any findings you see from your distributions.
 
@@ -442,7 +443,7 @@ This dataseet contains the following columns:
 Source
 J.C. Gower and D.J. Hand (1996) Biplots. Chapman & Hall, Table 4.6.
 
-Quoted as from:
+Quoted from:
 R.H.G. Jongman, C.J.F. ter Braak and O.F.R. van Tongeren (1987) Data Analysis in Community and Landscape Ecology. PUDOC, Wageningen.
 
 References
@@ -450,7 +451,7 @@ Venables, W. N. and Ripley, B. D. (2002) Modern Applied Statistics with S. Fourt
 
 :::
 
-2.  Eyeglassomatic manufactures eyeglasses for different retailers. The first six rows of the number of lenses for different activities is in @tbl-eyeglasses. Make a frequency barplot of this data. State any findings you can see from the graph.
+2.  Eyeglassomatic manufactures eyeglasses for different retailers. The activities completed to manufacture teh eyglasses were recorded. The first six rows of the dataset are in @tbl-eyeglasses. Make a frequency barplot of this data. State any findings you can see from the graph.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [Eyglasses]{.data}.
@@ -487,42 +488,9 @@ References John Matic (2013)
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}.
 :::
 
-::: {#code-book-class .callout-tip .codebook collapse="true"}
-## Code book for Class Survey1 Dataset
+**Code book for Dataset Calss Survey is below @tbl-Class**
 
-**Description** The dataset gives survey results from two semesters of statistics classes at Coconino Community College in the years 2018-2019.
-
-Format
-
-This dataset contains the following columns:
-
-[vehicle]{.var}: Type of car a student drives
-
-[gender]{.var}: Self declared gender of a student
-
-[distance_campus]{.var}: how far a student lives from the Lone Tree Campus of Coconino Community College (miles)
-
-[ice_cream]{.var}: favorite ice cream flavor
-
-[rent]{.var}: How much a student pays in rent
-
-[major]{.var}: Students declared major
-
-[height]{.var}: height of the student (inches)
-
-[winter]{.var}: Student's opinion of winter (Love it, Like it, Don't like, No opinion)
-
-Source
-
-Kozak K (2019). Survey results form surveys collected in statistics class at Coconino Community College.
-
-References
-
-Kozak, 2019
-
-:::
-
-4.  The number of deaths in the US due to carbon monoxide (CO) poisoning from generators from the years 1999 to 2011 are in @tbl-Area (Hinatov, 2012). Create a frequency barplot of this data. State any findings you see from the graph.
+4.  The number of deaths in the US due to carbon monoxide (CO) poisoning from generators from the years 1999 to 2011 (Hinatov, 2012). The first six rows of the dataset are in @tbl-Area. Create a frequency barplot of the dataset. State any findings you see from the graph.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [area]{.data}.
@@ -542,43 +510,9 @@ knitr::kable(head(Area))
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}.
 :::
 
-::: {#code-book-class .callout-tip .codebook collapse="true"}
-## Code book for Class Survey1 Dataset
+**Code book for Dataset Calss Survey is below @tbl-Class**
 
-**Description** The dataset gives survey results from two semesters of statistics classes at Coconino Community College in the years 2018-2019.
-
-Format
-
-This dataset contains the following columns:
-
-[vehicle]{.var}: Type of car a student drives
-
-[gender]{.var}: Self declared gender of a student
-
-[distance_campus]{.var}: how far a student lives from the Lone Tree Campus of Coconino Community College (miles)
-
-[ice_cream]{.var}: favorite ice cream flavor
-
-[rent]{.var}: How much a student pays in rent
-
-[major]{.var}: Students declared major
-
-[height]{.var}: height of the student (inches)
-
-[winter]{.var}: Student's opinion of winter (Love it, Like it, Don't like, No opinion)
-
-Source
-
-Kozak K (2019). Survey results form surveys collected in statistics class at Coconino Community College.
-
-References
-
-Kozak, 2019
-
-:::
-
-
-6.  Eyeglassomatic manufactures eyeglasses for different retailers. They test to see how many defective lenses they made during the time period of January 1 to March 31. The table @tbl-Defects gives the defect and the number of defects. Create a relative frequency barplot of the data and then describe what this tells you about what causes the most defects.
+6.  Eyeglassomatic manufactures eyeglasses for different retailers. They test to see how many defective lenses they made during the time period of January 1 to March 31. The first six rows of the dataset are shown in @tbl-Defects. Create a relative frequency barplot of the dataset and then describe what this tells you about what causes the most defects.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [defects]{.data}.
@@ -609,23 +543,21 @@ References John Matic (2013)
 
 :::
 
-## Quantitative Data
+## Numerical Data
 
-As with qualitative data, it is also advantageous to organize quantitative data since a long list of raw numbers  usually does not provide insight into the  patterns or important characteristics of a sample or population. 
+As with numerical (quantitative) data, it is also advantageous to organize numerical data since a long list of raw numbers  usually does not provide insight into the  patterns or important characteristics of a sample or population. 
 
-### Organizing Quantitative Data
+### Organizing Numerical Data
 
-Frequency and relative frequency distributions can also be constructedfor quantitative data. In this case, the categories are numerical values that occur in the data with their corresponding frequency counts or proportions. However, many quantitative variables contain many distinct values, so listing every individual value in a regular frequency or relative frequency distribution is usually not meaningful. 
+Frequency and relative frequency distributions can also be constructed for numerical data. In this case, the categories are numerical values that occur in the data with their corresponding frequency counts or proportions. However, many numerical variables contain many distinct values, so listing every individual value in a regular frequency or relative frequency distribution is usually not meaningful. 
 
-For quantitative data that are widely spread, we can group the data values into classes, also known as binning. When you group data into classes/bins, you create a **grouped frequency distribution**.
+For numerical data that are widely spread, we can group the data values into classes, also known as binning. When you group data into classes/bins, you create a **grouped frequency distribution**.
 
 Lower and upper class limits define the boundaries of each class in a grouped frequency distribution. The **lower class limit** is the smallest value that can belong to a class, while the **upper class limit** is the largest value that can belong to that same class. Together, these limits specify exactly which data values fall into each interval. Each class has a **class width**, which is the difference between the lower and upper class limits. 
 
-Most of the time, classes are displayed using interval notation. For example, suppose we want to group the ages of students into a group from 20-25. This could be displayed using interval notation, [20,25). This interval would include every student whose age is 20 to 25 years, including 20 years old, but not 25 years old. These limits keep the classes organized, prevent overlap, and ensure every data value has a clear place within the distribution. In this example the class width is $25-5=20$. 
+Most of the time, classes are displayed using interval notation. For example, suppose we want to group the ages of students into a group from 20-25. This could be displayed using interval notation, [20,25). This interval would include every student whose age is 20 to 25 years, including 20 years old, but not 25 years old. These limits keep the classes organized, prevent overlap, and ensure every data value has a clear place within the distribution. In this example, the class width is $25-20=5$. 
 
-Rguroo has three built-in methods to calculate the number of bins; however, we will use Freedman–Diaconis method it takes into account both how much data we have and how spread out the data are. This helps create bins that better represent 
-
-messy real-world data and data that may contain outliers.  In addition to the built-in methods, you can manually specify the bin settings in Rguroo if you want more control over the bins. 
+Rguroo has three built-in methods to calculate the number of bins. However, we will use Freedman–Diaconis method it takes into account both how much data we have and how spread out the data are. This helps create bins that better represent messy real-world data and data that may contain outliers.  In addition to the built-in methods, you can manually specify the bin settings in Rguroo if you want more control over the bins. 
 
 ::: {#exm-grouped-frequency-distribution}
 ## Creating a Grouped Frequency Distribution
@@ -636,7 +568,7 @@ Use the [class_survey1]{.data} to create a grouped frequency distribution for th
 
 :::
 
-::::: {.solution}
+:::{.solution}
 
 Click to expand the box below see how to create a grouped frequency distribution for [distance_campus]{.var}.
 
@@ -647,7 +579,8 @@ Click to expand the box below see how to create a grouped frequency distribution
 1. Open the **Analytics** toolbox in Rguroo.  
 2. Open the [Analysis]{.dpd} dropdown, and select [Tabulation]{.fun} and [Numerical (Binning)]{.fun}. This opens the Binning dialog.  
 3. In the Binning dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.  
-4. Choose the [distance_campus]{.var} variable from the [Factor 1]{.dpd} dropdown.  **Note:** For frequency, select counts. For realtive frequency, select proportions.    
+4. Type in a title for your table (the cursor automatically moves to the title entry). 
+4. Choose the [distance_campus]{.var} variable from the [Factor 1]{.dpd} dropdown.  **Note:** For frequency, select [Counts]{.des}. For relative frequency, select [Proportions]{.des}.    
 5. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the frequency distribution.
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
@@ -672,18 +605,16 @@ knitr::include_graphics(
 
 
 
-The grouped frequency distribution above used the default method, Freedman-Diaconis, creating 11 classes.  Each class has a class width of 5. Now that the data is organized, it is easily seen that most students live within 15 miles of campus. There are also two students who live farther from campus than the rest of the class.
+The grouped frequency distribution above used the default method, Freedman-Diaconis, creating 11 classes.  Each class has a class width of 5. Now that the data is organized, it is easily seen that most students live within 15 miles of campus. There are also two students who live farther from campus than the rest of the class, one living over 25 miles away and another living over 50 miles away.
 
-:::::
+:::
 
 As mentioned above, Rguroo also allows us to manually create bins. If we want a specific number of bins, we can enter the desired number in the **Binning** toolbox dialog by selecting [Number]{.des} under the **Bins** section and typing in the number of bins we want. 
 
 Another option in Rguroo is to choose the starting value for the first class and the class width. To manually find the class width, calculate the following and then round up to a nice number.
 
 $$ 
-
 \mbox{Class width} = \frac{\mbox{maximum value – minimum value}}{\mbox{number of classes}} 
-
 $$ 
 
 After you have determined the class width, choose a starting value that is the minimum value in the data or lower than the minimum value.  
@@ -696,11 +627,40 @@ Use the [class_survey1]{.data} to create a grouped frequency distribution with 6
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}. A complete description of the variables is provided in the [dataset code book](#code-book-class).
 :::
 
-::: {.solution}
+:::{.solution}
 
-To create a grouped frequency distribution with 6 classes, we need to calculate the class width. For this variable the maximum value is 50 and the minimum value is 0.6.  Use these values in the class width formula to find the class width. 
+To create a grouped frequency distribution with 6 classes, we need to calculate the class width. For the class width, we need to find the minumum and maximum values of the dataset.
 
-$\text{class width}=\frac{50-0.6}{6}=8.233$
+Click to expand the box below to see how to calculate theminimum and maximum values in Rguroo.
+
+:::: {#Calculating-min-max-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Calculating the Minimum and Maximum Values for Distance to Campus"}
+
+**Before you begin:** Make sure you have already imported the [class_survy1]{.data} dataset into your **Data** Toolbox, as was shown [here](#Importing-Data-to-Rguroo-Chapter-2).
+
+1.  Open the **Data** toolbox.\
+2.  Click on the [Functions]{.dpd} dropdown, and select [Summary Statistic]{.fun}. This opens the [Basic Summary Statistic]{.dialog}.\
+3.  From the [Dataset]{.dpd} dropdown, select the [class_survey1]{.data} dataset.\
+4.  From the [Numerical]{.dpd} dropdown, select the [distance_campus]{.var} variable. \
+5.  In the **Statistics** section of the dialog, select the checkbox for [Minimum]{.des} and [Maximum]{.des}.\
+6.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the summary statistics which is shown in @fig-summary-cats.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+![Basic Summary Statistic dialog in Rguroo](Rguroo_dialogs/Graphical_Description_of_Data/dialog_distance_min_max.png){width="500px"}
+:::
+::::
+
+```{r,echo=FALSE}
+#| fig-alt: "Minimum and Maximum Output from Rguroo"
+#| warning: FALSE
+#| label: fig-summary-distance
+#| fig-cap: "Minimum and Maximum Distance to Campus"
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Graphical_Description_of_Data/output_distance_min_max.png")
+```
+
+For this variable the maximum value is 50 and the minimum value is 0.6.  Use these values in the class width formula to find the class width. 
+
+$$\text{class width}=\frac{50-0.6}{6}=8.233$$
 
 Next, we round the class width up to a nice number, such as class width = 10.  Now we need a starting value.  Since the minimum value was 0.6, we can use 0 as the starting value just as we did in the last grouped frequency distribution. Enter the information in the Binning dialog box as shown in the image below.
 
@@ -728,15 +688,17 @@ knitr::include_graphics(
 
 :::
 
-### Graphical Displays of Quantitative Data
+### Graphical Displays of Numerical Data
 
-There are several different graphs we can use to display quantitative data. These graphs help us see how the numerical values are spread out and how they vary. When we describe how the values are arranged or spread out, we are describing the distribution of the data. From these graphs, we can identify important features of the distribution, such as its shape, center, and spread. The following are a few common graphs for numerical data: 
+There are several different graphs we can use to display numerical data. These graphs help us see how the numerical values are spread out and how they vary. When we describe how the values are arranged or spread out, we are describing the distribution of the data. From these graphs, we can identify important features of the distribution, such as its shape, center, and spread. The following are a few common graphs for numerical data: 
 
-**Histogram:**  The graphical counterpart to a frequency or relative frequency table for quantitative data. It is a graph with frequencies (counts) or relative frequencies (proportions) on the vertical axis and classes on the horizontal axis. Each class is represented by a rectangle. The height of each rectangle shows the frequency (or relative frequency), and the width of the rectangle is the class width.  For a given data range, choosing more bins produces narrower class widths, while choosing fewer bins produces wider class widths.
+**Histogram:**  The graphical counterpart to a frequency or relative frequency table for continuous numerical data. A histogram is a graph with frequencies (counts) or relative frequencies (proportions) on the vertical axis and classes on the horizontal axis. Each class is represented by a rectangle. The height of each rectangle shows the frequency (or relative frequency), and the width of the rectangle is the class width.  For a given data range, choosing more bins produces narrower class widths, while choosing fewer bins produces wider class widths. Histograms are generally used for continuous data.  
 
 **Density Plot:** A graph similar to a histogram, but instead of using bars, it displays a smooth curve to represent the distribution of the data. The curve is created by smoothing the data using advanced statistical methods.  We will use Rguroo to perform this smoothing for us. Because a density plot does not use bins, it is not affected by the choice of the number of bins. As a result, it often provides a clearer view of the overall shape of the distribution. 
 
 **Stem and Leaf Plot:**  A graph, used primarily for smaller datasets, that organizes numerical data by splitting each value into a “stem” (the leading digit or digits) and a “leaf” (the last digit). This plot allows us  to see the distribution, frequency, and shape  of the data while still preserving the original data values (possibly in some rounded form).
+
+When we look at data, some values may stand out from the others. An **outlier** is a data value that lies far from the rest of the values in a data set. Because outliers can strongly affect summaries and graphs, they should always be investigated to determine whether they represent a data entry or measurement error, or a genuine but unusual observation.
 
 
 ::: {#exm-drawing-a-histogram-density-plot}
@@ -749,7 +711,7 @@ Data was collected for two semesters in a statistics class. Draw a histogram and
 :::
 
 
-::::: {.solution}
+:::{.solution}
 
 Click to expand the box below see how to create a histogram for distance to campus.
 
@@ -785,9 +747,9 @@ knitr::include_graphics(
 )
 ```
 
-@fig-class_data_histogram is a histogram with the highest bar on left and lowest bars on right with several gaps. This histogram shows that most students live within approximately 15 miles of campus.
+@fig-class_data_histogram is a histogram with the highest bar on left and lowest bars on right with several gaps. This histogram shows that most students live within approximately 15 miles of campus. It also shows two outliers: one student who lives 20–25 miles from campus and another who lives 40–45 miles from campus.
 
-To create an overlay of the density plot for [distance_campus]{.var}, follow the directions for creating a histogram [here](#Creating-Histogram-of-Distance-in-Rguroo). Once you are in the histogram dialog box, edit the options in the Type and Smoothing boxes by selecting "density" in both.  An image of the revised dialog box is shown below.  Remember to change your title and y-axis to reflect that this is now a density plot.
+To create an overlay of the density plot for [distance_campus]{.var}, follow the directions for creating a histogram [here](#Creating-Histogram-of-Distance-in-Rguroo). Once you are in the histogram dialog box, edit the options in the **Type** and **Smoothing** sections by selecting "density" in both.  An image of the revised dialog box is shown below.  Remember to change your title and y-axis to reflect that this is now a density plot.
 
 ```{r,echo=FALSE}
 #| fig-alt: "Dialog box for density plot"
@@ -810,28 +772,25 @@ knitr::include_graphics(
 )
 ```
 
-@fig-class_data_density is a density plot showing the overlay of the smooth density curve. When a density curve is displayed, the vertical axis is labeled density rather than frequency or proportion. Instead of the height representing the proportion in a single class, the area under the curve over an interval represents the proportion of observations in that interval. 
+@fig-class_data_density is a density plot showing the overlay of the smooth density curve. When a density curve is displayed, the vertical axis is labeled as density rather than frequency or proportion. The values of the density are scaled so that the total area under the curve is equal to 1. Instead of the height representing the proportion in a single class, the area under the curve over an interval represents the proportion of observations that fall within that interval. 
 
-Notice the histogram and density plot are very similar, but the density plot is smoother. Both the histogram and density plot give you similar insights about the shape of the distribution; however, the smooth density curve highlights the underlying shape of the distribution by smoothing out the jaggedness of the histogram.  
+Notice the histogram and density plot are very similar, but the density plot is smoother. Both the histogram and density plot give you similar insights about the shape of the distribution; however, the smooth density curve highlights the underlying shape of the distribution by smoothing out the jaggedness of the histogram. 
 
-Reviewing the graphs you can see that most of the students live within 15 miles of the Lone Tree Campus, in fact most live within 5 miles from the campus. However, there is a student who lives around 50 miles from the Lone Tree Campus and another lives between 20 to 25 miles away. These  distances are much further than the rest of the data and they can be considered an outliers. 
+Reviewing the graphs you can see that most of the students live within 15 miles of the Lone Tree Campus, in fact most live within 5 miles of the campus. However, there is a student who lives around 50 miles from the Lone Tree Campus and another lives between 20 to 25 miles away. These  distances are much further than the rest of the data and they can be considered as outliers. 
 
-:::::
+:::
 
-An **outlier** is a data value that is far from the rest of the values. It may be an unusual value or a mistake. It is a data value that should be investigated. In our example, the two students lived really far from campus, thus the value is not a mistake, and is just very unusual.
+### Shapes of the Distribution
 
-
-### Shapes of the distribution:
-
-When you examine  a distribution, begin by looking at its overall shape. There are some common shapes we often see in, although some distributions may not follow a clear pattern. The most common shapes are **bell-shape**, **skewed** (to the right or to the left), and **uniform**. Another shape of interest occurs when a graph has more than one peak; we call this a multimodal shape. 
+When you examine  a distribution, begin by looking at its overall shape. The most common shapes are **bell-shape**, **skewed** (to the right or to the left), and **uniform**. Although, some distributions may not follow a clear pattern. Another shape of interest occurs when a graph has more than one peak; we call this a multimodal shape. 
 
 Modality refers to the number of peaks in a distribution. A **unimodal** distribution has one peak, and a **bimodal** distribution has two peaks. A distribution with more than two peaks is called **multimodal**. Usually, if a graph has more than two peaks, it suggests that the data come from multiple groups with different characteristics related to the measured variable. 
 
-Other important features to consider are how spread out is the data, and where the center of the graph is. These concepts will be explored in Chapter 3.
+Other important features to consider are how spread out are the data, and where the center of the graph is. These concepts will be explored in Chapter 3.
 
-### Examples of graphs:
+### Examples of Graphs
 
-**Bell-Shape**
+**Bell-Shape Distribution**
 
 ```{r,echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
@@ -847,7 +806,7 @@ knitr::include_graphics(
 
 @fig-bell_shape is a bell-shaped histogram.  Bell shaped graphs have a balanced, mirror‑like appearance, with the bars rising to a peak near the center and then decreasing at roughly the same rate on both sides. The left and right halves of the distribution look similar in both height and spread, so if you folded the graph down the middle, the two sides would line up closely. There are no long tails pulling the shape in one direction, and the overall pattern often forms a smooth, mound‑shaped curve. Note that bell-shape doesn’t require perfect symmetry.
 
-**Skewed Right**
+**Skewed Right Distribution**
 
 ```{r,echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
@@ -879,7 +838,7 @@ knitr::include_graphics(
 
 @fig-skewed_left is a skewed left histogram that has most of its highest bars on the right side, with the heights tapering off gradually as you move to the left. The bulk of the data forms a tall block on the right, while a long, stretched‑out tail extends as you move left.The most frequently occurring data sits closer to the right, and the left tail is noticeably longer and thinner than the left.
 
-**Bimodal**
+**Bimodal Distribution**
 
 ```{r,echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
@@ -909,14 +868,14 @@ knitr::include_graphics(
 ```
 
 
-@fig-uniform is a uniform histogram where the bars are roughly the same height, giving the graph a flat and even appearance across the entire range of values. No single interval stands out as especially common or rare; instead, the data are spread evenly, with each bar occurring at about the same frequency. Visually, the graph looks like a row of nearly level rectangles, without peaks, clusters. Note that the graph above is perfectly uniform (all bar heightsare equal); however, a distribution does not need to have exactly equal bar heights to be considered uniform. As long as the bars are approximately the same height, with no clear peaks or areas that stand out as noticeably higher or lower than the others, the distribution can be described as uniform.
+@fig-uniform is a uniform histogram where the bars are roughly the same height, giving the graph a flat and even appearance across the entire range of values. No single interval stands out as especially common or rare; instead, the data are spread evenly, with each bar occurring at about the same frequency. Visually, the graph looks like a row of nearly level rectangles, without peaks, clusters. Note that the graph above is perfectly uniform (all bar heights are equal); however, a distribution does not need to have exactly equal bar heights to be considered uniform. As long as the bars are approximately the same height, with no clear peaks or areas that stand out as noticeably higher or lower than the others, the distribution can be described as uniform.
 
 ::: {#exm-drawing-a-histogram-density-plot-tuition}
 ## Drawing Histogram and Density Plot for Tuition
 
-Data was collected from the Chronicle of Higher Education for tuition from public four year colleges, private four year colleges, and for profit four year colleges. The first 6 rows of the dataset is in @tbl-Tuition. Draw a density plot of instate tuition levels for all four year institutions, and describe the shape of the distribution. Then separate the density plot for instate tuition based on type of institution. Describe any findings from the graph.
+Data was collected from the Chronicle of Higher Education for tuition from public four-year colleges, private four-year colleges, and for-profit four-year colleges. The first 6 rows of the dataset is in @tbl-Tuition. Draw a density plot of instate tuition levels for all four year institutions, and describe the shape of the distribution. Then separate the density plot for instate tuition based on type of institution. Describe any findings from the graph.
 
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [tuition_4_year]{.data}. @tbl-Tuition displays the first five rows of the dataset. A complete description of the variables is provided in the [dataset code book](#code-book-tuition) that follows.
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [tuition_4_year]{.data}. The first six rows of the dataset are in @tbl-Tuition. A complete description of the variables is provided in the [dataset code book](#code-book-tuition) that follows.
 
 :::
 
@@ -939,9 +898,9 @@ Format
 
 This dataset contains the following columns:
 
-[INSTITUTION]{.var}: Name of four year institution
+[INSTITUTION]{.var}: Name of four-year institution
 
-[TYPE]{.var}: Type of four year institution, Public_4_year, Private_4_year, For_profit_4_year.
+[TYPE]{.var}: Type of four-year institution, Public_4_year, Private_4_year, For_profit_4_year.
 
 [STATE]{.var}: What state the institution resides
 
@@ -961,11 +920,11 @@ References Chronicle of Higher Education \*, December 31, 2018.
 
 :::
 
-::: {.solution}
+:::{.solution}
 
 **Before you begin:** Make sure you have already imported the [tuition_4_year]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Data-to-Rguroo-Chapter-2).
 
-To create create a density plot, follow the directions for creating a histogram [here](#Creating-Histogram-of-Distance-in-Rguroo). For this example, you will select the [tuition_4_year]{.data} dataset from the [Dataset]{.dpd} dropdown, and choose the [INSTATE_TUITION]{.var} variable from the [Variable]{.dpd} dropdown.  Since this is a density plot, remember to select "density" in both the Type and Smoothing boxes. Also, rememeber to label your graph appropriately. An image of the dialog box is shown below.
+To create create a density plot, follow the directions for creating a histogram [here](#Creating-Histogram-of-Distance-in-Rguroo). For this example, you will select the [tuition_4_year]{.data} dataset from the [Dataset]{.dpd} dropdown, and choose the [INSTATE_TUITION]{.var} variable from the [Variable]{.dpd} dropdown.  Since this is a density plot, remember to select "density" in both the **Type** and **Smoothing** sections. Also, remember to label your graph appropriately. An image of the dialog box is shown below.
 
 ```{r,echo=FALSE}
 #| fig-alt: "Dialog Box for Density Plot of Instate Tuition"
@@ -991,7 +950,7 @@ knitr::include_graphics(
 
 @fig-density_instate_tuition  shows a histogram with a density curve for in-state tuition. The distribution has the highest peak on left, followed by a dip and then a smaller peak in the middle. As tuition increases, the bar heights gradually decrease as you move to the right. Because there are two noticeable peaks, the distribution is bimodal. Since the tail extends to the right, the distribution is skewed to the right. This graph is an example of a distribution that has more than one common characteristic at the same time; it is both bimodal and skewed right. 
 
-To create a density plot of instate tuition by type, click the ![Basics](Rguroo_Icons/basics.png) buttonto open the [Histogram]{.dialog} dialog box. Leave everything you have for creating the density plot. In the **Plot by Group** section of the dialog, choose the [TYPE]{.var} variable from the [Factor ]{.dpd} dropdown. An image of the dialog box is shown below. 
+To create a density plot of instate tuition by type, click the ![Basics](Rguroo_Icons/basics.png) button to open the [Histogram]{.dialog} dialog box. Leave everything you have for creating the density plot. In the **Plot by Group** section of the dialog, choose the [TYPE]{.var} variable from the [Factor ]{.dpd} dropdown. An image of the dialog box is shown below. 
 
 ```{r,echo=FALSE}
 #| fig-alt: "Dialog Box for Density Plot of Instate Tuition by Type"
@@ -1024,7 +983,7 @@ Private nonprofit colleges stand out as the most costly group, with a peak aroun
 
 :::
 
-### Homework for Quantitative Data Section
+### Homework for Numerical Data Section
 
 1. Data was collected from record times for Scottish hill races in 1984.  
 
@@ -1058,11 +1017,11 @@ Format
 
 The components are:
 
-[dist]{.var}: distance in miles (on the map).
+[dist]{.var}: Distance in miles (on the map).
 
-[climb]{.var}: total height gained during the route, in feet.
+[climb]{.var}: Total height gained during the route, in feet.
 
-[time]{.var}: record time in minutes.
+[time]{.var}: Record time in minutes.
 
 Source: A.C. Atkinson (1986) Comment: Aspects of diagnostic regression analysis. Statistical Science 1, 397–402.
 
@@ -1226,7 +1185,7 @@ References Department of Health and Human Services, ASPE. (2013). Health insuran
 
 :::
 
-5.  Students in a statistics class took their first test. @tbl-first-test-1 shows the scores they earned. Create a density plot for grades. Describe the shape of the distribution.
+5.  Students in a statistics class took their first test. @tbl-first-test-1 shows the first six rows of the dataset. Create a density plot for grades. Describe the shape of the distribution.
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
@@ -1261,18 +1220,31 @@ knitr::kable(head(Firsttest_2))
 
 ## Other Graphical Representations of Data
 
-There are many other types of graphs. Some of the more common ones are the scatterplot, and a time series plot. There are also many different graphs that have emerged lately for qualitative data. Many are found in publications and websites.  
+There are many other types of graphs. Some of the more common ones are the scatterplot, and a time series plot. There are also many different graphs that have emerged lately for categorical and numerical data. Many are found in publications and websites.  
 
-**Boxplots** are another graphical display for quantitative data that allow us to compare the distributions of two or more groups. They summarize important features of the data, such as the median, variability, and potential outliers. Because boxplots are based on specific numerical summaries, we will develop those ideas in the next chapter before constructing and interpreting boxplots. 
+**Boxplots** are another graphical display for numerical data that allow us to compare the distributions of two or more groups. They summarize important features of the data, such as the median, variability, and potential outliers. Because boxplots are based on specific numerical summaries, we will develop those ideas in the next chapter before constructing and interpreting boxplots. 
 
 ### Scatterplots
 
-Sometimes you have two quantitative variables, and you want to see if they are related. A scatterplot helps you visualize the relationship between the two variables. A scatterplot displays ordered pairs on a coordinate system, with one variable plotted on the horizontal (x) axis and the other on the vertical (y) axis.
+Sometimes you have two numerical variables, and you want to see if they are related. A scatterplot helps you visualize the relationship between the two variables. A scatterplot displays ordered pairs on a coordinate system, with one variable plotted on the horizontal (x) axis and the other on the vertical (y) axis.
 
 ::: {#exm-scatter-plot}
-## Creating a Scatterplot
 
-Data was collected from a simulation study about motorcycle accidents used to test crash helmets.The study recorded the head acceleration after impact.  Is there a relationship between head acceleration and time after impact? 
+**Need Example**
+
+:::
+
+
+### **Time-Series Plot**
+
+A time series plot is a graph showing numerical data in chronological order. The horizontal axis represents time, and the vertical axis represents the measured variable. For example, a time series plot could be used to show housing prices over the last five years. 
+
+The purpose of a time-series plot is to look for patterns or trends over time. However, we must be cautious when interpreting trends. For example, just because you observe an increase does not mean the increase will continue indefinitely. As an example, prior to 2007, many people noticed that housing prices were increasing. The belief at the time was that housing prices would continue to increase. However, the housing bubble burst in 2007, and many houses lost value. 
+
+::: {#exm-time-series}
+## Creating a Time Series Plot
+
+Data was collected from a simulation study of motorcycle accidents designed to test crash helmets. The study recorded the acceleration of the rider’s head immediately after impact. Head acceleration measures how quickly the speed of the head changes during the crash and is measured in $g$ units where $1g = 9.8 m/s^2$ meters per second squared. Create a time series plot of the head acceleration versus time. 
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [MASS]{.repo}, with the dataset name [mcycle]{.data}. @tbl-Tuition displays the first five rows of the dataset. A complete description of the variables is provided in the [dataset code book](#code-book-mcycle) that follows.
 
@@ -1296,9 +1268,9 @@ Format
 
 This dataset contains the following columns:
 
-[times]{.var}: the time after impact measured in milliseconds.
+[times]{.var}: The time after impact measured in milliseconds.
 
-[accel]{.var}: head acceleration measured in gravitational acceleration (g).
+[accel]{.var}: Head acceleration measured in gravitational acceleration (g).
 
 Source
 Silverman, B. W. (1985) Some aspects of the spline smoothing approach to non-parametric curve fitting. Journal of the Royal Statistical Society series B 47, 1–52.
@@ -1308,43 +1280,34 @@ Venables, W. N. and Ripley, B. D. (1999) Modern Applied Statistics with S-PLUS. 
 
 :::
 
-::::: {.solution}
 
-To answer this question, we can examine the data on a scatterplot and look for patterns. 
+:::{.solution}
 
-Preliminary: State the explanatory variable and the response variable
+First, we identify which variable will be placed on each axis. Time after impact (in milliseconds) will be placed on the horizontal axis because it moves forward in time and helps us see how things change. Head acceleration (in g’s) will be placed on the vertical axis because it is the value we are measuring at each moment after the impact. We can use the scatterplot graph to create the time series plot.
 
-Let:
+Click to expand the box below see how to create a time series plot (using a scaterplot) of head acceleration versus time.
 
-$x$=explanatory variable = time after impact (in ms)
+:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Time Series Plot in Rguroo"}
 
-$y$=response variable = head acceleration (in g)
-
-Click to expand the box below see how to create a scatterplot of time since impact versus head acceleration.
-
-:::: {#Creating-Scatter-Plot-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Scatterplot in Rguroo"}
-
-**Before you begin:** Make sure you have already imported the [mcycle]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Data-to-Rguroo-Chapter-2). This dataset is in the repository MASS.
+**Before you begin:** Make sure you have already imported the [mcycle]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Data-to-Rguroo-Chapter-2).
 
 1. Open the **Plots** toolbox in Rguroo.  
-2. Open the [Create Plot]{.dpd} dropdown, and select [Scatterplot]{.fun}. This opens the Scatter Plot dialog.  
+2. Open the [Create Plot]{.dpd} dropdown, and select [Scatterplot]{.fun}. This opens the Scatterplot dialog.  
 3. In the Scatterplot dialog, choose the [mcycle]{.data} dataset from the [Dataset]{.dpd} dropdown.  
 4. Choose the [times]{.var} variable from the [Predictor (x)]{.dpd} dropdown. 
 5. Choose the [accel]{.var} variable from the [Response (y)]{.dpd} dropdown.
-6. **(Optional)** In the **Label** section of the dialog:  
+6. In the **Label** section of the dialog:  
    - Enter [Scatterplot of Head Acceleration vs. Time After Impact]{.typein} in the [Title]{.des} textbox.  
    - Enter [Time After Impact (milliseconds)]{.typein} in the [X-Axis]{.des} textbox.  
    - Enter [Head Acceleration (g)]{.typein} in the [Y-Axis]{.des} textbox.  
 6. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the scatterplot.
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-
-![Scatterplot dialog showing settings for creating scatter plot of time versus head acceleration.
-](Rguroo_dialogs/Graphical_Description_of_Data/dialog_scatterplot_mcycle.png){width=500px}
-
+![Time Seires dialog showing settings for creating time series plot of ADI totals.](Rguroo_dialogs/Graphical_Description_of_Data/dialog_scatterplot_mycycle.png){width="500px"}
 :::
 
 ::::
+
 
 ```{r weight-bp-sys-data, echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
@@ -1356,131 +1319,13 @@ knitr::include_graphics(
 )
 ```
 
-@fig-mcycle shows how head acceleration changes after an impact. At first, the acceleration stays close to zero, meaning the head hasn’t begun to move yet. Around 20 milliseconds, there is a sudden and dramatic drop to about –120 g, indicating a rapid backward motion caused by the initial force of the impact. Immediately afterward, the acceleration rebounds sharply upward to more than +60 g, showing the head snapping forward. Following this, the acceleration values fluctuate between negative and positive g's, but gradually settle toward zero. This suggests that the head’s motion is slowing down and returning to a stable state. Overall, the pattern reflects a typical impact response: an initial delay, a strong backward acceleration, a forward rebound, and then diminishing movement over time. Although this scatterplot shows a relationship between time after impact and head acceleration, the pattern does not follow a simple linear shape.
-
-:::::
-
-### **Time-Series Plot**
-
-A time series plot is a graph showing quantitative data in chronological order. horizontal axis represents time, and the vertical axis represents the measured variable. For example, a time series plot is used to show profits over the last five years. 
-
-The purpose of a time-series plot is to look for patterns or trends over time. However, we must be cautious when interpreting trends. For example, just because you observe an increase does not mean the increase will continue indefinitely. As an example, prior to 2007, many people noticed that housing prices were increasing. The belief at the time was that housing prices would continue to increase. However, the housing bubble burst in 2007, and many houses lost value. 
-
-::: {#exm-time-series}
-## Creating a Time Series Plot
-
-Bank assets (in billions of Australia dollars (AUD)) were recorded from the Reserve Bank of Australia and other financial organizations for the time period of September 1 1969, through March 1 2019. Create a time-series plot of the total assets of Authorized Deposit-taking Institutions (ADIs), variable [Assets_ADIs_Total]{.var}, and interpret any findings.
-
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [Australian_financial]{.data}. @tbl-Australian displays the first five rows of the dataset. A complete description of the variables is provided in the [dataset code book](#code-book-australian) that follows.
+@fig-mcycle shows how head acceleration changes after an impact. At first, the acceleration stays close to zero, meaning the head hasn’t begun to move yet. Around 20 milliseconds, there is a sudden and dramatic drop to about –120 g, indicating a rapid backward motion caused by the initial force of the impact. Immediately afterward, the acceleration rebounds sharply upward to more than +60 g, showing the head snapping forward. Following this, the acceleration values fluctuate between negative and positive g's, but gradually settle toward zero. This suggests that the head’s motion is slowing down and returning to a stable state. Overall, the pattern reflects a typical impact response: an initial delay, a strong backward acceleration, a forward rebound, and then diminishing movement over time. 
 
 :::
-
-```{r australian-table,echo=FALSE}
-#| tbl-alt: "Table showing first 6 rows of Australian dataset"
-#| label: tbl-Australian
-#| tbl-cap: "Head of Australian Dataset"
-Australian <- read.csv(
-  "https://krkozak.github.io/MAT160/Australian_financial.csv"
-)
-knitr::kable(head(Australian))
-```
-
-
-::: {#code-book-australian .callout-tip .codebook collapse="true"}
-## Code book for Australian Dataset
-
-**Description** The data is a range of economic and financial data produced by the Reserve Bank of Australia and other organizations.
-
-Format
-
-This dataset contains the following columns:
-
-[Date]{.var}: quarters from September 1, 1969, to March 1, 2019
-
-[Day]{.var}: The number of days since September 1, 1969, using 90 days between starts of a quarter. This column is to make it easier to graph in rStudio, and has no other purpose.
-
-[Assets_RBA]{.var}: The assets for the Royal Bank of Australia
-
-[Assets_ADIs_Banks]{.var}: The assets for Authorized Deposit-taking Institutions (ADIs), Banks
-
-[Assets_ADIs_Building]{.var}: The assets for Authorized Deposit-taking Institutions (ADIs), Building societies
-
-[Assets_ADIs_CU]{.var}: The assets for Authorized Deposit-taking Institutions (ADIs), Credit Unions
-
-[Assets_ADIs_Total]{.var}: The assets for Authorized Deposit-taking Institutions (ADIs), total
-
-[Assets_RFCs_MM]{.var}: The assets for Registered Financial Corporations (RFCs), Money Market Corporations
-
-[Assets_RFCs_Finance]{.var}: The assets for Registered Financial Corporations (RFCs), Finance companies and general financiers
-
-[Assets_RFCs_Total]{.var}: The assets for Registered Financial Corporations (RFCs) total
-
-[Assets_Life offices]{.var}: The Assets of Life offices and superannuation funds; Life insurance offices
-
-[Assets_Life_funds]{.var}: The Assets of Life offices and superannuation funds; Superannuation funds
-
-[Assets_Life_Total]{.var}: The Assets of Life offices and superannuation; Total
-
-[Assets_Other_Public_trusts]{.var}: The Assets of Other managed funds; Public unit trusts
-
-[Assets_Other_Cash_trusts]{.var}: The Assets of Other managed funds; Cash management trusts
-
-[Assets_Other_Common_funds]{.var}: The Assets of Other managed funds; Common funds
-
-[Assets_Others_Friendly]{.var}: The Assets of Other managed funds; Friendly societies
-
-[Assets_Other_General_insurance: The Assets of Other financial institutions; General insurance offices
-
-[Assets_Other_vehicles]{.var}: The Assets Other financial institutions; Securitisation vehicles
-
-[Assets_Unconsolidated]{.var}: The Assets of Unconsolidated; Statutory funds of life insurance offices; Superannuation
-
-Source Reserve Bank of Australia. (2019, May 13). Statistical Tables. Retrieved July 10, 2019, from https://www.rba.gov.au/statistics/tables/
-
-References Reserve Bank of Australia and other organizations
-
-:::
-
-::::: {.solution}
-Looking at the code book, one can see that the variable [Assets_ADIs_Total]{.var} is the variable in the dataset that is of interest here. With a time series plot, the other variable is time. In this case the variable in the dataset that represents time is [Date]{.var}. Notice that the dates are recorded as the months during specific quarters since September 1, 1969. 
-
-Click to expand the box below see how to create a density plot of instate tuition by type of institution.
-
-:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Time Series Plot in Rguroo"}
-
-**Before you begin:** Make sure you have already imported the [Austrailian_financial]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Data-to-Rguroo-Chapter-2).
-
-1.  Open the **Analytics** toolbox in Rguroo.\
-2.  Open the [Analysis]{.dpd} dropdown, and select [Time Series]{.fun}. This opens the Time Series dialog.\
-3.  In the Time Series dialog, choose the [Australian_financial]{.data} dataset from the [Dataset]{.dpd} dropdown.\
-4.  Choose the [Assets_ADIs_total]{.var} variable from the [Variable]{.dpd} dropdown.
-5.  In the "Time Series Plot" box, click "lines."
-6.  In the "Time Specification" option box, click "month."
-7.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the time series graph.
-
-::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-![Time Seires dialog showing settings for creating time series plot of ADI totals.](Rguroo_dialogs/Graphical_Description_of_Data/dialog_time_series_ADI_total_2.png){width="500px"}
-:::
-
-::::
-
-```{r Assets,echo=FALSE}
-#| fig-alt: "See the description of the graph below the graph"
-#| warning: FALSE
-#| label: fig-Australian_data
-#| fig-cap: "Total Assets of Authorized Deposit-taking Institutions"
-knitr::include_graphics(
-  "Rguroo_outputs/Graphical_Description_of_Data/time_series_plot_ADI_total_2.svg"
-)
-```
-
-@fig-Australian_data is an generally increasing time series graph of Total Assets of Authorized Deposit-taking Institutions from day 2007 to 2016. Notice that the time series graph seems to be flat until approximately 2007.  Upon inspecting the dataset, there are no entries for Assets_ADIs_Total until Mar-90, so our graph will start at this point in time.The first ADI total starts at 0 and goes up to about 4500. From the graph, total assets of Authorized Deposit-taking Institutions (ADIs) appear to be increasing over time, with a slight dip in the year 2013.
-
-:::::
 
 ### Homework for Other Graphical Representations of Data Section
 
-1.  When an anthropologist finds skeletal remains, they need to figure out the height of the person. The first 6 rows of a dataset recording the height of a person (in cm) and the length of one of their metacarpal bone (in cm) were collected and are in @tbl-Metacarpal (Prediction of height, 2013). Create a scatter plot of length and height and state if there is a relationship between the height of a person and the length of their metacarpal.
+1.  When an anthropologist finds skeletal remains, they need to figure out the height of the person. The first 6 rows of a dataset recording the height of a person (in cm) and the length of one of their metacarpal bone (in cm) were collected and are in @tbl-Metacarpal (Prediction of height, 2013). Create a scatterplot of length and height and state if there is a relationship between the height of a person and the length of their metacarpal.
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
@@ -1506,9 +1351,9 @@ Format
 
 This dataset contains the following columns:
 
-[length]{.var}: length of Metacarpal I bone in mm
+[length]{.var}: Length of Metacarpal I bone in mm
 
-[height]{.var}: stature of skeleton in cm
+[height]{.var}: Stature of skeleton in cm
 
 Source Prediction of Height from Metacarpal Bone Length. (n.d.). Retrieved July 9, 2019, from http://www.statsci.org/data/general/stature.html
 
@@ -1518,7 +1363,7 @@ Devore, J., and Peck, R. (1986). Statistics. The Exploration and Analysis of Dat
 
 :::
 
-2.  The first 6 rows of a dataset recording the value of the house and the amount of rental income in a year that the house brings in are in @tbl-House (Capital and rental 2013). Create a scatter plot and state if there is a relationship between the value of the house and the annual rental income.
+2.  The first 6 rows of a dataset recording the value of the house and the amount of rental income in a year that the house brings in are in @tbl-House (Capital and rental 2013). Create a scatterplot and state if there is a relationship between the value of the house and the annual rental income.
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
