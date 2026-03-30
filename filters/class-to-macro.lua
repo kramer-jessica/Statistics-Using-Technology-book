@@ -33,6 +33,7 @@ local span_class_to_macro = {
   ans    = "Ans",
   typein = "TypeIn",
   button = "Button",
+  tab    = "Tab"
 }
 
 -- Handle spans with our special classes

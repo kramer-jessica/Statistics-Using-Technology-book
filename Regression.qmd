@@ -15,7 +15,7 @@ Fert_prenatal<- read.csv( "https://krkozak.github.io/MAT160/fertility_prenatal.c
 Hotdog<-read.csv( "https://krkozak.github.io/MAT160/hotdog_beef_poultry.csv") 
 ```
 
-**Before you begin, Click to expand the box below to review the process for importing a dataset.**
+**Before you begin, click to expand the box below to review the process for importing a dataset.**
 
 ::: {#Importing-Beer_data-to-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Data to Rguroo"} 
 
@@ -41,18 +41,18 @@ There are many types of relationships that can exist between variables. In this 
 
 When comparing different variables, two questions naturally arise: “Is there a relationship between the variables?” and “How strong is that relationship?” These questions can be answered using **regression** and **correlation**. Regression helps determine whether a relationship exists (in this book, we focus only on linear relationships), while correlation measures the strength of the linear relationship.
 
-To better understand these ideas, it is helpful to clearly define the roles the variables play in this analysis. The **response** variable is the variable whose variability we are trying to explain or predict. The variable used to explain the change (or variability) in the response variable is called the **explanatory variable** or **predictor variable**. More generally, any variables that help explain changes in a response variable are referred to as **predictors** or **covariates**. To introduce the concepts of regression and correlation more fully, it is helpful to examine a set of data.
+To better understand these ideas, it is helpful to clearly define the roles the variables play in this analysis. The **response** variable is the variable whose variability we are trying to explain or predict. The variable used to explain the change (or variability) in the **response variable** is called the **explanatory variable** or **predictor variable**. More generally, any variables that help explain changes in a response variable are referred to as **predictors** or **covariates**. To introduce the concepts of regression and correlation more fully, it is helpful to examine a set of data.
 
 ::: {#exm-determine-relationship}
 ## Determining if There is a Relationship
 The dataset [beer_data]{.data} contains information on 227 different 12-ounce beers, including alcohol content and number of calories for each beer. The data were obtained from the [Beer100](https://www.beer100.com/beer-calories/){target=”_blank” rel=“noopener”} website.
 
-a. Using the data in [beer_data]{.data}, construct a scatterplot with alcohol content on the horizontal axis and number of calories on the vertical axis.
+a. Using the data in [beer_data]{.data}, construct a scatterplot with alcohol content as the predictor variable and number of calories as the response variable.
 
 b.  Based on your plot, describe the relationship between alcohol content and calories. Do the points appear to follow a linear pattern? Explain.
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [beer_data]{.data}.
-Table @tbl-Beer displays the first five rows of the dataset. A complete description of the variables is provided in the  [dataset code book](#code-book-beer) that follows.
+Table @tbl-Beer displays the first six rows of the dataset. A complete description of the variables is provided in the  [dataset code book](#code-book-beer) that follows.
 
 :::
 
@@ -72,7 +72,7 @@ knitr::kable(head(Beer))
 
 This dataset contains the following variables (columns):
 
-[beer]{.var}: The name of the beer.
+[beer]{.var}: the name of the beer.
 
 [brewery]{.var}: the brewery that brews the beer.
 
@@ -92,7 +92,7 @@ References: (Find Out How Many Calories in Beer?, 2019)
 
 ::: {.solution}
 
-(a) To aid in figuring out if there is a relationship between the alcohol content and the number of calories, we draw a scatterplot of the data. First, it is helpful to clearly state the variables. Following the convention of algebra, we represent the explanatory variable as $x$ and the response variable as $y$. In this example, $x$ = percent alcohol content in the beer; [alcohol]{.var}, and $y$ = number of calories in 12 ounce beer; [calories]{.var}
+(a) To aid in figuring out if there is a relationship between the alcohol content and the number of calories, we draw a scatterplot of the data. First, it is helpful to clearly state the variables. Following the convention of algebra, we represent the predictor variable as $x$ and the response variable as $y$. In this example, $x$ = percent alcohol content in the beer; [alcohol]{.var}, and $y$ = number of calories in 12 ounce beer; [calories]{.var}
 
 
 :::: {#Creating-scatterplot-of-Calories-vs-Alcohol-Content-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating scatterplot of Calories vs. Alcohol Content"}
@@ -136,9 +136,9 @@ This overall pattern suggests that a straight line would do a reasonable job of 
 
 :::
 
-### Finding the regression line
+### Finding the Regression Line
 
-To describe the linear relationship between two quantitative variables, we use a statistical method called **regression**. This method finds the straight line that best fits the data points on a scatterplot. The resulting line is called the **least squares line**. It is also commonly referred to as the **regression line**, and in this text we will use both terms. The equation of this line summarizes how the response variable changes as the explanatory variable changes.
+To describe the linear relationship between two quantitative variables, we use a statistical method called **regression**. This method finds the straight line that best fits the data points on a scatterplot. The resulting line is called the **least squares line**. It is also commonly referred to as the **regression line**, and in this text we will use both terms. The equation of this line summarizes how the response variable changes as the predictor variable changes.
 
 To determine the least squares line, we imagine drawing a line through the data and measuring the vertical distance from each point to the line. These vertical distances are called **residuals**. The least squares line is the line that makes the sum of the squares of these residuals as small as possible. @fig-Beer-point-line displays this line on the scatterplot of Number of Calories versus Alcohol Content.
 
@@ -146,12 +146,12 @@ To determine the least squares line, we imagine drawing a line through the data 
 #| fig-alt: "scatterplot with regression line on plot"
 #| warning: FALSE
 #| label: fig-Beer-point-line
-#| fig-cap: "scatterplot of Beer Data with Regression Line"
+#| fig-cap: "Scatterplot of Beer Data with Regression Line"
 #| out-width: "80%"
 knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieScatterLS.svg")
 ```
 
-To add a regression (least squares) line to the scatterplot in Rguroo, you simply select the checkbox [LS Line]{.des} in the **superimpose** section of the [Scatterplot]{.dialog} dialog, as shown in @fig-scatterplot_dialog_LS. 
+To add a regression (least squares) line to the scatterplot in Rguroo, you simply select the checkbox [LS Line]{.des} in the **Superimpose** section of the [Scatterplot]{.dialog} dialog, as shown in @fig-scatterplot_dialog_LS. 
 
 ```{r scatterplot_dialog_LS, echo=FALSE}
 #| fig-alt: "Rguroo Dialog Showing How to Add a Regression Line"
@@ -180,7 +180,7 @@ As we will show, the [Linear Regression]{.fun} function in the **Analytics** too
 
 ### The Regression Equation and Prediction
 
-In this section, we learn how to find the equation of the regression line and use it to make predictions. The regression equation describes the relationship between the explanatory variable and the response variable, allowing us to estimate the value of the response for a given value of the explanatory variable.
+In this section, we learn how to find the equation of the regression line and use it to make predictions. The regression equation describes the relationship between the predictor variable and the response variable, allowing us to estimate the value of the response for a given value of the predictor variable.
 
 ::: {#exm-find-regression-equation}
 ## Find the Equation of the Regression Line
@@ -198,7 +198,7 @@ d. Use the regression equation to find the number of calories when the alcohol c
 _a. Finding the regression equation_
 
 To find the regression equation between alcohol content and calories we first determine our $x$ and $y$ variables. As in @exm-determine-relationship,
-$x$ is the alcohol content and $y$ is the number of calories in a 12 ounce beer.
+$x$ is the alcohol content and $y$ is the number of calories in a 12-ounce beer.
 
 Click to expand the box below to see how to obtain the regression equation.
 
@@ -274,7 +274,7 @@ Considering all the data, the mean number of calories is 154.5. However, for bee
 
 _d. Predicting calories when the alcohol content is 14%_
 
-Again, to predict the number of calories for a beer with alcohol conten of 14%, we substitute 14 in for $x$ in the regression equation.
+Again, to predict the number of calories for a beer with alcohol content of 14%, we substitute 14 in for $x$ in the regression equation.
 
 $$\hat{y} = 14.52 + 26.72 \times 14  = 388.6.$$
 
@@ -293,7 +293,7 @@ knitr::include_graphics(
 ```
 
 
-The predicted values from Rguroo are shown in @fig-AlcoholCaloriePredOutput below. These values are very close to the ones we calculated using the formula. The small differences are due to the fact that we rounded the slope and intercept to two decimal places, while Rguroo uses many more decimal places in its calculations.
+The predicted values from Rguroo are shown in @fig-AlcoholCaloriePredOutput below. These values are very close to the ones we calculated using the formula. The small differences are due to the fact that we rounded the slope and $y$-intercept to two decimal places, while Rguroo uses many more decimal places in its calculations.
 
 ```{r AlcoholCaloriePredOutput, echo=FALSE}
 #| fig-alt: "Rguroo output showing predicted calories for alcohol contents of 7.00% and 14.00%"
@@ -347,7 +347,7 @@ To see what this means in context, consider beers with 7% alcohol content. Our r
 
 Residuals occur because there is natural variability in the response variable. Not every beer with the same alcohol content will have exactly the same number of calories. When residuals are small, the model’s predictions are close to the observed values for those observations. When residuals are large, the predictions are farther from the observed values, indicating that the model does not fit those observations as well.
 
-As we see in @sec-assumption-validity-line, because residuals represent the unexplained variation in the response variable, examining them carefully helps us determine whether a linear regression model is appropriate.
+As we will see in @sec-assumption-validity-line, because residuals represent the unexplained variation in the response variable, examining them carefully helps us determine whether a linear regression model is appropriate.
 
 ### Computing Predicted Values and Residuals in Rguroo
 
@@ -409,7 +409,7 @@ For the beer data, do we have a random sample of alcohol content and calories? T
 
 **Linearity**
 
-The assumption of linearity means that the relationship between the explanatory variable and the response variable can be reasonably described by a straight line. In particular, for any given $x$-value, the average (mean) of the corresponding $y$-values should lie on, or very close to, the least squares regression line. This does not mean that all points fall on the line, but that the overall trend in the data follows a linear pattern.
+The assumption of linearity means that the relationship between the predictor variable and the response variable can be reasonably described by a straight line. In particular, for any given $x$-value, the average (mean) of the corresponding $y$-values should lie on, or very close to, the least squares regression line. This does not mean that all points fall on the line, but that the overall trend in the data follows a linear pattern.
 
 The assumption of linearity is essential. If the relationship between the two variables is not linear, then a regression line will not fit the data well. To check linearity, we look at the scatterplot: a roughly straight-line pattern suggests the assumption is reasonable, while a curved pattern suggests it is not. 
 
@@ -432,7 +432,7 @@ knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieResvsFit.png")
 
 ### Regression with Groups
 
-In some situations, the relationship between an explanatory variable and a response variable may differ across categories of a third variable. When we fit and compare regression models separately for different groups as separated by a categorical variable, this is called regression by group. This approach is useful when we want to determine whether the relationship between $x$ and $y$ differs depending on group membership—for example, whether the slope, intercept, or overall pattern differs across categories.
+In some situations, the relationship between a predictor variable and a response variable may differ across categories of a third variable. When we fit and compare regression models separately for different groups as separated by a categorical variable, this is called regression by group. This approach is useful when we want to determine whether the relationship between $x$ and $y$ differs depending on group membership—for example, whether the slope, intercept, or overall pattern differs across categories.
 
 As an example, in the beer dataset, we might wonder whether the relationship between calories and alcohol content differs for imported and domestic beers. The [location]{.var} variable has two values, _imported_ and _domestic_, indicating whether each beer is imported or domestic. This variable is a **covariate**, a third variable that may affect calorie content or the relationship between calories and alcohol content. A covariate that is categorical is referred to as a factor. You can create a scatterplot that displays the data separately for each category of this factor.
 
@@ -519,7 +519,7 @@ The $y$-intercept for the imported beers is 32.5, which is larger than the $y$-i
 
 1.  When an anthropologist finds skeletal remains, one task is to estimate the person’s height. Data on height (in cm) and the length of metacarpal bone 1 (in mm) were collected and are shown in @tbl-Metacarpal (“Prediction of Height,” 2013).
 
-    a. Create a scatterplot with metacarpal length as the predictor and and height on as the response. Then draw the least squares regression line on the same graph so that you can see how well the line fits the data. Does the pattern look approximately linear.
+    a. Create a scatterplot with metacarpal length as the predictor and height as the response. Then draw the least squares regression line on the same graph so that you can see how well the line fits the data. Does the pattern look approximately linear.
     
     b. Determine the least squares regression equation relating height to metacarpal length.
     
@@ -537,7 +537,7 @@ The $y$-intercept for the imported beers is 32.5, which is larger than the $y$-i
 
 2. @tbl-House contains a portion of the dataset [house]{.data} that contains data on house value and the annual rental income each house generates (“Capital and Rental,” 2013).
 
-    a. Create a plot of rental income versus house value, using house value as the predictor variable and annual rental income as the response variable. Label both variables clearly, and determine whether the points appear to follow a linear pattern.
+    a. Create a scatterplot of rental income versus house value, using house value as the predictor variable and annual rental income as the response variable. Label both variables clearly and determine whether the points appear to follow a linear pattern.
 
     b. Determine the least squares regression equation relating rental income to house value. Write the equation in the form $\hat y = b + mx$.
 
@@ -549,7 +549,7 @@ The $y$-intercept for the imported beers is 32.5, which is larger than the $y$-i
 
     f. State the value of the slope. Interpret the slope in context by describing how much rental income changes, on average, for every $10,000 increase in house value.
 
-    g. Interpret the intercept in context. Is the $y$-intercept meaningful in this situation? Explain.
+    g. Interpret the $y$-intercept in context. Is the $y$-intercept meaningful in this situation? Explain.
 
 <div tabindex="0" style="width:100%; margin:auto;">
 
@@ -648,7 +648,7 @@ References SOCR Dataset of MLB Heights Weights from UCLA.
 
 6. Data on body weights and brain weights are given in the dataset [body]{.data}, part of which is shown in @tbl-Body ("Brain2bodyweight," 2013).
 
-    a. Create a plot of brain weight versus body weight, using body weight (in kg) as the predictor variable and brain weight (in g) as the response variable. Label both variables clearly, and determine whether the points appear to follow a linear pattern.
+    a. Create a scatterplot of brain weight versus body weight, using body weight (in kg) as the predictor variable and brain weight (in g) as the response variable. Label both variables clearly, and determine whether the points appear to follow a linear pattern.
 
     b. Determine the least squares regression equation relating brain weight to body weight. Write the equation in the form $\hat y = b + mx$.
 
@@ -699,7 +699,7 @@ References SOCR Data of species body weights and brain weights from UCLA.
 
 7. A sample of hot dogs was taken and the amount of sodium (in mg) and calories were measured and recorded in the dataset [hotdog]{.data} ("Data hotdogs," 2013). The first six rows of the dataset are shown in @tbl-Hotdog.
 
-    a. Create a plot of brain weight versus body weight, using body weight (in kg) as the predictor variable and brain weight (in g) as the response variable. Label both variables clearly, and determine whether the points appear to follow a linear pattern.
+    a. Create a scatterplot of sodium versus calories, using calories as the predictor variable and sodium as the response variable. Label both variables clearly, and determine whether the points appear to follow a linear pattern.
 
     b. Determine the least squares regression equation relating sodium to calories. Write the equation in the form $\hat y = b + mx$.
 
@@ -736,15 +736,13 @@ knitr::kable(head(Hotdog))
 
 This dataset contains nutritional information for a sample of commercially available hot dogs. The data include calorie counts and sodium content for each hot dog, along with a categorical classification of the hot dog type. The dataset is commonly used to illustrate comparisons of quantitative variables across groups.
 
-Variables  
-[type]{.var}  
-Categorical variable indicating the type of hot dog. Typical categories include Beef, Meat, and Poultry.
+Variables 
 
-[calories]{.var}  
-Quantitative variable giving the number of calories per hot dog.
+[type]{.var}: categorical variable indicating the type of hot dog. Typical categories include Beef, Meat, and Poultry.
 
-[sodium]{.var}  
-Quantitative variable giving the sodium content per hot dog, measured in milligrams.
+[calories]{.var}: quantitative variable giving the number of calories per hot dog.
+
+[sodium]{.var}: quantitative variable giving the sodium content per hot dog, measured in milligrams.
 
 Source  
 The dataset is widely used in introductory statistics textbooks and examples and is often attributed to a Consumer Reports–style nutritional analysis of hot dog brands.
@@ -753,7 +751,7 @@ The dataset is widely used in introductory statistics textbooks and examples and
 
 8. Per capita income in 1960 dollars for European countries and the percent of the labor force that works in agriculture in 1960 are given in the dataset [agriculture]{.data} ("OECD economic development," 2013). The first six rows of this dataset are shown in @tbl-Agriculture.
 
-    a. Create a plot of per capita income versus percent of labor force in agriculture, using percent of labor force in agriculture as the predictor variable and per capita income (in 1960 dollars) as the response variable. Label both variables clearly, and determine whether the points appear to follow a linear pattern.
+    a. Create a scatterplot of per capita income versus percent of labor force in agriculture, using percent of labor force in agriculture as the predictor variable and per capita income (in 1960 dollars) as the response variable. Label both variables clearly, and determine whether the points appear to follow a linear pattern.
 
     b. Determine the least squares regression equation relating per capita income to percent of labor force in agriculture. Write the equation in the form $\hat y = b + mx$.
 
@@ -805,9 +803,9 @@ Reference: Data And Story Library
 
 9. Cigarette smoking and cancer have been linked. The number of deaths per one hundred thousand from bladder cancer and the number of cigarettes sold per capita in 1960 are given in the dataset [cancer_1]{.data} ("Smoking and cancer," 2013). The first six rows of the data are shown in @tbl-Cancerbladder.
 
-    a. Create a plot of deaths from bladder cancer versus number of cigarettes sold per capita, using number of cigarettes sold per capita as the predictor variable and number of deaths per one hundred thousand from bladder cancer as the response variable. Label both variables clearly, and determine whether the points appear to follow a linear pattern.
+    a. Create a scatterplot of deaths from bladder cancer versus number of cigarettes sold per capita, using number of cigarettes sold per capita as the predictor variable and number of deaths per one hundred thousand from bladder cancer as the response variable. Label both variables clearly, and determine whether the points appear to follow a linear pattern.
 
-    b. Determine the least squares regression equation relating number of deaths from bladder cancer to number of cigarettes sold per capita. Write the equation in the form $\hat y = b + mx$.
+    b. Determine the least squares regression equation relating the number of deaths from bladder cancer to the number of cigarettes sold per capita. Write the equation in the form $\hat y = b + mx$.
 
     c. Use the regression equation to predict the number of deaths per one hundred thousand from bladder cancer when cigarette sales were 20 per capita.
 
@@ -856,7 +854,7 @@ Reference: Data And Story Library
 
 10. The weight of a car can influence the mileage that the car can obtain. A random sample of cars' weights and mileage was collected and reported in the dataset [cars]{.data}, with the first six rows shown in @tbl-Cars ("us auto mileage," 2019).
 
-    a. Create a plot of mileage versus car weight, using car weight (in pounds) as the predictor variable and mileage (in miles per gallon) as the response variable. Label both variables clearly, and determine whether the points appear to follow a linear pattern.
+    a. Create a scatterplot of mileage versus car weight, using car weight (in pounds) as the predictor variable and mileage (in miles per gallon) as the response variable. Label both variables clearly, and determine whether the points appear to follow a linear pattern.
 
     b. Determine the least squares regression equation relating mileage to car weight. Write the equation in the form $\hat y = b + mx$.
 
@@ -971,11 +969,11 @@ For these data, the correlation coefficient between alcohol content and calories
 
 ### Coefficient of Determination, $R^2$ {#sec-coef-determination}
 
-While the correlation coefficient tells us the strength and direction of a linear relationship, it does not directly tell us how much of the variability in the response variable is explained by the explanatory variable. The variability in a response variable can be due to many factors. Some of this variability is explained by the explanatory variable, and some is due to other factors.
+While the correlation coefficient tells us the strength and direction of a linear relationship, it does not directly tell us how much of the variability in the response variable is explained by the predictor variable. The variability in a response variable can be due to many factors. Some of this variability is explained by the predictor variable, and some is due to other factors.
 
-For example, in the beer data, some of the variability in calories is explained by alcohol content, while some is due to other factors such as the amount of carbohydrates, added sugars, or differences in brewing methods. We can measure how much of the variability in the response variable is explained by the explanatory variable using a quantity called the **coefficient of determination**, denoted by $R^2$ (read “**R-squared**”). The value of $R^2$ is equal to the square of the correlation coefficient.
+For example, in the beer data, some of the variability in calories is explained by alcohol content, while some is due to other factors such as the amount of carbohydrates, added sugars, or differences in brewing methods. We can measure how much of the variability in the response variable is explained by the predictor variable using a quantity called the **coefficient of determination**, denoted by $R^2$ (read “**R-squared**”). The value of $R^2$ is equal to the square of the correlation coefficient.
 
-Thus, $R^2$ represents the proportion of the variability in the response variable that is explained by the linear relationship with the explanatory variable.
+Thus, $R^2$ represents the proportion of the variability in the response variable that is explained by the linear relationship with the predictor variable.
 
 As an example, using the beer data, we want to understand how much of the variability in calories is explained by alcohol content and how much is due to other factors, such as ingredients. For instance, two beers can have the same alcohol content but different numbers of calories because they contain different amounts of carbohydrates or sugars.
 
@@ -1050,7 +1048,7 @@ These examples reinforce an important principle: correlation indicates an associ
 
 ### Homework for Correlation Section
 
-**For each problem, state the random variables.The Dataset in this section are in section 10.1 and will be used in section 10.3.**
+**For each problem, state the random variables.The datasets in this section are in section 10.1 and will be used in section 10.3.**
 
 1. When an anthropologist finds skeletal remains, they often estimate the height of the person using measurements of certain bones. The height of a person (in cm) and the length of their first metacarpal bone (in mm) were collected. The data are in the [height_vs_metacarp]{.data} dataset, and the first six rows are shown in @tbl-Metacarpal ("Prediction of height," 2013).
 
@@ -1058,9 +1056,10 @@ These examples reinforce an important principle: correlation indicates an associ
 
     b. Based on the value of $r$, state whether the relationship between height and metacarpal length is positive or negative.
 
-    c. Interpret the value of $R^2$ in context. 
+    c. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
 
-    d. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
+    d. Interpret the value of $R^2$ in context. 
+
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
@@ -1077,9 +1076,9 @@ These examples reinforce an important principle: correlation indicates an associ
 
     b. Based on the value of $r$, state whether the relationship between house price and annual rental income is positive or negative.
 
-    c. Interpret the value of $R^2$ in context.
+     c. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
 
-    d. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
+    d. Interpret the value of $R^2$ in context. 
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
@@ -1096,9 +1095,9 @@ These examples reinforce an important principle: correlation indicates an associ
 
     b. Based on the value of $r$, state whether the relationship between life expectancy and fertility rate is positive or negative.
 
-    c. Interpret the value of $R^2$ in context.
+     c. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
 
-    d. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
+    d. Interpret the value of $R^2$ in context. 
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
@@ -1117,9 +1116,9 @@ These examples reinforce an important principle: correlation indicates an associ
 
     b. Based on the value of $r$, state whether the relationship between health expenditures (as a percentage of GDP) and the percentage of women receiving prenatal care is positive or negative.
 
-    c. Interpret the value of $R^2$ in context.
+    c. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
 
-    d. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
+    d. Interpret the value of $R^2$ in context. 
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
@@ -1136,9 +1135,9 @@ These examples reinforce an important principle: correlation indicates an associ
 
     b. Based on the value of $r$, state whether the relationship between height and weight is positive or negative.
 
-    c. Interpret the value of $R^2$ in context.
+    c. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
 
-    d. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
+    d. Interpret the value of $R^2$ in context. 
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
@@ -1154,9 +1153,9 @@ These examples reinforce an important principle: correlation indicates an associ
 
     b. Based on the value of $r$, state whether the relationship between body weight and brain weight is positive or negative.
 
-    c. Interpret the value of $R^2$ in context.
+    c. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
 
-    d. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
+    d. Interpret the value of $R^2$ in context. 
 
 <div tabindex="0" style="width:85%; margin:auto;">
 
@@ -1172,9 +1171,9 @@ These examples reinforce an important principle: correlation indicates an associ
 
     b. Based on the value of $r$, state whether the relationship between sodium content and calories is positive or negative.
 
-    c. Interpret the value of $R^2$ in context.
+    c. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
 
-    d. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
+    d. Interpret the value of $R^2$ in context. 
 
     e. Can additional sodium cause higher calories? Explain.
 
@@ -1192,9 +1191,9 @@ These examples reinforce an important principle: correlation indicates an associ
 
     b. Based on the value of $r$, state whether the relationship between per capita income and the percentage of the labor force in agriculture is positive or negative.
 
-    c. Interpret the value of $R^2$ in context.
+    c. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
 
-    d. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
+    d. Interpret the value of $R^2$ in context. 
 
     e. Does this relationship imply that changes in per capita income cause changes in the percentage of the labor force working in agriculture? Explain your reasoning.
 
@@ -1213,9 +1212,9 @@ These examples reinforce an important principle: correlation indicates an associ
 
     b. Based on the value of $r$, state whether the relationship between cigarette sales per capita and bladder cancer death rates is positive or negative.
 
-    c. Interpret the value of $R^2$ in context.
+    c. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
 
-    d. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
+    d. Interpret the value of $R^2$ in context. 
 
     e. Does this relationship imply that cigarette consumption causes bladder cancer? Explain your reasoning.
 
@@ -1225,7 +1224,7 @@ These examples reinforce an important principle: correlation indicates an associ
 
 </div>
 
-The codebook for the dataset cancer is given [here](#code-book-cancer)
+The codebook for the dataset [cancer](#code-book-cancer) is given below @tbl-Cancerbladder.
 
 
 10. The weight of a car may influence the mileage the car obtains. A random sample of car weights and mileage values was collected and is recorded in the [cars]{.data} dataset. The first six rows are shown in @tbl-Cars ("us auto mileage," 2019). Use this dataset to analyze the relationship between car weight and mileage.
@@ -1234,9 +1233,9 @@ The codebook for the dataset cancer is given [here](#code-book-cancer)
 
     b. Based on the value of $r$, state whether the relationship between car weight and mileage is positive or negative.
 
-    c. Interpret the value of $R^2$ in context.
+    c. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
 
-    d. Based on the value of $r$, would you describe the linear relationship as strong, moderate, or weak? Explain briefly.
+    d. Interpret the value of $R^2$ in context. 
 
     e. Does this relationship imply that car weight causes changes in mileage? Explain your reasoning.
 
@@ -1250,7 +1249,7 @@ The codebook for the dataset cancer is given [here](#code-book-cancer)
 
 11.	A researcher measures the effect of fertilizer on plant growth by randomly assigning identical plants to receive either no fertilizer or a specific amount of fertilizer. After six weeks, the plants that received fertilizer are, on average, taller than those that did not. Does this study provide evidence that fertilizer causes increased plant growth? Explain your answer.
 
-12. In a laboratory experiment, participants are randomly assigned to consume either a caffeinated beverage or a caffeine-free beverage that looks and tastes the same. After 30 minutes, reaction times are measured. Participants who consumed caffeine have faster reaction times on average. Does this study provide evidence that caffeine causes faster reaction times? Explain your answer.
+12. In a laboratory experiment, participants are randomly assigned to consume either a caffeinated beverage or a caffeine-free beverage that looks and tastes the same. After 30 minutes, reaction times are measured. Participants who consumed caffeine had faster reaction times on average. Does this study provide evidence that caffeine causes faster reaction times? Explain your answer.
 
 13. There is a correlation between police expenditure and crime rate. Does this mean that spending more money on police causes the crime rate to decrease? Explain your answer. If you believe another variable may be influencing both, identify a possible confounding variable.
 
@@ -1264,11 +1263,11 @@ The codebook for the dataset cancer is given [here](#code-book-cancer)
 
 ### Prediction Interval
 
-The idea behind regression is to find an equation that relates the response variable to the explanatory variables, and then use that equation to predict values of the response variable from values of the explanatory variables. But how do you know how good that estimate is?
+The idea behind regression is to find an equation that relates the response variable to the predictor variables, and then use that equation to predict values of the response variable from values of the predictor variables. But how do you know how good that estimate is?
 
 When we use a regression equation to make a prediction, the predicted value is only a single number. For example, using the regression equation, we can predict the number of calories from the alcohol content of a beer. However, this calculation produces just one value. In practice, there is almost always some uncertainty in that prediction. Even if we knew the true relationship between the variables, individual observations would still vary around that relationship due to natural randomness and factors not included in the model. This means that beers with the same alcohol content may still differ slightly in calories.
 
-Because of this variability, it is usually more informative to give a range of plausible values for the response variable rather than a single predicted value. A **prediction interval** provides such a range. It gives an interval of values that is likely to contain the response value for a new observation with specified explanatory variable values, along with a stated level of confidence.
+Because of this variability, it is usually more informative to give a range of plausible values for the response variable rather than a single predicted value. A **prediction interval** provides such a range. It gives an interval of values that is likely to contain the response value for a new observation with specified predictor variable values, along with a stated level of confidence.
 
 ::: {#exm-find-pred-interval}
 ### Obtaining a Prediction Interval
@@ -1280,7 +1279,7 @@ Is there a linear relationship between alcohol content and the number of calorie
 
 ::: {.solution}
 
-To obtain the prediction interval for the beer example, follow the steps for creating a linear regression model [here](#Finding-the-Regression-Equation-in-Rguroo). Additionally, in the [linear Regression]{.fun} dialog box, enter the value of alcohol content 7 in the textbox labeled [Predict at new x value(s)]{.des}. Then open the tab labeled [Prediction Interval]{.button} and select the checkboxes labeled [Prediction Interval]{.des} inside the tab. Additionally, in the **Methods** section select [Theory Based]{.des}; These steps are shown in @fig-AlcoholCalorieRegress_pred_interval. 
+To obtain the prediction interval for the beer example, follow the steps for creating a linear regression model [here](#Finding-the-Regression-Equation-in-Rguroo). Additionally, in the [Linear Regression]{.fun} dialog box, enter the value of alcohol content 7 in the textbox labeled [Predict at new x value(s)]{.des}. Then open the tab labeled [Prediction Interval]{.button} and select the checkboxes labeled [Prediction Interval]{.des} inside the tab. Additionally, in the **Methods** section select [Theory Based]{.des}; These steps are shown in @fig-AlcoholCalorieRegress_pred_interval. 
 
 ```{r AlcoholCalorieRegress_pred_interval, echo=FALSE}
 #| fig-alt: "Rguroo dialog for obtaining prediction interval for calories from alcohol content"
@@ -1352,7 +1351,7 @@ Is there a linear relationship between alcohol content and the number of calorie
 
 ::: {.solution}
 
-The variables that we are consdeing are $x$ = alcohol content in the beer and $y$ = calories in 12 ounce beer, and the null and alternative hypotheses are
+The variables that we are considering are $x$ = alcohol content in the beer and $y$ = calories in 12-ounce beer, and the null and alternative hypotheses are
 
 $$
 \left\{
@@ -1375,7 +1374,7 @@ To obtain the test statistic and $p$-value for testing the significance of the l
 
 These steps are illustrated in @fig-AlcoholCalorieRegress_test.
 
-The default significance level is 0.05, so you do not need to change. If a significance level other than 5% is required, enter the desired value in the box labeled [Significance Level]{.des}.
+The default significance level is 0.05, so you do not need to change. If a significance level other than 5% is required, enter the desired value as a decimal in the box labeled [Significance Level]{.des}.
 
 ```{r AlcoholCalorieRegress_test, echo=FALSE}
 #| fig-alt: "Rguroo dialog for testing slope for calories from alcohol content"
@@ -1601,7 +1600,7 @@ Finally, when examining a residual-versus-fit plot or a normal probability plot,
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [agriculture]{.data}.
 
-**Code book for Dataset Agriculture is @tbl-Agriculture.**
+**Code book for Dataset Agriculture is below @tbl-Agriculture.**
 
 </div>
 
