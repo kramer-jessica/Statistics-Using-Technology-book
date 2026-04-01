@@ -1,0 +1,1843 @@
+---
+title: "Inference for One and Two Population Proportions"
+
+number-sections: true
+number-offset: 11
+---
+Now that we understand how probability distributions describe variability in random outcomes, we can use these ideas to draw conclusions about a population from sample data. This process is called **statistical inference**. In this chapter, we develop the ideas and tools needed to evaluate claims about a population proportion using sample data through hypothesis testing. We then extend these ideas to construct confidence intervals for a population proportion. The key concepts of hypothesis testing—such as null and alternative hypotheses, Type I and Type II errors, and the significance level—will serve as a foundation for similar methods in other settings throughout the course. We build these ideas gradually, returning to the same three examples so that each new concept can be understood in a familiar context.
+
+In statistical inference, we use information from a sample to make statements about an unknown population parameter. Note that different random samples from the same population will not produce exactly the same results. For example, suppose we want to estimate the proportion of students at a university who prefer online courses. A random sample of 100 students might show that 62% prefer online courses. If we take a different random sample of 100 students, we might find that 57% prefer online courses. A third sample might give 65%. Even though each sample is drawn from the same population, the sample proportions are not identical.
+
+This unavoidable variation from one sample to another is called **sampling variability**. 
+It occurs because each sample includes different individuals and therefore produces 
+slightly different results. Because we rely on the sample we happen to collect 
+rather than the entire population, we should expect some difference between a 
+sample statistic and the corresponding population value. This raises a fundamental 
+question that will guide us throughout this chapter: could the result we observed 
+in our sample reasonably happen by chance, or does it suggest something meaningful 
+about the population? As we will see, the probability distributions we studied in 
+earlier chapters will help us answer this question.
+
+There are two main tools of statistical inference: hypothesis tests and confidence intervals. A **hypothesis test** begins with a specific claim about a population parameter and uses sample data to evaluate that claim. A **confidence interval**, on the other hand, provides a range of plausible values for the population parameter based on the sample data. 
+
+We begin with hypothesis testing, the first of these two tools.
+
+## Hypothesis Testing: Concepts and the One Population Proportion Case
+In many real situations, we encounter numerical claims about percentages;  the percentage of teenagers who use a particular app, the percentage of adults who meet health guidelines, or the percentage of students who rely on social media for news. But how can we determine whether such claims are reasonable? When does sample evidence support a claim, and when should we question it?
+
+To see how we might answer such questions, let us work through a few examples and think carefully about what information and reasoning we would need to evaluate such claims to reach conclusions.
+
+### Populations, Parameters, Samples, and Statistics
+
+In earlier chapters, we defined the concepts of population, parameter, sample, 
+and statistic. At that time, we used these ideas to describe data and summarize 
+information. Now we take an important step forward. We are no longer simply 
+summarizing what the sample tells us — we are using the sample to draw 
+conclusions about the population. This shift, from describing data to making 
+decisions about a population, is what statistical inference is all about.
+
+Our goal is to draw conclusions about a population proportion, using information obtained from a sample. Recall that a **population** is the entire group of interest, and a **parameter** is a numerical value that describes a characteristic of that population. Since observing every member of the population is usually not possible, we collect data from a **sample** and compute a **statistic** that provides evidence about the parameter. 
+
+ In this section, the parameter of interest is a **population proportion** (often expressed as a percentage), denoted by $\pi$ (the Greek letter pi, not to be confused with the number $\pi \approx 3.14$). When we collect a sample of size $n$ to learn about $\pi$, we observe how many individuals in the sample have the characteristic of interest. We call this count the **number of successes**. Before we collect the sample, we treat this count as a random variable and denote it by $X$; once we have our sample in hand, the observed value is a fixed number, which we denote it by $x_{\text{obs}}$.
+
+For example, suppose we randomly select $n=100$ students and ask whether they prefer online classes. A **success** is a student who says they prefer online classes, and $X$ is the number of successes we might observe across all possible samples of size 100. Once we go out and actually collect our sample, we get a specific count — for instance, suppose 62 out of the 100 students say they prefer online classes. That observed count is $x_{\text{obs}} = 62$. 
+
+::: {.callout-note appearance="minimal"}
+$X$ is a random variable representing the number of successes across all possible samples; $x_{\text{obs}}$ is the specific count from our sample. We use $x_{\text{obs}}$ to make decisions about $\pi$.
+:::
+
+To use $X$ for inference, we need to know how it behaves. Recall from Chapter (?) that a random variable follows a **binomial distribution** when the following 
+conditions are met:
+
+- The number of trials $n$ is fixed.
+- Each trial results in one of two outcomes: a success or a failure.
+- The probability of success $\pi$ is the same for every trial.
+- The trials are independent of one another.
+
+When we take a random sample from a population, these conditions are satisfied: 
+each individual in the sample either has the characteristic of interest (a success) or does not (a failure), and since the sample is selected randomly, the trials are independent. The probability of success $\pi$ is the proportion of individuals with the characteristic in the population. Strictly speaking,   sampling without replacement causes $\pi$ to change slightly with each draw, but when the sample is small relative to the population, this change is negligible and we treat $\pi$ as constant. Therefore,
+
+$$
+X \sim \text{Binomial}(n, \pi).
+$$
+This distribution will be the foundation for computing probabilities and making 
+decisions about $\pi$.
+
+
+Note that the count $X$ can also be used to estimate $\pi$ directly. 
+The **sample proportion** $\hat{p} = X/n$ (read p-hat) gives the fraction 
+of individuals in a sample with the characteristic of interest, and serves 
+as a natural estimator of $\pi$. Like $X$, $\hat{p}$ is a random variable 
+— it varies from sample to sample. Once we have our data in hand, the 
+**observed sample proportion** $\hat{p} = x_{\text{obs}}/n$ is the specific 
+estimated value of $\pi$ from our sample.
+
+:::{#exm-youtube-ppss} 
+## Daily YouTube Use Among Teens
+
+According to a [Pew Research Center report](https://www.pewresearch.org/internet), about 73% of U.S. teenagers say they visit YouTube every day (Pew Research Center, *Teens, Social Media and Technology*, 2023).
+
+Suppose a school district claims that more than 70% of students in its district use YouTube daily. To examine this claim, a random sample of 20 students is selected, and 17 of them report that they use YouTube daily.
+
+Describe or compute the following related to the claim:
+
+a. The population of interest  
+b. The parameter of interest $\pi$ 
+c. The sample 
+d. The statistic $X$ and its observed value $x_{\text{obs}}$
+e. The observed sample proportion $\hat{p}$ that is an estimate of $\pi$
+f. The district's claim as a mathematical inequality 
+
+:::
+
+:::{.solution}
+a. The population of interest is all students in the district.
+
+b. The parameter of interest $\pi$ is the proportion of students in the district who use YouTube daily.
+
+c. The sample is the 20 students who were randomly selected and questioned about their YouTube use.
+
+d. The statistic $X$ is the number of students in a sample of size $n = 20$ who use YouTube daily. From our sample, the observed value is $x_{\text{obs}} = 17$.
+
+e. The estimate of $\pi$ based on our sample is 
+
+$$\hat{p} = \frac{x_{obs}}{n}=\frac{17}{20} = 0.85.$$
+
+f. The district’s claim is written mathematically as $\pi > 0.70$.
+:::
+
+:::{#exm-physical-inactivity-ppss} 
+## Physical Inactivity Among Adults
+
+The [World Health Organization reports](https://www.who.int/news/item/26-06-2024-nearly-1.8-billion-adults-at-risk-of-disease-from-not-doing-enough-physical-activity) that approximately 31% of adults worldwide do not meet recommended levels of physical activity (World Health Organization, 2024).
+
+Suppose a national health agency hopes that fewer than 35% of adults in its country are physically inactive. To examine this claim, a random sample of 50 adults is selected, and 10 of them are found to be physically inactive.
+
+Describe, and when relevant compute, the following related to the claim:
+
+a. The population of interest  
+b. The parameter of interest $\pi$ 
+c. The sample 
+d. The statistic $X$ and its observed value $x_{\text{obs}}$
+e. The observed sample proportion $\hat{p}$ that is an estimate of $\pi$
+f. The national health agency claim as a mathematical inequality 
+
+:::
+
+:::{.solution}
+a. The population of interest is all adults in the country.
+
+b. The parameter of interest $\pi$ is the proportion of adults in the country who are physically inactive.
+
+c. The sample is the 50 adults who were randomly selected and their physical activity levels were recorded.
+
+d. The statistic $X$ is the number of individuals in a sample of size 50 who are inactive, and its observed value is $x_{obs} = 10$.
+
+e. The estimate of $\pi$ based on our sample is 
+
+$$\hat{p} = \frac{x_{obs}}{n}=\frac{10}{50} = 0.20.$$
+
+
+f. The national health agency claim is written mathematically as $\pi < 0.35$.
+:::
+
+:::{#exm-social-media-news-ppss} 
+## Social Media as a Primary News Source
+
+According to a [Pew Research Center report](https://www.pewresearch.org/journalism/fact-sheet/social-media-and-news-fact-sheet/), 36% of U.S. adults ages 18–29 say they regularly get news from social media (Shearer, 2023).
+
+Suppose the university administration is unsure whether the same percentage applies to students at their university and wants to determine whether the true proportion of students who get most of their news from social media differs from 36%. Notice that this example differs from the previous two: rather than claiming 
+that the proportion is greater than or less than a specific value, the claim here 
+is simply that the proportion is *different* from 36%, without specifying a 
+direction. As we will see, this makes the problem slightly more complex because 
+evidence in support of the claim can come from either direction.
+
+To investigate this question, a random sample of 15 students is selected, and 9 of them report that they get most of their news from social media.
+
+Describe, and when relevant compute, the following related to the claim:
+
+a. The population of interest  
+b. The parameter of interest $\pi$ 
+c. The sample 
+d. The statistic $X$ and its observed value $x_{\text{obs}}$
+e. The observed sample proportion $\hat{p}$ that is an estimate of $\pi$
+f. The university administration's claim as a mathematical inequality   
+
+:::
+
+:::{.solution}
+a. The population of interest is all students at the university.
+
+b. The parameter of interest $\pi$ is the proportion of students at the university who get most of their news from social media.
+
+c. The sample is the 15 students who were randomly selected and surveyed about their primary news source.
+
+d. The statistic $X$ is the number of students in a sample of size 15 who get most of their news from social media, and its observed value is $x_{obs} = 9$.
+
+e. The estimate of $\pi$ based on our sample is 
+
+$$\hat{p} = \frac{x_{obs}}{n}=\frac{9}{15} = 0.60.$$
+
+f. The university administration's claim is written mathematically as $\pi \ne 0.36$.
+:::
+
+::: {.callout-note}
+## Notation Summary
+
+As we work through the examples in this chapter, it is important to keep 
+the following symbols straight:
+
+| Symbol | Name | Description |
+|--------|------|-------------|
+| $\pi$ | Population proportion | The true, unknown proportion in the population |
+| $X$ | Random variable | The number of successes across all possible samples |
+| $x_{\text{obs}}$ | Observed count | The actual number of successes in our sample |
+| $\hat{p}$ | Sample proportion | The estimate of $\pi$ computed as $x_{\text{obs}}/n$ |
+:::
+
+In some situations, it is easy to see that the sample evidence does not support a claim. For example, in the YouTube case, the claim is that more than 70% of students use YouTube daily. If a sample of $n = 20$ students had resulted in only $x_{obs} = 12$ students reporting daily use, then $\hat{p} = \frac{12}{20} = 0.60$. Only 12 out of 20 students, giving a sample proportion of 0.60, is clearly not consistent with the claim that the population proportion exceeds 0.70.
+
+Similarly, in the physical inactivity example, the claim is that fewer than 35% of adults are inactive. If a sample of $n = 40$ adults had shown $x_{obs} = 20$ inactive individuals, then $\hat{p} = \frac{20}{40} = 0.50$. Finding 20 out of 40 inactive adults, giving a sample proportion of 0.50, would clearly not support the claim that the population proportion is less than 0.35.
+
+In the social media example, the claim is that the true proportion differs from 0.36. In this case, it is less obvious what values of $x_{obs}$ would fail to support the claim. However, counts $x_{obs}$ that produce sample proportions very close to 0.36 would likely not provide strong evidence that the true proportion is different from 0.36.
+
+Now consider the actual sample results in our examples. In each case, both the count $x_{obs}$ and the sample proportion $\hat{p}$ fall in the direction of the claim. For the YouTube example, $x_{obs} = 17$ out of $n = 20$, giving $\hat{p} = 0.85$, which is greater than 0.70. For the physical inactivity example, $x_{obs} = 10$ out of $n = 50$, giving $\hat{p} = 0.20$, which is less than 0.35. For the social media example, $x_{obs} = 9$ out of $n = 15$, giving $\hat{p} = 0.60$, which differs from 0.36. These sample results do not contradict the claims. In fact, they are consistent with them.
+
+But does being consistent automatically mean the claim is correct? Not necessarily!
+
+::: {.callout-note}
+## Consistent With a Claim Is Not the Same as Strong Evidence
+
+A sample result that is consistent with a claim — meaning it points in the 
+right direction — does not automatically mean the claim is correct. Because of 
+sampling variability, such a result could occur by chance even if the claim is 
+false. The real question is: is the sample result strong enough that it would 
+be unlikely to occur by chance if the claim were not true?
+:::
+
+As we explained before, when we take a random sample it is just one of many possible samples we could have drawn, and because of sampling variability different samples of the same size would likely produce different counts $x_{obs}$ and therefore different sample proportions $\hat{p}$. Because of this natural variability, some difference between a sample proportion and a claimed population proportion is expected. The question is, if a sample of size $n = 20$ produces $x_{obs} = 17$ students who use YouTube daily, is that sufficient evidence to conclude that the true population proportion exceeds 0.70? Or could such a count reasonably occur simply by chance, even if the true proportion is less than or equal to 0.70? Similar question can be asked about the other two examples given above. In this chapter we will use probability models to help answer these types of questions and guide our decisions.
+
+
+As we can see, because we make decisions about a population using only a sample, there is always some uncertainty and a chance of being wrong. We might conclude that the evidence supports a claim when in fact it does not, or we might fail to 
+support a claim that is actually true. In the next section we examine the types of errors that can arise in statistical decision-making and how statistical procedures can help us understand and manage these risks.
+
+### Null and Alternative Hypotheses and Errors
+
+Now that we have a clear picture of what we are trying to learn and what 
+statistic we will use, we need a formal way to state the claims we are 
+investigating and to describe what can go wrong when we make decisions based 
+on sample data.
+
+In this section, we consider hypotheses involving a claim about a population proportion $\pi$. The claim we want to investigate — to see whether our sample data support it — is called the **research hypothesis**; it is more commonly referred to as the **alternative hypothesis**. We denote the alternative hypothesis by $H_a$, and it is usually written as a mathematical inequality involving $\pi$.
+
+The counterpart to the alternative hypothesis is the **null hypothesis**, denoted by $H_0$. The null hypothesis is generally the complement of the alternative hypothesis. The wording null indicates that the effect that is stated in the alternative hypothesis is "null" or does not exist. Or intuitively we can think of it as nullifying our claim in the alternative hypothesis. The null hypothesis is usually written in the form of a mathematical equality or inequality involving the population parameter $\pi$.
+
+Together, $H_0$ and $H_a$ frame the decision we are trying to make. We do not 
+assume the claim is true from the outset — the sample data must support it before 
+we are willing to accept it. $H_0$ serves as the default assumption that we start 
+with, and we only move away from it if the sample data provide sufficient evidence 
+to support $H_a$.
+
+Keep in mind that the null and alternative hypotheses are claims about the population proportion $\pi$, so they are written using $\pi$. They do not involve the observed sample proportion $\hat{p}$, because the claim is not about the sample.
+
+Together, the null and alternative hypotheses always come in one of three forms, 
+depending on the nature of the research question. Using $\pi_0$ to denote the 
+specific value of $\pi$ stated in the hypotheses, the three cases are:
+
+$$
+\text{Case 1: }
+\begin{cases}
+H_0: \pi \leq \pi_0 \\
+H_a: \pi > \pi_0
+\end{cases}
+\qquad
+\text{Case 2: }
+\begin{cases}
+H_0: \pi \geq \pi_0 \\
+H_a: \pi < \pi_0
+\end{cases}
+\qquad
+\text{Case 3: }
+\begin{cases}
+H_0: \pi = \pi_0 \\
+H_a: \pi \neq \pi_0
+\end{cases}
+
+Note that $\pi_0$ is the notation tat we use for the bondary value stated in $H_0$ and $H_a$.
+$$
+
+In Cases 1 and 2, the alternative hypothesis claims that $\pi$ is either greater than or less than $\pi_0$, pointing in a single direction. These are called **one-sided** (or **one-tailed**) hypotheses. In Case 3, the alternative hypothesis claims only that $\pi$ is different from $\pi_0$, without specifying a direction. This is called a **two-sided** (or **two-tailed**) hypothesis. As we will see, the 
+form of the hypotheses determines how we set up our decision rule and compute the probability of a Type I error.
+
+Now that we have our complementary hypothesis $H_0$ and $H_a$ we can define the two types of errors that can occur in hypothesis testing.
+
+**Type I Error** occurs when we reject the null hypothesis $H_0$  even though $H_0$ is actually true.
+
+**Type II Error** occurs when we fail to reject the null hypothesis $H_0$ even though $H_a$ is actually true.
+
+@fig-types-of-error illustrates these definitions diagrammatically. Notice that we make the correct decision in two situations: when we reject $H_0$ and $H_a$ is actually true, and when we fail to reject $H_0$ and $H_0$ is actually true.
+
+```{r,echo=FALSE}
+#| fig-alt: "Three-column flowchart illustrating hypothesis testing outcomes. The left column is labeled Fact (Unknown to us) and shows two possible true states of the null hypothesis. The middle column is labeled “Our Decision” and contains boxes labeled Reject and Accept. The right column is labeled “Result” and shows the consequences of each decision: Reject when the null is true leads to Type I Error, Accept when the null is true leads to No Error, Reject when the null is false leads to No Error, and Accept when the null is false leads to Type II Error. Light background colors distinguish the three"
+#| warning: FALSE
+#| label: fig-types-of-error
+#| fig-cap: "Type I and Type II Errors in Hypothesis Testing"
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Proportion_Inference/types_of_error.png")
+```
+
+:::{#exm-youtube-error} 
+## Daily YouTube Use Among Teens (continued)
+
+Recall @exm-youtube-ppss where a school district was interested to test the claim that more than 70% of students in its district use YouTube daily. 
+
+a. State the null and alternative hypotheses in words.
+b. Write the null and alternative hypotheses using mathematical notation.
+c. Describe what happens if a Type I error occurs in the context of the problem.
+d. Describe what happens if a Type II error occurs in the context of the problem.
+:::
+
+:::{.solution}
+a. The null hypothesis states that 70% or fewer students in the district use YouTube daily. The alternative hypothesis states that more than 70% of students in the district use YouTube daily.
+
+b.
+$$
+\begin{cases}
+H_0: \pi \leq 0.70 \\
+H_a: \pi > 0.70
+\end{cases}
+$$
+
+c. A Type I error occurs if we reject $H_0$ and conclude that more than 70% of students in the district use YouTube daily when, in fact, the true proportion is 70% or less ($H_0$ is true).
+
+d. A Type II error occurs if we fail to reject $H_0$ and therefore do not conclude that more than 70% of students in the district use YouTube daily when, in fact, the true proportion is greater than 70% ($H_a$ is true).
+:::
+
+:::{#exm-physical-inactivity-error} 
+## Physical Inactivity Among Adults (continued)
+
+Recall @exm-physical-inactivity-ppss where a national health agency wanted to examine the claim that fewer than 35% of adults in its country are physically inactive.  
+
+a. State the null and alternative hypotheses in words.
+b. Write the null and alternative hypotheses using mathematical notation.
+c. Describe what happens if a Type I error occurs in the context of the problem.
+d. Describe what happens if a Type II error occurs in the context of the problem.
+:::
+
+:::{.solution}
+a. The null hypothesis states that 35% or more adults in the country are physically inactive. The alternative hypothesis states that fewer than 35% of adults in the country are physically inactive.
+
+b.
+$$
+\begin{cases}
+H_0: \pi \geq 0.35 \\
+H_a: \pi < 0.35
+\end{cases}
+$$
+
+c. A Type I error occurs if we reject $H_0$ and conclude that fewer than 35% of adults in the country are physically inactive when, in fact, the true proportion is 35% or greater ($H_0$ is true).
+
+d. A Type II error occurs if we fail to reject $H_0$ and therefore do not conclude that fewer than 35% of adults in the country are physically inactive when, in fact, the true proportion is less than 35% ($H_a$ is true).
+:::
+
+:::{#exm-social-media-news-error} 
+## Social Media as a Primary News Source (continued)
+
+Recall @exm-social-media-news-ppss where a university administration wanted to determine whether the true proportion of students who get most of their news from social media differs from 36% at their university.
+
+a. State the null and alternative hypotheses in words.
+b. Write the null and alternative hypotheses using mathematical notation.
+c. Describe what happens if a Type I error occurs in the context of the problem.
+d. Describe what happens if a Type II error occurs in the context of the problem.
+:::
+
+:::{.solution}
+a. The null hypothesis states that 36% of students at the university get most of their news from social media. The alternative hypothesis states that the proportion of students at the university who get most of their news from social media is different from 36%.
+
+b.
+$$
+\begin{cases}
+H_0: \pi = 0.36 \\
+H_a: \pi \ne 0.36
+\end{cases}
+$$
+
+c. A Type I error occurs if we reject $H_0$ and conclude that the proportion of students at the university who get most of their news from social media is different from 36% when, in fact, the true proportion is 36% ($H_0$ is true).
+
+d. A Type II error occurs if we fail to reject $H_0$ and therefore do not conclude that the proportion of students at the university who get most of their news from social media is different from 36% when, in fact, the true proportion is not 36% ($H_a$ is true).
+:::
+
+Notice that we use the phrase "fail to reject $H_0$" rather than "accept $H_0$." 
+This distinction is important. When $x_{obs}$ does not fall in the rejection 
+region, we are not concluding that $H_0$ is true — we are simply saying that our 
+sample did not provide sufficient evidence to reject it. Think of it like a jury 
+verdict: a verdict of "not guilty" does not mean the defendant is innocent — it 
+means the evidence presented was not strong enough to conclude guilt. In the same 
+way, failing to reject $H_0$ does not mean $H_0$ is correct — it means the sample 
+data were not strong enough to rule it out.
+
+This is largely because the hypothesis testing procedure we have set up is not 
+designed to control or measure the probability of a Type II error. Recall that we 
+only control the probability of a Type I error through our choice of significance 
+level $\alpha$. This means that if we were to claim that $H_0$ is true based on 
+our sample, we would be risking a Type II error — that is, failing to detect an 
+effect that actually exists — without knowing how large that risk is. For this 
+reason, the cautious and honest conclusion is to say that we fail to reject $H_0$, 
+not that we accept it.
+
+We now explore how Type I and Type II errors inform the decisions we make when testing a claim.
+
+### Making Decisions in Hypothesis Testing {#sec-making-decision}
+When making decisions in hypothesis testing, we want a procedure that keeps the 
+chance of making incorrect decisions as small as possible. A natural question is: how do we quantify this chance? In hypothesis testing, we do so by considering the probability of making a Type I error and the probability of making a Type II error.
+
+A challenge in hypothesis testing is that these two types of errors are connected. For a given testing situation, decreasing the probability of one type of error typically increases the probability of the other. Think of it like a security screening system: if you make the rules very strict so that no innocent person is ever flagged (reducing Type I errors), you risk letting more actual threats through undetected (increasing Type II errors). Similarly in hypothesis testing, if we make it very difficult to reject $H_0$, we reduce the chance of a Type I error but increase the chance of a Type II error.
+
+Because of this trade-off, statisticians adopt a clear strategy: they fix and control the probability of a Type I error at a low value. The reasoning is that rejecting a true 
+null hypothesis leads us to claim that an effect or difference exists when it does not. In many settings, such a false claim can have serious consequences. For example, concluding that a new drug is effective when it is not could lead to patients receiving a treatment that provides no benefit or even causes harm. For this reason, we need to evaluate the probability of a Type I error,
+$$
+P(\text{Type I error}) = P(\text{reject } H_0 \mid H_0 \text{ is true}).
+$$
+
+However, as you have seen the above examples, $H_0$ can include a range of values for the parameter, so it is not immediately clear at which value this probability should be computed. To begin, in the next section we will learn how to compute the probability of a Type I error at a single fixed value of the parameter, and from there we will discover which value makes the most sense to use in practice.
+
+
+### The Rejection Region and Type I Error Control {#sec-typeI-rejection}
+
+**What We Need to Compute a Type I Error Probability**
+
+To make a decision in a hypothesis test, we need a clear rule: for which values 
+of $X$ should we reject $H_0$? And how do we evaluate whether a given rule is 
+a good one? The answer lies in the probability of a Type I error:
+$$P(\text{Type I error}) = P(\text{Reject } H_0 \mid H_0 \text{ is true}).$$
+
+::: {.callout-note appearance="minimal"}
+**The Big Idea:** To choose a rejection region, we compute the probability of 
+a Type I error at the boundary value of $\pi$ in $H_0$, and we select the 
+largest rejection region that keeps this probability at or below $\alpha$. 
+Do not worry if these terms are unfamiliar — by the end of this section, 
+you will understand exactly what each part of this statement means and why it 
+makes sense.
+:::
+
+Computing this probability requires two things:
+
+(i) **A decision rule:** a specific rule, written in terms of $X$, that tells 
+us when to reject $H_0$.
+
+(ii) **A value of $\pi$:** since $H_0$ is true, $\pi$ must be one of the values 
+allowed by $H_0$.
+
+To elaborate on (ii), consider our three examples. In the YouTube example 
+(@exm-youtube-ppss), $H_0: \pi \leq 0.70$, so a Type I error can only occur 
+if the true value of $\pi$ is at most $0.70$; it could be $0.70$, $0.65$, or 
+any value in that range. In the Physical Inactivity example 
+(@exm-physical-inactivity-error), $H_0: \pi \geq 0.35$, so a Type I error can 
+only occur if the true value of $\pi$ is $0.35$ or larger. In the Social Media 
+News example (@exm-social-media-news-error), $H_0$ pins down a single value, 
+$\pi = 0.36$, so a Type I error can only occur if the true value of $\pi$ is 
+exactly $0.36$. In each case, the probability of a Type I error is computed at 
+a value of $\pi$ within the range allowed by $H_0$.
+
+**How the Alternative Hypothesis Determines the Rejection Region**
+
+Regarding (i), the decision rule should be consistent with the alternative 
+hypothesis. In other words, we reject $H_0$ when the observed value of $X$ is 
+in the direction that $H_a$ predicts. Here $\pi_0$ denotes the specific value 
+of $\pi$ stated in the hypotheses.
+
+- If $H_a: \pi > \pi_0$ (e.g., $H_a: \pi > 0.70$), then large values of $X$ 
+support $H_a$, so we reject $H_0$ when $X$ is large.
+- If $H_a: \pi < \pi_0$ (e.g., $H_a: \pi < 0.35$), then small values of $X$ 
+support $H_a$, so we reject $H_0$ when $X$ is small.
+- If $H_a: \pi \neq \pi_0$ (e.g., $H_a: \pi \neq 0.36$), then both unusually 
+large and unusually small values of $X$ support $H_a$, so we reject $H_0$ in 
+either extreme.
+
+::: {.callout-note appearance="minimal"}
+In each case, the decision rule takes the form:
+$$\text{Reject } H_0 \text{ if } 
+\begin{cases}
+X \geq c & \text{if } H_a: \pi > \pi_0 \\
+X \leq c & \text{if } H_a: \pi < \pi_0 \\
+X \leq c_1 \text{ or } X \geq c_2 & \text{if } H_a: \pi \ne \pi_0
+\end{cases}$$
+where $c$, $c_1$, and $c_2$ are cutoff values called **critical values**, and 
+the set of values of $X$ that leads to rejecting $H_0$ is called the 
+**rejection region**.
+:::
+
+As we will see, the critical values are chosen to control the probability of a 
+Type I error. For a given rejection region and a given value of $\pi$ in $H_0$, 
+we use the binomial distribution $X \sim \text{Binomial}(n, \pi)$ to compute 
+this probability.
+
+**Type I Error at Different Values of $\pi$**
+
+The following examples illustrate how to compute the probability of a Type I 
+error for various rejection regions and values of $\pi$ in $H_0$.
+
+:::{#exm-youtube-type1}
+## Daily YouTube Use Among Teens (continued)
+
+Recall @exm-youtube-ppss where a school district claimed that more than 70% of 
+students in its district use YouTube daily, and a random sample of $n = 20$ 
+students was selected. The null and alternative hypotheses are:
+$$
+\begin{cases}
+H_0: \pi \leq 0.70 \\
+H_a: \pi > 0.70
+\end{cases}
+$$
+
+Consider the rejection region: Reject $H_0$ if $X \geq 17$.
+
+For this rejection region, compute $P(\text{Type I error})$ when 
+
+a. $\pi = 0.60$
+b. $\pi = 0.65$
+c. $\pi = 0.70$.
+
+In each case, interpret the probability in the context of the problem.
+:::
+
+:::{.solution}
+a\. Since the sample size is $n = 20$ and $\pi = 0.60$, we have 
+$X \sim \text{Binomial}(20, 0.60)$. Using Rguroo's probability calculator, 
+we compute
+$$P(\text{Type I error}) = P(\text{Reject } H_0 \mid H_0 \text{ is true})$$
+$$= P(X \geq 17 \mid \pi = 0.60).$$
+
+Click to expand the box below to see how to calculate the probability of Type I error.
+
+:::{#calculating-typeI-error .callout-note appearance="simple" 
+collapse="true" icon="none" 
+title="![](Rguroo_Icons/R_circle_logo.svg){width=22px 
+style='vertical-align:middle;'} Calculating Type I Error Probability"}
+
+1. Open the **Probability-Simulation** toolbox in Rguroo.  
+2. From the [Probability]{.dpd} dropdown, select 
+[Probability Calculator --> Discrete]{.fun}.
+3. (Optional) In the `Calculation` textbox, type a name for the calculation 
+(e.g., `Type I error`).  
+4. In the [Distribution]{.dpd} dropdown, select [Binomial]{.fun}.
+5. In the [No. of Trials]{.des} textbox, enter [20]{.typein}.
+6. In the [Prob. of Success]{.des} textbox, enter [0.60]{.typein}.
+7. In the next dropdown menu, select [Above]{.dpd}, and in the textbox next 
+to it, enter [17]{.typein}.
+8. (Optional) Select the [Graph]{.des} checkbox to see a graph showing 
+calculation details.
+9. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) 
+to see the result.
+10. (Optional) In the ![Save as](Rguroo_Icons/save_as.png) textbox, enter 
+the name [TypeI_Error]{.typein} to save this calculation to your Rguroo 
+account.
+
+::: {.callout-tip .inner-callout appearance="simple" collapse="true" 
+icon="none" title="Click here to see the Rguroo dialog"}
+![Probability calculator dialog for computing Type I error probability
+](Rguroo_dialogs/Proportion_inference/Prob_Type_I_error_dialog.png){width=500px}
+:::
+:::
+
+@fig-youtube-type1a shows the Rguroo Probability Calculator output for 
+$X \sim \text{Binomial}(20, 0.60)$, giving 
+
+::: {.callout-note appearance="minimal"}
+$$P(\text{Type I error}) = P(X \geq 17\mid \pi=0.60) \approx 0.016.$$
+:::
+
+That is, if the true proportion of students in the district who use YouTube 
+daily is $\pi = 0.60$, and our decision rule is to reject $H_0$ whenever 
+$X \geq 17$ in a sample of $n = 20$ students, then there is only a $1.6\%$ 
+chance of committing a Type I error — that is, incorrectly concluding that 
+more than 70% of students in the district use YouTube daily.
+```{r,echo=FALSE}
+#| fig-cap: "Binomial distribution for $X \\sim \\text{Binomial}(n = 20, p = 0.60)$ showing the Type I error probability as the upper-tail area $P(X \\geq 17) = 0.016$."
+#| warning: FALSE
+#| label: fig-youtube-type1a
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Proportion_Inference/Prob_Type_I_Error_graph.png")
+```
+
+b\. To compute the probability of Type I error for the rejection region 
+$X \geq 17$ when $\pi = 0.65$, we follow the same steps as in 
+the [Youtube Example](#calculating-typeI-error), but enter [0.65]{.typein} in the 
+[Prob. of Success]{.des} box. The Rguroo output gives 
+
+::: {.callout-note appearance="minimal"}
+$$P(\text{Type I error}) = P(X \geq 17\mid\pi=0.65) \approx 0.044.$$
+:::
+
+That is, if the true proportion of students in the district who use YouTube 
+daily is $\pi = 0.65$, and our decision rule is to reject $H_0$ whenever 
+$X \geq 17$ in a sample of $n = 20$ students, then there is approximately a 
+$4.4\%$ chance of committing a Type I error — that is, incorrectly concluding 
+that more than 70% of students in the district use YouTube daily.
+
+c\. Entering [0.70]{.typein} in the [Prob. of Success]{.des} box gives
+
+::: {.callout-note appearance="minimal"}
+$$P(\text{Type I error}) = P(X \geq 17\mid\pi=0.70) \approx 0.107.$$
+:::
+
+That is, if the true proportion of students in the district who use YouTube 
+daily is $\pi = 0.70$, and our decision rule is to reject $H_0$ whenever 
+$X \geq 17$ in a sample of $n = 20$ students, then there is approximately a 
+$10.7\%$ chance of committing a Type I error — that is, incorrectly concluding 
+that more than 70% of students in the district use YouTube daily.
+:::
+
+:::{#exm-physical-inactivity-type1}
+## Physical Inactivity Among Adults (continued)
+
+Recall @exm-physical-inactivity-ppss where a national health agency claimed 
+that fewer than 35% of adults in its country are physically inactive, and a 
+random sample of $n = 50$ adults was selected. The null and alternative 
+hypotheses are:
+$$
+\begin{cases}
+H_0: \pi \geq 0.35 \\
+H_a: \pi < 0.35
+\end{cases}
+$$
+
+Consider the rejection region: Reject $H_0$ if $X \leq 13$.
+
+For this rejection region, compute $P(\text{Type I error})$ when 
+
+a. $\pi = 0.35$ 
+b. $\pi = 0.40$
+c. $\pi = 0.50$.
+
+In each case, interpret the probability in the context of the problem.
+:::
+
+:::{.solution}
+a\. Since the sample size is $n = 50$ and $\pi = 0.35$, we have 
+$X \sim \text{Binomial}(50, 0.35)$. Using Rguroo's probability calculator, 
+we compute
+$$P(\text{Type I error}) = P(\text{Reject } H_0 \mid H_0 \text{ is true})$$
+$$= P(X \leq 13 \mid \pi = 0.35).$$
+
+Click to expand the box below to see how to calculate the probability of 
+Type I error.
+
+:::{#calculating-typeI-errorb .callout-note appearance="simple" 
+collapse="true" icon="none" 
+title="![](Rguroo_Icons/R_circle_logo.svg){width=22px 
+style='vertical-align:middle;'} Calculating Type I Error Probability"}
+
+1. Open the **Probability-Simulation** toolbox in Rguroo.  
+2. From the [Probability]{.dpd} dropdown, select 
+[Probability Calculator --> Discrete]{.fun}.
+3. (Optional) In the `Calculation` textbox, type a name for the calculation 
+(e.g., `Type I error`).  
+4. In the [Distribution]{.dpd} dropdown, select [Binomial]{.fun}.
+5. In the [No. of Trials]{.des} textbox, enter [50]{.typein}.
+6. In the [Prob. of Success]{.des} textbox, enter [0.35]{.typein}.
+7. In the next dropdown menu, select [Below]{.dpd}, and in the textbox next 
+to it, enter [13]{.typein}.
+8. (Optional) Select the [Graph]{.des} checkbox to see a graph showing 
+calculation details.
+9. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) 
+to see the result.
+10. (Optional) In the ![Save as](Rguroo_Icons/save_as.png) textbox, enter 
+the name [Type I Error Inactivity]{.typein} to save this calculation to your 
+Rguroo account.
+
+::: {.callout-tip .inner-callout appearance="simple" collapse="true" 
+icon="none" title="Click here to see the Rguroo dialog"}
+![Probability calculator dialog for computing Type I error probability
+](Rguroo_dialogs/Proportion_inference/TypeI_Error_Inactivity_dialog.png){width=500px}
+:::
+:::
+
+@fig-youtube-type1b shows the Rguroo Probability Calculator output for 
+$X \sim \text{Binomial}(50, 0.35)$, giving 
+
+::: {.callout-note appearance="minimal"}
+$$P(\text{Type I error}) = P(X \leq 13\mid \pi=0.35) \approx 0.1163.$$
+:::
+
+That is, if the true proportion of inactive adults in the population is 
+$\pi = 0.35$, and our decision rule is to reject $H_0$ whenever $X \leq 13$ 
+in a sample of $n = 50$ adults, then there is approximately an $11.63\%$ chance 
+of committing a Type I error — that is, incorrectly concluding that fewer than 
+35% of adults in the population are physically inactive.
+```{r,echo=FALSE}
+#| fig-cap: "Binomial distribution for $X \\sim \\text{Binomial}(n = 50, p = 0.35)$ showing the Type I error probability as the lower-tail area $P(X \\leq 13) = 0.1163$."
+#| warning: FALSE
+#| label: fig-youtube-type1b
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Proportion_Inference/Type I Error Inactivity_graph.png")
+```
+
+b\. Entering [0.40]{.typein} in the [Prob. of Success]{.des} box gives
+
+::: {.callout-note appearance="minimal"}
+$$P(\text{Type I error}) = P(X \leq 13\mid\pi=0.40) \approx 0.028.$$
+:::
+
+That is, if the true proportion of inactive adults in the population is 
+$\pi = 0.40$, and our decision rule is to reject $H_0$ whenever $X \leq 13$ 
+in a sample of $n = 50$ adults, then there is approximately a $2.8\%$ chance 
+of committing a Type I error — that is, incorrectly concluding that fewer than 
+35% of adults in the population are physically inactive.
+
+c\. Entering [0.50]{.typein} in the [Prob. of Success]{.des} box gives
+
+::: {.callout-note appearance="minimal"}
+$$P(\text{Type I error}) = P(X \leq 13\mid\pi=0.50) \approx 0.00046.$$
+:::
+
+That is, if the true proportion of inactive adults in the population is 
+$\pi = 0.50$, and our decision rule is to reject $H_0$ whenever $X \leq 13$ 
+in a sample of $n = 50$ adults, then there is approximately a $0.046\%$ chance 
+of committing a Type I error — that is, incorrectly concluding that fewer than 
+35% of adults in the population are physically inactive.
+:::
+
+:::{#exm-social-media-news-type1}
+## Social Media as a Primary News Source (continued)
+
+Recall @exm-social-media-news-ppss where a university administration wanted 
+to determine whether the proportion of students who get most of their news from 
+social media differs from 36%, and a random sample of $n = 15$ students was 
+selected. The null and alternative hypotheses are:
+$$
+\begin{cases}
+H_0: \pi = 0.36 \\
+H_a: \pi \ne 0.36
+\end{cases}
+$$
+
+Note that the two-sided case is slightly more complicated than the one-sided 
+cases above: since the alternative hypothesis claims that $\pi$ differs from 
+$0.36$ in either direction, evidence against $H_0$ can come from either tail 
+of the distribution.
+
+Consider the rejection region: Reject $H_0$ if $X \leq 3$ or $X \geq 8$.
+
+For this rejection region, compute $P(\text{Type I error})$ when $\pi = 0.36$.
+:::
+
+:::{.solution}
+Since $H_0$ specifies only a single value $\pi = 0.36$, we have 
+$X \sim \text{Binomial}(15, 0.36)$. The probability of Type I error is
+$$P(\text{Type I error}) = P(\text{Reject } H_0 \mid H_0 \text{ is true})$$
+$$= P(X \leq 3 \text{ or } X \geq 8 \mid \pi = 0.36).$$
+
+Click to expand the box below to see how to calculate the probability of 
+Type I error.
+
+:::{#calculating-typeI-errorc .callout-note appearance="simple" 
+collapse="true" icon="none" 
+title="![](Rguroo_Icons/R_circle_logo.svg){width=22px 
+style='vertical-align:middle;'} Calculating Type I Error Probability"}
+
+1. Open the **Probability-Simulation** toolbox in Rguroo.  
+2. From the [Probability]{.dpd} dropdown, select 
+[Probability Calculator --> Discrete]{.fun}.
+3. (Optional) In the `Calculation` textbox, type a name for the calculation 
+(e.g., `Type I error`).  
+4. In the [Distribution]{.dpd} dropdown, select [Binomial]{.fun}.
+5. In the [No. of Trials]{.des} textbox, enter [15]{.typein}.
+6. In the [Prob. of Success]{.des} textbox, enter [0.36]{.typein}.
+7. In the next dropdown menu, select [Outside]{.dpd}, and in the textboxes 
+next to it, enter [3]{.typein} and [8]{.typein}.
+8. (Optional) Select the [Graph]{.des} checkbox to see a graph showing 
+calculation details.
+9. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) 
+to see the result.
+10. (Optional) In the ![Save as](Rguroo_Icons/save_as.png) textbox, enter 
+the name [Type I Error Social]{.typein} to save this calculation to your 
+Rguroo account.
+
+::: {.callout-tip .inner-callout appearance="simple" collapse="true" 
+icon="none" title="Click here to see the Rguroo dialog"}
+![Probability calculator dialog for computing Type I error probability
+](Rguroo_dialogs/Proportion_inference/TypeI_Error_social_dialog.png){width=500px}
+:::
+:::
+
+@fig-youtube-type1c shows the Rguroo Probability Calculator output for 
+$X \sim \text{Binomial}(15, 0.36)$, giving 
+
+::: {.callout-note appearance="minimal"}
+$$P(\text{Type I error}) = P(X \leq 3 \text{ or } X \geq 8 \mid \pi = 0.36) 
+\approx 0.2833.$$
+:::
+
+That is, if the true proportion of students who use social media as their 
+primary news source is $\pi = 0.36$, and our decision rule is to reject $H_0$ 
+whenever $X \leq 3$ or $X \geq 8$ in a sample of $n = 15$ students, then there 
+is approximately a $28.33\%$ chance of committing a Type I error — that is, 
+incorrectly concluding that the true proportion of students who use social media 
+as their primary news source differs from 0.36.
+```{r,echo=FALSE}
+#| fig-cap: "Binomial distribution for $X \\sim \\text{Binomial}(n = 15, p = 0.36)$ showing the Type I error probability as the two-tail areas $P(X \\leq 3 \\text{ or } X \\geq 8) = 0.2833$."
+#| warning: FALSE
+#| label: fig-youtube-type1c
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Proportion_Inference/Type I Error social_graph.png")
+```
+:::
+
+**Why the Boundary Value Matters**
+
+Now that we have computed the probability of a Type I error at various values 
+of $\pi$, let us look back at what we observed in our examples.
+
+We begin with the two-sided case. In the Social Media News example, $H_0$ 
+specifies only a single value, $\pi = 0.36$, so there is only one possible 
+value at which the probability of a Type I error can be computed. There is 
+nothing further to compare in this case.
+
+For the one-sided cases, however, there are many values of $\pi$ allowed by 
+$H_0$, and we computed the probability of a Type I error at several of them. 
+You may have noticed a pattern: in both the YouTube example and the Physical 
+Inactivity example, the probability of a Type I error was largest at the value 
+of $\pi$ where $H_0$ and $H_a$ meet. For the YouTube example, this is 
+$\pi = 0.70$, and for the Physical Inactivity example, this is $\pi = 0.35$. 
+We call this the **boundary value** of $\pi$ — it is the value that sits at 
+the border between what $H_0$ claims and what $H_a$ claims. Is it a coincidence 
+that the probability of a Type I error is largest at the boundary value?
+
+It turns out that this is not a coincidence at all.
+
+::: {.callout-note}
+## Key Result: Maximum Type I Error Occurs at the Boundary Value
+For any fixed decision rule, the probability of a Type I error is largest when 
+$\pi$ equals the boundary value of $H_0$. This holds regardless of the sample 
+size or the specific rejection region used.
+:::
+
+@fig-type-range confirms this result for our two one-sided examples, showing 
+the probability of a Type I error across a range of values of $\pi$ in $H_0$, 
+for three different decision rules in each case.
+
+In panel (a), for the YouTube example, the null hypothesis is 
+$H_0: \pi \leq 0.70$, so the boundary value is $\pi = 0.70$. The three curves 
+correspond to the decision rules $X \geq 16$, $X \geq 17$, and $X \geq 18$. 
+For all three rules, the probability of a Type I error increases as $\pi$ gets 
+closer to the boundary value of $0.70$, and reaches its maximum at $\pi = 0.70$. 
+In panel (b), for the Physical Inactivity example, the null hypothesis is 
+$H_0: \pi \geq 0.35$, so the boundary value is $\pi = 0.35$. The three curves 
+correspond to the decision rules $X \leq 11$, $X \leq 12$, and $X \leq 13$. 
+Again, for all three rules, the probability of a Type I error is largest at the 
+boundary value $\pi = 0.35$ and decreases as $\pi$ moves away from it. 
+
+Notice also that the horizontal dashed red line in each panel is drawn at 
+$0.05$. This will become important shortly, as it represents a commonly chosen 
+upper bound for the probability of a Type I error.
+```{r,echo=FALSE}
+#| fig-cap: 'Type I error probabilities for binomial tests as a function of $\pi$. Panel (a) shows $X \sim \text{Binomial}(20, \pi)$ with $P(X \geq 16, 17, 18)$; panel (b) shows $X \sim \text{Binomial}(50, \pi)$ with $P(X \leq 11, 12, 13)$. The red dashed line marks $\alpha = 0.05$. The gray dotted line shows the boundary of $H_0$.'
+#| fig-alt: 'Two side-by-side line graphs showing how Type I error changes with the true proportion π. In panel (a), for a binomial model with n = 20, three curves show P(X ≥ 16), P(X ≥ 17), and P(X ≥ 18) increasing as π increases from 0 to 0.70, with values up to about 0.25. In panel (b), for n = 50, three curves show P(X ≤ 11), P(X ≤ 12), and P(X ≤ 13) decreasing as π increases from 0.35 to 1, with values up to about 0.12. A horizontal red dashed line at 0.05 marks the significance level in both plots.'
+#| warning: FALSE
+#| label: fig-type-range
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Proportion_Inference/TypeI_error_range.png")
+```
+
+**Choosing a Rejection Region for a Given $\alpha$**
+
+As noted earlier in @sec-making-decision, statisticians control the probability 
+of a Type I error when making decisions in hypothesis testing. This probability, 
+however, varies depending on which value of $\pi$ in the null hypothesis we 
+consider. A key finding from our examples is that the maximum probability of a 
+Type I error always occurs at the boundary value of $\pi$. This is an important 
+result: it means that if we control the probability of a Type I error at the 
+boundary value, we are automatically controlling it for all other values of $\pi$ 
+in the null hypothesis. This is the conservative and safe approach that 
+statisticians adopt.
+
+The maximum probability of a Type I error — that is, the probability of a Type I 
+error evaluated at the boundary value of $\pi$ — is called the **significance 
+level** of the test, and is denoted by $\alpha$ (the Greek letter alpha). It 
+represents the highest tolerable chance of making a Type I error. The most 
+commonly used value is $\alpha = 0.05$, meaning we are willing to tolerate at 
+most a 5% chance of incorrectly rejecting a true null hypothesis. Values of 
+$\alpha = 0.10$ and $\alpha = 0.01$ are also used. The smaller the significance 
+level, the more conservative we are — that is, the less willing we are to risk 
+a Type I error.
+
+A second key observation from @fig-type-range is that the probability of a 
+Type I error depends on the decision rule we choose. This is important for our 
+decision making: it means we have control over the probability of a Type I error 
+by carefully selecting our decision rule. Specifically, our goal is to choose a 
+decision rule whose probability of a Type I error at the boundary value does not 
+exceed our chosen significance level $\alpha$. In other words, looking at 
+@fig-type-range, we want the curve for our chosen decision rule to stay at or 
+below the horizontal red dashed line at the boundary value.
+
+For the YouTube example, panel (a) of @fig-type-range shows that the decision 
+rule $X \geq 18$ has a probability of Type I error at the boundary value 
+$\pi = 0.70$ that is less than $0.05$, while the decision rule $X \geq 17$ 
+exceeds $0.05$ at the boundary. Therefore, at significance level $\alpha = 0.05$, 
+we choose the rejection region $X \geq 18$. This means that if we observe 18 or 
+more students in our sample of $n = 20$ who report daily YouTube use, we reject 
+$H_0$ in favor of $H_a: \pi > 0.70$.
+
+You might reasonably ask: why not also reject $H_0$ when $X = 17$ or $X = 16$, 
+since these correspond to sample proportions of $\hat{p} = 0.85$ and 
+$\hat{p} = 0.80$, both of which are also larger than $0.70$? The answer lies in 
+our significance level criterion. Even though these sample proportions are greater 
+than $0.70$, the decision rules $X \geq 16$ and $X \geq 17$ produce a probability 
+of Type I error at the boundary value $\pi = 0.70$ that exceeds $\alpha = 0.05$, 
+as seen in panel (a) of @fig-type-range. They do not meet our significance level 
+criterion, so we do not use them.
+
+You might then ask the opposite question: why not use an even stricter decision 
+rule, such as $X \geq 19$? The answer brings us back to the trade-off between 
+Type I and Type II errors. Recall that when the probability of a Type I error 
+decreases, the probability of a Type II error increases. By requiring $X \geq 19$ 
+instead of $X \geq 18$, we make it harder to reject $H_0$, increasing our chance 
+of a Type II error. For this reason, among all decision rules that satisfy our 
+significance level criterion, we always choose the one that gives us the largest 
+rejection region — that is, the rule that rejects $H_0$ for the most values of 
+$X$ while still keeping the probability of a Type I error at or below $\alpha$. 
+This ensures that we minimize the probability of a Type II error while still 
+controlling the probability of a Type I error at our chosen significance level.
+
+The same reasoning applies to the Physical Inactivity example. Panel (b) of 
+@fig-type-range shows that the decision rule $X \leq 11$ has a probability of 
+Type I error at the boundary value $\pi = 0.35$ that is less than $0.05$, while 
+the decision rules $X \leq 12$ and $X \leq 13$ exceed $0.05$ at the boundary, 
+and $X \leq 10$ would satisfy the criterion but at the cost of a larger Type II 
+error. Therefore, $X \leq 11$ is the optimal choice at $\alpha = 0.05$ — it is 
+the largest rejection region that keeps the probability of a Type I error at or 
+below $\alpha$ while minimizing the probability of a Type II error. This means 
+that if we observe 11 or fewer inactive adults in our sample of $n = 50$, we 
+reject $H_0$ in favor of $H_a: \pi < 0.35$.
+
+The decision rule for two-sided tests follows the same logic, but since the 
+rejection region has the more complex form $X \leq c_1$ or $X \geq c_2$, we 
+will rely on software to determine the appropriate values of $c_1$ and $c_2$ 
+for us.
+
+::: {.callout-note}
+## Choosing the Rejection Region
+At significance level $\alpha$, the rejection region is the largest set of 
+values of $X$ consistent with $H_a$ such that the probability of a Type I 
+error at the boundary value of $\pi$ in $H_0$ does not exceed $\alpha$. 
+Specifically:
+
+- If $H_a: \pi > \pi_0$, choose the largest $c$ such that 
+$P(X \geq c \mid \pi = \pi_0) \leq \alpha$.
+- If $H_a: \pi < \pi_0$, choose the smallest $c$ such that 
+$P(X \leq c \mid \pi = \pi_0) \leq \alpha$.
+- If $H_a: \pi \neq \pi_0$, choose $c_1$ and $c_2$ such that 
+$P(X \leq c_1 \mid \pi = \pi_0) + P(X \geq c_2 \mid \pi = \pi_0) \leq \alpha$, 
+with $\alpha/2$ allocated to each tail.
+:::
+
+**Using Inverse Probability to Find the Rejection Region**
+
+While we could determine the rejection region that satisfies our significance 
+level by trial and error — testing different decision rules one at a time as we 
+did above — there is a more direct approach. We can use what is called an 
+**inverse probability function**. Rather than providing a value of $X$ and 
+asking for the corresponding probability, an inverse probability function works 
+in reverse: we provide a probability and it returns the corresponding value of 
+$X$.
+
+To find the rejection region, we use the binomial distribution with the boundary 
+value of $\pi$ in $H_0$ as the probability of success and $n$ as the number of 
+trials, and we provide the significance level $\alpha$ as the probability. The 
+inverse probability function then returns the value of $X$ that defines our 
+rejection region. Below, we show how this is done in Rguroo using its built-in 
+probability calculator.
+
+::: {#exm-youtube-rejection}
+## YouTube Use: Finding the Rejection Region
+
+In the YouTube Use example (@exm-youtube-ppss), we are testing 
+$H_0: \pi \leq 0.70$ versus $H_a: \pi > 0.70$, where $\pi$ is the true 
+proportion of students in the district who use YouTube daily. Using a sample 
+of $n = 20$ students and a significance level of $\alpha = 0.05$, find the 
+rejection region for this test.
+:::
+
+:::{.solution}
+Since the alternative hypothesis is $H_a: \pi > 0.70$, large values of $X$ 
+support $H_a$, so we are looking for a rejection region in the upper tail of 
+the binomial distribution. We use Rguroo's Discrete Distributions Probability 
+Calculator with the following settings (see @fig-youtube-rejection-dialog):
+
+- Open the **Probability-Simulation** toolbox.
+- Select [Probability $\Rightarrow$ Values]{.des} to use the inverse probability 
+function.
+- In the [Distribution]{.dpd} dropdown, set the distribution to _Binomial_.
+- Set the [No. of Trials]{.des} to $n = 20$ and the [Prob. of Success]{.des} 
+to $0.70$, which is the boundary value of $\pi$ in $H_0$.
+- From the dropdown, select [Upper Tail]{.dpd} and enter [$0.05$]{.typein} as 
+the significance level $\alpha$.
+- Select the checkbox [Graph]{.des} to see a detailed output.
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo Discrete Distributions Probability Calculator configured for the YouTube example with Binomial distribution, 20 trials, probability of success 0.70, upper tail selected, and significance level 0.05 entered."
+#| warning: FALSE
+#| label: fig-youtube-rejection-dialog
+#| fig-cap: "Rguroo Probability Calculator Settings for the YouTube Rejection Region Example"
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_dialogs/Proportion_inference/youtube-rejection-dialog.png")
+```
+
+The output, shown in @fig-youtube-rejection, gives
+$$P(X \geq 17) = 0.1071 \geq 0.05 \quad \text{and} \quad 
+P(X \geq 18) = 0.03548 \leq 0.05.$$
+
+This means that the decision rule $X \geq 17$ exceeds our significance level, 
+while the decision rule $X \geq 18$ satisfies it. Therefore, the rejection 
+region at significance level $\alpha = 0.05$ is 
+$$X \geq 18.$$
+That is, if we observe 18 or more students in our sample of $n = 20$ who report 
+daily YouTube use, we reject $H_0$ in favor of $H_a: \pi > 0.70$.
+```{r,echo=FALSE}
+#| fig-alt: "Binomial distribution histogram for n = 20 and p = 0.70, with the rejection region X greater than or equal to 18 highlighted in gold, showing that P(X greater than or equal to 17) = 0.1071 exceeds 0.05 and P(X greater than or equal to 18) = 0.03548 does not."
+#| warning: FALSE
+#| label: fig-youtube-rejection
+#| fig-cap: "Rguroo Probability Calculator Output for the YouTube Rejection Region Example"
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Proportion_Inference/YouTube_rejection.png")
+```
+:::
+
+::: {#exm-inactivity-rejection}
+## Physical Inactivity: Finding the Rejection Region
+
+In the Physical Inactivity example (@exm-physical-inactivity-error), we are 
+testing $H_0: \pi \geq 0.35$ versus $H_a: \pi < 0.35$, where $\pi$ is the 
+true proportion of adults in the population who are physically inactive. Using 
+a sample of $n = 50$ adults and a significance level of $\alpha = 0.05$, find 
+the rejection region for this test.
+:::
+
+:::{.solution}
+Since the alternative hypothesis is $H_a: \pi < 0.35$, small values of $X$ 
+support $H_a$, so we are looking for a rejection region in the lower tail of 
+the binomial distribution. We use Rguroo's Discrete Distributions Probability 
+Calculator with the following settings (see @fig-inactivity-rejection-dialog), 
+changing only the settings that differ from @exm-youtube-rejection:
+
+- Set the [No. of Trials]{.des} to $n = 50$ and the [Prob. of Success]{.des} 
+to $0.35$, which is the boundary value of $\pi$ in $H_0$.
+- From the dropdown, select [Lower Tail]{.dpd} and enter [$0.05$]{.typein} as 
+the significance level $\alpha$.
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo Discrete Distributions Probability Calculator configured for the Physical Inactivity example with Binomial distribution, 50 trials, probability of success 0.35, lower tail selected, and significance level 0.05 entered."
+#| warning: FALSE
+#| label: fig-inactivity-rejection-dialog
+#| fig-cap: "Rguroo Probability Calculator Settings for the Physical Inactivity Rejection Region Example"
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_dialogs/Proportion_inference/inactive-rejection-dialog.png")
+```
+
+The output, shown in @fig-inactivity-rejection, gives
+$$P(X \leq 12) = 0.06613 \geq 0.05 \quad \text{and} \quad 
+P(X \leq 11) = 0.03423 \leq 0.05.$$
+
+This means that the decision rule $X \leq 12$ exceeds our significance level, 
+while the decision rule $X \leq 11$ satisfies it. Therefore, the rejection 
+region at significance level $\alpha = 0.05$ is 
+$$X \leq 11.$$
+That is, if we observe 11 or fewer inactive adults in our sample of $n = 50$, 
+we reject $H_0$ in favor of $H_a: \pi < 0.35$.
+```{r,echo=FALSE}
+#| fig-alt: "Binomial distribution histogram for n = 50 and p = 0.35, with the rejection region X less than or equal to 11 highlighted in gold, showing that P(X less than or equal to 12) = 0.06613 exceeds 0.05 and P(X less than or equal to 11) = 0.03423 does not."
+#| warning: FALSE
+#| label: fig-inactivity-rejection
+#| fig-cap: "Rguroo Probability Calculator Output for the Physical Inactivity Rejection Region Example"
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Proportion_Inference/inactive_rejection.png")
+```
+:::
+
+::: {#exm-social-rejection}
+## Social Media as a Primary News Source: Finding the Rejection Region
+
+In the Social Media as a Primary News Source example 
+(@exm-social-media-news-error), we are testing $H_0: \pi = 0.36$ versus 
+$H_a: \pi \neq 0.36$, where $\pi$ is the true proportion of students who use 
+social media as their primary news source. Using a sample of $n = 15$ students 
+and a significance level of $\alpha = 0.05$, find the rejection region for 
+this test.
+:::
+
+:::{.solution}
+Since the alternative hypothesis is $H_a: \pi \neq 0.36$, both unusually small 
+and unusually large values of $X$ support $H_a$, so we are looking for a 
+two-sided rejection region. For a two-sided test at significance level 
+$\alpha = 0.05$, we split the significance level equally between the two tails, 
+allocating $0.025$ to each tail. We use Rguroo's Discrete Distributions 
+Probability Calculator with the following settings 
+(see @fig-social-rejection-dialog), changing only the settings that differ 
+from @exm-youtube-rejection:
+
+- Set the [No. of Trials]{.des} to $n = 15$ and the [Prob. of Success]{.des} 
+to $0.36$, which is the value of $\pi$ specified by $H_0$.
+- From the dropdown, select [Outside Tails]{.dpd} and enter [$0.025$]{.typein} 
+in each tail box.
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo Discrete Distributions Probability Calculator configured for the Social Media example with Binomial distribution, 15 trials, probability of success 0.36, Outside Tails selected, and 0.025 entered in each tail."
+#| warning: FALSE
+#| label: fig-social-rejection-dialog
+#| fig-cap: "Rguroo Probability Calculator Settings for the Social Media Rejection Region Example"
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_dialogs/Proportion_inference/social-rejection-dialog.png")
+```
+
+The output, shown in @fig-social-rejection, gives
+$$P(X \leq 2) + P(X \geq 9) = 0.1032 \geq 0.05,$$
+with the additional note that
+$$P(X \leq 2) = 0.05281, \quad P(X \geq 9) = 0.05038,$$
+$$P(X \leq 1) = 0.01168, \quad P(X \geq 10) = 0.01545.$$
+
+This means that the decision rule $X \leq 2$ or $X \geq 9$ exceeds our 
+significance level of $\alpha = 0.05$. Moving one step further in each tail, 
+the decision rule $X \leq 1$ or $X \geq 10$ satisfies our significance level 
+since $P(X \leq 1) + P(X \geq 10) = 0.01168 + 0.01545 = 0.02713 \leq 0.05$. 
+Therefore, the rejection region at significance level $\alpha = 0.05$ is
+$$X \leq 1 \quad \text{or} \quad X \geq 10.$$
+That is, if we observe 1 or fewer, or 10 or more students in our sample of 
+$n = 15$ who use social media as their primary news source, we reject $H_0$ 
+in favor of $H_a: \pi \neq 0.36$.
+```{r,echo=FALSE}
+#| fig-alt: "Binomial distribution histogram for n = 15 and p = 0.36, with the rejection region X less than or equal to 2 and X greater than or equal to 9 highlighted in gold, showing that P(X less than or equal to 2) plus P(X greater than or equal to 9) = 0.1032 exceeds 0.05, with additional tail probabilities noted."
+#| warning: FALSE
+#| label: fig-social-rejection
+#| fig-cap: "Rguroo Probability Calculator Output for the Social Media Rejection Region Example"
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Proportion_Inference/social_rejection.png")
+```
+:::
+
+Now that we have determined the rejection regions for our three examples, we 
+can use them to make decisions based on observed sample data. Recall that the 
+decision rule is simple: if $x_{obs}$ falls in the rejection region, we reject 
+$H_0$; otherwise, we fail to reject $H_0$.
+
+:::{#exm-youtube-decision}
+## YouTube Use: Making a Decision
+
+In the YouTube Use example (@exm-youtube-ppss), we are testing 
+$H_0: \pi \leq 0.70$ versus $H_a: \pi > 0.70$, where $\pi$ is the true 
+proportion of students in the district who use YouTube daily, using a sample 
+of $n = 20$ students and a significance level of $\alpha = 0.05$.
+
+a. Suppose the observed number of students who report daily YouTube use is 
+$x_{obs} = 17$. Make a decision and interpret it in the context of the problem.
+b. Suppose instead that $x_{obs} = 19$. Make a decision and interpret it in 
+the context of the problem.
+:::
+
+:::{.solution}
+From @exm-youtube-rejection, the rejection region at significance level 
+$\alpha = 0.05$ is $X \geq 18$.
+
+a. Since $x_{obs} = 17 < 18$, the observed value does not fall in the rejection 
+region. Therefore, we **fail to reject $H_0$**. The data do not provide 
+sufficient evidence at the 5% significance level to conclude that more than 
+70% of students in the district use YouTube daily.
+
+b. Since $x_{obs} = 19 \geq 18$, the observed value falls in the rejection 
+region. Therefore, we **reject $H_0$** in favor of $H_a: \pi > 0.70$. The 
+data provide sufficient evidence at the 5% significance level to conclude that 
+more than 70% of students in the district use YouTube daily.
+:::
+
+:::{#exm-inactivity-decision}
+## Physical Inactivity: Making a Decision
+
+In the Physical Inactivity example (@exm-physical-inactivity-ppss), we are 
+testing $H_0: \pi \geq 0.35$ versus $H_a: \pi < 0.35$, where $\pi$ is the 
+true proportion of adults in the population who are physically inactive, using 
+a sample of $n = 50$ adults and a significance level of $\alpha = 0.05$.
+
+a. Suppose the observed number of inactive adults is $x_{obs} = 14$. Make a 
+decision and interpret it in the context of the problem.
+b. Suppose instead that $x_{obs} = 10$. Make a decision and interpret it in 
+the context of the problem.
+:::
+
+:::{.solution}
+From @exm-inactivity-rejection, the rejection region at significance level 
+$\alpha = 0.05$ is $X \leq 11$.
+
+a. Since $x_{obs} = 14 > 11$, the observed value does not fall in the rejection 
+region. Therefore, we **fail to reject $H_0$**. The data do not provide 
+sufficient evidence at the 5% significance level to conclude that fewer than 
+35% of adults in the population are physically inactive.
+
+b. Since $x_{obs} = 10 \leq 11$, the observed value falls in the rejection 
+region. Therefore, we **reject $H_0$** in favor of $H_a: \pi < 0.35$. The 
+data provide sufficient evidence at the 5% significance level to conclude that 
+fewer than 35% of adults in the population are physically inactive.
+:::
+
+:::{#exm-social-decision}
+## Social Media as a Primary News Source: Making a Decision
+
+In the Social Media as a Primary News Source example 
+(@exm-social-media-news-ppss), we are testing $H_0: \pi = 0.36$ versus 
+$H_a: \pi \neq 0.36$, where $\pi$ is the true proportion of students who use 
+social media as their primary news source, using a sample of $n = 15$ students 
+and a significance level of $\alpha = 0.05$.
+
+a. Suppose the observed number of students who use social media as their 
+primary news source is $x_{obs} = 7$. Make a decision and interpret it in the 
+context of the problem.
+b. Suppose instead that $x_{obs} = 10$. Make a decision and interpret it in 
+the context of the problem.
+:::
+
+:::{.solution}
+From @exm-social-rejection, the rejection region at significance level 
+$\alpha = 0.05$ is $X \leq 1$ or $X \geq 10$.
+
+a. Since $x_{obs} = 7$ does not satisfy $X \leq 1$ or $X \geq 10$, the 
+observed value does not fall in the rejection region. Therefore, we **fail to 
+reject $H_0$**. The data do not provide sufficient evidence at the 5% 
+significance level to conclude that the proportion of students who use social 
+media as their primary news source differs from 0.36.
+
+b. Since $x_{obs} = 10 \geq 10$, the observed value falls in the rejection 
+region. Therefore, we **reject $H_0$** in favor of $H_a: \pi \neq 0.36$. The 
+data provide sufficient evidence at the 5% significance level to conclude that 
+the proportion of students who use social media as their primary news source 
+differs from 0.36.
+:::
+
+::: {.callout-note}
+## Section Summary
+
+- The **rejection region** is the set of values of $X$ for which we reject 
+$H_0$. Its form depends on the direction of $H_a$.
+- The **probability of a Type I error** is computed at a value of $\pi$ 
+allowed by $H_0$, using the binomial distribution.
+- For one-sided tests, the **maximum** probability of a Type I error always 
+occurs at the **boundary value** of $\pi$ in $H_0$.
+- The **significance level** $\alpha$ is the maximum tolerable probability of 
+a Type I error, evaluated at the boundary value.
+- We choose the **largest rejection region** whose Type I error probability at 
+the boundary does not exceed $\alpha$, thereby minimizing the chance of a 
+Type II error.
+- Once the rejection region is determined, we compare the observed value 
+$x_{obs}$ to it: if $x_{obs}$ falls in the rejection region we reject $H_0$; 
+otherwise we fail to reject $H_0$. Failing to reject $H_0$ does not mean 
+$H_0$ is true — it simply means the data did not provide sufficient evidence 
+to reject it.
+:::
+
+### The p-Value Approach to Hypothesis Testing {#sec-pvalue}
+
+In the previous section, we determined the rejection region by finding the values 
+of $X$ — the number of observations in the sample with the characteristic of 
+interest — that keep the probability of a Type I error at or below the significance 
+level $\alpha$, and we made our decision by checking whether $x_{obs}$ falls in 
+the rejection region. In this section, we introduce an alternative approach — the 
+**p-value approach** — which is widely used in practice and is the default output 
+of most statistical software, including Rguroo.
+
+In the p-value approach, we calculate a probability using the observed value 
+$x_{obs}$, called the **p-value**. The p-value tells us how unusual the observed 
+sample result is under the assumption that the null hypothesis $H_0$ is true. 
+Smaller p-values indicate stronger evidence against $H_0$ and, therefore, stronger 
+support for the alternative hypothesis $H_a$. We use the p-value to decide whether 
+to reject or fail to reject the null hypothesis at a given significance level 
+$\alpha$.
+
+**Defining the p-Value**
+
+Let $X$ denote the number of observations in the sample with the characteristic 
+of interest, and let $x_{obs}$ denote its observed value. We define the 
+**$H_a$ support** as the set of values of $X$ that are at least as supportive 
+of $H_a$ as the observed value $x_{obs}$.
+
+::: {.callout-note appearance="minimal"}
+
+$H_a$ support = values of  $X$ that are at least as supportive of $H_a$ as $x_{obs}$.
+:::
+
+Then, the **p-value** is defined as
+
+::: {.callout-note appearance="minimal"}
+$$
+\text{p-value} = P\left(X \text{ is a value in the } H_a \text{ support} \mid H_0 \text{ is true}\right).
+$$
+:::
+
+In words, the p-value is the probability, assuming that $H_0$ is true, of 
+obtaining a value of the test statistic $X$ that is at least as supportive of 
+$H_a$ as the observed value $x_{obs}$.
+
+In all cases, the p-value is computed at the boundary value of $\pi$ in $H_0$. 
+Recall from @sec-typeI-rejection that the boundary value is the value of $\pi$ 
+where $H_0$ and $H_a$ meet — we denote it by $\pi_0$. We use the boundary value 
+for the same reason as before: it is the value of $\pi$ in $H_0$ that gives the 
+maximum probability of a Type I error. Therefore, throughout the three cases 
+below, $\pi_0$ always refers to this boundary value.
+
+What counts as "at least as supportive of $H_a$ as $x_{obs}$" depends on the 
+form of the alternative hypothesis.
+
+::: {.callout-note appearance="simple"}
+## Case 1: $H_a: \pi > \pi_0$ (e.g., $H_a: \pi > 0.70$)
+
+Larger values of $X$ are more supportive of $H_a$. The $H_a$ support consists 
+of $x_{obs}$ and all values larger than $x_{obs}$, so the p-value is
+$$
+\text{p-value} = P(X \geq x_{obs} \mid \pi = \pi_0).
+$$
+:::
+
+To understand Case 1, note that a larger value of $X$ means more observations 
+in the sample have the characteristic of interest, which corresponds to a higher 
+sample proportion $\hat{p}$. A higher sample proportion is less consistent with 
+$H_0$ and more supportive of the claim that the true population proportion exceeds 
+$\pi_0$, which is exactly what $H_a$ states.
+
+::: {.callout-note appearance="simple"}
+## Case 2: $H_a: \pi < \pi_0$ (e.g., $H_a: \pi < 0.35$)
+
+Smaller values of $X$ are more supportive of $H_a$. The $H_a$ support consists 
+of $x_{obs}$ and all values smaller than $x_{obs}$, so the p-value is
+$$
+\text{p-value} = P(X \leq x_{obs} \mid \pi = \pi_0).
+$$
+:::
+
+To understand Case 2, note that a smaller value of $X$ means fewer observations 
+in the sample have the characteristic of interest, which corresponds to a lower 
+sample proportion $\hat{p}$. A lower sample proportion is less consistent with 
+$H_0$ and more supportive of the claim that the true population proportion is less 
+than $\pi_0$, which is exactly what $H_a$ states.
+
+::: {.callout-note appearance="simple"}
+## Case 3: $H_a: \pi \neq \pi_0$ (e.g., $H_a: \pi \neq 0.36$)
+
+A value $x$ is in the $H_a$ support if it is at least as unlikely as the 
+observed value $x_{obs}$ under $H_0$. That is,
+$$
+P(X = x \mid \pi = \pi_0) \leq P(X = x_{obs} \mid \pi = \pi_0).
+$$
+
+These values may occur in either tail of the distribution, since values far 
+from $\pi_0$ in either direction are less consistent with $H_0$. The $H_a$ 
+support consists of $x_{obs}$ and all such values $x$, so the p-value is
+$$
+\text{p-value} = P(X \text{ is a value in the } H_a \text{ support} \mid 
+\pi = \pi_0).
+$$
+:::
+
+To understand Case 3, consider the probability of the observed value $x_{obs}$ 
+under the assumption that $H_0$ is true, namely 
+$P(X = x_{obs} \mid \pi = \pi_0)$. Any other value $x$ that is equally likely 
+or less likely than $x_{obs}$ under $H_0$ is considered at least as supportive 
+of $H_a$ as $x_{obs}$. Such values can occur in either tail of the distribution: 
+they may correspond to a sample proportion much higher than $\pi_0$, or much 
+lower than $\pi_0$. In both cases, they represent outcomes that would be at 
+least as surprising as $x_{obs}$ if $H_0$ were true, and therefore provide 
+stronger evidence against $H_0$.
+
+
+**The Decision Rule**
+
+The decision rule using the p-value is straightforward:
+
+::: {.callout-note}
+## Decision Rule Using the p-Value
+$$
+\text{If p-value} \leq \alpha, \text{ reject } H_0. \qquad 
+\text{If p-value} > \alpha, \text{ fail to reject } H_0.
+$$
+:::
+
+The reasoning behind this rule is simple: a small p-value means that the 
+observed value $x_{obs}$ and values at least as supportive of $H_a$ would 
+be unlikely to occur if $H_0$ were true. If this probability is small enough 
+— that is, at or below our chosen significance level $\alpha$ — we take it as 
+sufficient evidence to reject $H_0$. Conversely, a large p-value means that 
+the observed result is not surprising under $H_0$, and we do not have sufficient 
+evidence to reject it.
+
+This rule is equivalent to the rejection region approach. Specifically, the 
+following three statements are always equivalent:
+
+- The p-value is less than or equal to $\alpha$.
+- The $H_a$ support is contained in the rejection region.
+- $x_{obs}$ falls in the rejection region.
+
+This means that the p-value approach and the rejection region approach always 
+lead to the same conclusion. The p-value approach has the added advantage of 
+telling us not just whether to reject $H_0$, but also how strong the evidence 
+against $H_0$ is. A very small p-value indicates very strong evidence against 
+$H_0$, while a p-value just below $\alpha$ indicates borderline evidence.
+
+**Computing the p-Value and Making a Decision: One-Sided Examples**
+
+We now illustrate how to compute the p-value and use it to make a decision, 
+starting with the two one-sided examples that we have seen.
+
+:::{#exm-youtube-pvalue}
+## YouTube Use: Computing the p-Value and Making a Decision
+
+In the YouTube Use example (@exm-youtube-ppss), we are testing 
+$H_0: \pi \leq 0.70$ versus $H_a: \pi > 0.70$, where $\pi$ is the true 
+proportion of students in the district who use YouTube daily. A random sample 
+of $n = 20$ students is selected and $x_{obs} = 17$ report daily YouTube use.
+
+a. Obtain the $H_a$ support.
+b. Compute the p-value.
+c. At significance level $\alpha = 0.05$, make a decision and state your 
+conclusion in the context of the problem.
+:::
+
+:::{.solution}
+a\. **Obtain the $H_a$ support.**
+
+Since $H_a: \pi > 0.70$, values of $X$ that are at least as supportive of $H_a$ 
+as $x_{obs} = 17$ are values greater than or equal to 17. Therefore the $H_a$ 
+support is $\{17, 18, 19, 20\}$.
+
+b\. **Compute the p-value.**
+
+The p-value is computed at the boundary value $\pi_0 = 0.70$:
+$$\text{p-value} = P(X \geq 17 \mid \pi = 0.70).$$
+
+We compute this probability using Rguroo's Discrete Distributions Probability 
+Calculator with $X \sim \text{Binomial}(20, 0.70)$.
+
+@fig-youtube-pvalue shows the Rguroo dialog and the output, giving
+
+::: {.callout-note appearance="minimal"}
+$$\text{p-value} = P(X \geq 17 \mid \pi = 0.70) \approx 0.1071.$$
+:::
+
+::: {#fig-youtube-pvalue layout-ncol=2 layout-valign="bottom" fig-cap="Rguroo setup (left) and p-value output (right) for the Youtube example. "}
+
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo Probability Calculator dialog configured for the YouTube p-value example with Binomial distribution, 20 trials, probability of success 0.70, and upper tail selected."
+#| fig-cap: Rguroo dialog for computing the p-value
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_dialogs/Proportion_inference/youtube_pvalue_dialog.png")
+```
+```{r,echo=FALSE}
+#| fig-alt: "Binomial distribution histogram for n = 20 and p = 0.70, with the p-value support highlighted, showing P(X greater than or equal to 17) = 0.1071."
+#| fig-cap: "Rguroo output showing the p-value"
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_outputs/Proportion_Inference/youtube_pvalue.png")
+```
+
+:::
+
+c\. **Make a decision.**
+
+Since the p-value $0.1071 > \alpha = 0.05$, we fail to reject $H_0$. The data 
+do not provide sufficient evidence at the 5% significance level to conclude that 
+more than 70% of students in the district use YouTube daily. Note that this 
+conclusion is consistent with the rejection region approach: $x_{obs} = 17$ 
+does not fall in the rejection region $X \geq 18$ determined in 
+@exm-youtube-rejection.
+:::
+
+:::{#exm-inactivity-pvalue}
+## Physical Inactivity: Computing the p-Value and Making a Decision
+
+In the Physical Inactivity example (@exm-physical-inactivity-ppss), we are 
+testing $H_0: \pi \geq 0.35$ versus $H_a: \pi < 0.35$, where $\pi$ is the 
+true proportion of adults in the population who are physically inactive. A 
+random sample of $n = 50$ adults is selected and $x_{obs} = 10$ are found to 
+be physically inactive.
+
+a. Obtain the $H_a$ support.
+b. Compute the p-value.
+c. At significance level $\alpha = 0.05$, make a decision and state your 
+conclusion in the context of the problem.
+:::
+
+:::{.solution}
+a\. **Obtain the $H_a$ support.**
+
+Since $H_a: \pi < 0.35$, values of $X$ that are at least as supportive of $H_a$ 
+as $x_{obs} = 10$ are values less than or equal to 10. Therefore the $H_a$ 
+support is $\{0, 1, \ldots, 10\}$.
+
+b\. **Compute the p-value.**
+
+The p-value is computed at the boundary value $\pi_0 = 0.35$:
+$$\text{p-value} = P(X \leq 10 \mid \pi = 0.35).$$
+
+We compute this probability using Rguroo's Discrete Probability 
+Calculator with $X \sim \text{Binomial}(50, 0.35)$. @fig-inactivity-pvalue shows the Rguroo dialog setup (left panel) and the Rguroo output (right panel) giving
+
+::: {.callout-note appearance="minimal"}
+$$\text{p-value} = P(X \leq 10 \mid \pi = 0.35) \approx 0.0160.$$
+:::
+
+::: {#fig-inactivity-pvalue layout-ncol=2 layout-valign="bottom" fig-cap="Rguroo setup (left) and p-value output (right) for the Physical Inactivity example."}
+
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo Probability Calculator dialog configured for the Physical Inactivity p-value example with Binomial distribution, 50 trials, probability of success 0.35, and lower tail selected."
+#| fig-cap: "Rguroo dialog for computing the p-value"
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_dialogs/Proportion_inference/inactivity_pvalue_dialog.png")
+```
+```{r,echo=FALSE}
+#| fig-alt: "Binomial distribution histogram for n = 50 and p = 0.35, with the p-value support highlighted, showing P(X less than or equal to 10)."
+#| fig-cap: "Rguroo output showing the p-value"
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_outputs/Proportion_Inference/inactivity_pvalue.png")
+```
+:::
+
+c\. **Make a decision.**
+
+Since the p-value $0.0160 < \alpha = 0.05$, we reject $H_0$ in favor of 
+$H_a: \pi < 0.35$. The data provide sufficient evidence at the 5% significance 
+level to conclude that fewer than 35% of adults in the population are physically 
+inactive. Note that this conclusion is consistent with the rejection region 
+approach: $x_{obs} = 10$ falls in the rejection region $X \leq 11$ determined 
+in @exm-inactivity-rejection.
+:::
+
+**Computing the p-Value and Making a Decision: The Two-Sided Case**
+
+The two-sided case requires a bit more care. Since $H_a: \pi \neq \pi_0$ does 
+not specify a direction, evidence against $H_0$ can come from either tail of 
+the distribution. Recall from Case 3 that a value $x$ is in the $H_a$ support 
+if $P(X = x \mid \pi = \pi_0) \leq P(X = x_{obs} \mid \pi = \pi_0)$, that is, 
+if it is at least as unlikely as $x_{obs}$ under $H_0$.
+
+:::{#exm-social-pvalue}
+## Social Media as a Primary News Source: Computing the p-Value and Making a Decision
+
+In the Social Media as a Primary News Source example (@exm-social-media-news-ppss), we are testing $H_0: \pi = 0.36$ versus $H_a: \pi \neq 0.36$, where $\pi$ is the true proportion of students who use social media as their primary news source. A random sample of $n = 15$ students is selected and $x_{obs} = 9$ report using social media as their primary news source.
+
+a. Obtain the $H_a$ support.
+b. Compute the p-value.
+c. At significance level $\alpha = 0.05$, make a decision and state your 
+conclusion in the context of the problem.
+:::
+
+:::{.solution}
+a\. **Obtain the $H_a$ support.**
+
+Since $H_a: \pi \neq 0.36$, values of $X$ that are at least as supportive of 
+$H_a$ as the observed value $x_{obs} = 9$ are those that are at least as unlikely 
+as $x_{obs} = 9$ under $H_0$. That is, the $H_a$ support consists of $x_{obs} = 9$ 
+and all values $x$ for which
+$$
+P(X = x \mid \pi = 0.36) \leq P(X = 9 \mid \pi = 0.36).
+$$
+
+Figure @fig-social-pvalue0 shows the Rguroo dialog and output used to compute 
+$P(X = x \mid \pi = 0.36)$. The probability of the observed value is 
+$P(X = 9 \mid \pi = 0.36) \approx 0.0349$. Therefore, any value of $x$ with 
+probability less than or equal to $0.0349$ is included in the $H_a$ support, 
+in addition to $x_{obs} = 9$.
+
+From the graph, the $H_a$ support consists of $\{0, 1\}$ in the left tail and 
+$\{9, 10, 11, \ldots, 15\}$ in the right tail.
+
+Note that the graph is truncated at $X = 12$, since the probabilities for 
+values greater than 12 are extremely small.
+
+::: {#fig-social-pvalue0 layout-ncol=2 layout-valign="bottom" fig-cap="Rguroo setup (left) and Rguroo output for $P(X=9)$ (right) for the Social Media example."}
+
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo Probability Calculator dialog configured for the Social Media p-value example with Binomial distribution, 15 trials, probability of success 0.36, and probability of x = 9 computed."
+#| fig-cap: 'Rguroo dialog'
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_dialogs/Proportion_inference/social_pvalue0_dialog.png")
+```
+```{r,echo=FALSE}
+#| fig-alt: 'Binomial distribution histogram for n = 15 and p = 0.36,  showing the probabilty of $X = 9$'
+#| fig-cap: 'Rguroo output'
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_outputs/Proportion_Inference/social_pvalue0.png")
+```
+
+:::
+
+b\. **Compute the p-value.**
+
+The p-value is computed at the boundary value $\pi_0 = 0.36$. Using Rguroo’s 
+Discrete Probability Calculator with $X \sim \text{Binomial}(15, 0.36)$, we 
+compute the probability that $X$ falls in the $H_a$ support.
+
+Recall that the $H_a$ support consists of the values $\{0, 1, 9, 10, 11, \ldots, 15\}$. 
+Therefore, the p-value is the total probability of these values under $H_0$.
+
+Figure @fig-social-pvalue shows the Rguroo output, giving
+
+::: {.callout-note appearance="minimal"}
+$$
+\text{p-value} = P\left(X \text{ is a value in the } H_a \text{ support} 
+\mid \pi = 0.36\right) \approx 0.0621.
+$$
+:::
+
+::: {#fig-social-pvalue layout-ncol=2 layout-valign="bottom" fig-cap="Rguroo setup (left) and Rguroo output (right) for computing the p-value for the Social Media example."}
+
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo Probability Calculator dialog configured for the Social Media p-value example with Binomial distribution, 15 trials, probability of success 0.36, and probability of x <=0 and x>=9 computed."
+#| fig-cap: 'Rguroo dialog'
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_dialogs/Proportion_inference/social_pvalue_dialog.png")
+```
+```{r,echo=FALSE}
+#| fig-alt: 'Binomial distribution histogram for n = 15 and p = 0.36,  showing the p-value for the social media example$'
+#| fig-cap: 'Rguroo output'
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_outputs/Proportion_Inference/social_pvalue.png")
+```
+:::
+
+c\. **Make a decision.**
+
+Since the p-value $0.0621 > \alpha = 0.05$, we fail to reject $H_0$ in favor of 
+$H_a: \pi \neq 0.36$. The data do not provide sufficient evidence at the 5% 
+significance level to conclude that the proportion of students who use social 
+media as their primary news source differs from 0.36.
+
+This conclusion is consistent with the rejection region approach: the observed 
+value $x_{obs} = 9$ does not fall in the rejection region $X \leq 1$ or 
+$X \geq 10$ determined in @exm-social-rejection.
+:::
+
+## Using Rguroo for One-Population Proportion Hypothesis Tests {#sec-rguroo-one-prop}
+
+In the previous sections, we built up the ideas of hypothesis testing 
+step by step: we identified the null and alternative hypotheses, computed 
+Type I error probabilities, determined rejection regions, and calculated 
+p-values using the binomial distribution. Now that we understand the 
+underlying logic, we can use Rguroo's **One-Population Proportion** 
+inference function to carry out a complete hypothesis test in a single 
+step. By entering the sample size, the hypothesized value $\pi_0$, and 
+the observed count $x_{\text{obs}}$, Rguroo automatically produces all 
+the information needed to reach a conclusion.
+
+We illustrate this using the same three examples from this chapter.
+
+:::{#exm-youtube-rguroo}
+## Daily YouTube Use Among Teens (continued)
+
+Recall @exm-youtube-ppss. A school district claims that more than 70% of students in its district use YouTube daily. A random sample of $n = 20$ students is selected, and $x_{\text{obs}} = 17$ of them report daily YouTube use. The hypotheses are:
+$$
+\begin{cases}
+H_0: \pi \leq 0.70 \\
+H_a: \pi > 0.70
+\end{cases}
+$$
+
+Use Rguroo's One-Population Proportion inference function to carry out 
+the hypothesis test at significance level $\alpha = 0.05$, and interpret 
+the results.
+:::
+
+:::{.solution}
+
+We test $H_0: \pi \leq 0.70$ versus $H_a: \pi > 0.70$ at significance 
+level $\alpha = 0.05$, where $\pi$ is the true proportion of students in 
+the district who use YouTube daily. Our sample of $n = 20$ students 
+yielded $x_{\text{obs}} = 17$ daily users, giving an observed sample 
+proportion of $\hat{p} = 17/20 = 0.85$. Since $\hat{p} = 0.85 > 0.70$, 
+the sample result is in the direction of $H_a$. We now use Rguroo to 
+determine whether this result is statistically significant.
+
+Click to expand the box below to see how to use the [Proportion Inference]{.fun}  function in Rguroo to answer this question.
+
+:::: {#prop-inference-youtube .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} One-Population proportion hypothesis test - Youtube example"}
+
+1. Open the **Analytics** toolbox in Rguroo.  
+
+2. From the [Analysis]{.dpd} dropdown, select [Proportion Inference]{.fun} → [One Population]{.fun}. This opens the [One Population Proportion Inference]{.dialog} dialog.
+
+3. In the **Data** section of the dialog, enter the following:
+   - In the [Factor Label]{.des} textbox, type a label for the categorical variable. In Rguroo, a “factor” refers to a categorical variable. For this example, enter [Daily YouTube Use]{.typein}.
+   - In the [Success Label]{.des} textbox, type [Yes]{.typein}. A success corresponds to a student who uses YouTube daily.
+   - In the [Failure Label]{.des} textbox, type [No]{.typein}.
+   - In the [Sample Size]{.des} textbox, type [20]{.typein}.
+   - In the [\# of Successes]{.des} textbox, type [17]{.typein}.
+
+4. In the **Test of Hypothesis** section of the dialog, enter the following:
+   - In the [Alternative Hyp. p]{.dpd} dropdown, select [>]{.typein} and enter [0.7]{.typein}.
+   - Select the [Binomial]{.des} checkbox to use the binomial distribution.
+   - Leave the [Significance Level]{.des} textbox at the default value of [0.05]{.typein}.
+
+5. (Optional) Click the ![Details](Rguroo_Icons/details.png) button to open the [Advanced Features]{.dialog} dialog.
+   - Open the [Confidence Interval and Test of Hypothesis]{.tab}.
+   - In the **Graphs** section, select both [P-Value]{.des} and [Critical Region]{.des}. The default is [P-Value]{.des}; selecting [Critical Region]{.des} will also display the rejection region.
+
+6. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to view the output.
+
+7. Click the ![Save as](Rguroo_Icons/save_as.png) button and save the result as [YoutubeProp]{.typein}.
+
+::: {.callout-tip .inner-callout collapse="true" title="Rguroo One-Population Proportion dialogs"}
+
+::: {#fig-youtube-rguroo layout-ncol=2 layout-valign="bottom" fig-cap="Rguroo One-Population Proportion dialog (left) and Advanced Features dialog (right) for the Daily YouTube Use example."}
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo One-Population Proportion dialog configured for the Daily YouTube Use example with sample size 20, observed count 17, hypothesized proportion 0.70, and right-tailed alternative."
+#| fig-cap: "Rguroo dialog"
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_dialogs/Proportion_inference/prop-inference-youtube_dialog.png")
+```
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo Advanced Features dialog for the Daily YouTube Use example."
+#| fig-cap: "Advanced Features dialog"
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_dialogs/Proportion_inference/prop-inference-youtube_advanced_dialog.png")
+```
+:::
+
+:::
+
+::::
+
+Click to expand the box below to see the Rguroo output.
+
+::: {.callout-tip .inner-callout collapse="true" title="Rguroo output: One-Population Proportion Inference - YouTube"}
+
+<div tabindex="0" class="rg-iframe-wrapper">
+  <iframe
+    src="Rguroo_html_output/Proportion Inference/YoutubeProp_docx/YoutubeProp.html"
+    class="rg-iframe"
+    title="Rguroo output: One Population Proportion Hypothesis - Youtube Example">
+  </iframe>
+</div>
+
+:::
+
+The Rguroo output reports a p-value of approximately $0.1071$ and a rejection region of $X \geq 18$. Since the p-value $0.1071 > \alpha = 0.05$, we fail to reject $H_0$. Expanding the output above also shows the p-value graph and the rejection region graph — the observed value $x_{\text{obs}} = 17$ does not fall in the rejection region, which is consistent with our decision. 
+The data do not provide sufficient evidence at the 5% ignificance level to conclude that more than 70% of students in the district use YouTube daily.
+
+:::
+
+:::{#exm-inactivity-rguroo}
+## Physical Inactivity Among Adults (continued)
+
+Recall @exm-physical-inactivity-ppss. A national health agency hopes that fewer than 35% of adults in its country are physically inactive. A random sample of $n = 50$ adults is selected, and $x_{\text{obs}} = 10$ are found to be physically inactive. The hypotheses are:
+$$
+\begin{cases}
+H_0: \pi \geq 0.35 \\
+H_a: \pi < 0.35
+\end{cases}
+$$
+
+Use Rguroo's One-Population Proportion inference function to carry out the hypothesis test at significance level $\alpha = 0.05$, and interpret the results.
+:::
+
+:::{.solution}
+We use the same instructions as in [the YouTube example](#prop-inference-youtube) to open the [One Population Proportion Inference]{.dialog}. The filled-out dialog for 
+this problem is given in @fig-inactivity-test. We input the [Factor]{.des} 
+(categorical variable) label as [Physical Activity]{.typein}, 
+[Success]{.des} is labeled as [Inactive]{.typein}, since we are using the 
+count of those who are physically inactive, and for the [Failure]{.des} 
+label we use [Active]{.typein}. As shown in @fig-inactivity-test, we have 
+also input the sample size, number of successes, the alternative hypothesis, 
+and selected the method [Binomial]{.des}.
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo One Population Proportion Inference dialog configured for the Physical Inactivity example, showing a sample size of 50, 10 successes labeled as 'Inactive', alternative hypothesis p < 0.35, binomial method selected, and significance level 0.05."
+#| warning: FALSE
+#| label: fig-inactivity-test
+#| fig-cap: "Rguroo One Population Proportion Inference dialog for performing a hypothesis test for the Physical Inactivity example"
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_dialogs/Proportion_inference/inactivity-test.png")
+```
+
+Click to expand the box below to see the Rguroo output.
+
+::: {.callout-tip .inner-callout collapse="true" title="Rguroo output: One-Population Proportion Inference - Physical Inactivity"}
+
+<div tabindex="0" class="rg-iframe-wrapper">
+  <iframe
+    src="Rguroo_html_output/Proportion Inference/Physical_inactivity_docx/Physical_inactivity.html"
+    class="rg-iframe"
+    title="Rguroo output: One Population Proportion Hypothesis - Physical Inactivity Example">
+  </iframe>
+</div>
+
+:::
+
+The Rguroo output shows that the observed sample proportion is 
+$\hat{p} = 10/50 = 0.20$, and the p-value is approximately $0.0160$. 
+Since the p-value $0.0160 < \alpha = 0.05$, we reject $H_0$ in favor of 
+$H_a: \pi < 0.35$. The data provide sufficient evidence at the 5% 
+significance level to conclude that fewer than 35% of adults in the 
+country are physically inactive. Expanding the output above also shows 
+the p-value graph and the rejection region graph. The p-value graph 
+displays the lower-tail area $P(X \leq 10 \mid \pi = 0.35) \approx 0.0160$ 
+under the null distribution $X \sim \text{Binomial}(50, 0.35)$. The 
+rejection region graph shows that the critical region is $X \leq 11$, 
+with an exact significance level of $3.423\%$, and the observed value 
+$x_{\text{obs}} = 10$ falls within this region, consistent with our 
+decision to reject $H_0$.
+
+:::
+
+
+:::{#exm-social-rguroo}
+## Social Media as a Primary News Source (continued)
+
+Recall @exm-social-media-news-ppss. A university administration wants to determine whether the proportion of students who get most of their news from social media differs from 36%. A random sample of $n = 15$ students is selected, and $x_{\text{obs}} = 9$ report using social media as their primary news source. The hypotheses are:
+$$
+\begin{cases}
+H_0: \pi = 0.36 \\
+H_a: \pi \neq 0.36
+\end{cases}
+$$
+
+Use Rguroo's One-Population Proportion inference function to carry out the hypothesis test at significance level $\alpha = 0.05$, and interpret the results.
+:::
+
+:::{.solution}
+We test $H_0: \pi = 0.36$ versus $H_a: \pi \neq 0.36$ at significance level $\alpha = 0.05$, where $\pi$ is the true proportion of students at the university who use social media as their primary news source. Our sample of $n = 15$ students yielded $x_{\text{obs}} = 9$ who use social media as their primary news source, giving an observed sample proportion 
+of $\hat{p} = 9/15 = 0.60$. Since $\hat{p} = 0.60 \neq 0.36$, the sample result is in the direction of $H_a$. We now use Rguroo to determine whether this result is statistically significant.
+
+We use the same instructions as in [the YouTube example](prop-inference-youtube) to open the 
+[One Population Proportion Inference]{.dialog}. As shown in 
+@fig-social-test, we input the [Factor]{.des} label as 
+[Use Social Media]{.typein}, the [Success]{.des} label as [Yes]{.typein} (a student who uses social media as their primary news source), and the [Failure]{.des} label as [No]{.typein}. We enter a sample size of [15]{.typein} and number of successes of [9]{.typein}. In the **Test of Hypothesis** section, we select [!=]{.typein} (not equal to) from the [Alternative Hyp. p]{.dpd} dropdown and enter [0.36]{.typein}. We select the [Binomial]{.des} checkbox and leave the [Significance Level]{.des} at the default value of [0.05]{.typein}.
+
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo One Population Proportion Inference dialog configured for the Social Media example, showing a sample size of 15, 9 successes labeled as 'Yes', alternative hypothesis p not equal to 0.36, binomial method selected, and significance level 0.05."
+#| warning: FALSE
+#| label: fig-social-test
+#| fig-cap: "Rguroo One Population Proportion Inference dialog for performing a hypothesis test for the Social Media example"
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_dialogs/Proportion_inference/social_media_dialog.png")
+```
+
+
+Click to expand the box below to see the Rguroo output.
+
+::: {.callout-tip .inner-callout collapse="true" title="Rguroo output: One-Population Proportion Inference - Social Media"}
+
+<div tabindex="0" class="rg-iframe-wrapper">
+  <iframe
+    src="Rguroo_html_output/Proportion Inference/social_media_docx/social_media.html"
+    class="rg-iframe"
+    title="Rguroo output: One Population Proportion Hypothesis - Social Media Example">
+  </iframe>
+</div>
+
+:::
+
+The Rguroo output shows that the observed sample proportion is 
+$\hat{p} = 9/15 = 0.60$, and the p-value is approximately $0.0621$. 
+Since the p-value $0.0621 > \alpha = 0.05$, we fail to reject $H_0$. 
+The data do not provide sufficient evidence at the 5% significance level 
+to conclude that the proportion of students who use social media as their 
+primary news source differs from 0.36. Expanding the output above also 
+shows the p-value graph and the rejection region graph. The p-value graph 
+displays the two-sided area $P(X \leq 1) + P(X \geq 9 \mid \pi = 0.36) 
+\approx 0.0621$ under the null distribution 
+$X \sim \text{Binomial}(15, 0.36)$. The rejection region graph shows 
+that the critical region is $X \leq 1$ or $X \geq 10$, with an exact 
+significance level of $2.713\%$, and the observed value 
+$x_{\text{obs}} = 9$ does not fall within this region, consistent with 
+our decision to fail to reject $H_0$.
+
+:::
