@@ -316,7 +316,7 @@ window.Quarto = {
 <p>This section focuses on measures of central tendency. Many times you are asking what to expect on average. For example, when you pick a major, you would probably ask how much you can expect to earn in that field. If you are thinking of relocating to a new town, you might ask how much you can expect to pay for housing. If you are planting vegetables in the spring, you might want to know how long it will be until you can harvest. These questions, and many more, can be answered by knowing the center of the data. There are three measures of the “center” of the data: the mode, median, and mean. Any of the values can be referred to as an “average.”</p>
 <p>The <strong>mode</strong> is the data value that occurs most frequently in the data. To find it, you count how often each data value occurs, and then determine which value occurs most often. If there is a tie between two values for the most number of times, then both values are the mode and the data are called bimodal (two modes). If every data value occurs the same number of times, there is no mode. If there are more than two values that appear the most times, then usually there is no mode. The mode is not always a useful measure of center, especially when a dataset has more than one mode.</p>
 <p>The <strong>median</strong> is the data value in the middle of a sorted list of data. To find the median, you arrange the data in order and then determine which value is in the middle of the data values.</p>
-<p>The <strong>mean</strong> is the arithmetic average of the numbers. The mean, median, and mode are all measures of center, although the word ‘average’ is most commonly used to refer to the mean.</p>
+<p>The <strong>mean</strong> is the arithmetic average of the numbers. The mean, median, and mode are all measures of center, although the word “average” is most commonly used to refer to the mean.</p>
 <p>In this course, we work primarily with numerical data (interval and ratio), so our focus will be on the mean and median as measures of center. The mode is more commonly used with categorical data, where it identifies the most frequently occurring category. While the mean and median both require numerical values, the key difference is that the mean uses every data value in its calculation, making it sensitive to extreme values, whereas the median depends only on the position of the middle value.</p>
 <section id="population-mean-and-sample-mean" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="population-mean-and-sample-mean"><span class="header-section-number">3.1.1</span> Population Mean and Sample Mean</h3>
@@ -380,8 +380,7 @@ Table&nbsp;3.1: Head of Cats
 </figure>
 </div>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>Looking at the dataset for cats weights, <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a>, you see that there are several variables. A Code Book describes the dataset, explains what the variables are including the units, and the source of the dataset. The code book for the <span class="data">cats</span> is below.</p>
+<p>Looking at the dataset for cats weights, <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a>, you see that there are several variables. The code book for the <span class="data">cats</span> is below.</p>
 <div id="code-book-cats" class="codebook callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -394,16 +393,18 @@ Table&nbsp;3.1: Head of Cats
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="code_book_cats.jpg" class="img-fluid figure-img" alt="Code book cats Dataframe"></p>
-<figcaption>Code book for cats dataset</figcaption>
-</figure>
+<p><strong>Description:</strong> The heart and body weights of samples of male and female cats used for digitalis experiments. The cats were all adult, over 2 kg body weight.</p>
+<p><strong>Format:</strong> This data frame contains the following columns:</p>
+<p><span class="var">sex</span>: Factor with levels “F” and “M”.</p>
+<p><span class="var">Bwt</span>: body weight in kg.</p>
+<p><span class="var:">Hwt</span> heart weight in g.</p>
+<p><strong>Source:</strong> R. A. Fisher (1947) The analysis of covariance method for the relation between a part and the whole, Biometrics 3, 65–68.</p>
+<p><strong>References:</strong> Venables, W. N. and Ripley, B. D. (2002) Modern Applied Statistics with S. Fourth edition. Springer.</p>
 </div>
 </div>
 </div>
-</div>
-<p>Before starting any mathematics problem, it is always a good idea to define the unknown in the problem. In statistics, you want to define the variable. The symbol for the variable is <span class="math inline">\(x\)</span>.</p>
+<div class="proof solution">
+<p><span class="proof-title"><em>Solution</em>. </span>Before starting any mathematics problem, it is always a good idea to define the unknown in the problem. In statistics, you want to define the variable. The symbol for the variable is <span class="math inline">\(x\)</span>.</p>
 <p>The variable is <span class="math inline">\(x\)</span> = weight of a cat</p>
 <p>Click to expand the box below to see how to calculate the mean and median in Rguroo.</p>
 <div id="Calculating-summary-stats-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Calculating the Mean and Median Weight of Cats">
@@ -551,7 +552,7 @@ Figure&nbsp;3.2: Mean and Median Weight of Cats by Sex
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cats</span>. <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-cats">dataset code book</a> that follows.</p>
 </div>
 <div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>The steps to find the minimum and the maximum in Rguroo are similar to finding the mean and median described <a href="#Calculating-summary-stats-in-Rguroo">here</a>. In the <strong>Statistics</strong> section of the dialog, select the checkbox for <span class="des">Minimum</span> and <span class="des">Maximum</span>.</p>
+<p><span class="proof-title"><em>Solution</em>. </span>To find the effect of extreme values on the mean and median, we first need to identify the maximum and minimum values. The steps to find the minimum and the maximum in Rguroo are similar to finding the mean and median described <a href="#Calculating-summary-stats-in-Rguroo">here</a>. In the <strong>Statistics</strong> section of the dialog, select the checkbox for <span class="des">Minimum</span> and <span class="des">Maximum</span>.</p>
 <p><a href="#fig-max-min-cats" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> shows the Basic Summary Statistic Dialog and Output from Rguroo for the minimum and maximum of cats body weight.</p>
 <div class="cell">
 <div id="fig-max-min-cats" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -655,13 +656,13 @@ Figure&nbsp;3.4: Logical Expression Dialog for Removing the Minimum Weight of Ca
 <p>Now you can find the mean and median of each new dataset using the steps described <a href="#Calculating-summary-stats-in-Rguroo">here</a> using the new datasets <span class="data">cats_nomax</span> and <span class="data">cats_nomin</span>.</p>
 <p>The mean without the maximum value is 2.70 kg, and the median is 2.7 kg.</p>
 <p>The mean without the minimum value is 2.75 kg, and the median is 2.7 kg.</p>
-<p>From the effect of extremes <a href="#exm-effect-extreme-values">example</a>, the mean of the <span class="data">cats</span> dataset with all the values is 2.72 kg, while the median is 2.7 kg. Notice that when the maximum value was excluded from the dataset, the mean decreased slightly but the median did not change, and when the minimum value was excluded from the dataset, the mean increased a little but the median did not change. This shows that the mean is affected by extreme values, while the median is not. We say the median is a resistant measure of center because it is not affected by extreme values as much.</p>
+<p>The mean of the <span class="data">cats</span> dataset with all the values is 2.72 kg, while the median is 2.7 kg. Notice that when the maximum value was excluded from the dataset, the mean decreased slightly but the median did not change, and when the minimum value was excluded from the dataset, the mean increased a little but the median did not change. This shows that the mean is affected by extreme values, while the median is not. We say the median is a resistant measure of center because it is not affected by extreme values as much.</p>
 </div>
 <p>An <strong>extreme value</strong> is a data value that is much higher or much lower than the rest of the data. When extreme values are present, the median is generally a better measure of center than the mean because the median is not pulled by those values. When there are no extreme values, the mean and median tend to be similar, and the mean is commonly used. This is because the mean is <strong>not resistant</strong> — it is affected by extreme values, which can pull it higher or lower. The median, on the other hand, is <strong>resistant</strong> — it remains stable even when extreme values are present in the data.</p>
 <p>Later in this chapter, you will learn a formal method for determining whether an extreme value qualifies as an <strong>outlier</strong> — a data point that falls far enough from the rest of the data to be flagged as unusual.</p>
 <p>You need to be aware that people generally choose the measure of center that best supports their claim. When you read an article in the newspaper and it talks about the “average” it usually means the mean but sometimes it refers to the median. Some articles will use the word “median” instead of “average” to be more specific. If you need to make an important decision and the information says “average”, it would be wise to ask if the “average” is the mean or the median before you decide.</p>
 <p>As an example, suppose that a company wants to report the mean salary as the average salary for the company. The high salaries of the administrators will pull the mean upward, making the average appear higher. The company can then say that employees are paid well because the average is high. However, the employees would prefer to use the median since it is not affected as much by the extreme administrative salaries and gives a lower measure of center. This makes the salaries appear lower and suggests that a raise is in order.</p>
-<p>Why use the mean instead of the median? Imagine repeatedly taking different samples from the same population. Some samples may include more large values, while others may include more small values. When we calculate the mean for each sample, some sample means will overestimate the true center of the population and others will underestimate it. Over many samples, these overestimates and underestimates tend to balance out. The median, however, can tend to underestimate or overestimate the center more often in one direction, depending on how the middle values fall in the samples. Because of this, the mean does not systematically overestimate or underestimate the center of the population, making it a reliable measure of center.</p>
+<p>Why use the mean instead of the median? Imagine repeatedly taking different samples from the same population. Some samples may include many large values, while others may include many small values. When we calculate the mean for each sample, some sample means will overestimate the true center of the population and others will underestimate it. Over many samples, these overestimates and underestimates tend to balance out. The median, however, can tend to underestimate or overestimate the center more often in one direction, depending on how the middle values fall in the samples. For this reason, the mean does not systematically overestimate or underestimate the center of the population, making it a reliable measure of center.</p>
 <p>To understand how different measures of center relate to skewed or symmetric distributions, see <a href="#fig-centers-dist" class="quarto-xref">Figure&nbsp;<span>3.5</span></a>. For a left-skewed distribution, the mean is smaller than the median. For a right-skewed distribution, the mean is larger than the median. For a symmetric distribution, the mean and the median are the same.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -727,7 +728,18 @@ Figure&nbsp;3.5: Mean, median, mode as related to distribution
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><img src="Rguroo_dialogs/Numerical_description/new_dataset_dialog.png" class="img-fluid" width="500" alt="New Dataset Dialog"> <img src="Rguroo_outputs/Numerical_Description/biology_dataset.png" class="img-fluid" width="500" alt="Biology Class Dataset"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Rguroo_dialogs/Numerical_description/new_dataset_dialog.png" class="img-fluid figure-img" width="500"></p>
+<figcaption>New Dataset Dialog</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Rguroo_outputs/Numerical_Description/biology_dataset.png" class="img-fluid figure-img" width="500"></p>
+<figcaption>Biology Class Dataset</figcaption>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -890,20 +902,6 @@ Figure&nbsp;3.9: Weighted Mean of Faculty Ratings
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cholesterol</span>.</p>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-kozak-repo" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Repository search">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-kozak-repo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_dialogs/Numerical_Description/chol_data_repo.png" class="img-fluid figure-img" style="width:80.0%" alt="Repository search">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kozak-repo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.10: Repository Search Dialog
-</figcaption>
-</figure>
-</div>
-</div>
 </div>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Cholesterol dataset">
 <div id="tbl-Cholesterol" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Cholesterol dataset">
@@ -1316,7 +1314,7 @@ Table&nbsp;3.5: Fixed Costs for Print-O-Matic Printing Company
 </section>
 <section id="measures-of-spread" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="measures-of-spread"><span class="header-section-number">3.2</span> Measures of Spread</h2>
-<p>Variability is a fundamental concept in statistics that describes how spread out data values are from each other. Consider measuring the height of everyone in your classroom – you’ll quickly notice that not everyone has the same height. Some students are taller, some are shorter, and there’s a range of heights in between. This spread in the data is what we call variability. The same principle applies to other measurements: if you sampled the income levels of people in a town, you’d find that incomes vary widely from person to person.</p>
+<p>Variability is a fundamental concept in statistics that describes how spread out data values are from each other. Consider measuring the height of everyone in your classroom – you’ll quickly notice that not everyone has the same height. Some students are taller, some are shorter, and there’s a range of heights in between. This spread in the data is what we call variability. The same principle applies to other measurements. If you sampled the income levels of people in a town, you’d find that incomes vary widely from person to person.</p>
 <p>Understanding variability helps us describe datasets more completely. When data values are clustered closely together, we say there is low variability. When data values are spread far apart, we say there is high variability. To quantify this spread, we need numerical measures that capture how dispersed the data are. This section introduces several measures of variability, also known as measures of variation or spread.</p>
 <p>Recall the <a href="#exm-mean-median-cats">example</a> where we calculated the average weight of a cat to be 2.72 kg. While this tells us the center of the data, it doesn’t tell us the whole story. Were most cats close to this weight, or did weights vary dramatically? We know the highest and lowest weights, but what about everything in between? Understanding only the center leaves important questions unanswered.</p>
 <p>To fully describe a dataset, we need measures of both center and spread. The measures of variability discussed in this section provide that additional information.</p>
@@ -1360,7 +1358,7 @@ Table&nbsp;3.5: Fixed Costs for Print-O-Matic Printing Company
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cats</span>. <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-cats">dataset code book</a> that follows.</p>
 </div>
 <div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>When using Rguroo, you would perform similar steps as described in calculation mean and median <a href="#Calculating-summary-stats-in-Rguroo">example</a>, and select <span class="def">standard deviation</span> and <span class="def">variance</span>, as shown in the figure <a href="#fig-sd-dialog" class="quarto-xref">Figure&nbsp;<span>3.11</span></a>.</p>
+<p><span class="proof-title"><em>Solution</em>. </span>When using Rguroo, you would perform similar steps as described in calculation mean and median <a href="#Calculating-summary-stats-in-Rguroo">example</a>, and select <span class="def">standard deviation</span> and <span class="def">variance</span>, as shown in the figure <a href="#fig-sd-dialog" class="quarto-xref">Figure&nbsp;<span>3.10</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-sd-dialog" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog box for standard deviation and variance">
@@ -1369,13 +1367,13 @@ Table&nbsp;3.5: Fixed Costs for Print-O-Matic Printing Company
 <img src="Rguroo_dialogs/Numerical_Description/sd_var_cats_dialog.png" class="img-fluid figure-img" style="width:80.0%" alt="Dialog box for standard deviation and variance">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sd-dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.11: Basic Summary Statistic Dialog for Standard Deviation and Variance
+Figure&nbsp;3.10: Basic Summary Statistic Dialog for Standard Deviation and Variance
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The output is shown in <a href="#fig-sd-output" class="quarto-xref">Figure&nbsp;<span>3.12</span></a>. The variance for all cats is 0.24 kg<span class="math inline">\(^2\)</span> and the standard deviation is 0.49 kg.</p>
+<p>The output is shown in <a href="#fig-sd-output" class="quarto-xref">Figure&nbsp;<span>3.11</span></a>. The variance for all cats is 0.24 kg<span class="math inline">\(^2\)</span> and the standard deviation is 0.49 kg.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-sd-output" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Standard Deviation and Variance of Cats Weights">
@@ -1384,13 +1382,13 @@ Figure&nbsp;3.11: Basic Summary Statistic Dialog for Standard Deviation and Vari
 <img src="Rguroo_outputs/Numerical_Description/sd_var_cats_output.png" class="img-fluid figure-img" style="width:80.0%" alt="Standard Deviation and Variance of Cats Weights">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sd-output-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.12: Standard Deviation and Variance of Weights of Cats
+Figure&nbsp;3.11: Standard Deviation and Variance of Weights of Cats
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>To find out the mean, variance, and standard deviation for each sex of the cats, we use a similar function as in <a href="#fig-sd-dialog" class="quarto-xref">Figure&nbsp;<span>3.11</span></a> and select sex from the <span class="dpd">Factor 1</span> dropdown, as shown in <a href="#fig-spread-sex" class="quarto-xref">Figure&nbsp;<span>3.13</span></a>.</p>
+<p>To find out the mean, variance, and standard deviation for each sex of the cats, we use a similar function as in <a href="#fig-sd-dialog" class="quarto-xref">Figure&nbsp;<span>3.10</span></a> and select sex from the <span class="dpd">Factor 1</span> dropdown, as shown in <a href="#fig-spread-sex" class="quarto-xref">Figure&nbsp;<span>3.12</span></a>.</p>
 <div class="cell">
 <div id="fig-spread-sex" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1421,7 +1419,7 @@ Figure&nbsp;3.12: Standard Deviation and Variance of Weights of Cats
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spread-sex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.13: Mean, Standard Deviation, and Variance of Weights of Cats by Sex
+Figure&nbsp;3.12: Mean, Standard Deviation, and Variance of Weights of Cats by Sex
 </figcaption>
 </figure>
 </div>
@@ -1441,7 +1439,7 @@ Figure&nbsp;3.13: Mean, Standard Deviation, and Variance of Weights of Cats by S
 </section>
 <section id="using-the-standard-deviation" class="level3" data-number="3.2.6">
 <h3 data-number="3.2.6" class="anchored" data-anchor-id="using-the-standard-deviation"><span class="header-section-number">3.2.6</span> Using the Standard Deviation</h3>
-<p>The standard deviation helps describe where the data tend to lie relative to the mean. When the data are symmetric and have most values clustered around a typical center, the empirical rule provides a helpful guideline. It says that about 68% of the data fall within one standard deviation of the mean, about 95% fall within two standard deviations, and about 99.7% fall within three standard deviations. These percentages are not exact, but they often give a reasonable picture of where most of the data lie. <a href="#fig-empirical-rule" class="quarto-xref">Figure&nbsp;<span>3.14</span></a> shows how data is distributed according to the empirical rule for a symmetric, bell-shaped distribution.</p>
+<p>The standard deviation helps describe where the data tend to lie relative to the mean. When the data are symmetric and have most values clustered around a typical center, the empirical rule provides a helpful guideline. The Empirical Rule says that about 68% of the data fall within one standard deviation of the mean, about 95% fall within two standard deviations, and about 99.7% fall within three standard deviations. These percentages are not exact, but they often give a reasonable picture of where most of the data lie. <a href="#fig-empirical-rule" class="quarto-xref">Figure&nbsp;<span>3.13</span></a> shows how data is distributed according to the empirical rule for a symmetric, bell-shaped distribution.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-empirical-rule" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bell curve showing shaded regions for 68%, 95%, and 99.7% of data within 1, 2, and 3 standard deviations from the mean">
@@ -1450,13 +1448,13 @@ Figure&nbsp;3.13: Mean, Standard Deviation, and Variance of Weights of Cats by S
 <img src="images/empirical_rule.png" class="img-fluid figure-img" alt="Bell curve showing shaded regions for 68%, 95%, and 99.7% of data within 1, 2, and 3 standard deviations from the mean" width="1500">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-empirical-rule-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.14: The Empirical Rule (68-95-99.7 Rule) showing the percentage of data within standard deviations of the mean for symmetric distributions
+Figure&nbsp;3.13: The Empirical Rule (68-95-99.7 Rule) showing the percentage of data within standard deviations of the mean for symmetric distributions
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>For data that are not symmetric, other rules can still be used. Chebyshev’s rule gives a minimum proportion of the data that must lie within a certain number of standard deviations of the mean, regardless of the overall shape of the distribution. The results from this rule are usually less precise than those from the empirical rule, but they apply to a much wider range of situations. <a href="#fig-chebyshev-rule" class="quarto-xref">Figure&nbsp;<span>3.15</span></a> illustrates Chebyshev’s rule, which guarantees at least 75% of data within 2 standard deviations and at least 89% within 3 standard deviations, regardless of distribution shape.</p>
+<p>For data that are not symmetric, other rules can still be used. Chebyshev’s rule gives a minimum proportion of the data that must lie within a certain number of standard deviations of the mean, regardless of the overall shape of the distribution. The results from this rule are usually less precise than those from the empirical rule, but they apply to a much wider range of situations. <a href="#fig-chebyshev-rule" class="quarto-xref">Figure&nbsp;<span>3.14</span></a> illustrates Chebyshev’s rule, which guarantees at least 75% of data within 2 standard deviations and at least 89% within 3 standard deviations, regardless of distribution shape.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-chebyshev-rule" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Non-symmetric distribution showing shaded regions for at least 75% within 2 standard deviations and at least 89% within 3 standard deviations">
@@ -1465,7 +1463,7 @@ Figure&nbsp;3.14: The Empirical Rule (68-95-99.7 Rule) showing the percentage of
 <img src="images/chebyshev_rule.png" class="img-fluid figure-img" alt="Non-symmetric distribution showing shaded regions for at least 75% within 2 standard deviations and at least 89% within 3 standard deviations" width="1500">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chebyshev-rule-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.15: Chebyshev’s Rule showing minimum percentages of data within k standard deviations of the mean for any distribution
+Figure&nbsp;3.14: Chebyshev’s Rule showing minimum percentages of data within k standard deviations of the mean for any distribution
 </figcaption>
 </figure>
 </div>
@@ -1647,7 +1645,7 @@ Table&nbsp;3.6: Monthly/Annual Number of tornadoes in Oklahoma
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span>Import the <span class="data">Tornado_OK</span> dataset from the <span class="repo">Kozak</span> repository into your Data toolbox on Rguroo using these <a href="#Importing-cats-to-Rguroo">directions</a>.</p>
 <p>Variable: <span class="math inline">\(x\)</span> = number of <span class="var">annual</span> tornadoes in Oklahoma</p>
-<p>Find the mean and standard deviation as in <a href="#fig-tornado-ex" class="quarto-xref">Figure&nbsp;<span>3.16</span></a>:</p>
+<p>Find the mean and standard deviation as in <a href="#fig-tornado-ex" class="quarto-xref">Figure&nbsp;<span>3.15</span></a>:</p>
 <div class="cell">
 <div id="fig-tornado-ex" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1678,7 +1676,7 @@ Table&nbsp;3.6: Monthly/Annual Number of tornadoes in Oklahoma
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tornado-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.16: Mean and Standard Deviation of Annual Tornadoes
+Figure&nbsp;3.15: Mean and Standard Deviation of Annual Tornadoes
 </figcaption>
 </figure>
 </div>
@@ -1759,7 +1757,7 @@ Figure&nbsp;3.16: Mean and Standard Deviation of Annual Tornadoes
 <p><strong>Code book for Data frame Cost</strong> is below <a href="#tbl-Cost" class="quarto-xref">Table&nbsp;<span>3.5</span></a>.</p>
 </div>
 <ol start="5" type="1">
-<li>The dataset Pulse <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute.</li>
+<li>The dataset Pulse <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute. Create a dataset that contains only males, who drink alcohol, but do not smoke. Then compare the pulse before and the pulse after using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread. Create the new dataset and save as <span class="data">pulse_males</span> by subsetting the <span class="data">pulse</span> data using the steps described here. See <a href="#fig-subset-pulse" class="quarto-xref">Figure&nbsp;<span>3.16</span></a> for the Data Subset Dialog.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">pulse</span>.</p>
@@ -1918,7 +1916,6 @@ Table&nbsp;3.7: Head of Pulse Rates of people Before and After Exercise
 </div>
 </div>
 </div>
-<p>Create a dataset that contains only males, who drink alcohol, but do not smoke. Then compare the pulse before and the pulse after using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread. Create the new dataset and save as <span class="data">pulse_males</span> by subsetting the <span class="data">pulse</span> data using the steps described here. See <a href="#fig-subset-pulse" class="quarto-xref">Figure&nbsp;<span>3.17</span></a> for the Data Subset Dialog.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-subset-pulse" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Dialog Box for Subsetting Pulse Data">
@@ -1927,7 +1924,7 @@ Table&nbsp;3.7: Head of Pulse Rates of people Before and After Exercise
 <img src="Rguroo_dialogs/Numerical_description/pulse_subset_dialog.png" class="img-fluid figure-img" style="width:80.0%" alt="Rguroo Dialog Box for Subsetting Pulse Data">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-subset-pulse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.17: Subsetting Dialog Box
+Figure&nbsp;3.16: Subsetting Dialog Box
 </figcaption>
 </figure>
 </div>
@@ -2058,7 +2055,7 @@ Table&nbsp;3.8: Head of Pulse Rates of Nonsmoking Males Before and After Exercis
 </div>
 <ol start="6" type="1">
 <li><p>The dataset Pulse <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute. Create a dataset that contains females, who do not smoke but do drink alcohol. Compare the pulse rate before and after exercise using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread.</p></li>
-<li><p>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997) and the data is in <a href="#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>.</p></li>
+<li><p>To determine if Reiki is an effective method for treating pain, a pilot study was carried out in which a certified second-degree Reiki therapist provided treatment to volunteers. Pain was measured using two scales — a visual analogue scale (VAS) and a Likert scale — immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997). The data are in <a href="#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>.</p></li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Reiki_pain</span>.</p>
@@ -2147,7 +2144,7 @@ Table&nbsp;3.9: Head of Pain Measurements Before and After Reiki Treatment
 </div>
 </div>
 </div>
-<p>Since the data was collected both before and after the treatment for all of the units of observations, you want to look at the effect size of the treatment. You want to find the difference between before and after for the pain scale. First you must create a new dataset that adds a column for the difference in before and after. This data is known as paired data. To create the new column in a new dataset called Newreiki use the following steps</p>
+<p>Since pain was measured on the same individuals both before and after treatment, this is <strong>paired data</strong>. To analyze paired data, we calculate the difference between the before and after measurements for each person. This difference represents the effect of the treatment.</p>
 <div id="Transforming-Data-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a New Variable in the Reiki_pain Dataset">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -2261,7 +2258,9 @@ Table&nbsp;3.10: Head of Pain Measurements Before and After Reiki Treatment with
 </figure>
 </div>
 </div>
-<p>Now find the mean and standard deviation of the <span class="var">vas.diff</span> variable in <span class="data">Newreiki</span>. Perform similar commands to create the <span class="var">likert.diff</span> variable. Then find the mean and standard deviation for <span class="var">likert.diff</span>, and compare and contrast the vas and likert methods for describing pain.</p>
+<p><strong>(a)</strong>: Create a new dataset called <span class="data">Newreiki</span> that adds a column for the difference between the before and after VAS scores. Name this new variable <span class="var">vas.diff</span>. Then find the mean and standard deviation of <span class="var">vas.diff</span>.</p>
+<p><strong>(b)</strong>: Using the same approach, create a variable called <span class="var">likert.diff</span> for the difference between the before and after Likert scores. Find the mean and standard deviation of <span class="var">likert.diff</span>.</p>
+<p><strong>(c)</strong>: Compare the results from Part (a) and Part (b). What do the mean differences tell you about the effectiveness of the Reiki treatment? Do the VAS and Likert scales give similar conclusions?</p>
 <ol start="8" type="1">
 <li>Yearly rainfall amounts (in millimeters) in Sydney, Australia, are in <a href="#tbl-Rainfall" class="quarto-xref">Table&nbsp;<span>3.11</span></a> (Annual maximums of, 2013). a. Calculate the mean and standard deviation. b. Suppose Sydney, Australia received 300 mm of rainfall in a year. Would this be unusual?</li>
 </ol>
@@ -2333,7 +2332,7 @@ Table&nbsp;3.11: Head of Yearly rainfall amounts in Sydney, Australia
 <section id="ranking" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="ranking"><span class="header-section-number">3.3</span> Ranking</h2>
 <p>Along with the center and the variability, another useful numerical measure is the ranking of a number. A <strong>percentile</strong> is a measure of ranking. It represents a location measurement of a data value to the rest of the values. Many standardized tests give the results as a percentile. Doctors also use percentiles to track a child’s growth.</p>
-<p>The <span class="math inline">\(k^{th}\)</span> <strong>percentile</strong> is the data value that has <span class="math inline">\(k%\)</span> of the data at or below that value.</p>
+<p>The <span class="math inline">\(k^{th}\)</span> <strong>percentile</strong> is the data value that has <span class="math inline">\(k\%\)</span> of the data at or below that value.</p>
 <p>For instance, a score at the <span class="math inline">\(90^{th}\)</span> percentile means that 90% of the scores were at or below this score — in other words, the person did the same as or better than 90% of the test takers. A score at the <span class="math inline">\(70^{th}\)</span> percentile means that 70% of the scores were at or below this score.</p>
 <p>It is important to understand that a percentile is a ranking, not a score. If a test was out of 100 points and you scored at the <span class="math inline">\(80^{th}\)</span> percentile, that does not mean you earned 80 points. It means you scored the same as or better than 80% of the people who took the test. If all the scores were really low, you could have still failed the test. On the other hand, if many of the scores were high you could have gotten a 95% or more. The percentile tells you how you compared to others, not what your actual score was.</p>
 <section id="quartiles-dividing-data-into-fourths" class="level3" data-number="3.3.1">
@@ -2356,7 +2355,7 @@ Table&nbsp;3.11: Head of Yearly rainfall amounts in Sydney, Australia
 <img src="Rguroo_dialogs/Numerical_description/quartiles_dialog.png" class="img-fluid figure-img" style="width:80.0%" alt="Dialog for Basic Summary to find Quartiles for Cats Bodyweight in Rguroo">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cats-quartiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.18: Quartiles for Bodyweight of Cats
+Figure&nbsp;3.17: Quartiles for Bodyweight of Cats
 </figcaption>
 </figure>
 </div>
@@ -2399,7 +2398,7 @@ Figure&nbsp;3.18: Quartiles for Bodyweight of Cats
 </section>
 <section id="interpreting-shape-from-boxplots" class="level3" data-number="3.3.6">
 <h3 data-number="3.3.6" class="anchored" data-anchor-id="interpreting-shape-from-boxplots"><span class="header-section-number">3.3.6</span> Interpreting Shape from Boxplots</h3>
-<p>Boxplots also reveal information about the shape of the distribution. <a href="#fig-boxplot-comparison" class="quarto-xref">Figure&nbsp;<span>3.19</span></a> illustrates how different distribution shapes appear in boxplots.</p>
+<p>Boxplots also reveal information about the shape of the distribution. <a href="#fig-boxplot-comparison" class="quarto-xref">Figure&nbsp;<span>3.18</span></a> illustrates how different distribution shapes appear in boxplots.</p>
 <div class="cell">
 <div id="fig-boxplot-comparison" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -2430,7 +2429,7 @@ Figure&nbsp;3.18: Quartiles for Bodyweight of Cats
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplot-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.19: Comparing Shapes of Boxplots
+Figure&nbsp;3.18: Comparing Shapes of Boxplots
 </figcaption>
 </figure>
 </div>
@@ -2445,7 +2444,7 @@ Figure&nbsp;3.19: Comparing Shapes of Boxplots
 </div>
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span>Variable: <span class="math inline">\(x\)</span> = weight of cats</p>
-<p>To compute the five-number summary on Rguroo, use summary statistic and select the appropriate statistics as shown in <a href="#fig-cats-5numsum" class="quarto-xref">Figure&nbsp;<span>3.20</span></a></p>
+<p>To compute the five-number summary on Rguroo, use summary statistic and select the appropriate statistics as shown in <a href="#fig-cats-5numsum" class="quarto-xref">Figure&nbsp;<span>3.19</span></a></p>
 <div class="cell">
 <div id="fig-cats-5numsum" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -2476,7 +2475,7 @@ Figure&nbsp;3.19: Comparing Shapes of Boxplots
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cats-5numsum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.20: Five-Number Summary for Bodyweight of Cats
+Figure&nbsp;3.19: Five-Number Summary for Bodyweight of Cats
 </figcaption>
 </figure>
 </div>
@@ -2576,7 +2575,7 @@ Figure&nbsp;3.20: Five-Number Summary for Bodyweight of Cats
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cats-5numsumsex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.21: Five-Number Summary for Bodyweight of Cats by Sex
+Figure&nbsp;3.20: Five-Number Summary for Bodyweight of Cats by Sex
 </figcaption>
 </figure>
 </div>
@@ -2585,6 +2584,22 @@ Figure&nbsp;3.21: Five-Number Summary for Bodyweight of Cats by Sex
 <p>Minimum: 2 <span class="math inline">\(Q1\)</span>: 2.15 Median: 2.3 <span class="math inline">\(Q3\)</span>: 2.5 Maximum: 3.0</p>
 <p>The five-number summary for male cats is (in kg)</p>
 <p>Minimum: 2 <span class="math inline">\(Q1\)</span>: 2.50 Median: 2.9 <span class="math inline">\(Q3\)</span>: 3.2 Maximum: 3.9</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click here to see the Rguroo dialog
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>To create a side-by-side boxplot separated by the sex factor, move the <span class="var">sex</span> factor variable to the Selected column in the Factor Variables section. <img src="Rguroo_dialogs/Numerical_description/boxplot_cats_sex_dialog.png" class="img-fluid" width="500" alt="Boxplot dialog in Rguroo"></p>
+</div>
+</div>
+</div>
 <div class="rg-iframe-wrapper" tabindex="0">
 <iframe src="Rguroo_html_output/Numerical_description/Boxplot_8/Boxplot_8.html" class="rg-iframe" title="Boxplot for Weight of Cats by Sex">
 </iframe>
@@ -2594,7 +2609,6 @@ Figure&nbsp;3.21: Five-Number Summary for Bodyweight of Cats by Sex
 <div id="exm-putting-it-together" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.12 (Putting it all together)</strong></span> The time (in 1/50 seconds) between successive pulses along a nerve fiber (“Time between nerve,” 2013) are given in <a href="#tbl-Nerve" class="quarto-xref">Table&nbsp;<span>3.12</span></a>.</p>
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">nerve</span>. <a href="#tbl-Nerve" class="quarto-xref">Table&nbsp;<span>3.12</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-nerve">dataset code book</a> that follows.</p>
-</div>
 <div class="cell" data-tbl-alt="Table showing first 6 rows of Nerve dataset">
 <div id="tbl-Nerve" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table showing first 6 rows of Nerve dataset">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -2635,30 +2649,16 @@ Table&nbsp;3.12: Head of Successive pulses along a nerve fiber
 </figure>
 </div>
 </div>
-<div id="code-book-nerve" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Code book for Nerve Dataset
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-25" class="callout-25-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Description</strong> The data gives the time between 800 successive pulses along a nerve fiber. There are 799 observations rounded to the nearest half in units of 1/50 second.</p>
-<p>This dataset contains the following columns:</p>
-<p><span class="var">time</span>: time between successive Pulses along a nerve fiber, 1/50 second.</p>
-<p><a href="https://gksmyth.github.io/ozdasl/general/nerve.html">Source</a> Time between nerve pulses. (2019, July 3).</p>
-<p>References Fatt, P., and Katz, B. (1952). Spontaneous subthreshold activity at motor nerve endings. Journal of Physiology 117, 109-128.</p>
-<p>Cox, D. R., and Lewis, P. A. W. (1966). The Statistical Analysis of Series of Events. Methuen, London.</p>
-<p>Jorgensen, B. (1982). The Generalized Inverse-Gaussian Distribution. Springer-Verlag.</p>
-</div>
-</div>
+<p>Using the <span class="data">nerve</span> dataset:</p>
+<ol type="a">
+<li>Create a density plot of the <span class="var">time</span> variable. Describe the shape of the distribution.</li>
+<li>Find the mean, median, standard deviation, and five-number summary.</li>
+<li>Based on the shape of the distribution, which measure of center is more appropriate — the mean or the median? Explain your reasoning.</li>
+<li>Create a boxplot of the <span class="var">time</span> variable. Are there any outliers? How does the boxplot support your answer to part (c)?</li>
+</ol>
 </div>
 <div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>First, it might be useful to look at a visualization of the data, so create a density plot</p>
+<p><span class="proof-title"><em>Solution</em>. </span><strong>Part (a):</strong> First, create a density plot to visualize the distribution.</p>
 <p>Click to expand the box below to see instructions to create a density plot of the <span class="data">nerve</span> dataset in Rguroo.</p>
 <div id="Creating-a-density-plot-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a Density Plot of the Time Between Successive Nerve Pulses">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
@@ -2679,7 +2679,7 @@ Table&nbsp;3.12: Head of Successive pulses along a nerve fiber
 <li>Click on the <span class="dpd">Create Plot</span> dropdown menu and choose the <span class="fun">Histogram</span> function. The Histogram dialog will open.</li>
 <li>From the <span class="dpd">Dataset</span> dropdown, select the <span class="data">nerve</span> dataset.<br>
 </li>
-<li>Move the <span class="var">time</span> variables to the Selected column.<br>
+<li>Move the <span class="var">time</span> variable to the Selected column.<br>
 </li>
 <li>Select density in Type and density in Smoothing additional options.</li>
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the graph.</li>
@@ -2699,7 +2699,7 @@ Table&nbsp;3.12: Head of Successive pulses along a nerve fiber
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Rguroo_dialogs/Numerical_description/nerve_density_dialog.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>Boxplot dialog in Rguroo</figcaption>
+<figcaption>Density plot dialog in Rguroo</figcaption>
 </figure>
 </div>
 </div>
@@ -2712,7 +2712,8 @@ Table&nbsp;3.12: Head of Successive pulses along a nerve fiber
 <iframe src="Rguroo_html_output/Numerical_description/Histogram_7/Histogram_7.html" class="rg-iframe" title="Density Plot for Successive Nerve Pulses">
 </iframe>
 </div>
-<p>From the graph, the data appears to be skewed right. Most of the time, between successive nerve pulses appear to be around 5 or 10 1/50 second, but there are some times that are 60 1/50 second.</p>
+<p>The distribution is skewed right. Most of the times between successive nerve pulses are around 5 to 10 (in 1/50 seconds), but there are some values as high as 60.</p>
+<p><strong>Part (b):</strong> Using the summary statistics from Rguroo (<a href="#fig-Pulse-summary" class="quarto-xref">Figure&nbsp;<span>3.21</span></a>):</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-Pulse-summary" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Five-Number Summary with Mean and Standard Deviation of Nerve Pulses">
@@ -2721,14 +2722,15 @@ Table&nbsp;3.12: Head of Successive pulses along a nerve fiber
 <img src="Rguroo_outputs/Numerical_Description/nerve_summary_output.png" class="img-fluid figure-img" style="width:80.0%" alt="Five-Number Summary with Mean and Standard Deviation of Nerve Pulses">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Pulse-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.22: Numerical Summary of Time Between Successive Nerve Pulses
+Figure&nbsp;3.21: Numerical Summary of Time Between Successive Nerve Pulses
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Numerical descriptions might also be useful. Using technology, the mean is 11 1/50 second,the median is 7.5 1/50 second, the standard deviation is 10.5 1/50 second, and the five-number summary is minimum = 0.5, Q1 = 3.5, median = 7.5, Q3 = 15, and maximum = 69 1/50 second.</p>
-<p>To visualize the five-number summary, create a box plot using the instructions given <a href="#Creating-a-boxplot-in-Rguroo">here</a>.</p>
+<p>The mean is 11 (1/50 seconds), the median is 7.5 (1/50 seconds), and the standard deviation is 10.5 (1/50 seconds). The five-number summary is: minimum = 0.5, Q1 = 3.5, median = 7.5, Q3 = 15, and maximum = 69 (1/50 seconds).</p>
+<p><strong>Part (c):</strong> Because the distribution is skewed right, the median (7.5) is a more appropriate measure of center than the mean (11). The mean is pulled to the right by the long tail of high values, making it larger than the median. Since the median is resistant to extreme values, it better represents the typical time between nerve pulses.</p>
+<p><strong>Part (d):</strong> Create a boxplot using the instructions given <a href="#Creating-a-boxplot-in-Rguroo">here</a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-nerve-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Boxplot of Nerve Pulses">
@@ -2737,13 +2739,13 @@ Figure&nbsp;3.22: Numerical Summary of Time Between Successive Nerve Pulses
 <img src="Rguroo_outputs/Numerical_Description/nerve_boxplot_output.svg" class="img-fluid figure-img" style="width:80.0%" alt="Boxplot of Nerve Pulses">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nerve-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.23: Boxplot of Time Between Successive Nerve Pulses
+Figure&nbsp;3.22: Boxplot of Time Between Successive Nerve Pulses
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The boxplot reveals multiple high outliers. The mean shows a typical pulse interval of 11 1/50 seconds, with an IQR of 19.5 1/50 seconds indicating substantial variability. The right skew visible in both plots confirms that while most pulses occur consistently around 11 1/50 seconds, occasional longer delays create the high outliers.</p>
+<p>The boxplot reveals multiple high outliers above the upper fence. The IQR is Q3 − Q1 = 15 − 3.5 = 11.5 (1/50 seconds), indicating substantial variability. The outliers and the right skew visible in both the density plot and the boxplot confirm that the median is the better measure of center for this dataset — the extreme values pull the mean higher but do not affect the median.</p>
 </div>
 </section>
 <section id="homework-for-ranking-section" class="level3" data-number="3.3.7">
@@ -2762,13 +2764,12 @@ Figure&nbsp;3.23: Boxplot of Time Between Successive Nerve Pulses
 </div>
 <p>Find the five-number summary and interquartile range (IQR) for the cholesterol level on day 2, and draw a boxplot</p>
 <ol start="6" type="1">
-<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in table <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a> (Lee, 1994).</li>
+<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in table <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Find the five-number summary and interquartile range (IQR) for the lengths of rivers that go to the Pacific Ocean and ones that go to the Tasman Sea, and draw a boxplot of both.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">length</span>.</p>
 <p><strong>Code book for dataset Length</strong> below <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a>.</p>
 </div>
-<p>Find the five-number summary and interquartile range (IQR) for the lengths of rivers that go to the Pacific Ocean and ones that go to the Tasman Sea, and draw a boxplot of both.</p>
 <ol start="7" type="1">
 <li>Print-O-Matic printing company’s employees have salaries that are contained in <a href="#tbl-Pay" class="quarto-xref">Table&nbsp;<span>3.4</span></a> Find the five number summary and draw a boxplot for the salaries of all employees.</li>
 </ol>
@@ -2777,22 +2778,19 @@ Figure&nbsp;3.23: Boxplot of Time Between Successive Nerve Pulses
 <p><strong>Code book for dataset Pay</strong> below <a href="#tbl-Pay" class="quarto-xref">Table&nbsp;<span>3.4</span></a>.</p>
 </div>
 <ol start="8" type="1">
-<li>The dataset Pulse <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after after the subject ran in place for one minute.</li>
+<li>The dataset Pulse <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after after the subject ran in place for one minute. Create a dataset that contains only people who drink alcohol, but do not smoke. Then find the five number summary and draw a boxplot for both males and females separately.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">pulse</span>.</p>
 <p><strong>Code book for dataset Pulse</strong> below <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a>.</p>
 </div>
-<p>Create a dataset that contains only people who drink alcohol, but do not smoke. Then find the five number summary and draw a boxplot for both males and females separately.</p>
 <ol start="9" type="1">
-<li>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a Likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997) and the data is in <a href="#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>.</li>
+<li>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a Likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997) and the data is in <a href="#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>. Find the five number summary for both the before and after VAS scores and draw boxplots of before and after VAS scores. Compare and contrast the before and after VAS scores.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Reiki_pain</span>.</p>
 <p><strong>Code book for dataset Reiki</strong> below <a href="#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>.</p>
 </div>
-<p>Find the five number summary for both the before and after VAS scores and draw boxplots of before and after VAS scores.</p>
-<p>Compare and contrast the before and after VAS scores.</p>
 
 
 </section>
