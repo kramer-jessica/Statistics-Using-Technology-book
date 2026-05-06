@@ -23,21 +23,21 @@ Defects<- read.csv( "https://krkozak.github.io/MAT160/defects.csv")
 
 :::
 
-Every day you encounter uncertainty. Will it rain during your commute? Is a new medication likely to help a patient? Does a positive test result mean someone actually has a disease? Should a business stock more inventory before a holiday weekend? Although these questions cannot be answered with certainty, probability gives us a mathematical framework for making informed decisions about them.
+Every day you encounter uncertainty. Will it rain during your commute? Is a new medication likely to help a patient? Does a positive test result mean someone actually has a disease? Should a business stock more inventory before a holiday weekend? Although these questions cannot be answered with certainty, probability gives us a mathematical framework for making informed decisions.
 
-Probability is not just an abstract mathematical topic. It is the foundation of all of statistics. When we collect data and draw conclusions, we are always asking: *How likely is it that what I observed happened by chance?* Without understanding probability, we cannot answer that question honestly.
+Probability is not just an abstract mathematical topic. It is the foundation of all statistics. When we collect data and draw conclusions, we are always asking: *How likely is it that what I observed happened by chance?* Without understanding probability, we cannot answer that question in a meaningful way.
 
-Probability is the "language" that connects data to decisions. Every confidence interval, every hypothesis test, and every statistical claim you will encounter in this course rests on the ideas in this chapter. Taking the time to build a solid foundation here will make the rest of the course much more meaningful.
+Probability is the "language" that connects data to decisions. The ideas in this chapter form the foundation for everything that comes next in this course. Taking the time to build a solid foundation here will make the rest of the course much more meaningful.
 
 The ideas in this chapter appear across every discipline. A criminologist asks: what is the likelihood that an eyewitness identification is correct? A nurse asks: if I screen 100 patients, how many will test positive by chance alone? An economist asks: what is the probability that a recession will occur in the next two years? A political scientist asks: what is the chance a polling result reflects the true opinions of voters? These are all probability questions.
 
-This chapter begins with the fundamental vocabulary and rules of probability, builds toward a distinction between two major approaches to calculating probabilities, and introduces how technology — specifically **Rguroo** — can be used to simulate random processes and explore probability in a hands-on way.
+This chapter begins with the fundamental vocabulary and rules of probability, then develops two major approaches to calculating probabilities, and introduces how technology — specifically **Rguroo** — can be used to simulate random processes and explore probability in a hands-on way.
 
 ## Fundamentals of Probability
 
 ### Random Processes and Experiments
 
-Some things in life are **deterministic**. For example, if you drop a ball, you can calculate exactly where it will land. But many things are **random**, meaning the outcome is not fully predictable in advance no matter how much information you have.
+Some things in life are **deterministic**. For example, if you drop a ball, you can calculate exactly where it will land (assuming you know all the relevant conditions). But many things are **random**, meaning the outcome is not fully predictable in advance no matter how much information you have.
 
 A **random process** is any process or phenomenon in which individual outcomes are unpredictable, even though a pattern of outcomes tends to emerge over a large number of repetitions.
 
@@ -50,16 +50,16 @@ A **random process** is any process or phenomenon in which individual outcomes a
 -   Whether a product coming off an assembly line is defective
 -   Which political candidate a randomly selected voter supports
 
-A **probability experiment** is any process whose result is determined by chance. This is different from the everyday use of the word "experiment." The experiment must be well-defined: you must be able to describe every possible result in advance.
+A **probability experiment** is any process whose result is determined by chance. This is different from an experiment in everyday language, which usually means a planned scientific test. In statistics, we use the word experiment more broadly — any time chance is involved. From this point on, we will simply say **experiment**. The experiment must be well-defined: you must be able to describe all possible outcomes in advance, and you must be able to observe exactly one outcome each time the experiment is performed.
 
 **Examples:**
 
 | Everyday Description | Probability Experiment |
 |------------------------------------|------------------------------------|
 | Roll a six-sided die | Observe which face (1–6) lands face up |
-| Ask a student their major | Record the declared major of one randomly selected student |
-| Test whether a lightbulb is defective | Inspect one lightbulb and record: defective or not defective |
-| Check today's high temperature | Record whether the high exceeds 90°F |
+| Ask a student their major | Record the declared major of a randomly selected student |
+| Test whether a lightbulb is defective | Inspect one lightbulb and record wheter it is: defective or not |
+| Check today's high temperature | Record whether the high temperature exceeds 90°F |
 
 : Examples of experiments in probability {#tbl-experiments tbl-alt="Table listing everyday descriptions alongside their corresponding probability experiment definitions"}
 
@@ -72,7 +72,7 @@ Every probability experiment produces a result. An **outcome** is a single possi
 
 The **sample space** is the complete list of all possible outcomes. If outcomes are the individual items, the sample space is the entire collection. We write it using set notation with curly braces and usually label it $S$.
 
-An **event** is any group of outcomes we are interested in. Events are subsets of the sample space and are built from outcomes. We usually name events with capital letters like $A$, $B$, or $C$. A **simple event** contains exactly one outcome. A **compound event** contains more than one outcome.
+An **event** is any group of outcomes of interest. Events are subsets of the sample space and are built from outcomes. We usually name events with capital letters like $A$, $B$, or $C$. A **simple event** contains exactly one outcome. A **compound event** contains more than one outcome.
 
 ::: {#exm-roll-die}
 ## Rolling a Die
@@ -82,13 +82,13 @@ Consider rolling a fair six-sided die once.
 - The **sample space** is $S = \{1, 2, 3, 4, 5, 6\}$.
 - Let $A =$ rolling an even number. Then $A = \{2, 4, 6\}$ is a **compound event** made up of three outcomes from the sample space.
 - Let $B =$ rolling a 5. Then $B = \{5\}$ is a **simple event** made up of one outcome.
-- Let $C =$ rolling a number greater than 4. Then $C = \{5, 6\}$.
+- Let $C =$ rolling a number greater than 4. Then $C = \{5, 6\}$ is a compound event made up of two outcomes from the sample space.
 
 
-Notice that $A$, $B$, and $C$ are all built from the same six outcomes in $S$. The sample space does not change; only the question we are asking changes.
+Notice that $A$, $B$, and $C$ are all built from the same six outcomes in $S$. The sample space does not change; only the event of interest changes.
 :::
 
-Two special events come up often. A **certain event** contains every outcome in the sample space and will always occur. For example, rolling a number between 1 and 6 on a standard die is a certain event. An **impossible event** contains no outcomes at all and is written as the empty set, $\emptyset$. Rolling a 9 on a standard die is an impossible event.
+Two special events come up often. A **certain event** contains every outcome in the sample space and will always occur. For example, rolling a number between 1 and 6 (inclusive of 1 and 6) on a standard die is a certain event because every possible outcome (1, 2, 3, 4, 5, or 6) satisfies this condition. An **impossible event** contains no outcomes at all and is written as the empty set, $\emptyset$. Rolling a 9 on a standard die is an impossible event because no outcome in the sample space $\{1, 2, 3, 4, 5, 6\}$ equals 9.
 
 ### Probability: Definition and Rules
 
@@ -99,29 +99,26 @@ $$0 \leq P(A) \leq 1   \text{ for any event } A$$
 
 Probabilities can be expressed as fractions, decimals, or percentages. For example, $P(A) = 1/4 = 0.25 = 25\%$.
 
-When we say an event has a probability of 0.30, we mean: if we were to repeat this experiment a very large number of times under the same conditions, about 30\% of those repetitions would result in that event occurring. Probability does not tell us what will happen on any single trial; it tells us about long-run patterns.
+When we say an event has a probability of 0.30, we mean that if we were to repeat this experiment a very large number of times under the same conditions, about 30\% of those repetitions would result in that event occurring. Probability does not tell us what will happen on any single trial; it tells us about long-run patterns.
 
 Before we can calculate a probability, we need to ask a key question: are the outcomes in our sample space equally likely? This matters because it determines how we find probabilities.
 
-Outcomes are **equally likely** when every outcome in the sample space has the same probability of occurring. No outcome is favored over any other.
+Outcomes are **equally likely** when every outcome in the sample space has the same probability of occurring. No outcome is favored over any other. For example, when rolling a fair six-sided die, each face (1 through 6) has the same chance of occurring, so the outcomes are equally likely. In contrast, outcomes are not equally likely when some results are more likely than others. For example, in a lottery, the outcome “you win” is far less likely than the outcome “you do not win,” so the outcomes are not equally likely.
 
 
 ::: {#exm-equally-likely}
 ## Are the Outcomes Equally Likely?
 For each experiment, decide whether the outcomes are equally likely.
 
-**(a)** Rolling a *fair* die: **Yes.** Each face has the same chance of landing face up.
+**(a)** Flipping a *weighted* coin where heads is twice as likely as tails and noting the face: **No.** Heads and tails do not have equal chances.
 
-**(b)** Flipping a *weighted* coin where heads is twice as likely as tails: **No.** Heads and tails do not have equal chances.
+**(b)** Selecting a ball from a bag containing 4 red balls and 4 blue balls (all the same size) and observing the color: **Yes.** Each individual ball is equally likely to be selected.
 
-**(c)** Selecting a ball from a bag containing 4 red balls and 4 blue balls (all the same size): **Yes.** Each individual ball is equally likely to be selected.
+**(c)** Selecting a ball from a bag containing 4 red balls and *8* blue balls (all the same size) and observing the color: **No.** Blue balls are more likely to be drawn because there are more of them. 
 
-**(d)** Selecting a ball from a bag containing 4 red balls and *8* blue balls (all the same size): **No.** Blue balls are more likely to be drawn because there are more of them. 
-
-**(e)** Testing whether the next customer at a coffee shop orders a hot or cold drink: **Probably not.** Without data, we cannot assume customers are equally split between the two options.
+**(d)** Observing whether the next customer at a coffee shop orders a hot or cold drink: **Probably not.** Without data, we cannot assume customers are equally split between the two options.
 :::
 
-When outcomes are not equally likely, you cannot use simple counting to find probabilities. You must use observed data instead. This leads us to the two approaches to probability covered in [Section 4.1.4](#two-approaches-to-calculate-probability).
 
 A **probability model** lists the possible outcomes of a probability experiment and each outcome's probability. Every valid probability model must satisfy two rules. These are not optional; they are requirements that any set of numbers must meet in order to qualify as probabilities.
 
@@ -133,7 +130,7 @@ No probability can be negative. No probability can be greater than 1. If you cal
 **Rule 2: The probabilities of all outcomes in the sample space must sum to 1**
 $$\sum P(\text{all outcomes}) = 1$$
 
-This means that something always happens. When you list all possible outcomes of an experiment, their probabilities must add up to exactly 1, or 100\%.
+This means that one of the outcomes in the sample space must occur when the experiment is performed. When you list all possible outcomes of an experiment, their probabilities must add up to exactly 1, or 100\%.
 
 ::: {#exm-equally-likely}
 ## Verifying Probability Rules
@@ -177,6 +174,8 @@ Both rules are satisfied, so this is a valid probability model.
 | Rain          | 0.12        |
 
 : Weather probability model with missing value {#tbl-weather tbl-alt="Table showing weather probability model with probabilities for Sunny, Partly Cloudy, and Rain, and a missing probability for Overcast"}
+
+Assuming that the four listed outcomes are all the possibilities for tomorrow's weather, what is the probability of overcast so the probability values define a probability model?
 :::
 
 :::{.callout-tip .solution-callout collapse="true" icon=false}
@@ -194,9 +193,9 @@ There are two fundamental ways to determine the probability of an event.
 
 **Relative Frequency (Empirical) Probability**
 
-The first approach is based on observation and data. We actually conduct the experiment many times, or use existing data, and measure how often the event occurs. The resulting probability estimate is called the **relative frequency** or **empirical probability**.
+The first approach is based on observation and data. We conduct the experiment many times, or use existing data, and measure how often the event occurs. The resulting probability estimate is called the **relative frequency** or **empirical probability**.
 
-Recall from Chapter 2, the **relative frequency** of an event is the number of times of times it occurs out of the total number of trials:
+Recall from Chapter 2, the **relative frequency** of an event is the number of times it occurs out of the total number of trials:
 $$\text{Relative Frequency of A} = \dfrac{\text{Number of times A occurred}}{\text{Total number of trials}}$$
 
 This is the empirical approach to probability. It is based on observed data rather than assumptions. The relative frequency gives an estimate of the true probability, and that estimate improves as the number of trials increases.
@@ -219,9 +218,11 @@ We estimate there is about a 63.9\% chance that a randomly selected U.S. adult u
 
 *When Would You Use Empirical Probability*
 
-- Outcomes are not equally likely and you do not know the true proportions
-- The experiment involves real-world behavior that must be measured
-- You want to check whether a theoretical model, like a fair coin, matches reality
+Empirical probability (based on observed data) is most appropriate when: 
+
+- Outcomes are not equally likely and you cannot determine the probabilities theoretically. For example, the probability that a randomly selected person prefers chocolate ice cream over vanilla cannot be calculated theoretically—it must be measured through observation or surveys. 
+- The experiment involves real-world behavior or complex systems. Examples include the probability that a patient responds to a treatment, the probability that a customer returns a product, or the probability of rain tomorrow. These involve too many unknown factors to calculate theoretically. 
+
 
 **Theoretical Probability**
 
@@ -231,6 +232,13 @@ If all outcomes in the sample space are *equally likely*, the probability of eve
 $$P(A) = \dfrac{\text{Number of outcomes in } A}{\text{Total number of outcomes in }S}$$
 
 This is called the **classical** or **theoretical** probability. It is calculated by reasoning about the structure of the experiment; no data collection is required.
+
+We use theoretical (classical) probability when: 
+
+- Outcomes are equally likely and the sample space is well-defined (like rolling a fair die or drawing cards from a well-shuffled deck) 
+- You can determine probabilities through logic and counting methods rather than observation 
+
+The key difference: Empirical probability requires data collection and observation, while theoretical probability requires only logical analysis of equally likely outcomes. 
 
 ::: {#exm-theoretical-prob}
 ## Theoretical Probability
@@ -274,18 +282,31 @@ $$P(\text{rolling a }7) = P(E) = \frac{0}{6} = 0$$
 which makes this an impossible event. 
 :::
 
-The **Law of Large Numbers** states that as the number of trials, $n$, of a random experiment increases, the relative frequency of an event gets closer and closer to the true probability of that event.
-$$\text{As } n \rightarrow \infty, \quad \dfrac{\text{frequency of A}}{n} \rightarrow P(A)$$
+You might wonder: if I flip a coin just 10 times and get 7 heads, does that mean the probability of heads is 0.70? The **Law of Large Numbers** answers this question.
 
-With a small number of trials, expect significant variation from the true probability. With a large number of trials, the relative frequency will closely approximate it.
+The **Law of Large Numbers** states that as the number of trials, $n$, of a random experiment increases, the relative frequency of an event gets closer and closer to the true probability of that event. In other words: as we perform more and more trials, the ratio ($\dfrac{\text{frequency of A}{n}$) approaches $P(A)$.  
+
+For example, if you flip a fair coin: 
+
+- After 10 flips, you might get 7 heads (70%)—quite far from the true probability of 50% 
+- After 100 flips, you might get 57 heads (57%)—closer to 50% 
+- After 1,000 flips, you might get 493 heads (49.3%)—very close to 50% 
+- After 10,000 flips, you'll get even closer to exactly 50% 
+
+
+This does not mean you are "due" for tails after a streak of heads. The coin has no memory. What actually happens is that early imbalances become less and less important as trials accumulate — 2 extra heads out of 10 flips is 70%, but 2 extra heads out of 1,000 flips is only 50.2%.
 
 ### Simulation: Exploring Probability with Rguroo
 
-One of the most powerful ways to build intuition about probability is through **simulation**: using technology to imitate a random process thousands of times and observing the results. Simulation makes the Law of Large Numbers visible and concrete. Simulations are especially useful when:
+One of the most powerful ways to build intuition about probability is through **simulation**: using technology to imitate a random process thousands of times and observing the results. Instead of flipping an actual coin 10,000 times by hand, Rguroo can simulate those flips in seconds and show you the results. Simulation makes the Law of Large Numbers visible and concrete. 
 
-- Theoretical probabilities are difficult to calculate
-- We want to visualize how relative frequencies converge over many trials 
-- We want to explore what random variation really looks like
+Simulations are especially useful when:
+
+- Theoretical probabilities are difficult to calculate. For example, determining the probability of winning a complex card game might involve complicated counting, but you can simulate 10,000 games and see how often you win. 
+- We want to visualize how relative frequencies converge over many trials. For example, you can watch in real-time as the percentage of heads gets closer and closer to 50% as the number of coin flips increases. 
+- We want to explore what random variation really looks like. Simulations help us understand that getting 7 heads in 10 flips is not unusual, even for a fair coin, because we can see how much natural variation occurs in repeated experiments. 
+
+The key advantage of simulation is that it allows us to perform thousands or even millions of trials instantly, revealing patterns that would be impossible to observe through physical experiments alone. 
 
 ::: {#exm-simulation-die-roll}
 ## Simulating a Die Roll
@@ -348,7 +369,7 @@ This is the **Law of Large Numbers** in action. With a small number of trials, r
 
 ### Homework for Fundamentals of Probability Section
 
-1. An instructor reports the following model for letter grades in her course. Determine if this represents a probabillity model. Explain why or why not.
+1. An instructor reports the following model for letter grades in her course. Determine whether this represents a probability model. Explain why or why not.
 
 | Grade       | A    | B    | C    | D    | F    |
 |-------------|------|------|------|------|------|
@@ -368,7 +389,7 @@ This is the **Law of Large Numbers** in action. With a small number of trials, r
     c.  $P(\text{no heads})$\
     d.  $P(\text{two heads or two tails})$
 
-4. The number of M&M's of each color that were found in 48 packets is in the dataset [M_and_Ms]{.data}. The first six rows of these data are given in @tbl-MaM (M&M's Color Distribution Analysis, 2019). Find the probability of choosing each color based on this data frame.
+4. The numbers of M&Ms of each color found in 48 packets are in the dataset [M_and_Ms]{.data}. The first six rows of these data are given in @tbl-MaM (M&M's Color Distribution Analysis, 2019). Find the probability of selecting each color based on this data frame.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [M_and_Ms]{.data}.
@@ -416,7 +437,11 @@ References Josh Madison, 2019
 
 
 
-5.  In Australia in 1995, of the 2907 indigenous people in prison 17 of them died. In that same year, of the 14501 non-indigenous people in prison 42 of them died (\\"Aboriginal deaths in,\\" 2013). Find the probability that an indigenous person dies in prison and the probability that a non-indigenous person dies in prison. Compare these numbers and discuss what the numbers may mean.
+5.  In Australia in 1995, of the 2907 indigenous people in prison 17 of them died. In that same year, of the 14501 non-indigenous people in prison 42 of them died (\\"Aboriginal deaths in,\\" 2013). 
+
+a. Find the probability that an Indigenous person dies in prison.
+b. Find the probability that a non-Indigenous person dies in prison. 
+c. Compare these probabilities and discuss what they may suggest. 
 
 6.  A project conducted by the Australian Federal Office of Road Safety asked people many questions about their cars. One question was the reason that a person chooses a given car, and the first six rows of that data is in @tbl-Car_pref (Car Preferences, 2019). 
 Find the probability a person chooses a car for each of the given reasons.
@@ -499,7 +524,7 @@ The data was contributed to OzDASL by Professor Annette Dobson, University of Qu
 
 ## Probability Rules
 
-So far, we have defined probability experiments, sample spaces, and events, and we have calculated probabilities using both the classical and empirical approaches. In all of these cases, we asked about the probability of one specific event occuring.
+So far, we have defined probability experiments, sample spaces, and events, and we have calculated probabilities using both the classical and empirical approaches. In all of these cases, we have asked about the probability of one specific event occurring.
 
 But in real life, we often ask more complex questions:
 
@@ -507,7 +532,7 @@ But in real life, we often ask more complex questions:
 - What is the probability that a patient tests positive *and* has the disease?
 - What is the probability that a randomly selected person works in healthcare *or* education?
 
-These questions require us to combine events. This section covers four key ideas: complement, intersection, union, and the addition rule. We will also build two practical tools, Venn diagrams and probability tables, that help us organize and calculate combined probabilities.
+These questions require us to combine events. This section covers four key ideas: **complement**, **intersection**, **union**, and the **addition rule**. We will also build two practical tools, Venn diagrams and probability tables, that help us organize and calculate combined probabilities.
 
 ### The Complement of an Event
 
@@ -521,6 +546,12 @@ The **complement** of an event $A$, written $A^c$ (read "A complement"), is the 
 In plain language: $A^c$ is "everything except $A$."
 :::
 
+For example: 
+
+- If $A = \{\text{rolling an even number on a die}\} = \{2, 4, 6\}$, then $A^C = \{\text{rolling an odd number}\} = \{1, 3, 5\}$.
+- If $B = \{\text{drawing a heart from a standard deck}\}$, then $B^C = \{\text{drawing a club, diamond, or spade}\}$. 
+- If $C = \{\text{a randomly selected student is full-time}\}$, then $C^C = \{\text{the student is part-time}\}$. 
+
 Because every outcome in the sample space must either belong to $A$ or to $A^c$ (but never both), their probabilities must add up to exactly 1. This gives us the **Complement Rule**:
 
 ::: {.callout-important appearance="simple" icon="false"}
@@ -529,6 +560,8 @@ Because every outcome in the sample space must either belong to $A$ or to $A^c$ 
 $$P(A^c) = 1 - P(A)$$
 
 Equivalently: $P(A) + P(A^c) = 1$
+
+In words: The probability that an event does not occur equals 1 minus the probability that it does occur. 
 :::
 
 ::: {#exm-complement-dice}
@@ -536,7 +569,7 @@ Equivalently: $P(A) + P(A^c) = 1$
 
 A fair six-sided die is rolled. Let $A$ = rolling a number greater than 2.
 
-**(a)** Find $P(A)$ directly.
+**(a)** Find $P(A)$.
 
 **(b)** Find $P(A^c)$ using the definition of complement.
 
@@ -657,17 +690,36 @@ $$A \cap B = \text{outcomes that are in both } A \text{ and } B$$
 
 $P(A \cap B)$ is the probability that both events happen.
 
-On a Venn diagram, the intersection is the **overlapping region** of the two circles seen in @fig-venn-general.
+On a Venn diagram, the intersection is the **overlapping region** of the two circles seen in @fig-venn-intersection.
 :::
+
+```{r, echo = FALSE}
+#| label: fig-venn-intersection
+#| fig-cap: "Venn diagram illustrating the intersection of events A and B."
+#| fig-alt: "Venn diagram with two overlapping circles labeled A and B inside a rectangle labeled S. Only the overlapping region is shaded blue, representing A intersect B — outcomes that belong to both A and B."
+#| out-width: "70%"
+#| fig-align: "center"
+knitr::include_graphics("images/fig_venn_intersection.png")
+```
 
 Note that if $A$ and $B$ are mutually exclusive, then $A \cap B = \emptyset$ (the empty set), and $P(A \cap B) = 0$.
 
 ::: {#exm-intersection-card}
 ## Finding an Intersection — Card Draw
 
-A single card is drawn at random from a standard 52-card deck. Let $A$ = the card is a heart, and $B$ = the card is a face card (Jack, Queen, or King).
+A single card is drawn at random from a standard 52-card deck shown in @fig-deck-of-cards. Let $A$ = the card is a heart, and $B$ = the card is a face card (Jack, Queen, or King).
 
 Find $P(A \cap B)$.
+
+```{r, echo = FALSE}
+#| label: fig-deck-of-cards
+#| fig-cap: "A standard 52-card deck organized by suit (Hearts, Diamonds, Spades, Clubs) and rank (Ace through King)."
+#| fig-alt: "Illustration of a complete 52-card deck arranged in four horizontal rows, one per suit. Each row shows all 13 cards in order from Ace through King. Hearts and Diamonds are red; Spades and Clubs are black."
+#| out-width: "95%"
+#| fig-align: "center"
+knitr::include_graphics("images/playing_cards_deck.png")
+```
+
 :::
 
 ::: {.callout-tip .solution-callout collapse="true" icon=false}
@@ -697,7 +749,9 @@ Let $A$ = enrolled in math and $B$ = enrolled in English.
 **(b)** Represent this situation with a Venn diagram showing the count of students in each region.
 :::
 
-:::.callout-tip .solution-callout collapse="true" icon=false
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
 **(a)** Using the given counts:
 
 $$P(A) = \frac{18}{40} = 0.45 \qquad P(B) = \frac{22}{40} = 0.55 \qquad P(A \cap B) = \frac{8}{40} = 0.20$$
@@ -735,11 +789,18 @@ $$A \cup B = \text{outcomes in } A \text{, in } B \text{, or in both}$$
 
 $P(A \cup B)$ is the probability that $A$ occurs, $B$ occurs, or both occur.
 
-On a Venn diagram, the union is the entire shaded region covered by **either or both circles**.
+On a Venn diagram, the union is the entire shaded region covered by **either or both circles** as shown in @fig-venn-union.
 
 :::
 
-
+```{r, echo = FALSE}
+#| label: fig-venn-union
+#| fig-cap: "Venn diagram illustrating the union of events A and B."
+#| fig-alt: "Venn diagram with two overlapping circles labeled A and B inside a rectangle labeled S. Both circles are fully shaded blue, representing the union A union B — all outcomes that belong to A or B or both."
+#| out-width: "70%"
+#| fig-align: "center"
+knitr::include_graphics("images/fig_venn_union.png")
+```
 
 ### The General Addition Rule
 
@@ -803,7 +864,7 @@ Interpretation: There is an $80\%$ chance a randomly selected student is enrolle
 
 A single card is drawn from a well-shuffled standard deck of 52 cards. Let $A$ = the card is a King, and $B$ = the card is a Queen.
 
-Find $P(A \cup B)$.
+Find $P(A \cup B)$ and interpret the results.
 :::
 
 ::: {.callout-tip .solution-callout collapse="true" icon=false}
@@ -1156,9 +1217,13 @@ answered questions like "What is the probability that A or B occurs?" But many r
 have a different structure: knowing that one thing has already happened changes the probability of
 something else.
 
-A doctor adjusting the probability of a diagnosis after seeing a test result. An employer weighing
-an application after knowing the college an applicant attended. A nurse asking whether a positive screening
-actually means a patient has the disease. All of these are **conditional probability** questions.
+Consider these scenarios:
+
+- A doctor adjusting the probability of a diagnosis after seeing a test result. 
+- An employer who rates a job applicant differently based on the college they attended.
+- A nurse asking whether a positive screening actually means a patient has the disease. 
+
+All of these are **conditional probability** question; situations where additional information changes the likelihood of an event.. 
 
 This section builds the tools to answer them.
 
@@ -1247,7 +1312,7 @@ the bar) and which is the outcome of interest (before the bar).
 ### Independent and Dependent Events
 
 In the blood pressure example, knowing a patient's age group changed the probability of high
-blood pressure. This means age group and blood pressure status are related, they are
+blood pressure. This means age group and blood pressure status are related; they are
 **dependent** events. But sometimes knowing one event gives you no useful information about
 another. Two events are **independent** if knowing one occurred does not change the probability of the other.
 
@@ -1308,7 +1373,15 @@ are related.
 
 **Mutually Exclusive vs. Independent**
 
-Mutually exclusive events and independent events are different concepts. Recall that two events are mutually exclusive if they share no common outcomes. We could say that knowing one event occurs means the other event did not occur. On the other hand, independence means that one event occuring does not affect the probability of the other event occuring. This means that knowing two events are mutually exclusive means the events are *not* independent. 
+Mutually exclusive events and independent events are different concepts, and they can be easily confused. Recall that two events are mutually exclusive if they cannot both occur at the same time. If one event occurs, we know with certainty that the other event did not occur. On the other hand, independence means that one event occurring does not affect the probability of the other event. 
+
+::: {.callout-tip appearance="simple" icon="false"}
+## Key Insight
+
+If two events are mutually exclusive, they cannot be independent (and vice versa). Here's why: If $A$ and $B$ are mutually exclusive, then $P(A \text{ and } B) = 0$. This means $P(A | B) = 0$, which is definitely different from $P(A)$ (unless $P(A) = 0$). Since $P(A | B) \neq P(A)$, the events are not independent.
+
+In simple terms: Mutually exclusive events are as dependent as events can be—if one happens, the other definitely cannot happen. 
+:::
 
 ::: {#exm-me-vs-ind}
 ## Mutually Exclusive vs. Independent: Two Examples
@@ -1341,13 +1414,15 @@ coin is heads gives no information about the first coin. They are **independent*
 Now that we understand conditional probability and independence, we can build the rules for
 computing the probability that both events occur, the intersection $P(A \cap B)$.
 
-**The General Multiplication Rule**
+::: {.callout-important appearance="simple" icon="false"}
+## The General Multiplication Rule
 
 Rearranging the conditional probability formula gives us:
 
 $$P(A \cap B) = P(A) \cdot P(B \mid A)$$
 
 This rule works whether the events are independent or dependent.
+:::
 
 ::: {#exm-general-mult}
 ## Applying the General Multiplication Rule
