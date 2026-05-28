@@ -1,0 +1,981 @@
+---
+title: "Statistical Inference for Means"
+
+number-sections: true
+number-offset: 11
+---
+
+**Before you begin, click to expand the box below to review the process for importing a dataset.**
+
+::: {#Importing-GSS2024-to-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Data to Rguroo"} 
+
+1. Open the **Data** toolbox in Rguroo.  
+2. From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.  
+3. In the top search box, type [kozak]{.typein}, then select the [Statistics Using Technology – Kozak]{.repo} repository.  
+4. In the middle search box, type the first few letters of the dataset name, and choose your desired dataset name that appears in the lower panel.  
+5. Click the [Import]{.button}. The dataset will be imported to your Rguroo account.
+6. Click [Close]{.button} to exit the dialog.  
+7. To view the dataset, double-click the dataset name under the **Data** toolbox list.
+:::
+
+In the previous chapter we learned how statistical inference works through count data and proportions. The same inferential ideas apply to means.
+
+The framework is unchanged. We still begin with a research question about a population parameter, now the population mean $\mu$ (read mu) rather than the population proportion $p$. We still collect a random sample, compute a statistic from it, and study how that statistic varies from sample to sample through its sampling distribution. We still test claims by examining where our observed statistic falls within that distribution under $H_0$, and we still make decisions using critical regions or p-values. Confidence intervals, significance levels, Type I and Type II errors, and confidence levels all retain the same meanings they had for proportions.
+
+What changes is not the logic of inference, but the type of data we analyze and the distributions used to model sampling variability. Recall from the previous chapter that a sample proportion $\hat{p}$ is itself a special type of sample mean: the mean of zeros and ones obtained from a binary variable. In this chapter, our variable is more general: a numerical variable whose values are measurements rather than indicators of success or failure. Just as the sample proportion $\hat{p}$ served as a natural estimate of the population proportion $p$, the sample mean $\bar{X}$ serves as a natural estimate of the population mean $\mu$.
+
+Because the underlying variable is no longer binary, the count $X$ that anchored the previous chapter no longer applies, and neither does the binomial distribution that described its behavior. We therefore need new sampling distributions to describe how $\bar{X}$ varies from sample to sample. We begin by assuming that the variable under study has a normal distribution, and later in the chapter we will use the Central Limit Theorem to extend these methods to a much wider class of numerical variables. The sections that follow develop these tools in detail and apply them to several running examples, mirroring the structure of the proportion chapter.
+
+As in the proportion chapter, we will cover both one-population and two-population settings. In the one-population setting we draw inferences about a single population mean $\mu$. In the two-population setting we compare two population means $\mu_1$ and $\mu_2$ through their difference $\mu_1-\mu_2$. We begin with the one-population case.
+
+
+## Basics of Hypothesis Testing for a Population Mean {#sec-concept-setup-mean}
+
+We begin our study of mean inference with hypothesis testing, following the same path we took in the previous chapter. We first establish the framework, then develop methods for making a decision based on either a critical region or a p-value. What will differ across the subsections that follow is the sampling distribution we use to make that decision, which depends on what we  assume about the population.
+
+Recall that $\bar{X}$ represents the sample mean as a random variable because its value changes from sample to sample. Once we collect data, however, we obtain one specific observed value of the sample mean, which we denote by $\bar{x}_{\text{obs}}$. This observed value is the statistic we use to make our decision in the hypothesis test.
+
+
+### Null and Alternative Hypotheses{#sec-null-alternative-mean}
+
+To conduct a hypothesis, we begin by formally stating a claims we are investigating. This claim is formulated using the population mean which we denote by the Greek letter $\mu$. Like in the proportion inference the null and alternative hypotheses always come in one of three forms, 
+depending on the nature of the research question. Using $\mu_0$ to denote a specific value of $\mu$, the three cases are:
+
+$$
+\begin{aligned}
+\text{Case 1: } 
+&\begin{cases}
+H_0: \mu \leq \mu_0 \\
+H_a: \mu > \mu_0
+\end{cases}
+\qquad
+\text{Case 2: } 
+\begin{cases}
+H_0: \mu \geq \mu_0 \\
+H_a: \mu < \mu_0
+\end{cases} \\
+\\
+\text{Case 3: } 
+&\begin{cases}
+H_0: \mu = \mu_0 \\
+H_a: \mu \neq \mu_0
+\end{cases}
+\end{aligned}
+$$
+
+Here $\mu_0$ denotes the bondary value stated in $H_0$ and $H_a$.
+
+In Cases 1 and 2, the alternative hypothesis claims that $\mu$ is either greater than or less than $\mu_0$, pointing in a single direction. These are called **one-sided** (or **one-tailed**) hypotheses. In Case 3, the alternative hypothesis claims only that $\mu$ is different from $\mu_0$, without specifying a direction. This is called a **two-sided** (or **two-tailed**) hypothesis. As before, the form of the hypotheses determines how we set up our decision rules.
+
+Let’s begin with a few examples. 
+
+:::{#exm-sat-csuf-mean}
+## SAT Math Scores at CSUF
+
+According to the [College Board](https://reports.collegeboard.org/media/pdf/2025-total-group-sat-suite-of-assessments-annual-report%20ADA-v0.2_0.pdf), the mean score on the math portion of the SAT for the high school graduating class of 2025 was 508 points, with a standard deviation of 113 points. These figures are computed from the more than 2 million high school students who took the exam that year.
+
+We wish to investigate whether the mean math SAT score among incoming freshmen in fall 2025 at California State University, Fullerton (CSUF) is *higher* than the national mean. Since CSUF does not require the SAT for admission, the exact record is not available, so we take a random sample of $n = 40$ incoming CSUF freshmen and obtain a sample mean of $\bar{x}_{\text{obs}} = 542$ points. Using this information, answer the following questions:
+
+a. What is the population of interest?
+b. Describe the parameter $\mu$ in words.
+c. Write the null and alternative hypotheses.
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+a. The population of interest is all incoming freshmen in fall 2025 at California State University, Fullerton (CSUF).
+
+b. $\mu$ is the mean math SAT score for all incoming freshmen in fall 2025 at CSUF.
+
+c. The null and alternative hypotheses are as follows:
+$$
+\begin{cases}
+H_0: \mu \leq 508 \\
+H_a: \mu > 508
+\end{cases}
+$$
+:::
+
+:::{#exm-sleep-university-mean}
+## Sleep Hours Among University Students
+
+The [National Sleep Foundation](https://www.thensf.org/how-many-hours-of-sleep-do-you-really-need/) and the American Academy of Sleep Medicine recommend that young adults sleep between 7 and 9 hours per night, with 7 hours often cited as the minimum needed for healthy cognitive and physical functioning. There is widespread concern, however, that college students fall short of this recommendation.
+
+We wish to investigate whether the mean nightly sleep among students at our university is *less than* 7 hours. We take a random sample of $n = 15$ students and ask each student how many hours they slept the previous night. The resulting sample has a mean of $\bar{x}_{\text{obs}} = 6.4$ hours and a standard deviation of $1.2$ hours. Using this information, answer the following questions:
+
+a. What is the population of interest?
+b. Describe the parameter $\mu$.
+c. Write the null and alternative hypotheses.
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+a. The population of interest is all students at our university.
+
+b. $\mu$ is the mean nightly sleep, in hours, for all students at our university.
+
+c. The null and alternative hypotheses are as follows:
+$$
+\begin{cases}
+H_0: \mu \geq 7 \\
+H_a: \mu < 7
+\end{cases}
+$$
+:::
+
+:::{#exm-commute-metro-mean}
+## Commute Time in a Metropolitan Area
+
+According to the [U.S. Census Bureau's American Community Survey](https://www.census.gov/topics/employment/commuting/guidance/acs-1yr.html), the mean one-way commute time for U.S. workers in 2023 was 26.8 minutes. Local commuting patterns can differ substantially from the national average, however, because of differences in population density, transportation infrastructure, and the prevalence of remote work.
+
+We wish to investigate whether the mean one-way commute time among workers in our metropolitan area *differs* from the national mean. We take a random sample of $n = 50$ commuters from the area and record each person's one-way commute time. The sample has a mean of $\bar{x}_{\text{obs}} = 24.8$ minutes and a standard deviation of $s = 9.6$ minutes. Using this information, answer the following questions:
+
+a. What is the population of interest?
+b. Describe the parameter $\mu$.
+c. Write the null and alternative hypotheses.
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+a. The population of interest is all workers in our metropolitan area.
+
+b. $\mu$ is the mean one-way commute time, in minutes, for all workers in our metropolitan area.
+
+c. The null and alternative hypotheses are as follows:
+$$
+\begin{cases}
+H_0: \mu = 26.8 \\
+H_a: \mu \neq 26.8
+\end{cases}
+$$
+:::
+
+:::{#exm-penguin-flipper-mean}
+## Flipper Length of Adélie Penguins
+
+The [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/) dataset contains body measurements collected between 2007 and 2009 on 342 penguins from three species — Adélie, Chinstrap, and Gentoo — at three islands in the Palmer Archipelago, Antarctica. The data were assembled by Dr. Kristen Gorman and the Palmer Station Long Term Ecological Research (LTER) program and have since become a widely used dataset in introductory statistics and data science. Among Adélie penguins, flipper length is an important morphological measurement used in studies of body condition and adaptation, and a commonly cited reference value for the mean flipper length of Adélie penguins is 188 mm.
+
+We wish to investigate whether the mean flipper length among Adélie penguins in the Palmer Archipelago *differs* from this reference value. Rather than working from summary statistics, in this example we use the raw flipper length measurements of all $n = 151$ Adélie penguins recorded in the dataset. Using this information, answer the following questions:
+
+a. What is the population of interest?
+b. Describe the parameter $\mu$.
+c. Write the null and alternative hypotheses.
+:::
+
+Click to open the codebook for the [PalmerPenguin]{.dataset} dataset:
+
+::: {#code-book-palmerpenguins .callout-tip .codebook collapse="true"}
+
+## Code book for Dataset PalmerPenguins
+Dataset Name: [PalmerPenguins]{.data}
+
+This dataset contains measurements collected from penguins observed near Palmer Station, Antarctica, as part of the Palmer Penguins study. The dataset includes $n = 342$ penguins from three species.
+
+The variables included in this dataset are described below.
+
+[Species]{.var}: Penguin species
+
+  - Adelie  
+  - Chinstrap  
+  - Gentoo  
+
+[Island]{.var}: Island where the penguin was observed
+
+  - Biscoe  
+  - Dream  
+  - Torgersen  
+
+[BillLength]{.var}: Bill length of the penguin (in millimeters)
+
+[BillDepth]{.var}: Bill depth of the penguin (in millimeters)
+
+[FlipperLength]{.var}: Flipper length of the penguin (in millimeters)
+
+[BodyMass]{.var}: Body mass of the penguin (in grams)
+
+[Sex]{.var}: Sex of the penguin
+
+  - Male  
+  - Female  
+
+[Year]{.var}: Year in which the observation was recorded
+
+  - 2007  
+  - 2008  
+  - 2009  
+
+**Source**
+
+Horst, A. M., Hill, A. P., & Gorman, K. B. *palmerpenguins: Palmer Archipelago (Antarctica) penguin data*.  
+<https://allisonhorst.github.io/palmerpenguins/>
+
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+a. The population of interest is all Adélie penguins in the Palmer Archipelago.
+
+b. $\mu$ is the mean flipper length, in millimeters, of all Adélie penguins in the Palmer Archipelago.
+
+c. The null and alternative hypotheses are as follows:
+$$
+\begin{cases}
+H_0: \mu = 188 \\
+H_a: \mu \neq 188
+\end{cases}
+$$
+:::
+
+### The Null Distribution of the Sample Mean {#sec-null-disrtibution-mean}
+
+As noted earlier, it makes sense to use the sample mean $\bar{X}$ as a statistic for making inferences about the population mean $\mu$. Like any statistic, the sample mean varies from sample to sample, and statistical inference is based on understanding this sampling variability through the sampling distribution of $\bar{X}$.
+
+To begin, we will assume that the variable under study has a normal distribution in the population. There are two reasons for starting with this assumption. First, the assumption is realistic in many practical settings — heights, weights, exam scores, and a wide range of biological and physical measurements are often approximately normally distributed. Second, under this assumption, the sampling distribution of $\bar{X}$ takes a clean, exact form that allows us to focus on the main ideas of inference without the distraction of approximations or special cases.
+
+In @sec-QQ-Plot-mean we discuss how to assess the normality assumption using graphical methods such as Q-Q plots. Later, in @sec-large-sample-mean, we will show that for sufficiently large samples the methods developed here remain approximately valid even when the population distribution is not normal.
+
+As we saw in @sec-???, the sampling distribution of the sample mean $\bar{X}$ depends on the unknown population mean $\mu$. Since $\mu$ is precisely the quantity we wish to make an inference about, we need a way to determine which value of $\mu$ to use when working with this distribution.
+
+As in proportion inference, in hypothesis testing we proceed by assuming that the null hypothesis is true, which determines the value or range of values for $\mu$. For two-sided tests, $H_0$ specifies a single value of $\mu$, so we use that value directly. For one-sided tests, $H_0$ consists of a range of values for $\mu$. As discussed in the previous chapter and in @sec-boundary-value, the boundary value of this range provides the largest Type I error probability among all parameter values allowed under $H_0$. To ensure that the significance level is controlled conservatively, we therefore base our calculations on the boundary value $\mu_0$ in all cases.
+
+In summary, the sampling distribution of $\bar{X}$ that we use in hypothesis testing is its distribution when $\mu = \mu_0$. We refer to this distribution as the *null distribution* of $\bar{X}$. 
+
+Under the normality assumption introduced earlier, there are two main cases for the sampling distribution of $\bar{X}$ under $H_0$. In the first case, the population standard deviation $\sigma$ is known. In the second case, $\sigma$ is unknown and must be estimated using the sample standard deviation $s$. These two situations lead to different sampling distributions and inferential procedures, which we study in the subsections that follow.
+
+### Homework for @sec-concept-setup-mean
+
+<!-- to be filled --> 
+
+## Mean Inference When $\sigma$ Is Known {#sec-mean-inference-known-sigma}
+
+In practice, the population standard deviation $\sigma$ is rarely known exactly. There are, however, situations in which a value of $\sigma$ has been established from extensive prior data and can reasonably be treated as known. The SAT example in @exm-sat-csuf-mean is one such case: the standard deviation of $\sigma = 113$ points is computed from the scores of more than 2 million students who took the exam in 2025, a population large enough that we can reasonably treat this value as known when investigating the mean score among a particular subgroup such as incoming CSUF freshmen. Beyond examples of this kind, beginning with the known-$\sigma$ case is helpful pedagogically because it allows us to focus on the main ideas of statistical inference while working with a simpler sampling distribution. Once these ideas are established, we will turn to the more realistic setting in which $\sigma$ is unknown and must be estimated from the sample data.
+
+### The Null Distribution of $\bar X$ When $\sigma$ Is known
+
+We first consider the setting in which the population standard deviation $\sigma$ is known. Under the assumptions introduced earlier, the sample mean $\bar{X}$ has a normal distribution when the null hypothesis is true. This distribution serves as the null distribution for hypothesis testing about the population mean $\mu$.
+
+::: {.callout-note appearance="minimal" title="The Null Distribution"}
+\ 
+
+Under the assumptions that
+
+- the variable under study has a **normal distribution** in the population,
+- the population standard deviation $\sigma$ is known,
+- the sample size is $n$, and
+- the boundary value specified by the null hypothesis is $\mu = \mu_0$,
+
+the null distribution of the sample mean $\bar{X}$ is
+
+$$
+\bar{X} \sim N\left(\mu_0,\frac{\sigma}{\sqrt{n}}\right).
+$$
+
+:::
+
+The result above tells us that, when the null hypothesis is true, the sample mean $\bar{X}$ is centered at $\mu_0$ and varies around it with standard deviation $\sigma/\sqrt{n}$. For instance, in the SAT example, the null hypothesis is $H_0: \mu \leq 508$, then $\bar{X}$ has a normal distribution centered at 508 with standard deviation $113/\sqrt{40} \approx 17.87$ points. Roughly 95% of all possible sample means from random samples of size 40 would fall within about 35 points of 508 under the null hypothesis. Sample means much larger than 508 would be unusual under $H_0$, and would provide evidence against it.
+
+Some texts work with a standardized version of the sample mean, namely
+
+$$
+Z = \frac{\bar{X} - \mu_0}{\sigma/\sqrt{n}} \sim N(0,1),
+$$
+
+and for this reason the procedure is commonly called the **$z$-test**. Rguroo reports critical regions and p-values using both the standardized statistic $Z$ and the sample mean $\bar{X}$ on its original scale.
+
+In this text, we will primarily use the null distribution of $\bar{X}$ directly rather than its standardized version. Working on the original scale of the data allows us to interpret critical regions and p-values more naturally in the context of the problem and avoids the additional step of converting observations to standardized scores. In the SAT example, for instance, it is easier to reason about a sample mean of 542 points relative to a hypothesized population mean of 508 points than to translate everything into the unitless $z$ scale.
+
+### Decision Based on the Critical Region Approach
+
+To implement the critical region approach for testing hypotheses about $\mu$, we need a rule that ensures the probability of a Type I error, when $\mu$ equals the boundary value $\mu_0$, is equal to a given significance level $\alpha$. That is, the critical region must satisfy
+$$
+P(\text{Rejecting } H_0 \mid \mu = \mu_0) = \alpha.
+$$
+The form of the critical region depends on the alternative hypothesis: large values of $\bar{X}$ are evidence against $H_0$ when $H_a$ points to large values of $\mu$, small values of $\bar{X}$ are evidence against $H_0$ when $H_a$ points to small values of $\mu$, and values of $\bar{X}$ far from $\mu_0$ in either direction are evidence against $H_0$ when $H_a$ allows departure in either direction. The three callouts that follow summarize the critical region in each of these cases.
+
+::: {.callout-important appearance="minimal" title="Rejection Region for $H_a: \mu > \mu_0$"}
+\
+
+When the alternative hypothesis is $H_a: \mu > \mu_0$, large values of $\bar{X}$ provide evidence against $H_0$. The rejection region therefore lies in the upper tail of the distribution of $\bar{X}$ under $H_0$ and has the form
+$$
+\text{Reject } H_0 \text{ if } \bar{X} \geq c,
+$$
+where the critical value $c$ satisfies
+$$
+P\left(\bar{X} \geq c \mid \mu = \mu_0\right) = \alpha.
+$$
+Equivalently, $c$ is the $(1-\alpha)$ quantile of the $N\left(\mu_0,\,\sigma/\sqrt{n}\right)$ distribution.
+:::
+
+::: {.callout-important appearance="minimal" title="Rejection Region for $H_a: \mu < \mu_0$"}
+\
+
+When the alternative hypothesis is $H_a: \mu < \mu_0$, small values of $\bar{X}$ provide evidence against $H_0$. The rejection region therefore lies in the lower tail of the distribution of $\bar{X}$ under $H_0$ and has the form
+$$
+\text{Reject } H_0 \text{ if } \bar{X} \leq c,
+$$
+where the critical value $c$ satisfies
+$$
+P\left(\bar{X} \leq c \mid \mu = \mu_0\right) = \alpha.
+$$
+Equivalently, $c$ is the $\alpha$ quantile of the $N\left(\mu_0,\,\sigma/\sqrt{n}\right)$ distribution.
+:::
+
+::: {.callout-important appearance="minimal" title="Rejection Region for $H_a: \mu \neq \mu_0$"}
+\
+
+When the alternative hypothesis is $H_a: \mu \neq \mu_0$, values of $\bar{X}$ that are either far below or far above $\mu_0$ provide evidence against $H_0$. The rejection region therefore lies in both tails of the distribution of $\bar{X}$ under $H_0$ and has the form
+$$
+\text{Reject } H_0 \text{ if } \bar{X} \leq c_1 \text{ or } \bar{X} \geq c_2,
+$$
+where the critical values $c_1 < c_2$ split the significance level evenly between the two tails:
+$$
+P\left(\bar{X} \leq c_1 \mid \mu = \mu_0\right) = \frac{\alpha}{2}, \qquad P\left(\bar{X} \geq c_2 \mid \mu = \mu_0\right) = \frac{\alpha}{2}.
+$$
+Equivalently, $c_1$ and $c_2$ are the $\alpha/2$ and $(1-\alpha/2)$ quantiles of the $N\left(\mu_0,\,\sigma/\sqrt{n}\right)$ distribution.
+:::
+
+Finally, in the critical region approach, we reject $H_0$ in favor of $H_a$ if the observed sample mean $\bar{x}_{\text{obs}}$ falls in the rejection region. Otherwise, we fail to reject $H_0$.
+
+### Decision Based on the p-value Approach
+
+A second approach to making a decision in a hypothesis test is based on the p-value. Conceptually, the p-value measures how strongly the evidence in our observed sample favors the alternative hypothesis, assuming that the null hypothesis is true. As in the proportion setting, we develop the idea of p-value through the $H_a$ *support*: the set of values of the sample mean $\bar{X}$ that are as favorable, or more favorable, to the alternative hypothesis than the value we actually observed.
+
+To make this concrete, recall that our observed sample mean is denoted $\bar{x}_{\text{obs}}$, and that we evaluate evidence using the null distribution $\bar{X} \sim N\left(\mu_0, \sigma/\sqrt{n}\right)$. The $H_a$ support depends on the form of the alternative hypothesis. The three callouts that follow summarize the $H_a$ support and the corresponding p-value for each type of alternative hypothesis.
+
+::: {.callout-important appearance="minimal" title="p-value for $H_a: \mu > \mu_0$"}
+\
+
+When the alternative hypothesis is $H_a: \mu > \mu_0$, larger values of $\bar{X}$ are more favorable to $H_a$. The $H_a$ support therefore consists of all values of $\bar{X}$ at least as large as $\bar{x}_{\text{obs}}$, and the p-value is
+$$
+p\text{-value} = P\left(\bar{X} \geq \bar{x}_{\text{obs}} \mid \mu = \mu_0\right).
+$$
+:::
+
+::: {.callout-important appearance="minimal" title="p-value for $H_a: \mu < \mu_0$"}
+\
+
+When the alternative hypothesis is $H_a: \mu < \mu_0$, smaller values of $\bar{X}$ are more favorable to $H_a$. The $H_a$ support therefore consists of all values of $\bar{X}$ no greater than $\bar{x}_{\text{obs}}$, and the p-value is
+$$
+p\text{-value} = P\left(\bar{X} \leq \bar{x}_{\text{obs}} \mid \mu = \mu_0\right).
+$$
+:::
+
+::: {.callout-important appearance="minimal" title="p-value for $H_a: \mu \neq \mu_0$"}
+\
+
+When the alternative hypothesis is $H_a: \mu \neq \mu_0$, values of $\bar{X}$ far from $\mu_0$ in either direction provide evidence in favor of $H_a$. Specifically, the $H_a$ support consists of all values of $\bar{X}$ whose density under the null distribution is less than or equal to the density at $\bar{x}_{\text{obs}}$. Because the null distribution is symmetric about $\mu_0$, this support consists of values at least as far from $\mu_0$ as $\bar{x}_{\text{obs}}$, and the p-value can be written as
+$$
+p\text{-value} = 2 \times \begin{cases}
+P\left(\bar{X} \leq \bar{x}_{\text{obs}} \mid \mu = \mu_0\right) & \text{if } \bar{x}_{\text{obs}} < \mu_0, \\[4pt]
+P\left(\bar{X} \geq \bar{x}_{\text{obs}} \mid \mu = \mu_0\right) & \text{if } \bar{x}_{\text{obs}} \geq \mu_0.
+\end{cases}
+$$
+:::
+
+In each case, the p-value is the probability, computed under the null distribution, of observing a sample mean at least as favorable to $H_a$ as the one actually observed.
+
+Once the p-value has been computed, the decision rule is the same regardless of the form of the alternative hypothesis: reject $H_0$ if the p-value is less than the significance level $\alpha$, and fail to reject $H_0$ otherwise.
+
+Intuitively, a small p-value means that the observed sample mean would be unusual under the null hypothesis, providing evidence against the null hypothesis. A p-value larger than $\alpha$ means that the observed sample mean is reasonably consistent with the null hypothesis, and we have insufficient evidence to reject it.
+
+It is worth emphasizing that the critical region approach and the p-value approach lead to the same decision: rejecting $H_0$ using the critical region is equivalent to obtaining a p-value less than $\alpha$. The two approaches present the same evidence in different forms. The critical region approach answers the question "for which values of $\bar{X}$ would we reject $H_0$?", while the p-value approach answers the question "given our observed value of $\bar{X}$, how strong is the evidence against $H_0$?".
+
+:::{#exm-sat-csuf-mean-known}
+## SAT Math Scores at CSUF, $\sigma$ Known
+
+We return to the SAT setting introduced in @exm-sat-csuf-mean. Recall that the national mean math SAT score for the high school graduating class of 2025 was 508 points, with a standard deviation of 113 points, and that we wished to investigate whether the mean math SAT score among incoming CSUF freshmen in fall 2025 was higher than the national mean. A random sample of $n = 40$ incoming CSUF freshmen yielded a sample mean of $\bar{x}_{\text{obs}} = 542$ points.
+
+The hypotheses are
+$$
+\begin{cases}
+H_0: \mu \leq 508 \\
+H_a: \mu > 508
+\end{cases}
+$$
+where $\mu$ denotes the mean math SAT score among incoming CSUF freshmen in fall 2025. Assume that the population of math SAT scores is normally distributed, and treat the population standard deviation as known with $\sigma = 113$ points. Perform a test of hypothesis at the $\alpha = 0.05$ significance level by answering the following questions:
+
+a. What is the null distribution of $\bar{X}$?
+b. Use Rguroo's [Mean Inference]{.fun} function to obtain the critical region. Interpret the critical region in the context of the problem, and using the observed value, state whether you reject or fail to reject $H_0$.
+c. State a probability statement that defines the p-value for this test, and descibe it in words.
+d. Use Rguroo to obtain the p-value, interpret it in the context of the problem, and state whether you reject or fail to reject $H_0$.
+e. Give your overall conclusion.
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+a. The null distribution is 
+
+$$\bar{X}\sim N\left(508, \frac{113}{\sqrt{40}}\right)\approx N\left(508,17.867 \right)
+$$
+
+b. Click to expand the box below to see how to use the [Mean Inference]{.fun}  function in Rguroo to answer this question.
+
+:::: {#mean-inference-sat .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} One-Population mean hypothesis test - CSUF SAT example"}
+
+1. Open the **Analytics** toolbox in Rguroo.  
+
+2. From the [Analysis]{.dpd} dropdown, select [Mean Inference]{.fun} --> [One Population]{.fun}. This opens the [One Population Mean Inference]{.dialog} dialog.
+
+3. Fill out the textboxes in the **Data** section of the dialog with the following values:
+
+   - [Sample Mean]{.des}: [542]{.typein}, the value of $\bar{x}_{\text{obs}}$.
+   - [Pop S.d.]{.des}: [113]{.typein}, the population standard deviation.
+   - [Sample Size]{.des}: [40]{.typein}, the size of the sample $n$.
+
+4. In the text box [$\mu$ = Mean of]{.des} enter a label for the parameter. For this example we enter [CSUF SAT Math Scores]{.typein}.
+
+5. Open the [Test of Hypothesis]{.tab} tab and enter the following:
+   - Leave the [Significance Level]{.des} textbox at the default value of [0.05]{.typein}.
+   - In the [Alternative Hypothesis $\mu$]{.dpd} dropdown, select [>]{.typein} and enter [508]{.typein}, the value stated in $H_a$.
+   - Select the [z-statistic]{.des} checkbox to use the normal distribution.
+
+6. Click the ![Details](Rguroo_Icons/details.png) button to open the [Advanced Features]{.dialog} dialog. In the **Test of Hypothesis** section select [P-value Graph]{.des} and [Critical Region Graph]{.des}. This will instruct Rguroo to give results for both critical regions and p-value.
+
+7. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to view the output.
+
+8. Click the ![Save as](Rguroo_Icons/save_as.png) button and save the result as [CSUFSAT]{.typein}.
+
+::: {.callout-tip .inner-callout collapse="false" title="Rguroo One-Population Mean Inference dialogs"}
+
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo dialog boxes for conducting a one-population mean hypothesis test for the CSUF SAT Math example. The left panel shows the main One Population Mean Inference dialog with sample mean 542, population standard deviation 113, sample size 40, significance level 0.05, and alternative hypothesis μ > 508 using the z-statistic method. The right panel shows the Advanced Features dialog with options for displaying p-value and critical region graphs."
+#| fig-cap: "Rguroo setup for the CSUF SAT Math one-sample mean hypothesis test."
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_dialogs/Mean Inference/CSUFSAT.png")
+```
+
+:::
+
+Click to expand the box below to see the Rguroo output.
+
+::: {.callout-tip .inner-callout collapse="true" title="Rguroo output: One-Population Mean Inference - CSUF SAT"}
+
+<div tabindex="0" class="rg-iframe-wrapper">
+  <iframe
+    src="Rguroo_html_output/Mean Inference/CSUFSAT_docx/CSUFSAT.html"
+    class="rg-iframe"
+    title="Rguroo output: One Population Mean Hypothesis Test - CSUF SAT Example">
+  </iframe>
+</div>
+
+:::
+
+:::
+
+@fig-sat-math-cr shows the Critical Region Graph from the Rguroo output. The right-hand side plot displays the critical region in the observed data scale. As shown, the critical value for a significance level of $\alpha =0.05$ is 537.39 and thus the critical region is $\bar{x} >537.39$. Thus, if an observed sample mean is larger than 537.39, we would reject $H_0$.
+
+Our observed sample mean is $\bar{x}_{\text{obs}} = 542$ (shown by the green triangle) falls in the rejection region since it is greater than 537.39. Therefore we reject $H_0$ at 5\% level of significance.
+
+```{r,echo=FALSE}
+#| fig-alt: "Critical region graphs for the CSUF SAT Math one-sample z-test with alternative hypothesis μ > 508. The left panel shows the null distribution of the sample mean on the original SAT score scale with mean 508 and standard deviation 17.867. The rejection region is shaded in the upper tail beyond the critical value 537.39, and the observed sample mean 542 is marked with a green triangle inside the rejection region. The right panel shows the equivalent graph on the standardized z scale with critical value 1.6449 and observed z statistic 1.903."
+#| warning: FALSE
+#| label: fig-sat-math-cr
+#| fig-cap: "Critical region graphs for the CSUF SAT Math one-sample z-test."
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Mean Inference/SATMATH_cr.png")
+```
+
+c. p-value is the probability of observing a sample mean greater than or equal to our observed value of $\bar{x}_{\text{obs}} = 542$ given that the true value of the population mean is $\mu = 508$. This can be written mathematically as 
+
+$$\text{p-value} = P(\bar{X} \geq 542 \mid \mu = 508).$$
+
+d. @fig-sat-math-pvalue shows the P-value Graph from the Rguroo output. As shown on the graph, the p-value is $0.028523\approx 2.9\%$. This means that if in fact the true population mean is 508, the probability of having observed a sample mean of 542 or larger is approximately 2.9\%. Because this probability is small, and more specifically is less than 5\%, there is sufficient evidence to reject $H_0$.
+
+e. The final decision is that based on the observed sample mean of 542, there is sufficient evidence at 5\% significance level that the mean SAT math scores of CSUF students is more than the national average.
+
+```{r,echo=FALSE}
+#| fig-alt: "P-value graphs for the CSUF SAT Math one-sample z-test with alternative hypothesis μ > 508. The left panel shows the null distribution of the sample mean on the original SAT score scale with mean 508 and standard deviation 17.867. The observed sample mean 542 is marked with a green triangle, and the shaded upper-tail area to the right represents the p-value of 0.028523. The right panel shows the equivalent graph on the standardized z scale with observed z statistic 1.903 and the same shaded p-value area."
+#| warning: FALSE
+#| label: fig-sat-math-pvalue
+#| fig-cap: "P-value graphs for the CSUF SAT Math one-sample z-test."
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Mean Inference/SATMATH_pvalue.png")
+```
+
+::::
+
+:::{#exm-sleep-university-mean-known}
+## Sleep Hours Among University Students, $\sigma$ Known
+
+We return to the sleep setting introduced in @exm-sleep-university-mean. Recall that the recommended minimum nightly sleep for young adults is 7 hours, and that we wished to investigate whether the mean nightly sleep among students at our university is less than 7 hours. A random sample of $n = 30$ students yielded a sample mean of $\bar{x}_{\text{obs}} = 6.8$ hours.
+
+The hypotheses are
+$$
+\begin{cases}
+H_0: \mu \geq 7 \\
+H_a: \mu < 7
+\end{cases}
+$$
+where $\mu$ denotes the mean nightly sleep, in hours, among students at our university. Assume that the population of nightly sleep hours is normally distributed, and suppose that from a large prior study the population standard deviation is known to be $\sigma = 1.2$ hours. Perform a test of hypothesis at the $\alpha = 0.05$ significance level by answering the following questions:
+
+a. What is the null distribution of $\bar{X}$?
+b. Use Rguroo's [Mean Inference]{.fun} function to obtain the critical region. Interpret the critical region in the context of the problem, and using the observed value, state whether you reject or fail to reject $H_0$.
+c. State a probability statement that defines the p-value for this test, and describe it in words.
+d. Use Rguroo to obtain the p-value, interpret it in the context of the problem, and state whether you reject or fail to reject $H_0$.
+e. Give your overall conclusion.
+:::
+
+:::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+a. The null distribution is
+
+$$
+\bar{X}\sim N\left(7,\ \frac{1.2}{\sqrt{30}}\right)\approx N\left(7,\ 0.21909\right).
+$$
+
+b. The steps for using Rguroo's [Mean Inference]{.fun} function are the same as those in @exm-sat-csuf-mean-known, with the following differences in the [One Population Mean Inference]{.dialog} dialog:
+
+   - [Sample Mean]{.des}: [6.8]{.typein}, the value of $\bar{x}_{\text{obs}}$.
+   - [Pop S.d.]{.des}: [1.2]{.typein}, the population standard deviation.
+   - [Sample Size]{.des}: [30]{.typein}, the size of the sample $n$.
+   - In the text box [$\mu$ = Mean of]{.des} enter the label [Nightly Sleep]{.typein}.
+   - In the [Alternative Hypothesis $\mu$]{.dpd} dropdown, select [<]{.typein} and enter [7]{.typein}, the value stated in $H_a$.
+
+   Click to open the box below to see @fig-sleep-dialog that shows the Rguroo dialog for the setup.
+   
+
+::: {.callout-tip .inner-callout collapse="true" title="Rguroo One-Population Mean Inference dialog"}
+
+```{r,echo=FALSE}
+#| label: fig-sleep-dialog
+#| fig-alt: "Rguroo One Population Mean Inference dialog for the Nightly Sleep example, showing sample mean 6.8, population standard deviation 1.2, sample size 30, parameter label Nightly Sleep, significance level 0.05, and alternative hypothesis μ < 7 using the z-statistic method."
+#| fig-cap: "Rguroo setup for the Nightly Sleep one-sample mean hypothesis test."
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_dialogs/Mean Inference/sleep_dialog_mean.png")
+```
+
+:::
+
+Click to expand the box below to see the Rguroo output.
+
+::: {.callout-tip .inner-callout collapse="true" title="Rguroo output: One-Population Mean Inference - Nightly Sleep"}
+
+```{=html}
+<div tabindex="0" class="rg-iframe-wrapper">
+     <iframe
+  src="Rguroo_html_output/Mean%20Inference/sleep_mean_docx/sleep_mean.html"
+  class="rg-iframe"
+  title="Rguroo output: One Population Mean Hypothesis Test - Nightly Sleep Example">
+</iframe>
+</div>
+```
+
+:::
+
+@fig-sleep-cr shows the Critical Region Graph from the Rguroo output. The left-hand plot displays the critical region in the observed data scale. The critical value for a significance level of $\alpha = 0.05$ is 6.6396, and because the alternative hypothesis is of the form less than ($H_a: \mu < 7$), the critical region is $\bar{X} \leq 6.6396$. Thus, if an observed sample mean is less than 6.6396, we would reject $H_0$.
+
+Our observed sample mean is $\bar{x}_{\text{obs}} = 6.8$ (shown by the green triangle), which does not fall in the rejection region since it is greater than 6.6396. Therefore, we fail to reject $H_0$ at the 5\% level of significance.
+
+```{r,echo=FALSE}
+#| fig-alt: "Critical region graphs for the Nightly Sleep one-sample z-test with alternative hypothesis μ < 7. The left panel shows the null distribution of the sample mean on the original sleep-hours scale with mean 7 and standard deviation 0.21909. The rejection region is shaded in the lower tail below the critical value 6.6396, and the observed sample mean 6.8 is marked with a green triangle outside the rejection region. The right panel shows the equivalent graph on the standardized z scale with critical value -1.6449 and observed z statistic -0.91287."
+#| warning: FALSE
+#| label: fig-sleep-cr
+#| fig-cap: "Critical region graphs for the Nightly Sleep one-sample z-test."
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_outputs/Mean Inference/sleep-cr.png")
+```
+
+c. The $p$-value is the probability of observing a sample mean less than or equal to our observed value of $\bar{x}_{\text{obs}} = 6.8$, given that the true value of the population mean is $\mu = 7$. This can be written mathematically as
+
+$$
+\text{p-value} = P(\bar{X} \leq 6.8 \mid \mu = 7).
+$$
+
+d. @fig-sleep-pvalue shows the P-value Graph from the Rguroo output. As shown on the graph, the p-value is $0.18066 \approx 18.1\%$. This means that if the true population mean is in fact 7 hours, then the probability of having observed a sample mean of 6.8 hours or less is approximately 18.1\%. Because this probability is large, and in particular is greater than 5\%, there is insufficient evidence to reject $H_0$.
+
+```{r,echo=FALSE}
+#| fig-alt: "P-value graphs for the Nightly Sleep one-sample z-test with alternative hypothesis μ < 7. The left panel shows the null distribution of the sample mean on the original sleep-hours scale with mean 7 and standard deviation 0.21909. The observed sample mean 6.8 is marked with a green triangle, and the shaded lower-tail area to the left represents the p-value of 0.18066. The right panel shows the equivalent graph on the standardized z scale with observed z statistic -0.91287 and the same shaded p-value area."
+#| warning: FALSE
+#| label: fig-sleep-pvalue
+#| fig-cap: "P-value graphs for the Nightly Sleep one-sample z-test."
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_outputs/Mean Inference/sleep-pvalue.png")
+```
+
+e. The final decision is that, based on the observed sample mean of 6.8 hours, there is insufficient evidence at the 5\% significance level to conclude that the mean nightly sleep among students at our university is less than the recommended 7 hours.
+
+::::
+
+:::{#exm-commute-metro-mean-known}
+## Commute Time in a Metropolitan Area, $\sigma$ Known
+
+We return to the commute setting introduced in @exm-commute-metro-mean. Recall that the national mean one-way commute time for U.S. workers in 2023 was 26.8 minutes, and that we wished to investigate whether the mean one-way commute time among workers in our metropolitan area differs from the national mean. A random sample of $n = 15$ commuters yielded a sample mean of $\bar{x}_{\text{obs}} = 24.8$ minutes.
+
+The hypotheses are
+$$
+\begin{cases}
+H_0: \mu = 26.8 \\
+H_a: \mu \neq 26.8
+\end{cases}
+$$
+where $\mu$ denotes the mean one-way commute time, in minutes, among workers in our metropolitan area. Assume that the population of commute times is normally distributed, and suppose that from a large prior study the population standard deviation is known to be $\sigma = 9.6$ minutes. Perform a test of hypothesis at the $\alpha = 0.05$ significance level by answering the following questions:
+
+a. What is the null distribution of $\bar{X}$?
+b. Use Rguroo's [Mean Inference]{.fun} function to obtain the critical region. Interpret the critical region in the context of the problem, and using the observed value, state whether you reject or fail to reject $H_0$.
+c. State a probability statement that defines the $p$-value for this test, and describe it in words.
+d. Use Rguroo to obtain the $p$-value, interpret it in the context of the problem, and state whether you reject or fail to reject $H_0$.
+e. Give your overall conclusion.
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+a. The null distribution is
+
+$$
+\bar{X}\sim N\left(26.8,\ \frac{9.6}{\sqrt{15}}\right)\approx N\left(26.8,\ 2.4787\right).
+$$
+
+b. The steps for using Rguroo's [Mean Inference]{.fun} function are the same as those in @exm-sat-csuf-mean-known, with the following differences in the [One Population Mean Inference]{.dialog} dialog:
+
+   - [Sample Mean]{.des}: [24.8]{.typein}, the value of $\bar{x}_{\text{obs}}$.
+   - [Pop S.d.]{.des}: [9.6]{.typein}, the population standard deviation.
+   - [Sample Size]{.des}: [15]{.typein}, the size of the sample $n$.
+   - In the text box [$\mu$ = Mean of]{.des} enter the label [Commute Times]{.typein}.
+   - In the [Alternative Hypothesis $\mu$]{.dpd} dropdown, select [!=]{.typein} and enter [26.8]{.typein}, the value stated in $H_a$.
+
+   This is a two-sided test, so the [!=]{.typein} option produces a critical region with two parts, one in each tail of the null distribution. The dialog with these values entered is shown below.
+
+Click to open the box below to see @fig-commute-dialog that shows the Rguroo dialog for the setup.
+
+
+::: {.callout-tip .inner-callout collapse="true" title="Rguroo One-Population Mean Inference dialog"}
+
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo One Population Mean Inference dialog for the Commute Times example..."
+#| fig-cap: "Rguroo setup for the Commute Times one-sample mean hypothesis test."
+#| label: fig-commute-dialog
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_dialogs/Mean Inference/commute_mean_dialog.png")
+```
+
+:::
+
+Click to expand the box below to see the Rguroo output.
+
+::: {.callout-tip .inner-callout collapse="true" title="Rguroo output: One-Population Mean Inference - Commute Times"}
+
+```{=html}
+   <div tabindex="0" class="rg-iframe-wrapper">
+     <iframe
+       src="Rguroo_html_output/Mean Inference/commute_mean_docx/commute_mean.html"
+       class="rg-iframe"
+       title="Rguroo output: One Population Mean Hypothesis Test - Commute Times Example">
+     </iframe>
+   </div>
+```
+
+:::
+
+   @fig-commute-cr shows the Critical Region Graph from the Rguroo output. The left-hand plot displays the critical region in the observed data scale. Because the alternative hypothesis is two-sided, $H_a: \mu \neq 26.8$, the significance level $\alpha = 0.05$ is split evenly between the two tails, with $0.025$ in each. This produces two critical values, $c_1 = 21.942$ and $c_2 = 31.658$, and the critical region is $\bar{X} \leq 21.942$ or $\bar{X} \geq 31.658$. Thus, we would reject $H_0$ if an observed sample mean is less than 21.942 or greater than 31.658.
+
+   Our observed sample mean is $\bar{x}_{\text{obs}} = 24.8$ (shown by the green triangle), which does not fall in either part of the rejection region since it lies between 21.942 and 31.658. Therefore, we fail to reject $H_0$ at the 5\% level of significance.
+
+```{r,echo=FALSE}
+#| fig-alt: "Critical region graphs for the Commute Times one-sample z-test with two-sided alternative hypothesis μ ≠ 26.8. The left panel shows the null distribution of the sample mean on the original commute-time scale with mean 26.8 and standard deviation 2.4787. The rejection region is shaded in both tails, below the lower critical value 21.942 and above the upper critical value 31.658, and the observed sample mean 24.8 is marked with a green triangle between the two critical values, outside the rejection region. The right panel shows the equivalent graph on the standardized z scale with critical values -1.96 and 1.96 and observed z statistic -0.80687."
+#| warning: FALSE
+#| label: fig-commute-cr
+#| fig-cap: "Critical region graphs for the Commute Times one-sample z-test."
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_outputs/Mean Inference/commute_cr.png")
+```
+
+c. Because the test is two-sided, a sample mean that is far from 26.8 in *either* direction is evidence against $H_0$. The $p$-value is therefore the probability, under the null distribution, of observing a sample mean at least as far from 26.8 as our observed value of $\bar{x}_{\text{obs}} = 24.8$. Since 24.8 is 2 units below 26.8, this means a sample mean of 24.8 or less, or equally far above at 28.8 or more. This can be written mathematically as
+
+$$
+\text{p-value} = P(\bar{X} \leq 24.8 \mid \mu = 26.8) + P(\bar{X} \geq 28.8 \mid \mu = 26.8).
+$$
+
+   Because the null distribution is symmetric about 26.8, this is equal to
+
+$$
+\text{p-value} = 2 \times P(\bar{X} \leq 24.8 \mid \mu = 26.8).
+$$
+
+d. @fig-commute-pvalue shows the P-value Graph from the Rguroo output. As shown on the graph, the p-value is $0.41974 \approx 42.0\%$. This means that if the true population mean is in fact 26.8 minutes, then the probability of observing a sample mean at least as far from 26.8 as 24.8 is approximately 42.0\%. Because this probability is large, and in particular is greater than 5\%, there is insufficient evidence to reject $H_0$.
+
+```{r,echo=FALSE}
+#| fig-alt: "P-value graphs for the Commute Times one-sample z-test with two-sided alternative hypothesis μ ≠ 26.8. The left panel shows the null distribution of the sample mean on the original commute-time scale with mean 26.8 and standard deviation 2.4787. The observed sample mean 24.8 is marked with a green triangle, and the shaded area in both tails, below 24.8 and above the symmetric point 28.8, represents the p-value of 0.41974. The right panel shows the equivalent graph on the standardized z scale with observed z statistic -0.80687 and the same shaded p-value area in both tails."
+#| warning: FALSE
+#| label: fig-commute-pvalue
+#| fig-cap: "P-value graphs for the Commute Times one-sample z-test."
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_outputs/Mean Inference/commute_pvalue.png")
+```
+
+e. The final decision is that, based on the observed sample mean of 24.8 minutes, there is insufficient evidence at the 5\% significance level to conclude that the mean one-way commute time among workers in our metropolitan area differs from the national mean of 26.8 minutes.
+:::
+
+
+:::{#exm-penguin-flipper-mean-known}
+## Flipper Length of Adélie Penguins, $\sigma$ Known
+
+We return to the penguin setting introduced in @exm-penguin-flipper-mean. Recall that the Palmer Penguins dataset contains flipper length measurements for $n = 151$ Adélie penguins in the Palmer Archipelago, and that we wished to investigate whether the mean flipper length among Adélie penguins differs from the reference value of 188 mm. The sample mean computed from the raw data is $\bar{x}_{\text{obs}} = 189.954$ mm.
+
+The hypotheses are
+$$
+\begin{cases}
+H_0: \mu = 188 \\
+H_a: \mu \neq 188
+\end{cases}
+$$
+where $\mu$ denotes the mean flipper length, in millimeters, of Adélie penguins in the Palmer Archipelago. Assume that the population of Adélie flipper lengths is normally distributed, and suppose that from a large prior study the population standard deviation is known to be $\sigma = 8$ mm. Perform a test of hypothesis at the $\alpha = 0.05$ significance level by answering the following questions:
+
+a. What is the null distribution of $\bar{X}$?
+b. Use Rguroo's [Mean Inference]{.fun} function to obtain the critical region. Interpret the critical region in the context of the problem, and using the observed value, state whether you reject or fail to reject $H_0$.
+c. State a probability statement that defines the p-value for this test, and describe it in words.
+d. Use Rguroo to obtain the p-value, interpret it in the context of the problem, and state whether you reject or fail to reject $H_0$.
+e. Give your overall conclusion.
+
+:::
+
+Click to open the codebook for the [AdeliePenguins]{.dataset} dataset used in this problem:
+
+::: {#code-book-adelie-penguins .callout-tip .codebook collapse="true"}
+
+## Code book for Dataset AdeliePenguins
+Dataset Name: [AdeliePenguins]{.data}
+
+This dataset is a subset of the Palmer Penguins dataset and includes only Adelie penguins observed near Palmer Station, Antarctica. After removing observations with missing values, the dataset contains $n = 151$ penguins.
+
+The variables included in this dataset are described below.
+
+[Species]{.var}: Penguin species
+
+  - Adelie  
+
+[Island]{.var}: Island where the penguin was observed
+
+  - Biscoe  
+  - Dream  
+  - Torgersen  
+
+[BillLength]{.var}: Bill length of the penguin (in millimeters)
+
+[BillDepth]{.var}: Bill depth of the penguin (in millimeters)
+
+[FlipperLength]{.var}: Flipper length of the penguin (in millimeters)
+
+[BodyMass]{.var}: Body mass of the penguin (in grams)
+
+[Sex]{.var}: Sex of the penguin
+
+  - Male  
+  - Female  
+
+[Year]{.var}: Year in which the observation was recorded
+
+  - 2007  
+  - 2008  
+  - 2009  
+
+**Source**
+
+Horst, A. M., Hill, A. P., & Gorman, K. B. *palmerpenguins: Palmer Archipelago (Antarctica) penguin data*.  
+<https://allisonhorst.github.io/palmerpenguins/>
+
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+a. The null distribution is
+
+$$
+\bar{X}\sim N\left(188,\ \frac{8}{\sqrt{151}}\right)\approx N\left(188,\ 0.65103\right).
+$$
+
+b. Because this example uses raw data, the data entry differs from the previous examples. Before using the [Mean Inference]{.fun} function, import the [palmerpenguins_Adelie]{.typein} dataset from the book's Rguroo dataset repository. This dataset was obtained by filtering the full [palmerpenguins]{.typein} dataset for the Adélie species.
+
+The steps for using Rguroo's [Mean Inference]{.fun} function are the same as those in @exm-sat-csuf-mean-known, with the following differences in the [One Population Mean Inference]{.dialog} dialog:
+
+- In the [Dataset]{.des} dropdown, select [palmerpenguins_Adelie]{.typein}, and in the [Variable]{.des} dropdown, select [flipper_length_mm]{.typein}. Once the variable is selected, the [Sample Mean]{.des}, [Sample S.d.]{.des}, and [Sample Size]{.des} boxes are populated automatically from the data, showing $\bar{x}_{\text{obs}} = 189.95$, $s = 6.539$, and $n = 151$.
+- [Pop S.d.]{.des}: [8]{.typein}. In practice, the population standard deviation is generally unknown, and we would estimate it using the sample standard deviation $s = 6.539$. For the sake of illustrating the known-$\sigma$ method, however, we suppose here that $\sigma$ is known and equal to 8, a value deliberately chosen to differ from the computed sample standard deviation so that the two are not confused.
+- In the text box [$\mu$ = Mean of]{.des} enter the label [flipper_length_mm]{.typein}.
+- In the [Alternative Hypothesis $\mu$]{.dpd} dropdown, select [!=]{.typein} and enter [188]{.typein}, the value stated in $H_a$.
+
+This is a two-sided test, so the [!=]{.typein} option produces a critical region with two parts, one in each tail of the null distribution. The dialog with these values entered is shown below.
+
+Click to open the box below to see @fig-adelie-dialog that shows the Rguroo dialog for the setup.
+
+::: {.callout-tip .inner-callout collapse="true" title="Rguroo One-Population Mean Inference dialog"}
+
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo One Population Mean Inference dialog for the Adélie flipper length example, with the palmerpenguins_Adelie dataset and flipper_length_mm variable selected. The sample mean 189.95, sample standard deviation 6.539, and sample size 151 are populated automatically from the data. The population standard deviation is entered as 8, the significance level is 0.05, and the alternative hypothesis is the two-sided μ ≠ 188 using the z-statistic method."
+#| fig-cap: "Rguroo setup for the Adélie flipper length one-sample mean hypothesis test."
+#| label: fig-adelie-dialog
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_dialogs/Mean Inference/adelie_dialog.png")
+```
+
+:::
+
+Click to expand the box below to see the Rguroo output.
+
+::: {.callout-tip .inner-callout collapse="true" title="Rguroo output: One-Population Mean Inference - Adélie Flipper Length"}
+
+```{=html}
+<div tabindex="0" class="rg-iframe-wrapper">
+  <iframe
+    src="Rguroo_html_output/Mean Inference/adelie_mean_docx/adelie_mean.html"
+    class="rg-iframe"
+    title="Rguroo output: One Population Mean Hypothesis Test - Adelie Flipper Length Example">
+  </iframe>
+</div>
+```
+
+:::
+
+@fig-adelie-cr shows the Critical Region Graph from the Rguroo output. The left-hand plot displays the critical region in the observed data scale. Because the alternative hypothesis is two-sided, $H_a: \mu \neq 188$, the significance level $\alpha = 0.05$ is split evenly between the two tails, with $0.025$ in each. This produces two critical values, $c_1 = 186.72$ and $c_2 = 189.28$, and the critical region is $\bar{X} \leq 186.72$ or $\bar{X} \geq 189.28$. Thus, we would reject $H_0$ if an observed sample mean is less than 186.72 or greater than 189.28.
+
+Our observed sample mean is $\bar{x}_{\text{obs}} = 189.95$ (shown by the green triangle), which falls in the upper part of the rejection region since it is greater than 189.28. Therefore, we reject $H_0$ at the 5\% level of significance.
+
+```{r,echo=FALSE}
+#| fig-alt: "Critical region graphs for the Adélie flipper length one-sample z-test with two-sided alternative hypothesis μ ≠ 188. The left panel shows the null distribution of the sample mean on the original flipper-length scale with mean 188 and standard deviation 0.65103. The rejection region is shaded in both tails, below the lower critical value 186.72 and above the upper critical value 189.28, and the observed sample mean 189.95 is marked with a green triangle in the upper rejection region. The right panel shows the equivalent graph on the standardized z scale with critical values -1.96 and 1.96 and observed z statistic 3.0008."
+#| warning: FALSE
+#| label: fig-adelie-cr
+#| fig-cap: "Critical region graphs for the Adélie flipper length one-sample z-test."
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_outputs/Mean Inference/adelie_cr.png")
+```
+
+c. Because the test is two-sided, a sample mean that is far from 188 in *either* direction is evidence against $H_0$. The $p$-value is therefore the probability, under the null distribution, of observing a sample mean at least as far from 188 as our observed value of $\bar{x}_{\text{obs}} = 189.95$. Since 189.95 is 1.95 units above 188, this means a sample mean of 189.95 or more, or equally far below at 186.05 or less. This can be written mathematically as
+
+$$
+\text{p-value} = P(\bar{X} \geq 189.95 \mid \mu = 188) + P(\bar{X} \leq 186.05 \mid \mu = 188).
+$$
+
+Because the null distribution is symmetric about 188, this is equal to
+
+$$
+\text{p-value} = 2 \times P(\bar{X} \geq 189.95 \mid \mu = 188).
+$$
+
+d. @fig-adelie-pvalue shows the P-value Graph from the Rguroo output. As shown on the graph, the p-value is $0.0026923 \approx 0.27\%$. This means that if the true population mean is in fact 188 mm, then the probability of observing a sample mean at least as far from 188 as 189.95 is approximately 0.27\%. Because this probability is very small, and in particular is less than 5\%, there is sufficient evidence to reject $H_0$.
+
+```{r,echo=FALSE}
+#| fig-alt: "P-value graphs for the Adélie flipper length one-sample z-test with two-sided alternative hypothesis μ ≠ 188. The left panel shows the null distribution of the sample mean on the original flipper-length scale with mean 188 and standard deviation 0.65103. The observed sample mean 189.95 is marked with a green triangle, and the shaded area in both tails, above 189.95 and below the symmetric point 186.05, represents the p-value of 0.0026923. The right panel shows the equivalent graph on the standardized z scale with observed z statistic 3.0008 and the same shaded p-value area in both tails."
+#| warning: FALSE
+#| label: fig-adelie-pvalue
+#| fig-cap: "P-value graphs for the Adélie flipper length one-sample z-test."
+#| out-width: "100%"
+knitr::include_graphics("Rguroo_outputs/Mean Inference/adelie_pvalue.png")
+```
+
+e. The final decision is that, based on the observed sample mean of 189.95 mm, there is sufficient evidence at the 5\% significance level to conclude that the mean flipper length of Adélie penguins in the Palmer Archipelago differs from the reference value of 188 mm.
+:::
+
+### Homework for @sec-mean-inference-known-sigma
+
+<!-- to be filled -->
+
+## Mean Inference When $\sigma$ Is Unknown {#sec-mean-inference-unknown-sigma}
+
+As noted in @sec-mean-inference-known-sigma, only in rare cases do we know the population standard deviation $\sigma$. However, the good news is that the sample standard deviation $s$ provides a good estimate of the population standard deviation, and statisticians have developed theory for using $s$ in place of $\sigma$ when the population distribution is normal. So, again, in this section we will assume that the variable under study has a normal distribution in the population that allows us to use this theory. 
+
+The theory developed for the case in which $\sigma$ is unknown uses the so-called **Student $t$ distribution** (or simply $t$ distribution) which we will introduce next. We will compare the Student $t$ distribution to the normal distribution that we have used for the known $\sigma$ case and explain why the $t$ distribution is needed when $\sigma$ is unknown. 
+
+::: {.callout-note appearance="minimal" title="What has a $t$ distribution?"}
+\
+
+It is important to be clear about *what* is assumed to be normal and *what* follows a $t$ distribution. The assumption is that the **variable under study** has a normal distribution in the population. Under this assumption, the **statistic** $\bar{X}$ follows a $t$ distribution. In other words, the normality assumption is about the individual measurements, while the $t$ distribution describes the behavior of the sample mean computed from those measurements.
+:::
+
+### The Student $t$ Distribution {#sec-t-distribution}
+
+The name *Student* was actually the pen name of William Sealy Gosset, a statistician working for the Guinness Brewery in Ireland in the early 1900s. Because the brewery discouraged employees from publishing research under their real names, Gosset published his work anonymously under the name *Student*. His work led to a distribution that allows us to make reliable inferences about population means even when the population standard deviation is unknown.
+
+The standard Student $t$ distribution is similar in shape to the standard normal distribution: both are symmetric, bell-shaped, and centered at 0. However, unlike the standard normal distribution, the $t$ distribution has a parameter called the **degrees of freedom**, denoted by $\text{df}$. Different values of $\text{df}$ produce slightly different shapes for the distribution.
+
+@fig-three-t-distributions compares several $t$ distributions with different degrees of freedom to the standard normal distribution. When the degrees of freedom are small, the $t$ distribution is more spread out and has heavier tails. As the degrees of freedom increase, the $t$ distribution becomes closer and closer to the standard normal distribution.
+
+```{r, echo=FALSE}
+#| fig-cap: "Three $t$ distributions, with 1, 3, and 10 degrees of freedom, compared with the standard normal distribution (dashed gray). As the degrees of freedom increase, the $t$ distribution becomes taller at its center, its tails grow lighter, and its shape approaches that of the standard normal."
+#| label: fig-three-t-distributions
+#| fig-alt: "Four overlaid bell-shaped density curves on a horizontal axis from -4 to 4, distinguished by both color and line style. The t distribution with 1 degree of freedom (orange, dotted) is the lowest and flattest at the center with the heaviest tails. The t distribution with 3 degrees of freedom (green, dashed) is taller, and the t distribution with 10 degrees of freedom (blue, solid) is taller still with lighter tails. The standard normal distribution (gray, finely dashed) is the tallest and narrowest. As the degrees of freedom increase, the t curves rise at the center, pull in their tails, and approach the standard normal."
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Mean Inference/three_t_distributions_by_df.png")
+```
+
+The heavier tails of the $t$ distribution are shown more clearly in @fig-normal-two-tail, which compares the standard normal distribution to a $t$ distribution with 4 degrees of freedom. Notice that the $t$ distribution places more probability in the tails and less probability near the center. This difference is important because, when $\sigma$ is unknown, we replace it with the sample standard deviation $s$. Since $s$ varies from sample to sample, additional uncertainty is introduced into the inference procedure. The heavier tails of the $t$ distribution account for this extra uncertainty.
+
+```{r, echo=FALSE}
+#| label: fig-normal-two-tail
+#| fig-cap: 'Comparison of the standard normal distribution and the $t$ distribution with 4 degrees of freedom.'
+#| fig-alt: 'Two overlaid bell-shaped density curves on a horizontal axis ranging from -4 to 4. The standard normal distribution is shown as a solid blue curve, while the t distribution with 4 degrees of freedom is shown as a dashed orange curve. The normal curve is taller near the center at 0 and decreases more quickly in the tails. The t curve is lower at the center and lies above the normal curve in the tails. The right-tail region beyond x = 2 is shaded for both distributions, and the shaded area for the t distribution is visibly larger, illustrating that the t distribution with 4 degrees of freedom has heavier tails than the standard normal distribution.'
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Mean Inference/t4_vs_normal_tail_comparison.png")
+```
+The amount of additional uncertainty depends on the sample size. Small samples provide less information about the population standard deviation, so the uncertainty is larger and the $t$ distribution has noticeably heavier tails. As the sample size increases, the sample standard deviation $s$ becomes a more stable estimate of $\sigma$, the additional uncertainty decreases, and the $t$ distribution moves closer to the standard normal distribution. As we will see, the number of degrees of freedom in the context of mean inference is $df = n-1$, related to the sample size.
+
+Just as the standard normal distribution can be shifted and rescaled to obtain a general normal distribution with any center and standard deviation, the standard $t$ distribution also has a more general form. We write this as
+
+$$
+X \sim t_{\text{df}}(\text{location}, \text{scale}),
+$$
+
+where $\text{df}$ denotes the degrees of freedom. The *location* parameter determines the center of the distribution, while the *scale* parameter controls its spread. In mean inference, the location will typically be the hypothesized population mean $\mu_0$, and the scale will involve the estimated standard error based on the sample standard deviation $s$, namely $s/\sqrt{n}$.
+
+### The Null Distribution of $\bar X$ When $\sigma$ Is Unknown
+
+We now turn to the more realistic setting in which the population standard deviation $\sigma$ is unknown and must be estimated from the sample data. In this case, the null distribution of $\bar{X}$ is no longer normal and instead follows a Student $t$ distribution.
+
+::: {.callout-note appearance="minimal" title="The Null Distribution"}
+\ 
+
+Under the assumptions that
+
+- the variable under study has a **normal distribution** in the population,
+- the population standard deviation $\sigma$ is unknown and is estimated by the sample standard deviation $s$,
+- the sample size is $n$, and
+- the boundary value specified by the null hypothesis is $\mu = \mu_0$,
+
+the null distribution of the sample mean $\bar{X}$ is
+
+$$
+\bar{X} \sim t_{n-1}\left(\mu_0,\ \frac{s}{\sqrt{n}}\right),
+$$
+
+a $t$ distribution with $n - 1$ degrees of freedom, centered at $\mu_0$ and with estimated standard error
+
+$$
+\hat\sigma_{\bar X} = \frac{s}{\sqrt{n}}.
+$$
+
+:::
+
+The result above parallels the known-$\sigma$ case, with two changes. First, the normal distribution is replaced by a $t$ distribution. Second, because $\sigma$ is no longer available, we replace it with the sample standard deviation $s$, so the scale of the distribution is the **estimated** standard error $\hat\sigma_{\bar X} = s/\sqrt{n}$ rather than the known standard error $\sigma/\sqrt{n}$. As in the known-$\sigma$ case, the distribution is centered at $\mu_0$ when the null hypothesis is true, and sample means far from $\mu_0$ constitute evidence against $H_0$.
+
+For instance, in the sleep example, suppose the null hypothesis is $H_0: \mu \geq 7$ and we have a sample of size $n = 30$ with sample standard deviation $s = 1.2$ hours. Then $\bar{X}$ follows a $t$ distribution with $n - 1 = 29$ degrees of freedom, centered at 7 hours and with estimated standard error $1.2/\sqrt{30} \approx 0.219$ hours. Sample means much smaller than 7 with this scale would be unusual under $H_0$.
+
+The number of degrees of freedom of the $t$ distribution is directly tied to the sample size: in mean inference, $\text{df} = n - 1$. This relationship reflects the role of the $t$ distribution in accounting for the extra uncertainty introduced by estimating $\sigma$. When the sample is small, $s$ is an unreliable estimate of $\sigma$, the degrees of freedom is small, and the $t$ distribution has heavy tails to reflect this added uncertainty. As the sample size grows, $s$ estimates $\sigma$ more reliably, the degrees of freedom increase, and the tails of the $t$ distribution become lighter. In this way, the $t$ distribution automatically adjusts the amount of uncertainty in the inference to match the amount of information in the sample.
+
+Some texts work with a standardized version of the sample mean, namely
+
+$$
+T = \frac{\bar{X} - \mu_0}{s/\sqrt{n}} \sim t_{n-1},
+$$
+
+and for this reason the procedure is commonly called the **$t$-test**. Rguroo reports critical regions and p-values using both the standardized statistic $T$ and the sample mean $\bar{X}$ on its original scale.
+
+As in the known-$\sigma$ case, in this text we will primarily use the null distribution of $\bar{X}$ directly rather than its standardized version. Working on the original scale of the data allows us to interpret critical regions and p-values in the units of the problem. In the sleep example, for instance, it is more natural to reason about a sample mean of 6.4 hours relative to a hypothesized mean of 7 hours than to translate everything into the unitless $t$ scale.
+
+::: {.callout-tip appearance="minimal" title="When the $t$ and normal distributions agree"}
+\
+
+As we saw in @sec-t-distribution, the $t$ distribution becomes closer to the standard normal distribution as the degrees of freedom increase. By the time the degrees of freedom reach about 30 — that is, a sample size of roughly $n = 30$ or more — the two distributions are nearly indistinguishable, and the critical values and p-values they produce are essentially the same. For this reason, with large samples it makes little practical difference whether one uses the $t$ distribution or the normal distribution, and the resulting inference is usually nearly identical. We nonetheless recommend using the $t$ distribution whenever $\sigma$ is unknown, regardless of sample size: it is always at least as appropriate as the normal, and it requires no judgment about whether the sample is "large enough."
+:::
+
+### Decision Based on the Critical Region Approach
+
+### Decision Based on the p-value Approach
+
+## Checking the Normality Assumption with Q-Q Plots {#sec-QQ-Plot-mean}
+
+## Large-Sample Hypothesis Test: Dropping the Normality Assumption {#sec-large-sample-mean}
