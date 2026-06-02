@@ -248,6 +248,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#sec-foundations-three-forms" id="toc-sec-foundations-three-forms" class="nav-link" data-scroll-target="#sec-foundations-three-forms"><span class="header-section-number">7.3.1</span> The Three Forms of the Hypotheses</a></li>
   <li><a href="#sec-foundations-boundary" id="toc-sec-foundations-boundary" class="nav-link" data-scroll-target="#sec-foundations-boundary"><span class="header-section-number">7.3.2</span> Why We Test at the Boundary Value</a></li>
+  <li><a href="#sec-foundations-mean-vs-prop" id="toc-sec-foundations-mean-vs-prop" class="nav-link" data-scroll-target="#sec-foundations-mean-vs-prop"><span class="header-section-number">7.3.3</span> Is the Parameter a Mean or a Proportion?</a></li>
   </ul></li>
   <li><a href="#sec-foundations-errors" id="toc-sec-foundations-errors" class="nav-link" data-scroll-target="#sec-foundations-errors"><span class="header-section-number">7.4</span> Two Types of Error</a>
   <ul class="collapse">
@@ -300,23 +301,7 @@ window.Quarto = {
 <li>The <strong>population mean</strong> <span class="math inline">\(\mu\)</span>: the average value of a numerical measurement across the population. For example, the mean nightly sleep, in hours, of all students at a university.</li>
 </ul>
 <p>Because we can rarely examine an entire population, we collect a <strong>sample</strong>: a smaller, randomly chosen subset of the population. From the sample we compute a <strong>statistic</strong>, a number that estimates the parameter.</p>
-<p>For a proportion, the natural starting point is a <strong>count</strong>. If we sample <span class="math inline">\(n\)</span> individuals and record how many fall into the category of interest, that count — written <span class="math inline">\(X\)</span> — is itself a statistic, and dividing it by the sample size gives the <strong>sample proportion</strong> <span class="math inline">\(\hat{p} = X/n\)</span>, our estimate of <span class="math inline">\(p\)</span>. Both <span class="math inline">\(X\)</span> and <span class="math inline">\(\hat{p}\)</span> carry the same information, but it will be convenient to work with the count <span class="math inline">\(X\)</span> when we describe the sampling distribution in the proportion chapter, because <span class="math inline">\(X\)</span> is the quantity whose distribution we know directly. For a mean, the statistic is the <strong>sample mean</strong> <span class="math inline">\(\bar{X}\)</span>, our estimate of <span class="math inline">\(\mu\)</span>.</p>
-<p>Here we meet the central difficulty of inference. A statistic is computed from a random sample, so its value depends on <em>which</em> individuals happen to be selected. Draw a different sample and you will generally get a different value, even when nothing about the population has changed. This sample-to-sample variation is called <strong>sampling variability</strong>, and it is unavoidable whenever we study a population through a sample.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Sampling Variability
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Different random samples generally contain different individuals, so statistics such as <span class="math inline">\(X\)</span>, <span class="math inline">\(\hat{p}\)</span>, or <span class="math inline">\(\bar{X}\)</span> will usually take different values from one sample to another. A single observed statistic is therefore only an estimate of the parameter, and it will rarely equal the parameter exactly.</p>
-</div>
-</div>
-<p>Sampling variability is what makes inference more complicated than simply comparing a sample statistic to a claimed value. If a sample statistic differs from a claimed value, we cannot immediately conclude that the claim is wrong, because some difference is expected purely by chance. Even if the claim is true, different random samples will naturally produce somewhat different statistics. The entire apparatus of inference is built to answer one question: <em>is the difference we observe larger than what sampling variability alone would reasonably produce by chance?</em> The probability distributions from earlier chapters give us a way to answer this question, because they describe how a statistic behaves across all possible samples.</p>
-<p>Throughout these chapters, we use different notation for a statistic before and after sampling. Before the sample is collected, a statistic is a random variable because its value depends on which sample happens to be selected. We represent these random statistics with capital letters or hats: <span class="math inline">\(X\)</span>, <span class="math inline">\(\hat{p}\)</span>, and <span class="math inline">\(\bar{X}\)</span>. After the sample is collected, the statistic takes on one specific observed value. We represent observed values with lowercase letters and the subscript “obs”: <span class="math inline">\(x_{\text{obs}}\)</span>, <span class="math inline">\(\hat{p}_{\text{obs}}\)</span>, and <span class="math inline">\(\bar{x}_{\text{obs}}\)</span>.</p>
+<p>For a proportion, the natural starting point is a <strong>count</strong>. Before the sample is collected, let <span class="math inline">\(X\)</span> denote the number of sampled individuals who will fall into the category of interest. Because the sample is random, <span class="math inline">\(X\)</span> is a random variable. After the sample is collected, its observed value is denoted <span class="math inline">\(x_{\text{obs}}\)</span>. Dividing <span class="math inline">\(X\)</span> by the sample size gives the <strong>sample proportion</strong> <span class="math inline">\(\hat{p}=X/n\)</span>, our estimate of <span class="math inline">\(p\)</span>, and after sampling its observed value is denoted <span class="math inline">\(\hat{p}_{\text{obs}}=x_{\text{obs}}/n\)</span>. Both <span class="math inline">\(X\)</span> and <span class="math inline">\(\hat{p}\)</span> carry the same information, but it will be convenient to work with <span class="math inline">\(X\)</span> when we describe the sampling distribution in the proportion chapter, because <span class="math inline">\(X\)</span> is the quantity whose distribution we know directly. For a mean, the statistic is the <strong>sample mean</strong> <span class="math inline">\(\bar{X}\)</span>, our estimate of <span class="math inline">\(\mu\)</span>, and its observed value after sampling is denoted <span class="math inline">\(\bar{x}_{\text{obs}}\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -370,6 +355,21 @@ Notation for Parameters and Statistics
 </table>
 </div>
 </div>
+<p>Here we meet the central difficulty of inference. A statistic is computed from a random sample, so its value depends on <em>which</em> individuals happen to be selected. Draw a different sample and you will generally get a different value, even when nothing about the population has changed. This sample-to-sample variation is called <strong>sampling variability</strong>, and it is unavoidable whenever we study a population through a sample.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sampling Variability
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Different random samples generally contain different individuals, so statistics such as <span class="math inline">\(X\)</span>, <span class="math inline">\(\hat{p}\)</span>, or <span class="math inline">\(\bar{X}\)</span> will usually take different values from one sample to another. A single observed statistic is therefore only an estimate of the parameter, and it will rarely equal the parameter exactly.</p>
+</div>
+</div>
+<p>Sampling variability is what makes inference more complicated than simply comparing a sample statistic to a claimed value. If a sample statistic differs from a claimed value, we cannot immediately conclude that the claim is wrong, because some difference is expected purely by chance. Even if the claim is true, different random samples will naturally produce somewhat different statistics. The entire apparatus of inference is built to answer one question: <em>is the difference we observe larger than what sampling variability alone would reasonably produce by chance?</em> The probability distributions from earlier chapters give us a way to answer this question, because they describe how a statistic behaves across all possible samples.</p>
 <p>We use two complementary tools to draw conclusions about a parameter: <strong>hypothesis tests</strong> and <strong>confidence intervals</strong>. A hypothesis test weighs two competing claims about the parameter — a <em>null hypothesis</em>, which represents no effect or no change, and an <em>alternative hypothesis</em>, which is the claim the investigator is looking to support — and asks whether the sample provides enough evidence to favor the alternative over the null. A confidence interval instead reports a whole range of values for the parameter that are consistent with the observed data. We develop hypothesis testing first, and then show that confidence intervals arise naturally from it.</p>
 </section>
 <section id="sec-foundations-core-idea" class="level2" data-number="7.2">
@@ -426,8 +426,8 @@ Consistent With a Claim Is Not the Same as Strong Evidence
 \qquad
 \underbrace{\begin{cases} H_0: \mu = \mu_0 \\ H_a: \mu \neq \mu_0 \end{cases}}_{\text{Case 3}}
 \]</span></p>
-<p>In Cases 1 and 2 the alternative points in a single direction — the parameter is claimed to be either greater than or less than the boundary value. These are <strong>one-sided</strong> (or <strong>one-tailed</strong>) hypotheses. In Case 3 the alternative says only that the parameter <em>differs</em> from the boundary value, with no direction specified. This is a <strong>two-sided</strong> (or <strong>two-tailed</strong>) hypothesis.</p>
-<p>The form of the hypotheses is dictated by the research question, not by the data. The phrase “more than,” “increased,” or “exceeds” signals a Case 1 alternative; “less than,” “fewer,” or “decreased” signals Case 2; and “differs from,” “changed,” or “is not equal to” signals a two-sided Case 3 alternative. For instance, asking whether <em>more than</em> 70% of students use YouTube daily, or whether mean math SAT scores are <em>higher than</em> the national mean of 508, gives a Case 1 alternative; asking whether <em>fewer than</em> 35% of adults are physically inactive, or whether mean nightly sleep is <em>less than</em> 7 hours, gives a Case 2 alternative; asking whether the proportion getting their news from social media <em>differs from</em> 36%, or whether mean commute time <em>differs from</em> the national figure, gives a two-sided Case 3 alternative.</p>
+<p>In Cases 1 and 2 the alternative points in a single direction — the parameter is claimed to be either greater than <span class="math inline">\((&gt;)\)</span> or less than <span class="math inline">\((&lt;)\)</span> the boundary value. These are <strong>one-sided</strong> (or <strong>one-tailed</strong>) hypotheses. In Case 3 the alternative says only that the parameter <em>differs</em> #()$ from the boundary value, with no direction specified. This is a <strong>two-sided</strong> (or <strong>two-tailed</strong>) hypothesis.</p>
+<p>The form of the hypotheses is dictated by the research question, not by the data. The phrase “more than,” “increased,” or “exceeds” signals a Case 1 alternative <span class="math inline">\((&gt;)\)</span>; “less than,” “fewer,” or “decreased” signals Case 2 <span class="math inline">\((&lt;)\)</span>; and “differs from,” “changed,” or “is not equal to” signals a two-sided Case 3 alternative <span class="math inline">\((\neq)\)</span>. For instance, asking whether <em>more than</em> 70% of students use YouTube daily, or whether mean math SAT scores are <em>higher than</em> the national mean of 508, gives a Case 1 alternative; asking whether <em>fewer than</em> 35% of adults are physically inactive, or whether mean nightly sleep is <em>less than</em> 7 hours, gives a Case 2 alternative; asking whether the proportion getting their news from social media <em>differs from</em> 36%, or whether mean commute time <em>differs from</em> the national figure, gives a two-sided Case 3 alternative.</p>
 </section>
 <section id="sec-foundations-boundary" class="level3" data-number="7.3.2">
 <h3 data-number="7.3.2" class="anchored" data-anchor-id="sec-foundations-boundary"><span class="header-section-number">7.3.2</span> Why We Test at the Boundary Value</h3>
@@ -446,7 +446,37 @@ Evaluating <span class="math inline">\(H_0\)</span> at the Boundary Value
 <p>From this point on, whenever we speak of “the null hypothesis being true” for the purpose of computing probabilities, we take the parameter equal to the <strong>boundary value</strong> (<span class="math inline">\(p_0\)</span> for a proportion, <span class="math inline">\(\mu_0\)</span> for a mean). This is the value within the null hypothesis that is hardest to distinguish from the alternative hypothesis. Using the boundary value gives a conservative test.</p>
 </div>
 </div>
-<p>The following examples show the same three forms arising in both the proportion and the mean settings.</p>
+</section>
+<section id="sec-foundations-mean-vs-prop" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="sec-foundations-mean-vs-prop"><span class="header-section-number">7.3.3</span> Is the Parameter a Mean or a Proportion?</h3>
+<p>Before working through specific examples, it is worth pausing to address a question that often trips students up: in a given real-world problem, how do you tell whether the parameter of interest is a population proportion <span class="math inline">\(p\)</span> or a population mean <span class="math inline">\(\mu\)</span>? The distinction is important because it determines everything that follows — the notation, the hypotheses, the sampling distribution, and the computations. Fortunately, the diagnostic is simple.</p>
+<p>The key is to identify the <strong>variable measured on each individual</strong> in the population and ask whether that variable is <strong>categorical</strong> or <strong>numerical</strong>.</p>
+<ul>
+<li>If the variable is <strong>categorical</strong> with two outcomes (success/failure, yes/no, agree/disagree, has/does not have), the parameter is a <strong>proportion</strong> <span class="math inline">\(p\)</span> — the fraction of the population that is a success.</li>
+<li>If the variable is <strong>numerical</strong> (a score, a quantity, a measurement), the parameter is a <strong>mean</strong> <span class="math inline">\(\mu\)</span> — the average value of that variable in the population.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Quick Check: Mean or Proportion?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Identify the variable measured on each individual.</p>
+<ul>
+<li><strong>Categorical</strong> (yes/no, success/failure) → <strong>proportion</strong> <span class="math inline">\(p\)</span></li>
+<li><strong>Numerical</strong> (a quantity, a score, a measurement) → <strong>mean</strong> <span class="math inline">\(\mu\)</span></li>
+</ul>
+<p>A useful test: does the problem ask what <em>fraction</em> or <em>percentage</em> of the population has some characteristic, or what <em>average value</em> a measurement takes?</p>
+</div>
+</div>
+<p>Two common sources of confusion are the words <strong>percentage</strong> and <strong>average</strong>.</p>
+<p>The word <strong>percentage</strong> can describe either type of parameter. For example, <em>“What percentage of voters support the candidate?”</em> is a proportion question because each voter either supports the candidate or does not. In contrast, <em>“What is the average exam percentage among students?”</em> is a mean question because each student has a numerical percentage score, and we are averaging those scores.</p>
+<p>The word <strong>average</strong> usually signals a mean, but not always. A question such as <em>“What is the average number of hours students sleep each night?”</em> is clearly about a mean. However, a statement such as <em>“On average, 60% of voters support the candidate”</em> is really describing a proportion. Rather than relying on keywords, focus on the variable measured on each individual: is it categorical or numerical?</p>
+<p>In the examples that follow, the first three concern a population proportion <span class="math inline">\(p\)</span> — the YouTube example, the physical inactivity example, and the social media news example. The next three concern a population mean <span class="math inline">\(\mu\)</span> — the SAT example, the sleep example, and the commute time example. As you read each setup, try to identify the variable measured on each individual before reading the parameter. The categorical-versus-numerical diagnostic should quickly tell you whether the problem is about a proportion or a mean.</p>
 <div id="exm-foundations-hypotheses-prop" class="theorem example">
 <p><span class="theorem-title"><strong>Example 7.1 (Writing Hypotheses: Proportions)</strong></span> For each scenario, identify the boundary value and write the null and alternative hypotheses for the population proportion <span class="math inline">\(p\)</span>.</p>
 <ol type="a">
@@ -456,7 +486,7 @@ Evaluating <span class="math inline">\(H_0\)</span> at the Boundary Value
 </ol>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -465,7 +495,7 @@ Evaluating <span class="math inline">\(H_0\)</span> at the Boundary Value
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="a">
 <li><p>The phrase “more than” gives a one-sided alternative in the upper direction, with boundary value <span class="math inline">\(p_0 = 0.70\)</span>: <span class="math display">\[
@@ -499,7 +529,7 @@ H_a: p \neq 0.36
 </ol>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -508,7 +538,7 @@ H_a: p \neq 0.36
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="a">
 <li><p>The phrase “higher than” gives a one-sided alternative in the upper direction, with boundary value <span class="math inline">\(\mu_0 = 508\)</span>: <span class="math display">\[
@@ -584,7 +614,7 @@ H_a: p &gt; 0.70
 \]</span> Describe what a Type I error and a Type II error would mean in this context.</p>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -593,7 +623,7 @@ H_a: p &gt; 0.70
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>A <strong>Type I error</strong> occurs if we reject <span class="math inline">\(H_0\)</span> and conclude that more than 70% of students use YouTube daily, when in fact the true proportion is 70% or less (<span class="math inline">\(H_0\)</span> is true). We would be claiming a higher usage rate than really exists.</p>
 <p>A <strong>Type II error</strong> occurs if we fail to reject <span class="math inline">\(H_0\)</span> and therefore do not conclude that more than 70% use YouTube daily, when in fact the true proportion does exceed 70% (<span class="math inline">\(H_a\)</span> is true). We would be missing a real difference.</p>
@@ -609,7 +639,7 @@ H_a: \mu &gt; 508
 \]</span> Describe what a Type I error and a Type II error would mean in this context.</p>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -618,7 +648,7 @@ H_a: \mu &gt; 508
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>A <strong>Type I error</strong> occurs if we reject <span class="math inline">\(H_0\)</span> and conclude that the mean SAT score exceeds 508, when in fact the true mean is 508 or less (<span class="math inline">\(H_0\)</span> is true). We would be claiming the freshmen score higher than they really do.</p>
 <p>A <strong>Type II error</strong> occurs if we fail to reject <span class="math inline">\(H_0\)</span> and therefore do not conclude that the mean exceeds 508, when in fact the true mean is greater than 508 (<span class="math inline">\(H_a\)</span> is true). We would be missing a genuine difference.</p>
@@ -645,6 +675,20 @@ Figure&nbsp;7.2: The trade-off between Type I and Type II errors. For a fixed sa
 </figure>
 </div>
 <p>Faced with this trade-off, statisticians choose to focus first on controlling Type I errors: <em>we keep the probability of a Type I error at a small, prespecified level called significance level, and then try to make the probability of a Type II error as small as possible within that constraint.</em> One reason for focusing on Type I errors is that falsely claiming an effect exists — for example, saying a new drug works when it does not — can have serious consequences.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Type I and Type II error possibilities
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If we reject <span class="math inline">\(H_0\)</span>, a Type I error is possible, but a Type II error is not.</p>
+<p>If we fail to reject <span class="math inline">\(H_0\)</span>, a Type II error is possible, but a Type I error is not.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -788,7 +832,7 @@ Figure&nbsp;7.7: The p-value decision rule. Compute the p-value under the assump
 <p><span class="theorem-title"><strong>Example 7.5 (Reading a p-Value: YouTube Use (Proportion))</strong></span> For the YouTube test with <span class="math inline">\(H_0: p \leq 0.70\)</span> versus <span class="math inline">\(H_a: p &gt; 0.70\)</span>, suppose the analysis returns a p-value of <span class="math inline">\(0.107\)</span>. Using <span class="math inline">\(\alpha = 0.05\)</span>, state the decision and interpret it.</p>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -797,20 +841,9 @@ Figure&nbsp;7.7: The p-value decision rule. Compute the p-value under the assump
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The p-value of <span class="math inline">\(0.107\)</span> means that <em>if the true proportion were exactly 0.70</em>, there would be about an 10.7% chance of observing a sample result at least as supportive of <span class="math inline">\(H_a\)</span> as the one we obtained. Because <span class="math inline">\(0.107 &gt; 0.05\)</span>, we <strong>fail to reject <span class="math inline">\(H_0\)</span></strong>. The observed result is not unusual enough under <span class="math inline">\(H_0\)</span> to provide strong evidence that more than 70% of students use YouTube daily.</p>
-<p><a href="#fig-pvalue-youtube" class="quarto-xref">Figure&nbsp;<span>7.8</span></a> shows this p-value as the probability that the count <span class="math inline">\(X\)</span> is at least as large as the observed <span class="math inline">\(x_{\text{obs}} = 17\)</span>, computed from the sampling distribution of <span class="math inline">\(X\)</span> when <span class="math inline">\(p = 0.70\)</span>.</p>
-<div id="fig-pvalue-youtube" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pvalue-youtube-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Rguroo_outputs/Foundations_of_Inference/pvalue-youtube.png" class="img-fluid figure-img" style="width:85.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pvalue-youtube-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.8: The p-value for the YouTube test, viewed through the count statistic <span class="math inline">\(X\)</span> in a sample of <span class="math inline">\(n = 20\)</span>. The bars give the sampling distribution of <span class="math inline">\(X\)</span> when the boundary value <span class="math inline">\(p_0 = 0.70\)</span> holds. The observed count is <span class="math inline">\(x_{\text{obs}} = 17\)</span>, and the p-value is the total probability of the red-colored outcomes <span class="math inline">\(X \geq 17\)</span> that are at least as supportive of <span class="math inline">\(H_a: p &gt; 0.70\)</span>.
-</figcaption>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -818,7 +851,7 @@ Figure&nbsp;7.8: The p-value for the YouTube test, viewed through the count stat
 <p><span class="theorem-title"><strong>Example 7.6 (Reading a p-Value: SAT Scores (Mean))</strong></span> For the SAT test with <span class="math inline">\(H_0: \mu \leq 508\)</span> versus <span class="math inline">\(H_a: \mu &gt; 508\)</span>, suppose the analysis returns a p-value of <span class="math inline">\(0.029\)</span>. Using <span class="math inline">\(\alpha = 0.05\)</span>, state the decision and interpret it.</p>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -827,7 +860,7 @@ Figure&nbsp;7.8: The p-value for the YouTube test, viewed through the count stat
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The p-value of <span class="math inline">\(0.029\)</span> means that <em>if the true mean were exactly 508</em>, there would be about a 3% chance of observing a sample mean at least as large as the one we obtained. Because <span class="math inline">\(0.029 \leq 0.05\)</span>, we <strong>reject <span class="math inline">\(H_0\)</span></strong> in favor of <span class="math inline">\(H_a: \mu &gt; 508\)</span>. A sample mean this high would be unusual if the true mean were only 508, providing evidence that the mean SAT score of incoming freshmen exceeds the national figure.</p>
 </div>
@@ -854,36 +887,36 @@ The Critical Region
 </div>
 </div>
 <p>The shape of the critical region matches the direction of the alternative hypothesis: we reject <span class="math inline">\(H_0\)</span> when the statistic falls in the direction that <span class="math inline">\(H_a\)</span> predicts. We illustrate all three cases with the SAT example, where the boundary value is <span class="math inline">\(\mu_0 = 508\)</span>. The critical values shown are hypothetical, chosen only to illustrate; their actual computation is taken up in the later chapters.</p>
-<p><strong>Case 1: upper-tail alternative (<span class="math inline">\(H_a: \mu &gt; 508\)</span>).</strong> Large values of the sample mean support <span class="math inline">\(H_a\)</span>, so the critical region sits in the <strong>upper tail</strong> — reject <span class="math inline">\(H_0\)</span> when the sample mean is at or above an upper critical value. In <a href="#fig-critical-case1" class="quarto-xref">Figure&nbsp;<span>7.9</span></a> the critical value is <span class="math inline">\(535\)</span>, so the rejection region is every value at or above <span class="math inline">\(535\)</span>. The left panel shows an observed mean of <span class="math inline">\(542\)</span>, which falls inside the rejection region, so we reject <span class="math inline">\(H_0\)</span>; the right panel shows an observed mean of <span class="math inline">\(521\)</span>, which falls outside, so we fail to reject <span class="math inline">\(H_0\)</span>.</p>
+<p><strong>Case 1: upper-tail alternative (<span class="math inline">\(H_a: \mu &gt; 508\)</span>).</strong> Large values of the sample mean support <span class="math inline">\(H_a\)</span>, so the critical region sits in the <strong>upper tail</strong> — reject <span class="math inline">\(H_0\)</span> when the sample mean is at or above an upper critical value. In <a href="#fig-critical-case1" class="quarto-xref">Figure&nbsp;<span>7.8</span></a> the critical value is <span class="math inline">\(535\)</span>, so the rejection region is every value at or above <span class="math inline">\(535\)</span>. The left panel shows an observed mean of <span class="math inline">\(542\)</span>, which falls inside the rejection region, so we reject <span class="math inline">\(H_0\)</span>; the right panel shows an observed mean of <span class="math inline">\(521\)</span>, which falls outside, so we fail to reject <span class="math inline">\(H_0\)</span>.</p>
 <div id="fig-critical-case1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-critical-case1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="Rguroo_outputs/Foundations_of_Inference/critical-case1.svg" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-critical-case1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.9: Case 1, <span class="math inline">\(H_a: \mu &gt; 508\)</span>, with a critical value of <span class="math inline">\(535\)</span>. The rejection region (coral) is every value at or above <span class="math inline">\(535\)</span>. <em>Left:</em> observed mean <span class="math inline">\(542\)</span> is inside the region — reject <span class="math inline">\(H_0\)</span>. <em>Right:</em> observed mean <span class="math inline">\(521\)</span> is outside — fail to reject <span class="math inline">\(H_0\)</span>.
+Figure&nbsp;7.8: Case 1, <span class="math inline">\(H_a: \mu &gt; 508\)</span>, with a critical value of <span class="math inline">\(535\)</span>. The rejection region (coral) is every value at or above <span class="math inline">\(535\)</span>. <em>Left:</em> observed mean <span class="math inline">\(542\)</span> is inside the region — reject <span class="math inline">\(H_0\)</span>. <em>Right:</em> observed mean <span class="math inline">\(521\)</span> is outside — fail to reject <span class="math inline">\(H_0\)</span>.
 </figcaption>
 </figure>
 </div>
-<p><strong>Case 2: lower-tail alternative (<span class="math inline">\(H_a: \mu &lt; 508\)</span>).</strong> Small values support <span class="math inline">\(H_a\)</span>, so the critical region sits in the <strong>lower tail</strong> — reject <span class="math inline">\(H_0\)</span> when the sample mean is at or below a lower critical value. In <a href="#fig-critical-case2" class="quarto-xref">Figure&nbsp;<span>7.10</span></a> the critical value is <span class="math inline">\(481\)</span>, so the rejection region is every value at or below <span class="math inline">\(481\)</span>. The left panel shows an observed mean of <span class="math inline">\(474\)</span> (inside — reject <span class="math inline">\(H_0\)</span>); the right panel shows an observed mean of <span class="math inline">\(495\)</span> (outside — fail to reject <span class="math inline">\(H_0\)</span>).</p>
+<p><strong>Case 2: lower-tail alternative (<span class="math inline">\(H_a: \mu &lt; 508\)</span>).</strong> Small values support <span class="math inline">\(H_a\)</span>, so the critical region sits in the <strong>lower tail</strong> — reject <span class="math inline">\(H_0\)</span> when the sample mean is at or below a lower critical value. In <a href="#fig-critical-case2" class="quarto-xref">Figure&nbsp;<span>7.9</span></a> the critical value is <span class="math inline">\(481\)</span>, so the rejection region is every value at or below <span class="math inline">\(481\)</span>. The left panel shows an observed mean of <span class="math inline">\(474\)</span> (inside — reject <span class="math inline">\(H_0\)</span>); the right panel shows an observed mean of <span class="math inline">\(495\)</span> (outside — fail to reject <span class="math inline">\(H_0\)</span>).</p>
 <div id="fig-critical-case2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-critical-case2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="Rguroo_outputs/Foundations_of_Inference/critical-case2.svg" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-critical-case2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.10: Case 2, <span class="math inline">\(H_a: \mu &lt; 508\)</span>, with a critical value of <span class="math inline">\(481\)</span>. The rejection region (coral) is every value at or below <span class="math inline">\(481\)</span>. <em>Left:</em> observed mean <span class="math inline">\(474\)</span> is inside the region — reject <span class="math inline">\(H_0\)</span>. <em>Right:</em> observed mean <span class="math inline">\(495\)</span> is outside — fail to reject <span class="math inline">\(H_0\)</span>.
+Figure&nbsp;7.9: Case 2, <span class="math inline">\(H_a: \mu &lt; 508\)</span>, with a critical value of <span class="math inline">\(481\)</span>. The rejection region (coral) is every value at or below <span class="math inline">\(481\)</span>. <em>Left:</em> observed mean <span class="math inline">\(474\)</span> is inside the region — reject <span class="math inline">\(H_0\)</span>. <em>Right:</em> observed mean <span class="math inline">\(495\)</span> is outside — fail to reject <span class="math inline">\(H_0\)</span>.
 </figcaption>
 </figure>
 </div>
-<p><strong>Case 3: two-sided alternative (<span class="math inline">\(H_a: \mu \neq 508\)</span>).</strong> Extreme values in <em>either</em> direction support <span class="math inline">\(H_a\)</span>, so the critical region occupies <strong>both tails</strong> — reject <span class="math inline">\(H_0\)</span> when the sample mean is at or below a lower critical value or at or above an upper critical value. Because rejection can happen on either side, the significance level is split evenly between the two tails, with probability <span class="math inline">\(\alpha/2\)</span> assigned to each. In <a href="#fig-critical-case3" class="quarto-xref">Figure&nbsp;<span>7.11</span></a> the critical values are <span class="math inline">\(481\)</span> and <span class="math inline">\(535\)</span>, so the rejection region is every value at or below <span class="math inline">\(481\)</span> together with every value at or above <span class="math inline">\(535\)</span>. The left panel shows an observed mean of <span class="math inline">\(542\)</span>, which falls in the upper tail (inside — reject <span class="math inline">\(H_0\)</span>); the right panel shows an observed mean of <span class="math inline">\(515\)</span>, which falls in the middle (outside — fail to reject <span class="math inline">\(H_0\)</span>).</p>
+<p><strong>Case 3: two-sided alternative (<span class="math inline">\(H_a: \mu \neq 508\)</span>).</strong> Extreme values in <em>either</em> direction support <span class="math inline">\(H_a\)</span>, so the critical region occupies <strong>both tails</strong> — reject <span class="math inline">\(H_0\)</span> when the sample mean is at or below a lower critical value or at or above an upper critical value. Because rejection can happen on either side, the significance level is split evenly between the two tails, with probability <span class="math inline">\(\alpha/2\)</span> assigned to each. In <a href="#fig-critical-case3" class="quarto-xref">Figure&nbsp;<span>7.10</span></a> the critical values are <span class="math inline">\(481\)</span> and <span class="math inline">\(535\)</span>, so the rejection region is every value at or below <span class="math inline">\(481\)</span> together with every value at or above <span class="math inline">\(535\)</span>. The left panel shows an observed mean of <span class="math inline">\(542\)</span>, which falls in the upper tail (inside — reject <span class="math inline">\(H_0\)</span>); the right panel shows an observed mean of <span class="math inline">\(515\)</span>, which falls in the middle (outside — fail to reject <span class="math inline">\(H_0\)</span>).</p>
 <div id="fig-critical-case3" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-critical-case3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="Rguroo_outputs/Foundations_of_Inference/critical-case3.svg" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-critical-case3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.11: Case 3, <span class="math inline">\(H_a: \mu \neq 508\)</span>, with critical values <span class="math inline">\(481\)</span> and <span class="math inline">\(535\)</span>. The rejection region (coral) is both tails: at or below <span class="math inline">\(481\)</span> or at or above <span class="math inline">\(535\)</span>. <em>Left:</em> observed mean <span class="math inline">\(542\)</span> is in the upper tail — reject <span class="math inline">\(H_0\)</span>. <em>Right:</em> observed mean <span class="math inline">\(515\)</span> is in the middle — fail to reject <span class="math inline">\(H_0\)</span>.
+Figure&nbsp;7.10: Case 3, <span class="math inline">\(H_a: \mu \neq 508\)</span>, with critical values <span class="math inline">\(481\)</span> and <span class="math inline">\(535\)</span>. The rejection region (coral) is both tails: at or below <span class="math inline">\(481\)</span> or at or above <span class="math inline">\(535\)</span>. <em>Left:</em> observed mean <span class="math inline">\(542\)</span> is in the upper tail — reject <span class="math inline">\(H_0\)</span>. <em>Right:</em> observed mean <span class="math inline">\(515\)</span> is in the middle — fail to reject <span class="math inline">\(H_0\)</span>.
 </figcaption>
 </figure>
 </div>
@@ -910,7 +943,7 @@ Decision Rule Using the Critical Region
 <p><span class="theorem-title"><strong>Example 7.7 (Using the Critical Region: YouTube Use (Proportion))</strong></span> For the YouTube test with <span class="math inline">\(H_0: p \leq 0.70\)</span> versus <span class="math inline">\(H_a: p &gt; 0.70\)</span>, suppose that for a sample of <span class="math inline">\(n = 20\)</span> students and <span class="math inline">\(\alpha = 0.05\)</span> the critical region is found to be <span class="math inline">\(X \geq 18\)</span>, where <span class="math inline">\(X\)</span> is the count of daily users. The observed count is <span class="math inline">\(x_{\text{obs}} = 17\)</span>. State the decision.</p>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -919,9 +952,19 @@ Decision Rule Using the Critical Region
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The critical region is <span class="math inline">\(X \geq 18\)</span>. The observed count <span class="math inline">\(x_{\text{obs}} = 17\)</span> does not reach <span class="math inline">\(18\)</span>, so it falls <em>outside</em> the critical region. We therefore <strong>fail to reject <span class="math inline">\(H_0\)</span></strong>: the data do not provide strong enough evidence that more than 70% of students use YouTube daily.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Rguroo_outputs/Foundations_of_Inference/cr_image_YouTube.png" class="img-fluid figure-img" style="width:80.0%" alt="Critical-region diagram for a right-tailed hypothesis test of a population proportion. A number line for the count statistic X runs from 0 to 20. The rejection region, labeled X greater than or equal to 18, begins at the critical value 18 and extends to the right. The observed count x sub obs=17 is shown as a gold diamond to the left of the critical value, outside the rejection region. Because the observed value does not fall in the rejection region, the decision is to fail to reject H00."></p>
+<figcaption>YouTube use example: observed count outside the critical region; fail to reject <span class="math inline">\(H_0.\)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -929,7 +972,7 @@ Decision Rule Using the Critical Region
 <p><span class="theorem-title"><strong>Example 7.8 (Using the Critical Region: SAT Scores (Mean))</strong></span> For the SAT test with <span class="math inline">\(H_0: \mu \leq 508\)</span> versus <span class="math inline">\(H_a: \mu &gt; 508\)</span>, suppose that for <span class="math inline">\(\alpha = 0.05\)</span> the critical region is found to be <span class="math inline">\(\bar{X} \geq 535\)</span>. The observed sample mean is <span class="math inline">\(\bar{x}_{\text{obs}} = 542\)</span>. State the decision.</p>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -938,9 +981,19 @@ Decision Rule Using the Critical Region
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The critical region is <span class="math inline">\(\bar{X} \geq 535\)</span>. The observed mean <span class="math inline">\(\bar{x}_{\text{obs}} = 542\)</span> exceeds <span class="math inline">\(535\)</span>, so it falls <em>inside</em> the critical region. We therefore <strong>reject <span class="math inline">\(H_0\)</span></strong> in favor of <span class="math inline">\(H_a: \mu &gt; 508\)</span>: the data provide evidence that the mean SAT score of incoming freshmen exceeds the national figure.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Rguroo_outputs/Foundations_of_Inference/cr_image_SAT.png" class="img-fluid figure-img" style="width:80.0%" alt="Critical-region diagram for a right-tailed hypothesis test of a population mean. A number line for the sample mean bar{X} shows the critical value at 535. The rejection region, labeled bar{X} greater tan or equal to 535, begins at 535 and extends to the right. The observed sample mean bar{x}obs}=542 is shown to the right of the critical value, inside the rejection region. Because the observed value falls in the rejection region, the decision is to reject H0."></p>
+<figcaption>SAT scores example: observed mean inside the rejection region; reject <span class="math inline">\(H_0.\)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -988,14 +1041,14 @@ Confidence Interval by Inverting a Test
 <p>The confidence level and the significance level are complementary: <span class="math inline">\(\alpha = 0.05\)</span> corresponds to a 95% confidence interval, <span class="math inline">\(\alpha = 0.10\)</span> to a 90% interval, and so on.</p>
 </div>
 </div>
-<p>To picture the inversion, imagine sweeping a candidate value along the number line and testing each one, as in <a href="#fig-ci-inversion" class="quarto-xref">Figure&nbsp;<span>7.12</span></a>. We illustrate with the SAT example, where the observed sample mean is <span class="math inline">\(\bar{x}_{\text{obs}} = 542\)</span>. For each candidate value of the mean we ask: would a two-sided test reject this value, or not? Candidate values close to the observed mean of 542 are consistent with the data, and the test fails to reject them (teal). Candidate values far from 542, in either direction, are inconsistent, and the test rejects them (coral). The stretch of non-rejected values between the two switching points <em>is</em> the confidence interval — the band of mean values the data deem plausible. (No computation is shown here; the figure simply records, for a grid of candidate values, which ones a test would reject.)</p>
+<p>To picture the inversion, imagine sweeping a candidate value along the number line and testing each one, as in <a href="#fig-ci-inversion" class="quarto-xref">Figure&nbsp;<span>7.11</span></a>. We illustrate with the SAT example, where the observed sample mean is <span class="math inline">\(\bar{x}_{\text{obs}} = 542\)</span>. For each candidate value of the mean we ask: would a two-sided test reject this value, or not? Candidate values close to the observed mean of 542 are consistent with the data, and the test fails to reject them (teal). Candidate values far from 542, in either direction, are inconsistent, and the test rejects them (coral). The stretch of non-rejected values between the two switching points <em>is</em> the confidence interval — the band of mean values the data deem plausible. (No computation is shown here; the figure simply records, for a grid of candidate values, which ones a test would reject.)</p>
 <div id="fig-ci-inversion" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ci-inversion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="Rguroo_outputs/Foundations_of_Inference/ci-by-inversion-mean.svg" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ci-inversion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.12: A confidence interval as an inverted test, illustrated for the mean math SAT score with observed sample mean <span class="math inline">\(\bar{x}_{\text{obs}} = 542\)</span>. Each dot is a candidate value for the population mean <span class="math inline">\(\mu\)</span>. A two-sided test rejects candidate values far from the observed mean (coral) and fails to reject those near it (teal). The band of non-rejected values, marked by the bracket, is the approximate <span class="math inline">\((1-\alpha)\times 100\%\)</span> confidence interval for <span class="math inline">\(\mu\)</span>.
+Figure&nbsp;7.11: A confidence interval as an inverted test, illustrated for the mean math SAT score with observed sample mean <span class="math inline">\(\bar{x}_{\text{obs}} = 542\)</span>. Each dot is a candidate value for the population mean <span class="math inline">\(\mu\)</span>. A two-sided test rejects candidate values far from the observed mean (coral) and fails to reject those near it (teal). The band of non-rejected values, marked by the bracket, is the approximate <span class="math inline">\((1-\alpha)\times 100\%\)</span> confidence interval for <span class="math inline">\(\mu\)</span>.
 </figcaption>
 </figure>
 </div>

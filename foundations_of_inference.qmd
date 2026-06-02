@@ -20,19 +20,7 @@ Every inference problem begins with a **population** — the entire collection o
 
 Because we can rarely examine an entire population, we collect a **sample**: a smaller, randomly chosen subset of the population. From the sample we compute a **statistic**, a number that estimates the parameter.
 
-For a proportion, the natural starting point is a **count**. If we sample $n$ individuals and record how many fall into the category of interest, that count — written $X$ — is itself a statistic, and dividing it by the sample size gives the **sample proportion** $\hat{p} = X/n$, our estimate of $p$. Both $X$ and $\hat{p}$ carry the same information, but it will be convenient to work with the count $X$ when we describe the sampling distribution in the proportion chapter, because $X$ is the quantity whose distribution we know directly. For a mean, the statistic is the **sample mean** $\bar{X}$, our estimate of $\mu$.
-
-Here we meet the central difficulty of inference. A statistic is computed from a random sample, so its value depends on *which* individuals happen to be selected. Draw a different sample and you will generally get a different value, even when nothing about the population has changed. This sample-to-sample variation is called **sampling variability**, and it is unavoidable whenever we study a population through a sample.
-
-::: {.callout-note}
-## Sampling Variability
-
-Different random samples generally contain different individuals, so statistics such as $X$, $\hat{p}$, or $\bar{X}$ will usually take different values from one sample to another. A single observed statistic is therefore only an estimate of the parameter, and it will rarely equal the parameter exactly.
-:::
-
-Sampling variability is what makes inference more complicated than simply comparing a sample statistic to a claimed value. If a sample statistic differs from a claimed value, we cannot immediately conclude that the claim is wrong, because some difference is expected purely by chance. Even if the claim is true, different random samples will naturally produce somewhat different statistics. The entire apparatus of inference is built to answer one question: *is the difference we observe larger than what sampling variability alone would reasonably produce by chance?* The probability distributions from earlier chapters give us a way to answer this question, because they describe how a statistic behaves across all possible samples.
-
-Throughout these chapters, we use different notation for a statistic before and after sampling. Before the sample is collected, a statistic is a random variable because its value depends on which sample happens to be selected. We represent these random statistics with capital letters or hats: $X$, $\hat{p}$, and $\bar{X}$. After the sample is collected, the statistic takes on one specific observed value. We represent observed values with lowercase letters and the subscript “obs”: $x_{\text{obs}}$, $\hat{p}_{\text{obs}}$, and $\bar{x}_{\text{obs}}$.
+For a proportion, the natural starting point is a **count**. Before the sample is collected, let $X$ denote the number of sampled individuals who will fall into the category of interest. Because the sample is random, $X$ is a random variable. After the sample is collected, its observed value is denoted $x_{\text{obs}}$. Dividing $X$ by the sample size gives the **sample proportion** $\hat{p}=X/n$, our estimate of $p$, and after sampling its observed value is denoted $\hat{p}_{\text{obs}}=x_{\text{obs}}/n$. Both $X$ and $\hat{p}$ carry the same information, but it will be convenient to work with $X$ when we describe the sampling distribution in the proportion chapter, because $X$ is the quantity whose distribution we know directly. For a mean, the statistic is the **sample mean** $\bar{X}$, our estimate of $\mu$, and its observed value after sampling is denoted $\bar{x}_{\text{obs}}$.
 
 ::: {.callout-note}
 ## Notation for Parameters and Statistics
@@ -43,6 +31,16 @@ Throughout these chapters, we use different notation for a statistic before and 
 | Proportion | $p$ | sample proportion | $\hat{p} = X/n$ | $\hat{p}_{\text{obs}}$ |
 | Mean | $\mu$ | sample mean | $\bar{X}$ | $\bar{x}_{\text{obs}}$ |
 :::
+
+Here we meet the central difficulty of inference. A statistic is computed from a random sample, so its value depends on *which* individuals happen to be selected. Draw a different sample and you will generally get a different value, even when nothing about the population has changed. This sample-to-sample variation is called **sampling variability**, and it is unavoidable whenever we study a population through a sample.
+
+::: {.callout-note}
+## Sampling Variability
+
+Different random samples generally contain different individuals, so statistics such as $X$, $\hat{p}$, or $\bar{X}$ will usually take different values from one sample to another. A single observed statistic is therefore only an estimate of the parameter, and it will rarely equal the parameter exactly.
+:::
+
+Sampling variability is what makes inference more complicated than simply comparing a sample statistic to a claimed value. If a sample statistic differs from a claimed value, we cannot immediately conclude that the claim is wrong, because some difference is expected purely by chance. Even if the claim is true, different random samples will naturally produce somewhat different statistics. The entire apparatus of inference is built to answer one question: *is the difference we observe larger than what sampling variability alone would reasonably produce by chance?* The probability distributions from earlier chapters give us a way to answer this question, because they describe how a statistic behaves across all possible samples.
 
 We use two complementary tools to draw conclusions about a parameter: **hypothesis tests** and **confidence intervals**. A hypothesis test weighs two competing claims about the parameter — a *null hypothesis*, which represents no effect or no change, and an *alternative hypothesis*, which is the claim the investigator is looking to support — and asks whether the sample provides enough evidence to favor the alternative over the null. A confidence interval instead reports a whole range of values for the parameter that are consistent with the observed data. We develop hypothesis testing first, and then show that confidence intervals arise naturally from it.
 
@@ -105,9 +103,9 @@ $$
 \underbrace{\begin{cases} H_0: \mu = \mu_0 \\ H_a: \mu \neq \mu_0 \end{cases}}_{\text{Case 3}}
 $$
 
-In Cases 1 and 2 the alternative points in a single direction — the parameter is claimed to be either greater than or less than the boundary value. These are **one-sided** (or **one-tailed**) hypotheses. In Case 3 the alternative says only that the parameter *differs* from the boundary value, with no direction specified. This is a **two-sided** (or **two-tailed**) hypothesis.
+In Cases 1 and 2 the alternative points in a single direction — the parameter is claimed to be either greater than $(>)$ or less than $(<)$ the boundary value. These are **one-sided** (or **one-tailed**) hypotheses. In Case 3 the alternative says only that the parameter *differs* #(\neq)$ from the boundary value, with no direction specified. This is a **two-sided** (or **two-tailed**) hypothesis.
 
-The form of the hypotheses is dictated by the research question, not by the data. The phrase "more than," "increased," or "exceeds" signals a Case 1 alternative; "less than," "fewer," or "decreased" signals Case 2; and "differs from," "changed," or "is not equal to" signals a two-sided Case 3 alternative. For instance, asking whether *more than* 70% of students use YouTube daily, or whether mean math SAT scores are *higher than* the national mean of 508, gives a Case 1 alternative; asking whether *fewer than* 35% of adults are physically inactive, or whether mean nightly sleep is *less than* 7 hours, gives a Case 2 alternative; asking whether the proportion getting their news from social media *differs from* 36%, or whether mean commute time *differs from* the national figure, gives a two-sided Case 3 alternative.
+The form of the hypotheses is dictated by the research question, not by the data. The phrase "more than," "increased," or "exceeds" signals a Case 1 alternative $(>)$; "less than," "fewer," or "decreased" signals Case 2 $(<)$; and "differs from," "changed," or "is not equal to" signals a two-sided Case 3 alternative $(\neq)$. For instance, asking whether *more than* 70% of students use YouTube daily, or whether mean math SAT scores are *higher than* the national mean of 508, gives a Case 1 alternative; asking whether *fewer than* 35% of adults are physically inactive, or whether mean nightly sleep is *less than* 7 hours, gives a Case 2 alternative; asking whether the proportion getting their news from social media *differs from* 36%, or whether mean commute time *differs from* the national figure, gives a two-sided Case 3 alternative.
 
 ### Why We Test at the Boundary Value {#sec-foundations-boundary}
 
@@ -121,7 +119,33 @@ The answer is the **boundary value** — the value $p_0$ or $\mu_0$ at the edge 
 From this point on, whenever we speak of "the null hypothesis being true" for the purpose of computing probabilities, we take the parameter equal to the **boundary value** ($p_0$ for a proportion, $\mu_0$ for a mean). This is the value within the null hypothesis that is hardest to distinguish from the alternative hypothesis. Using the boundary value gives a conservative test.
 :::
 
-The following examples show the same three forms arising in both the proportion and the mean settings.
+### Is the Parameter a Mean or a Proportion? {#sec-foundations-mean-vs-prop}
+
+Before working through specific examples, it is worth pausing to address a question that often trips students up: in a given real-world problem, how do you tell whether the parameter of interest is a population proportion $p$ or a population mean $\mu$? The distinction is important because it determines everything that follows — the notation, the hypotheses, the sampling distribution, and the computations. Fortunately, the diagnostic is simple.
+
+The key is to identify the **variable measured on each individual** in the population and ask whether that variable is **categorical** or **numerical**.
+
+- If the variable is **categorical** with two outcomes (success/failure, yes/no, agree/disagree, has/does not have), the parameter is a **proportion** $p$ — the fraction of the population that is a success.
+- If the variable is **numerical** (a score, a quantity, a measurement), the parameter is a **mean** $\mu$ — the average value of that variable in the population.
+
+::: {.callout-tip}
+## Quick Check: Mean or Proportion?
+
+Identify the variable measured on each individual.
+
+- **Categorical** (yes/no, success/failure) → **proportion** $p$
+- **Numerical** (a quantity, a score, a measurement) → **mean** $\mu$
+
+A useful test: does the problem ask what *fraction* or *percentage* of the population has some characteristic, or what *average value* a measurement takes?
+:::
+
+Two common sources of confusion are the words **percentage** and **average**.
+
+The word **percentage** can describe either type of parameter. For example, *"What percentage of voters support the candidate?"* is a proportion question because each voter either supports the candidate or does not. In contrast, *"What is the average exam percentage among students?"* is a mean question because each student has a numerical percentage score, and we are averaging those scores.
+
+The word **average** usually signals a mean, but not always. A question such as *"What is the average number of hours students sleep each night?"* is clearly about a mean. However, a statement such as *"On average, 60% of voters support the candidate"* is really describing a proportion. Rather than relying on keywords, focus on the variable measured on each individual: is it categorical or numerical?
+
+In the examples that follow, the first three concern a population proportion $p$ — the YouTube example, the physical inactivity example, and the social media news example. The next three concern a population mean $\mu$ — the SAT example, the sleep example, and the commute time example. As you read each setup, try to identify the variable measured on each individual before reading the parameter. The categorical-versus-numerical diagnostic should quickly tell you whether the problem is about a proportion or a mean.
 
 :::{#exm-foundations-hypotheses-prop}
 ## Writing Hypotheses: Proportions
@@ -397,9 +421,6 @@ For the YouTube test with $H_0: p \leq 0.70$ versus $H_a: p > 0.70$, suppose the
 
 The p-value of $0.107$ means that *if the true proportion were exactly 0.70*, there would be about an 10.7% chance of observing a sample result at least as supportive of $H_a$ as the one we obtained. Because $0.107 > 0.05$, we **fail to reject $H_0$**. The observed result is not unusual enough under $H_0$ to provide strong evidence that more than 70% of students use YouTube daily.
 
-@fig-pvalue-youtube shows this p-value as the probability that the count $X$ is at least as large as the observed $x_{\text{obs}} = 17$, computed from the sampling distribution of $X$ when $p = 0.70$.
-
-![The p-value for the YouTube test, viewed through the count statistic $X$ in a sample of $n = 20$. The bars give the sampling distribution of $X$ when the boundary value $p_0 = 0.70$ holds. The observed count is $x_{\text{obs}} = 17$, and the p-value is the total probability of the red-colored outcomes $X \geq 17$ that are at least as supportive of $H_a: p > 0.70$.](Rguroo_outputs/Foundations_of_Inference/pvalue-youtube.png){#fig-pvalue-youtube width="85%"}
 :::
 
 :::{#exm-foundations-pvalue-mean}
@@ -467,6 +488,17 @@ For the YouTube test with $H_0: p \leq 0.70$ versus $H_a: p > 0.70$, suppose tha
 ## 🔎 Solution
 
 The critical region is $X \geq 18$. The observed count $x_{\text{obs}} = 17$ does not reach $18$, so it falls *outside* the critical region. We therefore **fail to reject $H_0$**: the data do not provide strong enough evidence that more than 70% of students use YouTube daily.
+
+
+```{r,echo=FALSE}
+#| fig-alt: "Critical-region diagram for a right-tailed hypothesis test of a population proportion. A number line for the count statistic X runs from 0 to 20. The rejection region, labeled X greater than or equal to 18, begins at the critical value 18 and extends to the right. The observed count x sub obs=17 is shown as a gold diamond to the left of the critical value, outside the rejection region. Because the observed value does not fall in the rejection region, the decision is to fail to reject H00."
+#| fig-cap: "YouTube use example: observed count outside the critical region; fail to reject $H_0.$"
+#| label: cr-image-youtube 
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Foundations_of_Inference/cr_image_YouTube.png")
+```
+
+
 :::
 
 :::{#exm-foundations-critical-mean}
@@ -479,6 +511,14 @@ For the SAT test with $H_0: \mu \leq 508$ versus $H_a: \mu > 508$, suppose that 
 ## 🔎 Solution
 
 The critical region is $\bar{X} \geq 535$. The observed mean $\bar{x}_{\text{obs}} = 542$ exceeds $535$, so it falls *inside* the critical region. We therefore **reject $H_0$** in favor of $H_a: \mu > 508$: the data provide evidence that the mean SAT score of incoming freshmen exceeds the national figure.
+
+```{r,echo=FALSE}
+#| fig-alt: "Critical-region diagram for a right-tailed hypothesis test of a population mean. A number line for the sample mean bar{X} shows the critical value at 535. The rejection region, labeled bar{X} greater tan or equal to 535, begins at 535 and extends to the right. The observed sample mean bar{x}obs}=542 is shown to the right of the critical value, inside the rejection region. Because the observed value falls in the rejection region, the decision is to reject H0."
+#| fig-cap: "SAT scores example: observed mean inside the rejection region; reject $H_0.$"
+#| label: cr-image-SAT 
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Foundations_of_Inference/cr_image_SAT.png")
+```
 :::
 
 As with the p-value examples, the two differ only in their surface details. In both, the critical region is fixed in advance to have probability $\alpha$ under $H_0$, and in both the decision comes from checking whether the observed value lands inside it.
