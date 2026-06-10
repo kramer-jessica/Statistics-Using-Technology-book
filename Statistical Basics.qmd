@@ -9,7 +9,7 @@ editor: visual
 By the end of Chapter 1, you should be able to:
 
 -  Recognize and differentiate between key statistical terms.
--  Identify levels of measurement.
+-  Identify types of variables.
 -  Differentiate between and apply various types of sampling techniques.
 -  Recognize and differentiate between various types of observational studies and designed experiments.
 -  Identify sources of errors and bias.
@@ -42,23 +42,35 @@ You encounter statistics in many parts of everyday life. A sports fan follows pl
 
 **Statistics** is the study of how to collect, organize, analyze, and interpret data.
 
-There are two main branches of statistics: descriptive and inferential. **Descriptive statistics** focuses on collecting, organizing, and summarizing data. **Inferential statistics** involves using that data to draw conclusions or make informed judgments about a larger group. Because inferential work depends on well‑organized information, it is important to begin with descriptive statistics.
+There are two main branches of statistics: descriptive and inferential. **Descriptive statistics** focuses on collecting, organizing, and summarizing data. **Inferential statistics** involves using that data to draw conclusions or make informed judgments about a larger group. Because inferential work depends on well‑organized information, we begin with descriptive statistics.
 
-To learn how to create descriptive summaries and then use them to reach broader conclusions, you will need to understand several key definitions. Many of these terms also appear in everyday language, but their meanings in statistics can differ slightly. It is important to pay attention to these distinctions and use the statistical definitions accurately.
+To learn how to create descriptive summaries and then use them to reach broader conclusions, you will need to understand several key terms. Many of these terms also appear in everyday language, but their meanings in statistics can differ slightly. It is important to pay attention to these distinctions and use the statistical definitions accurately.
 
-## Key Concepts in Statistics
+### Key Statistical Concepts
 
-A statistical study begins by identifying the **population**, which is the entire group of individuals, items, or objects a researcher wants to learn about. Because populations are often too large or difficult to measure directly, researchers collect data from a **sample**, a smaller subset selected from that population. The goal of sampling is to gather enough information to make reliable conclusions about the broader population. Understanding how populations and samples relate is essential, because the quality of any statistical conclusion depends on how well the sample represents the population it comes from.
+A statistical study begins by identifying the **population**, the entire group of individuals, items, or objects a researcher wants to learn about. Because populations are often too large or difficult to measure directly, researchers collect data from a **sample**, a smaller subset selected from that population. The goal of sampling is to gather enough information to draw reliable conclusions about the population. Understanding how populations and samples relate is essential, because the quality of any statistical conclusion depends on how well the sample represents the population it was drawn from.
 
-A **parameter** is a numerical measurement that describes a characteristic of the population. As mentioned, it can be difficult or impossible to collect information from the entire population. Therefore, the true value of a parameter is typically unknown and must be estimated using sample data. To do this, we use a numerical measurement from the sample, called a **statistic**. Parameters are usually labeled with letters from the Greek alphabet, while statistics are typically labeled with letters from the Latin alphabet, with special symbols such as a bar or hat placed above the letter. Because different samples drawn from the same population will generally produce different values, a statistic will vary from sample to sample and provides only an estimate of the true parameter value. 
+A **parameter** is a numerical measurement that describes a characteristic of the population. As mentioned, it can be difficult or impossible to collect information from the entire population. Therefore, the true value of a parameter is typically unknown and must be estimated from sample data. To do this, we use a numerical measurement from the sample, called a **statistic**. Parameters are usually labeled with letters mostly from the Greek alphabet, while statistics are typically labeled with letters from the Latin alphabet, with special symbols such as a bar or hat placed above the letter. Because different samples drawn from the same population will generally produce different values, a statistic varies from sample to sample and provides only an estimate of the true parameter value. 
 
-A key concern in statistics is whether the sample accurately represents the population. Because a sample includes only part of the population, the statistics we compute from it may differ from the true parameter values. These differences can arise by chance or because of the way the sample was collected. A sample that does not represent the population well can give a misleading picture of the population. For this reason, much of statistics focuses on two things: selecting samples that represent the population as closely as possible and understanding the uncertainty that comes from working with only part of the population. 
+```{r,echo=FALSE}
+#| fig-alt: "Diagram showing the relationship between a population and a sample. A large blue oval labeled Population contains many small dots representing individuals, four of which are highlighted in orange. A downward arrow labeled Sampling (select a subset) points from the population to a smaller orange oval labeled Sample, which contains the same four highlighted dots. To the right, the population is associated with parameters (μ, σ, p), described as the true but usually unknown values. The sample is associated with statistics (x-bar, s, p-hat). A dashed upward arrow labeled Inference: estimate parameters from statistics curves from the sample back to the population."
+#| warning: FALSE
+#| label: fig-sample-pop
+#| fig-cap: "Populations, Samples, Parameters, and Statistics"
+knitr::include_graphics(
+  "Rguroo_outputs/Statistical_Basics/population_sample_diagram.png"
+)
+```
 
-In a sample, an **observation** is a single person, item, or object from which data are collected, and a **variable** is the specific piece of information recorded about that observation. For example, in a survey of students, each student is an observation, and variables might include age, grade level, or number of hours spent studying. In a study of cars, each car is an observation, while variables could be mileage, color, or fuel efficiency. In every statistical study, observations supply the “who,” or “what is being studied,” and variables supply the “what is being measured.”
+A key concern in statistics is whether the sample accurately represents the population. Because a sample includes only part of the population, the statistics we compute from it will almost always differ from the true parameter values. These differences can arise by chance or from the way the sample was collected. A sample that does not represent the population well can give a misleading picture of the population. For this reason, much of statistics focuses on two things: selecting samples that represent the population as closely as possible and understanding the uncertainty that comes from working with only part of the population. 
 
-Choosing which variables to collect depends on the goals of the study, the structure of the population, and the kinds of questions you hope to answer. The starting point is always the research question. The variables you collect must directly relate to what you want to measure, estimate, or compare about your population. These may include demographic characteristics, environmental conditions, or other measurable features that could help to understand the population or draw conclusions. Practical constraints also matter when choosing variables. Some variables are easy to measure accurately, while others require time, equipment, or expertise.
+In a sample, an **observation** is a single person, item, or object from which data are collected, and a **variable** is the specific piece of information recorded about each observation. For example, in a survey of students, each student is an observation, and variables might include age, grade level, or number of hours spent studying. In a study of cars, each car is an observation, while variables could be mileage, color, or fuel efficiency. In every statistical study, observations answer the “who,” or “what is being studied,” and variables answer the “what is being measured.”
 
-There are two different types of variables: categorical (also called qualitative) and numerical (also called quantitative). **Categorical variables** describe qualities, categories, or labels rather than numerical amounts. Their values place observations into groups based on characteristics or attributes; for example, eye color, political party, or type of car. **Numerical variables** are numerical measurements that represent amounts or counts. Their values can be ordered, compared, and used in arithmetic operations, such as computing averages; for example, height, temperature, or number of siblings.
+Choosing which variables to collect depends on the goals of the study, the structure of the population, and the kinds of questions you hope to answer. The starting point is always the research question. The variables you collect must directly relate to what you want to measure, estimate, or compare about your population. These may include demographic characteristics, environmental conditions, or other measurable features that help to understand the population or draw conclusions. Practical constraints also matter when choosing variables. Some variables are easy to measure accurately, while others require significant time, equipment, or expertise.
+
+### Types of Vairables and Datasets
+
+There are two types of variables: categorical (also called qualitative) and numerical (also called quantitative). **Categorical variables** or **factors** describe qualities, categories, or labels rather than numerical amounts. Their values place observations into groups based on characteristics or attributes; for example, eye color, political party, or type of car. **Numerical variables** are numerical measurements that represent amounts or counts. Their values can be ordered, compared, and used in arithmetic operations, such as computing averages, for example, height, temperature, or number of siblings.
 
 ::: {.callout-note}
 ## Key Terms Summary
@@ -67,16 +79,16 @@ There are two different types of variables: categorical (also called qualitative
 |----|-----------|
 |Population|The entire group of individuals, items, or objects that a study aims to learn about|
 |Sample|A subset of the population from which data are collected |
-|Parameter|A numerical value that describes a characteristic of an entire population |
+|Parameter|A numerical value that describes a characteristic of the population |
 |Statistic|A numerical value that describes a characteristic of the sample, used to estimate the parameter |
-|Observation|A single individual item, or object on which data are collected |
+|Observation|A single individual item, or object from which data are collected |
 |Variable|A characteristic of an observation that can take different values across observations |
 |Categorical variable|A variable whose values place observations into groups or categories |
-|Numerical variable|A variable whose values are numbers that represent amounts or counts that can be measured or counted |
+|Numerical variable|A variable whose values are numbers that represent amounts or counts|
 
 :::
 
-A **dataset** is built from the observations and variables you collect. To organize a dataset, each row should represent a single observation, and each variable should be clearly defined and easy to identify in its own column. A dataset that follows this structure is shown in @tbl-dataframe_example below.
+A **dataset** is built from the observations and variables you collect. In a well-organized dataset, each row represent a single observation, and each column represents a single variable. An example of a dataset that follows this structure is shown in @tbl-dataframe_example below.
 
 ```{r dataframe}
 #| tbl-alt: "example of a clean dataset"
@@ -174,10 +186,10 @@ A doctor wants to see if a new cancer treatment leads to longer survival times t
 ::: {.callout-tip .solution-callout collapse="true" icon=false}
 ## 🔎 Solution
 
-In this example there are two groups that will be measured. That means we will need two groups for each key term.
+In this example, there are two groups that will be measured. That means we will need two groups for each key term.
 
 Population 1: All cancer patients who receive the new treatment\
-Polulation 2: All cancer patients who receive the old treatment
+Population 2: All cancer patients who receive the old treatment
 
 Sample 1: The 25 cancer patients in the study who receive the new treatment\
 Sample 2: The 25 cancer patients in the study who receive the old treatment
@@ -194,7 +206,7 @@ Parameter 2: The mean survival time of all cancer patients given the old treatme
 Statistic 1: The mean survival time of the 25 patients given the new treatment\
 Statistic 2: The mean survival time of the 25 patients given the old treatment
 
-Type of variable: This is numerical data since the doctor is recording survivial time (numerical value).*
+Type of variable: This is numerical data since the doctor is recording survival time (numerical value).*
 :::
 
 Numerical variables can be further classified into two types: discrete and continuous. **Discrete variables** are numerical variables that take on countable, separate values; they are typically things that you count. For example, the number of students in a classroom; it can be 25 or 26, but not 25.3. **Continuous variables**, on the other hand, can take on any value within a range, including decimals and fractions; they are typically things you measure. For example, the height of a person could be any value, such as 165.4 cm or 172.85 cm.
@@ -220,48 +232,46 @@ b.  The number of fleas on a cat is discrete since it is something you count.
 c.  The size of a shoe is discrete since you can only be certain values, such as 7, 7.5, 8, 8.5, 9. You can't buy a 9.73 shoe.
 :::
 
-### Measurement Scales
+Categorical data (or factors) can also be classified into two types: nominal and ordinal. **Nominal** data are categorical data that are names or categories. There is no order and since the values are not numerical, you cannot perform any arithmetic on them. Examples of this are gender, car name, ethnicity, and race. **Ordinal** data are categorical data that you can arrange in a meaningful order, since one value is more or less than another value. You cannot do arithmetic on this data. Examples of this are grades (A, B, C, D, F), place value in a race (1st, 2nd, 3rd), and size of a drink (small, medium, large).
 
-When we collect data, we don’t always measure things the same way. Some variables describe categories, some show order, and others involve actual numerical measurements. The levels of measurement help us understand what kind of data we’re working with and guide us in choosing the right graphs, calculations, and statistical methods. There are four measurement scales for different types of data with each building on the ones below it. They are:
+**Word of caution**: Sometimes ordinal data is displayed using numbers, such as 5 for “strongly agree”, and 1 for “strongly disagree”. These numbers do not represent true numerical quantities; they simply label ordered categories. Although the values have a ranking, the differences between them are not necessarily equal, so arithmetic operations (such as averaging) are not strictly meaningful. When working with numerical data, be sure the values represent actual measurements or counts, not codes assigned to categories.
 
-**Nominal**: Categorical data that is just a name or category. There is no order to any data and since there are no numbers, you cannot do any arithmetic on this level of data. Examples of this are gender, car name, ethnicity, and race.
+```{r,echo=FALSE}
+#| fig-alt: "A flowchart titled “Types of Variables” shows how variables are grouped into two main types: numerical (quantitative) and categorical (factor). Numerical variables are defined as values that are numbers and support arithmetic operations, and they are divided into continuous variables, which can take any value within an interval (examples: height, weight, time, temperature), and discrete variables, which take distinct values, often whole numbers (examples: number of children, defects, or goals). Categorical variables are defined as values representing groups where arithmetic is not meaningful, and they are divided into nominal variables, which have no natural order (examples: gender, blood type, eye color), and ordinal variables, which have a ranked order but unequal differences between ranks (examples: low, medium, high; class rank; satisfaction levels)."
+#| warning: FALSE
+#| label: fig-types-variables
+#| fig-cap: "Types of Variables"
+knitr::include_graphics(
+  "Rguroo_outputs/Statistical_Basics/types_of_variables.png"
+)
+```
 
-**Ordinal**: Categorical data that you can arrange in order, since one value is more or less than another value. You cannot do arithmetic on this data. Examples of this are grades (A, B, C, D, F), place value in a race (1st, 2nd, 3rd), and size of a drink (small, medium, large).
+::: {#exm-key-temrs-variables}
+## Identify Variable Type
 
-**Interval**: Numerical data that you can add or subtract values and the arithmetic is meaningful. If a data value is 0, that does not mean the absence of quantity. Examples of this are temperature and time on a clock.
-
-**Ratio**: Numerical data that you can do all arithmetic on (add, subtract, multiply, and divide), and ratios are meaningful. In addition, if a data value is 0, this does mean the absence of quantity. Examples of this are height, weight, distance, and length of time.
-
-Most people have a hard time deciding if the data are nominal, ordinal, interval, or ratio. First, if the variable is categorical (words instead of numbers), then it is either nominal or ordinal. Now ask yourself if you can put the data in a particular order. If you can it is ordinal. Otherwise, it is nominal. If the variable is numerical, then it is either interval or ratio. For ratio data, a value of 0 means there is no quantity. This is known as the absolute zero. If there is an absolute zero in the data, then it means it is ratio. If there is no absolute zero, then the data are interval. An example of an absolute zero is if you have \\\$0 in your bank account, then you are without money. The amount of money in your bank account is ratio data. An example where 0 is not an absolute zero would be temperature. If it was 0 degrees Celsius out, that does not mean the absence of temperature, it is just really cold! So, temperature would be interval data.
-
-**Word of caution**: Sometimes ordinal data is displayed using numbers, such as 5 being strongly agree, and 1 being strongly disagree. These numbers are not really numbers. Instead they are used to assign numerical values to ordinal data. In reality you should not perform any computations on this data, though many people do. If there are numbers, make sure the numbers are inherent numbers, and not numbers that were assigned.
-
-::: {#exm-key-temrs-measurement}
-## Identify Measurement Scale
-
-State which measurement scale each variable is.
+State whether the variable is categorical or numerical. Then classify as nominal, ordinal, discrete, or continuous.
 
 a.  Time of first class
 
 b.  Hair color
 
-c.  Length of time to take a test
+c.  Number of siblings
 
 d.  Age groupings (baby, toddler, adolescent, teenager, adult, elderly)
 :::
 
 ::: {.callout-tip .solution-callout collapse="true" icon=false}
 ## 🔎 Solution
-a.  Time of first class is interval since it is a number, but 0 o'clock military time means midnight and not the absence of time.
+a.  Time of first class is *numerical data*, since it is a numerical value that can be measured. It is considered to be *continuous* because it can take any value within a given interval. For example, a class might start at exactly 8:00, 8:01, or even 8:00:30. Since it is not limited to separate, countable values, time classified as continuous, even if it is sometimes recorded in rounded units like minutes.
 
-b.  Hair color is nominal since it is not a number, and there is no specific order for hair color.
+b.  Hair color is *categorical data* since it represents a characteristic. It is considered *nominal* since it is not a number, and there is no specific order for hair color.
 
-c.  Length of time to take a test is ratio since it is a number, and if you take 0 minutes to take a test, it means you didn't take any time to complete it.
+c.  Number of siblings is *numerical data* since it involves numerical quantities that can be compared and used in calculations. It is considered *discrete* because the values are separate and distinct whole numbers, such as 0, 1, 2, or 3 siblings, and cannot include fractions or decimals (since you cannot have a partial sibling).
 
-d.  Age groupings (baby, toddler, adolescent, teenager, adult, elderly) is ordinal since it is not a number, but you could put the data in order from youngest to oldest or the other way around.
+d.  Age groupings (such as baby, toddler, adolescent, teenager, adult, and elderly) is *categorical data*  because they represent groups rather than numerical values. These categories describe stages of life instead of exact ages, so arithmetic operations are not meaningful. It is considered *ordinal* because the categories follow a natural order from youngest to oldest.
 :::
 
-### Homework for What is Statistics Section
+### Homework for Section 1.1
 
 1.  Suppose you want to know how Arizona workers age 16 or older travel to work. To estimate the percentage of people who use the different modes of travel, you take a sample containing 500 Arizona workers aged 16 or older. State the observation, variable, population, sample, parameter, and statistic.
 
@@ -279,21 +289,21 @@ d.  Age groupings (baby, toddler, adolescent, teenager, adult, elderly) is ordin
 
 8.  The World Health Organization wishes to estimate the mean density of people per square kilometer, they collect data on 56 countries. State the observation, variable, population, sample, parameter, and statistic
 
-9.  State the measurement scale for each variable.
+9.  State the type of variable (numerical, categorical, continuous, discrete) for each variable.
 
 <!-- -->
 
-a. Cholesterol level
+a. Cholesterol level measured in milligrams per deciliter of blood
 
-b. Defect type
+b. Type of car body defect, such as scratch, dent, discoloration, etc.
 
-c. Time of first class
+c. Time of your first meal
 
 d. Opinion on a 5 point scale, with 5 being strongly agree and 1 being strongly disagree
 
 <!-- -->
 
-10. State the measurement scale for each variable.
+10. State the type of variable (numerical, categorical, continuous, discrete) for each variable.
 
 <!-- -->
 
@@ -303,17 +313,21 @@ b.  Ice cream flavors available
 
 c.  Pain levels on a scale from 1 to 10, 10 being the worst pain ever
 
-d.  Salary of employees
+d.  Mean salary of employees in dollars
 
 ## Sampling Methods
 
-As we discussed before, if you want to learn something about a population, it is often impossible or impractical to examine the whole population. It might be too expensive in terms of time or money. In other cases, it might be impractical — you can’t test all batteries for their length of lifetime because there wouldn’t be any batteries left to sell. Instead we collect data from a sample. The goal is for the sample to behave the same as the population. 
+As we discussed before, if you want to learn something about a population, it is often impossible or impractical to examine the whole population. It might be too expensive in terms of time or money. In other cases, it might be impractical — you can’t test all batteries for their length of lifetime because there wouldn’t be any batteries left to sell. Instead, we collect data from a sample.  
 
-When you choose a sample, you want it to be as similar to the population as possible. For example, if you want to test a new painkiller for adults you would want the sample to include people who vary in characteristics such as body type, age, health status, and gender. 
+The goal is for the sample to be similar to, and be representative of, the population. For example, if you want to test a new painkiller for adults, you would want the sample to include people who vary in characteristics such as body type, age, health status, and gender, so that the results can be generalized to the broader population. 
 
-There are many different ways to collect a sample, and some methods are better than others at giving you a fairly accurate picture of the population. While no sampling method is perfect, there's no guarantee that your sample will perfectly represent the entire population. Good sampling techniques help minimize this limitation. It's important to remember that even when you do everything correctly, a sample might not be perfectly representative just by chance. For example, you could take a random sample from a group that has the equal numbers of males and females, but just by chance, everyone selected could be female. If that happens, and if you have enough time and resources, it may be a good idea to take a new sample. There are many different sampling techniques, but we will focus on four main methods. 
+There are many different ways to collect a sample, and some methods are better than others at giving you a fairly accurate picture of the population. While no sampling method is perfect, good sampling techniques help minimize this limitation. It's important to remember that even when you do everything correctly, a sample might not be perfectly representative just by chance. For example, you could take a random sample from a group that has equal numbers of males and females, but just by chance, everyone selected could be female. If that happens, and if you have enough time and resources, it may be a good idea to take a new sample. There are many different sampling techniques, but we will focus on four main methods. 
 
-The simplest type of sampling is a **simple random sample (SRS)**. A simple random sample is a sample in which every individual in the population has an equal chance of being selected. Selection is made completely by chance, so no person is favored over another. This can be done by drawing names out of a hat, using a random number table, or using statistical software (like Rguroo) to randomly select individuals from a list. Simple random samples are easy to understand. Because selection is based entirely on chance with no human bias in choosing individuals, this method helps reduce bias in the sampling process. However, chance alone doesn't guarantee perfect representation; just by random variation, the sample might not mirror the population perfectly. This type of sample can also be hard to collect in practice. To ensure every individual has an equal chance of selection, you need a complete list of everyone in the population, which can be difficult to obtain. For example, there's no complete list of all adults in the United States. 
+### Simple Random Sample
+
+The simplest type of sampling is a **simple random sample (SRS)**. A simple random sample is a sample in which every individual in the population has an equal chance of being selected. Selection is made completely by chance, so no person or object is favored over another. This can be done by drawing names out of a hat, using a random number table, or using statistical software (like Rguroo) to randomly select individuals from a list. Simple random samples are easy to understand, and because selection is based entirely on chance it helps reduce bias in the sampling process. 
+
+However, chance alone doesn't guarantee perfect representation; just by random variation, the sample might not represent the population perfectly. This type of sample can also be hard to collect in practice. To ensure every individual has an equal chance of selection, you need a **sampling frame**, a complete list of everyone or everything in the population. A sampling frame can be difficult to obtain. For example, there's no complete list of all adults in the United States, or may not even be a complete list of people in a particular city.  On the other hand, if a university wants to do a survey of its students, it can use the official enrollment list as a sampling frame that is available to the university.
 
 :::{#exm-srs}
 # Taking a Simple Random Sample
@@ -331,17 +345,16 @@ Without Technology: You could write each student's name on a piece of paper and 
 
 :::
 
-When using statistical software to select a random sample, you might notice something unexpected: if you run the selection process multiple times, you get different results each time. This makes sense for randomness, but it can create a problem if you're writing a report or doing a homework assignment. You want to be able to get the same sample again so your results are reproducible. This is where a seed becomes useful. Statistical software use a **seed** so that random results can be reproduced consistently. Although computers generate numbers that appear random, they use mathematical formulas called pseudo‑random number generators, which follow a specific sequence. The seed tells the software where to start in that sequence. When the same seed is used, the software follows the same steps and produces the same random results every time.
-
 When taking a sample, selections can be made with replacement or without replacement. Sampling **with replacement** means that each item selected is returned to the population before the next selection, so the same item can be chosen more than once. In contrast, sampling **without replacement** means that once an item is selected, it is not returned to the population, so it cannot be chosen again. In practice, most real‑world sampling is done without replacement, especially when sampling from a finite population. For example, if you're surveying 50 students from a class, once you've interviewed a student, you wouldn't interview them again. Sampling with replacement is less common in real surveys, but it is often used in theoretical probability problems (we will discuss this in Chapter 4) or when running computer simulations
+
+When using statistical software to select a random sample, you might notice something unexpected: if you run the selection process multiple times, you get different results each time. This makes sense for randomness, but it can create a problem if you're writing a report or doing a homework assignment. You want to be able to get the same sample again so your results are reproducible. This is where a seed becomes useful. Statistical software use a **seed** so that random results can be reproduced consistently. Although computers generate numbers that appear random, they use mathematical formulas called pseudo‑random number generators, which follow a specific sequence. The seed tells the software where to start in that sequence. When the same seed is used, the software follows the same steps and produces the same random results every time.
 
 ::: {#exm-srs-with-Rguroo}
 ## Taking a Simple Random Sample 
 
-Data was collected for two semesters in a statistics class on students’ transportation, demographics, living expenses, preferences, and academic majors.  Take a simple random sample of size 5 without replacement and record the variable [gender]{.var}. Use a seed of 35.
+Data was collected for two semesters in a statistics class on students’ transportation, demographics, living expenses, preferences, and academic majors.  Take a simple random sample of size 5 without replacement and record the variable [gender]{.var}. Use a seed of 35. Then, repeat the process with a seed of 106.
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}. @tbl-Class shows the variables and the first 6 rows of the data set. A complete description of the variables is provided in the [dataset code book](#code-book-class) that follows.
-
 
 :::
 
@@ -393,7 +406,7 @@ Kozak, 2019
 
 To take a simple random sample using Rguroo, we first need to identify which column our variable [gender]{.var} is in.  To do this, open your **Data** toolbox in the left menu in Rguroo.  Find the dataset [class_survey1]{.data} and double click on it.  The dataset will appear in the main screen of Rguroo. When looking at the [class_survey1]{.data} dataset, [gender]{.var} is in the second column.  Keep this in mind when we generate a simple random sample.
 
-Click to expand the box below see how to take a simple random sample of size 5 for [gender]{.var} type.
+Click to expand the box below to see how to take a simple random sample of size 5 for [gender]{.var} type.
 
 :::: {#Creating-SRS-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Taking a Simple Random Sample in Rguroo"}
 
@@ -422,14 +435,31 @@ When you click on the preview button, Rguroo outputs the following sample.
 #| fig-alt: "Rguroo output of simple random sample of size 5 for gender, yielding 3 males and 2 females"
 #| warning: FALSE
 #| label: fig-srs-gender
-#| fig-cap: "Rguroo Output of Simple Random Sample"
+#| fig-cap: "Rguroo Output of Simple Random Sample (seed 35)"
 knitr::include_graphics(
   "Rguroo_outputs/Statistical_Basics/srs_gender.png"
 )
 ```
 
-@fig-srs-gender shows the simple random sample of five individuals' genders from the [class_survey1]{.data} dataset. These individuals were selected randomly from the dataset, meaning the selection process did not favor any particular group. Because the selection was random, the sample itself is unbiased; however, it may or may not be representative of the full dataset. The original dataset contains 16 females and 11 males. In this sample, there are 3 males and 2 females, while the population has more females than males overall. Since the sample size is small, it does not closely reflect the gender distribution of the population, which could lead to less accurate conclusions about gender. With a larger simple random sample, the proportions of males and females would be more likely to resemble those of the entire dataset.
+@fig-srs-gender shows the simple random sample of five individuals' genders from the [class_survey1]{.data} dataset, using a seed of 35. These individuals were selected randomly from the dataset, meaning the selection process did not favor any particular group. Because the selection was random, the sample itself is unbiased; however, it may or may not be representative of the full dataset. The original dataset contains 16 females and 11 males. In this sample, there are 3 males and 2 females, while the population has more females than males overall. Since the sample size is small, it does not closely reflect the gender distribution of the population, which could lead to less accurate conclusions about gender. With a larger simple random sample, the proportions of males and females would be more likely to resemble those of the entire dataset.
+
+Repeating the process with a seed of 106, we get the following sample.
+
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo output of simple random sample of size 5 for gender, yielding 2 males and 3 females"
+#| warning: FALSE
+#| label: fig-srs-gender2
+#| fig-cap: "Rguroo Output of Simple Random Sample (seed 106)"
+knitr::include_graphics(
+  "Rguroo_outputs/Statistical_Basics/srs_gender106.png"
+)
+```
+
+Notice that the sample (using a seed of 106) is different, resulting in 2 males and 3 females. When choosing a seed, there is no right or wrong. We choose a seed depending on our goal. If we want reproducible results, we pick and fix a specific seed so that the same “random” outcomes can be repeated exactly. If we want true variability, we allow the seed to be random, so each run produces different results.
+
 :::
+
+### Stratified Sample 
 
 A **stratified sample** is collected by first dividing the population into groups, called **strata**, based on a shared characteristic such as gender, age, or grade level. Then, a random sample is taken from each group. This method ensures that all important groups in the population are represented in the sample. Stratified sampling is especially useful when groups differ in meaningful ways and when accurate representation of those groups is important. As a result, stratified samples often produce more accurate and reliable results than simple random samples. For example, if a school has freshmen, sophomores, juniors, and seniors, you could randomly sample students from each grade (a stratified sample) instead of sampling from the entire school (a simple random sample). This approach ensures that all grade levels are represented in the sample.
 
@@ -487,6 +517,8 @@ The resulting sample of vehicles is Dodge, Ford, Honda, Jeep, and Chevrolet. Not
 
 :::
 
+### Cluster Sample
+
 A **cluster sample** is a sampling method in which the population is divided into naturally occurring groups, called **clusters**, and a random sample of those clusters is selected. Then, all individuals within the selected clusters are included in the sample. Clusters are often based on location, such as schools, city blocks, or neighborhoods, but they do not have to be geographic. Cluster sampling is commonly used because it is practical and cost‑effective, especially when the population is large or spread out. This method is often effective if the variation within a cluster is representative of the variation in the population. 
 
 However, if the selected clusters are not representative of the population, the results may be biased. For example, suppose a district wants to study student performance and selects a few schools as clusters. If each selected school has a mix of high- and low-performing students similar to the entire district, the sample can work well. However, if the selected schools are all high-performing schools, the results will likely overestimate student performance for the district. 
@@ -494,7 +526,7 @@ However, if the selected clusters are not representative of the population, the 
 :::{#exm-cluster}
 # Taking a Cluster Sample
 
-Los Angeles county wants to estimate how many hours per week residents spend using public parks. Surveying every resident is too expensive, so the county decides to use a cluster sample.
+Los Angeles county wants to estimate the average price of 87 octane gasoline. Surveying every gas station is too expensive, so the county decides to use a cluster sample.
 
 a. Describe how a cluster sample could be designed for this situation.
 
@@ -505,7 +537,7 @@ b. Explain why this is a cluster sample, and describe any limitations of using t
 ::: {.callout-tip .solution-callout collapse="true" icon=false}
 ## 🔎 Solution
 
-a. Los Angeles County would divide the population into naturally occurring groups, such as cities (see city map in @fig-map-LA below). These city groups serve as the clusters. The county would then randomly select a sample of these cities and all residents within the selected cities would be surveyed to record how many hours per week they spend using public parks.
+a. Los Angeles County would divide the population into naturally occurring groups, such as cities (see city map in @fig-map-LA below). These city groups serve as the clusters. The county would then randomly select a sample of these cities and all gas stations within those cities would be visited and the gas prices for 87 octane would be recorded.
 
 ```{r,echo=FALSE}
 #| fig-alt: "Map of LA County divided by neighborhood"
@@ -517,14 +549,16 @@ knitr::include_graphics(
 )
 ```
 
-b. This is a cluster sample because the county randomly selects entire cities (clusters) and includes every individual within those selected cities, rather than sampling individuals from across all cities.
+b. This is a cluster sample because the county randomly selects entire cities (clusters) and includes every gas station within those selected cities, rather than sampling gas stations from across all cities.
 
-   A key limitation of cluster sampling is that the selected cities may not be representative of the entire county. For example, some neighborhoods may have more parks or different usage habits than others, which could bias the results. 
+   A key limitation of cluster sampling is that the selected cities may not be representative of the entire county. For example, some cities may have higher prices (such as next to a freeway or the ocean), which could bias the results. 
 :::
 
-Many people confuse stratified sampling and cluster sampling. In stratified sampling, we divide the population into groups and take a random sample from each group. In cluster sampling, we divide the population into groups, randomly select some of those groups, and survey **all** the members in each group.
+Stratified sampling and cluster sampling can often be confused. In stratified sampling, we divide the population into groups and take a random sample from each group. In cluster sampling, we divide the population into groups, randomly select some of those groups, and survey **all** the members in each group.
 
-A **systematic sample** is a sampling method where individuals are selected by choosing a random starting point and then selecting every $k^{th}$ individual from the population, where $k$ is a fixed interval. For example, after randomly selecting a starting position, every $10^{th}$ individual on a list might be chosen. This method is easy to use and works well in situations such as assembly lines or ordered lists, where waiting to sample until the end would be inefficient. For example, if you were manufacturing life vests, you often would not want to wait until all vests are manufactured before taking a sample and discovering there is a defect.  Instead, the company might sample every 20th life vest as they are being made. This allows quality issues to be identified and fixed quickly, saving time, money, and materials, and helping ensure that the final products meet quality standards. 
+### Systematic Sample
+
+A **systematic sample** is a sampling method where individuals are selected by choosing a random starting point and then selecting every $k^{th}$ individual from the population, where $k$ is a fixed interval. For example, after randomly selecting a starting position, every $10^{th}$ individual on a list might be chosen. This method is easy to use and works well in situations such as assembly lines or ordered lists, where waiting to sample until the end would be inefficient. For example, if you were manufacturing life vests, you often would not want to wait until all vests are manufactured before taking a sample and discovering there is a defect.  Instead, the company might sample every $20^{th}$ life vest as they are being made. This allows quality issues to be identified and fixed quickly, saving time, money, and materials, and helping ensure that the final products meet quality standards. 
 
 To conduct a systematic sample, we first find $k$ by computing $N/n$, where $N$ is the population size (or approximate population size) and $n$ is the desired sample size.  If you get a decimal when dividing, round down to the nearest whole number. Then, we pick a random starting place between 1 and $k$.
 
@@ -593,9 +627,9 @@ This means that we will start with student number 4 and select every $5^{th}$ st
 
 :::
 
-One last type of sample that is sometimes conducted is called a **convenience sample**. In a convenience sample, individuals are selected based on how easy they are to reach. For example,  a researcher might ask people who they know or people who are easy to get ahold of. While this method is simple and quick, it often does not produce a representative sample of the population and can lead to biased results. 
+### Convenience Sample
 
-On a rare occasion, you do want to collect the entire population. In which case you conduct a census. A **census** is when every observation is measured.  For example, the U.S. Census attempts to count every person living in the United States.
+One last type of sample that is sometimes conducted is called a **convenience sample**. In a convenience sample, individuals are selected based on how easy they are to reach. For example,  a researcher might ask people who they know or people who are easy to get ahold of. While this method is simple and quick, it often does not produce a representative sample of the population and can lead to biased results. 
 
 ::: {.callout-note}
 ## Sampling Method Summary
@@ -609,6 +643,8 @@ On a rare occasion, you do want to collect the entire population. In which case 
 |Convenience|Include individuals who are easiest to reach - Quick but often biased|
 
 :::
+
+On a rare occasion, you may want to collect data from the entire population. In this case you conduct a census. A **census** is a process in which every individual in the population is measured.  For example, the U.S. Census attempts to count every person living in the United States.
 
 :::{#exm-type-of-sample}
 ## Identify the Sampling Type
@@ -630,9 +666,9 @@ e.  Instruct each Banner Health facilities to record any complications from 20 s
 ::: {.callout-tip .solution-callout collapse="true" icon=false}
 ## 🔎 Solution
 
-a.  This is a stratified sample since the patients were separated into different strata and then random samples were taken from each stratum. The problem with this is that some types of surgeries may have more chances for complications than others. Of course, the stratified sample would show you this.
+a.  This is a stratified sample since the patients were separated into different strata (type of surgery a patient had) and then random samples were taken from each stratum. The problem with this is that some types of surgeries may have more chances for complications than others. Of course, the stratified sample would show you this.
 
-b.  This is a random sample since each patient has the same chance of being chosen.  The problem with this is that you could have selected hospitals by chance that have no complications, or you might miss patterns that exist in unselected hospitals. Randomly select some Banner Health facilities from each of the seven states, and then include all the patients on the surgery lists of the states. 
+b.  This is a random sample since each patient has the same chance of being chosen.  The problem with this is that you could have selected hospitals by chance that have no complications, or you might miss patterns that exist in unselected hospitals. 
 
 c. This is a cluster sample since all patients are questioned in each of the selected hospitals, which serve as the clusters. The problem with this is that you could have selected hospitals by chance that have no complications, or you might miss patterns that exist in unselected hospitals.
 
@@ -642,7 +678,7 @@ e.  This is a convenience sample since they left it up to the facility how to do
 
 :::
 
-### Homework for Sampling Methods Section
+### Homework for Section 1.2
 
 1.  Researchers want to collect cholesterol levels of U.S. patients who had a heart attack two days prior. The following are different sampling techniques that the researcher could use. Classify each as simple random sample, stratified sample, systematic sample, cluster sample, or convenience sample.
 
@@ -676,11 +712,68 @@ e. The officer divides the batches made in a month into which day they were made
 
 7.  You wish to determine the GPA of students at your school. Describe what process you would go through to collect a sample if you use a convenience sample.
 
+8. Data was collected for two semesters in a statistics class drive. Use Rguroo to take a simple random sample of size 7 and record the variable [major]{.var}. Use a seed of 29. The first six rows of the dataset are in @tbl-Class.
+
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}.
+:::
+
+**Code book for Dataset Class Survey is below @tbl-Class**
+
+9. Data was collected from the Chronicle of Higher Education for tuition from public four-year colleges, private four-year colleges, and for-profit four-year colleges. The first 6 rows of the dataset is in @tbl-Tuition. Using [type]{.var} of institution as your cluster, use Rguroo to take a cluster sample of [INSTATE_TUTION]{.var} (sample size of 10). Use a seed of 47.
+
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [tuition_4_year]{.data}. The first six rows of the dataset are in @tbl-Tuition. A complete description of the variables is provided in the [dataset code book](#code-book-tuition) that follows.
+:::
+
+
+```{r tuition-table,echo=FALSE}
+#| tbl-alt: "Table showing first 6 rows of Tuition dataset with difference column added"
+#| warning: FALSE
+#| label: tbl-Tuition
+#| tbl-cap: "Head of Tuition Dataset"
+Tuition <- read.csv("https://krkozak.github.io/MAT160/Tuition_4_year.csv")
+knitr::kable(head(Tuition))
+```
+
+
+::: {#code-book-tuition .callout-tip .codebook collapse="true"}
+## Code book for Tuition Dataset
+
+**Description** Cost of four year institutions.
+
+Format
+
+This dataset contains the following columns:
+
+[INSTITUTION]{.var}: Name of four-year institution
+
+[TYPE]{.var}: Type of four-year institution, Public_4_year, Private_4_year, For_profit_4_year.
+
+[STATE]{.var}: What state the institution resides
+
+[ROOM_BOARD]{.var}: The cost of room and board at the institution (\\\$)
+
+[INSTATE_TUTION]{.var}: The cost of instate tuition (\\\$)
+
+[INSTATE_TOTAL]{.var}: The cost of room and board and instate tuition (\\\$ per year)
+
+[OUTOFSTATE_TUTION]{.var}: The cost of out of state tuition (\\\$ per year)
+
+[OUTOFSTATE_TOTAL]{.var}: The cost of room and board and out of state tuition (\\\$ per year)
+
+Source Tuition and Fees, 1998-99 Through 2018-19. (2018, December 31). Retrieved from https://www.chronicle.com/interactives/tuition-and-fees
+
+References Chronicle of Higher Education \*, December 31, 2018.
+
+:::
+
+
 ## Observational Study and Experimental Design
 
 This section provides an introduction to observational studies and experimental design—how to plan experiments or surveys so that the resulting conclusions are statistically sound. Because experimental design is a complex and detailed process, this section offers only a brief overview of the key ideas and best practices.
 
-There are two main types of statistical studies: observational studies and experiments. In an **observational study**, the researcher collects data by observing or asking questions. No variables are manipulated or controlled. It is a hands-off approach.  Observational studies do not allow you to claim a cause and effect. In a **designed experiment**, the researcher applies a treatment to individuals within the population and attempts to isolate the effects of the treatment. Unlike observational studies, well-designed experiments can establish cause-and-effect relationships.
+There are two main types of statistical studies: observational studies and experiments. In an **observational study**, the researcher collects data by observing or asking questions. No variables are manipulated or controlled; it is a hands-off approach.  Observational studies do not allow you to establish a cause and effect relationship. In a **designed experiment**, the researcher applies a treatment to individuals and attempts to isolate the effects of the treatment. Unlike observational studies, well-designed experiments can establish cause-and-effect relationships.
 
 :::{#exm-observational-experiment}
 ## Identifying the Type of Study
@@ -713,7 +806,7 @@ d. This is a designed experiment. The farmer actively applies different fertiliz
 
 ### Observational Studies
 
-Observational studies are research studies in which the investigator observes and collects data without manipulating variables, and they are commonly classified into three types. A **cross-sectional study** collects data from a population at a single point in time (or over a short period of time), providing a snapshot of characteristics or behaviors as they currently exist. A **case-control**, also known as a **retrospective study study**, looks backward in time by using past records, interviews, or historical data to examine relationships between variables and outcomes that have already occurred. A **cohort study**, also called a **longitudinal or prospective study**, follows individuals or groups into the future, collecting data at multiple points to observe how certain factors influence outcomes as they develop. Many observational studies collect data through surveys, sets of questions designed to gather information. Survey questions must be carefully written to avoid introducing bias.
+Observational studies are research studies in which the investigator observes and collects data without manipulating variables, and they are commonly classified into three types. A **cross-sectional study** collects data from a population at a single point in time (or over a short period of time), providing a snapshot of characteristics or behaviors as they currently exist. A **case-control**, also known as a **retrospective study**, looks backward in time by using past records, interviews, or historical data to examine relationships between variables and outcomes that have already occurred. A **cohort study**, also called a **longitudinal or prospective study**, follows individuals or groups into the future, collecting data at multiple points to observe how certain factors influence outcomes as they develop. Many observational studies collect data through surveys, which are sets of questions designed to gather information. Survey questions must be carefully written to avoid introducing bias.
 
 ::: {.callout-note}
 ## Observational Study Summary
@@ -722,7 +815,7 @@ Observational studies are research studies in which the investigator observes an
 |--------|-----------------------|
 |Cross-sectional|Collects data at a single point in time (or over a short period of time)|
 |Case-Control (retrospective)|Uses data collected in the past (records, interviews, historical data, etc.)|
-|Cohort (longitudinal or prospective)|Follows subjects over a longer period of time, collecting data at mulitple points|
+|Cohort (longitudinal or prospective)|Follows subjects over a longer period of time, collecting data at multiple points|
 
 :::
 
@@ -756,13 +849,13 @@ d. This is a retrospective study. The data were collected in the past and are no
 
 ### Experiment Designs
 
-Before looking at different ways experiments can be designed, it helps to understand the key pieces they all have in common. An experiment includes **treatments** (the specific conditions or actions applied to subjects), an **explanatory variable** (what the researcher changes or compares), and a **response variable** (the outcome that is measured to see the effect). The most common types of experimental designs are provided below.
+Before looking at different ways experiments can be designed, it helps to understand the key components they all have in common. An experiment includes **treatments** (the specific conditions or actions applied to subjects), an **explanatory variable** (what the researcher changes or compares), and a **response variable** (the outcome that is measured to see the effect). The most common types of experimental designs are described below.
 
-**Completely Randomized Experiment**: In this type of experiment, subjects are randomly assigned to two (or more) treatment groups. In a two-group design, both groups may receive different treatments, or one group receives the new treatment while the other receives either a  **placebo** (a fake treatment with no active ingredient - like a sugar pill) or standard (not new) treatment. The group receiving either the standard,, no treatment or a placebo is called the **control group**. The group getting the treatment is called the **treatment group**.  
+**Completely Randomized Experiment**: In this type of experiment, subjects are randomly assigned to two (or more) treatment groups. In a two-group design, both groups may receive different treatments, or one group receives the new treatment while the other receives either a  **placebo** (a fake treatment with no active ingredient - like a sugar pill) or standard (not new) treatment. The group receiving either the standard, no treatment or a placebo is called the **control group**. The group receiving the treatment is called the **treatment group**.  
 
-The idea of a placebo is that a person believes they are receiving a treatment, but in reality, they are receiving a sugar pill or another fake treatment. This helps to account for the placebo effect, which occurs when a person’s body respond to a treatment simply because they believe they are taking the treatment when in fact they are. Note, not every experiment requires a placebo, such as studies involving animals or plants. Additionally, a placebo is not always appropriate. For example, when testing a new blood pressure medication, it would be unethical to give a person with high blood pressure a placebo or no treatment. 
+The idea of a placebo is that a person believes they are receiving a treatment, but in reality, they are receiving a sugar pill or another fake treatment. This helps to account for the placebo effect, which occurs when a person’s body responds to a treatment simply because they believe they are taking the treatment even though they are not. Note that; not every experiment requires a placebo, such as studies involving animals or plants. Additionally, a placebo is not always appropriate. For example, when testing a new blood pressure medication, it would be unethical to give a person with high blood pressure a placebo or no treatment. 
 
-**Randomized Block Design**: A block is a group of subjects that are similar in some important way, while different blocks differ from each other. Then, treatments are randomly assigned to subjects within each block. For example, suppose we separate students into full-time and part-time groups. Within each group, we randomly assign some students to get the treatment and others not to receive the treatment. This way, each type of student is represented in both the treatment and control groups.
+**Randomized Block Design**: A block is a group of subjects that are similar in some important way, while different blocks differ from each other. Then, treatments are randomly assigned to subjects within each block. For example, suppose we separate students into full-time and part-time groups. Within each group, we randomly assign some students to receive the treatment and others not to receive the treatment (the control group). This way, each type of student is represented in both the treatment and control groups.
 
 **Matched Pairs Design**: The treatments are applied to pairs of subjects that are matched in some meaningful way. In some cases, the same subject is used for both treatments. For example, to measure the effectiveness of a muscle relaxer cream, the cream could be applied to one arm, while the other arm serves as a comparison. Then, the results are compared for each individual. Other examples include before and after experiments, such as measuring weight before and after a diet, or matching two different individuals with similar characteristics (like twins).
 
@@ -779,11 +872,11 @@ The idea of a placebo is that a person believes they are receiving a treatment, 
 
 No matter which experiment type you conduct, you should also consider the following:
 
-**Replication**: Replication means applying the treatment to more than one subject. This ensures that the sample size is large enough to distinguish true effects from random effects. It also allows other researchers to repeat the experiment and check whether similar results are obtained. 
+**Replication**: Replication means applying the treatment to more than one subject. This ensures that the sample size is large enough to distinguish true effects from random variation. It also allows other researchers to repeat the experiment and check whether similar results are obtained. 
 
 **Blind study**: In a blind study, the subject does not know which treatment they are receiving or whether they are receiving the treatment or a placebo. 
 
-**Double-blind study**: In a double blind study, neither the subject used in the study nor the researcher knows who is receiving which treatment or who is receiving the treatment and who is receiving the placebo. This helps prevent bias from influencing the results. 
+**Double-blind study**: In a double-blind study, neither the subject nor the researcher knows who is receiving which treatment or who is receiving the placebo. This helps prevent bias from influencing the results. 
 
 :::{#exm-type-of-experiment}
 ## Identifying the Type of Experiment
@@ -823,7 +916,7 @@ When planning and conducting a statistical study, the following guidelines help 
 
 3. *Specify the Population*. Identify the population to which the conclusions will apply. This helps clarify the scope of the study and prevents overgeneralization.
 
-4. *Choose a Data Collection Method*. Decide how observations or measurements will be obtained (e.g., surveys, direct measurement, exisiting records).
+4. *Choose a Data Collection Method*. Decide how observations or measurements will be obtained (e.g., surveys, direct measurement, existing records).
 
 5. *Determine Census or Sample*. Decide whether data will be collected from the entire population (a census) or from a subset (a sample). If sampling is used, select an appropriate method to reduce bias.
 
@@ -833,9 +926,9 @@ When planning and conducting a statistical study, the following guidelines help 
 
 8. *Analyze the Data*. Use appropriate descriptive statistics to summarize the data and appropriate inferential statistics to draw conclusions. These topics will be discussed in later chapters.
 
-9. *Interpret and Evaluate Results*. Consider and note limitations, potential sources of bias, and any assumptions made during the study. State valid conclusions, if appropriate. Suggest improvements or direction for further studies.
+9. *Interpret and Evaluate Results*. Consider and note limitations, potential sources of bias, and any assumptions made during the study. State valid conclusions, if appropriate. Suggest improvements or directions for further studies.
 
-### Homework for Experimental Design Section
+### Homework for Section 1.3
 
 1.  You want to determine if cinnamon reduces a person's insulin sensitivity. You give patients who are insulin sensitive a certain amount of cinnamon and then measure their glucose levels. Is this an observation or an experiment? Why?
 
@@ -845,7 +938,7 @@ When planning and conducting a statistical study, the following guidelines help 
 
 4.  To evaluate whether a new fertilizer improves plant growth more than the old fertilizer, the fertilizer developer gives some plants the new fertilizer and others the old fertilizer. Is this an observation or an experiment? Why?
 
-5.  A researcher designs an experiment to determine if a new drug lowers the blood pressure of patients with high blood pressure. The patients are randomly selected to be in the study, and they then they choose which group they want to be in.  Is this a randomized experiment? Why or why not? 
+5.  A researcher designs an experiment to determine if a new drug lowers the blood pressure of patients with high blood pressure. The patients are randomly selected to be in the study, and then the patients choose which group they want to be in.  Is this a randomized experiment? Why or why not? 
 
 6.  Doctors trying to see if a new stent works longer for kidney patients, asks patients if they are willing to have one of two different stents put in. During the procedure the doctor decides which stent to put in based on which one is on hand at the time. Is this a randomized experiment? Why or why not?
 
@@ -871,7 +964,7 @@ When planning and conducting a statistical study, the following guidelines help 
 
 17. A new study is underway to track the eating and exercise patterns of people at different time periods in the future, and see who is afflicted with cancer later in life. Is this a cross-sectional study, a retrospective study, or a prospective study? Why?
 
-18. To determine if a new medication reduces headache pain, researchers survey a group of headache patients at one point in time, recording their current pain levels and current medication use.. Is this a cross-sectional study, a retrospective study, or a prospective study? Why? 
+18. To determine if a new medication reduces headache pain, researchers survey a group of headache patients at one point in time, recording their current pain levels and current medication use. Is this a cross-sectional study, a retrospective study, or a prospective study? Why? 
 
 19. To see if there is a link between smoking and bladder cancer, patients with bladder cancer are asked if they currently smoke or if they smoked in the past. Is this a cross-sectional study, a retrospective study, or a prospective study? Why?
 
@@ -885,9 +978,9 @@ Many studies are conducted and conclusions are drawn using statistical methods. 
 
 ### Errors 
 
-Errors in statistics occur when a study is not conducted correctly or when conclusions are not accurately made based on the data. These errors are often unintentional, but they can still lead to misleading or incorrect conclusions. When reading or conducting a statistical study, it is important to recognize common sources of error and understand how they affect results.
+Errors in statistics occur when a study is not conducted correctly or when conclusions are not accurately drawn based on the data. These errors are often unintentional, but they can still lead to misleading or incorrect conclusions. When reading or conducting a statistical study, it is important to recognize common sources of error and understand how they affect results.
 
-An experiment may contain **lurking or confounding variables**, factors other than the one being studied that could influence the outcome. Confounding variables make it difficult to determine whether the factor being tested actually caused the observed outcome, or whether the effect was due to something else. An example of this is when you give fertilizer to some plants and no fertilizer to others, but the no-fertilizer plants are also placed in a location that doesn’t receive direct sunlight. You won’t know if the plants that received the fertilizer grew taller because of the fertilizer or the sunlight. Make sure you design experiments to eliminate the effects of confounding variables by controlling all the factors that you can.
+An experiment may contain **lurking or confounding variables**, which are factors other than the one being studied that could influence the outcome. Confounding variables make it difficult to determine whether the factor being tested actually caused the observed outcome, or whether the effect was due to something else. An example of this occurs when you give fertilizer to some plants and no fertilizer to others, but the no-fertilizer plants are also placed in a location that does not receive direct sunlight. You cannot determine if the plants that received the fertilizer grew taller because of the fertilizer or the sunlight. Experiments should be designed to control for potential confounding variables whenever possible.
 
 ::: {#exm-lurking-variable}
 ## Lurking Variable
@@ -904,7 +997,7 @@ The conclusion may be incorrect because of a lurking variable. Neighborhoods wit
 
 :::
 
-**Cause and effect** errors occur when people decide that one variable causes the other just because the variables are related. Unless the study was done as an experiment where a variable was controlled, you cannot say that one variable caused the other. There is the possibility that another variable caused both to change. As an example, there is a relationship between the number of drownings at the beach and ice cream sales. This does not mean that the increase in ice cream sales  causes people to drown. Most likely, a third variable, hot weather, causes both ice cream sales and beach visits (and thus drownings) to increase.
+**Cause-and-effect** errors occur when people conclude that one variable causes another simply because the variables are related. Unless the study was conducted as an experiment where a variable was controlled, you cannot say that one variable caused the other. There is the possibility that a third variable caused variables to change. As an example, there is a relationship between the number of drownings at the beach and ice cream sales. This does not mean that an increase in ice cream sales causes people to drown. Most likely, a third variable, hot weather, causes both ice cream sales and beach visits (and thus drownings) to increase.
 
 :::{#exm-cause-effect}
 ## Cause and Effect Error
@@ -926,7 +1019,7 @@ b.  Since there is only a link, and not a study controlling the use of the tanni
 
 :::
 
-**Overgeneralization** occurs when you conduct a study on one group and incorrectly assume the results will apply to all groups or other groups An example is doing cancer treatments on rats. Just because the treatment works on rats does not mean it will work on humans. Another example is that until recently most FDA medication testing had been done on white males of a particular age. There is no way to know how the medication affects other genders, ethnic groups, age groups, and races. The new FDA guidelines stress using subjects from diverse groups. Overgeneralization can lead to treatments or policies that are ineffective or even harmful for populations not represented in the original study.
+**Overgeneralization** occurs when you conduct a study on one group and incorrectly assume the results will apply to all groups or other groups. An example is testing cancer treatments on rats. Just because the treatment works on rats does not mean it will work on humans. Another example is that until recently most FDA medication testing had been done on white males of a particular age. There is no way to know how the medication affects other genders, ethnic groups, age groups, or races. The new FDA guidelines stress using subjects from diverse groups. Overgeneralization can lead to treatments or policies that are ineffective or even harmful for populations not represented in the original study.
 
 :::{#exm-over-generalization}
 ## Over Generalization Error
@@ -940,23 +1033,19 @@ b.  Aspirin has been used for years to bring down fevers in humans. Originally i
 ::: {.callout-tip .solution-callout collapse="true" icon=false}
 ## 🔎 Solution
 
-a.  A researcher conducts a study on the use of ibuprofen on humans and finds that it is safe. Does that mean that all species can use ibuprofen?
+a.  No. Just because a drug is safe to use on one species doesn't mean it is safe to use for all species. In fact, ibuprofen is toxic to cats.
 
-    No. Just because a drug is safe to use on one species doesn't mean it is safe to use for all species. In fact, ibuprofen is toxic to cats.
-
-b.  Aspirin has been used for years to bring down fevers in humans. Originally it was tested on white males between the ages of 25 and 40 and found to be safe. Is it safe to give to everyone?
-
-    No. Just because one age group can use it doesn't mean it is safe to use for all age groups. In fact, there has been a link between giving a child under the age of 19 aspirin when they have a fever and Reye's syndrome.
+b.  No. Just because one age group can use it doesn't mean it is safe to use for all age groups. In fact, there has been a link between giving a child under the age of 19 aspirin when they have a fever and Reye's syndrome.
 
 :::
 
-**Sampling Errors** occur when the sample does not accurately represent the population. People within a population naturally vary, and when a sample is selected, it captures only some of that variation. Because of random chance, different samples drawn from the same population will include different individuals and therefore produce different results. Smaller samples tend to show more variation from the true population value, while larger samples usually give results that are closer to the population. Sampling error is unavoidable whenever conclusions about a population are based on sample data, and it does not necessarily indicate that a study is flawed or biased—it simply reflects the natural variability that occurs when using samples instead of a full census.  
+**Sampling errors** occur when the sample does not accurately represent the population. People within a population naturally vary, and when a sample is selected, it captures only some of that variation. Because of random chance, different samples drawn from the same population will include different individuals and therefore produce different results. Smaller samples tend to show more variation from the true population value, while larger samples usually give results that are closer to the population value. Sampling error is unavoidable whenever conclusions about a population are based on sample data, and it does not necessarily indicate that a study is flawed or biased—it simply reflects the natural variability that occurs when using samples instead of a full census.  
 
 For example, suppose a college wants to estimate the average number of hours students spend studying per week. A random sample of 40 students is surveyed, and the average study time is found to be 12 hours per week. If a different random sample of 40 students were surveyed, the average might be 10 hours or 14 hours instead. These differences occur because each sample includes different students with different study habits, not because of mistakes or bias. The difference between the sample average and the true average study time for all students is due to sampling error.
 
-In addition to sampling error, studies may be affected by **non‑sampling errors**, which occur when data are collected or recorded incorrectly. These errors are not due to natural variation from using a sample, but instead result from problems such as poor measurement, inaccurate data entry, or flaws in how the data are gathered. Unlike sampling error, non‑sampling errors can often be reduced or prevented through careful study design, accurate measurement, and proper data collection procedures. 
+In addition to sampling error, studies may be affected by **non‑sampling errors**, which occur when data are collected or recorded incorrectly. These errors are not due to natural variation from using a sample, but instead can result from problems such as poor measurement, inaccurate data entry, or flaws in how the data are gathered. Unlike sampling error, which arises from natural variation when using a sample, non‑sampling errors can often be reduced or prevented through careful study design and proper data collection procedures. 
 
-Recognizing non‑sampling errors is important because they can distort results and lead to incorrect conclusions even when a sample size is large. For example, suppose in the study that estimated the average weekly study time of a college student, some students misunderstand the question and report how many hours they study in a single day instead of per week. As a result, the recorded data are inaccurate. This error is not due to the sample itself, but to how the data were collected and reported, making it a non‑sampling error.
+Recognizing non‑sampling errors is important because they can distort results and lead to incorrect conclusions even when a sample size is large. For example, suppose in a study estimating the average weekly study time of a college student, some students misunderstand the question and report how many hours they study in a single day instead of per week. As a result, the recorded data are inaccurate. This error is not due to the sample itself, but to how the data were collected and reported, making it a non‑sampling error.
 
 :::{#exm-sampling-non-sampling-errors}
 ## Identifying Sampling and Non-Sampling Errors
@@ -986,9 +1075,9 @@ d. This is a sampling error. Different random samples will naturally include dif
 
 :::
 
-Lastly, we should carefully consider the difference between **statistical significance** and **practical significance**. This is an important distinction in statistics. A result is statistically significant if a statistical test provides evidence that an effect or relationship exists. However, statistical significance does not necessarily mean that the effect is large or meaningful in practice. For example, suppose you find that a new drug for high blood pressure reduces the blood. The results may be statistically significant, but the actual reduction may be very small. In this case, the improvement  may not be large enough to justify using or marketing the drug. Another consideration is that even if you find the blood pressure medication meaningfully lowers blood pressure, it may have serious side effects or be very expensive. In this case, the treatment may not be practical, despite being statistically significant. 
+Lastly, we should carefully consider the difference between **statistical significance** and **practical significance**. A result is statistically significant if a statistical test provides evidence that an effect or relationship exists. However, statistical significance does not necessarily mean that the effect is large or meaningful in practice. For example, suppose you find that a new drug for high blood pressure reduces blood pressure. The results may be statistically significant, but the actual reduction may be very small; too small to justify using or marketing the new drug. Another consideration is that even if the blood pressure medication meaningfully lowers blood pressure, it may have serious side effects or be very expensive. In this case, the treatment may not be practical, despite being statistically significant. 
 
-In both cases, the results are statistically significant, but practically you don’t want to use the medication. The main thing to remember is that the statistics is only part of the process. You must also consider whether the results are practically significant..  
+In both cases, the results are statistically significant, but practically you don’t want to use the medication. The main thing to remember is that statistics are only part of the process. You must also consider whether the results are practically significant.
 
 ### Bias
 
@@ -996,13 +1085,17 @@ In both cases, the results are statistically significant, but practically you do
 
 Surveys are especially susceptible to bias. Several factors can influence survey results, including question wording, question order, how the survey is conducted, and who responds. The following are examples of bias that can occur in surveys.
 
-The wording of the questions can introduce **bias** by encouraging a particular response. For example, in a survey, students were asked whether they support “increasing tuition to fund campus improvements,” and many responded no. In another survey, students were asked whether they support “investing in improved classrooms, technology, and student services,” and many responded yes. Even though both questions describe the same issue, the wording affected the responses.
+**Question wording.** The way a question is phrased can introduce **bias** by encouraging a particular response. For example, in a survey, students were asked whether they support “increasing tuition to fund campus improvements,” and many responded no. In another survey, students were asked whether they support “investing in improved classrooms, technology, and student services,” and many responded yes. Even though both questions describe the same issue, the wording affected the responses.
 
-The ordering of questions can also introduce bias. For example, suppose you are asked whether there should be a fine for texting while driving.  If this question is preceded by a question asking whether you personally text while driving, you may respond differently. Being asked about your own behavior can make the issue more personal, which may influence how you answer the question about imposing a fine. 
+**Question order.** The ordering of questions can also introduce bias. For example, suppose you are asked whether there should be a fine for texting while driving.  If this question is preceded by a question asking whether you personally text while driving, you may respond differently. Being asked about your own behavior can make the issue more personal, which may influence how you answer the question about imposing a fine. 
 
-**Non-response** occurs when individuals selected for a survey do not participate or provide data. We can calculate the response rate by dividing the number of responses by the number of surveys sent. Response rates vary widely depending on the survey method and population. Typically, response rates are often around 30% to 50%. A response rate below 30% is considered poor and the results of the survey may not be reliable. In-person surveys tend to produce higher response rates and more reliable data, but they are often impractical due to cost and time constraints. Phone surveys are the next most effective option, followed by email surveys and physical mailings, though response rates typically decrease with each method. 
+**Non-response** occurs when individuals selected for a survey do not participate or provide data. We can calculate the response rate by dividing the number of responses by the number of surveys sent. Response rates vary widely depending on the survey method and population; but typically, response rates are often around 30% to 50%. A response rate below 30% is considered poor and the results of the survey may not be reliable. 
 
-**Voluntary response** surveys are those in which people choose whether to participate after seeing an open invitation, such as a call-in poll, online survey link, or email request. The problem with these is that only people who really care about the topic are likely to call or email. These surveys are not scientific and the results from these surveys are not valid. Note: all studies involve volunteers. The difference between a voluntary response survey and a scientific study is that in a scientific study the researchers ask the subjects to be involved, while in a voluntary response survey the subjects become involved on their own choosing.
+Response rates also vary by survey method. In-person surveys tend to produce higher response rates and more reliable data, but they are often impractical due to cost and time constraints. Phone surveys are the next most effective, followed by email and mailed surveys, though response rates typically decrease with each method. 
+
+**Voluntary response** surveys are those in which people choose whether to participate after seeing an open invitation, such as a call-in poll, online survey link, or email request. The problem with these is that only people who feel strongly about the topic are likely to respond. As a result, the responses tend to reflect the views of a vocal minority rather than the population, and the results are not considered scientifically valid. For example, typically only students who feel strongly about a professor (either positive or negative) tend to leave reviews on rate my professor. As a result, the reviews can be biased, based on a single personal experience, and not be representative of how that intructor conducts their class.
+
+Note that all studies involve volunteers. The difference between a voluntary response survey and a scientific study is that in a scientific study the researchers select and invite the subjects to participate, while in a voluntary response survey the subjects select themselves to participate.
 
 :::{#exm-bias1}
 ## Bias in Study
@@ -1048,7 +1141,7 @@ d. This is question order bias (hidden bias). Asking respondents about their per
 
 Ethics in statistics refers to the responsibility statisticians and researchers have to use data honestly, fairly, and transparently. While errors and bias can occur unintentionally, ethical concerns arise when results are misrepresented, important information is omitted, or conclusions are communicated in ways that may mislead others. Ethical statistical practice requires careful consideration of how data are collected, analyzed, interpreted, and shared.
 
-A **conflict of interest** occurs when the individuals or organizations conducting a study stand to benefit financially, professionally, or socially from a particular outcome. When such conflicts exist, there is a risk—intentional or unintentional—that the study design, analysis, or reporting may favor certain results. One of the first questions to ask when evaluating a study is who conducted and who funded the research. If the sponsoring entity stands to gain profits or notoriety from the results, the findings should be examined carefully. This does not mean the results are necessarily wrong, but it does mean the potential for influence exists and should be considered.
+A **conflict of interest** occurs when the individuals or organizations conducting a study stand to benefit financially, professionally, or socially from a particular outcome. When such conflicts exist, there is a risk—intentional or unintentional—that the study design, analysis, or reporting may favor certain results. One of the first questions to ask when evaluating a study is who conducted and funded the research. If the funder or sponsor stands to gain profits or notoriety from the results, the findings should be examined carefully. This does not mean the results are necessarily wrong, but it does mean the potential for influence exists and should be considered.
 
 Ethical statistical practice requires **transparency and disclosure**. Researchers should clearly disclose funding sources, methods, and limitations so that readers can properly evaluate the study. When funding sources or relevant information are not disclosed, readers cannot fully assess potential influences on the research. Transparency allows others to determine whether additional scrutiny is warranted and supports informed interpretation of the results.
 
@@ -1088,7 +1181,7 @@ d. The primary ethical concern is a conflict of interest. Because the funding or
 
 :::
 
-### Homework for Errors, Bias, and Ethics in Statistics Section
+### Homework for Section 1.4
 
 1.  Suppose there is a study where a researcher conducts an experiment to show that deep breathing exercises helps to lower blood pressure. The researcher takes two groups of people and has one group to perform deep breathing exercises and a series of aerobic exercises every day and the other group was asked to refrain from any exercises. The researcher found that the group performing the deep breathing exercises and the aerobic exercises had lower blood pressure. Discuss any issue with this study.
 
@@ -1096,15 +1189,15 @@ d. The primary ethical concern is a conflict of interest. Because the funding or
 
 3.  Over the years it has been said that coffee is bad for you. When looking at the studies that have shown that coffee is linked to poor health, you will see that people who tend to drink coffee don't sleep much, tend to smoke, don't eat healthy, and tend to not exercise. Can you say that the coffee is the reason for the poor health or is there a lurking variable that is the actual cause? Explain.
 
-4.  When researchers were trying to figure out what caused polio, they saw a connection between ice cream sales and polio. As ice cream sales increased so did the incident of polio. Does that mean that eating ice cream causes polio? Explain your answer.
+4.  When researchers were trying to figure out what caused polio, they saw a connection between ice cream sales and polio. As ice cream sales increased so did the incident of polio. Does that mean eating ice cream causes polio? Explain your answer.
 
-5.  There is a positive correlation between having a discussion of gun control, which usually occur after a mass shooting, and the sale of guns. Does that mean that the discussion of gun control increases the likelihood that people will buy more guns? Explain.
+5.  There is a positive correlation between having a discussion of gun control, which usually occur after a mass shooting, and the sale of guns. Does that mean the discussion of gun control increases the likelihood that people will buy more guns? Explain.
 
-6.  There is a study that shows that people who are obese have a vitamin D deficiency. Does that mean that obesity causes a deficiency in vitamin D? Explain.
+6.  There is a study that shows that people who are obese have a vitamin D deficiency. Does that mean obesity causes a deficiency in vitamin D? Explain.
 
-7.  A study was conducted that shows that polytetrafluoroethylene (PFOA) (Teflon is made from this chemical) has an increase risk of tumors in lab mice. Does that mean that PFOA's have an increased risk of tumors in humans? Explain.
+7.  A study was conducted that shows that polytetrafluoroethylene (PFOA) (Teflon is made from this chemical) has an increase risk of tumors in lab mice. Does that mean PFOA's have an increased risk of tumors in humans? Explain.
 
-8.  Suppose a telephone poll is conducted by contacting U.S. citizens via landlines about their view of gay marriage. Suppose over 50% of those called do not support gay marriage. Does that mean that you can say over 50% of all people in the U.S. do not support gay marriage? Explain.
+8.  Suppose a telephone poll is conducted by contacting U.S. citizens via landlines about their view of gay marriage. Suppose over 50% of those called do not support gay marriage. Does that mean you can say over 50% of all people in the U.S. do not support gay marriage? Explain.
 
 9.  Suppose that it can be shown to be statistically significant that a smaller percentage of the people are satisfied with your business. The percentage before was 87% and is now 85%. Do you change how you conduct business? Explain?
 
