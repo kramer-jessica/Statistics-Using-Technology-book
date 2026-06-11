@@ -2,30 +2,153 @@
 title: "Discrete Probability Distribution"
 format: html
 ---
+::: {.callout-note}
+## Chapter 5 Objectives
 
-When computing probabilities, the sample space, which contains all the outcomes of the experiment, is listed. If the probabilities for all of the outcomes are also listed then these two together are called a probability distribution. With a probability distribution, the shape can be determined, the mean and standard deviation can be calculated, and the probability of events can be found. How to find all of these concepts depends on what type of quantitative variables are being considered. Remember there are different types of quantitative variables, called discrete or continuous. What is the difference between discrete and continuous data? **Discrete** data can only take on particular values in a range. **Continuous** data can take on any value in a range. Discrete data usually arises from counting while continuous data usually arises from measuring.
+By the end of Chapter 5, you should be able to:
 
-If you have a variable, and can find a probability associated with that variable, it is called a **random variable**. In many cases the random variable is what you are measuring, but when it comes to discrete random variables, it is usually what you are counting. So for the example of how tall is a plant given a new fertilizer, the random variable is the height of the plant given a new fertilizer. For the example of how many fleas are on prairie dogs in a colony, the random variable is the number of fleas on a prairie dog in a colony.
 
-### **Examples of each:**
 
-How tall is a plant given a new fertilizer? Continuous. This is something you measure.
+:::
+**Before you begin, review the process for importing a dataset.** Click on the box below to expand the directions for importing a dataset into your Data Toolbox.
 
-How many fleas are on prairie dogs in a colony? Discrete. This is something you count.
+::: {#Importing-Data-to-Rguroo-Chapter-5 .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Data to Rguroo"} 
 
-Now suppose you put all the values of the random variable together with the probability that the random variable would occur. You could then have a distribution like before, but now it is called a probability distribution since it involves probabilities. A **probability distribution** is an assignment of probabilities to the values of the random variable.
+1. Open the **Data** toolbox in Rguroo.  
+2. From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.  
+3. In the top search box, type [kozak]{.typein}, then select the [Statistics Using Technology – Kozak]{.repo} repository.  
+4. In the middle search box, type the first few letters of the dataset, and choose your dataset that appears in the lower panel.  
+5. Click the [Import]{.button}. The dataset will be imported into your Rguroo account.  
+6. Click the [Close]{.button} to close the dialog.  
+7. To view the dataset, double-click the dataset under the **Data** toolbox list.
 
-With the idea of a probability distribution, the next thing is to look at the basics of a probability distribution.
+:::
+
+When calculating probabilities, we begin by identifying the sample space—the complete set of all possible outcomes of an experiment. When each of these outcomes is assigned a probability, the combination forms a probability distribution. This distribution allows us to examine the overall shape of the data, compute measures such as the mean and standard deviation, and determine the likelihood of specific events. The methods used to find these values depend on the type of numerical data involved. Recall that numerical variables fall into two categories: discrete and continuous. **Discrete data** can only take specific, separate values within a given range, while **continuous data** can take on any value within that range. Typically, discrete data arise from counting, whereas continuous data come from measurement. Discrete probability distributions provide a way to model and understand situations in which outcomes can be counted.
+
+::: {#exm-discrete-continuous-review}
+## Review of Discrete or Continuous Variables
+
+Classify the numerical variable as discrete or continuous.
+
+a.  The height of a tree measured in inches.
+
+b.  The number of A's you recieve on your college transcript.
+
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+a.  The heigt of a tree in inches is continuous since it is something you measure and can take on fractional values.
+
+b.  The number of A's you recieve on your college transcript is discrete since it is something you count.
+:::
 
 ## Basics of Probability Distributions
 
-As a reminder, a variable or what will be called the random variable from now on, is represented by the letter $x$ and it represents a quantitative (numerical) variable that is measured or observed in an experiment.
+A probability distribution can be illustrated with a simple experiment such as tossing a fair coin twice. The sample space, which lists all possible outcomes, is:
+$$\{HH, HT, TH, TT\}$$
 
-As with probabilities, probability distributions, have the properties, $0 \le P(outcome)\le1$ and $\sum{P(outcomes)}=1$
+where H represents heads and T represents tails. Since the coin is fair, each outcome has an equal probability of $1/4$.
 
-### Example: Probability Distribution
+But, what if we wanted to ask other questions such as
 
-The 2010 U.S. Census found the chance of a household being a certain size. The data is in @tbl-Household (\\"Households by age,\\" 2013). Note, the category 7 is really 7 or more people in the household. Draw the probability distribution and find the mean, variance, and standard deviation.
+- What is the probability of getting exactly one heads?
+- What is the probability of getting at most one tails?
+
+These questions can be answered more easily with a discrete probability distribution.
+
+
+### Random Variables and Probability Distributions
+
+A **random variable** describes the outcomes of an experiment.  Usually, we use capital $X$ to describe the random variable in words and use lower case $x$ to denote the values that the random variable can take on.  For example, in the fair coin toss experiment above, we can let $X$ = the number of heads. Then, $x$ could be 0 (no heads - TT), 1 (one heads - HT or TH), or 2 (two heads - HH). So 
+
+$$X= \text{number of heads}$$
+$$x=\{0, 1, 2\}$$
+
+
+Now suppose you put all the values of the random variable together with the probability that the random variable would occur. You would then have a **probability distribution**, a table of values that lists the random varible values with their corresponding probabilities. For the random variable $X$ = the number of heads (in the coin toss example), we would need to calculate the probabilities for each outcome. So, for $x$ = 0, that would be zero heads (or TT) and occurs one out of four times in the sample space. As a result, the probability for $x$ = 0 is $1/4$.  For $x$ = 1 (or one head), this could occur as HT or TH. So, the probability of $x$ = 1 would be two possible ways in the sample space out of four or $2/4$ which reduced equals $1/2$.  Finally, for $x$ = 2 (or two heads), this occurs as HH in the sample space and the probabilty would be $1/4$.  Putting this all together in a table, we get the probability distribution below.
+
+<div style="width: 50%; margin: auto;">
+
+|  $x$  | $P(x)$ |
+|-------|--------|
+|  $0$  | $1/4$  |
+|  $1$  | $1/2$  |
+|  $2$  | $1/4$  |
+
+: Probability Distribution for Number of Heads {#tbl-prob-dist-coin tbl-alt="Probability distribution showing the values of the random variable x in the first column and probabilities in the second column"}
+
+</div>
+
+As with probabilities, probability distributions, have to follow the rules of probabilities, $0 \le P(outcome)\le1$ and $\sum{P(outcomes)}=1$. We can check these ruleswith the probability distribution above. First we can verify that each probability, $P(x)$, is between 0 and 1.  And, if we add up all the probabilities, $1/4 + 1/2 + 1/4$ we get 1.
+
+::: {#exm-verify-distribution}
+## Verifying Probability Distributions
+
+Determine if the following distributions are discrete probability distributions.  If it is not a discrete probability distribution, state why.
+
+a. Suppose a traffic study records the number of accidents that happen at a busy intersection in one week. Let 
+$X$ = number of accidents per week. The probabilities are shown in the table below.
+
+<div style="width: 50%; margin: auto;">
+
+| $x$  | $P(x)$ |
+|------|--------|
+| 0    | 0.30   |
+| 1    | 0.40   |
+| 2    | 0.10   |
+| 3    | 0.20   |
+
+: Distribution for number of accidents {#tbl-accidents tbl-alt="Table showing values of the random variable as 0, 1, 2, and 3. The probabilities in the second column are 0.30, 0.40, 0.10, and 0.20"}
+
+</div>
+
+b. Suppose a researcher records the number of texts people receive. Let $X$ = number of texts in one hour. The probabilities are shown in the table below.
+
+<div style="width: 50%; margin: auto;">
+
+| $x$  | $P(x)$ |
+|------|--------|
+| 0    | 0.10   |
+| 1    | 0.15   |
+| 2    | 0.25   |
+| 3    | 0.33   |
+| 4    | 0.12   |
+| 5    | 0.10   |
+
+: Distribution for number of texts recieved in one hour {#tbl-texts tbl-alt="Table showing values of the random variable as 0, 1, 2, 3, 4, and 5. The probabilities in the second column are 0.10, 0.15, 0.25, 0.33, 0.12, and 0.10"}
+
+</div>
+ 
+:::
+
+
+:::{.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+To determine if each is a discrete probability disribution, we must verify the two rules of probability.
+
+a. Verify Rule 1: Each probability is between 0 and 1. 
+
+   Verify Rule 2: $0.30 + 0.40 + 0.10 + 0.20 = 1.00$
+
+   Both rules are satisfied, so this is a valid discrete probability distribution.
+
+b. Verify Rule 1: Each probability is between 0 and 1. 
+
+   Verify Rule 2: $0.10 + 0.15 + 0.25 + 0.33 + 0.12 + 0.10 = 1.05$
+
+   The probabilities do not add up to exactly $1$, so this is not a valid discrete probability distribution.
+
+:::
+
+::: {#exm-prob-dist}
+## Using a Probability Distribution
+
+The 2010 U.S. Census found the chance of a household being a certain size. The data is in @tbl-Household (\\"Households by age,\\" 2013). Note, the category 7 is really 7 or more people in the household. Use the probability distribution to answer the following questions.
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [table_5_1_1]{.data}.
 
 ```{r , echo=FALSE}
 #| tbl-alt: "Table showing household size"
@@ -34,6 +157,107 @@ The 2010 U.S. Census found the chance of a household being a certain size. The d
 Household<- read.csv( "https://krkozak.github.io/MAT160/table_5_1_1.csv") 
 knitr::kable(Household)
 ```
+
+a. What is the probability that a randomly selected household has exactly 2 people?
+
+b. What is the probability that a randomly selected household has at most 3 people?
+
+c. What is the probability that a randomly selected household has at least 4 people?
+
+:::
+
+:::{.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+a.  We want to find the probability of exactly 2 people in the household. We can denote that with $P(2)$. To find this, we can use the table and find the probability that corresponds to $x = 2$.  So, $P(2) = 0.336$.
+
+b. "At most 3" people means 3 or less (including 3), so we would need to find $P(x\le 3)$, meaning $P(x) = 1$ or $P(x) = 2$ or $P(x) = 3$.  Remember that "or" means add in probability. So, to find $P(x \le 3)$, we add up the probabilities from $x=1$ to $x=3$.  So, $P(x \le 3) = 0.267 + 0.336 + 0.158  = 0.761$.
+
+c.  "At least 4" people means 4 people or more.  Similarly to part (b) we need to add.  In this case, we would calculate $P(x \ge 4) = P(4) + P(5) + P(6) + P(7) = 0.137 + 0.063 + 0.024 + 0.015 = 0.239$
+
+:::
+
+We can also display probability distributions in graphical form, called a **probability histogram**.  Probability histograms are similar to the histograms in Chapter 2, only the x axis will contain the random variable $x$ and the y-axis will contain the $P(x)$. We will use Rguroo to create probability histograms.
+
+::: {#exm-prob-histogram}
+## Creating a Probability Histogram
+
+Use the 2010 U.S. census for number of people in a household to create a probability histogram.
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [table_5_1_1]{.data}.
+
+:::
+
+:::{.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+Click to expand the box below see how to create a probabilty histogram for [table_5_1_1]{.data}.
+
+:::: {#Creating-Probability-Histogram-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a Probability Histogram in Rgruoo"}
+
+**Before you begin:** Make sure you have already imported the [table_5_1_1]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Data-to-Rguroo-Chapter-5).
+
+1. Open the **Plots** toolbox in Rguroo.  
+2. Open the [Create Plot]{.dpd} dropdown, and select [Histogram]{.fun}. This opens the Histogram dialog.  
+3. In the Histogramn dialog, choose the [table_5_1_1]{.data} dataset from the [Dataset]{.dpd} dropdown. 
+4. Then, select [size]{.var} in the [Variable]{.dpd} dropdown menu and [prob]{.var} in the [Frequency]{.dpd} dropdown menu. 
+5. Type in a title for your table, and label the x and y axes. Since this graph represents a probability histogram, we can use "Probability Histogram for Household Size" as the title, "Household size (x)" for the x-axis, and "Probability, P(x)" as for the y-axis.
+5. Select "Relative Frequency" in the Type box, since this is probability.     
+6. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the probability histogram.
+
+::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+
+![Histogram dialog showing settings for creating probability histogram.
+](Rguroo_dialogs/Discrete_Probability/dialog_household_5.png){width=500px}
+
+:::
+
+Now, since this is a probability histogram, we need to adjust the graph.  To do this, follow the steps below.
+
+1. Click on the Details box.
+2. Select Bins, Bars, and Smoothing.
+3. In the Bin Breakpoints box, select center and enter [1]{.typein} for start and [1]{.typein} for the width. This will start the probability histogram at the fist value of our random variable and center the bars.
+4. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the final probability histogram.
+
+::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+
+![Histogram dialog showing settings for editing details for probability histogram.
+](Rguroo_dialogs/Discrete_Probability/dialog_household_details.png){width=500px}
+
+:::
+::::
+
+```{r,echo=FALSE}
+#| fig-alt: "See the description of the graph below the graph"
+#| warning: FALSE
+#| label: fig-prob-hist
+#| fig-cap: "Probability histogram of household size"
+knitr::include_graphics(
+  "Rguroo_outputs/Discrete_Probability_Distribution/prob_hist_household.svg"
+)
+```
+
+@fig-prob-hist shows the probability distribution of household sizes, with the highest probabilities occurring at  households with 1–2 people. As the household size increases from 3 to 7, the probability steadily decreases, indicating that larger households are less common. Overall, the distribution is right-skewed, demonstrating that most households tend to be small, while very large households are not as common.
+
+:::
+
+**need to start from here - need**
+
+probability histogram
+example: constructing probability histogram from dataset in Rguroo
+
+### Mean and Expected Value
+
+### Unusual Events
+
+example: use example given with kids, but rewrite questions (exactly, at least, at most, etc)
+
+**end of section 1**
+
+
+### Example: Probability Distribution
+
+The 2010 U.S. Census found the chance of a household being a certain size. The data is in @tbl-Household (\\"Households by age,\\" 2013). Note, the category 7 is really 7 or more people in the household. Draw the probability distribution and find the mean, variance, and standard deviation.
 
 #### **Solution**
 
