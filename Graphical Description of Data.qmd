@@ -4,6 +4,18 @@ format: html
 editor: visual
 number-sections: true
 ---
+::: {.callout-note}
+## Chapter 2 Objectives
+
+-  Organize data using tables, frequency distributions, and relative frequency distributions
+-  Distinguish between different types of data (such as categorical and numerical) and choose appropriate methods of organization
+-  Construct and interpret common graphical displays, including barplots, pie charts, histograms, and line graphs
+-  Select appropriate graphs to represent data accurately and effectively
+-  Analyze graphical displays to identify patterns, trends, and comparisons within data sets
+-  Communicate information clearly by using well‑labeled tables and graphs
+
+:::
+
 **Before you begin, review the process for importing a dataset.** Click on the box below to expand the directions for importing a dataset into your Data Toolbox.
 
 ::: {#Importing-Data-to-Rguroo-Chapter-2 .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Data to Rguroo"} 
@@ -102,7 +114,8 @@ Kozak, 2019
 :::
 
 
-:::{.solution}
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
 
 Click to expand the box below see how to create a frequency and relative frequency distribution for [vehicle]{.var} type.
 
@@ -150,9 +163,9 @@ knitr::include_graphics(
 
 ### Graphical Displays of Categorical Data
 
-Another way to display data is with a graph. There are several different graphs that are used for categorical data. Typical categorical graphs include bar graphs, Pareto charts, and pie charts.  
+Another way to display data is with a graph. There are several different graphs that are used for categorical data. Typical categorical graphs include barplots, Pareto charts, and pie charts.  
 
-**Bar graphs or barplots** consist of the frequencies or relative frequencies on one axis and the categories on the other axis. Drawing the barplot using Rguroo is performed by importing the dataset (or creating a dataset) and using the **Plots** toolbox in Rguroo.
+**barplots or barplots** consist of the frequencies or relative frequencies on one axis and the categories on the other axis. Drawing the barplot using Rguroo is performed by importing the dataset (or creating a dataset) and using the **Plots** toolbox in Rguroo.
 
 ::: {#exm-drawing-a-bar-chart}
 ## Drawing a Barplot 
@@ -164,11 +177,12 @@ Use the [class_survey1]{.data} dataset to create a barplot of [vehicle]{.var} ty
 :::
 
 
-:::{.solution}
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
 
-Click to expand the box below see how to create the bar graph for [vehicle]{.var} type.
+Click to expand the box below see how to create the barplot for [vehicle]{.var} type.
 
-:::: {#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Bar Graph of Vehicle Type in Rguroo"}
+:::: {#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Barplot of Vehicle Type in Rguroo"}
 
 **Before you begin:** Make sure you have already imported the [class_survey1]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Data-to-Rguroo-Chapter-2).
 
@@ -176,18 +190,18 @@ Click to expand the box below see how to create the bar graph for [vehicle]{.var
 2. Open the [Create Plot]{.dpd} dropdown, and select [Barplot]{.fun}. This opens the [Barplot]{.dialog} dialog.  
 3. In the [Barplot]{.dialog} dialog, choose the [class_survey1]{.data} dataset from the [Dataset]{.dpd} dropdown.  
 4. Choose the [vehicle]{.var} variable from the [Factor 1]{.dpd} dropdown.     
-5. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the bar graph.
+5. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the barplot.
 6. In the **Label** section of the dialog:  
-   - Enter [Bar Graph for Vehicle Type]{.typein} in the [Title]{.des} textbox.  
+   - Enter [Barplot for Vehicle Type]{.typein} in the [Title]{.des} textbox.  
    - Enter [Vehicle Type]{.typein} in the [X-Axis]{.des} textbox.  
    - Enter [Number of Vehicles]{.typein} in the [Y-Axis]{.des} textbox.  
 7. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the barplot.
-8. In the ![Save as](Rguroo_Icons/save_as.png) textbox, enter the name [VehicleBarGraph]{.typein} for the bar graph.
+8. In the ![Save as](Rguroo_Icons/save_as.png) textbox, enter the name [VehicleBarGraph]{.typein} for the barplot.
 Click the button to save the barplot to your Rguroo account.
 
 
 ::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
-![Barplot dialog showing settings for creating bar graph of vehicle type.](Rguroo_dialogs/Graphical_Description_of_Data/car_dialog_bargraph_2.png){width="500px"}
+![Barplot dialog showing settings for creating barplot of vehicle type.](Rguroo_dialogs/Graphical_Description_of_Data/car_dialog_bargraph_2.png){width="500px"}
 :::
 
 ::::
@@ -197,7 +211,7 @@ Click the button to save the barplot to your Rguroo account.
 #| fig-alt: "See the description of the graph below the graph"
 #| warning: FALSE
 #| label: fig-bar_graph
-#| fig-cap: "Bar graph of vehicles driven by students in statistics class"
+#| fig-cap: "Barplot of vehicles driven by students in statistics class"
 knitr::include_graphics(
   "Rguroo_outputs/Graphical_Description_of_Data/barplot_vehicle_2.svg"
 )
@@ -213,7 +227,7 @@ Notice from @fig-bar_graph, that Chevrolet and Ford are the most popular cars, w
 
 Another version of a barplot that is useful is a relative frequency barplot. A relative frequency barplot provides a clear way to compare categories by showing the proportion (or percentage) of observations in each category, which is especially useful when comparing datasets of different sizes.  By converting counts into proportions, the graph allows us to compare categories based on their relative sizes rather than their raw counts. This can make differences between categories easier to see, especially when the total number of observations differs across datasets. As a result, relative frequency barplots make it easier to compare groups and clearly communicate those comparisons to others.
 
-Rguroo can generate a relative frequency bar graph from the same [Barplot]{.dialog} in the **Plot** toolbox.
+Rguroo can generate a relative frequency barplot from the same [Barplot]{.dialog} in the **Plot** toolbox.
 
 ::: {#exm-drawing-a-relative-frequency-bar-chart}
 ## Drawing a Relative Frequency Barplot for Vehicle Type
@@ -224,15 +238,16 @@ Use the [class_survey1]{.data} dataset to create a relative frequency barplot of
 
 :::
 
-:::{.solution}
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
 
-To create a relative frequency bar graph, follow the directions for creating a bar graph [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, select the [Proportion]{.des} checkbox to obtain a relative frequency barplot.  Don't forget to change your y-axis label to proportion as well.
+To create a relative frequency barplot, follow the directions for creating a barplot [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, select the [Proportion]{.des} checkbox to obtain a relative frequency barplot.  Don't forget to change your y-axis label to proportion as well.
 
 ```{r,echo=FALSE}
 #| fig-alt: "Dialog box for creating a relative frequency distribution"
 #| warning: FALSE
 #| label: fig-rel_freq_dialog
-#| fig-cap: "Dialog Box for Relative Frequency Bar Graph"
+#| fig-cap: "Dialog Box for Relative Frequency Barplot"
 #| out.width: "80%"
 knitr::include_graphics(
   "Rguroo_dialogs/Graphical_Description_of_Data/dialog_rel_freq_vehicle_2.png"
@@ -244,19 +259,19 @@ knitr::include_graphics(
 #| fig-alt: "See the description of the graph below the graph"
 #| warning: FALSE
 #| label: fig-class_data_dot-car
-#| fig-cap: "Relative Frequency bar graph of vehicles driven by students in statistics class"
+#| fig-cap: "Relative Frequency barplot of vehicles driven by students in statistics class"
 knitr::include_graphics(
   "Rguroo_outputs/Graphical_Description_of_Data/barplot_rel_freq_vehicle_2.svg"
 )
 ```
 
-@fig-class_data_dot-car is a relative frequency bar graph of vehicles showing the vehicle types on the horizontal axis and proportions (relative frequency) on the vertical axis.
+@fig-class_data_dot-car is a relative frequency barplot of vehicles showing the vehicle types on the horizontal axis and proportions (relative frequency) on the vertical axis.
 
-Notice that a frequency bar graph and relative frequency bar graph give you similar information. However, a relative frequency bar graph shows you the proportions of the total vehicles.
-
-The beauty of datasets with multiple variables is that you can answer many questions from the data. Suppose you want to see if gender makes a difference for the type of car a person drives. If you are a car manufacturer, if you knew that certain genders like certain cars, then you would advertise specific models to the different genders.
+Notice that a frequency barplot and relative frequency barplot give you similar information. However, a relative frequency barplot shows you the proportions of the total vehicles.
 
 :::
+
+The beauty of datasets with multiple variables is that you can answer many questions from the data. Suppose you want to see if gender makes a difference for the type of car a person drives. If you are a car manufacturer, if you knew that certain genders like certain cars, then you would advertise specific models to the different genders.
 
 ::: {#exm-drawing-a-bar-chart-by-gender}
 ## Drawing a Bar Chart of Vehicle Type by Gender
@@ -267,15 +282,16 @@ Use the [class_survey1]{.data} to create a bar chart of [vehicle]{.var} type by 
 
 :::
 
-:::{.solution}
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
 
-To create a bar graph of [vehicle]{.var} by [gender]{.var}, follow the directions for creating a bar graph [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, in the barplot dialog box, select the [gender]{.var} variable from the [Factor 1]{.dpd} dropdown and the [vehicle]{.var} variable from the [Factor 2]{.dpd} dropdown.  Don't forget to title your graph appropriately. A picture of the dialog box is shown below.
+To create a barplot of [vehicle]{.var} by [gender]{.var}, follow the directions for creating a barplot [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, in the barplot dialog box, select the [gender]{.var} variable from the [Factor 1]{.dpd} dropdown and the [vehicle]{.var} variable from the [Factor 2]{.dpd} dropdown.  Don't forget to title your graph appropriately. A picture of the dialog box is shown below.
 
 ```{r,echo=FALSE}
-#| fig-alt: "Dialog box for bar graph of vehicle type by gender"
+#| fig-alt: "Dialog box for barplot of vehicle type by gender"
 #| warning: FALSE
 #| label: fig-dialog_vehicle_gender
-#| fig-cap: "Dialog Box for Bar graph of Vehicles Driven by Gender"
+#| fig-cap: "Dialog Box for Barplot of Vehicles Driven by Gender"
 #| out.width: "80%"
 knitr::include_graphics(
   "Rguroo_dialogs/Graphical_Description_of_Data/dialog_vehicle_gender_2.png"
@@ -287,7 +303,7 @@ knitr::include_graphics(
 #| fig-alt: "See the description of the graph below the graph"
 #| warning: FALSE
 #| label: fig-class_data_bar_gender
-#| fig-cap: "Bar graph of Vehicles driven by students in statistics class, disaggregated by gender"
+#| fig-cap: "Barplot of Vehicles driven by students in statistics class, disaggregated by gender"
 knitr::include_graphics(
   "Rguroo_outputs/Graphical_Description_of_Data/barplot_vehicle_gender_2.svg"
 )
@@ -299,44 +315,76 @@ Overall, we see some differences in vehicle preferences by gender, but the count
 
 :::
 
-<!--**Need to Discuss this Example**Another form of a bar graph that disaggregates by a factor is called a stacked bar graph. A stacked bar graph shows how different sub‑groups contribute to an overall total by stacking the segments on top of each other within each bar.
+Frequency barplots can sometimes be misleading because they emphasize raw counts rather than how those counts relate to the total within each group. When comparing different categories, larger numbers may stand out visually even if they do not represent a larger proportion of the group. This leads to drawing incorrect conclusions, especially when group sizes are unequal. Without clearly showing the relationship between parts and the whole, frequency barplots can make comparisons less clear and potentially distort the true differences between groups.
 
-::: {#exm-drawing-a-bar-chart-by-gender-stacked}
-## Drawing a Stacked Bar Chart of Vehicle Type by Gender
+A stacked barplot is often better than a side-by-side frequency barplot when comparing how groups are distributed because it clearly shows the proportions within each category. In a stacked barplot, each bar represents the percentage within a group, and the segments within the bar make it easy to see how each part contributes to the whole. This helps to quickly compare relative differences, such as percentages or shares, without being distracted by differences in total counts. In contrast, a side-by-side barplot focuses on individual frequencies, which can be misleading because larger values may stand out even if they do not represent a larger proportion within a group. As a result, stacked barplots provide a clearer and more meaningful way to compare how categories are composed.
 
-Use the [class_survey1]{.data} dataset to create a stacked bar chart of [vehicle]{.var} type by [gender]{.var}.
+
+::: {#exm-comparing-freq-to-stacked}
+## Comparing Side-by-Side and Stacked Barplots
+
+Use the [class_survey1]{.data} dataset to 
+
+(a) create a frequency barplot of [winter]{.var} type by [gender]{.var}.
+
+(b) create a stacked relative frequency barplot of [winter]{.var} type by [gender]{.var}.
+
+(c) compare and contrast the two barplots.
 
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}. A complete description of the variables is provided in the [dataset code book](#code-book-class).
 
 :::
 
-**Solution**
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
 
-To create a bar graph of [vehicle]{.var} by [gender]{.var}, follow the directions for creating a bar graph [here](#Creating-Bar-Graph-of-Vehicle-Type-in-Rguroo).  Then, in the barplot dialog box, select the [gender]{.var} variable from the [Factor 1]{.dpd} dropdown and the [vehicle]{.var} variable from the [Factor 2]{.dpd} dropdown.  To make it a stacked bar graph, click the "stacked" option. Don't forget to title your graph appropriately. A picture of the dialog box is shown below.
+(a) To create a barplot of [winter]{.var} by [gender]{.var}, follow the directions for creating a barplot [here](#exm-drawing-a-bar-chart-by-gender).  In the barplot dialog box, select the [winter]{.var} variable from the [Factor 1]{.dpd} dropdown and the [gender]{.var} variable from the [Factor 2]{.dpd} dropdown.  Click below to see the Rguroo dialog. The Rguroo barplot output follows.
 
-```{r,echo=FALSE}
-#| fig-alt: "Dialog box for stacked bar graph of vehicle type by gender"
-#| warning: FALSE
-#| label: fig-dialog_vehicle_gender_stacked
-#| fig-cap: "Dialog Box for Stacked Bar graph of Vehicles Driven by Gender"
-#| out.width: "80%"
-knitr::include_graphics(
-  "Rguroo_dialogs/Graphical_Description_of_Data/dialog_stacked_bar_vehicle_gender.png"
-)
-```
+::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
 
+![Barplot dialog showing settings for frequncy barplot of winter by gender.
+](Rguroo_dialogs/Graphical_Description_of_Data/dialog_winter_gender_freq.png){width=500px}
+
+:::
 
 ```{r,echo=FALSE}
 #| fig-alt: "See the description of the graph below the graph"
 #| warning: FALSE
-#| label: fig-vehicle_gender_stacked
-#| fig-cap: "Stacked Bar graph of Vehicles Driven by Gender"
+#| label: fig-winter-gender-freq
+#| fig-cap: "Frequency Barplot of Opinion of Winter by Gender"
 knitr::include_graphics(
-  "Rguroo_outputs/Graphical_Description_of_Data/stacked_bar_vehicle_gender.svg"
+  "Rguroo_outputs/Graphical_Description_of_Data/barplot_winter_gender_freq.svg"
 )
 ```
 
--->
+
+(b) To make it a stacked relative frequency barplot, click the "stacked" and "proportion" options. Click below to see the Rguroo dialog. The Rguroo barplot output follows.
+
+::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+
+![Barplot dialog showing settings for a stacked relative frequency barplot.
+](Rguroo_dialogs/Graphical_Description_of_Data/dialog_winter_gender_freq_stacked.png){width=500px}
+
+:::
+
+```{r,echo=FALSE}
+#| fig-alt: "See the description of the graph below the graph"
+#| warning: FALSE
+#| label: fig-winter-gender-stacked
+#| fig-cap: "Stacked Relative Frequency Barplot of Opinion of Winter by Gender"
+knitr::include_graphics(
+  "Rguroo_outputs/Graphical_Description_of_Data/barplot_winter_gender_freq_stacked.svg"
+)
+```
+
+
+(c) The two barplots display the same data about opinions on winter by gender, but they communicate the information in very different ways. The side-by-side frequency barplot shows the raw number of students for each opinion category, which can make certain responses appear more important simply because their bars are taller. For example, the “liked it” category for females and the “loved it” category for males stand out due to their higher counts, but it is harder to compare overall patterns within each gender because the bars are separated and not connected to a total.
+
+    In contrast, the stacked barplot combines all responses for each gender into a single bar and displays them as proportions of each gender. This makes it much easier to see how each gender’s opinions are distributed. For instance, it becomes clear that a larger proportion of males selected “loved it,” while females have a more balanced spread across categories, especially with a higher proportion selecting “liked it.” 
+
+    Looking specifically at the female “liked it” category and the male “loved it” category, they appear to be about the same height (both around 6 students) in the frequency barplot. This can give the impression that these two responses are equally important or equally common across the two groups. While both categories had similar counts, the male “loved it” portion takes up a noticeably larger share of the male bar than the female “liked it” portion does of the female bar in the stacked barplot. This shows that “loved it” makes up a larger proportion of male responses than “liked it” does for females. The stacked barplot, therefore, provides a more accurate representation because it highlights how significant each category is within its group, rather than just comparing raw numbers across groups.
+
+:::
 
 Another type of graph that is also useful for categorical data is a pie chart. A pie chart is a circular graph where each slice represents a percentage of the whole, proportional to the numerical value it represents. Pie charts allow for easy visualization of how each part contributes to the whole.
 
@@ -349,7 +397,8 @@ Use the [class_survey1]{.data} dataset to create a pie chart of [vehicle]{.var} 
 
 :::
 
-:::{.solution}
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
 
 Click to expand the box below to see how to create the pie chart for vehicle type.
 
@@ -404,9 +453,9 @@ gf_jitter(
 )
 ```
 
-There are many other types of graphs that can be used to display categorical data. The choice of graphs depends on your data and what you want to emphasize, but the frequency bar graph, relative frequency bar graph, and pie chart are the most commonly used and most useful.
+There are many other types of graphs that can be used to display categorical data. The choice of graphs depends on your data and what you want to emphasize, but the frequency barplot, relative frequency barplot, and pie chart are the most commonly used and most useful.
 
-### Homework for Categorical Data Section
+### Homework for Section 2.1
 
 1.  Data was collected from Dutch farms about the ecological factors of farm management.  Create a frequency and relative frequency distribution for grassland usage. Describe any findings you see from your distributions.
 
@@ -451,7 +500,7 @@ Venables, W. N. and Ripley, B. D. (2002) Modern Applied Statistics with S. Fourt
 
 :::
 
-2.  Eyeglassomatic manufactures eyeglasses for different retailers. The activities completed to manufacture teh eyglasses were recorded. The first six rows of the dataset are in @tbl-eyeglasses. Make a frequency barplot of this data. State any findings you can see from the graph.
+2.  Eyeglassomatic manufactures eyeglasses for different retailers. The activities completed to manufacture the eyglasses were recorded. The first six rows of the dataset are in @tbl-eyeglasses. Make a frequency barplot of this data. State any findings you can see from the graph.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [Eyglasses]{.data}.
@@ -482,13 +531,13 @@ References John Matic (2013)
 
 :::
 
-3.  Data was collected for two semesters in a statistics class drive. Create a relative frequency barplot of the variable ice cream. State any findings you can see from the graphs. The first six rows of the dataset are in @tbl-Class.
+3.  Data was collected for two semesters in a statistics class. Create a relative frequency barplot of the variable ice cream. State any findings you can see from the graphs. The first six rows of the dataset are in @tbl-Class.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}.
 :::
 
-**Code book for Dataset Calss Survey is below @tbl-Class**
+**Code book for Dataset Class Survey is below @tbl-Class**
 
 4.  The number of deaths in the US due to carbon monoxide (CO) poisoning from generators from the years 1999 to 2011 (Hinatov, 2012). The first six rows of the dataset are in @tbl-Area. Create a frequency barplot of the dataset. State any findings you see from the graph.
 
@@ -504,7 +553,7 @@ Area <- read.csv("https://krkozak.github.io/MAT160/area.csv")
 knitr::kable(head(Area))
 ```
 
-5.  Data was collected for two semesters in a statistics class drive. The dataset is in @tbl-Class. Create a realtive frequency barplot and pie chart of the variable major. Create a frequency barplot of major, disaggregated by gender. State any findings you can see from the graphs.
+5.  Data was collected for two semesters in a statistics class drive. The dataset is in @tbl-Class. Create a relative frequency barplot and pie chart of the variable major. Create a frequency barplot of major, disaggregated by gender. State any findings you can see from the graphs.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}.
@@ -545,7 +594,7 @@ References John Matic (2013)
 
 ## Numerical Data
 
-As with numerical (quantitative) data, it is also advantageous to organize numerical data since a long list of raw numbers  usually does not provide insight into the  patterns or important characteristics of a sample or population. 
+As with numerical (quantitative) data, it is also advantageous to organize numerical data since a long list of raw numbers  usually does not provide insight into the patterns or important characteristics of a sample or population. 
 
 ### Organizing Numerical Data
 
@@ -568,7 +617,8 @@ Use the [class_survey1]{.data} to create a grouped frequency distribution for th
 
 :::
 
-:::{.solution}
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
 
 Click to expand the box below see how to create a grouped frequency distribution for [distance_campus]{.var}.
 
@@ -627,7 +677,8 @@ Use the [class_survey1]{.data} to create a grouped frequency distribution with 6
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}. A complete description of the variables is provided in the [dataset code book](#code-book-class).
 :::
 
-:::{.solution}
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
 
 To create a grouped frequency distribution with 6 classes, we need to calculate the class width. For the class width, we need to find the minumum and maximum values of the dataset.
 
@@ -711,7 +762,8 @@ Data was collected for two semesters in a statistics class. Draw a histogram and
 :::
 
 
-:::{.solution}
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
 
 Click to expand the box below see how to create a histogram for distance to campus.
 
@@ -920,7 +972,8 @@ References Chronicle of Higher Education \*, December 31, 2018.
 
 :::
 
-:::{.solution}
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
 
 **Before you begin:** Make sure you have already imported the [tuition_4_year]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Data-to-Rguroo-Chapter-2).
 
@@ -983,13 +1036,13 @@ Private nonprofit colleges stand out as the most costly group, with a peak aroun
 
 :::
 
-### Homework for Numerical Data Section
+### Homework for Section 2.2
 
 1. Data was collected from record times for Scottish hill races in 1984.  
 
 a. Create a relative frequency distribution for race distance using the Freedman-Diaconis method.
 
-b. Create a relative frequency distribution for race distance with 6 classes and a "nice" class width.  Your lower class limits should be mulitples of the class width.
+b. Create a relative frequency distribution for race distance with 6 classes and a "nice" class width.  Your lower class limits should be multiples of the class width.
 
 c. Write a summary of your observations for both distributions.
 
@@ -1230,10 +1283,93 @@ Sometimes you have two numerical variables, and you want to see if they are rela
 
 ::: {#exm-scatter-plot}
 
-**Need Example**
+A study was conducted on tire rubber and recorded the abrasion loss, the hardness of the rubber, and tensile strength. Suppose you are interested in visualizing the relationship of the rubber abrasion loss versus the hardness of the rubber.  Create a scatterplot of the variables [loss]{.var} and [hard]{.var}.  Describe the relationship, if any exists.
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [MASS]{.repo}, with the dataset name [Rubber]{.data}. @tbl-rubber displays the first five rows of the dataset. A complete description of the variables is provided in the [dataset code book](#code-book-rubber) that follows.
 
 :::
 
+```{r, echo=FALSE}
+#| tbl-alt: "Table showing first 6 rows of sample from rubber dataset"
+#| label: tbl-rubber
+#| tbl-cap: "Head of Rubber Dataset"
+
+knitr::kable(head(Rubber))
+
+```
+
+
+::: {#code-book-rubber .callout-tip .codebook collapse="true"}
+## Code book for Rubber Dataset
+
+**Description:**  This dataset recorded data from accelerated testing of tire rubber.
+
+Format
+
+This dataset contains the following columns:
+
+[loss]{.var}: the abrasion loss in gm/hr.
+
+[hard]{.var}: the hardness in Shore units.
+
+[tens]{.var}: tensile strength in kg/sq m.
+
+Source
+O.L. Davies (1947) Statistical Methods in Research and Production. Oliver and Boyd, Table 6.1 p. 119.
+
+O.L. Davies and P.L. Goldsmith (1972) Statistical Methods in Research and Production. 4th edition, Longmans, Table 8.1 p. 239.
+
+References
+Venables, W. N. and Ripley, B. D. (1999) Modern Applied Statistics with S-PLUS. Third Edition. Springer.
+
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+In order to create a scatterplot, we need to determine which variable will be placed on the x-axis and which on the y-axis.  Since tire hardness could influence abrasion loss, we will use [hardness]{.var} in Shore units on the x-axis and [loss]{.var} in grams per hour on the y-axis. 
+
+Note: A Shore unit is a numerical measure of the hardness of materials such as rubber and plastics. It indicates how resistant a material is to being indented, with higher numbers representing harder materials and lower numbers representing softer ones.
+
+Click to expand the box below see how to create a scatterplot of [loss]{.var} versus [hardness]{.var}.
+
+:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating Scatterplot in Rguroo"}
+
+**Before you begin:** Make sure you have already imported the [Rubber]{.data} dataset into your Rguroo account, as was shown [here](#Importing-Data-to-Rguroo-Chapter-2).
+
+1. Open the **Plots** toolbox in Rguroo.  
+2. Open the [Create Plot]{.dpd} dropdown, and select [Scatterplot]{.fun}. This opens the Scatterplot dialog.  
+3. In the Scatterplot dialog, choose the [Rubber]{.data} dataset from the [Dataset]{.dpd} dropdown.  
+4. Choose the [hardness]{.var} variable from the [Predictor (x)]{.dpd} dropdown. 
+5. Choose the [loss]{.var} variable from the [Response (y)]{.dpd} dropdown.
+6. In the **Label** section of the dialog:  
+   - Enter [Scatterplot of Loss of Rubber versus Hardness of Rubber]{.typein} in the [Title]{.des} textbox.  
+   - Enter [Hardness (in Shore units)]{.typein} in the [X-Axis]{.des} textbox.  
+   - Enter [Loss (in grams/hour)]{.typein} in the [Y-Axis]{.des} textbox.  
+6. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the scatterplot.
+
+::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+![Scatterplot dialog showing settings for creating a scatterplot of loss versus hardness.](Rguroo_dialogs/Graphical_Description_of_Data/dialog_scatterplot_rubber.png){width="500px"}
+:::
+
+::::
+
+
+```{r, echo=FALSE}
+#| fig-alt: "See the description of the graph below the graph"
+#| warning: FALSE
+#| label: fig-rubber
+#| fig-cap: "Loss versus Hardness"
+knitr::include_graphics(
+  "Rguroo_outputs/Graphical_Description_of_Data/scatterplot_rubber.svg"
+)
+```
+
+@fig-rubber shows the relationship between hardness (in Shore units) on the horizontal axis and abrasion loss (in grams per hour) on the vertical axis. The points are spread across hardness values from about 45 to 88 and loss values from roughly 30 to 370. As hardness increases, the abrasion loss generally decreases, forming a clear downward trend.
+
+This downward trend indicates a negative relationship between hardness and loss. Softer rubber (lower Shore values) tends to have higher loss, while harder rubber (higher Shore values) tends to have lower loss. Although the points are somewhat scattered and not perfectly aligned, the overall pattern is fairly consistent, suggesting a moderately strong negative relationship. 
+
+:::
 
 ### **Time-Series Plot**
 
@@ -1246,7 +1382,7 @@ The purpose of a time-series plot is to look for patterns or trends over time. H
 
 Data was collected from a simulation study of motorcycle accidents designed to test crash helmets. The study recorded the acceleration of the rider’s head immediately after impact. Head acceleration measures how quickly the speed of the head changes during the crash and is measured in $g$ units where $1g = 9.8 m/s^2$ meters per second squared. Create a time series plot of the head acceleration versus time. 
 
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [MASS]{.repo}, with the dataset name [mcycle]{.data}. @tbl-Tuition displays the first five rows of the dataset. A complete description of the variables is provided in the [dataset code book](#code-book-mcycle) that follows.
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [MASS]{.repo}, with the dataset name [mcycle]{.data}. @tbl-mcycle displays the first five rows of the dataset. A complete description of the variables is provided in the [dataset code book](#code-book-mcycle) that follows.
 
 :::
 
@@ -1281,7 +1417,8 @@ Venables, W. N. and Ripley, B. D. (1999) Modern Applied Statistics with S-PLUS. 
 :::
 
 
-:::{.solution}
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
 
 First, we identify which variable will be placed on each axis. Time after impact (in milliseconds) will be placed on the horizontal axis because it moves forward in time and helps us see how things change. Head acceleration (in g’s) will be placed on the vertical axis because it is the value we are measuring at each moment after the impact. We can use the scatterplot graph to create the time series plot.
 
@@ -1323,7 +1460,7 @@ knitr::include_graphics(
 
 :::
 
-### Homework for Other Graphical Representations of Data Section
+### Homework for Section 2.3
 
 1.  When an anthropologist finds skeletal remains, they need to figure out the height of the person. The first 6 rows of a dataset recording the height of a person (in cm) and the length of one of their metacarpal bone (in cm) were collected and are in @tbl-Metacarpal (Prediction of height, 2013). Create a scatterplot of length and height and state if there is a relationship between the height of a person and the length of their metacarpal.
 
