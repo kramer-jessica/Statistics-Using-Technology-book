@@ -260,7 +260,7 @@ window.Quarto = {
   <li><a href="#observational-study-and-experimental-design" id="toc-observational-study-and-experimental-design" class="nav-link" data-scroll-target="#observational-study-and-experimental-design"><span class="header-section-number">1.3</span> Observational Study and Experimental Design</a>
   <ul class="collapse">
   <li><a href="#observational-studies" id="toc-observational-studies" class="nav-link" data-scroll-target="#observational-studies"><span class="header-section-number">1.3.1</span> Observational Studies</a></li>
-  <li><a href="#experiment-designs" id="toc-experiment-designs" class="nav-link" data-scroll-target="#experiment-designs"><span class="header-section-number">1.3.2</span> Experiment Designs</a></li>
+  <li><a href="#experimental-designs" id="toc-experimental-designs" class="nav-link" data-scroll-target="#experimental-designs"><span class="header-section-number">1.3.2</span> Experimental Designs</a></li>
   <li><a href="#guidelines-for-planning-a-statistical-study" id="toc-guidelines-for-planning-a-statistical-study" class="nav-link" data-scroll-target="#guidelines-for-planning-a-statistical-study"><span class="header-section-number">1.3.3</span> <strong>Guidelines for Planning a Statistical Study</strong></a></li>
   <li><a href="#homework-for-section-1.3" id="toc-homework-for-section-1.3" class="nav-link" data-scroll-target="#homework-for-section-1.3"><span class="header-section-number">1.3.4</span> Homework for Section 1.3</a></li>
   </ul></li>
@@ -377,7 +377,7 @@ Figure&nbsp;1.1: Populations, Samples, Parameters, and Statistics
 </section>
 <section id="types-of-variables-and-datasets" class="level3" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="types-of-variables-and-datasets"><span class="header-section-number">1.1.2</span> Types of Variables and Datasets</h3>
-<p>There are two types of variables: categorical (also called qualitative) and numerical (also called quantitative). <strong>Categorical variables</strong> or <strong>factors</strong> describe qualities, categories, or labels rather than numerical amounts. Their values place observations into groups based on characteristics or attributes; for example, eye color, political party, or type of car. <strong>Numerical variables</strong> are numerical measurements that represent amounts or counts. Their values can be ordered, compared, and used in arithmetic operations, such as computing averages, for example, height, temperature, or number of siblings.</p>
+<p>There are two types of variables: categorical (also called qualitative or factor) and numerical (also called quantitative). <strong>Categorical variables</strong> or <strong>factors</strong> describe qualities, categories, or labels rather than numerical amounts. Their values place observations into groups based on characteristics or attributes; for example, eye color, political party, or type of car. <strong>Numerical variables</strong> are numerical measurements that represent amounts or counts. Their values can be ordered, compared, and used in arithmetic operations, such as computing averages, for example, height, temperature, or number of siblings.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -390,8 +390,8 @@ Key Terms Summary
 <div class="callout-body-container callout-body">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 27%">
-<col style="width: 72%">
+<col style="width: 30%">
+<col style="width: 69%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -854,7 +854,7 @@ Figure&nbsp;1.2: Types of Variables
 </div>
 </div>
 </div>
-<p>When taking a sample, selections can be made with replacement or without replacement. Sampling <strong>with replacement</strong> means that each item selected is returned to the population before the next selection, so the same item can be chosen more than once. In contrast, sampling <strong>without replacement</strong> means that once an item is selected, it is not returned to the population, so it cannot be chosen again. In practice, most real‑world sampling is done without replacement, especially when sampling from a finite population. For example, if you’re surveying 50 students from a class, once you’ve interviewed a student, you wouldn’t interview them again. Sampling with replacement is less common in real surveys, but it is often used in theoretical probability problems (we will discuss this in Chapter 4) or when running computer simulations</p>
+<p>When taking a sample, selections can be made with replacement or without replacement. Sampling <strong>with replacement</strong> means that each item selected is returned to the population before the next selection, so the same item can be chosen more than once. In contrast, sampling <strong>without replacement</strong> means that once an item is selected, it is not returned to the population, so it cannot be chosen again. In practice, most real‑world sampling is done without replacement, especially when sampling from a small population. For example, if you’re surveying 50 students from a class, once you’ve interviewed a student, you wouldn’t interview them again. Sampling with replacement is less common in real surveys, but it is often used in theoretical probability problems (we will discuss this in Chapter 4) or when running computer simulations.</p>
 <p>When using statistical software to select a random sample, you might notice something unexpected: if you run the selection process multiple times, you get different results each time. This makes sense for randomness, but it can create a problem if you’re writing a report or doing a homework assignment. You want to be able to get the same sample again so your results are reproducible. This is where a seed becomes useful. Statistical software use a <strong>seed</strong> so that random results can be reproduced consistently. Although computers generate numbers that appear random, they use mathematical formulas called pseudo‑random number generators, which follow a specific sequence. The seed tells the software where to start in that sequence. When the same seed is used, the software follows the same steps and produces the same random results every time.</p>
 <div id="exm-srs-with-Rguroo" class="theorem example">
 <p><span class="theorem-title"><strong>Example 1.8 (Taking a Simple Random Sample)</strong></span> Data was collected for two semesters in a statistics class on students’ transportation, demographics, living expenses, preferences, and academic majors. Take a simple random sample of size 5 without replacement and record the variable <span class="var">gender</span>. Use a seed of 35. Then, repeat the process with a seed of 106.</p>
@@ -1229,7 +1229,7 @@ Figure&nbsp;1.6: Map of LA County by Neighborhood
 </div>
 </div>
 <p>Stratified sampling and cluster sampling can often be confused. In stratified sampling, we divide the population into groups and take a random sample from each group. In cluster sampling, we divide the population into groups, randomly select some of those groups, and survey <strong>all</strong> the members in each group.</p>
-<p><a href="#fig-sampling-compared" class="quarto-xref">Figure&nbsp;<span>1.7</span></a> compares simple random, stratified, and cluster samples using college dormitories. Part (a) illustrates a simple random sample by selecting individual rooms scattered across both dorms. Part (b) illustrates a stratified sample by separately sampling rooms from each dorm type. Part (c) illustrates a cluster sample depicted by selecting entire floors within each dorm, and then all rooms are selected.</p>
+<p><a href="#fig-sampling-compared" class="quarto-xref">Figure&nbsp;<span>1.7</span></a> compares simple random, stratified, and cluster samples using college dormitories. Panel (a) illustrates a simple random sample by selecting individual rooms scattered across both dorms. Panel (b) illustrates a stratified sample by separately sampling rooms from each dorm type. Panel (c) illustrates a cluster sample depicted by selecting entire floors within each dorm, and then all rooms are selected.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-sampling-compared" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A three-part diagram titled Sampling Using Dormitories: Three Approaches compares different sampling methods using illustrations of an undergraduate dorm and a graduate dorm, each shown as multi-floor buildings with rooms arranged in grids.In part (a), simple random sampling is shown by selecting individual rooms scattered across both dorms, highlighted in yellow, indicating that rooms are chosen randomly from all available rooms.In part (b), stratified sampling is illustrated by separately sampling rooms from each dorm type. Selected undergraduate dorm rooms are highlighted in yellow, while selected graduate dorm rooms are highlighted in green, showing that random samples are taken within each group.In part (c), cluster sampling is depicted by selecting entire floors within each dorm. Chosen floors in the undergraduate dorm are shaded blue and chosen floors in the graduate dorm are shaded green, indicating that all rooms on those selected floors are included in the sample.">
@@ -1370,8 +1370,8 @@ Sampling Method Summary
 <div class="callout-body-container callout-body">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 26%">
-<col style="width: 73%">
+<col style="width: 29%">
+<col style="width: 70%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1643,7 +1643,7 @@ Code book for Tuition Dataset
 </div>
 <section id="observational-studies" class="level3" data-number="1.3.1">
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="observational-studies"><span class="header-section-number">1.3.1</span> Observational Studies</h3>
-<p>Observational studies are research studies in which the investigator observes and collects data without manipulating variables, and they are commonly classified into three types. A <strong>cross-sectional study</strong> collects data from a population at a single point in time (or over a short period of time), providing a snapshot of characteristics or behaviors as they currently exist. A <strong>case-control</strong>, also known as a <strong>retrospective study</strong>, looks backward in time by using past records, interviews, or historical data to examine relationships between variables and outcomes that have already occurred. A <strong>cohort study</strong>, also called a <strong>longitudinal or prospective study</strong>, follows individuals or groups into the future, collecting data at multiple points to observe how certain factors influence outcomes as they develop. Many observational studies collect data through surveys, which are sets of questions designed to gather information. Survey questions must be carefully written to avoid introducing bias.</p>
+<p>Observational studies are research studies in which the investigator observes and collects data without manipulating variables. They are commonly classified into three types. A <strong>cross-sectional study</strong> collects data from a population at a single point in time (or over a short period of time), providing a snapshot of characteristics or behaviors as they currently exist. A <strong>case-control study</strong> begins with individuals who have a particular outcome (cases) and compares them with similar individuals who do not have the outcome (controls). Researchers then look backward using past records, interviews, or historical data to investigate possible exposures or risk factors. Case-control studies are typically <strong>retrospective</strong>. A <strong>cohort study</strong> follows individuals or groups into the future, collecting data at multiple points to observe how certain factors influence outcomes as they develop. Cohort studies are often <strong>longitudinal or prospective.</strong> Many observational studies collect data through surveys, which are sets of questions designed to gather information. Survey questions must be carefully written to avoid introducing bias.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1656,8 +1656,8 @@ Observational Study Summary
 <div class="callout-body-container callout-body">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 26%">
-<col style="width: 73%">
+<col style="width: 29%">
+<col style="width: 70%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1713,11 +1713,11 @@ Observational Study Summary
 </div>
 </div>
 </section>
-<section id="experiment-designs" class="level3" data-number="1.3.2">
-<h3 data-number="1.3.2" class="anchored" data-anchor-id="experiment-designs"><span class="header-section-number">1.3.2</span> Experiment Designs</h3>
+<section id="experimental-designs" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="experimental-designs"><span class="header-section-number">1.3.2</span> Experimental Designs</h3>
 <p>Before looking at different ways experiments can be designed, it helps to understand the key components they all have in common. An experiment includes <strong>treatments</strong> (the specific conditions or actions applied to subjects), an <strong>explanatory variable</strong> (what the researcher changes or compares), and a <strong>response variable</strong> (the outcome that is measured to see the effect). The most common types of experimental designs are described below.</p>
 <p><strong>Completely Randomized Experiment</strong>: In this type of experiment, subjects are randomly assigned to two (or more) treatment groups. In a two-group design, both groups may receive different treatments, or one group receives the new treatment while the other receives either a <strong>placebo</strong> (a fake treatment with no active ingredient - like a sugar pill) or standard (not new) treatment. The group receiving either the standard, no treatment or a placebo is called the <strong>control group</strong>. The group receiving the treatment is called the <strong>treatment group</strong>.</p>
-<p>The idea of a placebo is that a person believes they are receiving a treatment, but in reality, they are receiving a sugar pill or another fake treatment. This helps to account for the placebo effect, which occurs when a person’s body responds to a treatment simply because they believe they are taking the treatment even though they are not. Note that; not every experiment requires a placebo, such as studies involving animals or plants. Additionally, a placebo is not always appropriate. For example, when testing a new blood pressure medication, it would be unethical to give a person with high blood pressure a placebo or no treatment.</p>
+<p>The idea of a placebo is that a person believes they are receiving a treatment, but in reality, they are receiving a sugar pill or another fake treatment. This helps to account for the <strong>placebo effect</strong>, which occurs when a person’s body responds to a treatment simply because they believe they are taking the treatment even though they are not. Note that, not every experiment requires a placebo, such as studies involving animals or plants. Additionally, a placebo is not always appropriate. For example, when testing a new blood pressure medication, it would be unethical to give a person with high blood pressure a placebo or no treatment.</p>
 <p><strong>Randomized Block Design</strong>: A block is a group of subjects that are similar in some important way, while different blocks differ from each other. Then, treatments are randomly assigned to subjects within each block. For example, suppose we separate students into full-time and part-time groups. Within each group, we randomly assign some students to receive the treatment and others not to receive the treatment (the control group). This way, each type of student is represented in both the treatment and control groups.</p>
 <p><strong>Matched Pairs Design</strong>: The treatments are applied to pairs of subjects that are matched in some meaningful way. In some cases, the same subject is used for both treatments. For example, to measure the effectiveness of a muscle relaxer cream, the cream could be applied to one arm, while the other arm serves as a comparison. Then, the results are compared for each individual. Other examples include before and after experiments, such as measuring weight before and after a diet, or matching two different individuals with similar characteristics (like twins).</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1732,8 +1732,8 @@ Experimental Design Summary
 <div class="callout-body-container callout-body">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 26%">
-<col style="width: 73%">
+<col style="width: 29%">
+<col style="width: 70%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1949,7 +1949,7 @@ Experimental Design Summary
 </div>
 </div>
 </div>
-<p>Lastly, we should carefully consider the difference between <strong>statistical significance</strong> and <strong>practical significance</strong>. A result is statistically significant if a statistical test provides evidence that an effect or relationship exists. However, statistical significance does not necessarily mean that the effect is large or meaningful in practice. For example, suppose you find that a new drug for high blood pressure reduces blood pressure. The results may be statistically significant, but the actual reduction may be very small; too small to justify using or marketing the new drug. Another consideration is that even if the blood pressure medication meaningfully lowers blood pressure, it may have serious side effects or be very expensive. In this case, the treatment may not be practical, despite being statistically significant.</p>
+<p>Lastly, we should carefully consider the difference between <strong>statistical significance</strong> and <strong>practical significance</strong>. We will return to this in later chapters when discussing statistical inference. However, briefly a result is statistically significant if a statistical test provides evidence that an effect or relationship exists. However, statistical significance does not necessarily mean that the effect is large or meaningful in practice. For example, suppose you find that a new drug for high blood pressure reduces blood pressure. The results may be statistically significant, but the actual reduction may be very small; too small to justify using or marketing the new drug. Another consideration is that even if the blood pressure medication meaningfully lowers blood pressure, it may have serious side effects or be very expensive. In this case, the treatment may not be practical, despite being statistically significant.</p>
 <p>In both cases, the results are statistically significant, but practically you don’t want to use the medication. The main thing to remember is that statistics are only part of the process. You must also consider whether the results are practically significant.</p>
 </section>
 <section id="bias" class="level3" data-number="1.4.2">
