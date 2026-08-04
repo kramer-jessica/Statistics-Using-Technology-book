@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.29">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>3&nbsp; Numerical Description of Data – Introductory Statistics: A Conceptual Approach Using Rguroo</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -34,17 +31,16 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./Probability.html" rel="next">
-<link href="./Graphical Description of Data.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<link href="./Graphical_Description_of_Data.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dfa48a90d809c806c7ea2d5aecd9fc66.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-87aed0b8589e23e45aa8556edf37a91b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -74,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -87,7 +83,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -106,7 +102,7 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -154,8 +150,8 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Graphical Description of Data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Graphical Description of Data</span></span></a>
+  <a href="./Graphical_Description_of_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tabular and Graphical Description of Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -184,38 +180,62 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Sampling Distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Sampling Distributions and the Central Limit Theorem</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations_of_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Foundations of Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./proportion inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inference for Population Proportions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mean inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Statistical Inference for Means</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./One Sample Inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">One Sample Inference</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">One Sample Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Estimation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Estimation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estimation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Two Sample Inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Two Sample Inference</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Two Sample Inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Chi-Square and ANOVA Tests.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chi-squared and ANOVA Tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chi-squared and ANOVA Tests</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./References.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">References</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">References</span></span></a>
   </div>
 </li>
     </ul>
@@ -282,12 +302,12 @@ window.Quarto = {
 
 <p><strong>Before you begin, Click to expand the box below to review the process for importing a dataset.</strong></p>
 <div id="Importing-cats-to-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Data to Rguroo">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Importing Data to Rguroo
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Importing Data to Rguroo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -317,7 +337,7 @@ window.Quarto = {
 <p>The <strong>mode</strong> is the data value that occurs most frequently in the data. To find it, you count how often each data value occurs, and then determine which value occurs most often. If there is a tie between two values for the most number of times, then both values are the mode and the data are called bimodal (two modes). If every data value occurs the same number of times, there is no mode. If there are more than two values that appear the most times, then usually there is no mode. The mode is not always a useful measure of center, especially when a dataset has more than one mode.</p>
 <p>The <strong>median</strong> is the data value in the middle of a sorted list of data. To find the median, you arrange the data in order and then determine which value is in the middle of the data values.</p>
 <p>The <strong>mean</strong> is the arithmetic average of the numbers. The mean, median, and mode are all measures of center, although the word “average” is most commonly used to refer to the mean.</p>
-<p>In this course, we work primarily with numerical data (interval and ratio), so our focus will be on the mean and median as measures of center. The mode is more commonly used with categorical data, where it identifies the most frequently occurring category. While the mean and median both require numerical values, the key difference is that the mean uses every data value in its calculation, making it sensitive to extreme values, whereas the median depends only on the position of the middle value.</p>
+<p>In this course, we work primarily with numerical data, so our focus will be on the mean and median as measures of center. The mode is more commonly used with categorical data, where it identifies the most frequently occurring category. While the mean and median both require numerical values, the key difference is that the mean uses every data value in its calculation, making it sensitive to extreme values, whereas the median depends only on the position of the middle value.</p>
 <section id="population-mean-and-sample-mean" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="population-mean-and-sample-mean"><span class="header-section-number">3.1.1</span> Population Mean and Sample Mean</h3>
 <p>Because the mean is used extensively in statistics, it has special notation that distinguishes between a population and a sample. The <strong>population mean</strong>, denoted by the Greek letter <span class="math inline">\(\mu\)</span> (pronounced ``mu”), represents the true average of an entire population. It is calculated using the formula <span class="math inline">\(\mu=\frac{\sum{x}}{N}\)</span>, where <span class="math inline">\(N\)</span> is the total number of values in the population, <span class="math inline">\(x\)</span> represents each individual data value, and <span class="math inline">\(\sum{x}\)</span> means to add up all the data values. In practice, we rarely know the population mean because we typically cannot collect data from every member of a population.</p>
@@ -334,7 +354,7 @@ Table&nbsp;3.1: Head of Cats
 </figcaption>
 <div aria-describedby="tbl-Cats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Sex</th>
@@ -382,12 +402,12 @@ Table&nbsp;3.1: Head of Cats
 </div>
 <p>Looking at the dataset for cats weights, <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a>, you see that there are several variables. The code book for the <span class="data">cats</span> is below.</p>
 <div id="code-book-cats" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Code book for cats Dataset
+Code book for cats Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -403,17 +423,28 @@ Table&nbsp;3.1: Head of Cats
 </div>
 </div>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>Before starting any mathematics problem, it is always a good idea to define the unknown in the problem. In statistics, you want to define the variable. The symbol for the variable is <span class="math inline">\(x\)</span>.</p>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Before starting any mathematics problem, it is always a good idea to define the unknown in the problem. In statistics, you want to define the variable. The symbol for the variable is <span class="math inline">\(x\)</span>.</p>
 <p>The variable is <span class="math inline">\(x\)</span> = weight of a cat</p>
 <p>Click to expand the box below to see how to calculate the mean and median in Rguroo.</p>
 <div id="Calculating-summary-stats-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Calculating the Mean and Median Weight of Cats">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Calculating the Mean and Median Weight of Cats
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Calculating the Mean and Median Weight of Cats
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -434,12 +465,12 @@ Table&nbsp;3.1: Head of Cats
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the summary statistics which is shown in <a href="#fig-summary-cats" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>.</li>
 </ol>
 <div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Click here to see the Rguroo dialog
+Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -474,23 +505,36 @@ Figure&nbsp;3.1: Mean and Median Weight of Cats
 <p>The mean weight is 2.72 kg.</p>
 <p>The median weight is 2.7 kg also. It appears the average weight of all cats in this dataset is 2.7 kg.</p>
 </div>
+</div>
+</div>
 <div id="exm-mean-median-cats-factor" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.2 (Finding Mean and Median with Factor)</strong></span> Suppose you want to know if male cats weigh more than female cats. Looking at the variables, you notice that there is a variable for the sex of the cat. You can look at the weights of males and females separately.</p>
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cats</span>. <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-cats">dataset code book</a> that follows.</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>Click to expand the box below to see how to calculate the mean and median, separated by sex, in Rguroo.</p>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Click to expand the box below to see how to calculate the mean and median, separated by sex, in Rguroo.</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Calculating the Mean and Median Weight of Cats by Sex">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Calculating the Mean and Median Weight of Cats by Sex
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Calculating the Mean and Median Weight of Cats by Sex
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">cats</span> dataset into your <strong>Data</strong> Toolbox, as was shown <a href="#Importing-cats-to-Rguroo">here</a>.</p>
 <ol type="1">
@@ -507,16 +551,16 @@ Figure&nbsp;3.1: Mean and Median Weight of Cats
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the summary statistics.</li>
 </ol>
 <div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Click here to see the Rguroo dialog
+Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -546,13 +590,26 @@ Figure&nbsp;3.2: Mean and Median Weight of Cats by Sex
 </div>
 <p>Notice that the female cats’ mean weight is 2.36 kg and the male cats’ mean weight is 2.9 kg. The median weight of female cats is 2.3 kg and for males it is 2.9 kg. So it does appear that male cats weigh a bit more than the female cats.</p>
 </div>
+</div>
+</div>
 <p>There are many different summary statistics that can be found. An example is the minimum and maximum value. In the next example, you will see how to find the min and max values and then filter them out of a dataset to see what effect they have on the mean and median.</p>
 <div id="exm-effect-extreme-values" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.3 (Effect of Extreme Values on Mean and Median)</strong></span> Find the minimum and maximum values of cats weights.</p>
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cats</span>. <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-cats">dataset code book</a> that follows.</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>To find the effect of extreme values on the mean and median, we first need to identify the maximum and minimum values. The steps to find the minimum and the maximum in Rguroo are similar to finding the mean and median described <a href="#Calculating-summary-stats-in-Rguroo">here</a>. In the <strong>Statistics</strong> section of the dialog, select the checkbox for <span class="des">Minimum</span> and <span class="des">Maximum</span>.</p>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>To find the effect of extreme values on the mean and median, we first need to identify the maximum and minimum values. The steps to find the minimum and the maximum in Rguroo are similar to finding the mean and median described <a href="#Calculating-summary-stats-in-Rguroo">here</a>. In the <strong>Statistics</strong> section of the dialog, select the checkbox for <span class="des">Minimum</span> and <span class="des">Maximum</span>.</p>
 <p><a href="#fig-max-min-cats" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> shows the Basic Summary Statistic Dialog and Output from Rguroo for the minimum and maximum of cats body weight.</p>
 <div class="cell">
 <div id="fig-max-min-cats" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -593,16 +650,16 @@ Figure&nbsp;3.3: Maximum and Minimum Weight of Cats
 <p>You can create two new datasets in Rguroo by subsetting (filtering). One dataset will exclude the maximum value and include values less than 3.9, and the other will exclude the minimum value and include values greater than 2.</p>
 <p>Click to expand the box below to see how to obtain a subset of the <span class="data">cats</span> dataset in Rguroo that includes values less than 3.9 kg.</p>
 <div id="Subsetting-Data-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Subsetting the cats Dataset">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Subsetting the cats Dataset
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Subsetting the cats Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">cats</span> dataset into your <strong>Data</strong> Toolbox, as was shown <a href="#Importing-cats-to-Rguroo">here</a>.</p>
 <ol type="1">
@@ -620,16 +677,16 @@ Figure&nbsp;3.3: Maximum and Minimum Weight of Cats
 <li>In Save As… textbox, name the new dataset <span class="typein">cats_nomax</span> and click the <span class="button">Save As…</span> button.</li>
 </ol>
 <div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Click here to see the Rguroo dialog
+Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><img src="Rguroo_dialogs/Numerical_description/logical_subset_nomax.png" class="img-fluid" width="500" alt="Data Subset Dialog in Rguroo"> <img src="Rguroo_dialogs/Numerical_description/subset_nomax_cats.png" class="img-fluid" width="500" alt="Logical Expression Dialog in Rguroo"> <img src="Rguroo_outputs/Numerical_Description/save_data_nomax.png" class="img-fluid" alt="Save As… Dataset View"></p>
 </div>
@@ -658,7 +715,9 @@ Figure&nbsp;3.4: Logical Expression Dialog for Removing the Minimum Weight of Ca
 <p>The mean without the minimum value is 2.75 kg, and the median is 2.7 kg.</p>
 <p>The mean of the <span class="data">cats</span> dataset with all the values is 2.72 kg, while the median is 2.7 kg. Notice that when the maximum value was excluded from the dataset, the mean decreased slightly but the median did not change, and when the minimum value was excluded from the dataset, the mean increased a little but the median did not change. This shows that the mean is affected by extreme values, while the median is not. We say the median is a resistant measure of center because it is not affected by extreme values as much.</p>
 </div>
-<p>An <strong>extreme value</strong> is a data value that is much higher or much lower than the rest of the data. When extreme values are present, the median is generally a better measure of center than the mean because the median is not pulled by those values. When there are no extreme values, the mean and median tend to be similar, and the mean is commonly used. This is because the mean is <strong>not resistant</strong> — it is affected by extreme values, which can pull it higher or lower. The median, on the other hand, is <strong>resistant</strong> — it remains stable even when extreme values are present in the data.</p>
+</div>
+</div>
+<p>An <strong>extreme value</strong> is a data value that is much higher or much lower than the rest of the data. When extreme values are present, the median is generally a better measure of center than the mean because the median is not pulled by those values. When there are no extreme values, the mean and median tend to be similar, and the mean is commonly used. This is because the mean is <strong>not resistant</strong> to outliers — it is affected by extreme values, which can pull it higher or lower. The median, on the other hand, is <strong>resistant</strong> — it remains stable even when extreme values are present in the data.</p>
 <p>Later in this chapter, you will learn a formal method for determining whether an extreme value qualifies as an <strong>outlier</strong> — a data point that falls far enough from the rest of the data to be flagged as unusual.</p>
 <p>You need to be aware that people generally choose the measure of center that best supports their claim. When you read an article in the newspaper and it talks about the “average” it usually means the mean but sometimes it refers to the median. Some articles will use the word “median” instead of “average” to be more specific. If you need to make an important decision and the information says “average”, it would be wise to ask if the “average” is the mean or the median before you decide.</p>
 <p>As an example, suppose that a company wants to report the mean salary as the average salary for the company. The high salaries of the administrators will pull the mean upward, making the average appear higher. The company can then say that employees are paid well because the average is high. However, the employees would prefer to use the median since it is not affected as much by the extreme administrative salaries and gives a lower measure of center. This makes the salaries appear lower and suggests that a raise is in order.</p>
@@ -689,20 +748,31 @@ Figure&nbsp;3.5: Mean, median, mode as related to distribution
 <div id="exm-weighted-average" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.4 (Calculating Weighted Average)</strong></span> In your biology class, your final grade is based on several components: a lab score, scores on two major tests, and your score on the final exam. Each component is graded out of 100 points. The lab score is worth 15% of the course grade, the two exams are worth 25% each, and the final exam is worth 35% of the course. Suppose you earned scores of 95 on the labs, 83 and 76 on the two exams, and 84 on the final exam. Compute your weighted average for the course.</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>Variable: <span class="math inline">\(x\)</span> = score</p>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Variable: <span class="math inline">\(x\)</span> = score</p>
 <p>A weighted average can be found using Rguroo. First, we will create a new dataset in Rguroo. Click to expand the box below to see how to create a new dataset in Rguroo:</p>
 <div id="Creating-new-dataset" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a New Dataset">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating a New Dataset
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating a New Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Open the <strong>Data</strong> toolbox.<br>
@@ -717,16 +787,16 @@ Figure&nbsp;3.5: Mean, median, mode as related to distribution
 <li>Enter a name for your dataset in the <span class="des">Save As</span> textbox on the top, and click the <span class="button">Save as</span> button to save your dataset. For this example, name the dataset <span class="data">biology_grade</span>.</li>
 </ol>
 <div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog and new dataset">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Click here to see the Rguroo dialog and new dataset
+Click here to see the Rguroo dialog and new dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -784,6 +854,8 @@ Figure&nbsp;3.6: Weighted Mean of Biology Grade
 </div>
 <p>Your weighted mean in the biology class is 83.4%. Using the traditional grading scale, you have a B in the class.</p>
 </div>
+</div>
+</div>
 <div id="exm-weighted-average-faculty-ratings" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.5 (Calculating Weighted Averages)</strong></span> The faculty evaluation process at John Jingle University rates a faculty member on the following activities: teaching, publishing, committee service, community service, and submitting paperwork in a timely manner. The process involves reviewing student evaluations, peer evaluations, and supervisor evaluation for each teacher and awarding him/her a score on a scale from 1 to 10 (with 10 being the best). The weights for each activity are 20 for teaching, 18 for publishing, 6 for committee service, 4 for community service, and 2 for paperwork.</p>
 <ol type="a">
@@ -792,8 +864,18 @@ Figure&nbsp;3.6: Weighted Mean of Biology Grade
 <li>Which faculty member had the higher average evaluation?</li>
 </ol>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ol type="a">
 <li>Variable: <span class="math inline">\(x\)</span> = rating, <span class="math inline">\(w\)</span> = weight</li>
 </ol>
@@ -893,12 +975,14 @@ Figure&nbsp;3.9: Weighted Mean of Faculty Ratings
 <p>The second faculty member has a higher average evaluation.</p></li>
 </ol>
 </div>
+</div>
+</div>
 </section>
 <section id="homework-for-measures-of-center-section" class="level3" data-number="3.1.3">
 <h3 data-number="3.1.3" class="anchored" data-anchor-id="homework-for-measures-of-center-section"><span class="header-section-number">3.1.3</span> Homework for Measures of Center Section</h3>
 <p><strong>Use Rguroo on all problems. State the variable on all problems.</strong></p>
 <ol type="1">
-<li>Cholesterol levels were collected from patients a certain number of days after they had a heart attack and the first six rows of the data are shown in <a href="#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>. Find the mean and median for cholesterol levels 2 days after the heart attack.</li>
+<li>Cholesterol levels were collected from patients a certain number of days after they had a heart attack and the first six rows of the data are shown in <a href="mean inference.html#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>9.12</span></a>. Find the mean and median for cholesterol levels 2 days after the heart attack.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cholesterol</span>.</p>
@@ -911,7 +995,7 @@ Table&nbsp;3.2: Head of Cholesterol Levels of Patients After Heart Attack
 </figcaption>
 <div aria-describedby="tbl-Cholesterol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">patient</th>
@@ -965,16 +1049,16 @@ Table&nbsp;3.2: Head of Cholesterol Levels of Patients After Heart Attack
 </div>
 </div>
 <div id="code-book-cholesterol" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Code book for Cholesterol Dataset
+Code book for Cholesterol Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> A study was conducted at a major north eastern American medical centre regarding blood cholesterol levels and heart-attack incidents. A total of 28 heart-attack patients had their cholesterol levels measured two days, 4 days, and 14 days after the attack. In addition, cholesterol levels were recorded for a control group of 30 people who had not had a heart attack. The units of cholesterol measurement are not given in the original reference but are presumably mg/dL of blood.</p>
 <p>This dataset contains the following columns:</p>
@@ -988,7 +1072,7 @@ Table&nbsp;3.2: Head of Cholesterol Levels of Patients After Heart Attack
 </div>
 </div>
 <ol start="2" type="1">
-<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are given in a dataset named <span class="data">length</span>. The first six rows of this dataset are listed in <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.</li>
+<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are given in a dataset named <span class="data">length</span>. The first six rows of this dataset are listed in <a href="mean inference.html#tbl-Length" class="quarto-xref">Table&nbsp;<span>9.21</span></a> (Lee, 1994). Find the mean and median length of rivers that flow into the Pacific Ocean and the mean and median length of rivers that flow into the Tasman Sea.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">length</span>.</p>
@@ -1001,7 +1085,7 @@ Table&nbsp;3.3: Head of Length of New zealand rivers (km)
 </figcaption>
 <div aria-describedby="tbl-Length-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">river</th>
@@ -1048,16 +1132,16 @@ Table&nbsp;3.3: Head of Length of New zealand rivers (km)
 </div>
 </div>
 <div id="code-book-length" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Code book for Length Dataset
+Code book for Length Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The data records the length of rivers in the South Island of New Zealand. The lengths are given in kilometres. The second variable, FlowsInto, indicates whether the river flows into the Pacific Ocean or the Tasman Sea.</p>
 <p>This dataset contains the following columns:</p>
@@ -1083,7 +1167,7 @@ Table&nbsp;3.4: Head of Salaries of Print-O-Matic Printing Company Employees
 </figcaption>
 <div aria-describedby="tbl-Pay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">employee</th>
@@ -1123,16 +1207,16 @@ Table&nbsp;3.4: Head of Salaries of Print-O-Matic Printing Company Employees
 </div>
 </div>
 <div id="code-book-pay" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Code book for Pay Dataset
+Code book for Pay Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Salaries of Print-O-Matic printing company’s employees</p>
 <p>This dataset contains the following columns:</p>
@@ -1148,16 +1232,16 @@ Table&nbsp;3.4: Head of Salaries of Print-O-Matic Printing Company Employees
 <li><p>Find the mean and median with the CEOs salaries removed. Hint: You can filter the dataset to remove the CEOs’ salaries either by using the Rguroo <span class="fun">Subset</span> function following similar instructions as shown <a href="#Subsetting-Data-in-Rguroo">here</a> or more simply using the dataset editor as shown below.</p></li>
 </ol>
 <div id="filter-in-editor" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Filtering the pay Dataset in the Dataset Editor">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Filtering the pay Dataset in the Dataset Editor
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Filtering the pay Dataset in the Dataset Editor
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">pay</span> dataset into your <strong>Data</strong> Toolbox.</p>
 <ol type="1">
@@ -1174,16 +1258,16 @@ Table&nbsp;3.4: Head of Salaries of Print-O-Matic Printing Company Employees
 <li>In Save As… textbox, name the new dataset <span class="typein">pay_no_CEO</span> and click the <span class="button">Save As…</span> button.</li>
 </ol>
 <div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Dataset Editor filtering process">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Click here to see the Dataset Editor filtering process
+Click here to see the Dataset Editor filtering process
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1202,6 +1286,7 @@ Table&nbsp;3.4: Head of Salaries of Print-O-Matic Printing Company Employees
 <li><p>If you were the CEO, who is answering concerns from the union that employees are underpaid, which average (mean or median) of the complete dataset would you prefer? Why?</p></li>
 <li><p>If you were a platen worker, who believes that the employees need a raise, which average (mean or median) using the complete dataset would you prefer? Why?</p></li>
 </ol>
+<!-- -->
 <ol start="4" type="1">
 <li>Print-O-Matic printing company spends specific amounts on fixed costs every month. These costs are listed in the dataset <span class="data">cost</span>. The first six rows of the data are shown in <a href="#tbl-Cost" class="quarto-xref">Table&nbsp;<span>3.5</span></a>.</li>
 </ol>
@@ -1216,7 +1301,7 @@ Table&nbsp;3.5: Fixed Costs for Print-O-Matic Printing Company
 </figcaption>
 <div aria-describedby="tbl-Cost-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">charges</th>
@@ -1256,16 +1341,16 @@ Table&nbsp;3.5: Fixed Costs for Print-O-Matic Printing Company
 </div>
 </div>
 <div id="code-book-cost" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Code book for Cost Dataset
+Code book for Cost Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> fixed monthly charges for Print-0-Matic printing company</p>
 <p>This dataset contains the following columns:</p>
@@ -1323,8 +1408,21 @@ Table&nbsp;3.5: Fixed Costs for Print-O-Matic Printing Company
 <p><span class="theorem-title"><strong>Example 3.6 (Calculating the Range)</strong></span> Calculate the range of the body weight of cats.</p>
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cats</span>. <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-cats">dataset code book</a> that follows.</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>From the effect of extreme values <a href="#exm-effect-extreme-values">example</a>, the maximum weight of a cat was 3.9 kg and the minimum was 2 kg. So the range is <span class="math inline">\(3.9-2=1.9\)</span> kg. But what does that tell you? You don’t know if the weights are really spread out, or if they are close together.</p>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>From the effect of extreme values <a href="#exm-effect-extreme-values">example</a>, the maximum weight of a cat was 3.9 kg and the minimum was 2 kg. So the range is <span class="math inline">\(3.9-2=1.9\)</span> kg. But what does that tell you? You don’t know if the weights are really spread out, or if they are close together.</p>
+</div>
+</div>
 </div>
 <p>Unfortunately, the range does not provide a very accurate picture of variability because it only considers two values: the highest and lowest. A better approach is to examine how far each data value is from the mean. This distance from the mean is called a <strong>deviation</strong>. By looking at all the deviations together, we get a much more complete picture of how spread out the data are.</p>
 <section id="variance-and-standard-deviation" class="level3" data-number="3.2.1">
@@ -1357,8 +1455,19 @@ Table&nbsp;3.5: Fixed Costs for Print-O-Matic Printing Company
 <p><span class="theorem-title"><strong>Example 3.7 (Calculating the Standard Deviation)</strong></span> For the dataset <span class="data">cats</span> find the variance and standard deviation for weight of cats. Then find the variance and standard deviation separated by sex of the cat.</p>
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cats</span>. <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-cats">dataset code book</a> that follows.</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>When using Rguroo, you would perform similar steps as described in calculation mean and median <a href="#Calculating-summary-stats-in-Rguroo">example</a>, and select <span class="def">standard deviation</span> and <span class="def">variance</span>, as shown in the figure <a href="#fig-sd-dialog" class="quarto-xref">Figure&nbsp;<span>3.10</span></a>.</p>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>When using Rguroo, you would perform similar steps as described in calculation mean and median <a href="#Calculating-summary-stats-in-Rguroo">example</a>, and select <span class="def">standard deviation</span> and <span class="def">variance</span>, as shown in the figure <a href="#fig-sd-dialog" class="quarto-xref">Figure&nbsp;<span>3.10</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-sd-dialog" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog box for standard deviation and variance">
@@ -1426,6 +1535,8 @@ Figure&nbsp;3.12: Mean, Standard Deviation, and Variance of Weights of Cats by S
 </div>
 <p>You can see that the mean weight of females cats is 2.36 kg, the variance is 0.075 kg<span class="math inline">\(^2\)</span>, and the standard deviation is 0.27 kg. For males cats, the mean is 2.9 kg, the variance is 0.22 kg<span class="math inline">\(^2\)</span>, and the standard deviation is 0.47 kg. This means that female cats weigh less than males and since the variance and standard deviations are much less for female cats than males cats, female cats’ weights are more consistent than male cats.</p>
 </div>
+</div>
+</div>
 </section>
 <section id="interpreting-variance-and-standard-deviation" class="level3" data-number="3.2.4">
 <h3 data-number="3.2.4" class="anchored" data-anchor-id="interpreting-variance-and-standard-deviation"><span class="header-section-number">3.2.4</span> Interpreting Variance and Standard Deviation</h3>
@@ -1445,7 +1556,7 @@ Figure&nbsp;3.12: Mean, Standard Deviation, and Variance of Weights of Cats by S
 <div id="fig-empirical-rule" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bell curve showing shaded regions for 68%, 95%, and 99.7% of data within 1, 2, and 3 standard deviations from the mean">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-empirical-rule-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/empirical_rule.png" class="img-fluid figure-img" alt="Bell curve showing shaded regions for 68%, 95%, and 99.7% of data within 1, 2, and 3 standard deviations from the mean" width="1500">
+<img src="images/empirical_rule.png" class="img-fluid figure-img" alt="Bell curve showing shaded regions for 68%, 95%, and 99.7% of data within 1, 2, and 3 standard deviations from the mean">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-empirical-rule-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.13: The Empirical Rule (68-95-99.7 Rule) showing the percentage of data within standard deviations of the mean for symmetric distributions
@@ -1460,7 +1571,7 @@ Figure&nbsp;3.13: The Empirical Rule (68-95-99.7 Rule) showing the percentage of
 <div id="fig-chebyshev-rule" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Non-symmetric distribution showing shaded regions for at least 75% within 2 standard deviations and at least 89% within 3 standard deviations">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-chebyshev-rule-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/chebyshev_rule.png" class="img-fluid figure-img" alt="Non-symmetric distribution showing shaded regions for at least 75% within 2 standard deviations and at least 89% within 3 standard deviations" width="1500">
+<img src="images/chebyshev_rule.png" class="img-fluid figure-img" alt="Non-symmetric distribution showing shaded regions for at least 75% within 2 standard deviations and at least 89% within 3 standard deviations">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chebyshev-rule-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.14: Chebyshev’s Rule showing minimum percentages of data within k standard deviations of the mean for any distribution
@@ -1481,7 +1592,7 @@ Table&nbsp;3.6: Monthly/Annual Number of tornadoes in Oklahoma
 </figcaption>
 <div aria-describedby="tbl-Tornado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 8%">
 <col style="width: 6%">
@@ -1621,16 +1732,16 @@ Table&nbsp;3.6: Monthly/Annual Number of tornadoes in Oklahoma
 </div>
 </div>
 <div id="code-book-tornado" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Code book for Tornado Dataset
+Code book for Tornado Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The U.S. Weather Service has collected data on the monthly and annual number of tornadoes in Oklahoma.</p>
 <p>This dataset contains the following columns:</p>
@@ -1642,8 +1753,19 @@ Table&nbsp;3.6: Monthly/Annual Number of tornadoes in Oklahoma
 </div>
 </div>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>Import the <span class="data">Tornado_OK</span> dataset from the <span class="repo">Kozak</span> repository into your Data toolbox on Rguroo using these <a href="#Importing-cats-to-Rguroo">directions</a>.</p>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Import the <span class="data">Tornado_OK</span> dataset from the <span class="repo">Kozak</span> repository into your Data toolbox on Rguroo using these <a href="#Importing-cats-to-Rguroo">directions</a>.</p>
 <p>Variable: <span class="math inline">\(x\)</span> = number of <span class="var">annual</span> tornadoes in Oklahoma</p>
 <p>Find the mean and standard deviation as in <a href="#fig-tornado-ex" class="quarto-xref">Figure&nbsp;<span>3.15</span></a>:</p>
 <div class="cell">
@@ -1684,6 +1806,8 @@ Figure&nbsp;3.15: Mean and Standard Deviation of Annual Tornadoes
 <p>The mean is <span class="math inline">\(\bar{x}=56\)</span> tornadoes and the standard deviation is <span class="math inline">\(s=27.6\)</span> tornadoes. The interval will be <span class="math inline">\(\bar{x}\pm2\times s=56\pm(2\times27.6)=(0.8,111.2)\)</span></p>
 <p>Therefore, we can say that about 95% of the years have between 0.8 or 1 and 111 tornadoes in Oklahoma.</p>
 </div>
+</div>
+</div>
 </section>
 <section id="identifying-unusual-values-with-standard-deviation" class="level3" data-number="3.2.7">
 <h3 data-number="3.2.7" class="anchored" data-anchor-id="identifying-unusual-values-with-standard-deviation"><span class="header-section-number">3.2.7</span> Identifying Unusual Values with Standard Deviation</h3>
@@ -1711,8 +1835,18 @@ Figure&nbsp;3.15: Mean and Standard Deviation of Annual Tornadoes
 </ol>
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Tornado_OK</span>. <a href="#tbl-Tornado" class="quarto-xref">Table&nbsp;<span>3.6</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-tornado">dataset code book</a> that follows.</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span></p>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ol type="a">
 <li>Variable: <span class="math inline">\(x\)</span> = number of tornadoes in Oklahoma</li>
 </ol>
@@ -1724,23 +1858,25 @@ Figure&nbsp;3.15: Mean and Standard Deviation of Annual Tornadoes
 <p>For this question the <span class="math inline">\(x\)</span> = 145, <span class="math inline">\(z=\frac{145-56}{27.6}=3.22\)</span></p>
 <p>Since the <span class="math inline">\(z\)</span> value is more than 2, then it would be considered unusual to have 145 tornadoes in a year in Oklahoma.</p>
 </div>
+</div>
+</div>
 </section>
 <section id="homework-for-measures-of-spread-section" class="level3" data-number="3.2.8">
 <h3 data-number="3.2.8" class="anchored" data-anchor-id="homework-for-measures-of-spread-section"><span class="header-section-number">3.2.8</span> Homework for Measures of Spread Section</h3>
 <p><strong>Use Rguroo on all problems. State the variable on all problems.</strong></p>
 <ol type="1">
-<li>Cholesterol levels were collected from patients certain days after they had a heart attack and are in <a href="#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>. Find the mean, median, range, variance, and standard deviation for cholesterol levels 2 days after the heart attack.</li>
+<li>Cholesterol levels were collected from patients certain days after they had a heart attack and are in <a href="mean inference.html#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>9.12</span></a>. Find the mean, median, range, variance, and standard deviation for cholesterol levels 2 days after the heart attack.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cholesterol</span>.</p>
-<p><strong>Code book for Data Frame Cholesterol</strong> is below <a href="#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>.</p>
+<p><strong>Code book for Data Frame Cholesterol</strong> is below <a href="mean inference.html#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>9.12</span></a>.</p>
 </div>
 <ol start="2" type="1">
-<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Find the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Pacific Ocean and the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Tasman Sea. Compare and contrast the length of rivers that flow to the Pacific Ocean versus the ones that flow into the Tasman Sea using both measures of center and measures of variability.</li>
+<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in <a href="mean inference.html#tbl-Length" class="quarto-xref">Table&nbsp;<span>9.21</span></a> (Lee, 1994). Find the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Pacific Ocean and the mean, median, range, variance, and standard deviation of the length of rivers that flow into the Tasman Sea. Compare and contrast the length of rivers that flow to the Pacific Ocean versus the ones that flow into the Tasman Sea using both measures of center and measures of variability.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">length</span>.</p>
-<p><strong>Code book for dataset Length</strong> is below <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a>.</p>
+<p><strong>Code book for dataset Length</strong> is below <a href="mean inference.html#tbl-Length" class="quarto-xref">Table&nbsp;<span>9.21</span></a>.</p>
 </div>
 <ol start="3" type="1">
 <li>Print-O-Matic printing company’s employees have salaries that are contained in <a href="#tbl-Pay" class="quarto-xref">Table&nbsp;<span>3.4</span></a>. Find the mean, median, range, variance, and standard deviation for the salaries of all employees.</li>
@@ -1770,7 +1906,7 @@ Table&nbsp;3.7: Head of Pulse Rates of people Before and After Exercise
 </figcaption>
 <div aria-describedby="tbl-Pulse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 8%">
 <col style="width: 8%">
@@ -1886,16 +2022,16 @@ Table&nbsp;3.7: Head of Pulse Rates of people Before and After Exercise
 </div>
 </div>
 <div id="code-book-pulse" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Code book for Pulse Dataset
+Code book for Pulse Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description:</strong> Students in an introductory statistics class (MS212 taught by Professor John Eccleston and Dr Richard Wilson at The University of Queensland) participated in a simple experiment. The students took their own pulse rate. They were then asked to flip a coin. If the coin came up heads, they were to run in place for one minute. Otherwise they sat for one minute. Then everyone took their pulse again. The pulse rates and other physiological and lifestyle data are given in the data.</p>
 <p>Five class groups between 1993 and 1998 participated in the experiment. The lecturer, Richard Wilson, was concerned that some students would choose the less strenuous option of sitting rather than running even if their coin came up heads, In the years 1995-1998 a different method of random assignment was used. In these years, data forms were handed out to the class before the experiment. The forms were pre-assigned to either running or non-running and there were an equal number of each. In 1995 and 1998 not all of the forms were returned so the numbers running and sitting was still not entirely controlled.</p>
@@ -1938,7 +2074,7 @@ Table&nbsp;3.8: Head of Pulse Rates of Nonsmoking Males Before and After Exercis
 </figcaption>
 <div aria-describedby="tbl-Males-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 8%">
 <col style="width: 8%">
@@ -2055,7 +2191,7 @@ Table&nbsp;3.8: Head of Pulse Rates of Nonsmoking Males Before and After Exercis
 </div>
 <ol start="6" type="1">
 <li><p>The dataset Pulse <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a> contains various variables about a person including their pulse rates before the subject exercised and after the subject ran in place for one minute. Create a dataset that contains females, who do not smoke but do drink alcohol. Compare the pulse rate before and after exercise using the mean and standard deviation. Discuss whether pulse before or pulse after has a higher mean and larger spread.</p></li>
-<li><p>To determine if Reiki is an effective method for treating pain, a pilot study was carried out in which a certified second-degree Reiki therapist provided treatment to volunteers. Pain was measured using two scales — a visual analogue scale (VAS) and a Likert scale — immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997). The data are in <a href="#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>.</p></li>
+<li><p>To determine if Reiki is an effective method for treating pain, a pilot study was carried out in which a certified second-degree Reiki therapist provided treatment to volunteers. Pain was measured using two scales — a visual analogue scale (VAS) and a Likert scale — immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997). The data are in <a href="mean inference.html#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>9.15</span></a>.</p></li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Reiki_pain</span>.</p>
@@ -2068,7 +2204,7 @@ Table&nbsp;3.9: Head of Pain Measurements Before and After Reiki Treatment
 </figcaption>
 <div aria-describedby="tbl-Reiki-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">vas.before</th>
@@ -2122,16 +2258,16 @@ Table&nbsp;3.9: Head of Pain Measurements Before and After Reiki Treatment
 </div>
 </div>
 <div id="code-book-reiki" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Code book for Reiki Dataset
+Code book for Reiki Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The purpose of this study was to explore the usefulness of Reiki as an adjuvant to opioid therapy in the management of pain. Since no studies in this area could be found, a pilot study was carried out involving 20 volunteers experiencing pain at 55 sites for a variety of reasons, including cancer. All Reiki treatments were provided by a certified second-degree Reiki therapist. Pain was measured using both a visual analogue scale (VAS) and a Likert scale immediately before and after the Reiki treatment. Both instruments showed a highly significant (p &lt; 0.0001) reduction in pain following the Reiki treatment.</p>
 <p>This dataset contains the following columns:</p>
@@ -2146,16 +2282,16 @@ Table&nbsp;3.9: Head of Pain Measurements Before and After Reiki Treatment
 </div>
 <p>Since pain was measured on the same individuals both before and after treatment, this is <strong>paired data</strong>. To analyze paired data, we calculate the difference between the before and after measurements for each person. This difference represents the effect of the treatment.</p>
 <div id="Transforming-Data-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a New Variable in the Reiki_pain Dataset">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating a New Variable in the Reiki_pain Dataset
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating a New Variable in the Reiki_pain Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">Reiki_pain</span> dataset into your <strong>Data</strong> Toolbox, as was shown <a href="#Importing-cats-to-Rguroo">here</a>.</p>
 <ol type="1">
@@ -2172,16 +2308,16 @@ Table&nbsp;3.9: Head of Pain Measurements Before and After Reiki Treatment
 <li>In Save As… name the new dataset Newreiki and click the <span class="button">Save As…</span>.</li>
 </ol>
 <div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Click here to see the Rguroo dialog
+Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><img src="Rguroo_dialogs/Numerical_description/transform_dialog.png" class="img-fluid" width="500" alt="Data Transform Dialog in Rguroo"> <img src="Rguroo_outputs/Numerical_Description/newreiki_dataset.png" class="img-fluid" alt="Save As… Dataset View"></p>
 </div>
@@ -2198,7 +2334,7 @@ Table&nbsp;3.10: Head of Pain Measurements Before and After Reiki Treatment with
 </figcaption>
 <div aria-describedby="tbl-Newreiki-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">vas.before</th>
@@ -2275,7 +2411,7 @@ Table&nbsp;3.11: Head of Yearly rainfall amounts in Sydney, Australia
 </figcaption>
 <div aria-describedby="tbl-Rainfall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">amount</th>
@@ -2308,16 +2444,16 @@ Table&nbsp;3.11: Head of Yearly rainfall amounts in Sydney, Australia
 </div>
 </div>
 <div id="code-book-rainfall" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Code book for Rainfall Dataset
+Code book for Rainfall Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> Daily rainfall (in millimeters) was recorded over a 47-year period in Turramurra, Sydney, Australia. For each year, the wettest day was identified (that having the greatest rainfall). The data show the rainfall recorded for the 47 annual maxima.</p>
 <p>This dataset contains the following columns:</p>
@@ -2442,8 +2578,19 @@ Figure&nbsp;3.18: Comparing Shapes of Boxplots
 <p><span class="theorem-title"><strong>Example 3.10 (Five-number Summary and Boxplot)</strong></span> Find the five-number summary, the interquartile range (<span class="math inline">\(IQR\)</span>), and draw a box-and-whiskers plot for the weight of cats <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a>.</p>
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cats</span>. <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-cats">dataset code book</a> that follows.</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>Variable: <span class="math inline">\(x\)</span> = weight of cats</p>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Variable: <span class="math inline">\(x\)</span> = weight of cats</p>
 <p>To compute the five-number summary on Rguroo, use summary statistic and select the appropriate statistics as shown in <a href="#fig-cats-5numsum" class="quarto-xref">Figure&nbsp;<span>3.19</span></a></p>
 <div class="cell">
 <div id="fig-cats-5numsum" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -2484,16 +2631,16 @@ Figure&nbsp;3.19: Five-Number Summary for Bodyweight of Cats
 <p>To find the interquartile range, <span class="math inline">\(IQR\)</span> find <span class="math inline">\(Q3-Q1\)</span>, so <span class="math inline">\(IQR=3.025-2.3=0.725 kg\)</span></p>
 <p>Click to expand the box below to see instructions to create a boxplot of the <span class="data">cats</span> dataset in Rguroo.</p>
 <div id="Creating-a-boxplot-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a Boxplot of the Bodyweight of Cats">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating a Boxplot of the Bodyweight of Cats
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating a Boxplot of the Bodyweight of Cats
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">cats</span> dataset into your <strong>Data</strong> Toolbox, as was shown <a href="#Importing-cats-to-Rguroo">here</a>.</p>
 <ol type="1">
@@ -2507,16 +2654,16 @@ Figure&nbsp;3.19: Five-Number Summary for Bodyweight of Cats
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the graph.</li>
 </ol>
 <div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Click here to see the Rguroo dialog
+Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -2537,12 +2684,25 @@ Figure&nbsp;3.19: Five-Number Summary for Bodyweight of Cats
 </div>
 <p>There are no outliers since there are no dots outside of the fences.</p>
 </div>
+</div>
+</div>
 <div id="exm-boxplots-factor" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.11 (Separating based on a factor)</strong></span> Find the five-number summary of the weights of cats separated by the sex of the cat. Then create a box plot of the weights of cats for each sex of the cat.</p>
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cats</span>. <a href="#tbl-Cats" class="quarto-xref">Table&nbsp;<span>3.1</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-cats">dataset code book</a> that follows.</p>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span>Variable: <span class="math inline">\(x_1\)</span> = weight of female cat</p>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-36" class="callout-36-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Variable: <span class="math inline">\(x_1\)</span> = weight of female cat</p>
 <p>Variable: <span class="math inline">\(x_2\)</span> = weight of male cat</p>
 <p>The five-number summary separated based on gender can be found in a similar way as in the previous <a href="#exm-fivenumbersummary-boxplots">example</a>:</p>
 <div class="cell">
@@ -2585,16 +2745,16 @@ Figure&nbsp;3.20: Five-Number Summary for Bodyweight of Cats by Sex
 <p>The five-number summary for male cats is (in kg)</p>
 <p>Minimum: 2 <span class="math inline">\(Q1\)</span>: 2.50 Median: 2.9 <span class="math inline">\(Q3\)</span>: 3.2 Maximum: 3.9</p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Click here to see the Rguroo dialog
+Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>To create a side-by-side boxplot separated by the sex factor, move the <span class="var">sex</span> factor variable to the Selected column in the Factor Variables section. <img src="Rguroo_dialogs/Numerical_description/boxplot_cats_sex_dialog.png" class="img-fluid" width="500" alt="Boxplot dialog in Rguroo"></p>
 </div>
@@ -2605,6 +2765,8 @@ Figure&nbsp;3.20: Five-Number Summary for Bodyweight of Cats by Sex
 </iframe>
 </div>
 <p>Notice that the weights of female cats has a median less than male cats, and in fact it can be seen that the <span class="math inline">\(Q1\)</span> to <span class="math inline">\(Q3\)</span> of the female cats is less than the <span class="math inline">\(Q1\)</span> to <span class="math inline">\(Q3\)</span> of the male cats.</p>
+</div>
+</div>
 </div>
 <div id="exm-putting-it-together" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.12 (Putting it all together)</strong></span> The time (in 1/50 seconds) between successive pulses along a nerve fiber (“Time between nerve,” 2013) are given in <a href="#tbl-Nerve" class="quarto-xref">Table&nbsp;<span>3.12</span></a>.</p>
@@ -2617,7 +2779,7 @@ Table&nbsp;3.12: Head of Successive pulses along a nerve fiber
 </figcaption>
 <div aria-describedby="tbl-Nerve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">time</th>
@@ -2657,20 +2819,31 @@ Table&nbsp;3.12: Head of Successive pulses along a nerve fiber
 <li>Create a boxplot of the <span class="var">time</span> variable. Are there any outliers? How does the boxplot support your answer to part (c)?</li>
 </ol>
 </div>
-<div class="proof solution">
-<p><span class="proof-title"><em>Solution</em>. </span><strong>Part (a):</strong> First, create a density plot to visualize the distribution.</p>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-39" class="callout-39-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Part (a):</strong> First, create a density plot to visualize the distribution.</p>
 <p>Click to expand the box below to see instructions to create a density plot of the <span class="data">nerve</span> dataset in Rguroo.</p>
 <div id="Creating-a-density-plot-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a Density Plot of the Time Between Successive Nerve Pulses">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating a Density Plot of the Time Between Successive Nerve Pulses
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Creating a Density Plot of the Time Between Successive Nerve Pulses
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div id="callout-38" class="callout-38-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Before you begin:</strong> Make sure you have already imported the <span class="data">nerve</span> dataset into your <strong>Data</strong> Toolbox, as was shown <a href="#Importing-cats-to-Rguroo">here</a>.</p>
 <ol type="1">
@@ -2685,16 +2858,16 @@ Table&nbsp;3.12: Head of Successive pulses along a nerve fiber
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the graph.</li>
 </ol>
 <div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Click here to see the Rguroo dialog
+Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -2747,6 +2920,8 @@ Figure&nbsp;3.22: Boxplot of Time Between Successive Nerve Pulses
 </div>
 <p>The boxplot reveals multiple high outliers above the upper fence. The IQR is Q3 − Q1 = 15 − 3.5 = 11.5 (1/50 seconds), indicating substantial variability. The outliers and the right skew visible in both the density plot and the boxplot confirm that the median is the better measure of center for this dataset — the extreme values pull the mean higher but do not affect the median.</p>
 </div>
+</div>
+</div>
 </section>
 <section id="homework-for-ranking-section" class="level3" data-number="3.3.7">
 <h3 data-number="3.3.7" class="anchored" data-anchor-id="homework-for-ranking-section"><span class="header-section-number">3.3.7</span> Homework for Ranking Section</h3>
@@ -2756,19 +2931,19 @@ Figure&nbsp;3.22: Boxplot of Time Between Successive Nerve Pulses
 <li><p>Suppose your child takes a standardized test in mathematics and scores in the <span class="math inline">\(96^{th}\)</span> percentile. What does this percentile mean? Can you say your child passed the test? Explain.</p></li>
 <li><p>Suppose your child is in the <span class="math inline">\(83^{rd}\)</span> percentile in height and <span class="math inline">\(24^{th}\)</span> percentile in weight. Describe what this tells you about your child’s stature.</p></li>
 <li><p>Suppose your work evaluates the employees and places them on a percentile ranking. If your evaluation is in the <span class="math inline">\(65^{th}\)</span> percentile, do you think you are working hard enough? Explain.</p></li>
-<li><p>Cholesterol levels were collected from patients certain days after they had a heart attack and are in table <a href="#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>.</p></li>
+<li><p>Cholesterol levels were collected from patients certain days after they had a heart attack and are in table <a href="mean inference.html#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>9.12</span></a>.</p></li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">cholesterol</span>.</p>
-<p><strong>Code book for Data Frame Cholesterol</strong> below <a href="#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>3.2</span></a>.</p>
+<p><strong>Code book for Data Frame Cholesterol</strong> below <a href="mean inference.html#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>9.12</span></a>.</p>
 </div>
 <p>Find the five-number summary and interquartile range (IQR) for the cholesterol level on day 2, and draw a boxplot</p>
 <ol start="6" type="1">
-<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in table <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a> (Lee, 1994). Find the five-number summary and interquartile range (IQR) for the lengths of rivers that go to the Pacific Ocean and ones that go to the Tasman Sea, and draw a boxplot of both.</li>
+<li>The lengths (in kilometers) of rivers on the South Island of New Zealand and what body of water they flow into are listed in table <a href="mean inference.html#tbl-Length" class="quarto-xref">Table&nbsp;<span>9.21</span></a> (Lee, 1994). Find the five-number summary and interquartile range (IQR) for the lengths of rivers that go to the Pacific Ocean and ones that go to the Tasman Sea, and draw a boxplot of both.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">length</span>.</p>
-<p><strong>Code book for dataset Length</strong> below <a href="#tbl-Length" class="quarto-xref">Table&nbsp;<span>3.3</span></a>.</p>
+<p><strong>Code book for dataset Length</strong> below <a href="mean inference.html#tbl-Length" class="quarto-xref">Table&nbsp;<span>9.21</span></a>.</p>
 </div>
 <ol start="7" type="1">
 <li>Print-O-Matic printing company’s employees have salaries that are contained in <a href="#tbl-Pay" class="quarto-xref">Table&nbsp;<span>3.4</span></a> Find the five number summary and draw a boxplot for the salaries of all employees.</li>
@@ -2785,11 +2960,11 @@ Figure&nbsp;3.22: Boxplot of Time Between Successive Nerve Pulses
 <p><strong>Code book for dataset Pulse</strong> below <a href="#tbl-Pulse" class="quarto-xref">Table&nbsp;<span>3.7</span></a>.</p>
 </div>
 <ol start="9" type="1">
-<li>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a Likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997) and the data is in <a href="#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>. Find the five number summary for both the before and after VAS scores and draw boxplots of before and after VAS scores. Compare and contrast the before and after VAS scores.</li>
+<li>To determine if Reiki is an effective method for treating pain, a pilot study was carried out where a certified second-degree Reiki therapist provided treatment on volunteers. Pain was measured using a visual analogue scale (VAS) and a Likert scale immediately before and after the Reiki treatment (Olson &amp; Hanson, 1997) and the data is in <a href="mean inference.html#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>9.15</span></a>. Find the five number summary for both the before and after VAS scores and draw boxplots of before and after VAS scores. Compare and contrast the before and after VAS scores.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Reiki_pain</span>.</p>
-<p><strong>Code book for dataset Reiki</strong> below <a href="#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>3.9</span></a>.</p>
+<p><strong>Code book for dataset Reiki</strong> below <a href="mean inference.html#tbl-Reiki" class="quarto-xref">Table&nbsp;<span>9.15</span></a>.</p>
 </div>
 
 
@@ -2798,243 +2973,239 @@ Figure&nbsp;3.22: Boxplot of Time Between Successive Nerve Pulses
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
     }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
         }
       }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
     }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
     }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
         }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -3042,165 +3213,189 @@ Figure&nbsp;3.22: Boxplot of Time Between Successive Nerve Pulses
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Graphical Description of Data.html" class="pagination-link" aria-label="Graphical Description of Data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Graphical Description of Data</span></span>
+      <a href="./Graphical_Description_of_Data.html" class="pagination-link" aria-label="Tabular and Graphical Description of Data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tabular and Graphical Description of Data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
