@@ -29,7 +29,7 @@ By the end of Chapter 5, you should be able to:
 
 :::
 
-When calculating probabilities, we begin by identifying the sample space—the complete set of all possible outcomes of an experiment. When each of these outcomes is assigned a probability, the combination forms a probability distribution. This distribution allows us to examine the overall shape of the data, compute measures such as the mean and standard deviation, and determine the likelihood of specific events. The methods used to find these values depend on the type of numerical data involved. Recall that numerical variables fall into two categories: discrete and continuous. **Discrete data** can only take specific, separate values within a given range, while **continuous data** can take on any value within that range. Typically, discrete data arise from counting, whereas continuous data come from measurement. Discrete probability distributions provide a way to model and understand situations in which outcomes can be counted.
+When calculating probabilities, we begin by identifying the sample space—the complete set of all possible outcomes of an experiment. When each of these outcomes is assigned a probability, the combination forms a probability distribution. This distribution allows us to examine the overall shape of the random variable's distribution, compute measures such as the mean and standard deviation, and determine the likelihood of specific events. The methods used to find these values depend on the type of random variable involved. Recall that numerical variables fall into two categories: discrete and continuous. **Discrete data** can only take specific, separate values within a given range, while **continuous data** can take on any value within that range. Typically, discrete data arise from counting, whereas continuous data come from measurement. Discrete probability distributions provide a way to model and understand situations in which outcomes can be counted.
 
 ::: {#exm-discrete-continuous-review}
 ## Review of Discrete or Continuous Variables
@@ -66,13 +66,13 @@ These questions can be answered more easily with a discrete probability distribu
 
 ### Random Variables and Probability Distributions
 
-A **random variable** describes the outcomes of an experiment.  Usually, we use capital $X$ to describe the random variable in words and use lower case $x$ to denote the values that the random variable can take on.  For example, in the fair coin toss experiment above, we can let $X$ = the number of heads. Then, $x$ could be 0 (no heads - TT), 1 (one heads - HT or TH), or 2 (two heads - HH). So 
+A **random variable** is a numerical measure of each outcome of an experiment.  Usually, we use capital $X$ to describe the random variable in words and use lower case $x$ to denote the values that the random variable can take on.  For example, in the fair coin toss experiment above, we can let $X$ = the number of heads. Then, $x$ could be 0 (no heads - TT), 1 (one heads - HT or TH), or 2 (two heads - HH). So 
 
 $$X= \text{number of heads}$$
 $$x=\{0, 1, 2\}$$
 
 
-Now suppose you put all the values of the random variable together with the probability that the random variable would occur. You would then have a **probability distribution**, a table of values that lists the random variable values with their corresponding probabilities. For the random variable $X$ = the number of heads (in the coin toss example), we would need to calculate the probabilities for each outcome. So, for $x$ = 0, that would be zero heads (or TT) and occurs one out of four times in the sample space. As a result, the probability for $x$ = 0 is $1/4$.  For $x$ = 1 (or one head), this could occur as HT or TH. So, the probability of $x$ = 1 would be two possible ways in the sample space out of four or $2/4$ which reduced equals $1/2$.  Finally, for $x$ = 2 (or two heads), this occurs as HH in the sample space and the probability would be $1/4$.  Putting this all together in a table, we get the probability distribution below.
+Now suppose you put all the values of the random variable together with the probability of each random variable. You would then have a **probability distribution**, a table of values that lists the random variable values with their corresponding probabilities. For the random variable $X$ = the number of heads (in the coin toss example), we would need to calculate the probabilities for each outcome. So, for $x = 0$, that would be zero heads (or TT) and occurs one out of four times in the sample space. As a result, the probability for $x$ = 0 is $1/4$.  For $x = 1$ (or one head), this could occur as HT or TH. So, the probability of $x = 1$ would be two possible ways in the sample space out of four or $2/4$ which reduced equals $1/2$.  Finally, for $x = 2$ (or two heads), this occurs as HH in the sample space and the probability would be $1/4$.  Putting this all together in a table, we get the probability distribution below.
 
 <div style="width: 50%; margin: auto;">
 
@@ -86,7 +86,7 @@ Now suppose you put all the values of the random variable together with the prob
 
 </div>
 
-As with probabilities, probability distributions, have to follow the rules of probabilities, $0 \le P(outcome)\le1$ and $\sum{P(outcomes)}=1$. We can check these ruleswith the probability distribution above. First we can verify that each probability, $P(x)$, is between 0 and 1.  And, if we add up all the probabilities, $1/4 + 1/2 + 1/4$ we get 1.
+As with probabilities, probability distributions, have to follow the rules of probabilities, $0 \le P(\text{outcome})\le1$ and $\sum{P(\text{outcomes})}=1$. We can check these rules with the probability distribution above. First we can verify that each probability, $P(x)$, is between 0 and 1.  And, if we add up all the probabilities, $1/4 + 1/2 + 1/4$ we get 1.
 
 ::: {#exm-verify-distribution}
 ## Verifying Probability Distributions
@@ -248,7 +248,7 @@ knitr::include_graphics(
 
 ### Mean or Expected Value and Standard Deviation 
 
-In probability distributions, the **mean**, also called the **expected value**, represents the long-run average outcome of a random variable. Recall from Chapter 3, the Law of Large Numbers states that as the number of trials, $n$, of an experiment increases, the relative frequency of an event gets closer and closer to the true probability of that event. So, the long-term average, the mean (or expected value) of a probability distribution, is the average you would expect if the number of trials were repeated an infinite number of times. Since the expected value of a random variable is a theoretical, long-run average, it is treated as a population parameter and is labeled as $\mu$.  We can calculate the expected value using the formula below or using statistical software, like Rgruoo.
+In probability distributions, the **mean**, also called the **expected value**, represents the long-run average outcome of a random variable. Recall from Chapter 4, the Law of Large Numbers states that as the number of trials, $n$, of an experiment increases, the relative frequency of an event gets closer and closer to the true probability of that event. So, the long-term average, the mean (or expected value) of a probability distribution, is the average you would expect if the number of trials were repeated an infinite number of times. Since the expected value of a random variable is a theoretical, long-run average, it is treated as a population parameter and is labeled as $\mu$.  We can calculate the expected value using the formula below or using statistical software, like Rgruoo.
 
 $$\mu = \sum (x \cdot P(x))$$
 
@@ -365,9 +365,30 @@ Click to expand the box below see how to create a new dataset.
 
 ::::
 
-Use Rguroo and the steps from the last example [here](#exm-expected-value1) to find the expected value.  We get,
+Use Rguroo and the steps from the last example [here](#exm-expected-value1) to find the expected value.  
 
-$\mu_{winnings} = -0.50$
+::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+
+![Numerical Summaries dialog showing settings for finding expected value.
+](Rguroo_dialogs/Discrete_Probability/dialog_expected_value_lottery.png){width=500px}
+
+![Univariate dialog showing settings for finding expected value.
+](Rguroo_dialogs/Discrete_Probability/dialog_exp_value_lottery_mean.png){width=500px}
+
+:::
+
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo output of mean equal to -0.50"
+#| warning: FALSE
+#| label: fig-exp-value-lottery
+#| fig-cap: "Rguroo Output of Expected Value (Mean) for Arizona Lottery"
+knitr::include_graphics(
+  "Rguroo_outputs/Discrete_Probability_Distribution/expected_value_lottery.png"
+)
+```
+
+
+From Rguroo, we get $\mu_{\text{winnings}} = -0.50$
 
 This means that if you played the lottery *many* times, you would expect to lose about \\\$0.50 each game. Remember that expected value is the long-run average. We know we lose exactly \\\$1 each time, but from winning and losing if we played the game often, we would average a loss of 50 cents per game.  Another way to think of this is if we played the game 100 times, we would expect to lose about $0.50 \cdot 1000 =$ \\\$50.
 
@@ -416,11 +437,46 @@ How could the insurance company use this data to inform auto policy premiums?
 
 Insurance companies could compare the expected values of the number of accidents per year for both males and females.  Let's compute both and compare.
 
+::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+
+![Numerical Summaries dialog showing settings for finding expected value for male accidents.
+](Rguroo_dialogs/Discrete_Probability/dialog_male_accidents.png){width=500px}
+
+![Numerical Summaries dialog showing settings for finding expected value for female accidents.
+](Rguroo_dialogs/Discrete_Probability/dialog_female_accidents.png){width=500px}
+
+For each summary, don't forget to click the univariate button and select mean.
+
+![Univariate dialog showing settings for finding expected value.
+](Rguroo_dialogs/Discrete_Probability/dialog_exp_value_lottery_mean.png){width=500px}
+
+:::
+
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo output of expected value for male accidents"
+#| warning: FALSE
+#| label: fig-exp-value-male-accidents
+#| fig-cap: "Rguroo Output of Expected Value (Mean) for Male Accidents"
+knitr::include_graphics(
+  "Rguroo_outputs/Discrete_Probability_Distribution/output_male_accidents.png"
+)
+```
+
+```{r,echo=FALSE}
+#| fig-alt: "Rguroo output of expected value for female accidents"
+#| warning: FALSE
+#| label: fig-exp-value-female-accidents
+#| fig-cap: "Rguroo Output of Expected Value (Mean) for Female Accidents"
+knitr::include_graphics(
+  "Rguroo_outputs/Discrete_Probability_Distribution/output_female_accidents.png"
+)
+```
+
 Using Rguroo, we get the following expected values.
 
-$\mu_{males} = 0.88$
+$\mu_{\text{males}} = 0.88$
 
-$\mu_{females} = 0.69$
+$\mu_{\text{females}} = 0.69$
 
 This means, on average (in the long run), males are expected to have about 0.88 accidents per year, while females are expected to have about 0.69 accidents per year.  Since males are expected to have more accidents per year, the insurance company could assign higher yearly premiums to male drivers to account for more expected payouts from accidents.
 
@@ -495,11 +551,10 @@ knitr::kable(Days)
 a.  State the random variable.
 b.  Draw a histogram of the number of days to fix defects
 c.  Find the mean number of days to fix defects.
-d.  Find the variance for the number of days to fix defects.
-e.  Find the standard deviation for the number of days to fix defects.
-f.  Find probability that a lens will take at least 16 days to make a fix the defect.
-g.  Is it unusual for a lens to take 16 days to fix a defect?
-h.  If it does take 16 days for eyeglasses to be repaired, what would you think?
+d.  Find the standard deviation for the number of days to fix defects.
+e.  Find probability that a lens will take at least 16 days to make a fix the defect.
+f.  Is it unusual for a lens to take 16 days to fix a defect?
+g.  If it does take 16 days for eyeglasses to be repaired, what would you think?
 
 
 
@@ -524,10 +579,12 @@ h.  Is it unusual for to flip two heads?
 
 ## Binomial Probability Distribution 
 
-Imagine a factory that produces light bulbs, where each bulb can either be defective or not defective. If a company tests 20 bulbs and wants to know the probability that exactly 3 are defective, they need a systematic way to calculate that likelihood. In Section 5.1, we learned about probability distributions. One important type of probability distribution is the **binomial probability distribution**, which comes from a **binomial experiment** (or Bernoulli trial). This type of experiment allows us to calculate a specific number of successes.
+Imagine a factory that produces light bulbs, where each bulb can either be defective or not defective. If a company tests 20 bulbs and wants to know the probability that exactly 3 are defective, they need a systematic way to calculate that likelihood. In Section 5.1, we learned about probability distributions. One important type of probability distribution is the **binomial probability distribution**, which comes from a **binomial experiment**. In a binomial experiment, each trial is called a **Bernoulli trial**. This type of experiment allows us to calculate a specific number of successes.
 
 ::: {.callout-note}
 ## Properties of a Binomial Experiment
+
+Let $X$ be the random variable representing the number of successes in $n$ trials
 
 1.  The experiment has a fixed number of trials, $n$.
 
@@ -552,7 +609,7 @@ Shoot five arrows at a target, and find the probability of hitting it five times
 
 Determine if the following represent a binomial experiment.  If it is not binomial, explain why.
 
-a. You survey 200 people and ask if they think gas prices are too high.
+a. You survey 200 people at random and ask if they think gas prices are too high.
 
 b. You roll a six-sided fair die 8 times and record the face value.
 
@@ -565,7 +622,7 @@ d. You select 3 marbles from a bag with replacement and record the number of gre
 :::{.callout-tip .solution-callout collapse="true" icon=false}
 ## 🔎 Solution
 
-In each case, we need to verify that all four properties of a binomial experiment are met.
+In each case we will define $X$ as the number of successes in $n$ trials. We need to verify that all four properties of a binomial experiment are met.
 
 *Property 1: Fixed number of trials.*
 
@@ -575,7 +632,9 @@ In each case, we need to verify that all four properties of a binomial experimen
 
 *Property 4: Probability of success is the same for each trial.*
 
-a. Property 1: Since we survey 200 people, $n=200$ is fixed.
+a. Let $X$ = the number of people (out of 200) who think gas prices are too high.
+
+   Property 1: Since we survey 200 people, $n=200$ is fixed.
 
    Property 2: One person's answer does not affect the next person's answer, so the trials are independent.
 
@@ -585,7 +644,9 @@ a. Property 1: Since we survey 200 people, $n=200$ is fixed.
 
    Since all four properties are met, this is a binomial experiment.  
 
-b. Property 1: Since we roll the die 8 times, $n=8$ is fixed.
+b. Let $X$ = the face value obtained on a single roll of the die.
+
+   Property 1: Since we roll the die 8 times, $n=8$ is fixed.
 
    Property 2: Rolling a die does not affect the next roll, so the trials are independent.
 
@@ -593,13 +654,17 @@ b. Property 1: Since we roll the die 8 times, $n=8$ is fixed.
 
    Since there are 6 outcomes, this is not a binomial experiment and we do not need to continue verifying the properties.
 
-c. Property 1: Since we select 5 cards, $n=5$ is fixed.
+c. Let $X$ = the number of Aces obtained in the 5 cards selected.
+
+   Property 1: Since we select 5 cards, $n=5$ is fixed.
 
    Property 2: Since you draw the cards without replacement, the first draw is out of 52 cards, the next draw is out of 51 card, and so on. So the trials are not independent.
 
    Since the trials are not independent, this is not a binomial experiment and we do not need to continue verifying properties. 
 
-d. Property 1: Since we draw 3 marbles, $n=3$ is fixed.
+d. Let $X$ = the number of green marbles obtained in the 3 selections.
+
+   Property 1: Since we draw 3 marbles, $n=3$ is fixed.
 
    Property 2: Since we draw *with replacement*, we will be always drawing out of the original bag of marbles. So, the trials are independent.
 
@@ -613,7 +678,7 @@ d. Property 1: Since we draw 3 marbles, $n=3$ is fixed.
 
 ### Calculating Binomial Probabilities
 
-Just as we did in Section 5.1, we need to define our random variable $x$. Since we measure success in a binomial experiment, the random variable is $x$ = number of successes.
+Just as we did in Section 5.1, we need to define our random variable $X$. Since we measure success in a binomial experiment, the random variable is $X$ = number of successes.
 
 Note, success does not always mean a positive outcome.  For example, for medication trials, you may want to measure the number of side effects.  In this case, the side effects would be considered the "success." So, a success just means you observed the outcome you are measuring.
 
@@ -696,7 +761,7 @@ e. If we want the probability of at most 1 person, then $r$ could be 0 or 1 peop
 
 :::
 
-Notice that the formula for binomial proabilities only calculates *exact* probabilities.  As we saw in part (e) of the last example, we needed to use the formula twice.  Only using the formula for binomial probabilities can be time consuming since we do not always want to find exact probabilities.  That is where technology, such as Rguroo, comes in!
+Notice that the formula for binomial probabilities only calculates *exact* probabilities.  As we saw in part (e) of the last example, we needed to use the formula twice.  Only using the formula for binomial probabilities can be time consuming since we do not always want to find exact probabilities.  That is where technology, such as Rguroo, comes in!
 
 ::: {#exm-calculating-binomial2}
 ## Calculating Binomial Probability
@@ -812,11 +877,11 @@ Rguroo gives $P(X=6) = 4.3199e-10$. If we change this to a standard number, we w
 
 ### Mean and Standard Deviation
 
-If you list all possible values of $x$ in a Binomial distribution, you get the **Binomial Probability Distribution**.When working with a binomial probability distribution, we are often interested not only in the probability of specific outcomes but also in the overall behavior of the distribution. Two important measures that describe this behavior are the mean and standard deviation. The mean tells us the expected number of successes in a given number of trials, while the standard deviation measures how much the results typically vary from that expected value. Together, these values provide a clearer understanding of where most outcomes are likely to fall and how spread out the distribution is, helping us interpret binomial experiments more effectively.
+If you list all possible values of $x$ in a Binomial distribution, you get the **Binomial Probability Distribution**. When working with a binomial probability distribution, we are often interested not only in the probability of specific outcomes but also in the overall behavior of the distribution. Two important measures that describe this behavior are the mean and standard deviation. The mean tells us the expected number of successes in a given number of trials, while the standard deviation measures how much the results typically vary from that expected value. Together, these values provide a clearer understanding of where most outcomes are likely to fall and how spread out the distribution is, helping us interpret binomial experiments more effectively.
 
 Just like calculating expected value, there are two ways to compute the mean and standard deviation of a binomial distribution; a formula and using technology.
 
-The formulas for the mean, $\mu$ and standard deviation $\sigma$ are 
+For a binomial random variable, the formulas for the mean, $\mu$ and standard deviation $\sigma$ are 
 
 $\mu = np$ $\;$      and $\;$        $\sigma = \sqrt{np(1-p)}$
 
