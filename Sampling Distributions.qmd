@@ -3,14 +3,417 @@ title: "Sampling Distributions and the Central Limit Theorem"
 format: html
 editor: visual
 ---
-## Sampling Distribution of the Mean and Central Limit Theorem
+## Sampling Distribution of the Mean 
 
-### Sampling Distribution of the Mean
+
+Earlier chapters treated a sample as a single snapshot of a population, one sample mean calculated once and reported. But if a different random sample were drawn from the same population, a different sample mean would very likely result. This raises an important question: how much does the sample mean vary from sample to sample, and what pattern does that variation follow? Answering this question is the foundation for nearly every method of statistical inference used in the remainder of this course.
+
+Imagine that a beverage company wants to determine the average fill weight of bottles coming off one of its production lines. Weighing every bottle produced would be expensive and impractical, so a quality control inspector randomly selects 40 bottles and weighs each one. Suppose the sample mean fill weight turns out to be $\bar{x} = 499.2$ mL.
+
+Now suppose a different random sample of 40 bottles is selected. This new sample might have a mean of $\bar{x} = 500.6$ mL, or a third sample might give $\bar{x} = 498.9$ mL. Because different random samples produce different values of $\bar{x}$, the sample mean is a random variable. If this process, drawing a sample and computing its mean, is repeated over and over, the collection of all those sample means forms its own distribution, called the **sampling distribution of the sample mean**.
+
+
+::: {.callout-note appearance="simple" icon="false"}
+**Key Concept.** The **sampling distribution of the sample mean** is the distribution of the sample mean, $\bar{x}$, across all possible random samples of a given size $n$ drawn from a population. It describes how much the sample mean would vary from sample to sample if the sampling process were repeated indefinitely.
+:::
+
+Two properties of this distribution are developed in this section: how the sample mean behaves as sample size grows, described by the **Law of Large Numbers**, and what shape the sampling distribution takes, described by the **Central Limit Theorem**. As the Central Limit Theorem is developed, it matters a great deal whether the underlying population itself is normally distributed or not, so both cases are considered directly.
 
 ### The Law of Large Numbers
 
-### The Central Limit Theorem
+Intuitively, a larger sample should give a more reliable estimate of the population mean than a smaller sample does. This intuition is formalized by the **Law of Large Numbers**: as the sample size $n$ increases, the sample mean $\bar{x}$ tends to get closer to the true population mean $\mu$. In other words, the larger the sample, the less the sample mean is expected to differ from the population mean purely due to chance.
 
+::: {.callout-note appearance="simple" icon="false"}
+**Key Concept.** As the sample size $n$ increases, the sample mean $\bar{x}$ tends to get closer to the population mean $\mu$. Larger samples give more reliable estimates than smaller samples, regardless of the shape of the population.
+:::
+
+For example, suppose the true mean amount customers spend per visit at a coffee chain, across every customer at every location, is $\mu = \$6.50$. With a sample of $n = 5$ customers, the sample mean might be \$5.10 in one sample and \$8.20 in another, swinging widely from sample to sample. With a sample of $n = 50$ customers, the sample means cluster more tightly, most falling between \$6.00 and \$7.00. With a sample of $n = 500$ customers, the sample means cluster even more tightly around \$6.50, rarely straying far from the true population mean. This pattern, sample means clustering closer to $\mu$ as $n$ grows, is the Law of Large Numbers in action. It does not guarantee that any single sample mean will be close to $\mu$, but it does mean that larger samples are systematically more trustworthy than smaller ones, whether or not the population itself is normally distributed.
+
+### Describing the Sampling Distribution of the Sample Mean
+
+The **sampling distribution of the sample mean** is the probability distribution of all possible values of $\bar{x}$ that could occur from repeated random samples of the same size taken from the population. This distribution describes how the sample mean varies from one sample to another and helps us assess how accurately a sample mean estimates the true population mean.
+
+If $\mu$ and $\sigma$ denote the true population mean and standard deviation, then the sampling distribution of $\bar{x}$ has the following properties:
+
+$$\text{Mean:} \quad \mu_{\bar{x}} = \mu$$
+
+and
+
+$$\text{Standard Deviation:} \quad \sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}.$$
+
+The standard deviation is often called the **standard error** of $\bar{x}$, since it measures how much we expect $\bar{x}$ to vary from sample to sample.
+
+The sample mean has two paths to a normal sampling distribution:
+
+- If the population samples are drawn from is normally distributed, the sampling distribution of $\bar{x}$ is normal for every sample size $n$, including very small samples.
+- If the population is not normally distributed, the sampling distribution of $\bar{x}$ is *approximately normal*, provided the sample size is sufficiently large. As a rule of thumb, $n \ge 30$ is considered large enough, although a smaller $n$ may be sufficient if the population is only mildly skewed, and a larger $n$ may be needed if the population is heavily skewed or contains extreme outliers.
+
+This second result is the **Central Limit Theorem**: when the sample size is sufficiently large, the sampling distribution of $\bar{x}$ is approximately normal, whatever the shape of the underlying population distribution. 
+
+::: {.callout-note appearance="simple" icon="false"}
+**Key Concept.** For a sufficiently large sample size $n$, the sampling distribution of the sample mean $\bar{x}$ is approximately normal, regardless of the shape of the population distribution. This makes it possible to use the normal distribution to answer probability questions about $\bar{x}$, even when the population itself is skewed or otherwise non-normal.
+:::
+
+
+Under either path, once normality is established,
+
+$$\bar{x} \sim N\left(\mu, \ \frac{\sigma}{\sqrt{n}}\right)$$
+
+::: {#exm-describe-sampling-distribution-mean-nonnormal}
+## Describe the Sampling Distribution: A Non-Normal Population
+
+A beverage company's records show that the fill weights of bottles at one plant have a mean of $\mu = 500$ mL and a standard deviation of $\sigma = 4$ mL, but the distribution of fill weights is right skewed rather than normal. Suppose a quality control inspector randomly selects samples of $n = 40$ bottles. Describe the sampling distribution of the sample mean fill weight.
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon="false"}
+## 🔎 Solution
+
+Let $\bar{x} =$ the sample mean fill weight of a random sample of 40 bottles.
+
+Because the population of fill weights is not normally distributed, we need to check that the sample size is large enough for the Central Limit Theorem to apply.
+
+$\text{Check Condition:} \quad n \ge 30$
+
+$n = 40 \ge 30$, so the condition is satisfied.
+
+Next, we find the mean and standard error.
+
+$\text{Mean:} \quad \mu_{\bar{x}} = 500 \text{ mL}$
+
+$\text{Standard Error:} \quad \sigma_{\bar{x}} = \dfrac{4}{\sqrt{40}} = 0.632 \text{ mL}$
+
+So,
+
+$$ \bar{x} \sim N\left(500, \ 0.632\right) $$
+:::
+
+::: {#exm-describe-sampling-distribution-mean-normal}
+## Describe the Sampling Distribution: A Normal Population
+
+Systolic blood pressure for adult patients at a clinic is approximately normally distributed with a mean of $\mu = 120$ mmHg and a standard deviation of $\sigma = 15$ mmHg. Each morning, a nurse records the blood pressure of a random sample of $n = 9$ patients. Describe the sampling distribution of the sample mean blood pressure.
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon="false"}
+## 🔎 Solution
+
+Let $\bar{x} =$ sample mean blood pressure of 9 randomly selected patients.
+
+Because the population of systolic blood pressure values is already normally distributed, the sampling distribution of $\bar{x}$ is normal, even though $n = 9$ is small. No check of $n \ge 30$ is needed in this case.
+
+$\text{Mean:} \quad \mu_{\bar{x}} = 120 \text{ mmHg}$
+
+$\text{Standard Error:} \quad \sigma_{\bar{x}} = \dfrac{15}{\sqrt{9}} = \dfrac{15}{3} = 5 \text{ mmHg}$
+
+Then,
+
+$$ \bar{x} \sim N\left(120, \ 5\right)$$
+:::
+
+The distinction between these two cases can feel difficult to understand until it is seen visually. Rguroo's simulation tools make it possible to draw thousands of random samples from a population in seconds and directly observe how the distribution of sample means behaves, both when the population is already normal and when it is not.
+
+::: {#exm-clt-simulation-normal}
+## Simulating the Sampling Distribution of the Mean from a Normal Population
+
+Suppose a population of adult resting heart rates, in beats per minute, is approximately normally distributed with $\mu = 70$ and $\sigma = 10$. Use Rguroo to simulate the sampling distribution of the sample mean heart rate for samples of size $n = 5$, $n = 30,$ and $n = 100,$ and observe what happens to the shape and spread of the sampling distribution.
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon="false"}
+## 🔎 Solution
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Rguroo Steps: Simulating Sampling Distribution of the Mean from a Normal Population"}
+
+1. Open the [Probability-Simulation]{.dialog} toolbox on the left-hand side of the Rguroo window.
+2. Open the [Probability]{.dpd} dropdown, and select [Multiple Distribution Generator]{.fun}.
+3. Click the plus icon and name the variable, for example [heart_rate]{.typein}.
+4. From the distribution dropdown, select [Normal]{.fun}, and enter the mean, [70]{.typein}, and standard deviation, [10]{.typein}.
+5. In the [Sample Size]{.des} box, enter [5]{.typein}. In the [Replications]{.des} box, enter [1000]{.typein}. Enter a [Seed]{.des} value so the simulation can be reproduced.
+6. From the [Statistic]{.dpd} dropdown, select [Mean]{.fun}.
+7. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to view the simulated samples.
+8. Type a name such as [hr_means_n5]{.typein} in the [Save Dataset As]{.des} textbox, and click [Save Dataset As]{.fun}.
+9. Repeat steps 3 through 8 twice more, using [Sample Size]{.des} [30]{.typein} and [100]{.typein}, saving the results as [hr_means_n30]{.typein} and [hr_means_n100]{.typein}.
+10. For each saved dataset, open the [Plots for Numerical Data]{.dialog} toolbox and create a [Histogram]{.fun} to display the shape of the sampling distribution of the sample mean.
+
+::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+![Multiple Distribution Random Generator Dialog
+](Rguroo_dialogs/Sampling_Distributions/mult_dist_dial.png){width=500px}
+:::
+
+:::
+
+```{r,echo=FALSE}
+#| fig-alt: "Three histograms of simulated sample means of heart rate, all centered at 70 beats per minute with an overlaid normal curve. The spread narrows noticeably from n = 5 to n = 30 to n = 100, while the bell shape remains consistent across all three."
+#| warning: FALSE
+#| label: fig-clt-simulation-normal
+#| fig-cap: "Sampling distributions of the sample mean heart rate for samples of size n = 5, n = 30, and n = 100, drawn from a normal population with mu = 70 and sigma = 10."
+#| fig-subcap: 
+#|   - "n=5"
+#|   - "n=30"
+#|   - "n=100"
+#| layout-ncol: 3
+#| out-width: "90%"
+knitr::include_graphics(c("Rguroo_outputs/Sampling_Distributions/hist_hr_means_n5.png",
+"Rguroo_outputs/Sampling_Distributions/hist_hr_means_n30.png","Rguroo_outputs/Sampling_Distributions/hist_hr_means_n100.png"))
+```
+
+:::
+
+Where the Central Limit Theorem really shines is when we are sampling from a skewed population as in the next example.
+
+::: {#exm-clt-simulation-skewed}
+## Simulating the Sampling Distribution of the Mean from a Skewed Population
+
+In-state tuition at four-year colleges and universities is right skewed: most institutions charge less than \$20,000 per year, but a smaller number of expensive private institutions charge much more, pulling the tail of the distribution out to the right. The [Tuition_4_Year]{.data} dataset contains in-state tuition for a large collection of four-year institutions in the [INSTATE_TUITION]{.var} variable.
+
+Because this is real, finite data rather than a theoretical distribution, we treat the full [Tuition_4_Year]{.data} dataset as the population and repeatedly draw random samples directly from it, rather than generating data from a fitted distribution. Use Rguroo to simulate the sampling distribution of the sample mean in-state tuition for samples of size $n = 5$, $n = 30,$ and $n = 100,$ and observe how the Central Limit Theorem applies.
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon="false"}
+## 🔎 Solution
+
+First, let's start by looking at the histogram of the dataset to confirm it is skewed.
+
+```{r,echo=FALSE}
+#| fig-alt: "Histogram of in-state tuition, ranging from 0 to 60,000 dollars. The distribution is bimodal and right skewed: a tall peak occurs between 5,000 and 10,000 dollars, a smaller secondary peak occurs between 30,000 and 35,000 dollars, and frequency declines gradually toward a long right tail extending to 60,000 dollars."
+#| warning: FALSE
+#| label: fig-tuition-population
+#| fig-cap: "Population distribution of in-state tuition (INSTATE_TUITION) across four-year institutions in the Tuition_4_Year dataset."
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Sampling_Distributions/hist_tuition_pop.png")
+```
+
+As expected, the histogram confirms that the population is right skewed, with a long tail extending to \$60,000. It is also bimodal, with peaks near \$5,000–\$10,000 and \$30,000–\$35,000, likely reflecting the mix of public and private institutions. Because this population is far from normal, it makes a good test case for the Central Limit Theorem.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Rguroo Steps: Simulating from a Skewed Population"}
+
+1. Open the [Probability-Simulation]{.dialog} toolbox on the left-hand side of the Rguroo window.
+2. Open the [Probability]{.dpd} dropdown, and select [Random Selection]{.fun}. This opens the [Dataset Random Selection]{.dialog} dialog.
+3. Select [Tuition_4_Year]{.data} from the Dataset dropdown.
+4. In the [Sample Size]{.des} box, enter [5]{.typein}. In the [Replications]{.des} box, enter [1000]{.typein}. Enter a [Seed]{.des} value so the simulation can be reproduced.
+5. Select [With replacement]{.des}, since we are treating the data frame as the population and sampling repeatedly from it.
+6. Enter [5]{.typein} in the columns subset since the [INSTATE_TUITION]{.var} is in the fifth column.
+6. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to view the selected samples.
+7. Click the [Statistic]{.fun} button at the top right of the application. This opens the [Custom Statistic]{.dialog} dialog.
+8. Click the plus icon and name the new variable, for example [sample_mean]{.typein}. In the code panel, type [mean(INSTATE_TUITION)]{.fun} so that Rguroo computes the sample mean of [INSTATE_TUITION]{.var} for each of the 1000 samples. Click the preview icon to check the result.
+9. Type a name such as [tuition_means_n5]{.typein} in the [Save Dataset As]{.des} textbox, and click [Save Dataset As]{.fun}.
+10. Repeat steps 3 through 10 twice more, using [Sample Size]{.des} [30]{.typein} and [100]{.typein}, saving the results as [tuition_means_n30]{.typein} and [tuition_means_n100]{.typein}.
+11. For each saved dataset, open the [Plots for Numerical Data]{.dialog} toolbox and create a [Histogram]{.fun} of [sample_mean]{.fun} to display the shape of the sampling distribution of the sample mean.
+
+::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Dataset Random Selection and Custom Statistic dialog"}
+```{r,echo=FALSE}
+#| fig-alt: "Two screenshots of Rguroo dialogs. The first, the Dataset Random Selection dialog, shows the Tuition data frame selected with sample size, number of replications, seed, and the With replacement option set. The second, the Custom Statistic dialog, shows a new variable named sample_mean defined by the R code mean(INSTATE_TUITION)."
+#| warning: FALSE
+#| label: fig-random-selection-mean
+#| fig-cap: "Rguroo dialogs used to compute the sample mean of INSTATE_TUITION for repeated random samples drawn from the Tuition_4_Year dataset."
+#| fig-subcap: 
+#|   - "Dataset Random Selection dialog"
+#|   - "Custom Statistic dialog"
+#| layout-ncol: 2
+#| out-width: "100%"
+knitr::include_graphics(c("Rguroo_dialogs/Sampling_Distributions/random_selection_dialog.png",
+"Rguroo_dialogs/Sampling_Distributions/custom_statistic_dialog.png"))
+```
+:::
+
+
+
+:::
+
+```{r,echo=FALSE}
+#| fig-alt: "Three histograms of simulated sample means of in-state tuition, each with an overlaid normal curve. At n = 5, the distribution is still slightly right skewed, with a longer tail extending toward higher tuition values. At n = 30 and n = 100, the distribution is close to symmetric and bell-shaped. The horizontal spread narrows substantially from n = 5 to n = 30 to n = 100, and the histogram bars track the overlaid normal curve increasingly closely as n increases."
+#| warning: FALSE
+#| label: fig-clt-simulation-tuition
+#| fig-cap: "Sampling distributions of the sample mean instate tuition for samples of size n = 5, n = 30, and n = 100, drawn by repeated random selection from the Tuition_4_Year dataset."
+#| fig-subcap: 
+#|   - "n=5"
+#|   - "n=30"
+#|   - "n=100"
+#| layout-ncol: 3
+#| out-width: "100%"
+knitr::include_graphics(c("Rguroo_outputs/Sampling_Distributions/hist_tuit_n5.png",
+"Rguroo_outputs/Sampling_Distributions/hist_tuit_n30.png","Rguroo_outputs/Sampling_Distributions/hist_tuit_n100.png"))
+```
+
+:::
+
+In the heart rate simulation, the histogram of sample means is bell-shaped and centered at 70 for every sample size, $n = 5$, $30$, and $100$. Only the spread changes: the histogram gets narrower as $n$ increases, consistent with $\sigma_{\bar{x}} = \sigma/\sqrt{n}$.
+
+In the tuition simulation, the histogram of sample means at $n = 5$ is still noticeably right skewed, resembling the shape of the original [INSTATE_TUITION]{.var} population. At $n = 30$, the histogram looks much closer to a symmetric, bell-shaped normal distribution, and at $n = 100$ it is even more tightly clustered around the population mean.
+
+When the population is already normal, the sampling distribution of $\bar{x}$ is normal from the very first sample size, and increasing $n$ only tightens the spread. When the population is not normal, the sampling distribution of $\bar{x}$ starts out resembling the population's shape and only becomes approximately normal once $n$ is large enough, exactly as the Central Limit Theorem predicts.
+
+
+
+### Calculating Probabilities of the Sample Mean
+
+With the shape, center, and spread of the sampling distribution pinned down, a natural next step is to ask how likely a particular sample mean is to occur. A hospital administrator might want to know how often a sample mean length of stay would exceed six hours; a clinic might want to know how often a sample mean blood pressure would fall in a safe range. Questions like these, phrased in terms of "greater than," "less than," or "between," can be answered directly using the normal model for $\bar{x}$ developed in this section. The same reasoning carries forward into the rest of this chapter. It also becomes the basis for inference about population mean in later chapters.
+
+
+::: {#exm-probability-mean-normal}
+## Calculating Probabilities: A Normal Population
+
+Recall the systolic blood pressure [example](#exm-describe-sampling-distribution-mean-normal): blood pressure for adult patients at a clinic is approximately normally distributed with $\mu = 120$ mmHg and $\sigma = 15$ mmHg, and a nurse records the blood pressure of a random sample of $n = 9$ patients each morning.
+
+a\. What is the probability that a given morning's sample mean blood pressure is between 115 and 125 mmHg?
+
+b\. What is the probability that a given morning's sample mean blood pressure is at least 130 mmHg?
+
+c\. Only the highest 5% of sample mean blood pressures on record are flagged for follow-up. What sample mean blood pressure marks the cutoff for this top 5%?
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon="false"}
+## 🔎 Solution
+
+Recall from @exm-describe-sampling-distribution-mean-normal that because the population is already normal, no minimum sample size is required, and
+
+$$\text{Mean:} \quad \mu_{\bar{x}} = 120 \text{ mmHg} \qquad \text{Standard Error:} \quad \sigma_{\bar{x}} = \dfrac{15}{\sqrt{9}} = 5 \text{ mmHg}$$
+
+That is, $\bar{x} \sim N(120,5)$.
+
+a\. We want to find $P(115 < \bar{x} < 125)$. Click to expand the box below to see how to calculate the probability.
+
+:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Finding Probabilities in Rguroo"}
+
+   1. Open the **Probability-Simulation** toolbox in Rguroo.
+   2. Open the [Probability]{.dpd} dropdown, and select [Probability Calculator]{.fun} and [Continuous]{.fun}. This opens the [Continuous Probability]{.dialog} dialog.
+   3. Since we were given the values and want the probability, select Values $\Rightarrow$ Probability.
+   4. Select Normal from the [Distribution]{.dpd} dropdown, since we verified that the distribution was approximately normal.
+   5. Enter the mean, [120]{.typein}, and standard deviation, [5]{.typein}.
+   6. Select [between]{.dpd} in the dropdown menu and enter [115]{.typein} and [125]{.typein} in the two boxes
+   7. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see a preview of the barplot.
+
+::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+  ![Continuous Probability dialog showing probability between 115 and 125.](Rguroo_dialogs/Sampling_Distributions/dialog_probability_mean_bp_between.png){width="500px"}
+:::
+
+::::  
+
+   So $P(115 < \bar{x} < 125) = 0.6827$. This means there is about a 68.27% chance that a given morning's sample of 9 patients will have a mean blood pressure betweem 115 mmHg and 124 mmHg.
+
+b\. We want to find $P(\bar{x} \ge 130)$. The mean and standard error have not changed, so select [Above]{.dpd} and enter [130]{.typein} in the Continuous Probability Calculator.
+
+  
+
+```{r,echo=FALSE}
+#| fig-alt: "Screenshot of the Rguroo Continuous Distributions Probability Calculator dialog. Values to Probability is selected, with Normal distribution, mean 120, and standard deviation 5. The Above option is selected with a value of 130, and the calculated probability shown is 0.02275."
+#| warning: FALSE
+#| label: fig-dialog-probability-mean-bp-above
+#| fig-cap: "Continuous Distributions Probability Calculator in Rguroo, showing P(x̄ ≥ 130) for the sample mean blood pressure example."
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_dialogs/Sampling_Distributions/dialog_probability_mean_bp_above.png")
+```
+
+   So $P(\bar{x} \ge 130) = 0.0228$. There is about a 2.28% chance that a given morning's sample of 9 patients will have a mean blood pressure of 130 mmHg or higher.
+
+c\. This time we are given a probability, 0.05, and asked to find the sample mean it corresponds to, so we work in the opposite direction from parts (a) and (b). In the [Continuous Probability]{.dialog} dialog, switch the radio button at the top from Values $\Rightarrow$ Probability to Probability $\Rightarrow$ Values. The mean, [120]{.typein}, and standard deviation, [5]{.typein}, stay the same. Select [Above]{.dpd} in the dropdown menu, since we want the value that only the top 5% of sample means exceed, and enter the probability, [0.05]{.typein}, in the box. Click the preview icon to see the value.
+
+```{r,echo=FALSE}
+#| fig-alt: "Screenshot of the Rguroo Continuous Distributions Probability Calculator dialog. Probability to Values is selected, with Normal distribution, mean 120, and standard deviation 5. The Upper Tail option is selected with a probability of 0.05, and the calculated value shown is 128.22."
+#| warning: FALSE
+#| label: fig-dialog-probability-mean-bp-inverse
+#| fig-cap: "Continuous Distributions Probability Calculator in Rguroo, showing the Probability to Values calculation for the top 5% cutoff of sample mean blood pressure."
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_dialogs/Sampling_Distributions/dialog_probability_mean_bp_inverse.png")
+```
+
+So $\bar{x} = 128.22$ mmHg. A sample mean blood pressure of 128.22 mmHg or higher would place a given morning's sample in the top 5% of all sample mean blood pressures, and would be flagged for follow-up.
+:::
+
+::: {#exm-probability-mean-nonnormal}
+## Calculating Probabilities: A Non-Normal Population
+
+Reaction times, in milliseconds, for a population of adults on a simple visual task are known to be right skewed rather than normal. This population has a mean of $\mu = 250$ ms and a standard deviation of $\sigma = 40$ ms. A researcher plans to test a random sample of $n = 64$ participants.
+
+a\. Describe the sampling distribution of the sample mean reaction time.
+
+b\. What is the probability that the sample mean reaction time is greater than 260 ms?
+
+c\. Researchers want to invite back participants for further testing that have the fastest 10% of sample mean reaction times. What sample mean reaction time marks this cutoff?
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon="false"}
+## 🔎 Solution
+
+a\. The population of reaction times is right skewed, so we check whether the sample size is large enough for the Central Limit Theorem to apply.
+
+   $\text{Check Condition:} \quad n \ge 30$
+
+   $n = 64 \ge 30$, so the condition is satisfied, and the sampling distribution of $\bar{x}$ is approximately normal with
+
+   $$\text{Mean:} \quad \mu_{\bar{x}} = 250 \text{ ms} \qquad \text{Standard Error:} \quad \sigma_{\bar{x}} = \dfrac{40}{\sqrt{64}} = 5 \text{ ms}$$
+
+
+   We can write:
+    $$\bar{x} \sim N(250,5)$$
+
+b\. We want to find $P(\bar{x} > 260)$. To find the probability in Rguroo, enter the mean, [250]{.typein}, and standard deviation, [5]{.typein}, in the [Continuous Probability]{.dialog} dialog as before. Select [above]{.dpd} in the dropdown menu, and enter [260]{.typein} in the box. Click the preview icon to see the probability.
+
+
+```{r,echo=FALSE}
+#| fig-alt: "Screenshot of the Rguroo Continuous Distributions Probability Calculator dialog. Values to Probability is selected, with Normal distribution, mean 250, and standard deviation 5. The Above option is selected with a value of 260, and the calculated probability shown is 0.02275."
+#| warning: FALSE
+#| label: fig-dialog-probability-mean-reaction-time
+#| fig-cap: "Continuous Distributions Probability Calculator in Rguroo, showing P(x̄ > 260) for the sample mean reaction time example."
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_dialogs/Sampling_Distributions/dialog_probability_mean_reaction_time.png")
+```
+
+  
+
+So $P(\bar{x} > 260) = 0.0228$. There is about a 2.28% chance that a random sample of 64 participants will have a mean reaction time greater than 260 milliseconds.
+
+c\. This time we are given a probability, 0.10, and asked to find the sample mean reaction time it corresponds to, so we work in the opposite direction from part (b). Since a smaller time is faster, we are looking to find the value of $\bar{x}$ such that $P(\bar{x}<c) =0.1$ for some $c$.
+
+In the [Continuous Probability]{.dialog} dialog, switch the radio button at the top from Values $\Rightarrow$ Probability to Probability $\Rightarrow$ Values. The mean, [250]{.typein}, and standard deviation, [5]{.typein}, stay the same. Select [Lower Tail]{.dpd} in the dropdown menu, since we want the value that only the top 10% of sample means exceed, and enter the probability, [0.1]{.typein}, in the box. Click the preview icon to see the value.
+
+```{r,echo=FALSE}
+#| fig-alt: "SScreenshot of the Rguroo Continuous Distributions Probability Calculator dialog. Probability to Values is selected, with Normal distribution, mean 250, and standard deviation 5. The Lower Tail option is selected with a probability of 0.1, and the calculated value shown is 256.41."
+#| warning: FALSE
+#| label: fig-dialog-probability-mean-reaction-time-inverse
+#| fig-cap: "Continuous Distributions Probability Calculator in Rguroo, showing the Probability to Values calculation for the reaction time example."
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_dialogs/Sampling_Distributions/dialog_probability_mean_reaction_time_inverse.png")
+```
+
+So $\bar{x} = 243.59$ ms. A random sample of 64 participants with a mean reaction time of 243.59 ms or faster would be among the fastest 10% of all such samples, and would be invited back for further testing.
+
+:::
+
+
+### Homework for Section 7.1
+
+1. A classmate says, "As the sample size gets larger, the sampling distribution of the sample mean gets closer to normal." Explain what is incorrect about this statement, and rewrite it so that it correctly distinguishes between what the Law of Large Numbers guarantees and what the Central Limit Theorem guarantees.
+
+2. For each scenario, state whether the sampling distribution of the sample mean is *exactly* normal, *approximately* normal, or *cannot be determined without more information*. Explain your reasoning in each case.
+
+    a \. A population is known to be normally distributed, and a random sample of $n = 12$ is selected.
+
+    b \. A population is heavily right skewed, and a random sample of $n = 18$ is selected.
+
+    c \. A population is heavily right skewed, and a random sample of $n = 50$ is selected.
+
+    d \. The shape of a population is unknown, and a random sample of $n = 8$ is selected.
+
+3. IQ scores for adults are approximately normally distributed with a mean of $\mu = 100$ and a standard deviation of $\sigma = 15$. A researcher plans to test a random sample of $n = 16$ adults. Describe the sampling distribution of the sample mean IQ score.
+
+4. Call durations at a customer service center are right skewed, with a mean of $\mu = 8$ minutes and a standard deviation of $\sigma = 3$ minutes. A supervisor plans to review a random sample of $n = 45$ calls. Describe the sampling distribution of the sample mean call duration.
+
+5. Case processing times in a county court system are approximately normally distributed with a mean of $\mu = 45$ days and a standard deviation of $\sigma = 6$ days. A court administrator selects a random sample of $n = 25$ cases.
+
+    a \. Describe the sampling distribution of the sample mean processing time.
+
+    b \. What is the probability that the sample mean processing time is between 42 and 48 days?
+
+6. Using the customer service center from Exercise 4 ($\mu = 8$ minutes, $\sigma = 3$ minutes, right skewed), a random sample of $n = 45$ calls is selected. What is the probability that the sample mean call duration exceeds 9 minutes?
+
+7. Finish times for a local 5K race are right skewed, with a mean of $\mu = 32$ minutes and a standard deviation of $\sigma = 6$ minutes. A race organizer selects a random sample of $n = 36$ runners.
+
+    a \. Describe the sampling distribution of the sample mean finish time.
+
+    b \. What is the probability that the sample mean finish time is less than 30 minutes?
+
+8. Total cholesterol levels for adults are approximately normally distributed with a mean of $\mu = 190$ mg/dL and a standard deviation of $\sigma = 20$ mg/dL. A clinic monitors random samples of $n = 10$ patients. Patients whose sample mean cholesterol falls in the lowest 15% of all possible sample means are flagged as a low-risk group. What sample mean cholesterol level marks this cutoff?
+
+9. Final exam scores in a large introductory course are right skewed, with a mean of $\mu = 72$ and a standard deviation of $\sigma = 8$. An instructor selects a random sample of $n = 40$ exams to audit. Only the top 5% of all possible sample mean scores would be flagged for a grading review. What sample mean score marks this cutoff?
 
 ## Sampling Distribution of the Sample Proportion
 
