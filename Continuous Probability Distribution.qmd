@@ -52,18 +52,18 @@ A **continuous random variable**, by contrast, can take *any* value within an in
 - The amount of rainfall in a city during a given month (measured in millimeters)
 - The blood pressure reading of a randomly selected adult
 
-Because a continuous variable can theoretically take on infinitely many values within any interval, we cannot assign probability to individual values the way we did with discrete distributions. Instead, **probability is represented by area under a curve**.
+Because a continuous variable can theoretically take on infinitely many values within any interval, we cannot meaningfully assign probability to individual values the way we did with discrete distributions. That is to say, the probability of any individual value is zero. Instead, **probability is represented by area under a curve**.
 
 
 ::: {.callout-note appearance="simple" icon="false"}
-**Key Concept.** For a continuous random variable, the probability that the variable equals any single exact value is **zero**. Probability is only defined for intervals. For example, it makes sense to ask "what is the probability that wait time is between 2 and 5 minutes?" but not "what is the probability that wait time is exactly 3.0 minutes?"
+**Key Concept.** For a continuous random variable, the probability that the variable equals any single exact value is **zero**. Probability is only computed for intervals. For example, it makes sense to ask "what is the probability that wait time is between 2 and 5 minutes?" but not "what is the probability that wait time is exactly 3.0 minutes?"
 :::
 
 This is one of the most important conceptual shifts in the course. Take a moment to make sure this makes sense before moving on. Think about measuring your height — there is no one exact value for your height because every measurement tool has some limit to its precision.
 
 ### Probability Density Functions
 
-A **probability density function** (pdf), written $f(x)$, is an equation whose curve describes the distribution of a continuous random variable and is used to calculate probabilities of continuous random variables. Two rules must be satisfied for a function to be a valid probability density function:
+A **probability density function** (pdf), written $f(x)$, is an equation whose graph describes the distribution of a continuous random variable and is used to calculate probabilities of continuous random variables. Two rules must be satisfied for a function to be a valid probability density function:
 
 1.  The height of the graph of the equation must be greater than or equal to 0 for all possible values of the random variable. 
 2.  The total area under the graph of the equation over all possible values of the random variable must equal 1.
@@ -74,7 +74,47 @@ $$
 P(a \leq X \leq b) = \text{area under } f(x) \text{ from } a \text{ to } b
 $$
 
+This relationship is easiest to see visually. @fig-area-under-curve shows a density curve $f(x)$ with the region between two values, $a$ and $b$, shaded in blue. That shaded region is exactly the probability $P(a\leq X \leq b)$: not an approximation of it, the area itself *is* the probability. This is what makes continuous probability fundamentally different from the discrete case. There is no single bar or point to read off; the entire shape of the curve between $a$ and $b$ contributes to the answer.
 
+```{r eval = TRUE, echo = FALSE}
+#| label: fig-area-under-curve
+#| fig-cap: "P(a ≤ X ≤ b) as the area under a density curve between a and b."
+#| fig-alt: "A bell-shaped density curve with the region between two points a and b shaded, illustrating that the probability a continuous random variable falls between a and b equals the area under the curve over that interval."
+#| fig-width: 6
+#| fig-height: 4
+
+a <- -1
+b <- 1.5
+
+x <- seq(-4, 4, length.out = 500)
+y <- dnorm(x)
+
+par(mar = c(4, 4, 3, 1))
+
+plot(x, y, type = "l", lwd = 2, col = "black",
+     xlab = "x", ylab = "f(x)",
+     main = expression(paste("P(", a <= X, "" <= "", b, ") as Area Under the Density Curve")),
+     xaxt = "n", yaxt = "n", bty = "n")
+
+# Shade the region between a and b
+x_shade <- seq(a, b, length.out = 200)
+y_shade <- dnorm(x_shade)
+polygon(c(a, x_shade, b), c(0, y_shade, 0), col = rgb(0.4, 0.5, 0.95, 0.6), border = NA)
+
+# Redraw the curve on top of the shading
+lines(x, y, lwd = 2)
+abline(h = 0, col = "black")
+
+# Mark a and b on the x-axis
+axis(1, at = c(a, b), labels = c("a", "b"))
+
+# Vertical reference lines at a and b
+segments(a, 0, a, dnorm(a), lty = 2)
+segments(b, 0, b, dnorm(b), lty = 2)
+
+# Label the shaded area
+text(mean(c(a, b)), 0.08, expression(paste("P(", a <= X, "" <= "", b, ")")), cex = 1.1)
+```
 
 ::: {.callout-note appearance="simple" icon="false"}
 **Notation note.** For continuous distributions, $P(a < X < b)$ and $P(a \leq X \leq b)$ give the same answer, because the probability of any single endpoint is zero. This is different from discrete distributions, where the endpoints do matter.
@@ -101,19 +141,25 @@ Before using any continuous distribution, confirm that the variable is indeed co
 
 Classify each variable below as discrete or continuous.
 
-a.  The number of miles driven to school (rounded to the nearest mile)
-b.  The exact distance driven to school, in miles
-c.  The number of pages in a randomly selected library book
-d.  The weight of a randomly selected library book
+a\.  The number of miles driven to school (rounded to the nearest mile)
+
+b\.  The exact distance driven to school, in miles
+
+c\.  The number of pages in a randomly selected library book
+
+d\.  The weight of a randomly selected library book
 :::
 
 ::: {.callout-tip .solution-callout collapse="true" icon=false}
 ## 🔎 Solution
 
-a.  Discrete — rounded to the nearest mile means we are counting miles.
-b.  Continuous — the exact distance is a measurement that can take any decimal value.
-c.  Discrete — the number of pages is counted.
-d.  Continuous — weight is a measurement.
+a\.  Discrete — rounded to the nearest mile means we are counting miles.
+
+b\.  Continuous — the exact distance is a measurement that can take any decimal value.
+
+c\.  Discrete — the number of pages is counted.
+
+d\.  Continuous — weight is a measurement.
 
 :::
 
@@ -125,23 +171,17 @@ d.  Continuous — weight is a measurement.
 
 3. Classify each variable below as discrete or continuous, and briefly explain your reasoning.
 
-a. The number of text messages sent by a student in one day
-b. The exact amount of time (in seconds) a student spends on a phone call
-c. The number of siblings a randomly selected student has
-d. The exact volume of coffee (in ounces) in a to-go cup
-e. The number of parking tickets issued on a college campus in a week
+    a. The number of text messages sent by a student in one day
+    b. The exact amount of time (in seconds) a student spends on a phone call
+    c. The number of siblings a randomly selected student has
+    d. The exact volume of coffee (in ounces) in a to-go cup
+    e. The number of parking tickets issued on a college campus in a week
 
-4. For each function below, determine whether it could represent a valid probability density function on the given interval. Justify your answer using the two rules for a valid pdf.
 
-a. $f(x) = 0.25$ for $2 \leq x \leq 6$
-b. $f(x) = -0.1$ for $0 \leq x \leq 10$
-c. $f(x) = 0.5$ for $0 \leq x \leq 3$
+4. A statistics instructor tells the class that the amount of time students spend completing a quiz is a continuous random variable.
 
-5. A statistics instructor tells the class that the amount of time students spend completing a quiz is a continuous random variable.
-
-a. Explain why it does not make sense to ask, "What is the probability that a student takes exactly 14.0 minutes to complete the quiz?"
-b. Rewrite the question in part (a) so that it is a meaningful probability question about quiz completion time.
-c. In your own words, explain why probability for a continuous random variable is represented by area under a curve rather than the height of the curve at a single point.
+    a. What is the probability that a student takes exactly 14.0 minutes to complete the quiz?
+    b. Rewrite the question in part (a) using an interval so that it is a meaningful probability question about quiz completion time.
 
 
 ## The Uniform Distribution
@@ -151,16 +191,16 @@ The **uniform distribution** is the simplest continuous distribution and the bes
 If a continuous random variable $X$ is uniformly distributed on the interval $[a, b]$ we write $X \sim U(a,b)$, then the probability density function is:
 
 $$
-f(x) = \frac{1}{b - a}, \quad \text{for } a \leq x \leq b
+f(x) = \frac{1}{b - a}, \quad \text{for } a \leq x \leq b.
 $$
 
 The height of the rectangle is the constant $\frac{1}{b-a}$, which ensures the total area equals 1:
 
 $$
-\text{Total area} = (b - a) \cdot \frac{1}{b - a} = 1 
+\text{Total area} = (b - a) \cdot \frac{1}{b - a} = 1. 
 $$
 
-@fig-uniform-density shows the general shape of a uniform distribution on the interval $[a, b]$. The curve is a horizontal line at height $f(x) = \frac{1}{b-a}$ across the entire interval, and it drops to 0 outside of $[a, b]$, since values outside that range are impossible. The shaded rectangle represents the total probability, which equals the area of the rectangle — width, $(b-a)$, times height, $\frac{1}{b-a}$ — confirming that the total area under the curve is exactly 1, as required for any valid probability density function.
+@fig-uniform-density shows the general shape of a uniform distribution on the interval $[a, b]$. The curve is a horizontal line at height $f(x) = \frac{1}{b-a}$ across the entire interval, and it drops to 0 outside of $[a, b]$, indicating that values outside that range are impossible. The shaded rectangle represents the total probability, which equals the area of the rectangle — width, $(b-a)$, times height, $\frac{1}{b-a}$ — confirming that the total area under the curve is exactly 1, as required for any valid probability density function.
 
 ```{r uniform-density-plot}
 #| fig-alt: "Density curve for a uniform distribution from a to b. The curve is a horizontal rectangle with constant height f(x) = 1/(b-a) across the entire interval [a, b], and zero outside that interval. The shaded region illustrates that all values are equally likely."
@@ -231,13 +271,13 @@ The mean is the midpoint of the interval, and the standard deviation measures ho
 
 A city bus arrives at a particular stop every 20 minutes. If you arrive at the stop at a random time, your waiting time $X$ is uniformly distributed on the interval $[0, 20]$ minutes.
 
-a. Draw the density curve and confirm it is valid.
+a\. Draw the density curve and confirm it is valid.
 
-b. Find the probability that you wait less than 8 minutes.
+b\. Find and interpret the probability that you wait less than 8 minutes.
 
-c. Find the probability that you wait between 5 and 15 minutes.
+c\. Find and interpret the probability that you wait between 5 and 15 minutes.
 
-d. Find the probability that you wait exactly 10 minutes.
+d\. Find and interpret the probability that you wait exactly 10 minutes.
 
 
 :::
@@ -414,7 +454,7 @@ There is a 50% chance the battery lasts between 9 and 12 hours.
 
 ### Why the Normal Distribution Matters
 
-The **normal distribution** is the most important continuous probability distribution in statistics. Many naturally occurring variables, such as heights, birth weights, IQ scores, blood pressure readings, and measurement errors, follow distributions that are approximately normal. More importantly, many statistical inference methods are based on normal distributions, so understanding the normal model is essential for the rest of the course.
+The **normal distribution** is the most important continuous probability distribution in statistics. Many naturally occurring variables, such as heights of adult males, birth weights, IQ scores, blood pressure readings, and measurement errors, follow distributions that are approximately normal. More importantly, many statistical inference methods are based on normal distributions, so understanding the normal model is essential for the rest of the course.
 
 A normal distribution is:
 
@@ -492,8 +532,8 @@ ggplot(curves, aes(x = x, y = y, color = Distribution, linetype = Distribution))
 
 Every normal distribution shares these properties:
 
-- The curve is symmetric about the mean $\mu$, so the mean, median, and mode are all roughly equal.
-- The highest point on the curve is at $x = \mu$.
+- The curve is symmetric about the mean $\mu$, so the mean, median, and mode are all equal.
+- The highest point (the mode) on the curve is at $x = \mu$.
 - The curve changes from "hill-shaped" to "valley-shaped" (i.e., the inflection points occur) at exactly one standard deviation on either side of the mean: at $\mu - \sigma$ and $\mu + \sigma$.
 - The total area under the curve equals 1.
 - The area to the left of the mean equals 0.5 and the area to the right equals 0.5, by symmetry.
@@ -621,32 +661,99 @@ The empirical rule is useful for quick estimates and for identifying **unusual o
 
 Heights of adult women in the United States are approximately normally distributed with a mean of 64 inches and a standard deviation of 2.8 inches.
 
-a. Between what two heights do approximately 68% of women fall?
+a\. Between what two heights do approximately 68% of women fall?
 
-b. What percentage of women are taller than 69.6 inches?
+b\. What percentage of women are taller than 69.6 inches?
 
-c. A woman is 57.6 inches tall. Is her height unusual?
+c\. A woman is 57.6 inches tall. Is her height unusual?
 
 :::
 
 :::{.callout-tip .solution-callout collapse="true" icon=false}
 ## 🔎 Solution
 
-a.  By the Empirical Rule, 68% of data points fall within 1 standard deviation: 
+a\.  By the Empirical Rule, 68% of data points fall within 1 standard deviation: 
 $$
 64 \pm 2.8 = (61.2, 66.8) \text{ inches}
 $$ 
 
   About 68% of women are between 61.2 and 66.8 inches tall.
 
-b. We want to find how many standard deviations 69.6 is away from the mean height of 64 inches. 
+b\. We want to find how many standard deviations 69.6 is away from the mean height of 64 inches. 
 $$
 \sigma = \dfrac{69.6-64}{2.8} = 2
 $$
 
   This means 69.6 is 2 standard deviations above the mean. From the Empirical Rule, about 95% of women are between $69.6 + 2(2.8) = 58.4$ and 69.6 inches. Because the curve is symmetric, the remaining 5% is split equally between the two tails, so about $\dfrac{5}{2}=2.5\%$ of women are taller than 69.6 inches.
 
-c. We want to determine the number of standard deviations the value 57.6 is from the mean. 
+```{r empirical-rule-partb}
+#| label: fig-empirical-rule-partb
+#| fig-alt: "A bell-shaped normal distribution curve for heights with mean 64 inches and standard deviation 2.8 inches. The region to the right of 69.6 inches, two standard deviations above the mean, is shaded in blue. A legend identifies this region as P(X greater than 69.6) approximately equal to 2.5 percent."
+#| warning: FALSE
+#| echo: FALSE
+#| fig-cap: "The shaded region shows P(X > 69.6), the probability that a randomly selected woman is taller than 69.6 inches, about 2.5% of the distribution."
+
+library(ggplot2)
+
+mu     <- 64
+sigma  <- 2.8
+cutoff <- 69.6
+
+x  <- seq(mu - 4*sigma, mu + 4*sigma, length.out = 1000)
+y  <- dnorm(x, mean = mu, sd = sigma)
+df <- data.frame(x = x, y = y)
+
+ribbon <- function(lo, hi) subset(df, x >= lo & x <= hi)
+
+fill_pal <- c("P(X > 69.6) \u2248 2.5%" = "#0072B2")
+
+ggplot(df, aes(x, y)) +
+  geom_ribbon(
+    data = ribbon(cutoff, mu + 4*sigma),
+    aes(ymin = 0, ymax = y, fill = "P(X > 69.6) \u2248 2.5%"),
+    alpha = 1
+  ) +
+  geom_line(linewidth = 1.1, color = "black") +
+  geom_hline(yintercept = 0, color = "black", linewidth = 0.4) +
+  geom_vline(
+    xintercept = c(mu, cutoff),
+    linetype   = "dashed",
+    color      = "gray40",
+    linewidth  = 0.5
+  ) +
+  scale_fill_manual(
+    name   = NULL,
+    values = fill_pal,
+    guide  = guide_legend(
+      direction      = "horizontal",
+      label.position = "right",
+      keywidth       = unit(1.2, "cm"),
+      keyheight      = unit(0.5, "cm")
+    )
+  ) +
+  scale_x_continuous(
+    breaks = c(mu, cutoff),
+    labels = c(
+      expression(mu == 64),
+      expression(paste("69.6 (", mu + 2*sigma, ")"))
+    )
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  labs(
+    title = "P(X > 69.6) for Heights",
+    x     = NULL,
+    y     = "f(x)"
+  ) +
+  theme_classic(base_size = 13) +
+  theme(
+    plot.title      = element_text(hjust = 0.5, face = "bold"),
+    axis.text.x     = element_text(size = 10),
+    legend.position = "bottom",
+    legend.text     = element_text(size = 11)
+  )
+```
+
+c\. We want to determine the number of standard deviations the value 57.6 is from the mean. 
 
 $$
 \sigma = \dfrac{57.6-64}{2.8} = -2.29
@@ -657,7 +764,7 @@ $$
 
 ### The Standard Normal Distribution
 
-Working with many different normal distributions would be cumbersome if we needed separate tables or calculations for each one. The **standard normal distribution** solves this by providing a single reference distribution.
+The **standard normal distribution** provides a common reference distribution for comparing values from different normal distributions.
 
 The standard normal distribution is the normal distribution with mean 0 and standard deviation 1. It is written $Z \sim N(0, 1)$.
 
@@ -671,12 +778,37 @@ The $z-$ score tells you how many standard deviations the value $x$ is above or 
 
 
 ::: {.callout-note appearance="simple" icon="false"}
-**Why $z-$ scores matter.** After standardizing, you can compare values from different normal distributions directly. A math SAT score and a blood pressure reading cannot be compared directly, but their $z-$ scores can be, because both $z-$ scores are on the same scale.
+**Why $z-$ scores matter.** After standardizing, you can compare values from different normal distributions directly. A math SAT score and an ACT score cannot be compared directly, but their $z-$ scores can be, because both $z-$ scores are on the same scale.
 :::
 
 
+::: {#exm-zscore-sat-act}
+## Comparing Scores from Different Distributions
 
+Math SAT scores are approximately normally distributed with a mean of $\mu = 520$ and a standard deviation of $\sigma = 110$. ACT Composite scores are approximately normally distributed with a mean of $\mu = 20.8$ and a standard deviation of $\sigma = 5.8$.
 
+Student A scores 680 on the SAT Math test. Student B scores 28 on the ACT Composite. Which student scored better relative to other test takers?
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon="false"}
+## 🔎 Solution
+
+Because the SAT and ACT use different scales, the raw scores 680 and 28 cannot be compared directly. Converting each to a $z-$score puts both students on the same scale.
+
+For Student A,
+
+$$
+z = \frac{680 - 520}{110} = \frac{160}{110} \approx 1.45
+$$
+
+For Student B,
+
+$$
+z = \frac{28 - 20.8}{5.8} = \frac{7.2}{5.8} \approx 1.24
+$$
+
+Student A's score is about 1.45 standard deviations above the mean SAT Math score, while Student B's score is about 1.24 standard deviations above the mean ACT Composite score. Since $1.45 > 1.24$, Student A scored better relative to other test takers, even though 680 and 28 are numbers on completely different scales.
+:::
 
 
 ::: {#exm-calculating-normal-probs}
@@ -684,24 +816,26 @@ The $z-$ score tells you how many standard deviations the value $x$ is above or 
 
 The length of a human pregnancy is approximately normally distributed with a mean of 272 days and a standard deviation of 9 days.
 
-a. State the random variable.
+a\. State the random variable.
 
-b. Find the probability that a pregnancy lasts more than 280 days.
+b\. Find the probability that a pregnancy lasts more than 280 days.
 
-c. Find the probability that a pregnancy lasts less than 250 days.
+c\. Find the probability that a pregnancy lasts less than 250 days.
 
-d. Find the probability that a pregnancy lasts between 265 and 280 days.
+d\. Find the probability that a pregnancy lasts between 265 and 280 days.
 
-e.  Find the length that only 10% of pregnancies are shorter than.
+e\.  Find the length that only 10% of pregnancies are shorter than.
 
 :::
+
+The examples that follow show how to find probabilities associated with a normal distribution two ways: by standardizing and using the standard normal distribution, and directly using Rguroo.
 
 :::{.callout-tip .solution-callout collapse="true" icon=false}
 ## 🔎 Solution
 
-a. Let $X =$ length of a human pregnancy in days. $X \sim N(272, 9)$.
+a\. Let $X =$ length of a human pregnancy in days. $X \sim N(272, 9)$.
 
-b. We want to find $P(X > 280)$. First, we convert 280 to a $z-$ score:
+b\. We want to find $P(X > 280)$. First, we convert 280 to a $z-$ score:
 
 $$
 z = \frac{280 - 272}{9} = \frac{8}{9} \approx 0.89
@@ -742,7 +876,7 @@ knitr::include_graphics(
 So, $P(X > 280) \approx 0.1867$. About 18.7% of all pregnancies last more than 280 days. This is not unusual since the probability exceeds 5%.
 
 
-c. We want to find $P(X < 250)$. First, we convert 250 to a $z-$ score:
+c\. We want to find $P(X < 250)$. First, we convert 250 to a $z-$ score:
 
 $$
 z = \frac{250 - 272}{9} = \frac{-22}{9} \approx -2.44
@@ -769,7 +903,7 @@ knitr::include_graphics(
 
 So, $P(X < 250) \approx 0.0073$. This is unusual since almost no pregnancies last less than 250 days.
 
-d. We want to find $P(265 < X < 280)$. First, we convert both values to $z-$ scores:
+d\. We want to find $P(265 < X < 280)$. First, we convert both values to $z-$ scores:
 
 $$
 z_1 = \frac{265 - 272}{9} = \frac{-7}{9} \approx -0.78
@@ -799,7 +933,7 @@ knitr::include_graphics(
 
 $P(265 < X < 280) \approx 0.5956$. About 59.6% of pregnancies last between 265 and 280 days.
 
-e. We want to find the length $x$ such that $P(Z < z) = 0.10$. This means we are looking for the 10th percentile of the distribution.
+e\. We want to find the length $x$ such that $P(Z < z) = 0.10$. This means we are looking for the 10th percentile of the distribution.
 
 Using the continuous probability calculator in Rugroo with Normal Distribution, select Probability $\Rightarrow$ Values, since we will be inputting probability and we want the value. Enter [0]{.typein} for the mean ($\mu$) and [1]{.typein} for the standard deviation ($\sigma$).  We want the value such that the area below some value $z$ is 0.1, select [below]{.dpd} in the dropdown menu. Then enter [0.1]{.typein} in the next box.
 
@@ -841,13 +975,13 @@ Technology, including Rguroo, can find exact probabilities for any normal distri
 
 The mean mathematics SAT score is 514 with a standard deviation of 117. Assume the mathematics SAT score is approximately normally distributed.
 
-a. Stat the random variable and its distribution.
+a\. State the random variable and its distribution.
 
-b. Find the probability that a randomly selected person has a score above 700.
+b\. Find the probability that a randomly selected person has a score above 700.
 
-c. Find the probability that a person has a score below 400.
+c\. Find the probability that a person has a score below 400.
 
-d. Find the score that represents the top 1% of all scores.
+d\. Find the score that represents the top 1% of all scores.
 
 :::
 
@@ -941,7 +1075,7 @@ knitr::include_graphics(c("Rguroo_dialogs/Continuous_Probability/sat_scores_dial
     b.  Find the probability a student waits more than 8 minutes.
     c.  Find the probability a student waits less than 3 minutes.
     d.  Find the probability a student waits between 4 and 7 minutes.
-    e.  Find the waiting time that only 5% of students exceed.
+    e.  Find the 95th percentile of waiting times. Interpret this value in the context of the problem.
 
 5.  The amount of time between calls to a customer service center is normally distributed with a mean of 3 minutes and a standard deviation of 1 minute.
 
@@ -1037,52 +1171,25 @@ A **normal quantile plot** (also called a Q-Q plot) compares the actual data val
 - Strong curve or S-shape → not consistent with normality
 - One or two points far from the line → possible outliers worth investigating
 
-```{r qq-comparison}
-#| label: fig-qq-comparison
-#| fig-alt: "Three side-by-side normal quantile plots. The left panel shows points falling closely along a straight diagonal line, consistent with a normally distributed sample. The middle panel shows points that curve upward away from the line in an S-shape, consistent with a right-skewed distribution. The right panel shows most points following the line closely but with two points at the upper right far away from the line, indicating possible outliers."
+```{r qq-plots-comparison, echo=FALSE}
+#| fig-alt: "Four normal probability plots with confidence bounds. The normal sample tracks the diagonal reference line closely from end to end, staying within the bounds. The exponential sample curves noticeably away from the line, with several large values rising above the upper bound, reflecting right skew. The Student t sample with four degrees of freedom follows the line closely through the middle but exits the bounds at both tails, reflecting heavy but symmetric tails. The Cauchy sample deviates sharply from the line almost everywhere, with several extreme values far outside the bounds in both directions, reflecting very heavy tails."
 #| warning: FALSE
-#| echo: FALSE
-#| fig-cap: "Normal quantile plots (Q-Q plots) showing three patterns: data consistent with normality (left), right-skewed data forming a curved pattern (middle), and data with possible outliers (right)."
-#| fig-width: 10
-#| fig-height: 4
-
-library(ggplot2)
-library(patchwork)
-
-set.seed(42)
-
-# Panel 1: approximately normal data
-normal_data <- data.frame(y = rnorm(80, mean = 50, sd = 8))
-
-# Panel 2: right-skewed data
-skewed_data <- data.frame(y = rgamma(80, shape = 2, scale = 8))
-
-# Panel 3: normal data with two extreme outliers
-outlier_data <- data.frame(y = c(rnorm(78, mean = 50, sd = 8), 95, 98))
-
-make_qq <- function(df, title_text) {
-  ggplot(df, aes(sample = y)) +
-    stat_qq(color = "#0072B2", size = 1.8, alpha = 0.8) +
-    stat_qq_line(color = "#D55E00", linewidth = 1, linetype = "dashed") +
-    labs(
-      title = title_text,
-      x     = "Theoretical quantiles",
-      y     = "Sample quantiles"
-    ) +
-    theme_classic(base_size = 12) +
-    theme(
-      plot.title = element_text(hjust = 0.5, face = "bold", size = 11)
-    )
-}
-
-p1 <- make_qq(normal_data,  "Consistent with Normality")
-p2 <- make_qq(skewed_data,  "Right-Skewed (S-shape)")
-p3 <- make_qq(outlier_data, "Possible Outliers")
-
-p1 + p2 + p3
+#| label: fig-qq-plots-comparison
+#| fig-cap: "Normal probability plots with 95% confidence bounds for random samples drawn from four different distributions."
+#| fig-subcap: 
+#|   - "Normal(0, 1)"
+#|   - "Exponential(1)"
+#|   - "Student t (4 df)"
+#|   - "Cauchy(0, 1)"
+#| layout-ncol: 2
+#| out-width: "100%"
+knitr::include_graphics(c("Rguroo_outputs/Continuous_Probability/qq_normal_sample.png",
+"Rguroo_outputs/Continuous_Probability/qq_exponential_sample.png",
+"Rguroo_outputs/Continuous_Probability/qq_student_t_sample.png",
+"Rguroo_outputs/Continuous_Probability/qq_cauchy_sample.png"))
 ```
 
-You will learn more about normal quantile plots in later chapters, but for now, the main idea is that a straight line indicates the data are consistent with a normal distribution.
+You will see applications of normal quantile plots in the later chapters, but for now, the main idea is that a straight line indicates the data are consistent with a normal distribution.
 
 ::: {.callout-note appearance="simple" icon="false"}
 **Reminder.** The goal is not to prove that the data are exactly normally distributed — that would be impossible in practice. The goal is to ask whether a normal model is *reasonable* for the purpose at hand. Small samples show more variation even when the population is normal, so visual checks are less definitive with small samples.
