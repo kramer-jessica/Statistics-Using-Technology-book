@@ -359,14 +359,14 @@ Chapter 6 Objectives
 <li>The amount of rainfall in a city during a given month (measured in millimeters)</li>
 <li>The blood pressure reading of a randomly selected adult</li>
 </ul>
-<p>Because a continuous variable can theoretically take on infinitely many values within any interval, we cannot assign probability to individual values the way we did with discrete distributions. Instead, <strong>probability is represented by area under a curve</strong>.</p>
+<p>Because a continuous variable can theoretically take on infinitely many values within any interval, we cannot meaningfully assign probability to individual values the way we did with discrete distributions. That is to say, the probability of any individual value is zero. Instead, <strong>probability is represented by area under a curve</strong>.</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>Key Concept.</strong> For a continuous random variable, the probability that the variable equals any single exact value is <strong>zero</strong>. Probability is only defined for intervals. For example, it makes sense to ask “what is the probability that wait time is between 2 and 5 minutes?” but not “what is the probability that wait time is exactly 3.0 minutes?”</p>
+<p><strong>Key Concept.</strong> For a continuous random variable, the probability that the variable equals any single exact value is <strong>zero</strong>. Probability is only computed for intervals. For example, it makes sense to ask “what is the probability that wait time is between 2 and 5 minutes?” but not “what is the probability that wait time is exactly 3.0 minutes?”</p>
 </div>
 </div>
 </div>
@@ -374,7 +374,7 @@ Chapter 6 Objectives
 </section>
 <section id="probability-density-functions" class="level3" data-number="6.1.2">
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="probability-density-functions"><span class="header-section-number">6.1.2</span> Probability Density Functions</h3>
-<p>A <strong>probability density function</strong> (pdf), written <span class="math inline">\(f(x)\)</span>, is an equation whose curve describes the distribution of a continuous random variable and is used to calculate probabilities of continuous random variables. Two rules must be satisfied for a function to be a valid probability density function:</p>
+<p>A <strong>probability density function</strong> (pdf), written <span class="math inline">\(f(x)\)</span>, is an equation whose graph describes the distribution of a continuous random variable and is used to calculate probabilities of continuous random variables. Two rules must be satisfied for a function to be a valid probability density function:</p>
 <ol type="1">
 <li>The height of the graph of the equation must be greater than or equal to 0 for all possible values of the random variable.</li>
 <li>The total area under the graph of the equation over all possible values of the random variable must equal 1.</li>
@@ -383,6 +383,21 @@ Chapter 6 Objectives
 <p><span class="math display">\[
 P(a \leq X \leq b) = \text{area under } f(x) \text{ from } a \text{ to } b
 \]</span></p>
+<p>This relationship is easiest to see visually. <a href="#fig-area-under-curve" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> shows a density curve <span class="math inline">\(f(x)\)</span> with the region between two values, <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, shaded in blue. That shaded region is exactly the probability <span class="math inline">\(P(a\leq X \leq b)\)</span>: not an approximation of it, the area itself <em>is</em> the probability. This is what makes continuous probability fundamentally different from the discrete case. There is no single bar or point to read off; the entire shape of the curve between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> contributes to the answer.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-area-under-curve" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A bell-shaped density curve with the region between two points a and b shaded, illustrating that the probability a continuous random variable falls between a and b equals the area under the curve over that interval.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-area-under-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-area-under-curve-1.png" class="img-fluid figure-img" alt="A bell-shaped density curve with the region between two points a and b shaded, illustrating that the probability a continuous random variable falls between a and b equals the area under the curve over that interval." width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-area-under-curve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.1: P(a ≤ X ≤ b) as the area under a density curve between a and b.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -450,12 +465,10 @@ P(a \leq X \leq b) = \text{area under } f(x) \text{ from } a \text{ to } b
 </table>
 <div id="exm-classify-variables" class="theorem example">
 <p><span class="theorem-title"><strong>Example 6.1</strong></span> Classify each variable below as discrete or continuous.</p>
-<ol type="a">
-<li>The number of miles driven to school (rounded to the nearest mile)</li>
-<li>The exact distance driven to school, in miles</li>
-<li>The number of pages in a randomly selected library book</li>
-<li>The weight of a randomly selected library book</li>
-</ol>
+<p>a. The number of miles driven to school (rounded to the nearest mile)</p>
+<p>b. The exact distance driven to school, in miles</p>
+<p>c. The number of pages in a randomly selected library book</p>
+<p>d. The weight of a randomly selected library book</p>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -469,12 +482,10 @@ P(a \leq X \leq b) = \text{area under } f(x) \text{ from } a \text{ to } b
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="a">
-<li>Discrete — rounded to the nearest mile means we are counting miles.</li>
-<li>Continuous — the exact distance is a measurement that can take any decimal value.</li>
-<li>Discrete — the number of pages is counted.</li>
-<li>Continuous — weight is a measurement.</li>
-</ol>
+<p>a. Discrete — rounded to the nearest mile means we are counting miles.</p>
+<p>b. Continuous — the exact distance is a measurement that can take any decimal value.</p>
+<p>c. Discrete — the number of pages is counted.</p>
+<p>d. Continuous — weight is a measurement.</p>
 </div>
 </div>
 </div>
@@ -484,30 +495,19 @@ P(a \leq X \leq b) = \text{area under } f(x) \text{ from } a \text{ to } b
 <ol type="1">
 <li><p>What is the difference between a discrete and a continuous random variable?</p></li>
 <li><p>What is a probability density function?</p></li>
-<li><p>Classify each variable below as discrete or continuous, and briefly explain your reasoning.</p></li>
-</ol>
+<li><p>Classify each variable below as discrete or continuous, and briefly explain your reasoning.</p>
 <ol type="a">
 <li>The number of text messages sent by a student in one day</li>
 <li>The exact amount of time (in seconds) a student spends on a phone call</li>
 <li>The number of siblings a randomly selected student has</li>
 <li>The exact volume of coffee (in ounces) in a to-go cup</li>
 <li>The number of parking tickets issued on a college campus in a week</li>
-</ol>
-<ol start="4" type="1">
-<li>For each function below, determine whether it could represent a valid probability density function on the given interval. Justify your answer using the two rules for a valid pdf.</li>
-</ol>
+</ol></li>
+<li><p>A statistics instructor tells the class that the amount of time students spend completing a quiz is a continuous random variable.</p>
 <ol type="a">
-<li><span class="math inline">\(f(x) = 0.25\)</span> for <span class="math inline">\(2 \leq x \leq 6\)</span></li>
-<li><span class="math inline">\(f(x) = -0.1\)</span> for <span class="math inline">\(0 \leq x \leq 10\)</span></li>
-<li><span class="math inline">\(f(x) = 0.5\)</span> for <span class="math inline">\(0 \leq x \leq 3\)</span></li>
-</ol>
-<ol start="5" type="1">
-<li>A statistics instructor tells the class that the amount of time students spend completing a quiz is a continuous random variable.</li>
-</ol>
-<ol type="a">
-<li>Explain why it does not make sense to ask, “What is the probability that a student takes exactly 14.0 minutes to complete the quiz?”</li>
-<li>Rewrite the question in part (a) so that it is a meaningful probability question about quiz completion time.</li>
-<li>In your own words, explain why probability for a continuous random variable is represented by area under a curve rather than the height of the curve at a single point.</li>
+<li>What is the probability that a student takes exactly 14.0 minutes to complete the quiz?</li>
+<li>Rewrite the question in part (a) using an interval so that it is a meaningful probability question about quiz completion time.</li>
+</ol></li>
 </ol>
 </section>
 </section>
@@ -516,13 +516,13 @@ P(a \leq X \leq b) = \text{area under } f(x) \text{ from } a \text{ to } b
 <p>The <strong>uniform distribution</strong> is the simplest continuous distribution and the best starting point for understanding how density curves work. In a uniform distribution, every value in an interval is equally likely in the sense that the density is constant across the entire interval. This makes the graph a <strong>horizontal rectangle</strong>, which means probability is simply area — length times width.</p>
 <p>If a continuous random variable <span class="math inline">\(X\)</span> is uniformly distributed on the interval <span class="math inline">\([a, b]\)</span> we write <span class="math inline">\(X \sim U(a,b)\)</span>, then the probability density function is:</p>
 <p><span class="math display">\[
-f(x) = \frac{1}{b - a}, \quad \text{for } a \leq x \leq b
+f(x) = \frac{1}{b - a}, \quad \text{for } a \leq x \leq b.
 \]</span></p>
 <p>The height of the rectangle is the constant <span class="math inline">\(\frac{1}{b-a}\)</span>, which ensures the total area equals 1:</p>
 <p><span class="math display">\[
-\text{Total area} = (b - a) \cdot \frac{1}{b - a} = 1
+\text{Total area} = (b - a) \cdot \frac{1}{b - a} = 1.
 \]</span></p>
-<p><a href="#fig-uniform-density" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> shows the general shape of a uniform distribution on the interval <span class="math inline">\([a, b]\)</span>. The curve is a horizontal line at height <span class="math inline">\(f(x) = \frac{1}{b-a}\)</span> across the entire interval, and it drops to 0 outside of <span class="math inline">\([a, b]\)</span>, since values outside that range are impossible. The shaded rectangle represents the total probability, which equals the area of the rectangle — width, <span class="math inline">\((b-a)\)</span>, times height, <span class="math inline">\(\frac{1}{b-a}\)</span> — confirming that the total area under the curve is exactly 1, as required for any valid probability density function.</p>
+<p><a href="#fig-uniform-density" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> shows the general shape of a uniform distribution on the interval <span class="math inline">\([a, b]\)</span>. The curve is a horizontal line at height <span class="math inline">\(f(x) = \frac{1}{b-a}\)</span> across the entire interval, and it drops to 0 outside of <span class="math inline">\([a, b]\)</span>, indicating that values outside that range are impossible. The shaded rectangle represents the total probability, which equals the area of the rectangle — width, <span class="math inline">\((b-a)\)</span>, times height, <span class="math inline">\(\frac{1}{b-a}\)</span> — confirming that the total area under the curve is exactly 1, as required for any valid probability density function.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-uniform-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density curve for a uniform distribution from a to b. The curve is a horizontal rectangle with constant height f(x) = 1/(b-a) across the entire interval [a, b], and zero outside that interval. The shaded region illustrates that all values are equally likely.">
@@ -531,7 +531,7 @@ f(x) = \frac{1}{b - a}, \quad \text{for } a \leq x \leq b
 <img src="Continuous-Probability-Distribution_files/figure-html/fig-uniform-density-1.png" class="img-fluid figure-img" alt="Density curve for a uniform distribution from a to b. The curve is a horizontal rectangle with constant height f(x) = 1/(b-a) across the entire interval [a, b], and zero outside that interval. The shaded region illustrates that all values are equally likely." width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-uniform-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.1: Probability Density Function of a Uniform Distribution on [a, b]
+Figure&nbsp;6.2: Probability Density Function of a Uniform Distribution on [a, b]
 </figcaption>
 </figure>
 </div>
@@ -548,12 +548,10 @@ Figure&nbsp;6.1: Probability Density Function of a Uniform Distribution on [a, b
 <p>The mean is the midpoint of the interval, and the standard deviation measures how spread out the values are across that interval.</p>
 <div id="exm-uniform-dist" class="theorem example">
 <p><span class="theorem-title"><strong>Example 6.2</strong></span> A city bus arrives at a particular stop every 20 minutes. If you arrive at the stop at a random time, your waiting time <span class="math inline">\(X\)</span> is uniformly distributed on the interval <span class="math inline">\([0, 20]\)</span> minutes.</p>
-<ol type="a">
-<li><p>Draw the density curve and confirm it is valid.</p></li>
-<li><p>Find the probability that you wait less than 8 minutes.</p></li>
-<li><p>Find the probability that you wait between 5 and 15 minutes.</p></li>
-<li><p>Find the probability that you wait exactly 10 minutes.</p></li>
-</ol>
+<p>a. Draw the density curve and confirm it is valid.</p>
+<p>b. Find and interpret the probability that you wait less than 8 minutes.</p>
+<p>c. Find and interpret the probability that you wait between 5 and 15 minutes.</p>
+<p>d. Find and interpret the probability that you wait exactly 10 minutes.</p>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
@@ -578,7 +576,7 @@ Figure&nbsp;6.1: Probability Density Function of a Uniform Distribution on [a, b
 <img src="Continuous-Probability-Distribution_files/figure-html/fig-bus-wait-1.png" class="img-fluid figure-img" alt="Probability density function for a uniform waiting time between 0 and 20 minutes. The curve is a horizontal line at height 0.05 from x = 0 to x = 20, with a shaded rectangle showing that the total area under the curve equals 1." width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bus-wait-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.2: Density Curve for Uniform Bus Waiting Time, X ~ U(0, 20)
+Figure&nbsp;6.3: Density Curve for Uniform Bus Waiting Time, X ~ U(0, 20)
 </figcaption>
 </figure>
 </div>
@@ -744,7 +742,7 @@ Click here to see the Rguroo dialog
 <h2 data-number="6.3" class="anchored" data-anchor-id="the-normal-distribution-and-the-standard-normal-distribution"><span class="header-section-number">6.3</span> The Normal Distribution and the Standard Normal Distribution</h2>
 <section id="why-the-normal-distribution-matters" class="level3" data-number="6.3.1">
 <h3 data-number="6.3.1" class="anchored" data-anchor-id="why-the-normal-distribution-matters"><span class="header-section-number">6.3.1</span> Why the Normal Distribution Matters</h3>
-<p>The <strong>normal distribution</strong> is the most important continuous probability distribution in statistics. Many naturally occurring variables, such as heights, birth weights, IQ scores, blood pressure readings, and measurement errors, follow distributions that are approximately normal. More importantly, many statistical inference methods are based on normal distributions, so understanding the normal model is essential for the rest of the course.</p>
+<p>The <strong>normal distribution</strong> is the most important continuous probability distribution in statistics. Many naturally occurring variables, such as heights of adult males, birth weights, IQ scores, blood pressure readings, and measurement errors, follow distributions that are approximately normal. More importantly, many statistical inference methods are based on normal distributions, so understanding the normal model is essential for the rest of the course.</p>
 <p>A normal distribution is:</p>
 <ul>
 <li><strong>Bell-shaped</strong> — symmetric about the center, with the curve rising steeply to its highest point directly above the mean. Moving away from the center, the curve falls sharply at first, then tapers more and more gradually toward the tails.</li>
@@ -771,7 +769,7 @@ Click here to see the Rguroo dialog
 <img src="Continuous-Probability-Distribution_files/figure-html/fig-normal-compare-1.png" class="img-fluid figure-img" alt="Three normal distribution curves plotted on the same axes. All three are bell-shaped and symmetric. The blue curve is centered at 0 with standard deviation 1 — it is the tallest and narrowest. The orange curve is also centered at 0 but has standard deviation 2 — it is shorter and wider. The green curve is centered at 4 with standard deviation 1 — it is the same height and width as the blue curve but shifted to the right, showing that the center is controlled by the mean." width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal-compare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.3: Three normal distributions illustrating the effect of different means and standard deviations. All curves are bell-shaped, but the center is controlled by μ and the width and height are controlled by σ.
+Figure&nbsp;6.4: Three normal distributions illustrating the effect of different means and standard deviations. All curves are bell-shaped, but the center is controlled by μ and the width and height are controlled by σ.
 </figcaption>
 </figure>
 </div>
@@ -780,8 +778,8 @@ Figure&nbsp;6.3: Three normal distributions illustrating the effect of different
 <p><strong>Properties of the Normal Curve</strong></p>
 <p>Every normal distribution shares these properties:</p>
 <ul>
-<li>The curve is symmetric about the mean <span class="math inline">\(\mu\)</span>, so the mean, median, and mode are all roughly equal.</li>
-<li>The highest point on the curve is at <span class="math inline">\(x = \mu\)</span>.</li>
+<li>The curve is symmetric about the mean <span class="math inline">\(\mu\)</span>, so the mean, median, and mode are all equal.</li>
+<li>The highest point (the mode) on the curve is at <span class="math inline">\(x = \mu\)</span>.</li>
 <li>The curve changes from “hill-shaped” to “valley-shaped” (i.e., the inflection points occur) at exactly one standard deviation on either side of the mean: at <span class="math inline">\(\mu - \sigma\)</span> and <span class="math inline">\(\mu + \sigma\)</span>.</li>
 <li>The total area under the curve equals 1.</li>
 <li>The area to the left of the mean equals 0.5 and the area to the right equals 0.5, by symmetry.</li>
@@ -824,7 +822,7 @@ Figure&nbsp;6.3: Three normal distributions illustrating the effect of different
 <img src="Continuous-Probability-Distribution_files/figure-html/fig-empirical-rule-1.png" class="img-fluid figure-img" alt="A bell-shaped normal distribution curve centered at mu. Three shaded regions are shown in progressively darker shades of blue moving inward. The lightest region spans three standard deviations on each side of the mean and contains approximately 99.7 percent of the area. The medium region spans two standard deviations and contains approximately 95 percent. The darkest region spans one standard deviation and contains approximately 68 percent. A legend at the bottom identifies each shading level." width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-empirical-rule-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.4: The Empirical Rule: For any normal distribution, approximately 68% of values fall within 1σ of the mean, 95% within 2σ, and 99.7% within 3σ.
+Figure&nbsp;6.5: The Empirical Rule: For any normal distribution, approximately 68% of values fall within 1σ of the mean, 95% within 2σ, and 99.7% within 3σ.
 </figcaption>
 </figure>
 </div>
@@ -833,11 +831,9 @@ Figure&nbsp;6.4: The Empirical Rule: For any normal distribution, approximately 
 <p>The empirical rule is useful for quick estimates and for identifying <strong>unusual observations</strong>. Values that fall more than 2 standard deviations from the mean are unusual (they occur less than 5% of the time), and values more than 3 standard deviations away are very unusual.</p>
 <div id="exm-empirical-rule" class="theorem example">
 <p><span class="theorem-title"><strong>Example 6.4 (Using the Empirical Rule)</strong></span> Heights of adult women in the United States are approximately normally distributed with a mean of 64 inches and a standard deviation of 2.8 inches.</p>
-<ol type="a">
-<li><p>Between what two heights do approximately 68% of women fall?</p></li>
-<li><p>What percentage of women are taller than 69.6 inches?</p></li>
-<li><p>A woman is 57.6 inches tall. Is her height unusual?</p></li>
-</ol>
+<p>a. Between what two heights do approximately 68% of women fall?</p>
+<p>b. What percentage of women are taller than 69.6 inches?</p>
+<p>c. A woman is 57.6 inches tall. Is her height unusual?</p>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
@@ -851,21 +847,29 @@ Figure&nbsp;6.4: The Empirical Rule: For any normal distribution, approximately 
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="a">
-<li>By the Empirical Rule, 68% of data points fall within 1 standard deviation: <span class="math display">\[
+<p>a. By the Empirical Rule, 68% of data points fall within 1 standard deviation: <span class="math display">\[
 64 \pm 2.8 = (61.2, 66.8) \text{ inches}
-\]</span></li>
-</ol>
+\]</span></p>
 <p>About 68% of women are between 61.2 and 66.8 inches tall.</p>
-<ol start="2" type="a">
-<li>We want to find how many standard deviations 69.6 is away from the mean height of 64 inches. <span class="math display">\[
+<p>b. We want to find how many standard deviations 69.6 is away from the mean height of 64 inches. <span class="math display">\[
 \sigma = \dfrac{69.6-64}{2.8} = 2
-\]</span></li>
-</ol>
+\]</span></p>
 <p>This means 69.6 is 2 standard deviations above the mean. From the Empirical Rule, about 95% of women are between <span class="math inline">\(69.6 + 2(2.8) = 58.4\)</span> and 69.6 inches. Because the curve is symmetric, the remaining 5% is split equally between the two tails, so about <span class="math inline">\(\dfrac{5}{2}=2.5\%\)</span> of women are taller than 69.6 inches.</p>
-<ol start="3" type="a">
-<li>We want to determine the number of standard deviations the value 57.6 is from the mean.</li>
-</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-empirical-rule-partb" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A bell-shaped normal distribution curve for heights with mean 64 inches and standard deviation 2.8 inches. The region to the right of 69.6 inches, two standard deviations above the mean, is shaded in blue. A legend identifies this region as P(X greater than 69.6) approximately equal to 2.5 percent.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-empirical-rule-partb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Continuous-Probability-Distribution_files/figure-html/fig-empirical-rule-partb-1.png" class="img-fluid figure-img" alt="A bell-shaped normal distribution curve for heights with mean 64 inches and standard deviation 2.8 inches. The region to the right of 69.6 inches, two standard deviations above the mean, is shaded in blue. A legend identifies this region as P(X greater than 69.6) approximately equal to 2.5 percent." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-empirical-rule-partb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.6: The shaded region shows P(X &gt; 69.6), the probability that a randomly selected woman is taller than 69.6 inches, about 2.5% of the distribution.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>c. We want to determine the number of standard deviations the value 57.6 is from the mean.</p>
 <p><span class="math display">\[
 \sigma = \dfrac{57.6-64}{2.8} = -2.29
 \]</span></p>
@@ -876,7 +880,7 @@ Figure&nbsp;6.4: The Empirical Rule: For any normal distribution, approximately 
 </section>
 <section id="the-standard-normal-distribution" class="level3" data-number="6.3.3">
 <h3 data-number="6.3.3" class="anchored" data-anchor-id="the-standard-normal-distribution"><span class="header-section-number">6.3.3</span> The Standard Normal Distribution</h3>
-<p>Working with many different normal distributions would be cumbersome if we needed separate tables or calculations for each one. The <strong>standard normal distribution</strong> solves this by providing a single reference distribution.</p>
+<p>The <strong>standard normal distribution</strong> provides a common reference distribution for comparing values from different normal distributions.</p>
 <p>The standard normal distribution is the normal distribution with mean 0 and standard deviation 1. It is written <span class="math inline">\(Z \sim N(0, 1)\)</span>.</p>
 <p>Any value <span class="math inline">\(x\)</span> from a normal distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span> can be converted to a <strong>z-score</strong> using:</p>
 <p><span class="math display">\[
@@ -889,22 +893,16 @@ z = \frac{x - \mu}{\sigma}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>Why <span class="math inline">\(z-\)</span> scores matter.</strong> After standardizing, you can compare values from different normal distributions directly. A math SAT score and a blood pressure reading cannot be compared directly, but their <span class="math inline">\(z-\)</span> scores can be, because both <span class="math inline">\(z-\)</span> scores are on the same scale.</p>
+<p><strong>Why <span class="math inline">\(z-\)</span> scores matter.</strong> After standardizing, you can compare values from different normal distributions directly. A math SAT score and an ACT score cannot be compared directly, but their <span class="math inline">\(z-\)</span> scores can be, because both <span class="math inline">\(z-\)</span> scores are on the same scale.</p>
 </div>
 </div>
 </div>
-<div id="exm-calculating-normal-probs" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.5 (Length of Human Pregnancy)</strong></span> The length of a human pregnancy is approximately normally distributed with a mean of 272 days and a standard deviation of 9 days.</p>
-<ol type="a">
-<li><p>State the random variable.</p></li>
-<li><p>Find the probability that a pregnancy lasts more than 280 days.</p></li>
-<li><p>Find the probability that a pregnancy lasts less than 250 days.</p></li>
-<li><p>Find the probability that a pregnancy lasts between 265 and 280 days.</p></li>
-<li><p>Find the length that only 10% of pregnancies are shorter than.</p></li>
-</ol>
+<div id="exm-zscore-sat-act" class="theorem example">
+<p><span class="theorem-title"><strong>Example 6.5 (Comparing Scores from Different Distributions)</strong></span> Math SAT scores are approximately normally distributed with a mean of <span class="math inline">\(\mu = 520\)</span> and a standard deviation of <span class="math inline">\(\sigma = 110\)</span>. ACT Composite scores are approximately normally distributed with a mean of <span class="math inline">\(\mu = 20.8\)</span> and a standard deviation of <span class="math inline">\(\sigma = 5.8\)</span>.</p>
+<p>Student A scores 680 on the SAT Math test. Student B scores 28 on the ACT Composite. Which student scored better relative to other test takers?</p>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -913,18 +911,50 @@ z = \frac{x - \mu}{\sigma}
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="a">
-<li><p>Let <span class="math inline">\(X =\)</span> length of a human pregnancy in days. <span class="math inline">\(X \sim N(272, 9)\)</span>.</p></li>
-<li><p>We want to find <span class="math inline">\(P(X &gt; 280)\)</span>. First, we convert 280 to a <span class="math inline">\(z-\)</span> score:</p></li>
-</ol>
+<p>Because the SAT and ACT use different scales, the raw scores 680 and 28 cannot be compared directly. Converting each to a <span class="math inline">\(z-\)</span>score puts both students on the same scale.</p>
+<p>For Student A,</p>
+<p><span class="math display">\[
+z = \frac{680 - 520}{110} = \frac{160}{110} \approx 1.45
+\]</span></p>
+<p>For Student B,</p>
+<p><span class="math display">\[
+z = \frac{28 - 20.8}{5.8} = \frac{7.2}{5.8} \approx 1.24
+\]</span></p>
+<p>Student A’s score is about 1.45 standard deviations above the mean SAT Math score, while Student B’s score is about 1.24 standard deviations above the mean ACT Composite score. Since <span class="math inline">\(1.45 &gt; 1.24\)</span>, Student A scored better relative to other test takers, even though 680 and 28 are numbers on completely different scales.</p>
+</div>
+</div>
+</div>
+<div id="exm-calculating-normal-probs" class="theorem example">
+<p><span class="theorem-title"><strong>Example 6.6 (Length of Human Pregnancy)</strong></span> The length of a human pregnancy is approximately normally distributed with a mean of 272 days and a standard deviation of 9 days.</p>
+<p>a. State the random variable.</p>
+<p>b. Find the probability that a pregnancy lasts more than 280 days.</p>
+<p>c. Find the probability that a pregnancy lasts less than 250 days.</p>
+<p>d. Find the probability that a pregnancy lasts between 265 and 280 days.</p>
+<p>e. Find the length that only 10% of pregnancies are shorter than.</p>
+</div>
+<p>The examples that follow show how to find probabilities associated with a normal distribution two ways: by standardizing and using the standard normal distribution, and directly using Rguroo.</p>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>a. Let <span class="math inline">\(X =\)</span> length of a human pregnancy in days. <span class="math inline">\(X \sim N(272, 9)\)</span>.</p>
+<p>b. We want to find <span class="math inline">\(P(X &gt; 280)\)</span>. First, we convert 280 to a <span class="math inline">\(z-\)</span> score:</p>
 <p><span class="math display">\[
 z = \frac{280 - 272}{9} = \frac{8}{9} \approx 0.89
 \]</span></p>
 <p>So, <span class="math inline">\(P(X &gt; 280) = P(Z &gt; 0.89)\)</span>.</p>
 <div id="calculating-standard-normal-probability-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Finding Standard Normal Probabilities in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -933,7 +963,7 @@ z = \frac{280 - 272}{9} = \frac{8}{9} \approx 0.89
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Open the <strong>Probability-Simulation</strong> toolbox in Rguroo.<br>
@@ -947,7 +977,7 @@ z = \frac{280 - 272}{9} = \frac{8}{9} \approx 0.89
 <li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the probability.</li>
 </ol>
 <div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -956,7 +986,7 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -975,7 +1005,7 @@ Click here to see the Rguroo dialog
 <img src="Rguroo_outputs/Continuous_Probability/standard_normal_graph.png" class="img-fluid figure-img" alt="Rguroo graph output of probability above z = 0.89 for the standard normal distribution. The graph shows a bell-shaped curve centered at 0, with the area to the right of z = 0.89 shaded in yellow, representing the probability of observing a value greater than 0.89.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standard-normal-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.5: Graph of the standard normal distribution showing the area above z = 0.89 shaded in yellow, representing P(Z &gt; 0.89).
+Figure&nbsp;6.7: Graph of the standard normal distribution showing the area above z = 0.89 shaded in yellow, representing P(Z &gt; 0.89).
 </figcaption>
 </figure>
 </div>
@@ -985,9 +1015,7 @@ Figure&nbsp;6.5: Graph of the standard normal distribution showing the area abov
 </div>
 </div>
 <p>So, <span class="math inline">\(P(X &gt; 280) \approx 0.1867\)</span>. About 18.7% of all pregnancies last more than 280 days. This is not unusual since the probability exceeds 5%.</p>
-<ol start="3" type="a">
-<li>We want to find <span class="math inline">\(P(X &lt; 250)\)</span>. First, we convert 250 to a <span class="math inline">\(z-\)</span> score:</li>
-</ol>
+<p>c. We want to find <span class="math inline">\(P(X &lt; 250)\)</span>. First, we convert 250 to a <span class="math inline">\(z-\)</span> score:</p>
 <p><span class="math display">\[
 z = \frac{250 - 272}{9} = \frac{-22}{9} \approx -2.44
 \]</span></p>
@@ -1007,16 +1035,14 @@ z = \frac{250 - 272}{9} = \frac{-22}{9} \approx -2.44
 <img src="Rguroo_outputs/Continuous_Probability/standard_normal_graph_c.png" class="img-fluid figure-img" alt="Rguroo graph output of probability below z = -2.44 for the standard normal distribution. The graph shows a bell-shaped curve centered at 0, with the area to the left of z = -2.44 shaded in yellow, representing the probability of observing a value less than -2.44.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standard-normal-graph-c-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.6: Graph of the standard normal distribution showing the area below z = -2.44 shaded in yellow, representing P(Z &lt; -2.44).
+Figure&nbsp;6.8: Graph of the standard normal distribution showing the area below z = -2.44 shaded in yellow, representing P(Z &lt; -2.44).
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>So, <span class="math inline">\(P(X &lt; 250) \approx 0.0073\)</span>. This is unusual since almost no pregnancies last less than 250 days.</p>
-<ol start="4" type="a">
-<li>We want to find <span class="math inline">\(P(265 &lt; X &lt; 280)\)</span>. First, we convert both values to <span class="math inline">\(z-\)</span> scores:</li>
-</ol>
+<p>d. We want to find <span class="math inline">\(P(265 &lt; X &lt; 280)\)</span>. First, we convert both values to <span class="math inline">\(z-\)</span> scores:</p>
 <p><span class="math display">\[
 z_1 = \frac{265 - 272}{9} = \frac{-7}{9} \approx -0.78
 \]</span></p>
@@ -1039,16 +1065,14 @@ z_2 = \frac{280 - 272}{9} = \frac{8}{9} \approx 0.89
 <img src="Rguroo_outputs/Continuous_Probability/standard_normal_graph_d.png" class="img-fluid figure-img" alt="Rguroo graph output of probability between z = -0.78 and z = 0.89 for the standard normal distribution. The graph shows a bell-shaped curve centered at 0, with the area between these two z-scores shaded in yellow, representing the probability of observing a value between -0.78 and 0.89.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standard-normal-graph-d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.7: Graph of the standard normal distribution showing the area between z = -0.78 and z = 0.89 shaded in yellow, representing P(-0.78 &lt; Z &lt; 0.89).
+Figure&nbsp;6.9: Graph of the standard normal distribution showing the area between z = -0.78 and z = 0.89 shaded in yellow, representing P(-0.78 &lt; Z &lt; 0.89).
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p><span class="math inline">\(P(265 &lt; X &lt; 280) \approx 0.5956\)</span>. About 59.6% of pregnancies last between 265 and 280 days.</p>
-<ol start="5" type="a">
-<li>We want to find the length <span class="math inline">\(x\)</span> such that <span class="math inline">\(P(Z &lt; z) = 0.10\)</span>. This means we are looking for the 10th percentile of the distribution.</li>
-</ol>
+<p>e. We want to find the length <span class="math inline">\(x\)</span> such that <span class="math inline">\(P(Z &lt; z) = 0.10\)</span>. This means we are looking for the 10th percentile of the distribution.</p>
 <p>Using the continuous probability calculator in Rugroo with Normal Distribution, select Probability <span class="math inline">\(\Rightarrow\)</span> Values, since we will be inputting probability and we want the value. Enter <span class="typein">0</span> for the mean (<span class="math inline">\(\mu\)</span>) and <span class="typein">1</span> for the standard deviation (<span class="math inline">\(\sigma\)</span>). We want the value such that the area below some value <span class="math inline">\(z\)</span> is 0.1, select <span class="dpd">below</span> in the dropdown menu. Then enter <span class="typein">0.1</span> in the next box.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1064,7 +1088,7 @@ Figure&nbsp;6.7: Graph of the standard normal distribution showing the area betw
 <img src="Rguroo_outputs/Continuous_Probability/standard_normal_graph_e.png" class="img-fluid figure-img" alt="Rguroo graph output of probability for the 10th percentile of the standard normal distribution. The graph shows a bell-shaped curve centered at 0, with the area to the left of the 10th percentile shaded in yellow, representing the probability of observing a value less than the 10th percentile.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standard-normal-graph-e-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.8: Graph of the standard normal distribution showing the area to the left of the 10th percentile shaded in yellow, representing P(Z &lt; z_{0.10}).
+Figure&nbsp;6.10: Graph of the standard normal distribution showing the area to the left of the 10th percentile shaded in yellow, representing P(Z &lt; z_{0.10}).
 </figcaption>
 </figure>
 </div>
@@ -1088,16 +1112,14 @@ x = 272 + (-1.28)(9) = 272 - 11.52 = 260.48
 <li><strong>Interpret the result in context.</strong></li>
 </ol>
 <div id="exm-SAT-scores" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.6 (Mathematics SAT Scores)</strong></span> The mean mathematics SAT score is 514 with a standard deviation of 117. Assume the mathematics SAT score is approximately normally distributed.</p>
-<ol type="a">
-<li><p>Stat the random variable and its distribution.</p></li>
-<li><p>Find the probability that a randomly selected person has a score above 700.</p></li>
-<li><p>Find the probability that a person has a score below 400.</p></li>
-<li><p>Find the score that represents the top 1% of all scores.</p></li>
-</ol>
+<p><span class="theorem-title"><strong>Example 6.7 (Mathematics SAT Scores)</strong></span> The mean mathematics SAT score is 514 with a standard deviation of 117. Assume the mathematics SAT score is approximately normally distributed.</p>
+<p>a. State the random variable and its distribution.</p>
+<p>b. Find the probability that a randomly selected person has a score above 700.</p>
+<p>c. Find the probability that a person has a score below 400.</p>
+<p>d. Find the score that represents the top 1% of all scores.</p>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1106,7 +1128,7 @@ x = 272 + (-1.28)(9) = 272 - 11.52 = 260.48
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="a">
 <li><p>Let <span class="math inline">\(X\)</span> = SAT mathematics score, then <span class="math inline">\(X \sim N(514, 117)\)</span></p></li>
@@ -1142,7 +1164,7 @@ x = 272 + (-1.28)(9) = 272 - 11.52 = 260.48
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-SAT-scores-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.9: Dialog and graph of the normal distribution showing the area to the right of 700 shaded in yellow, representing P(X &gt; 700).
+Figure&nbsp;6.11: Dialog and graph of the normal distribution showing the area to the right of 700 shaded in yellow, representing P(X &gt; 700).
 </figcaption>
 </figure>
 </div>
@@ -1181,7 +1203,7 @@ Figure&nbsp;6.9: Dialog and graph of the normal distribution showing the area to
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-SAT-scores-graph-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.10: Dialog and graph of the normal distribution showing the area to the left of 400 shaded in yellow, representing P(X &lt; 400).
+Figure&nbsp;6.12: Dialog and graph of the normal distribution showing the area to the left of 400 shaded in yellow, representing P(X &lt; 400).
 </figcaption>
 </figure>
 </div>
@@ -1220,7 +1242,7 @@ Figure&nbsp;6.10: Dialog and graph of the normal distribution showing the area t
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-SAT-scores-graph-c-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.11: Dialog and graph of the normal distribution showing the area to the right of the value shaded in yellow, representing P(X &gt; x) = 0.01.
+Figure&nbsp;6.13: Dialog and graph of the normal distribution showing the area to the right of the value shaded in yellow, representing P(X &gt; x) = 0.01.
 </figcaption>
 </figure>
 </div>
@@ -1262,7 +1284,7 @@ Figure&nbsp;6.11: Dialog and graph of the normal distribution showing the area t
 <li>Find the probability a student waits more than 8 minutes.</li>
 <li>Find the probability a student waits less than 3 minutes.</li>
 <li>Find the probability a student waits between 4 and 7 minutes.</li>
-<li>Find the waiting time that only 5% of students exceed.</li>
+<li>Find the 95th percentile of waiting times. Interpret this value in the context of the problem.</li>
 </ol></li>
 <li><p>The amount of time between calls to a customer service center is normally distributed with a mean of 3 minutes and a standard deviation of 1 minute.</p>
 <ol type="a">
@@ -1304,7 +1326,7 @@ Figure&nbsp;6.11: Dialog and graph of the normal distribution showing the area t
 <li>Approximately bell-shaped</li>
 <li>Free from extreme outliers</li>
 </ul>
-<p>A histogram, as shown in <a href="#fig-histogram-shapes" class="quarto-xref">Figure&nbsp;<span>6.12</span></a>, that is strongly right-skewed, left-skewed, bimodal, or heavily influenced by extreme values suggests the data may not come from a normal distribution.</p>
+<p>A histogram, as shown in <a href="#fig-histogram-shapes" class="quarto-xref">Figure&nbsp;<span>6.14</span></a>, that is strongly right-skewed, left-skewed, bimodal, or heavily influenced by extreme values suggests the data may not come from a normal distribution.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-histogram-shapes" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Four histograms arranged in a two by two grid. The top left histogram is roughly symmetric and bell-shaped with a single peak, consistent with a normal distribution. The top right histogram is strongly right-skewed, with a tall bar on the left and a long tail extending to the right. The bottom left histogram is bimodal, showing two distinct peaks separated by a dip. The bottom right histogram is roughly bell-shaped in the main body but has a small cluster of extreme values far to the right, representing outliers.">
@@ -1313,35 +1335,82 @@ Figure&nbsp;6.11: Dialog and graph of the normal distribution showing the area t
 <img src="Continuous-Probability-Distribution_files/figure-html/fig-histogram-shapes-1.png" class="img-fluid figure-img" alt="Four histograms arranged in a two by two grid. The top left histogram is roughly symmetric and bell-shaped with a single peak, consistent with a normal distribution. The top right histogram is strongly right-skewed, with a tall bar on the left and a long tail extending to the right. The bottom left histogram is bimodal, showing two distinct peaks separated by a dip. The bottom right histogram is roughly bell-shaped in the main body but has a small cluster of extreme values far to the right, representing outliers." width="864">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-histogram-shapes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.12: Four histogram shapes: approximately normal (top left), right-skewed (top right), bimodal (bottom left), and normal with extreme outliers (bottom right).
+Figure&nbsp;6.14: Four histogram shapes: approximately normal (top left), right-skewed (top right), bimodal (bottom left), and normal with extreme outliers (bottom right).
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>2. Normal Quantile Plot (Normal Probability Plot)</strong></p>
-<p>A <strong>normal quantile plot</strong> (also called a Q-Q plot) compares the actual data values against the values we would expect if the data were perfectly normal. If the data follow a normal distribution, the points will fall close to a <strong>straight line</strong>. Departures from that line — especially S-shaped curves, strong bends, or systematic patterns — suggest the data are not well-described by a normal model. <a href="#fig-qq-comparison" class="quarto-xref">Figure&nbsp;<span>6.13</span></a> illustrates three common patterns you may encounter: data that closely follow the reference line, data that curve away from the line in an S-shape, and data that mostly follow the line but contain one or two points that break away from it.</p>
+<p>A <strong>normal quantile plot</strong> (also called a Q-Q plot) compares the actual data values against the values we would expect if the data were perfectly normal. If the data follow a normal distribution, the points will fall close to a <strong>straight line</strong>. Departures from that line — especially S-shaped curves, strong bends, or systematic patterns — suggest the data are not well-described by a normal model. <span class="quarto-unresolved-ref">?fig-qq-comparison</span> illustrates three common patterns you may encounter: data that closely follow the reference line, data that curve away from the line in an S-shape, and data that mostly follow the line but contain one or two points that break away from it.</p>
 <p><strong>Guidelines for interpretation:</strong></p>
 <ul>
 <li>Points close to a line → consistent with normality</li>
 <li>Strong curve or S-shape → not consistent with normality</li>
 <li>One or two points far from the line → possible outliers worth investigating</li>
 </ul>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-qq-comparison" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three side-by-side normal quantile plots. The left panel shows points falling closely along a straight diagonal line, consistent with a normally distributed sample. The middle panel shows points that curve upward away from the line in an S-shape, consistent with a right-skewed distribution. The right panel shows most points following the line closely but with two points at the upper right far away from the line, indicating possible outliers.">
+<div id="fig-qq-plots-comparison" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-qq-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Continuous-Probability-Distribution_files/figure-html/fig-qq-comparison-1.png" class="img-fluid figure-img" alt="Three side-by-side normal quantile plots. The left panel shows points falling closely along a straight diagonal line, consistent with a normally distributed sample. The middle panel shows points that curve upward away from the line in an S-shape, consistent with a right-skewed distribution. The right panel shows most points following the line closely but with two points at the upper right far away from the line, indicating possible outliers." width="960">
+<div aria-describedby="fig-qq-plots-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-qq-plots-comparison" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-qq-plots-comparison-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Four normal probability plots with confidence bounds. The normal sample tracks the diagonal reference line closely from end to end, staying within the bounds. The exponential sample curves noticeably away from the line, with several large values rising above the upper bound, reflecting right skew. The Student t sample with four degrees of freedom follows the line closely through the middle but exits the bounds at both tails, reflecting heavy but symmetric tails. The Cauchy sample deviates sharply from the line almost everywhere, with several extreme values far outside the bounds in both directions, reflecting very heavy tails.">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-qq-plots-comparison-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Continuous_Probability/qq_normal_sample.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-qq-plots-comparison" alt="Four normal probability plots with confidence bounds. The normal sample tracks the diagonal reference line closely from end to end, staying within the bounds. The exponential sample curves noticeably away from the line, with several large values rising above the upper bound, reflecting right skew. The Student t sample with four degrees of freedom follows the line closely through the middle but exits the bounds at both tails, reflecting heavy but symmetric tails. The Cauchy sample deviates sharply from the line almost everywhere, with several extreme values far outside the bounds in both directions, reflecting very heavy tails.">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qq-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.13: Normal quantile plots (Q-Q plots) showing three patterns: data consistent with normality (left), right-skewed data forming a curved pattern (middle), and data with possible outliers (right).
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-qq-plots-comparison-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Normal(0, 1)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-qq-plots-comparison" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-qq-plots-comparison-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Four normal probability plots with confidence bounds. The normal sample tracks the diagonal reference line closely from end to end, staying within the bounds. The exponential sample curves noticeably away from the line, with several large values rising above the upper bound, reflecting right skew. The Student t sample with four degrees of freedom follows the line closely through the middle but exits the bounds at both tails, reflecting heavy but symmetric tails. The Cauchy sample deviates sharply from the line almost everywhere, with several extreme values far outside the bounds in both directions, reflecting very heavy tails.">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-qq-plots-comparison-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Continuous_Probability/qq_exponential_sample.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-qq-plots-comparison" alt="Four normal probability plots with confidence bounds. The normal sample tracks the diagonal reference line closely from end to end, staying within the bounds. The exponential sample curves noticeably away from the line, with several large values rising above the upper bound, reflecting right skew. The Student t sample with four degrees of freedom follows the line closely through the middle but exits the bounds at both tails, reflecting heavy but symmetric tails. The Cauchy sample deviates sharply from the line almost everywhere, with several extreme values far outside the bounds in both directions, reflecting very heavy tails.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-qq-plots-comparison-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Exponential(1)
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>You will learn more about normal quantile plots in later chapters, but for now, the main idea is that a straight line indicates the data are consistent with a normal distribution.</p>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-qq-plots-comparison" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-qq-plots-comparison-3" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Four normal probability plots with confidence bounds. The normal sample tracks the diagonal reference line closely from end to end, staying within the bounds. The exponential sample curves noticeably away from the line, with several large values rising above the upper bound, reflecting right skew. The Student t sample with four degrees of freedom follows the line closely through the middle but exits the bounds at both tails, reflecting heavy but symmetric tails. The Cauchy sample deviates sharply from the line almost everywhere, with several extreme values far outside the bounds in both directions, reflecting very heavy tails.">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-qq-plots-comparison-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Continuous_Probability/qq_student_t_sample.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-qq-plots-comparison" alt="Four normal probability plots with confidence bounds. The normal sample tracks the diagonal reference line closely from end to end, staying within the bounds. The exponential sample curves noticeably away from the line, with several large values rising above the upper bound, reflecting right skew. The Student t sample with four degrees of freedom follows the line closely through the middle but exits the bounds at both tails, reflecting heavy but symmetric tails. The Cauchy sample deviates sharply from the line almost everywhere, with several extreme values far outside the bounds in both directions, reflecting very heavy tails.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-qq-plots-comparison-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) Student t (4 df)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-qq-plots-comparison" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-qq-plots-comparison-4" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Four normal probability plots with confidence bounds. The normal sample tracks the diagonal reference line closely from end to end, staying within the bounds. The exponential sample curves noticeably away from the line, with several large values rising above the upper bound, reflecting right skew. The Student t sample with four degrees of freedom follows the line closely through the middle but exits the bounds at both tails, reflecting heavy but symmetric tails. The Cauchy sample deviates sharply from the line almost everywhere, with several extreme values far outside the bounds in both directions, reflecting very heavy tails.">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-qq-plots-comparison-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Continuous_Probability/qq_cauchy_sample.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-qq-plots-comparison" alt="Four normal probability plots with confidence bounds. The normal sample tracks the diagonal reference line closely from end to end, staying within the bounds. The exponential sample curves noticeably away from the line, with several large values rising above the upper bound, reflecting right skew. The Student t sample with four degrees of freedom follows the line closely through the middle but exits the bounds at both tails, reflecting heavy but symmetric tails. The Cauchy sample deviates sharply from the line almost everywhere, with several extreme values far outside the bounds in both directions, reflecting very heavy tails.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-qq-plots-comparison-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) Cauchy(0, 1)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qq-plots-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.15: Normal probability plots with 95% confidence bounds for random samples drawn from four different distributions.
+</figcaption>
+</figure>
+</div>
+<p>You will see applications of normal quantile plots in the later chapters, but for now, the main idea is that a straight line indicates the data are consistent with a normal distribution.</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -1353,7 +1422,7 @@ Figure&nbsp;6.13: Normal quantile plots (Q-Q plots) showing three patterns: data
 </div>
 </div>
 <div id="exm-eruption-times" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.7 (Kiama Blowhole Eruption Times)</strong></span> The dataset <span class="data">Blowhole_eruptions</span> contains times (in seconds) between eruptions of a blowhole on the coast of Australia. The data in <a href="#tbl-Eruption" class="quarto-xref">Table&nbsp;<span>6.1</span></a> are times in seconds between eruptions (“Kiama blowhole eruptions,” 2013). A complete description of the variables is provided in the <a href="#code-book-class">dataset code book</a> that follows.</p>
+<p><span class="theorem-title"><strong>Example 6.8 (Kiama Blowhole Eruption Times)</strong></span> The dataset <span class="data">Blowhole_eruptions</span> contains times (in seconds) between eruptions of a blowhole on the coast of Australia. The data in <a href="#tbl-Eruption" class="quarto-xref">Table&nbsp;<span>6.1</span></a> are times in seconds between eruptions (“Kiama blowhole eruptions,” 2013). A complete description of the variables is provided in the <a href="#code-book-class">dataset code book</a> that follows.</p>
 <ol type="a">
 <li>State the random variable</li>
 <li>Draw a density plot overlay of a histogram of the data.</li>
@@ -1403,7 +1472,7 @@ Table&nbsp;6.1: Time (in Seconds) Between Kiama Blowhole Eruptions
 </div>
 </div>
 <div id="code-book-class" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1412,7 +1481,7 @@ Code book for Class Blowhole_eruptions Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Description</strong> The ocean swell produces spectacular eruptions of water through a hole in the cliff at Kiama, about 120km south of Sydney, known as the Blowhole. The times at which 65 successive eruptions occurred from 1340 hours on 12 July 1998 were observed using a digital watch.</p>
 <p>Format</p>
@@ -1424,7 +1493,7 @@ Code book for Class Blowhole_eruptions Dataset
 </div>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1433,11 +1502,11 @@ Code book for Class Blowhole_eruptions Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="a">
 <li>Let <span class="math inline">\(X =\)</span> time (in seconds) between eruptions of the Kiama blowhole.</li>
-<li>It was shown in Chapter 2 <a href="#exm-drawing-a-histogram-density-plot">Example</a> how to create a density plot overlay of a histgram in Rguroo. The histogram of eruption times and dialog box are shown in <a href="#fig-eruption-histogram" class="quarto-xref">Figure&nbsp;<span>6.14</span></a>.</li>
+<li>It was shown in Chapter 2 <a href="#exm-drawing-a-histogram-density-plot">Example</a> how to create a density plot overlay of a histgram in Rguroo. The histogram of eruption times and dialog box are shown in <a href="#fig-eruption-histogram" class="quarto-xref">Figure&nbsp;<span>6.16</span></a>.</li>
 </ol>
 <div class="cell">
 <div id="fig-eruption-histogram" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -1469,7 +1538,7 @@ Code book for Class Blowhole_eruptions Dataset
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eruption-histogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.14: Histogram and density plot for Kiama Blowhole eruption times.
+Figure&nbsp;6.16: Histogram and density plot for Kiama Blowhole eruption times.
 </figcaption>
 </figure>
 </div>
@@ -1479,7 +1548,7 @@ Figure&nbsp;6.14: Histogram and density plot for Kiama Blowhole eruption times.
 <li>Click to expand the box below to review how to create a normal probability plot in Rguroo.</li>
 </ol>
 <div id="mean-inference-qqplot" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating a Normal Probability Plot in Rguroo">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1488,7 +1557,7 @@ Figure&nbsp;6.14: Histogram and density plot for Kiama Blowhole eruption times.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li><p>Open the <strong>Analytics</strong> toolbox in Rguroo.</p></li>
@@ -1498,7 +1567,7 @@ Figure&nbsp;6.14: Histogram and density plot for Kiama Blowhole eruption times.
 <li><p>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to view the output.</p></li>
 </ol>
 <div class="inner-callout callout callout-style-default callout-tip callout-titled" title="Click here to see the Rguroo dialog">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1507,7 +1576,7 @@ Click here to see the Rguroo dialog
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="cell-output-display">
@@ -1517,7 +1586,7 @@ Click here to see the Rguroo dialog
 <img src="Rguroo_dialogs/Continuous_Probability/qqplot_dialog.png" class="img-fluid figure-img" style="width:100.0%" alt="Rguroo dialog for creating a normal quantile plot of Kiama Blowhole eruption times. The dialog shows the dataset Blowhole_eruptions selected, with the variable Interval chosen for the analysis. ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qqplot-dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.15: Rguroo dialog for creating a normal quantile plot of Kiama Blowhole eruption times.
+Figure&nbsp;6.17: Rguroo dialog for creating a normal quantile plot of Kiama Blowhole eruption times.
 </figcaption>
 </figure>
 </div>
@@ -1537,13 +1606,13 @@ Figure&nbsp;6.15: Rguroo dialog for creating a normal quantile plot of Kiama Blo
 <img src="Rguroo_outputs/Continuous_Probability/qqplot_erup.svg" class="img-fluid figure-img" style="width:100.0%" alt="Rguroo output for a normal quantile plot of Kiama Blowhole eruption times. The plot shows the sample quantiles of the eruption times on the y-axis and the theoretical quantiles of a normal distribution on the x-axis. The points deviate from the straight reference line, indicating that the data are not normally distributed.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qqplot-erup-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.16: Normal probability plot of Kiama Blowhole eruption times.
+Figure&nbsp;6.18: Normal probability plot of Kiama Blowhole eruption times.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-qqplot-erup" class="quarto-xref">Figure&nbsp;<span>6.16</span></a> shows the normal probability plot of the eruption times. The points deviate from the straight reference line, indicating that the data are not normally distributed.</p>
+<p><a href="#fig-qqplot-erup" class="quarto-xref">Figure&nbsp;<span>6.18</span></a> shows the normal probability plot of the eruption times. The points deviate from the straight reference line, indicating that the data are not normally distributed.</p>
 <ol start="4" type="a">
 <li>The histogram and normal probability plot show that the eruption times are not consistent with a normal distribution. The data are right-skewed, so a normal model is not appropriate for this dataset.</li>
 </ol>
@@ -1551,7 +1620,7 @@ Figure&nbsp;6.16: Normal probability plot of Kiama Blowhole eruption times.
 </div>
 </div>
 <div id="exm-cholesterol-data" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.8 (Cholesterol Data)</strong></span> The dataset <span class="data">cholesterol</span> was collected on patients four days after having a heart attack. The data is in <a href="mean inference.html#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>9.12</span></a>.</p>
+<p><span class="theorem-title"><strong>Example 6.9 (Cholesterol Data)</strong></span> The dataset <span class="data">cholesterol</span> was collected on patients four days after having a heart attack. The data is in <a href="mean inference.html#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>9.12</span></a>.</p>
 <ol type="a">
 <li>Create a density plot overlay of the histogram of the day 4 cholesterol values and describe the shape.</li>
 <li>Create a normal probability plot. Do the points fall close to a line?</li>
@@ -1559,7 +1628,7 @@ Figure&nbsp;6.16: Normal probability plot of Kiama Blowhole eruption times.
 </ol>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1568,11 +1637,11 @@ Figure&nbsp;6.16: Normal probability plot of Kiama Blowhole eruption times.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="a">
 <li><p>Let <span class="math inline">\(X =\)</span> day 4 cholesterol levels measured in mg/dL</p></li>
-<li><p>The histogram of day 4 cholesterol levels with the density overlay is shown in <a href="#fig-cholesterol-hist" class="quarto-xref">Figure&nbsp;<span>6.17</span></a>.</p></li>
+<li><p>The histogram of day 4 cholesterol levels with the density overlay is shown in <a href="#fig-cholesterol-hist" class="quarto-xref">Figure&nbsp;<span>6.19</span></a>.</p></li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
@@ -1582,7 +1651,7 @@ Figure&nbsp;6.16: Normal probability plot of Kiama Blowhole eruption times.
 <img src="Rguroo_outputs/Continuous_Probability/cholesterol_hist.svg" class="img-fluid figure-img" style="width:70.0%" alt="Rguroo output for creating a histogram and density plot of Day 4 Cholesterol levels. The output graph displays a histogram of the cholesterol levels with a density curve overlaid.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cholesterol-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.17: Histogram of day 4 cholesterol levels
+Figure&nbsp;6.19: Histogram of day 4 cholesterol levels
 </figcaption>
 </figure>
 </div>
@@ -1590,7 +1659,7 @@ Figure&nbsp;6.17: Histogram of day 4 cholesterol levels
 </div>
 <p>The density plot of day 4 cholesterol levels looks roughly bell-shaped and symmetric.</p>
 <ol start="3" type="a">
-<li>The normal probability plot of day 4 cholesterol levels is shown in <a href="#fig-cholesterol-qqplot" class="quarto-xref">Figure&nbsp;<span>6.18</span></a>.</li>
+<li>The normal probability plot of day 4 cholesterol levels is shown in <a href="#fig-cholesterol-qqplot" class="quarto-xref">Figure&nbsp;<span>6.20</span></a>.</li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
@@ -1600,7 +1669,7 @@ Figure&nbsp;6.17: Histogram of day 4 cholesterol levels
 <img src="Rguroo_outputs/Continuous_Probability/qqplot_cholesterol.svg" class="img-fluid figure-img" style="width:70.0%" alt="Rguroo output for creating a normal probability of Day 4 Cholesterol levels. The output graph displays qq plot of cholesterol where the points look fairly linear.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cholesterol-qqplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.18: QQ plot of day 4 cholesterol levels
+Figure&nbsp;6.20: QQ plot of day 4 cholesterol levels
 </figcaption>
 </figure>
 </div>
@@ -1760,6 +1829,14 @@ Table&nbsp;6.4: Annual Rainfall in Sydney, Australia
 </section>
 
 </main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll('a[href]').forEach(function (link) {
+    link.setAttribute("target", "_blank");
+    link.setAttribute("rel", "noopener noreferrer");
+  });
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

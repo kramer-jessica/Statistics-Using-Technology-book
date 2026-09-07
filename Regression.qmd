@@ -31,17 +31,17 @@ Hotdog<-read.csv( "https://krkozak.github.io/MAT160/hotdog_beef_poultry.csv")
 
 
 
-The previous chapter focused on comparing populations to determine whether there is a difference between them by examining two variables that measured the same or very similar quantities. In this chapter, we shift our focus to situations where the variables do not need to measure the same thing. Instead of comparing groups, we investigate whether a relationship exists between two or more variables. To study this relationship, we use regression to model the relationship between variables and correlation to measure the strength and direction of that relationship.
+The previous chapter focused on comparing populations to determine whether there is a difference between them. In this chapter, we shift our focus from comparing populations to examining **relationships between variables**. The variables do not need to measure the same or similar quantities. For example, we might investigate whether alcohol content is related to the number of calories in a beer or whether the value of a house is related to the rental income it generates.
 
-There are many types of relationships that can exist between variables. In this book, we will focus only on linear relationships. However, it is important to recognize that other types of relationships can also be used to describe and model data, depending on the situation.
+We will use **regression** to model relationships between variables and make predictions, and **correlation** to describe the strength and direction of those relationships. In this book, we focus on **linear relationships**, although other types of relationships can also be used to describe and model data.
 
-## Regression
+## Regression {#sec-Regression}
 
-### Introduction to Regression and Correlation
+### Exploring Relationships Between Variables
 
-When comparing different variables, two questions naturally arise: “Is there a relationship between the variables?” and “How strong is that relationship?” These questions can be answered using **regression** and **correlation**. Regression helps determine whether a relationship exists (in this book, we focus only on linear relationships), while correlation measures the strength of the linear relationship.
+Before we can study a relationship between two variables, we need to identify the role that each variable plays. The **response variable** is the variable whose variability we are trying to explain or whose value we want to predict. The variable used to help explain or predict the response variable is called the **explanatory variable** or **predictor variable**. More generally, variables used to explain changes in a response variable are also referred to as **predictors** or **covariates**.
 
-To better understand these ideas, it is helpful to clearly define the roles the variables play in this analysis. The **response** variable is the variable whose variability we are trying to explain or predict. The variable used to explain the change (or variability) in the **response variable** is called the **explanatory variable** or **predictor variable**. More generally, any variables that help explain changes in a response variable are referred to as **predictors** or **covariates**. To introduce the concepts of regression and correlation more fully, it is helpful to examine a set of data.
+A useful first step in exploring the relationship between two quantitative variables is to construct a **scatterplot**. A scatterplot allows us to see whether the variables appear to be related and, in particular, whether the relationship appears to follow a linear pattern. We begin with an example involving the alcohol content and number of calories in beer.
 
 ::: {#exm-determine-relationship}
 ## Determining if There is a Relationship
@@ -92,7 +92,8 @@ References: (Find Out How Many Calories in Beer?, 2019)
 
 ::: {.callout-tip .solution-callout collapse="true" icon=false}
 ## 🔎 Solution
-(a) To aid in figuring out if there is a relationship between the alcohol content and the number of calories, we draw a scatterplot of the data. First, it is helpful to clearly state the variables. Following the convention of algebra, we represent the predictor variable as $x$ and the response variable as $y$. In this example, $x$ = percent alcohol content in the beer; [alcohol]{.var}, and $y$ = number of calories in 12 ounce beer; [calories]{.var}
+
+a\. To aid in figuring out if there is a relationship between the alcohol content and the number of calories, we draw a scatterplot of the data. First, it is helpful to clearly state the variables. Following the convention of algebra, we represent the predictor variable as $x$ and the response variable as $y$. In this example, $x$ = percent alcohol content in the beer; [alcohol]{.var}, and $y$ = number of calories in 12 ounce beer; [calories]{.var}
 
 
 :::: {#Creating-scatterplot-of-Calories-vs-Alcohol-Content-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Creating scatterplot of Calories vs. Alcohol Content"}
@@ -130,7 +131,7 @@ Click the button to save the scatterplot to your Rguroo account.
 knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieScatter.svg")
 ```
 
-b. The scatterplot, displayed in @fig-Beer-point, shows a clear upward trend in the data. As alcohol content increases, the number of calories also tends to increase. The points cluster around what appears to be a straight-line pattern, even though they are not perfectly aligned.
+b\. The scatterplot, displayed in @fig-Beer-point, shows a clear upward trend in the data. As alcohol content increases, the number of calories also tends to increase. The points cluster around what appears to be a straight-line pattern, even though they are not perfectly aligned.
 
 This overall pattern suggests that a straight line would do a reasonable job of describing how calories change as alcohol content changes.
 
@@ -163,14 +164,15 @@ knitr::include_graphics("Rguroo_dialogs/Regression/scatterplot_dialog_LS.png")
 ```
 
 
-Given a collection of paired sample data, the regression equation is 
+Given a collection of paired sample data, the regression equation is
 
-$$\hat{y}=b + mx$$
+$$
+\hat{y}=b+mx,
+$$
 
-where $m$ is the slope of the line and the point $(0,b)$ is the $y$-intercept. 
-The **independent variable** ($x$) is the **explanatory**, or **predictor**, variable; it is used to explain or predict changes in another variable. The **dependent variable** ($y$) is the **response** variable; its value changes in response to the predictor. The quantity $\hat y$ (read y-hat) is called the **predicted value** or the **fitted value** for a given value of $x$.
+where $m$ is the **slope** of the line and the point $(0,b)$ is the **$y$-intercept**. Using the terminology introduced earlier, we let $x$ represent the **predictor variable** and $y$ represent the **response variable**. The quantity $\hat{y}$ (read *y-hat*) is called the **predicted value** or **fitted value** of the response variable for a given value of $x$.
 
-In our example, alcohol content is the predictor (independent, $x$) variable, and number of calories is the response (dependent, $y$) variable, since it is more reasonable to predict calories from alcohol content than the other way around.
+In our beer example, alcohol content is the predictor variable ($x$), and the number of calories is the response variable ($y$). Thus, the regression equation will allow us to predict the number of calories in a beer based on its alcohol content.
 
 The **residuals** are the difference between the actual observed values of the response and the corresponding estimated (predicted) values, namely 
 
@@ -514,7 +516,7 @@ $$
 
 The $y$-intercept for the imported beers is 32.5, which is larger than the $y$-intercept for domestic beers, 9.4. The slopes of the two lines are relatively close, with the slope for domestic beers equal to 27.5 and the slope for imported beers equal to 23.7.
 
-### Homework for Regression Section
+### Homework for @sec-Regression
 
 **For each problem, state the variables. The datasets in this section are also used in the homework for sections 10.2 and 10.3.**
 
@@ -910,7 +912,7 @@ References R.M. Heavenrich, J.D. Murrell, and K.H. Hellman, Light Duty Automotiv
 
 :::
 
-## Correlation 
+## Correlation {#sec-correlation}
 
 In the previous section, we used regression to answer the question: Is there a relationship between two quantitative variables? We found a least squares line that summarizes the linear relationship in the data and allows us to make predictions.
 
@@ -1049,7 +1051,7 @@ It would be incorrect to conclude that firefighters cause more damage. Larger fi
 
 These examples reinforce an important principle: correlation indicates an association between two variables, but it does not by itself establish a cause-and-effect relationship.
 
-### Homework for Correlation Section
+### Homework for @sec-correlation
 
 **For each problem, state the random variables.The datasets in this section are in section 10.1 and will be used in section 10.3.**
 
@@ -1461,7 +1463,7 @@ knitr::include_graphics("Rguroo_outputs/Regression/AlcoholCalorieQQ.png")
 
 Finally, when examining a residual-versus-fit plot or a normal probability plot, it is important to look for clear patterns or systematic departures from the assumptions. However, a few mild outliers or small deviations from the pattern can often be tolerated. In practice, real data rarely follow model assumptions perfectly. What matters is whether the overall pattern supports the assumptions of linearity, constant variance, and approximate normality. If the plots show no strong curvature, no clear funnel shape, and the points in the normal probability plot fall reasonably close to a straight line, then a small number of unusual observations can typically be ignored without seriously affecting the validity of the regression results.
 
-### Homework for Inference for Regression and Correlation
+### Homework for @sec-inference-regression
 
 **For each problem, state the random variables. The dataset in this section are in the homework for section 10.1 and were also used in section 10.2.**
 
