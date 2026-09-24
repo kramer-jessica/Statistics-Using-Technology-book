@@ -9,6 +9,18 @@ library("mosaic")
 library("MASS")
 ```
 
+::: {.callout-note}
+## Chapter 3 Objectives
+
+By the end of Chapter 3, you should be able to:
+
+- Use Rguroo to find the mean and median (including a weighted mean), and choose the more appropriate measure of center based on the shape of the distribution and the presence of extreme values.
+- Use Rguroo to find the range, variance, and standard deviation, and interpret the standard deviation in the context of the data, using correct notation to distinguish sample statistics($\bar{x}$, $s$) from population parameters ($\mu$, $\sigma$).
+- Apply the Empirical Rule and $z$-scores to describe where data values fall relative to the mean and to decide whether a value is common or unusual.
+- Interpret percentiles, find the five-number summary and interquartile range (IQR), and use the $1.5 \times IQR$ rule to identify potential outliers.
+- Create and interpret boxplots in Rguroo to describe and compare the shape, center, spread, and outliers of one or more groups.
+:::
+
 **Before you begin, Click to expand the box below to review the process for importing a dataset.**
 
 ::: {#Importing-cats-to-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Data to Rguroo"}
@@ -781,7 +793,7 @@ Find the mean and standard deviation as in @fig-tornado-ex:
 knitr::include_graphics(c("Rguroo_dialogs/Numerical_description/tornado_dialog.png","Rguroo_outputs/Numerical_Description/tornado_output.png"))
 ```
 
-The mean is $\bar{x}=56$ tornadoes and the standard deviation is $s=27.6$ tornadoes. The interval will be $\bar{x}\pm2\times s=56\pm(2\times27.6)=(0.8,111.2)$
+The mean is $\bar{x}=56$ tornadoes and the standard deviation is $s=27.6$ tornadoes. From the empiricical rule, 95% of data falls within two standard deviations of the mean. The interval will be $\bar{x}\pm2\times s=56\pm(2 \times 27.6) = (56-2\times 27.6, 56+ 2 \times  27.6 )=(0.8,111.2)$
 
 Therefore, we can say that about 95% of the years have between 0.8 or 1 and 111 tornadoes in Oklahoma.
 ::::
@@ -801,14 +813,14 @@ where $x$ is the data value, $\mu$ is the population mean, and $\sigma$ is the p
 
 The $z$-score tells us how many standard deviations a data value is from the mean. For example, a $z$-score of 2.5 means the data value is 2.5 standard deviations above the mean, while a $z$-score of -1.8 means the data value is 1.8 standard deviations below the mean. Using our rule of thumb:
 
--   If $|z| \leq 2$ (z-score is between -2 and 2), the value is **common**
--   If $|z| > 2$ (z-score is less than -2 or greater than 2), the value is **unusual**
+-   If $|z| \leq 2$ ($z$-score is between -2 and 2), the value is **common**
+-   If $|z| > 2$ ($z$-score is less than -2 or greater than 2), the value is **unusual**
 
 In practice, we rarely know the true population parameters $\mu$ and $\sigma$. Instead, we use the sample mean $\bar{x}$ and sample standard deviation $s$ to estimate them:
 
 $$z=\frac{x-\bar{x}}{s}$$
 
-While this sample-based z-score provides a good approximation, keep in mind that it is an estimate and may be less accurate when working with small samples.
+While this sample-based $z$-score provides a good approximation, keep in mind that it is an estimate and may be less accurate when working with small samples.
 
 ::: {#exm-unusual-value}
 ## Determining If a Value Is Unusual
@@ -826,13 +838,13 @@ b.  In 1999, there were 145 tornadoes in the Oklahoma. Is this value unusual? Wh
 
 a.  Variable: $x$ = number of tornadoes in Oklahoma
 
-To answer this question, first find how many standard deviations 45 is from the mean. From the previous [example](#exm-empirical-rule), we know $\bar{x}=56$ and $s=27.6$. For $x$=45, $z=\frac{45-56}{27.6}=-0.399$
+To answer this question, first find how many standard deviations 45 is from the mean. From the previous [example](#exm-empirical-rule), we know $\bar{x}=56$ and $s=27.6$. For $x=45$, $z=\frac{45-56}{27.6}=-0.399$
 
 Since this value is between -2 and 2, then it is not unusual to have 45 tornadoes in a year in Oklahoma. The $z$ value is negative, so that means that 45 is less than the mean number of tornadoes.
 
 b.  Variable: $x$ = number of tornadoes in Oklahoma
 
-For this question the $x$ = 145, $z=\frac{145-56}{27.6}=3.22$
+For this question the $x = 145$, $z=\frac{145-56}{27.6}=3.22$
 
 Since the $z$ value is more than 2, then it would be considered unusual to have 145 tornadoes in a year in Oklahoma.
 ::::
