@@ -314,7 +314,7 @@ ggplot(uniform_df, aes(x = x, y = fx)) +
   annotate(
     "text",
     x = (a + b) / 2,
-    y = height + 0.02 * height,
+    y = height + 0.05 * height,
     label = "f(x) = 1 / (20 - 0) = 0.05",
     hjust = 0.5,
     size = 4
@@ -674,7 +674,7 @@ c\. A woman is 57.6 inches tall. Is her height unusual?
 
 a\.  By the Empirical Rule, 68% of data points fall within 1 standard deviation: 
 $$
-64 \pm 2.8 = (61.2, 66.8) \text{ inches}
+64 \pm 2.8 = (64 -2 .8, 64 + 2.8) = (61.2, 66.8) \text{ inches}
 $$ 
 
   About 68% of women are between 61.2 and 66.8 inches tall.
@@ -828,7 +828,7 @@ e\.  Find the length that only 10% of pregnancies are shorter than.
 
 :::
 
-The examples that follow show how to find probabilities associated with a normal distribution two ways: by standardizing and using the standard normal distribution, and directly using Rguroo.
+
 
 :::{.callout-tip .solution-callout collapse="true" icon=false}
 ## 🔎 Solution
@@ -1099,6 +1099,26 @@ knitr::include_graphics(c("Rguroo_dialogs/Continuous_Probability/sat_scores_dial
     c.  Find the probability a new nurse earns less than $\$55,000$.
     d.  What salary marks the bottom 5% of starting salaries?
 
+8. Resting heart rates for healthy adults are approximately normally distributed with a mean of 72 beats per minute (bpm) and a standard deviation of 8 bpm.
+
+    a. State the random variable and its distribution.
+    b. Use the Empirical Rule to estimate the probability that a randomly selected adult has a resting heart rate between 64 and 80 bpm.
+    c. Use the Empirical Rule to estimate the probability that a randomly selected adult has a resting heart rate above 88 bpm.
+    d. Use the Empirical Rule to estimate the probability that a randomly selected adult has a resting heart rate between 56 and 80 bpm. (Hint: Sketch the normal curve and add the pieces on each side of the mean.)
+    e. Use Rguroo to find the actual probabilities for parts (b), (c), and (d).
+    f. Compare your estimates to the Rguroo values. How close were the estimates? Why are they not exactly equal?
+    g. Could you use the Empirical Rule to estimate the probability that an adult has a resting heart rate above 76 bpm? Explain why or why not, then find this probability using Rguroo.
+
+9. The commute time to campus for students at a community college is approximately normally distributed with a mean of 25 minutes and a standard deviation of 5 minutes.
+
+    a. State the random variable and its distribution.
+    b. Use the Empirical Rule to estimate the probability that a student's commute takes more than 30 minutes.
+    c. Use the Empirical Rule to estimate the probability that a student's commute takes between 25 and 35 minutes.
+    d. Use the Empirical Rule to estimate the probability that a student's commute takes between 10 and 40 minutes.
+    e. Use Rguroo to find the actual probabilities for parts (b), (c), and (d).
+    f. For each part, find the difference between your Empirical Rule estimate and the Rguroo value. Which estimate was closest to the actual probability?
+    g. A student says her commute takes 42 minutes. Would this commute time be considered unusual? Explain using the Empirical Rule.
+
 ## Assessing Normality
 
 Many statistical inference procedures such as confidence intervals, hypothesis tests, and others covered in later chapters assume that the data come from a population that is approximately normally distributed. Before applying these methods, it is good practice to check whether a normal model is reasonable.
@@ -1163,7 +1183,7 @@ p4 <- make_hist(outlier_data, "Bell-Shaped with Outliers",        "#009E73")
 
 **2. Normal Quantile Plot (Normal Probability Plot)**
 
-A **normal quantile plot** (also called a Q-Q plot) compares the actual data values against the values we would expect if the data were perfectly normal. If the data follow a normal distribution, the points will fall close to a **straight line**. Departures from that line — especially S-shaped curves, strong bends, or systematic patterns — suggest the data are not well-described by a normal model. @fig-qq-comparison illustrates three common patterns you may encounter: data that closely follow the reference line, data that curve away from the line in an S-shape, and data that mostly follow the line but contain one or two points that break away from it.
+A **normal quantile plot** (also called a Q-Q plot) compares the actual data values against the values we would expect if the data were perfectly normal. If the data follow a normal distribution, the points will fall close to a **straight line**. Departures from that line — especially S-shaped curves, strong bends, or systematic patterns — suggest the data are not well-described by a normal model. @fig-qq-plots-comparison illustrates three common patterns you may encounter: data that closely follow the reference line, data that curve away from the line in an S-shape, and data that mostly follow the line but contain one or two points that break away from it.
 
 **Guidelines for interpretation:**
 

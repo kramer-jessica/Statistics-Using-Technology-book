@@ -9,6 +9,18 @@ library("mosaic")
 library("MASS")
 ```
 
+::: {.callout-note}
+## Chapter 3 Objectives
+
+By the end of Chapter 3, you should be able to:
+
+- Use Rguroo to find the mean and median (including a weighted mean), and choose the more appropriate measure of center based on the shape of the distribution and the presence of extreme values.
+- Use Rguroo to find the range, variance, and standard deviation, and interpret the standard deviation in the context of the data, using correct notation to distinguish sample statistics($\bar{x}$, $s$) from population parameters ($\mu$, $\sigma$).
+- Apply the Empirical Rule and $z$-scores to describe where data values fall relative to the mean and to decide whether a value is common or unusual.
+- Interpret percentiles, find the five-number summary and interquartile range (IQR), and use the $1.5 \times IQR$ rule to identify potential outliers.
+- Create and interpret boxplots in Rguroo to describe and compare the shape, center, spread, and outliers of one or more groups.
+:::
+
 **Before you begin, Click to expand the box below to review the process for importing a dataset.**
 
 ::: {#Importing-cats-to-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Data to Rguroo"}
@@ -781,7 +793,7 @@ Find the mean and standard deviation as in @fig-tornado-ex:
 knitr::include_graphics(c("Rguroo_dialogs/Numerical_description/tornado_dialog.png","Rguroo_outputs/Numerical_Description/tornado_output.png"))
 ```
 
-The mean is $\bar{x}=56$ tornadoes and the standard deviation is $s=27.6$ tornadoes. The interval will be $\bar{x}\pm2\times s=56\pm(2\times27.6)=(0.8,111.2)$
+The mean is $\bar{x}=56$ tornadoes and the standard deviation is $s=27.6$ tornadoes. From the empiricical rule, 95% of data falls within two standard deviations of the mean. The interval will be $\bar{x}\pm2\times s=56\pm(2 \times 27.6) = (56-2\times 27.6, 56+ 2 \times  27.6 )=(0.8,111.2)$
 
 Therefore, we can say that about 95% of the years have between 0.8 or 1 and 111 tornadoes in Oklahoma.
 ::::
@@ -801,14 +813,14 @@ where $x$ is the data value, $\mu$ is the population mean, and $\sigma$ is the p
 
 The $z$-score tells us how many standard deviations a data value is from the mean. For example, a $z$-score of 2.5 means the data value is 2.5 standard deviations above the mean, while a $z$-score of -1.8 means the data value is 1.8 standard deviations below the mean. Using our rule of thumb:
 
--   If $|z| \leq 2$ (z-score is between -2 and 2), the value is **common**
--   If $|z| > 2$ (z-score is less than -2 or greater than 2), the value is **unusual**
+-   If $|z| \leq 2$ ($z$-score is between -2 and 2), the value is **common**
+-   If $|z| > 2$ ($z$-score is less than -2 or greater than 2), the value is **unusual**
 
 In practice, we rarely know the true population parameters $\mu$ and $\sigma$. Instead, we use the sample mean $\bar{x}$ and sample standard deviation $s$ to estimate them:
 
 $$z=\frac{x-\bar{x}}{s}$$
 
-While this sample-based z-score provides a good approximation, keep in mind that it is an estimate and may be less accurate when working with small samples.
+While this sample-based $z$-score provides a good approximation, keep in mind that it is an estimate and may be less accurate when working with small samples.
 
 ::: {#exm-unusual-value}
 ## Determining If a Value Is Unusual
@@ -826,15 +838,94 @@ b.  In 1999, there were 145 tornadoes in the Oklahoma. Is this value unusual? Wh
 
 a.  Variable: $x$ = number of tornadoes in Oklahoma
 
-To answer this question, first find how many standard deviations 45 is from the mean. From the previous [example](#exm-empirical-rule), we know $\bar{x}=56$ and $s=27.6$. For $x$=45, $z=\frac{45-56}{27.6}=-0.399$
+To answer this question, first find how many standard deviations 45 is from the mean. From the previous [example](#exm-empirical-rule), we know $\bar{x}=56$ and $s=27.6$. For $x=45$, $z=\frac{45-56}{27.6}=-0.399$
 
 Since this value is between -2 and 2, then it is not unusual to have 45 tornadoes in a year in Oklahoma. The $z$ value is negative, so that means that 45 is less than the mean number of tornadoes.
 
 b.  Variable: $x$ = number of tornadoes in Oklahoma
 
-For this question the $x$ = 145, $z=\frac{145-56}{27.6}=3.22$
+For this question the $x = 145$, $z=\frac{145-56}{27.6}=3.22$
 
 Since the $z$ value is more than 2, then it would be considered unusual to have 145 tornadoes in a year in Oklahoma.
+::::
+
+### Comparing Values Using z-Scores
+
+A $z$-score does more than tell you whether a single value is common or unusual. Because a $z$-score measures distance from the mean in **standard deviations** rather than in the original units, it allows you to compare values that come from different groups or are measured on completely different scales.
+
+Suppose you want to know whether you did better on a statistics exam or a history exam. Comparing the raw scores does not tell you much, because the two exams may have had different class averages and different amounts of spread. A score of 80 might be excellent on a difficult exam where most students scored in the 60s, but only average on an easy exam where most students scored in the 80s. Converting each score to a $z$-score puts both values on the same scale so they can be compared fairly.
+
+::: {.callout-note appearance="simple" icon="false"}
+**Key Concept.** To compare values from different groups or different scales, convert each value to a $z$-score using the mean and standard deviation of its own group. 
+:::
+
+When comparing values with $z$-scores, follow these steps:
+
+1.  Identify the mean and standard deviation for each group separately.
+2.  Calculate the $z$-score for each value using its own group's mean and standard deviation.
+3.  Compare the $z$-scores, paying attention to whether higher or lower values are better in the context.
+4.  State your conclusion in the context of the problem.
+
+::: {#exm-compare-z-race}
+## Comparing Performances on Different Scales
+
+Jordan ran a 5K race in 22 minutes. The mean finishing time for runners in Jordan's age group was 28 minutes with a standard deviation of 4 minutes. Priya swam a 400-meter race in 6.5 minutes. The mean finishing time for swimmers in Priya's age group was 8 minutes with a standard deviation of 1.2 minutes. Relative to their own events, who had the better performance?
+:::
+
+::::{.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+Variable: $x_1$ = 5K running time (minutes)
+
+Variable: $x_2$ = 400-meter swimming time (minutes)
+
+Jordan's and Priya's times cannot be compared directly because running 5K and swimming 400 meters are very different events. Instead, find how many standard deviations each time is from the mean of its own event.
+
+For Jordan: $z=\frac{22-28}{4}=\frac{-6}{4}=-1.50$
+
+For Priya: $z=\frac{6.5-8}{1.2}=\frac{-1.5}{1.2}=-1.25$
+
+Both $z$-scores are negative, which means both athletes finished faster than the average for their event. In a race, a *lower* time is better, so the more negative $z$-score represents the better performance. Jordan's time is 1.50 standard deviations below the mean, while Priya's time is 1.25 standard deviations below the mean. Relative to their own events, Jordan had the better performance.
+
+Notice that neither $z$-score is less than $-2$, so neither time is unusual. Both athletes performed well, but not unusually well.
+::::
+
+The next example shows how comparing $z$-scores can lead to a different conclusion than comparing the raw values.
+
+::: {#exm-compare-z-cats}
+## Comparing Values from Different Groups
+
+In the [example](#exm-standard-deviation) on calculating the standard deviation, you used Rguroo to find the mean and standard deviation of cat body weights separated by sex (@fig-spread-sex). The heaviest female cat in the dataset weighs 3.0 kg. Consider a male cat that weighs 3.5 kg.
+
+a.  Which cat weighs more?
+b.  Which cat is heavier relative to other cats of the same sex?
+c.  Is either cat's weight unusual for its sex?
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [cats]{.data}. @tbl-Cats displays the first six rows of the dataset. A complete description of the variables is provided in the [dataset code book](#code-book-cats).
+:::
+
+::::{.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+Variable: $x_1$ = body weight of a female cat (kg)
+
+Variable: $x_2$ = body weight of a male cat (kg)
+
+From the Rguroo output in @fig-spread-sex, female cats have a mean weight of $\bar{x}=2.36$ kg with a standard deviation of $s=0.27$ kg, and male cats have a mean weight of $\bar{x}=2.9$ kg with a standard deviation of $s=0.47$ kg.
+
+a.  The male cat weighs more, since 3.5 kg is greater than 3.0 kg.
+
+b.  Find the $z$-score for each cat using the mean and standard deviation of its own sex.
+
+    Female cat: $z=\frac{3.0-2.36}{0.27}=\frac{0.64}{0.27}\approx 2.37$
+
+    Male cat: $z=\frac{3.5-2.9}{0.47}=\frac{0.6}{0.47}\approx 1.28$
+
+    The female cat's weight is 2.37 standard deviations above the mean for female cats, while the male cat's weight is only 1.28 standard deviations above the mean for male cats. Even though the male cat weighs more, the female cat is heavier relative to other cats of her sex.
+
+c.  The female cat's $z$-score of 2.37 is greater than 2, so her weight is unusual for a female cat. The male cat's $z$-score of 1.28 is between $-2$ and 2, so his weight is common for a male cat.
+
+This example shows why $z$-scores are useful. Comparing the raw weights suggests the male cat stands out more, but comparing the $z$-scores shows that the female cat is the one who is unusually heavy for her group.
 ::::
 
 ### Homework for Measures of Spread Section
@@ -1004,13 +1095,13 @@ Newreiki<-Reiki |>
 knitr::kable(head(Newreiki))
 ```
 
-**(a)**: Create a new dataset called [Newreiki]{.data} that adds a column for the difference between the before and after VAS scores. Name this new variable [vas.diff]{.var}. Then find the mean and standard deviation of [vas.diff]{.var}.
+  a. Create a new dataset called [Newreiki]{.data} that adds a column for the difference between the before and after VAS scores. Name this new variable [vas.diff]{.var}. Then find the mean and standard deviation of [vas.diff]{.var}.
+  b. Using the same approach, create a variable called [likert.diff]{.var} for the difference between the before and after Likert scores. Find the mean and standard deviation of [likert.diff]{.var}.
+  c. Compare the results from Part (a) and Part (b). What do the mean differences tell you about the effectiveness of the Reiki treatment? Do the VAS and Likert scales give similar conclusions?
 
-**(b)**: Using the same approach, create a variable called [likert.diff]{.var} for the difference between the before and after Likert scores. Find the mean and standard deviation of [likert.diff]{.var}.
+8.  Yearly rainfall amounts (in millimeters) in Sydney, Australia, are in @tbl-Rainfall (Annual maximums of, 2013). 
 
-**(c)**: Compare the results from Part (a) and Part (b). What do the mean differences tell you about the effectiveness of the Reiki treatment? Do the VAS and Likert scales give similar conclusions?
 
-8.  Yearly rainfall amounts (in millimeters) in Sydney, Australia, are in @tbl-Rainfall (Annual maximums of, 2013). a. Calculate the mean and standard deviation. b. Suppose Sydney, Australia received 300 mm of rainfall in a year. Would this be unusual?
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
 ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [rainfall]{.data}.
@@ -1037,6 +1128,31 @@ This dataset contains the following columns:
 
 References Rayner J.C.W. and Best D.J. (1989) Smooth tests of goodness of fit. Oxford: Oxford University Press. Hand D.J., Daly F., Lunn A.D., McConway K.J., Ostrowski E. (1994). A Handbook of Small datasets. London: Chapman & Hall. dataset 157. Thanks to Jim Irish of the University of Technology, Sydney, for assistance in identifying the correct units for this data.
 :::
+  a. Calculate the mean and standard deviation. 
+  b. Suppose Sydney, Australia received 300 mm of rainfall in a year. Would this be unusual?
+
+9.  Suppose the mean high temperature in Phoenix, Arizona, in July is 106°F with a standard deviation of 3°F, and the mean high temperature in Anchorage, Alaska, in July is 65°F with a standard deviation of 5°F. On one July day, Phoenix reached 112°F and Anchorage reached 78°F.
+
+    a.  Find the $z$-score for each temperature.
+    b.  Which city's temperature was more unusual for that city? Explain.
+    c.  Is either temperature unusual based on the rule that values with $z$-scores less than $-2$ or greater than 2 are unusual?
+
+10. Suppose Marcus and Elena are both applying to the same nursing program. Marcus scored 29 on the ACT, where the mean score was 21 and the standard deviation was 5. Elena scored 1320 on the SAT, where the mean score was 1050 and the standard deviation was 200.
+
+    a.  Find the $z$-score for each student's test score.
+    b.  Which student performed better relative to other test takers? Explain.
+
+11. The dataset [pulse]{.data} (@tbl-Pulse) contains pulse rates for students who either ran in place or sat for one minute. A student who ran had a pulse rate after the activity ([pulse_after]{.var}) of 130 bpm, and a student who sat had a pulse rate after the activity of 90 bpm.
+
+    a.  Use Rguroo to find the mean and standard deviation of [pulse_after]{.var} using [ran]{.var} as the factor.
+    b.  Find the $z$-score for each student using the mean and standard deviation of their own group.
+    c.  Which student's pulse rate was higher relative to their own group? Is either pulse rate unusual? Explain.
+
+::: {tabindex="0" style="width:85%; margin:auto;"}
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [pulse]{.data}.
+
+**Code book for dataset Pulse** is below @tbl-Pulse.
+:::
 
 ## Ranking
 
@@ -1062,7 +1178,7 @@ Together, these quartiles give us a more complete picture of the data's distribu
 
 **Finding Quartiles in Rguroo**
 
-To find the quartiles in Rguroo, you use the same steps as finding the mean, standard deviation, and variation in Summary Statistic as described [here](#Calculating-summary-stats-in-Rguroo). In the Statistics section of the dialog, simply select the checkboxes for Q1, Q2 (Median), and Q3.
+To find the quartiles in Rguroo, you use the same steps as finding the mean, standard deviation, and variation in Summary Statistic as described [here](#Calculating-summary-stats-in-Rguroo). In the Statistics section of the dialog, simply select the checkboxes for Quartile 1, Median (Q2), and Quartile 3.
 
 ```{r,echo=FALSE}
 #| fig-alt: "Dialog for Basic Summary to find Quartiles for Cats Bodyweight in Rguroo"
@@ -1106,9 +1222,18 @@ Any data value below the lower fence or above the upper fence is considered a po
 
 A **boxplot** (also called a box-and-whisker plot) provides a visual representation of the five-number summary and makes it easy to see the distribution of data at a glance. Here's how to read a boxplot:
 
-**Basic boxplot structure:** - A rectangular **box** extends from Q1 to Q3, containing the middle 50% of the data - A line inside the box marks the **median** - **Whiskers** (lines) extend from the box to the minimum and maximum values - The horizontal axis shows the scale of the variable being measured
+**Basic boxplot structure:** 
 
-**Modified boxplot (more common):** In a modified boxplot, the whiskers are shortened to show only the data within the fences: - The left whisker extends to the smallest value that is still above the lower fence - The right whisker extends to the largest value that is still below the upper fence - **Outliers** beyond the fences are shown as individual points (dots, circles, or asterisks)
+- A rectangular **box** extends from Q1 to Q3, containing the middle 50% of the data 
+- A line inside the box marks the **median** 
+- **Whiskers** (lines) extend from the box to the minimum and maximum values 
+- The horizontal axis shows the scale of the variable being measured
+
+**Modified boxplot (more common):** In a modified boxplot, the whiskers are shortened to show only the data within the fences: 
+
+- The left whisker extends to the smallest value that is still above the lower fence 
+- The right whisker extends to the largest value that is still below the upper fence 
+- **Outliers** beyond the fences are shown as individual points (dots, circles, or asterisks)
 
 This modified version makes it easier to spot outliers and see the typical range of the data.
 
@@ -1128,11 +1253,21 @@ Boxplots also reveal information about the shape of the distribution. @fig-boxpl
 knitr::include_graphics(c("images/boxplot_comparison.png","images/boxplot_histogram_comparison.png"))
 ```
 
-**Symmetric distribution:** - The box appears balanced around the median - Both whiskers are approximately the same length - The median line is near the center of the box
+**Symmetric distribution:** 
 
-**Skewed left:** - The left whisker is noticeably longer than the right - The median is shifted toward the right side of the box (toward Q3)
+- The box appears balanced around the median 
+- Both whiskers are approximately the same length 
+- The median line is near the center of the box
 
-**Skewed right:** - The right whisker is noticeably longer than the left - The median is shifted toward the left side of the box (toward Q1)
+**Skewed left:**
+
+- The left whisker is noticeably longer than the right 
+- The median is shifted toward the right side of the box (toward Q3)
+
+**Skewed right:** 
+
+- The right whisker is noticeably longer than the left 
+- The median is shifted toward the left side of the box (toward Q1)
 
 If a boxplot is symmetric with long whiskers relative to the size of the box, the distribution may have a bell shape with data concentrated near the center and thin tails. However, a symmetric boxplot alone is not sufficient to confirm a bell-shaped distribution.
 
