@@ -566,7 +566,7 @@ knitr::include_graphics("Rguroo_outputs/Proportion_Inference/ha_support_number_l
 
 Once the $H_a$ support has been identified, the p-value is the probability, assuming $H_0$ is true, that $\hat{p}$ falls in the $H_a$ support. For the large-sample method, we compute this probability using the normal null distribution at the boundary value $p=p_0.$ Thus,
 $$
-\text{p-value} = P(\hat{p}\text{ is in the $H_a$ support), assuming that $p=p_0$}.
+\text{p-value} = P(\hat{p} \text{ is in the } H_a \text{ support}), \text{ assuming that } p=p_0.
 $$
 Recall from @sec-foundations-boundary why we use the boundary value $p=p_0.$ A more detailed explanation is provided in the optional @sec-closer-look-cr-pvalue.
 
@@ -633,9 +633,11 @@ $$
 \hat{p}_{\text{obs}}=\frac{10}{50}=0.20.
 $$
 Since the alternative hypothesis is $H_a: p<0.35,$ smaller values of $\hat{p}$ provide stronger evidence in favor of $H_a.$ Therefore, the $H_a$ support consists of all sample proportions less than or equal to the observed value:
+
 $$
-\text{\bf{$H_a$ Support:}}\;\; \hat{p} \le 0.20.
+\textbf{H}_a\ \textbf{Support:}\;\; \hat{p} \le 0.20.
 $$
+
 ```{r, echo=FALSE}
 #| label: fig-ha-support-onesided-left
 #| fig-cap: One-sided $H_a$ support for $p_0=0.35$ and $\hat{p}_{\text{obs}} = 0.20.$
@@ -755,8 +757,7 @@ $$
 Since this is a two-sided alternative, values of $\hat{p}$ far from $p_0$ in *either* direction count as evidence against $H_0.$ The observed proportion $\hat{p}_{\text{obs}}=0.60$ lies $0.60-0.36=0.24$ above $p_0,$ so a value equally far *below* $p_0$ — namely $0.36-0.24=0.12$ — provides just as much evidence against $H_0.$ Since $p_0=0.36,$ and $\hat{p}_{\text{obs}}=0.60,$ the $H_a$ support is given by
 
 $$
-\text{\bf{$H_a$ Support:}}\;\; \hat{p} \geq 0.60 \text{ or } \hat{p} \leq 0.12.
-$$
+\textbf{H}_a\ \textbf{Support:}\;\; \hat{p} \geq 0.60 \text{ or } \hat{p} \leq 0.12.$$
 ```{r, echo=FALSE}
 #| label: fig-ha-support-example
 #| fig-cap: Two-sided $H_a$ support for $p_0=0.36$ and $\hat{p}_{\text{obs}} = 0.60.$ 
@@ -953,7 +954,7 @@ $$
 $$
 Since the alternative hypothesis is $H_a: p>0.70,$ larger values of $\hat{p}$ provide stronger evidence in favor of $H_a.$ Therefore, the $H_a$ support consists of all sample proportions greater than or equal to the observed value:
 $$
-\text{\bf{$H_a$ Support:}}\;\; \hat{p} \ge 0.727.
+\textbf{H}_a\ \textbf{Support:}\;\; \hat{p} \ge 0.727.
 $$
 
 d\. The p-value is computed as 
@@ -1039,7 +1040,7 @@ knitr::include_graphics("Rguroo_html_output/Proportion Inference/GSS2024PropNorm
 
 We now turn to the **critical region approach**, the other standard way to reach a decision. Recall from  @sec-foundations-critical-region that the critical region is the set of values of the statistic for which we reject $H_0$ in favor of $H_a.$ Whereas the p-value approach summarizes the evidence with a probability computed from the observed proportion $\hat{p}_{\text{obs}},$ the critical region approach decides *in advance* which values of $\hat{p}$ are extreme enough to reject $H_0,$ and then simply checks whether $\hat{p}_{\text{obs}}$ falls in the critical region.
 
-The decision is governed by a **decision rule**: a rule that specifies which values of $\hat{p}$ lead to rejecting $H_0.$ For a one-sided test with $H_a: p > p_0,$ large values of $\hat{p}$ favor the alternative hypothesis, so the critical region lies in the right tail of the null distribution. To determine the critical region, we use the distribution of $\hat{p}$ under the null hypothesis $p=p_0,$ namely
+The decision is governed by a decision rule: a rule that specifies which values of $\hat{p}$ lead to rejecting $H_0.$ For a one-sided test with $H_a: p > p_0,$ large values of $\hat{p}$ favor the alternative hypothesis, so the critical region lies in the right tail of the null distribution. To determine the critical region, we use the distribution of $\hat{p}$ under the null hypothesis $p=p_0,$ namely
 $$
 \hat{p}\sim N\left(p_0, \sqrt{\frac{p_0(1-p_0)}{n}}\right).
 $$
@@ -1631,7 +1632,7 @@ knitr::include_graphics("Rguroo_html_output/Proportion Inference/ESP_test_docx/G
 
 Since the p-value is greater than $\alpha = 0.05$, we fail to reject $H_0$. There is not sufficient evidence at the 5% significance level that the participant's true probability of a correct guess is below 0.20, i.e., the results are not sufficient to conclude that psi-missing occurred.
 
-:::
+::::
 
 :::{#exm-social-pvalue}
 ## Social Media as a Primary News - Source Exact Binomial (P-value)
@@ -1941,6 +1942,7 @@ Use Rguroo's One-Population Proportion inference function to obtain the critical
 :::
 
 :::: {.callout-tip .solution-callout collapse="true" icon=false}
+
 ## 🔎 Solution
 
 We use the same instructions as in the [solution](#solution-pvalue-youtube-binomial) of  [the YouTube example](#prop-inference-youtube) to open the [One Population Proportion Inference]{.dialog}.
@@ -2316,6 +2318,7 @@ We close with the heavy Chinstrap penguins example, which uses raw data on body 
 ## Heavy Chinstrap Penguins:  - Exact Binomial (Critical Region)
 
 Using the [palmer_penguins_Chinstrap]{.data} dataset (see @exm-penguins-heavy-pvalue-binomial for the full setup and the code book), test whether more than 10% of Chinstrap penguins are heavy ($H_a: p > 0.10$), using the **critical region approach** at significance level $\alpha = 0.05.$
+
 :::
 
 :::: {.callout-tip .solution-callout collapse="true" icon=false}
@@ -2431,7 +2434,7 @@ A basketball player has historically made 85% of her free throws. During a rando
 6. **Rare Side Effect**: 
 A commonly used medication is known to produce a particular side effect in 2% of patients. Among a random sample of $n = 60$ patients receiving the medication at a clinic, $x_{\text{obs}} = 4$ experience the side effect. Is there evidence that the proportion of patients experiencing the side effect at this clinic differs from 2%? Use $\alpha = 0.05.$
 
-## A Closer Look at Critical Regions and p-values ** {#sec-closer-look-cr-pvalue}
+## A Closer Look at Critical Regions and p-values (Optional) {#sec-closer-look-cr-pvalue}
 
 ::: {.callout-note}
 This section is optional. The material here is not required for performing hypothesis tests, but it is highly recommended for readers who want a firmer conceptual grasp of what is happening behind the procedures.
@@ -2515,6 +2518,8 @@ icon="none" title="Click here to see the Rguroo dialog"}
 ](Rguroo_dialogs/Proportion_inference/Prob_Type_I_error_dialog.png){width=500px}
 :::
 
+:::
+
 ::::
 
 @fig-youtube-type1a shows the Rguroo Probability Calculator output for 
@@ -2529,6 +2534,7 @@ daily is $p = 0.60,$ and our decision rule is to reject $H_0$ whenever
 $X \geq 17$ in a sample of $n = 20$ students, then there is only a $1.6\%$ 
 chance of committing a Type I error; that is, incorrectly concluding that 
 more than 70% of students in the district use YouTube daily.
+
 ```{r,echo=FALSE}
 #| fig-cap: "Binomial distribution for $X \\sim \\text{Binomial}(n = 20, p = 0.60)$ showing the Type I error probability as the upper-tail area $P(X \\geq 17) = 0.016.$"
 #| warning: FALSE
@@ -2563,7 +2569,6 @@ daily is $p = 0.70,$ and our decision rule is to reject $H_0$ whenever
 $X \geq 17$ in a sample of $n = 20$ students, then there is approximately a 
 $10.7\%$ chance of committing a Type I error; that is, incorrectly concluding 
 that more than 70% of students in the district use YouTube daily.
-:::
 
 :::{#exm-physical-inactivity-type1}
 ## Physical Inactivity Among Adults (continued)
@@ -3107,7 +3112,7 @@ This conclusion is consistent with the critical region approach: the observed va
 
 ::::
 
-### Homework for @sec-closer-look-cr-pvalue ** {#sec-rr-hw}
+### Homework for @sec-closer-look-cr-pvalue {#sec-rr-hw}
 
 For each of the following scenarios, answer these questions:
 
@@ -3190,12 +3195,9 @@ Imagine that we repeatedly take random samples from the same population and cons
 The confidence level tells us the percentage of these intervals that we expect to contain the true value of $p.$ For example, a 95% confidence level means that, over many repeated samples, about 95% of the intervals constructed using this method would contain the true population proportion $p.$
 :::
 
-Recall from @sec-foundations-confidence-intervals that we can construct a confidence interval by inverting a two-sided hypothesis test. For a population proportion, we consider different candidate values $p_0$ and test
-$$
-H_0:p=p_0
-\qquad\text{versus}\qquad
-H_a:p\neq p_0.
-$$
+Recall from @sec-foundations-confidence-intervals that we can construct a confidence interval by inverting a two-sided hypothesis test. For a population proportion, we consider different candidate values $p_0$ and test $H_0: p=p_0$ versus $H_a:p\neq p_0$.
+
+
 If we fail to reject $H_0,$ our data are consistent with $p_0,$ so we consider $p_0$ a plausible value for $p.$ If we reject $H_0,$ we do not consider $p_0$ plausible.  We repeat this process for different values of $p_0.$ The collection of all values for which we fail to reject $H_0$ forms our confidence interval.
 
 ::: {.callout-note appearance="minimal"}
@@ -3275,13 +3277,12 @@ This gives us an approximate 95% confidence interval based on the candidate valu
 
 :::
 
-The confidence interval that we obtained in the example above is an approximation to the collection of values of $p_0$$ that are consistent with our observed data at significance level $\alpha = 0.05.$ Notice that the interval is not symmetric around $\hat{p}_{\text{obs}} = 0.85$: it extends further below $\hat{p}_{\text{obs}}$
+The confidence interval that we obtained in the example above is an approximation to the collection of values of $p_0$ that are consistent with our observed data at significance level $\alpha = 0.05.$ Notice that the interval is not symmetric around $\hat{p}_{\text{obs}} = 0.85$: it extends further below $\hat{p}_{\text{obs}}$
 (down to approximately 0.65) than above it (up to approximately 0.95).
 This asymmetry is not surprising when the sample proportion is close to 0 or 1. Recall the large-sample condition from @sec-large-sample-one-prop. Using $\hat{p}_{\text{obs}} = 0.85$ as our estimate of $p,$ we compute:
-
-$$n\hat{p}_{\text{obs}} = 20 \times 0.85 = 17 \geq 10,
-\; \text{but}\;
-n(1-\hat{p}_{\text{obs}}) = 20 \times 0.15 = 3 < 10.
+$$n\hat{p}_{\text{obs}} = 20 \times 0.85 = 17 \geq 10,$$
+but
+$$n(1-\hat{p}_{\text{obs}}) = 20 \times 0.15 = 3 < 10.
 $$
 
 The large-sample condition fails because there are 3 observed failures. With a relatively small sample and a sample proportion close to 1, the binomial distribution can be noticeably skewed rather than approximately normal. As a result, an exact confidence interval need not be symmetric around $\hat{p}_{\text{obs}}.$ A method based on a symmetric normal approximation may not work well in this situation.
@@ -3430,7 +3431,7 @@ inactive is between 0.089 (8.9%) and 0.311 (31.1%).
 
 b\. To obtain a 99% confidence interval, we use the same steps as in part (a) except for Step 4 of the Rguroo instructions, we enter [0.99]{.typein} instead of [0.95]{.typein} in the [Confidence Level]{.des} textbox.
 
-The 99% confidence interval reported in the Rguroo output is $(0.0543, 0.3457)$ with width of 0.2914. This compares with the 95% confidence interval of $(0.0891, 0.3109)$ with a width of 0.2217. 
+The 99% confidence interval reported in the Rguroo output is $(0.0543, 0.3457)$, with a width of $0.3457 - 0.0543 = 0.2914$. In comparison, the 95% confidence interval is $(0.0891, 0.3109)$, with a width of $0.3109 - 0.0891 = 0.2218$. Thus, the 99% confidence interval is wider than the 95% confidence interval. The widths of the confidence intervals are also reported in the last column of the Rguroo Confidence Interval output.
 
 The 99% confidence interval is wider than the 95% confidence interval. For the same sample size and observed sample proportion, a higher confidence level produces a wider confidence interval. 
 :::
@@ -3468,6 +3469,7 @@ H_0: p = 0.36 \\
 H_a: p \neq 0.36.
 \end{cases}
 $$
+
 Based on the confidence interval that you obtained in part (b), is $p=0.36$ a plausible value for the true proportion of students at the university who get most of their news from social media? How does your conclusion here compare to the conclusion from the hypothesis test in @exm-social-media-pvalue-large-sample?
 
 :::
@@ -3513,6 +3515,9 @@ c\. From the Rguroo output, the standard error is $0.0828079.$ For a 95% confide
 $$\text{Margin of Error} = 0.0828079\times 1.96 \approx 0.1623$$
 The Rguroo output also reports the width of the interval as $0.324601.$ Using this value, you can also obtain the margin of error as
 $$\text{Margin of Error}=\frac{\text{width of the interval}}{2} = \frac{0.324601}{2}\approx 0.1623.$$
+
+Note that the confidence interval is symmetric around the observed sample proportion $\hat{p}_{\text{obs}} = 0.60,$ and it extends below and above $\hat{p}_{\text{obs}}$ by the margin of error $0.1623.$ Therefore the width of the interval is $2 \times 0.1623 \approx 0.3246.$ In general, for confidence intervals that use the large sample normal approximation, the width of the interval is always twice the margin of error.
+
 d\. The interval $(0.4377, 0.7623)$ does not contain the null value of 0.36, so 0.36 is not a plausible value for $p.$ This is consistent with the result of the hypothesis test in @exm-social-media-pvalue-large-sample, where we rejected the null hypothesis $H_0:p=0.36.$
 ::::
 
@@ -3580,7 +3585,7 @@ Both values satisfy the 10-10 rule. Therefore, the large sample normal approxima
 
 b\.  Click to see Rguroo instructions for obtaining a confidence interval:
 
-::: {#prop-inference-gss2024-CI-ls .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} One-Population proportion hypothesis test — Marijuana Legalization Example"}
+::: {#prop-inference-gss2024-CI-ls .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Large Sample Normal Confidence Interval — Marijuana Legalization Example"}
 
 **Before you begin:** Make sure you have already imported the [GSS2024]{.data} dataset into your Rguroo account, as shown [here](#Importing-GSS2024-to-Rguroo).
 
@@ -3660,18 +3665,30 @@ Recall @exm-youtube-ppss. A sample of $n = 20$ students produced
 $x_{\text{obs}} = 17$ daily YouTube users, giving a sample proportion of
 $\hat{p}_{\text{obs}} = 17/20 = 0.85.$ 
 
-a. Use Rguroo's [One-Population Proportion]{.fun} inference function to construct a 95%
+a. Check the 10-10 rule to determine whether we can use the large sample normal approximation for this problem?
+
+b. Use Rguroo's [One-Population Proportion]{.fun} inference function to construct a 95%
 exact binomial confidence interval for the true proportion of students
 in the district who use YouTube daily, and interpret the interval in the
 context of the problem.
 
-b. Check the 10-10 rule to determine whether we can use the large sample normal approximation for this problem?
 :::
 
 :::: {.callout-tip .solution-callout collapse="true" icon=false}
 ## 🔎 Solution
 
-a\. Click to expand the box below to see how to use the [Proportion Inference]{.fun}  function in Rguroo to obtain an exact binomial confidence interval for this problem.
+a\. To check whether the large sample normal approximation is appropriate, we apply the 10-10 rule:
+$$
+\begin{aligned}
+n\hat{p}_{\text{obs}}
+&=20(0.85)=17\geq10,\\
+n(1-\hat{p}_{\text{obs}})
+&=20(0.15)=3<10.
+\end{aligned}
+$$
+The second condition is not satisfied because there are only 3 observed failures. Therefore, the large sample normal approximation is not appropriate for this example.
+
+b\. Click to expand the box below to see how to use the [Proportion Inference]{.fun}  function in Rguroo to obtain an exact binomial confidence interval for this problem.
 
 ::: {#prop-ci-binomial-youtube .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Exact binomial confidence interval - YouTube example"}
 
@@ -3727,21 +3744,10 @@ We are 95% confident that the true proportion of students in the district who us
 
 Notice that this interval is consistent with what we found using the grid in @exm-youtube-ci-grid, where we identified the range of plausible values as approximately 0.65 to 0.95. The exact interval extends the lower endpoint to 0.628, which lies between the grid values 0.60 and 0.65, where the p-value crossed the 0.05 threshold, just as we anticipated. The upper endpoint, 0.958, also agrees with the grid analysis, which placed the upper crossing between 0.95 (fail to reject) and 0.99 (reject). Thus, the grid approach gave us a good approximation to the range of plausible values, while the exact binomial method determines the endpoints more precisely.
 
-b\. To check whether the large sample normal approximation is appropriate, we apply the 10-10 rule:
-$$
-\begin{aligned}
-n\hat{p}_{\text{obs}}
-&=20(0.85)=17\geq10,\\
-n(1-\hat{p}_{\text{obs}})
-&=20(0.15)=3<10.
-\end{aligned}
-$$
-The second condition is not satisfied because there are only 3 observed failures. Therefore, the large sample normal approximation is not appropriate for this example.
-
-Notice also that the exact binomial interval is not symmetric around $\hat{p}_{\text{obs}}=0.85.$ Its midpoint, as reported in the Rguroo output, is approximately 0.793. Unlike the normal-approximation interval, the exact binomial interval does not need to be centered at the observed sample proportion.
+Notice that the exact binomial interval is not symmetric around $\hat{p}_{\text{obs}}=0.85.$ Its midpoint, as reported in the Rguroo output, is approximately 0.793. Unlike the normal-approximation interval, the exact binomial interval does not need to be centered at the observed sample proportion.
 ::::
 
-
+<!--
 
 :::{#exm-inactivity-ci-binomial}
 ## Physical Inactivity Among Adults: Exact Binomial Confidence Interval
@@ -3790,9 +3796,8 @@ and 0.338 (33.8%).
 
 b\. The large sample normal approximation 95% confidence interval for this example was computed to be $(0.0891,0.3109).$  The two intervals are fairly close, although the exact binomial interval is slightly shifted to the right and is somewhat wider. As noted in @exm-inactivity-ci-large-sample, the 10-10 rule is satisfied for this example, so the large sample normal approximation is appropriate. Therefore, we expect the two methods to give similar, but not identical, intervals.
 :::
+-->
 
-
-<!--
 :::{#exm-social-ci-binomial}
 ## Social Media as a Primary News Source: Exact Binomial Confidence Interval
 
@@ -3833,24 +3838,16 @@ Click to expand the box below to see the Rguroo output.
 :::
 
 From the Rguroo output, the 95% exact binomial confidence interval for
-$p$ is $(0.352, 0.848).$ We are 95% confident that the true proportion
+$p$ is $(0.3325, 0.8091).$ We are 95% confident that the true proportion
 of students at the university who get most of their news from social
-media is between 0.352 (35.2%) and 0.848 (84.8%).
+media is between 0.3325 (33.25%) and 0.8091 (80.91%).
 
-The midpoint of the interval is reported as 0.60, which in this case agrees exactly with the observed sample proportion. This is consistent with the fact that the 10-10 rule is satisfied:
-
-$$
-n\hat{p}_{\text{obs}} = 100 \times 0.60 = 60 > 10
-\qquad \text{and} \qquad
-n(1-\hat{p}_{\text{obs}}) = 100 \times 0.40 = 40 > 10.
-$$
-
-When the 10-10 rule is satisfied, the normal approximation works well, so we expect the confidence interval to be approximately centered at the observed sample proportion.
+The midpoint of the interval is reported as 0.571, which is not equal to the observed sample proportion $\hat{p}_{\text{obs}} = 0.60.$ This is because the exact binomial confidence interval does not need to be symmetric around the observed sample proportion, unlike the large sample normal approximation confidence interval, especially when the 10-10 rule is not satisfied, as is the case here. The 10-10 rule is not satisfied because $n\hat{p}_{\text{obs}} = 15(0.6) = 9 < 10$ and $n(1-\hat{p}_{\text{obs}}) = 15(0.4) = 6 < 10.$
 
 :::
- -->
 
 
+<!--
 :::{#exm-gss-ci-binomial}
 ## Marijuana Legalization: Exact Binomial Confidence Interval
 
@@ -3906,26 +3903,309 @@ the true proportion of American adults who support the legalization of
 marijuana is between 0.679 (67.9%) and 0.769 (76.9%).
 
 ::::
+-->
+:::{#exm-penguins-heavy-ci-binomial}
+## Heavy Chinstrap Penguins: Exact Binomial Confidence Interval
 
+Recall @exm-penguins-heavy-pvalue-binomial. The [palmer_penguins_Chinstrap]{.data}
+dataset contains measurements on $n = 34$ Chinstrap penguins.
+
+Use Rguroo's [One-Population Proportion]{.fun} inference function to construct a 95%
+exact binomial confidence interval for the true proportion of Chinstrap
+penguins that are heavy, and interpret the interval in the context of the
+problem.
+
+<div tabindex="0" style="width:85%; margin:auto;">
+
+The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [palmer_penguins_Chinstrap]{.data}. Table @tbl-PalmerPenguinsChinstrap displays the first six rows of the dataset. A complete description of the variables is provided in the [dataset code book](#code-book-palmer-penguins-chinstrap) that follows.
+</div>
+
+:::
+
+:::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+Follow the same steps as in the [solution](#solution-gss-ci-large-sample) of @exm-gss-ci-large-sample to open the [One Population Proportion Inference]{.dialog} dialog and select the [palmer_penguins_Chinstrap]{.data} dataset. Then select 
+
+  - [Heavy]{.var} as the [Factor]{.dpd}, 
+  - [Yes]{.var} as the [Success]{.dpd}, and 
+  - [No]{.var} as the [Failure]{.dpd}. 
+  
+The following is a screenshot of the dialog for obtaining the exact binomial confidence interval for this example.
+
+```{r,echo=FALSE}
+#| fig-alt: "Interface for one population proportion inference using the palmer_penguins_Chinstrap dataset. The factor is Heavy with Yes as the success level. The sample size is n=34 with 5 successes, giving a sample proportion of about 0.147. The confidence interval section shows a 95% confidence level with the Binomial (Exact) method selected."
+#| fig-cap: "Rguroo Basics dialog showing how to obtain exact binomial CI for the Chinstrap penguins example"
+#| out-width: "100%"
+knitr::include_graphics('Rguroo_dialogs/Proportion_inference/penguins-heavy-binom-ci_dialog.png')
+```
+Click to expand the box below to see the Rguroo output.
+
+::: {.callout-tip .inner-callout collapse="true" title="Rguroo output: One-Population Proportion Inference Output - Heavy Chinstrap Penguins"}
+
+<div tabindex="0" class="rg-iframe-wrapper">
+  <iframe
+    src='Rguroo_html_output/Proportion Inference/PenguinsHeavyPropCI_docx/PenguinsHeavyPropCI.html'
+    class="rg-iframe"
+    title="Rguroo output: One Population Proportion Exact Binomial CI - Heavy Chinstrap Penguins Example">
+  </iframe>
+</div>
+:::
+
+From the Rguroo output, the 95% exact binomial confidence interval for
+$p$ is (0.0598,0.3066). We are 95% confident that
+the true proportion of Chinstrap penguins that are heavy is between 0.0598 (5.98%) and 0.3066 (30.66%).
+::::
 
 ### Homework for @sec-confidence-interval-one-pop
 
-For each of the scenarios described below,
-answer the following:
+1. **Arizona Marijuana Legalization**
+   In Problem 1 (Arizona Marijuana Legalization) of @sec-stage-hw, $p$
+   is the true proportion of Arizona registered voters who support
+   marijuana legalization. The sample consisted of $n = 779$ voters, of
+   whom $x_{\text{obs}} = 390$ favored legalization.
 
-a. Check whether the large sample condition is satisfied using the
-10-10 rule. Based on your answer, determine whether the large sample
-normal approximation confidence interval is appropriate.
-b. Use Rguroo's [One-Population Proportion]{.fun} inference function
-with the [Binomial]{.des} option to obtain a 95% exact binomial
-confidence interval for $p.$ Interpret the interval in the context
-of the problem.
-c. Use Rguroo's [One-Population Proportion]{.fun} inference function
-with the [Large Sample z]{.des} option to obtain a 95% large sample
-normal approximation confidence interval for $p.$ Interpret the
-interval in the context of the problem
-d. Compare the exact binomial confidence interval of part b to the  large sample z confidence interval in part d. Are the intervals approximately the same? Is this comparison consistent
-with what you found in part (a)?
+    a. Check whether the large sample condition is satisfied using the
+    10-10 rule. Based on your answer, determine whether the large sample
+    normal approximation confidence interval is appropriate.
+    b. Use Rguroo's [One-Population Proportion]{.fun} inference function
+    with the [Large Sample z]{.des} option to obtain a 95% confidence
+    interval for $p.$ Interpret the interval in the context of the problem.
+    c. At the time of this poll, 55% of Colorado residents supported the
+    legalization of marijuana. Use your confidence interval to test
+    $H_0: p = 0.55$ versus $H_a: p \neq 0.55$ at the $\alpha = 0.05$
+    significance level. Do Arizona registered voters differ from Colorado
+    residents in their support for marijuana legalization?
+
+2. **Airport Security Screening**
+   In a random sample of $n = 40$ passengers at a particular airport
+   terminal, $x_{\text{obs}} = 5$ required additional security screening.
+   Let $p$ be the true proportion of passengers at this terminal who
+   require additional security screening.
+
+    a. Check whether the large sample condition is satisfied using the
+    10-10 rule. Based on your answer, determine whether the large sample
+    normal approximation confidence interval is appropriate.
+    b. Use Rguroo's [One-Population Proportion]{.fun} inference function
+    with the [Binomial]{.des} option to obtain a 95% exact binomial
+    confidence interval for $p.$ Interpret the interval in the context
+    of the problem.
+
+3. **Australian Unemployment Outlook**
+   In Problem 2 (Australian Unemployment Outlook) of @sec-stage-hw, $p$
+   is the true proportion of Australians in November 1997 who believed
+   unemployment would increase. The sample consisted of $n = 631$
+   Australians, of whom $x_{\text{obs}} = 284$ believed unemployment
+   would increase.
+
+    a. Check whether the large sample condition is satisfied using the
+    10-10 rule. Based on your answer, determine whether the large sample
+    normal approximation confidence interval is appropriate.
+    b. Use Rguroo's [One-Population Proportion]{.fun} inference function
+    with the [Large Sample z]{.des} option to obtain a 90% confidence
+    interval for $p.$ Interpret the interval in the context of the problem.
+
+4. **Defective Computer Chips**
+   A quality-control inspector randomly selects $n = 50$ computer chips
+   from a manufacturer's production line and finds that
+   $x_{\text{obs}} = 5$ are defective. Let $p$ be the true proportion of
+   chips produced by this manufacturer that are defective.
+
+    a. Check whether the large sample condition is satisfied using the
+    10-10 rule. Based on your answer, determine whether the large sample
+    normal approximation confidence interval is appropriate.
+    b. Use Rguroo's [One-Population Proportion]{.fun} inference function
+    with the [Binomial]{.des} option to obtain a 90% exact binomial
+    confidence interval for $p.$ Interpret the interval in the context
+    of the problem.
+
+5. **Arkansas Identity Theft Complaints**
+   In Problem 3 (Arkansas Identity Theft Complaints) of @sec-stage-hw,
+   $p$ is the true proportion of consumer complaints in Arkansas that
+   were for identity theft. The sample consisted of $n = 3{,}482$
+   complaints, of which $x_{\text{obs}} = 1{,}601$ were for identity
+   theft.
+
+    a. Check whether the large sample condition is satisfied using the
+    10-10 rule. Based on your answer, determine whether the large sample
+    normal approximation confidence interval is appropriate.
+    b. Use Rguroo's [One-Population Proportion]{.fun} inference function
+    with the [Large Sample z]{.des} option to obtain a 95% confidence
+    interval for $p.$ Interpret the interval in the context of the problem.
+
+6. **Daily YouTube Use Among Teens: Small Sample**
+   Recall @exm-youtube-ppss. Suppose that instead of a sample of $n = 20$
+   students, only $n = 15$ students were available, and $x_{\text{obs}} = 13$
+   of them reported using YouTube daily.
+
+    a. Check whether the large sample condition is satisfied using the
+    10-10 rule. Based on your answer, determine whether the large sample
+    normal approximation confidence interval is appropriate.
+    b. Use Rguroo's [One-Population Proportion]{.fun} inference function
+    with the [Binomial]{.des} option to obtain a 95% exact binomial
+    confidence interval for $p.$ Interpret the interval in the context
+    of the problem.
+
+7. **Seed Germination Rate**
+   A gardener randomly selects $n = 20$ seeds of a particular variety
+   and plants them under specified growing conditions. Of these,
+   $x_{\text{obs}} = 15$ germinate. Let $p$ be the true germination rate
+   for this variety of seeds under these conditions.
+
+    a. Check whether the large sample condition is satisfied using the
+    10-10 rule. Based on your answer, determine whether the large sample
+    normal approximation confidence interval is appropriate.
+    b. Use Rguroo's [One-Population Proportion]{.fun} inference function
+    with the [Binomial]{.des} option to obtain a 95% exact binomial
+    confidence interval for $p.$ Interpret the interval in the context
+    of the problem.
+
+8. **Social Media as a Primary News Source: Small Sample**
+   Recall @exm-social-media-news-ppss. Suppose that instead of a sample
+   of $n = 15$ students, only $n = 12$ students were available, and
+   $x_{\text{obs}} = 7$ of them reported using social media as their
+   primary news source.
+
+    a. Check whether the large sample condition is satisfied using the
+    10-10 rule. Based on your answer, determine whether the large sample
+    normal approximation confidence interval is appropriate.
+    b. Use Rguroo's [One-Population Proportion]{.fun} inference function
+    with the [Binomial]{.des} option to obtain a 95% exact binomial
+    confidence interval for $p.$ Interpret the interval in the context
+    of the problem.
+    c. Use your confidence interval to test $H_0: p = 0.36$ versus
+    $H_a: p \neq 0.36$ at the $\alpha = 0.05$ significance level. Is there
+    evidence that the proportion of students who get most of their news
+    from social media differs from 36%?
+
+9. **Online Order Returns**
+   A small online retailer randomly examines $n = 30$ of its recent
+   orders and finds that $x_{\text{obs}} = 1$ was returned. Let $p$ be the
+   true proportion of this retailer's orders that are returned.
+
+    a. Check whether the large sample condition is satisfied using the
+    10-10 rule. Based on your answer, determine whether the large sample
+    normal approximation confidence interval is appropriate.
+    b. Use Rguroo's [One-Population Proportion]{.fun} inference function
+    with the [Binomial]{.des} option to obtain a 99% exact binomial
+    confidence interval for $p.$ Interpret the interval in the context
+    of the problem.
+
+10. **Alaska Identity Theft Complaints**
+    In Problem 4 (Alaska Identity Theft Complaints) of @sec-stage-hw,
+    $p$ is the true proportion of consumer complaints in Alaska that
+    were for identity theft. The sample consisted of $n = 1{,}432$
+    complaints, of which $x_{\text{obs}} = 321$ were for identity theft.
+
+    a. Check whether the large sample condition is satisfied using the
+    10-10 rule. Based on your answer, determine whether the large sample
+    normal approximation confidence interval is appropriate.
+    b. Use Rguroo's [One-Population Proportion]{.fun} inference function
+    with the [Large Sample z]{.des} option to obtain a 95% confidence
+    interval for $p.$ Interpret the interval in the context of the problem.
+    c. According to the Federal Trade Commission, 23% of all consumer
+    complaints in 2007 were for identity theft. Use your confidence
+    interval to test $H_0: p = 0.23$ versus $H_a: p \neq 0.23$ at the
+    $\alpha = 0.05$ significance level. Is there evidence that Alaska's
+    proportion of identity theft complaints differs from the national
+    proportion?
+
+11. **Free-Throw Shooting**
+    A basketball player attempts $n = 20$ free throws during a randomly
+    selected practice session and makes $x_{\text{obs}} = 14$ of them.
+    Let $p$ be the true proportion of free throws this player makes.
+
+    a. Check whether the large sample condition is satisfied using the
+    10-10 rule. Based on your answer, determine whether the large sample
+    normal approximation confidence interval is appropriate.
+    b. Use Rguroo's [One-Population Proportion]{.fun} inference function
+    with the [Binomial]{.des} option to obtain a 95% exact binomial
+    confidence interval for $p.$ Interpret the interval in the context
+    of the problem.
+
+12. **Kennedy Assassination Conspiracy Belief**
+    In Problem 5 (Kennedy Assassination Conspiracy Belief) of
+    @sec-stage-hw, $p$ is the true proportion of American adults in
+    2013 who believed there was a conspiracy behind President Kennedy's
+    assassination. The sample consisted of $n = 1{,}039$ adults, of whom
+    $x_{\text{obs}} = 634$ believed in a conspiracy.
+
+    a. Check whether the large sample condition is satisfied using the
+    10-10 rule. Based on your answer, determine whether the large sample
+    normal approximation confidence interval is appropriate.
+    b. Use Rguroo's [One-Population Proportion]{.fun} inference function
+    with the [Large Sample z]{.des} option to obtain a 95% confidence
+    interval for $p.$ Interpret the interval in the context of the problem.
+    c. In 2001, a Gallup poll found that 81% of American adults believed
+    there was a conspiracy behind the assassination. Use your confidence
+    interval to test $H_0: p = 0.81$ versus $H_a: p \neq 0.81$ at the
+    $\alpha = 0.05$ significance level. Is there evidence that American
+    belief in a conspiracy changed between 2001 and 2013?
+
+13. **Rare Side Effect**
+    Among a random sample of $n = 60$ patients receiving a commonly used
+    medication at a clinic, $x_{\text{obs}} = 4$ experienced a particular
+    side effect. Let $p$ be the true proportion of patients at this clinic
+    who experience this side effect.
+
+    a. Check whether the large sample condition is satisfied using the
+    10-10 rule. Based on your answer, determine whether the large sample
+    normal approximation confidence interval is appropriate.
+    b. Use Rguroo's [One-Population Proportion]{.fun} inference function
+    with the [Binomial]{.des} option to obtain a 95% exact binomial
+    confidence interval for $p.$ Interpret the interval in the context
+    of the problem.
+
+14. **Autism Spectrum Disorder in Arizona**
+    In Problem 6 (Autism Spectrum Disorder in Arizona) of @sec-stage-hw,
+    $p$ is the true proportion of children in Arizona diagnosed with
+    ASD. The sample consisted of $n = 32{,}601$ children, of whom
+    $x_{\text{obs}} = 507$ were diagnosed with ASD.
+
+    a. Check whether the large sample condition is satisfied using the
+    10-10 rule. Based on your answer, determine whether the large sample
+    normal approximation confidence interval is appropriate.
+    b. Use Rguroo's [One-Population Proportion]{.fun} inference function
+    with the [Large Sample z]{.des} option to obtain a 90% confidence
+    interval for $p.$ Interpret the interval in the context of the problem.
+
+15. **Graduate Degree Attainment: GSS2024**
+    In Problem 7 (Graduate Degree Attainment: GSS2024) of @sec-stage-hw,
+    $p$ is the true proportion of U.S. adults who hold a graduate
+    degree. The sample consisted of $n = 388$ adults, of whom
+    $x_{\text{obs}} = 33$ reported a graduate degree as their highest
+    level of education.
+
+    a. Check whether the large sample condition is satisfied using the
+    10-10 rule. Based on your answer, determine whether the large sample
+    normal approximation confidence interval is appropriate.
+    b. Use Rguroo's [One-Population Proportion]{.fun} inference function
+    with the [Large Sample z]{.des} option to obtain a 99% confidence
+    interval for $p.$ Interpret the interval in the context of the problem.
+    c. According to the U.S. Census Bureau, approximately 15% of U.S.
+    adults aged 25 and older hold a graduate degree. Use your confidence
+    interval to test $H_0: p = 0.15$ versus $H_a: p \neq 0.15$ at the
+    $\alpha = 0.01$ significance level. Does the GSS2024 data provide
+    evidence that the proportion of U.S. adults who hold a graduate
+    degree differs from 15%?
+
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset
+for this exercise is available in the Rguroo dataset repository
+[Kozak]{.repo}, with the dataset name [GSS2024]{.data}.
+
+**Code book for Dataset GSS2024 is given [here](#code-book-gss2024).**
+
+</div>
+
+<!--
+
+Check whether the large sample condition is satisfied using the 10-10 rule. 
+
+  - If the large sample condition is satisfied, use Rguroo's [One-Population Proportion]{.fun} inference function with the [Large Sample z]{.des} option to obtain a confidence interval with the specified significance level for $p.$ Interpret the interval in the context of the problem. 
+  
+  - On the other hand, if the large sample condition is not satisfied, use Rguroo's [One-Population Proportion]{.fun} inference function with the [Binomial]{.des} option to obtain a 95% exact binomial confidence interval for $p.$ Interpret the interval in the context of the problem.
 
 ---
 
@@ -3995,6 +4275,8 @@ for this exercise is available in the Rguroo dataset repository
 **Code book for Dataset GSS2024 is given [here](#code-book-gss2024).**
 
 </div>
+
+-->
 
 ## Hypothesis Testing for Two Proportions {#sec-hyp-test-two-prop}
 
@@ -4352,9 +4634,10 @@ P\left(\hat{p}_1-\hat{p}_2
 
 This is the area to the right of the observed difference under the $N\left(0, \sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}\right)$ distribution. A small p-value indicates strong evidence against $H_0$ and in favor of $H_a,$ while a large p-value indicates that the data do not provide strong evidence against $H_0.$
 
-**Decision Rule:**
-- Reject $H_0$ if p-value $< \alpha$ (observed difference strongly support $H_a$)
-- Fail to reject $H_0$ if p-value $\geq \alpha$ (data do not strongly support $H_a$)
+Decision Rule:
+
+  - Reject $H_0$ if p-value $< \alpha$ (observed difference strongly support $H_a$).
+  - Fail to reject $H_0$ if p-value $\geq \alpha$ (data do not strongly support $H_a$).
 
 **Critical Region Approach:**
 
@@ -4369,9 +4652,10 @@ $$\hat{p}_1-\hat{p}_2\sim N\left(0, \sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1} 
 
 we choose $c$ so that the area to the right of $c$ is $\alpha.$ We reject $H_0$ if the observed difference $\hat{p}_1-\hat{p}_2$ falls in this critical region.
 
-**Decision Rule:**
-- Reject $H_0$ if $\hat{p}_1 - \hat{p}_2 > c$ (observed difference strongly supports $H_a$)
-- Fail to reject $H_0$ if $\hat{p}_1 - \hat{p}_2 \leq c$ (observed difference does not strongly support $H_a$)
+Decision Rule:
+
+  - Reject $H_0$ if $\hat{p}_1 - \hat{p}_2 > c$ (observed difference strongly supports $H_a$).
+  - Fail to reject $H_0$ if $\hat{p}_1 - \hat{p}_2 \leq c$ (observed difference does not strongly support $H_a$).
 
 ```{r, echo = FALSE}
 #| label: fig-right-tail-critical-pvalue
@@ -4415,9 +4699,7 @@ $$
 $$
 See @fig-pvalue-schema.
 
-b\. **Using Rguroo**
-
-Click to expand the box below to see how to use the [Proportion Inference]{.fun}  function in Rguroo to answer this question.
+b\. Click to expand the box below to see how to use the [Proportion Inference]{.fun}  function in Rguroo to answer this question.
 
 ::: {#prop-inference-Schema .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Two-Population Proportion Hypothesis Test: Schema-Based Instruction Example"}
 
@@ -4492,7 +4774,7 @@ The p-value is shown in the Rguroo graph labeled P-Value Graph: Large Sample z, 
 knitr::include_graphics('Rguroo_html_output/Proportion Inference/SchemaProp2pvalue_docx/G_pvalueTestPropz12.svg')
 ```
 
-Since the $p$-value is $ 0.021 < 0.05,$ we reject $H_0$ at the significance level of 0.05 and conclude that there is sufficient evidence in favor of $H_a:p_1-p_2>0.$ Therefore, the data provide sufficient evidence that the mastery rate is higher for the new instructional approach than for the traditional approach.
+Since the $p$-value is $0.021 < 0.05,$ we reject $H_0$ at the significance level of 0.05 and conclude that there is sufficient evidence in favor of $H_a:p_1-p_2>0.$ Therefore, the data provide sufficient evidence that the mastery rate is higher for the new instructional approach than for the traditional approach.
 
 ::::
 
@@ -4619,7 +4901,7 @@ Case 2 is the mirror of Case 1. Small (negative) values of $\hat{p}_1 - \hat{p}_
 
 **Critical value $c$:** $\quad P(\hat{p}_1 - \hat{p}_2 \leq c \mid p_1 = p_2) = \alpha$
 
-**Decision:** Reject $H_0$ if p-value $< \alpha,$ equivalently if $\hat{p}_1 - \hat{p}_2 \leq c.$
+Decision: Reject $H_0$ if p-value $< \alpha,$ equivalently if $\hat{p}_1 - \hat{p}_2 \leq c.$
 :::
 
 ```{r, echo = FALSE}
@@ -4638,9 +4920,10 @@ $$P(\hat{p}_1 - \hat{p}_2 < c \mid p_1 = p_2) = \alpha$$
 
 Using the sampling distribution at the boundary, we find $c$ from $N\left(0, \sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}\right)$ such that the area to the left equals $\alpha.$
 
-**Decision Rule:**
-- Reject $H_0$ if $\hat{p}_1 - \hat{p}_2 < c$ (observed difference strongly supports $H_a$)
-- Fail to reject $H_0$ if $\hat{p}_1 - \hat{p}_2 \geq c$ (observed difference does not strongly support $H_a$)
+Decision Rule:
+
+  - Reject $H_0$ if $\hat{p}_1 - \hat{p}_2 < c$ (observed difference strongly supports $H_a$).
+  - Fail to reject $H_0$ if $\hat{p}_1 - \hat{p}_2 \geq c$ (observed difference does not strongly support $H_a$).
 
 :::{#exm-smoking-test-pvalue}
 ## Smoking Cessation: Hypothesis Test - p-Value Example
@@ -4674,9 +4957,7 @@ $$
 $$
 
 
-b\. **Using Rguroo**
-
-To perform this hypothesis test in Rguroo, follow the same steps given in the [solution](#schema-test-pvalue) of @exm-schema-test-pvalue. One difference is that in the [Test of Hypothesis]{.tab} tab, for [Alternative Hypothesis p1 − p2]{.des}, you should select the [<]{.typein} (less than) option because this is a left-tailed test, and set the [Significance Level]{.des} to 0.10. In addition, the values in the Basics dialog of [Two Population Proportion Inference]{.dialog} and in the [Data Summary]{.tab} tab should match those shown in @fig-smoking-inputs.
+b\. To perform this hypothesis test in Rguroo, follow the same steps given in the [solution](#schema-test-pvalue) of @exm-schema-test-pvalue. One difference is that in the [Test of Hypothesis]{.tab} tab, for [Alternative Hypothesis p1 − p2]{.des}, you should select the [<]{.typein} (less than) option because this is a left-tailed test, and set the [Significance Level]{.des} to 0.10. In addition, the values in the Basics dialog of [Two Population Proportion Inference]{.dialog} and in the [Data Summary]{.tab} tab should match those shown in @fig-smoking-inputs.
 
 ```{r, echo=FALSE}
 #| fig-cap: "Rguroo input setup comparing quit-smoking success rates for nicotine patch and self-guided groups"
@@ -4739,9 +5020,7 @@ b. Based on the observed difference and the critical region in part (a), state t
 :::: {.callout-tip .solution-callout collapse="true" icon=false}
 ## 🔎 Solution
 
-a\. **Using Rguroo**
-
-To perform this hypothesis test in Rguroo, follow the same steps given in the [solution](#exm-schema-test-cr) of @exm-schema-test-cr.  One difference is that in the [Test of Hypothesis]{.tab} tab, for [Alternative Hypothesis p1 − p2]{.des}, you should select the [<]{.typein} (less than) option because this is a left-tailed test, and set the [Significance Level]{.des} to [0.10]{.typein}. In addition, the values in the Basics dialog of [Two Population Proportion Inference]{.dialog} and in the [Data Summary]{.tab} tab should match those shown in @fig-smoking-inputs1.
+a\. To perform this hypothesis test in Rguroo, follow the same steps given in the [solution](#exm-schema-test-cr) of @exm-schema-test-cr.  One difference is that in the [Test of Hypothesis]{.tab} tab, for [Alternative Hypothesis p1 − p2]{.des}, you should select the [<]{.typein} (less than) option because this is a left-tailed test, and set the [Significance Level]{.des} to [0.10]{.typein}. In addition, the values in the Basics dialog of [Two Population Proportion Inference]{.dialog} and in the [Data Summary]{.tab} tab should match those shown in @fig-smoking-inputs1.
 
 ```{r, echo=FALSE}
 #| fig-cap: "Rguroo input setup comparing quit-smoking success rates for nicotine patch and self-guided groups"
@@ -4782,7 +5061,7 @@ $$
 $$
 
 
-Since the observed difference $\hat{p}_1-\hat{p}_2=-0.10$ is greater than **$-0.1164$**, it does *not* fall in the critical region, as shown by the green triangle outside the red-shaded region. Therefore, we fail to reject $H_0$ at the **10%** significance level.
+Since the observed difference $\hat{p}_1-\hat{p}_2=-0.10$ is greater than **$-0.1164$**, it does *not* fall in the critical region, as shown by the green triangle outside the red-shaded region. Therefore, we fail to reject $H_0$ at the 10% significance level.
 
 
 Although the observed difference of $-0.10$ is in the direction of $H_a$ (the self-guided approach had a 50% quit-smoking rate compared with 40% for the nicotine patch approach), the observed difference does not fall in the critical region. Therefore, the data do not provide sufficient evidence that the self-guided approach has a higher quit-smoking rate than the nicotine patch approach.
@@ -4797,7 +5076,7 @@ In Case 3, $H_a$ is supported when $\hat{p}_1 - \hat{p}_2$ is far from zero in *
 
 **Critical values $c_1, c_2$:** $\quad P(\hat{p}_1 - \hat{p}_2 \leq c_1 \mid p_1 = p_2) = P(\hat{p}_1 - \hat{p}_2 \geq c_2 \mid p_1 = p_2) = \alpha/2$
 
-**Decision:** Reject $H_0$ if p-value $< \alpha,$ equivalently if $\hat{p}_1 - \hat{p}_2 \leq c_1$ or $\hat{p}_1 - \hat{p}_2 \geq c_2.$
+Decision: Reject $H_0$ if p-value $< \alpha,$ equivalently if $\hat{p}_1 - \hat{p}_2 \leq c_1$ or $\hat{p}_1 - \hat{p}_2 \geq c_2.$
 :::
 
 
@@ -4820,9 +5099,10 @@ We split $\alpha$ equally between the two tails ($\alpha/2$ in each tail). Using
 - $c_1$ is the value with area $\alpha/2$ to its left
 - $c_2$ is the value with area $\alpha/2$ to its right
 
-**Decision Rule:**
-- Reject $H_0$ if $\hat{p}_1 - \hat{p}_2 < c_1$ or $\hat{p}_1 - \hat{p}_2 > c_2$ (observed difference strongly supports $H_a$)
-- Fail to reject $H_0$ if $c_1 \leq \hat{p}_1 - \hat{p}_2 \leq c_2$ (observed difference does not strongly support $H_a$)
+Decision Rule:
+
+  - Reject $H_0$ if $\hat{p}_1 - \hat{p}_2 < c_1$ or $\hat{p}_1 - \hat{p}_2 > c_2$ (observed difference strongly supports $H_a$).
+  - Fail to reject $H_0$ if $c_1 \leq \hat{p}_1 - \hat{p}_2 \leq c_2$ (observed difference does not strongly support $H_a$).
 
 :::{#exm-text-test-pvalue}
 ## Text Message Reminders: Hypothesis Test - p-Value Example
@@ -4975,9 +5255,22 @@ The data therefore provide sufficient evidence that adherence rates differ betwe
 So far, in the examples above, we have performed two-population proportion inference using summarized data—namely, the sample sizes and the number of successes for each group. In practice, however, we often begin with raw data rather than pre-computed summaries. By raw data, we mean datasets where each individual observation is recorded as a separate row, with variables indicating group membership and the outcome for each case. The following example demonstrates how we can carry out two-population proportion inference directly from raw data using Rguroo.
 
 :::{#exm-gss-test}
-## GSS 2024: Hypothesis Test Using Raw data
+## GSS 2024: Hypothesis Test Using Raw Data
 
-Consider the GSS marijuana legalization study. We want to test whether the proportion of U.S. adults who support the legalization of marijuana differs between females and males. Use the [GSS2024]{.data} to test the hypotheses:
+Consider the GSS marijuana legalization study. Use the [GSS2024]{.data} to test whether the proportion of U.S. adults who support the legalization of marijuana differs between females and males. Define $p_1$ as the proportion of females who support legalization and $p_2$ as the proportion of males who support legalization. 
+
+Use significance level $\alpha=0.05.$
+
+a. Write the null and alternative hypotheses.
+b. Test using the p-value approach.
+c. Test using the critical region approach.
+
+:::
+
+:::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+a\. The null and alternative hypotheses are:
 
 $$
 \begin{cases}
@@ -4986,19 +5279,6 @@ H_a: p_1 - p_2 \neq 0,
 \end{cases}
 $$
 
-where $p_1$ is the proportion of females who support legalization and $p_2$ is the proportion of males who support legalization. 
-
-Using significance level $\alpha=0.05,$ test these hypotheses using:
-
-a. the p-value approach.
-b. the critical region approach.
-
-:::
-
-:::: {.callout-tip .solution-callout collapse="true" icon=false}
-## 🔎 Solution
-
-**Using Rguroo**
 
 Click to expand the box below to see how to use the [Proportion Inference]{.fun}  function in Rguroo to answer this question.
 
@@ -5056,7 +5336,7 @@ Click to expand the box below to see the Rguroo output.
 
 :::
 
-a\. p-Value Approach:**
+b\. p-Value Approach:
 
 The $p$-value measures the strength of evidence the data provide against $H_0$ and in favor of $H_a: p_1 - p_2 \neq 0.$ Because this is a two-sided test, differences at least as far from 0 as the observed difference of $-0.064791,$ in either direction, are at least as supportive of $H_a.$ Therefore, the p-value is
 $$
@@ -5078,7 +5358,7 @@ knitr::include_graphics("Rguroo_outputs/Proportion_Inference/fig-pvalue2-GSS.png
 
 Since the p-value is $0.15268 > 0.05,$ we fail to reject $H_0$ at significance level $\alpha = 0.05.$ There is insufficient evidence in favor of $H_a: p_1 - p_2 \neq 0.$ Therefore, the data do not provide sufficient evidence that support for marijuana legalization differs between females and males.
 
-b\. **Critical Region Approach:**
+c\. Critical Region Approach:
 
 Since this is a two-sided test, the critical values values $c_1$ and $c_2$ are determined so that 
 $$
@@ -5129,21 +5409,21 @@ g. Write your conclusion in the context of the problem, stating what the results
 
 ---
 
-1. A researcher wants to determine whether male college students have a higher smoking rate than female college students. In a survey of 120 male students, 18 reported being regular smokers. Among 150 female students, 12 reported being regular smokers. Is there enough evidence to show that the proportion of male smokers is higher than the proportion of female smokers among college students? Test at the 5% level.
+1. A researcher wants to determine whether male college students have a higher smoking rate than female college students. In a survey of 120 male students, 18 reported being regular smokers. Among 150 female students, 12 reported being regular smokers. Is there enough evidence to show that the proportion of male smokers is higher than the proportion of female smokers among college students? Test at the $\alpha=0.05$ level.
 
-2. A school district is evaluating whether a new reading program is more effective for students with previous tutoring than for those without. Of 85 students with previous tutoring, 68 passed the reading assessment. Of 92 students without previous tutoring, 59 passed the assessment. Is there enough evidence to show that the proportion of students passing the assessment is higher for those with previous tutoring than for those without? Test at the 5% level.
+2. A school district is evaluating whether a new reading program is more effective for students with previous tutoring than for those without. Of 85 students with previous tutoring, 68 passed the reading assessment. Of 92 students without previous tutoring, 59 passed the assessment. Is there enough evidence to show that the proportion of students passing the assessment is higher for those with previous tutoring than for those without? Test at the $\alpha=0.05$ level.
 
-3. A small clinic wants to compare the effectiveness of two different treatments for a skin condition. In a trial, 8 out of 25 patients receiving Treatment A showed improvement, while 12 out of 28 patients receiving Treatment B showed improvement. Is there enough evidence to show that the proportion of patients improving differs between the two treatments? Test at the 5% level.
+3. A small clinic wants to compare the effectiveness of two different treatments for a skin condition. In a trial, 8 out of 25 patients receiving Treatment A showed improvement, while 12 out of 28 patients receiving Treatment B showed improvement. Is there enough evidence to show that the proportion of patients improving differs between the two treatments? Test at the $\alpha=0.05$ level.
 
-4. A coffee shop owner wants to know if customer satisfaction is higher during the morning shift than the evening shift. Of 45 morning customers surveyed, 38 reported being satisfied with their service. Of 52 evening customers surveyed, 35 reported being satisfied. Is there enough evidence to show that the proportion of satisfied customers is higher in the morning than in the evening? Test at the 5% level.
+4. A coffee shop owner wants to know if customer satisfaction is higher during the morning shift than the evening shift. Of 45 morning customers surveyed, 38 reported being satisfied with their service. Of 52 evening customers surveyed, 35 reported being satisfied. Is there enough evidence to show that the proportion of satisfied customers is higher in the morning than in the evening? Test at the $\alpha=0.05$ level.
 
-5. Many high school students take the AP tests in different subject areas. In 2007, of the 211,693 students who took the calculus AB exam, 102,598 of them were female and 109,095 of them were male ("AP exam scores," 2013). Is there enough evidence to show that the proportion of female students taking the calculus AB exam is different from the proportion of male students taking the calculus AB exam? Test at the 5% level.
+5. Many high school students take the AP tests in different subject areas. In 2007, of the 211,693 students who took the calculus AB exam, 102,598 of them were female and 109,095 of them were male ("AP exam scores," 2013). Is there enough evidence to show that the proportion of female students taking the calculus AB exam is different from the proportion of male students taking the calculus AB exam? Test at the $\alpha=0.05$ level.
 
-6. Are there more children diagnosed with Autism Spectrum Disorder (ASD) in states that have larger urban areas than in states that are mostly rural? In the state of Pennsylvania, a fairly urban state, there are 245 eight-year-olds diagnosed with ASD out of 18,440 eight-year-olds evaluated. In the state of Utah, a fairly rural state, there are 45 eight-year-olds diagnosed with ASD out of 2,123 eight-year-olds evaluated ("Autism and developmental," 2008). Is there enough evidence to show that the proportion of children diagnosed with ASD in Pennsylvania is higher than the proportion in Utah? Test at the 1% level.
+6. Are there more children diagnosed with Autism Spectrum Disorder (ASD) in states that have larger urban areas than in states that are mostly rural? In the state of Pennsylvania, a fairly urban state, there are 245 eight-year-olds diagnosed with ASD out of 18,440 eight-year-olds evaluated. In the state of Utah, a fairly rural state, there are 45 eight-year-olds diagnosed with ASD out of 2,123 eight-year-olds evaluated ("Autism and developmental," 2008). Is there enough evidence to show that the proportion of children diagnosed with ASD in Pennsylvania is higher than the proportion in Utah? Test at the $\alpha=0.01$ level.
 
-7. A child dying from an accidental poisoning is a terrible incident. Is it more likely that a male child will get into poison than a female child? To find this out, data was collected that showed that out of 1,830 children between the ages of one and four who died from poisoning, 1,031 were males and 799 were females (Flanagan, Rooney & Griffiths, 2005). Do the data show that the proportion of male children dying of poisoning is higher than the proportion of female children? Test at the 1% level.
+7. A child dying from an accidental poisoning is a terrible incident. Is it more likely that a male child will get into poison than a female child? To find this out, data was collected that showed that out of 1,830 children between the ages of one and four who died from poisoning, 1,031 were males and 799 were females (Flanagan, Rooney & Griffiths, 2005). Do the data show that the proportion of male children dying of poisoning is higher than the proportion of female children? Test at the $\alpha=0.01$ level.
 
-8. Many high school students take the AP tests in different subject areas. In 2007, of the 144,796 students who took the biology exam, 84,199 of them were female. In that same year, of the 211,693 students who took the calculus AB exam, 102,598 of them were female ("AP exam scores," 2013). Is there enough evidence to show that the proportion of female students taking the biology exam is different from the proportion of female students taking the calculus AB exam? Test at the 5% level.
+8. Many high school students take the AP tests in different subject areas. In 2007, of the 144,796 students who took the biology exam, 84,199 of them were female. In that same year, of the 211,693 students who took the calculus AB exam, 102,598 of them were female ("AP exam scores," 2013). Is there enough evidence to show that the proportion of female students taking the biology exam is different from the proportion of female students taking the calculus AB exam? Test at the $\alpha=0.05$ level.
 
 9. The General Social Survey (GSS) collects data through different survey modes, including in-person interviews and telephone interviews. Researchers want to investigate whether the survey mode affects responses to sensitive questions. Using the GSS2024 dataset, test whether the proportion of respondents who support the legalization of marijuana differs between those surveyed in person and those surveyed by phone. The variable [Mode]{.var} indicates the survey mode (In Person or Phone), and the variable [Grass]{.var} indicates support for marijuana legalization (Yes or No). Test at the 5% level. **Note:** The `Mode` variable in the GSS2024 dataset includes three categories: In Person, Phone, and Web. When you select only the In Person and Phone groups in Rguroo for your analysis, Rguroo will automatically exclude respondents who completed the survey via the Web.
 
@@ -5214,7 +5494,7 @@ Let's see how to construct and interpret confidence intervals for the difference
 
 ### Relationship Between Confidence Intervals and Hypothesis Tests
 
-There is an important connection between confidence intervals and two-sided hypothesis tests. A $(1-\alpha)\times100%$ confidence interval and a two-sided hypothesis test at significance level $\alpha$ lead to the same conclusion about the null value $p_1-p_2=0$:
+There is an important connection between confidence intervals and two-sided hypothesis tests. A $(1-\alpha)\times100%$ confidence interval and a two-sided hypothesis test at significance level $\alpha$ lead to the same decisions about the null value $p_1-p_2=0$:
 
 - If a $(1-\alpha) \times 100\%$ confidence interval for $p_1 - p_2$ **does not contain 0**, then 0 is not a plausible value for $p_1-p_2,$ and we **reject** $H_0: p_1 - p_2 = 0$ at significance level $\alpha$ in a two-sided test.
 
