@@ -39,7 +39,7 @@ Many questions involving categorical data ask us to compare what we observe in a
 
 As with the other hypothesis tests you have studied, the general testing process remains the same. What changes are the conditions that must be satisfied, calculating expected counts, and the test statistic used to calculate the p-value. The following summarizes the general steps used in hypothesis testing, no matter the type of test.
 
-::: callout-note
+::: {#general-hypothesis-steps .callout-note}
 ## General Hypothesis Test Steps
 
 1.  State the null and alternative hypotheses, $H_o$ and $H_a$.
@@ -246,10 +246,238 @@ We will revisit @exm-modality-exp-counts. A college states that 40% of its stude
 Is there sufficient evidence to conclude that students' preferences for course modality differ from the distribution stated by the college at the $\alpha=0.05$ significance level? Use the p-value approach.
 :::
 
-::: {.callout-tip .solution-callout collapse="true" icon="false"}
+::: {#gof-modality-pvalue-solution .callout-tip .solution-callout collapse="true" icon="false"}
 ## 🔎 Solution
 
-To determine if there is sufficient evidence that the preferences for course modality differs from the stated distribution, we need to conduct a full hypothesis test. This is a goodness-of-fit test since we are determining if a catagorical variable matches a specific distribution.
+To determine if there is sufficient evidence that the preferences for course modality differs from the stated distribution, we need to conduct a full hypothesis test. This is a goodness-of-fit test since we are determining if a catagorical variable matches a specific distribution. 
+
+Before we begin the test, we need to make sure the conditions for a GOF test are satisfied.
+
+*Categorical Data:* We have categorical data since the college recorded modality.
+
+*Randomness:* The college used a random sample.
+
+*Independence:* The sample is independent since the modality preference of one student does not affect another student.
+
+*Expected Counts:* The college did not report the expected counts, so we can compute them.
+
+Recall: expected counts are $n \times p$ for each category.
+
+In-Person: $(120)(0.40)= 48$
+
+Online: $(120)(0.35)=42$
+
+Hybrid $(120)(.25)=30$
+
+All expected counts are greater than 5.
+
+Now that we know the conditions for a GOF test are satisfied, we will follow the [General Hypothesis Test Steps](#general-hypothesis-steps) to complete the test.
+
+**State the null and alternative**
+
+From [Example 15.1](#exm-modality-gof), to write the null hypothesis, we state the proportions given in the distribution. The alternative will state that the population does not follow the distribution as stated.
+
+$H_o:$ $p_\text{in-person}=0.40$, $p_\text{online}=0.35$, $p_\text{hybrid}=0.25$
+
+$H_a:$ The population does not follow the stated distribution.
+
+**Select $\alpha$**
+
+In this example, the $\alpha$ was given. So, $\alpha = 0.05$
+
+**P-value Approach to find test-statistic and p-value**
+
+Since the question specifically tells us to use the p-value approach, we will use Rguroo to find the test statistic and p-value.
+
+Click to expand the box below see how to find the test statisic and p-value for a GOF Test.
+
+:::: {#GOF-P-Value_Approach-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Finding the Test Statistic and P-value for GOF Test in Rguroo"}
+
+
+1.  Open the **Analytics** toolbox in Rguroo.\
+2.  Open the [Analysis]{.dpd} dropdown, and select [Goodness of Fit]{.fun}. This opens the [Goodness of Fit Test]{.fun} dialog box.
+3.  In the [Goodness of Fit Test]{.fun} dialog box, there are two options. You can choose an existing dataset, or you can type the data in manually.  For this example, we will type the data in manually.
+    - We have three modalities, so we will need three rows. Click the plus icon ![plus icon](Rguroo_Icons/add.png) button three times. This will give us space to enter the three modalities.
+    - Enter the modality names in both the *Level* and *Label* columns.
+    - Enter the observed counts in the *Obs Count* column and the expected percentages in the *Null Probability* column.
+4.  Select *Chi-Square* in the Test of Hypothesis box. 
+5.  Leave the $\alpha=0.05$ in the *Significance Level* box, since we are using this value.
+6.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the information for the test.
+7. Remember to save your output in case you need to refer to it later.
+
+::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+![Goodness of Fit Test Dialog for Modality Example](Rguroo_dialogs/Chi_squared/dialog_gof_modality_pvalue){width="500px"}
+:::
+::::
+
+```{r, echo=FALSE}
+#| label: fig-gof-modality-pvalue
+#| fig-cap: 'Rguroo output for GOF Test for Modality Example)'
+#| fig-alt: 'Rguroo output for GOF Test for Modality Example, showing graph, p-value = 0.01930 and test statistic of 7.89524 '
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_outputs/Chi-Square/gof-output-pvalue.png")
+```
+
+The P-value graph displays the chi-squared distribution under the null hypothesis. The observed test statistic, $\chi^2=7.89524$, is marked by the green triangle. The red shaded area to the right of the test statistic represents the p-value, $\text{p-value} =0.01930$.
+
+**Make a Decision**
+
+Since the p-value $< \alpha$, $0.01930<0.05$, we reject the null hypothesis.
+
+**State the Conclusion**
+
+There is sufficient evidence to support the claim that the population does not follow the stated modality distribution of 40% in-person, 35% online, and 25% hybrid.
+:::
+
+::: {#exm-car-preference} ::: 
+## GOF Test for Car Preference - Using P-value Approach
+
+A project conducted by the Australian Federal Office of Road Safety randomly surveyed 300 people and asked them many questions about their cars. One question was the reason that a person chooses a given car, and that data is in @tbl-Car_table ("Car preferences," 2013). Do the data show that the frequencies observed substantiate the claim that the reasons for choosing a car are equally likely? Test at the $\alpha=0.05$ level of significance. Use the p-value approach.
+
+```{r, echo=FALSE}
+#| tbl-alt: "Reason for Choosing a Car"
+#| label: tbl-Car_table
+#| tbl-cap: "Reason for Choosing a Car"
+Car_table <- tally(~Reason, data=Car_pref)
+knitr::kable(Car_table)
+```
+
+
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [carprefs]{.data}. @tbl-Car_table shows the variables and the first 6 rows of the data set. A complete description of the variables is provided in the [dataset code book](#code-book-carpref) that follows.
+
+:::
+
+::: {#code-book-carpref .callout-tip .codebook collapse="true"}
+## Code book for Carprefs Dataset
+
+**Description** The dataset gives survey results from a project conducted by the Australian Federal Office of Road Safety.
+
+Format
+
+This dataset contains the following columns:
+
+[ID]{.var}: Identification number for the respondent
+<br><br>
+[Age]{.var}: Age of the respondent
+<br><br>
+[Sex]{.var}: Sex of the respondent
+<br><br>
+[LicYr]{.var}: Number of years the respondent has held a driver's license
+<br><br>
+[LicMth]{.var}: Additional number of months the respondent has held a driver's license
+<br><br>
+[ActCar]{.var}: Type of car the respondent currently drives
+<br><br>
+[Kids5]{.var}: Number of children age 5 or younger
+<br><br>
+[Kids6]{.var}: Number of children age 6 or older
+<br><br>
+[PreferCar]{.var}: Type of car the respondent would prefer to own
+<br><br>
+[Carsmall_new5K]{.var}: Car preference related to a small new car
+<br><br>
+[Reason]{.var}: Main reason for the respondent's car preference
+<br><br>
+[Cost]{.var}: Importance of cost when choosing a car
+<br><br>
+[Reliable]{.var}: Importance of reliability when choosing a car
+<br><br>
+[Perform]{.var}: Importance of performance when choosing a car
+<br><br>
+[Fuel]{.var}: Importance of fuel economy when choosing a car
+<br><br>
+[Safety]{.var}: Importance of safety when choosing a car
+<br><br>
+[AC.PS]{.var}: Importance of air conditioning and power steering when choosing a car
+<br><br>
+[Park]{.var}: Importance of ease of parking when choosing a car
+<br><br>
+[Room]{.var}: Importance of interior room when choosing a car
+<br><br>
+[Doors]{.var}: Importance of the number of doors when choosing a car
+<br><br>
+[Prestige]{.var}: Importance of prestige when choosing a car
+<br><br>
+[Colour]{.var}: Importance of car color when choosing a car
+
+:::
+
+::: {#gof-carpref-pvalue-solution .callout-tip .solution-callout collapse="true" icon="false"}
+## 🔎 Solution
+
+To determine if the reasons for chosing a car are equally likely, we need to conduct a full hypothesis test. This is a goodness-of-fit test since we are determining if a catagorical variable matches a specific distribution; in this case each reason has the same proportion
+
+Before we begin the test, we need to make sure the conditions for a GOF test are satisfied.
+
+*Categorical Data:* We have categorical data since the store recorded payment method.
+
+*Randomness:* Australian Federal Office of Road Safety used a random sample.
+
+*Independence:* The sample is independent since reason for chosing a car is independent from one person to the next.
+
+*Expected Counts:* Australian Federal Office of Road Safety did not report expected counts; however, there are 6 reasons listed for chosing a car so each reason should have a probability of $\frac{1}{6}$ if the reasons are equally likely. This means that the expected counts for each reason would be $(300)(\frac{1}{6}) = 50$. The expected counts are all greater than 5.
+
+Now that we know the conditions for a GOF test are satisfied, we will follow the [General Hypothesis Test Steps](#general-hypothesis-steps) to complete the test.
+
+**State the null and alternative**
+
+To write the null hypothesis, we state the proportions given in the distribution. As stated before, since we are testing whether the reasons are equally likely, all proportions will be $\frac{1}{6}$The alternative will state that the population does not follow the store's distribution as stated (not equally likely).
+
+$H_o:$ $p_\text{comfort}= p_\text{cost}=p_\text{looks}=p_\text{performance}=p_\text{reliability}=p_\text{safety}=\frac{1}{6}$
+
+$H_a:$ The reasons for chosing a car are not equally likely.
+
+**Select $\alpha$**
+
+In this example, the $\alpha$ was given. So, $\alpha = 0.05$
+
+**P-value Approach to find test-statistic and p-value**
+
+Since the question specifically tells us to use the p-value approach, we will use Rguroo to find the test statistic and p-value. For this example, we could input the categories and observed counts that are shown in the @tbl-Car_table. However, entering these manually is time consuming and this dataset is in Rguroo. We will use the exisiting dataset and Rguroo will populate the categories for us.
+
+Click to expand the box below see how to find the test statisic and p-value for a GOF Test using raw data.
+
+:::: {#GOF-P-Value_Approach-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Finding the Test Statistic and P-value for GOF Test in Rguroo Using Raw Data"}
+
+
+1.  Open the **Analytics** toolbox in Rguroo.\
+2.  Open the [Analysis]{.dpd} dropdown, and select [Goodness of Fit]{.fun}. This opens the [Goodness of Fit Test]{.fun} dialog box.
+3.  In the [Goodness of Fit Test]{.fun} dialog box, there are two options. You can choose an existing dataset, or you can type the data in manually.  For this example, we will select the dataset.
+    - From the [Select a Dataset]{.dpd} menu, select the [carpref]{.data} dataset.
+    - From the [Factor]{.dpd} select the variable [Reason]{.var}
+    - In the Null Probability column, we can leave this blank since Rguroo defaults to equally likely. You can also enter $\frac{1}{6}$, in each, but it is not needed.
+    Notice that the table provided above automatically populates.
+4.  Select *Chi-Square* in the Test of Hypothesis box. 
+5.  Leave the $\alpha=0.05$ in the *Significance Level* box, since we are using this value.
+6.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the information for the test.
+7. Remember to save your output in case you need to refer to it later.
+
+::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+![Goodness of Fit Test Dialog for Reason for Choosing Car Example](Rguroo_dialogs/Chi_squared/dialog_gof_carpref){width="500px"}
+:::
+::::
+
+```{r, echo=FALSE}
+#| label: fig-gof-carpref-pvalue
+#| fig-cap: 'Rguroo output for GOF Test for Reason for Choosing Car Example'
+#| fig-alt: 'Rguroo output for GOF Test for Reason for Choosing Car Example, showing graph, p-value = 0.0000 and test statistic of 42.2'
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_outputs/Chi-Square/gof-carpref-output.png")
+```
+
+Notice in the Rguroo output that the expected proportions automatically filled in as the decimal form of $\frac{1}{6}$.
+
+The P-value graph displays the chi-squared distribution under the null hypothesis. The observed test statistic, $\chi^2=42.2000$, is marked by the green triangle. The red shaded area to the right of the test statistic is so small, it is barely visible. The $\text{p-value} =0.0000$.
+
+**Make a Decision**
+
+Since the p-value is $< \alpha$, $0.0000$ is $<0.05$, we reject the null hypothesis.
+
+**State the Conclusion**
+
+There is sufficient evidence to support the claim that the reasons for choosing a car are not equally likely.
+
 :::
 
 ::: {#exm-payment-gof-test-pvalue}
@@ -270,6 +498,83 @@ The store manager wants to determine whether the distribution of payment methods
 
 ::: {.callout-tip .solution-callout collapse="true" icon="false"}
 ## 🔎 Solution
+
+To determine if the payment methods at this store differs from the company's reported distribution, we need to conduct a full hypothesis test. This is a goodness-of-fit test since we are determining if a catagorical variable matches a specific distribution. 
+
+Before we begin the test, we need to make sure the conditions for a GOF test are satisfied.
+
+*Categorical Data:* We have categorical data since the store recorded payment method.
+
+*Randomness:* The store used a random sample.
+
+*Independence:* The sample is independent since the payment method of one person does not affect another.
+
+*Expected Counts:* The store did not report the expected counts, so we will compute them.
+
+Credit/Debit: $(200)(0.50)= 100$
+
+Mobile: $(200)(0.30)=60$
+
+Cash; $(200)(.20)=40$
+
+These expected counts are all greater than 5.
+
+Now that we know the conditions for a GOF test are satisfied, we will follow the [General Hypothesis Test Steps](#general-hypothesis-steps) to complete the test.
+
+**State the null and alternative**
+
+To write the null hypothesis, we state the proportions given in the distribution. The alternative will state that the population does not follow the store's distribution as stated.
+
+$H_o:$ $p_\text{credit/debit}=0.50$, $p_\text{mobile}=0.30$, $p_\text{cash}=0.20$
+
+$H_a:$ The population does not follow the stated distribution.
+
+**Select $\alpha$**
+
+In this example, the $\alpha$ was given. So, $\alpha = 0.05$
+
+**P-value Approach to find test-statistic and p-value**
+
+Since the question specifically tells us to use the p-value approach, we will use Rguroo to find the test statistic and p-value.
+
+Click to expand the box below see how to find the test statisic and p-value for a GOF Test.
+
+:::: {#GOF-P-Value_Approach-in-Rguroo .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Finding the Test Statistic and P-value for GOF Test in Rguroo"}
+
+
+1.  Open the **Analytics** toolbox in Rguroo.\
+2.  Open the [Analysis]{.dpd} dropdown, and select [Goodness of Fit]{.fun}. This opens the [Goodness of Fit Test]{.fun} dialog box.
+3.  In the [Goodness of Fit Test]{.fun} dialog box, there are two options. You can choose an existing dataset, or you can type the data in manually.  For this example, we will type the data in manually.
+    - We have three payment methods, so we will need three rows. Click the plus icon ![plus icon](Rguroo_Icons/add.png) button three times. This will give us space to enter the payment methods.
+    - Enter the payment method names in both the *Level* and *Label* columns.
+    - Enter the observed counts in the *Obs Count* column and the expected percentages in the *Null Probability* column.
+4.  Select *Chi-Square* in the Test of Hypothesis box. 
+5.  Leave the $\alpha=0.05$ in the *Significance Level* box, since we are using this value.
+6.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the information for the test.
+7. Remember to save your output in case you need to refer to it later.
+
+::: {.callout-tip .inner-callout appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+![Goodness of Fit Test Dialog for Payment Method Example](Rguroo_dialogs/Chi_squared/dialog_gof_payment_pvalue){width="500px"}
+:::
+::::
+
+```{r, echo=FALSE}
+#| label: fig-gof-payment-pvalue
+#| fig-cap: 'Rguroo output for GOF Test for Payment Method Example'
+#| fig-alt: 'Rguroo output for GOF Test for Payment Method Example, showing graph, p-value = 0.14661 and test statistic of 3.840'
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_outputs/Chi-Square/gof-output-payment-pvalue.png")
+```
+
+The P-value graph displays the chi-squared distribution under the null hypothesis. The observed test statistic, $\chi^2=3.840$, is marked by the green triangle. The red shaded area to the right of the test statistic represents the p-value, $\text{p-value} =0.14661$.
+
+**Make a Decision**
+
+Since the p-value is not $< \alpha$, $0.14661$ is not $<0.05$, we do not reject the null hypothesis.
+
+**State the Conclusion**
+
+There is not sufficient evidence to support the claim that this specific store's population does not follow the stated payment method distribution of 50% credit/debit, 30% mobile, 20% cash. So, this means the specific store follows the overall company's payment method distribution.
 :::
 
 ### Critical Region Approach
@@ -289,7 +594,7 @@ knitr::include_graphics("Rguroo_outputs/Chi-Square/chi-square-dist.png")
 ::: {#exm-modality-gof-test-critical-region}
 ## GOF Test for Modality - Using Critical Region Approach
 
-We will revisit @exm-modality-exp-counts and show how to conduct the same hypothesis test using the critcal region approach. A college states that 40% of its students prefer in-person courses, 35% prefer online courses, and 25% prefer hybrid courses. A random sample of 120 students was asked to identify their preferred course modality. The results are shown below.
+We will revisit @exm-modality-gof-test-pvalue and show how to conduct the same hypothesis test using the critcal region approach. A college states that 40% of its students prefer in-person courses, 35% prefer online courses, and 25% prefer hybrid courses. A random sample of 120 students was asked to identify their preferred course modality. The results are shown below.
 
 | Course Modality | Claimed Proportion | Observed Count |
 |-----------------|--------------------|----------------|
@@ -302,26 +607,176 @@ Is there sufficient evidence to conclude that students' preferences for course m
 
 ::: {.callout-tip .solution-callout collapse="true" icon="false"}
 ## 🔎 Solution
+
+Since we are testing the same claim, we will use some of our work in @exm-modality-gof-test-pvalue.  In that example, we already checked that the conditions for a chi-squared test were met, we stated the null and alternative hypotheses, and we stated $\alpha$.  Let's write down the previous steps for a hypothesis and then continue on.
+
+**State the null and alternative**
+
+$H_o:$ $p_\text{in-person}=0.40$, $p_\text{online}=0.35$, $p_\text{hybrid}=0.25$
+
+$H_a:$ The population does not follow the stated distribution.
+
+**Select $\alpha$**
+
+$\alpha = 0.05$
+
+**Critical Region Approach to find Critical Value and Test Statistic**
+
+To obtain critical regions in Rguroo, we use the same Rguroo steps as shown in the [solution](#gof-modality-pvalue-solution) of @exm-modality-gof-test-pvalue. Scroll down to the last image on the Rguroo output and you will see the $\chi^2$ test statistic (same as before) and the critical value.
+
+```{r, echo=FALSE}
+#| label: fig-gof-modality-critical-region
+#| fig-cap: 'Rguroo output for GOF Test for Modality Example - Critical Region Approach)'
+#| fig-alt: 'Rguroo output for GOF Test for Modality Example - Critical Region Approach, showing graph, critical value = 5.9915 and test statistic of 7.89524 '
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_outputs/Chi-Square/gof-modality-critical-region.png")
+```
+
+The critical region graph displays the chi-squared distribution. The red shaded region represents the critical region for a $\alpha=0.05$ significance level and begins at the critical value of $\chi^2=5.9915$. The green triangle marks the observed chi-squared test statistic of $\chi^2=7.8952$. 
+
+**Make a Decision**
+
+Because the observed test statistic, $\chi^2=7.8952$, falls within the red critical region (values greater than $\chi^2=5.9915$), the null hypothesis is rejected.
+
+**State the Conclusion**
+
+There is sufficient evidence to support the claim that the population does not follow the stated modality distribution of 40% in-person, 35% online, and 25% hybrid.
+
+Notice that the test results, no matter the apprach, will yield the same decision and conclusion.
+
 :::
 
-::: {#exm-payment-gof-test-critical-region}
-## GOF Test for Method of Payment - Using Critical Region Approach
+::: {#exm-car-preference-critical-region} 
+## GOF Test for Car Preference - Using Critical Region Approach
 
-A retail company reports that customers typically use the following methods of payment: 50% use a credit or debit card, 30% use a mobile payment method, 20% use cash.
+We will revisit @exm-car-preference and show how to conduct the same hypothesis test using the critical region approach. A project conducted by the Australian Federal Office of Road Safety randomly surveyed 300 people and asked them many questions about their cars. One question was the reason that a person chooses a given car, and that data is in @tbl-Car_table ("Car preferences," 2013). Do the data show that the frequencies observed substantiate the claim that the reasons for choosing a car are equally likely? Test at the $\alpha=0.05$ level of significance. Use the critical region approach.
 
-A random sample of 200 customers at one of the company's stores produced the following results:
+@tbl-Car_table shows the tabulated data. A complete description of the variables is provided in the [dataset code book](#code-book-carpref).
 
-| Payment Method    | Observed Count |
-|-------------------|----------------|
-| Credit/Debit Card | 112            |
-| Mobile Payment    | 48             |
-| Cash              | 40             |
-
-The store manager wants to determine whether the distribution of payment methods at this store differs from the company's reported distribution. Use the critical region approach and a significance level of $\alpha = 0.05$.
 :::
 
 ::: {.callout-tip .solution-callout collapse="true" icon="false"}
 ## 🔎 Solution
+
+Since we are testing the same claim, we will use some of our work in @exm-car-preference.  In that example, we already checked that the conditions for a chi-squared test were met, we stated the null and alternative hypotheses, and we stated $\alpha$.  Let's write down the previous steps for a hypothesis and then continue on.
+
+**State the null and alternative**
+
+$H_o:$ $p_\text{comfort}= p_\text{cost}=p_\text{looks}=p_\text{performance}=p_\text{reliability}=p_\text{safety}=\frac{1}{6}$
+
+$H_a:$ The reasons for chosing a car are not equally likely.
+
+**Select $\alpha$**
+
+$\alpha = 0.05$
+
+**Critical Region Approach to find Critical Value and Test Statistic**
+
+To obtain critical regions in Rguroo, we use the same Rguroo steps as shown in the [solution](#gof-carpref-pvalue-solution) of @exm-car-preference. Scroll down to the last image on the Rguroo output and you will see the $\chi^2$ test statistic (same as before) and the critical value.
+
+```{r, echo=FALSE}
+#| label: fig-gof-carpref-critical-region
+#| fig-cap: 'Rguroo output for GOF Test for Reason for Choosing Car Example - Critical Region Approach'
+#| fig-alt: 'Rguroo output for GOF Test for Reason for Choosing Car Example - Critical Region Approach, showing graph, critical value of 11.07 and test statistic of 42.2'
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_outputs/Chi-Square/gof-carpref-output-critical-region.png")
+```
+
+The critical region graph displays the chi-squared distribution. The red shaded region represents the critical region for a $\alpha=0.05$ significance level and begins at the critical value of $\chi^2=11.07$. The green triangle marks the observed chi-squared test statistic of $\chi^2=42.2$. 
+
+**Make a Decision**
+
+Because the observed test statistic, $\chi^2=42.2$, falls within the red critical region (values greater than $\chi^2=11.07$), the null hypothesis is rejected.
+
+**State the Conclusion**
+
+There is sufficient evidence to support the claim that the reasons for choosing a car are not equally likely.
+
+Again, notice that this is the same decision and conclusion as with the p-value method.
+:::
+
+::: {#exm-transportation-gof-test-critical-region}
+## GOF Test for Transportation Methods - Using Critical Region Approach
+
+A college reports that students typically use the following methods to travel to campus: 50% drive, 20% carpool, 15% use public transportation, and 15% walk or bike.
+
+A random sample of 160 students is selected. The students report their primary method of transportation to campus as follows:
+
+| Transportation Method | Observed Count |
+|-----------------------|----------------|
+| Drive                 | 91|
+| Carpool               | 25|
+| Public Trasportation  | 20|
+|Walk or Bike           | 24|
+
+At the $\alpha = 0.01$ significance level, is there enough evidence to conclude that the distribution of transportation methods differs from the reported distribution? Use the critical region approach.
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon="false"}
+## 🔎 Solution
+
+For this example, we will follow the same procedure and steps as in the last example. Since we have not checked that the chi-squared conditions have been met, we will do that as well.
+
+*Categorical Data:* We have categorical data since the college reported method of transportation.
+
+*Randomness:* The college used a random sample.
+
+*Independence:* The sample is independent since we will assume one person's method of transportation does not affect another person's method of transportation.
+
+*Expected Counts:* The college did not report the expected counts, so we will compute them.
+
+Drive: $(160)(0.50)=80$
+
+Carpool: $(160)(0.20)=32$
+
+Public Trasportation: $(160)(0.15)=24$
+
+Walk or Bike: $(160)(0.15)=24$
+
+**State the null and alternative**
+
+$H_o:$ $p_\text{drive}=0.50$, $p_\text{carpool}=0.20$, $p_\text{public}=0.15$, $p_\text{walk/bike}=0.15$
+
+$H_a:$ The population does not follow the stated distribution.
+
+**Select $\alpha$**
+
+$\alpha = 0.01$
+
+**Critical Region Approach to find Critical Value and Test Statistic**
+
+To obtain critical regions in Rguroo, we use the same Rguroo steps as shown in the [solution](#gof-modality-pvalue-solution) of @exm-modality-gof-test-pvalue. 
+
+In this case, we have 4 modes of transportation so we will need to click the plus icon ![plus icon](Rguroo_Icons/add.png) button four times. We also have $\alpha=0.01$, so type [0.01]{.typein} in the *Significance Level* box. Once you have entered the information, click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the information for the test.
+
+```{r, echo=FALSE}
+#| label: fig-gof-transportation-dialog
+#| fig-cap: 'Dialog for Transportation Method'
+#| fig-alt: 'Dialog for Transportation Method'
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_dialogs/Chi_Squared/dialog-gof-transportation.png")
+```
+
+Scroll down to the last image on the Rguroo output and you will see the $\chi^2$ test statistic and the critical value.
+
+```{r, echo=FALSE}
+#| label: fig-gof-transprtation-critical-region
+#| fig-cap: 'Rguroo output for GOF Test for Transportation Example - Critical Region Approach'
+#| fig-alt: 'Rguroo output for GOF Test for Transportation Example - Critical Region Approach, showing graph, critical value = 5.9915 and test statistic of 7.89524 '
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_outputs/Chi-Square/gof-output-transportation-criticalreg.png")
+```
+
+The critical region graph displays the chi-squared distribution. The red shaded region represents the critical region for a $\alpha=0.01$ significance level and begins at the critical value of $\chi^2=11.345$. The green triangle marks the observed chi-squared test statistic of $\chi^2=3.7104$. 
+
+**Make a Decision**
+
+Because the observed test statistic, $\chi^2=3.7104$, does not fall within the red critical region (values greater than $\chi^2=11.345$), the null hypothesis is not rejected.
+
+**State the Conclusion**
+
+There is not sufficient evidence to support the claim that the population does not follow the stated transportation distribution of 50% drive, 20% carpool, and 15% public transportation, 15% walk or bike. So college students follow the transportation method percentages as stated.
+
 :::
 
 ### Homework for Section 12.1
@@ -399,18 +854,137 @@ Do the data support the notion that each defect type occurs in the same proporti
     knitr::kable(Prisoners)
     ```
 
-6.  A project conducted by the Australian Federal Office of Road Safety asked people many questions about their cars. One question was the reason that a person chooses a given car, and that data is in @tbl-Car_table ("Car preferences," 2013).
 
-```{r, echo=FALSE}
-#| tbl-alt: "Reason for Choosing a Car"
-#| label: tbl-Car_table
-#| tbl-cap: "Reason for Choosing a Car"
-Car_table <- tally(~Reason, data=Car_pref)
-knitr::kable(Car_table)
-```
-
-Do the data show that the frequencies observed substantiate the claim that the reasons for choosing a car are equally likely? Test at the 5% level.
 
 ## Chi-Square Test for Independence
+
+A **chi-squared test of independence** is used to determine whether there is an association between two categorical variables. The data are organized in a contingency table, with the categories of one variable represented by the rows and the categories of the other variable represented by the columns. The test compares the observed counts with the expected counts that would occur if the two variables were independent. If the observed counts differ significantly from the expected counts, there is evidence that the two variables are associated. If the differences are not significant, there is not sufficient evidence to conclude that the variables are associated.
+
+Just as we had with the goodness-of-fit test, we must satify the conditions for a chi-squared test.
+
+1.  Categorical data: The variable being analyzed is categorical, and the data are counts of observations within the categories.
+2.  Randomness: The data should come from a random sample or a randomized process.
+3.  Independence: The observations should be independent. When sampling without replacement from a finite population, the sample should generally be no more than 10% of the population.
+4.  Expected counts: The expected counts must be sufficiently large for the chi-square distribution to provide a reasonable approximation. A commonly used guideline is that each expected count should be at least 5.
+
+::: callout-note
+## Goodness-of-Fit versus Test of Independence
+
+Both the goodness-of-fit test and a test of independence use a chi-squared test, but they answer different questions. A goodness-of-fit test determines whether the distribution of *one categorical variable matches a specified distribution*. A test of independence determines whether there is an *association between two categorical variables*.
+:::
+
+### Null and Alternative Hypotheses
+
+For a chi-squared test of independence, the hypotheses address whether there is an association between two categorical variables. The null hypothesis states that the two variables are independent, meaning there is no association between the variables. The alternative hypothesis states that the two variables are not independent, meaning there is an association between the variables.
+
+
+$$ \begin{aligned}
+H_0 &: \text{The two categorical variables are independent.} \\
+H_a &: \text{The two categorical variables are associated.}
+\end{aligned} $$
+
+::: callout-note
+## Hypotheses for Test of Independence
+
+The hypotheses should be written in the context of the problem. Be specific and list the variables in the hypotheses.
+
+:::
+
+::: {#exm-year-study-location-independence}
+## Modality Preference
+
+A college wants to determine whether a student's class year is associated with the student's preferred study location. A random sample of students is surveyed and each student is classified by class year (Freshman, Sophomore, Junior, or Senior) and preferred study location (Home, Library, or Coffee Shop).
+
+A random sample of 200 college students is surveyed to determine whether class year and preferred study location are associated.
+
+| Class Year | Home | Library | Coffee Shop | Total |
+|:-----------|-----:|--------:|------------:|------:|
+| Freshman | 18 | 25 | 12 | 55 |
+| Sophomore | 24 | 18 | 10 | 52 |
+| Junior | 27 | 14 | 7 | 48 |
+| Senior | 31 | 11 | 3 | 45 |
+| Total | 100** | 68 | 32 | 200 | 
+
+<br>
+
+State the null and alternative hypotheses.
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon="false"}
+## 🔎 Solution
+
+:::
+
+:::{#exm-exercise-sleep-independence}
+
+A researcher wants to determine whether exercise frequency is associated with sleep quality. A random sample of adults is asked to classify exercise frequency as Rarely, Sometimes, or Often and sleep quality as Poor, Fair, or Good.
+
+A random sample of 180 adults is surveyed to determine whether exercise frequency and sleep quality are associated.
+
+| Exercise Frequency | Poor | Fair | Good | Total |
+|:-------------------|-----:|-----:|-----:|------:|
+| Rarely | 30 | 22 | 13 | 65 |
+| Sometimes | 17 | 28 | 17 | 62 |
+| Often | 8 | 17 | 28 | 53 |
+| Total | 55 | 67 | 58 | 180 |
+
+<br>
+
+State the null and alternative hypotheses.
+
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon="false"}
+## 🔎 Solution
+
+
+:::
+### Expected Counts
+
+Just as with a chi-squared goodness-of-fit test, a chi-squared test of independence compares observed counts with expected counts. In both tests, the expected counts represent what we would expect to observe if the null hypothesis were true.
+
+For a goodness-of-fit test, the expected counts are determined from the expected proportions specified in the null hypothesis:
+
+$$E=n\times p$$
+
+where $n$ is the sample size and $p$ is the expected proportion for a category.
+
+For a test of independence, there are no specified expected proportions. Instead, the expected count for each cell is calculated from the row and column totals of the two-way table:
+
+$$E=\frac{(\text{Row Total})(\text{Column Total})}{\text{Grand Total}}$$E=Grand Total(Row Total)(Column Total)​$$
+
+::: {.callout-note appearance="simple"}
+## Key Connection
+
+In both chi-squared tests, expected counts describe what we would expect to observe if $H_0$ were true. The difference is how the expected counts are determined: GOF uses specified proportions, while a test of independence uses the row and column totals of a two-way table.
+:::
+
+:::{#exm-exercise-sleep-independence-exp-counts}
+
+Let's revisit @exm-exercise-sleep-independence. A researcher wants to determine whether exercise frequency is associated with sleep quality. A random sample of adults is asked to classify exercise frequency as Rarely, Sometimes, or Often and sleep quality as Poor, Fair, or Good.
+
+A random sample of 180 adults is surveyed to determine whether exercise frequency and sleep quality are associated.
+
+| Exercise Frequency | Poor | Fair | Good | Total |
+|:-------------------|-----:|-----:|-----:|------:|
+| Rarely | 30 | 22 | 13 | 65 |
+| Sometimes | 17 | 28 | 17 | 62 |
+| Often | 8 | 17 | 28 | 53 |
+| Total | 55 | 67 | 58 | 180 |
+
+<br>
+
+Calculate the expected counts
+
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon="false"}
+## 🔎 Solution
+
+:::
+
+Understanding how expected counts are calculated helps explain how the chi-squared test works. Although we demonstrate the calculation by hand, you will not be required to calculate expected counts by hand in practice. Rguroo will calculate the expected counts for you.
+
+### Test Statistic
 
 ## Chi-Square Test for Homogeneity
