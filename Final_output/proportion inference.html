@@ -272,11 +272,11 @@ window.Quarto = {
   <li><a href="#sec-critical-region" id="toc-sec-critical-region" class="nav-link" data-scroll-target="#sec-critical-region"><span class="header-section-number">9.4.3</span> Decision Based on a Critical Region</a></li>
   <li><a href="#homework-for-sec-making-decision-binomial" id="toc-homework-for-sec-making-decision-binomial" class="nav-link" data-scroll-target="#homework-for-sec-making-decision-binomial"><span class="header-section-number">9.4.4</span> Homework for <span>Section 9.4</span></a></li>
   </ul></li>
-  <li><a href="#sec-closer-look-cr-pvalue" id="toc-sec-closer-look-cr-pvalue" class="nav-link" data-scroll-target="#sec-closer-look-cr-pvalue"><span class="header-section-number">9.5</span> A Closer Look at Critical Regions and p-values **</a>
+  <li><a href="#sec-closer-look-cr-pvalue" id="toc-sec-closer-look-cr-pvalue" class="nav-link" data-scroll-target="#sec-closer-look-cr-pvalue"><span class="header-section-number">9.5</span> A Closer Look at Critical Regions and p-values (Optional)</a>
   <ul class="collapse">
   <li><a href="#sec-boundary-value" id="toc-sec-boundary-value" class="nav-link" data-scroll-target="#sec-boundary-value"><span class="header-section-number">9.5.1</span> Why Use the Boundary Value in <span class="math inline">\(H_0\)</span>? **</a></li>
   <li><a href="#sec-prob-calculator" id="toc-sec-prob-calculator" class="nav-link" data-scroll-target="#sec-prob-calculator"><span class="header-section-number">9.5.2</span> Obtaining Critical Regions and p-values Using Rguroo’s Probability Calculator</a></li>
-  <li><a href="#sec-rr-hw" id="toc-sec-rr-hw" class="nav-link" data-scroll-target="#sec-rr-hw"><span class="header-section-number">9.5.3</span> Homework for <span>Section 9.5</span> **</a></li>
+  <li><a href="#sec-rr-hw" id="toc-sec-rr-hw" class="nav-link" data-scroll-target="#sec-rr-hw"><span class="header-section-number">9.5.3</span> Homework for <span>Section 9.5</span></a></li>
   </ul></li>
   <li><a href="#sec-confidence-interval-one-pop" id="toc-sec-confidence-interval-one-pop" class="nav-link" data-scroll-target="#sec-confidence-interval-one-pop"><span class="header-section-number">9.6</span> Confidence Interval for a Population Proportion</a>
   <ul class="collapse">
@@ -857,7 +857,7 @@ Figure&nbsp;9.2: The <span class="math inline">\(H_a\)</span> support for a two-
 </div>
 </div>
 <p>Once the <span class="math inline">\(H_a\)</span> support has been identified, the p-value is the probability, assuming <span class="math inline">\(H_0\)</span> is true, that <span class="math inline">\(\hat{p}\)</span> falls in the <span class="math inline">\(H_a\)</span> support. For the large-sample method, we compute this probability using the normal null distribution at the boundary value <span class="math inline">\(p=p_0.\)</span> Thus, <span class="math display">\[
-\text{p-value} = P(\hat{p}\text{ is in the $H_a$ support), assuming that $p=p_0$}.
+\text{p-value} = P(\hat{p} \text{ is in the } H_a \text{ support}), \text{ assuming that } p=p_0.
 \]</span> Recall from <a href="foundations_of_inference.html#sec-foundations-boundary" class="quarto-xref"><span>Section 8.3.2</span></a> why we use the boundary value <span class="math inline">\(p=p_0.\)</span> A more detailed explanation is provided in the optional <a href="#sec-closer-look-cr-pvalue" class="quarto-xref"><span>Section 9.5</span></a>.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -944,8 +944,9 @@ H_a: p &lt; 0.35
 <p>Both conditions are satisfied, so the large sample normal approximation is appropriate for this example.</p>
 <p>b. We have <span class="math inline">\(x_{\text{obs}}=10\)</span> and <span class="math inline">\(n=50,\)</span> which gives <span class="math display">\[
 \hat{p}_{\text{obs}}=\frac{10}{50}=0.20.
-\]</span> Since the alternative hypothesis is <span class="math inline">\(H_a: p&lt;0.35,\)</span> smaller values of <span class="math inline">\(\hat{p}\)</span> provide stronger evidence in favor of <span class="math inline">\(H_a.\)</span> Therefore, the <span class="math inline">\(H_a\)</span> support consists of all sample proportions less than or equal to the observed value: <span class="math display">\[
-\text{\bf{$H_a$ Support:}}\;\; \hat{p} \le 0.20.
+\]</span> Since the alternative hypothesis is <span class="math inline">\(H_a: p&lt;0.35,\)</span> smaller values of <span class="math inline">\(\hat{p}\)</span> provide stronger evidence in favor of <span class="math inline">\(H_a.\)</span> Therefore, the <span class="math inline">\(H_a\)</span> support consists of all sample proportions less than or equal to the observed value:</p>
+<p><span class="math display">\[
+\textbf{H}_a\ \textbf{Support:}\;\; \hat{p} \le 0.20.
 \]</span></p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1104,8 +1105,7 @@ H_a: p \neq 0.36.
 \hat{p}_{\text{obs}}=\frac{21}{35}=0.60.
 \]</span> Since this is a two-sided alternative, values of <span class="math inline">\(\hat{p}\)</span> far from <span class="math inline">\(p_0\)</span> in <em>either</em> direction count as evidence against <span class="math inline">\(H_0.\)</span> The observed proportion <span class="math inline">\(\hat{p}_{\text{obs}}=0.60\)</span> lies <span class="math inline">\(0.60-0.36=0.24\)</span> above <span class="math inline">\(p_0,\)</span> so a value equally far <em>below</em> <span class="math inline">\(p_0\)</span> — namely <span class="math inline">\(0.36-0.24=0.12\)</span> — provides just as much evidence against <span class="math inline">\(H_0.\)</span> Since <span class="math inline">\(p_0=0.36,\)</span> and <span class="math inline">\(\hat{p}_{\text{obs}}=0.60,\)</span> the <span class="math inline">\(H_a\)</span> support is given by</p>
 <p><span class="math display">\[
-\text{\bf{$H_a$ Support:}}\;\; \hat{p} \geq 0.60 \text{ or } \hat{p} \leq 0.12.
-\]</span></p>
+\textbf{H}_a\ \textbf{Support:}\;\; \hat{p} \geq 0.60 \text{ or } \hat{p} \leq 0.12.\]</span></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-ha-support-example" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Number line showing the null value p0 = 0.36 marked with a black tick in the center. Two orange line segments extend outward from p₀: the right segment starts at the observed proportion p-hat-observed = 0.60 and continues to the end of the line, and the left segment starts at the beginning of the line and ends at the mirrored value 0.12. Double-headed arrows below the line show that both 0.60 and 0.12 are exactly 0.24 away from p₀ = 0.36, marking the rejection region for the two-sided alternative hypothesis.">
@@ -1445,7 +1445,7 @@ Code book for Dataset GSS2024
 <p>c. From the Rguroo output, we have <span class="math inline">\(x_{\text{obs}}=282\)</span> and <span class="math inline">\(n=388,\)</span> which gives <span class="math display">\[
 \hat{p}_{\text{obs}}=\frac{282}{388}\approx 0.727.
 \]</span> Since the alternative hypothesis is <span class="math inline">\(H_a: p&gt;0.70,\)</span> larger values of <span class="math inline">\(\hat{p}\)</span> provide stronger evidence in favor of <span class="math inline">\(H_a.\)</span> Therefore, the <span class="math inline">\(H_a\)</span> support consists of all sample proportions greater than or equal to the observed value: <span class="math display">\[
-\text{\bf{$H_a$ Support:}}\;\; \hat{p} \ge 0.727.
+\textbf{H}_a\ \textbf{Support:}\;\; \hat{p} \ge 0.727.
 \]</span></p>
 <p>d. The p-value is computed as <span class="math display">\[
 \text{p-value} = P\left(\hat{p} \ge 0.727\right), \text{assuming } p=0.70.
@@ -1513,7 +1513,7 @@ Rguroo One-Population Proportion dialog
 <div aria-describedby="fig-GSS2024-rguroo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-GSS2024_prop_normal_dialog" class="quarto-float quarto-figure quarto-figure-center anchored" width="85%" alt="Rguroo One-Population Proportion dialog configured for the Marijuana Legalization example with sample size n=388, observed count 282, hypothesized proportion 0.70, and right-tailed alternative.">
+<div id="fig-GSS2024_prop_normal_dialog" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo One-Population Proportion dialog configured for the Marijuana Legalization example with sample size n=388, observed count 282, hypothesized proportion 0.70, and right-tailed alternative." width="85%">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-GSS2024_prop_normal_dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="Rguroo_dialogs/Proportion_inference/GSS2024_prop_normal_dialog.png" id="fig-GSS2024_prop_normal_dialog" class="img-fluid figure-img" style="width:85.0%" data-ref-parent="fig-GSS2024-rguroo" alt="Rguroo One-Population Proportion dialog configured for the Marijuana Legalization example with sample size n=388, observed count 282, hypothesized proportion 0.70, and right-tailed alternative.">
@@ -1578,7 +1578,7 @@ Figure&nbsp;9.11: A portion of Rguroo output: p-value Graph for the Marijuana Le
 <section id="sec-large-sample-cr" class="level3" data-number="9.3.5">
 <h3 data-number="9.3.5" class="anchored" data-anchor-id="sec-large-sample-cr"><span class="header-section-number">9.3.5</span> Decision Based on a Critical Region</h3>
 <p>We now turn to the <strong>critical region approach</strong>, the other standard way to reach a decision. Recall from <a href="foundations_of_inference.html#sec-foundations-critical-region" class="quarto-xref"><span>Section 8.6</span></a> that the critical region is the set of values of the statistic for which we reject <span class="math inline">\(H_0\)</span> in favor of <span class="math inline">\(H_a.\)</span> Whereas the p-value approach summarizes the evidence with a probability computed from the observed proportion <span class="math inline">\(\hat{p}_{\text{obs}},\)</span> the critical region approach decides <em>in advance</em> which values of <span class="math inline">\(\hat{p}\)</span> are extreme enough to reject <span class="math inline">\(H_0,\)</span> and then simply checks whether <span class="math inline">\(\hat{p}_{\text{obs}}\)</span> falls in the critical region.</p>
-<p>The decision is governed by a <strong>decision rule</strong>: a rule that specifies which values of <span class="math inline">\(\hat{p}\)</span> lead to rejecting <span class="math inline">\(H_0.\)</span> For a one-sided test with <span class="math inline">\(H_a: p &gt; p_0,\)</span> large values of <span class="math inline">\(\hat{p}\)</span> favor the alternative hypothesis, so the critical region lies in the right tail of the null distribution. To determine the critical region, we use the distribution of <span class="math inline">\(\hat{p}\)</span> under the null hypothesis <span class="math inline">\(p=p_0,\)</span> namely <span class="math display">\[
+<p>The decision is governed by a decision rule: a rule that specifies which values of <span class="math inline">\(\hat{p}\)</span> lead to rejecting <span class="math inline">\(H_0.\)</span> For a one-sided test with <span class="math inline">\(H_a: p &gt; p_0,\)</span> large values of <span class="math inline">\(\hat{p}\)</span> favor the alternative hypothesis, so the critical region lies in the right tail of the null distribution. To determine the critical region, we use the distribution of <span class="math inline">\(\hat{p}\)</span> under the null hypothesis <span class="math inline">\(p=p_0,\)</span> namely <span class="math display">\[
 \hat{p}\sim N\left(p_0, \sqrt{\frac{p_0(1-p_0)}{n}}\right).
 \]</span> We choose the critical value so that the probability of falling in the critical region when <span class="math inline">\(H_0\)</span> is true equals the significance level <span class="math inline">\(\alpha.\)</span> The shape of the critical region — right tail, left tail, or both — depends on the alternative hypothesis, as shown in <a href="#fig-critical-regions" class="quarto-xref">Figure&nbsp;<span>9.12</span></a>.</p>
 <div class="cell">
@@ -3364,7 +3364,7 @@ Figure&nbsp;9.37: Rguroo Output: Binomial null distribution with observed count 
 <hr>
 <ol type="1">
 <li><p><strong>Airport Security Screening</strong>: An airport reports that 5% of randomly selected passengers require additional security screening. In a random sample of <span class="math inline">\(n = 40\)</span> passengers at a particular terminal, <span class="math inline">\(x_{\text{obs}} = 5\)</span> required additional screening. Is there evidence that the proportion of passengers requiring additional screening at this terminal is greater than 5%? Use <span class="math inline">\(\alpha = 0.05.\)</span></p></li>
-<li><p><strong>Defective Computer Chips</strong>: A manufacturer claims that 4% of the computer chips it produces are defective. A quality-control inspector randomly selects <span class="math inline">\(n = 50\)</span> chips and finds that <span class="math inline">\(x_{\text{obs}} = 5\)</span> are defective. Is there evidence that the true proportion of defective chips is greater than 4%? Use <span class="math inline">\(\alpha = 0.05.\)</span></p></li>
+<li><p><strong>Defective Computer Chips</strong>: A manufacturer claims that 4% of the computer chips it produces are defective. A quality-control inspector randomly selects <span class="math inline">\(n = 50\)</span> chips and finds that <span class="math inline">\(x_{\text{obs}} = 5\)</span> are defective. Is there evidence that the true proportion of defective chips is greater than 4%? Use <span class="math inline">\(\alpha = 0.10.\)</span></p></li>
 <li><p><strong>Seed Germination Rate</strong>: A seed company states that 90% of a particular variety of seeds will germinate under specified growing conditions. A gardener randomly selects <span class="math inline">\(n = 20\)</span> seeds and finds that <span class="math inline">\(x_{\text{obs}} = 15\)</span> germinate. Is there evidence that the true germination rate is less than 90%? Use <span class="math inline">\(\alpha = 0.05.\)</span></p></li>
 <li><p><strong>Online Order Returns</strong>: A small online retailer has historically had 8% of its orders returned. After changing its product descriptions, the retailer randomly examines <span class="math inline">\(n = 30\)</span> recent orders and finds that <span class="math inline">\(x_{\text{obs}} = 1\)</span> was returned. Is there evidence that the proportion of orders being returned has decreased from 8%? Use <span class="math inline">\(\alpha = 0.05.\)</span></p></li>
 <li><p><strong>Free-Throw Shooting</strong>: A basketball player has historically made 85% of her free throws. During a randomly selected set of <span class="math inline">\(n = 20\)</span> free throws, she makes <span class="math inline">\(x_{\text{obs}} = 14\)</span>. Is there evidence that her true free-throw success rate differs from 85%? Use <span class="math inline">\(\alpha = 0.05.\)</span></p></li>
@@ -3373,7 +3373,7 @@ Figure&nbsp;9.37: Rguroo Output: Binomial null distribution with observed count 
 </section>
 </section>
 <section id="sec-closer-look-cr-pvalue" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="sec-closer-look-cr-pvalue"><span class="header-section-number">9.5</span> A Closer Look at Critical Regions and p-values **</h2>
+<h2 data-number="9.5" class="anchored" data-anchor-id="sec-closer-look-cr-pvalue"><span class="header-section-number">9.5</span> A Closer Look at Critical Regions and p-values (Optional)</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -3476,6 +3476,9 @@ Click here to see the Rguroo dialog
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
 <p><a href="#fig-youtube-type1a" class="quarto-xref">Figure&nbsp;<span>9.38</span></a> shows the Rguroo Probability Calculator output for <span class="math inline">\(X \sim \text{Binomial}(20, 0.60),\)</span> giving</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -3526,9 +3529,6 @@ Figure&nbsp;9.38: Binomial distribution for <span class="math inline">\(X \sim \
 </div>
 </div>
 <p>That is, if the true proportion of students in the district who use YouTube daily is <span class="math inline">\(p = 0.70,\)</span> and our decision rule is to reject <span class="math inline">\(H_0\)</span> whenever <span class="math inline">\(X \geq 17\)</span> in a sample of <span class="math inline">\(n = 20\)</span> students, then there is approximately a <span class="math inline">\(10.7\%\)</span> chance of committing a Type I error; that is, incorrectly concluding that more than 70% of students in the district use YouTube daily.</p>
-</div>
-</div>
-</div>
 <div id="exm-physical-inactivity-type1" class="theorem example">
 <p><span class="theorem-title"><strong>Example 9.21 (Physical Inactivity Among Adults (continued))</strong></span> Recall <a href="#exm-physical-inactivity-ppss" class="quarto-xref">Example&nbsp;<span>9.2</span></a> where a national health agency claimed that fewer than 35% of adults in its country are physically inactive, and a random sample of <span class="math inline">\(n = 50\)</span> adults was selected. The null and alternative hypotheses are: <span class="math display">\[
 \begin{cases}
@@ -4063,9 +4063,9 @@ P(X = x \mid p = 0.36) \leq P(X = 9 \mid p = 0.36).
 <p>Figure <a href="#fig-social-pvalue-calc" class="quarto-xref">Figure&nbsp;<span>9.50</span></a> shows the Rguroo dialog and output used to compute <span class="math inline">\(P(X = x \mid p = 0.36).\)</span> The probability of the observed value is <span class="math inline">\(P(X = 9 \mid p = 0.36) \approx 0.0349.\)</span> Therefore, any value of <span class="math inline">\(x\)</span> with probability less than or equal to <span class="math inline">\(0.0349\)</span> is included in the <span class="math inline">\(H_a\)</span> support, in addition to <span class="math inline">\(x_{\text{obs}} = 9.\)</span></p>
 <p>From the graph, the <span class="math inline">\(H_a\)</span> support consists of <span class="math inline">\(\{0, 1\}\)</span> in the left tail and <span class="math inline">\(\{9, 10, 11, \ldots, 15\}\)</span> in the right tail.</p>
 <p>Note that the graph is truncated at <span class="math inline">\(X = 12,\)</span> since the probabilities for values greater than 12 are extremely small.</p>
-<div id="fig-social-pvalue-calc" class="quarto-layout-panel">
+<div id="fig-social-pvalue-calc-2" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-social-pvalue-calc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-social-pvalue-calc-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row quarto-layout-valign-bottom">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="cell-output-display">
@@ -4089,7 +4089,7 @@ P(X = x \mid p = 0.36) \leq P(X = 9 \mid p = 0.36).
 </div>
 </div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-social-pvalue-calc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-social-pvalue-calc-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;9.49: Rguroo setup (left) and Rguroo output for <span class="math inline">\(P(X=9)\)</span> (right) for the Social Media example.
 </figcaption>
 </figure>
@@ -4151,7 +4151,7 @@ Figure&nbsp;9.50: Rguroo setup (left) and Rguroo output (right) for computing th
 </section>
 </section>
 <section id="sec-rr-hw" class="level3" data-number="9.5.3">
-<h3 data-number="9.5.3" class="anchored" data-anchor-id="sec-rr-hw"><span class="header-section-number">9.5.3</span> Homework for <a href="#sec-closer-look-cr-pvalue" class="quarto-xref"><span>Section 9.5</span></a> **</h3>
+<h3 data-number="9.5.3" class="anchored" data-anchor-id="sec-rr-hw"><span class="header-section-number">9.5.3</span> Homework for <a href="#sec-closer-look-cr-pvalue" class="quarto-xref"><span>Section 9.5</span></a></h3>
 <p>For each of the following scenarios, answer these questions:</p>
 <ol type="a">
 <li>Write the null and alternative hypotheses using mathematical notation.</li>
@@ -4192,11 +4192,8 @@ Confidence Level
 <p>The confidence level tells us the percentage of these intervals that we expect to contain the true value of <span class="math inline">\(p.\)</span> For example, a 95% confidence level means that, over many repeated samples, about 95% of the intervals constructed using this method would contain the true population proportion <span class="math inline">\(p.\)</span></p>
 </div>
 </div>
-<p>Recall from <a href="foundations_of_inference.html#sec-foundations-confidence-intervals" class="quarto-xref"><span>Section 8.7</span></a> that we can construct a confidence interval by inverting a two-sided hypothesis test. For a population proportion, we consider different candidate values <span class="math inline">\(p_0\)</span> and test <span class="math display">\[
-H_0:p=p_0
-\qquad\text{versus}\qquad
-H_a:p\neq p_0.
-\]</span> If we fail to reject <span class="math inline">\(H_0,\)</span> our data are consistent with <span class="math inline">\(p_0,\)</span> so we consider <span class="math inline">\(p_0\)</span> a plausible value for <span class="math inline">\(p.\)</span> If we reject <span class="math inline">\(H_0,\)</span> we do not consider <span class="math inline">\(p_0\)</span> plausible. We repeat this process for different values of <span class="math inline">\(p_0.\)</span> The collection of all values for which we fail to reject <span class="math inline">\(H_0\)</span> forms our confidence interval.</p>
+<p>Recall from <a href="foundations_of_inference.html#sec-foundations-confidence-intervals" class="quarto-xref"><span>Section 8.7</span></a> that we can construct a confidence interval by inverting a two-sided hypothesis test. For a population proportion, we consider different candidate values <span class="math inline">\(p_0\)</span> and test <span class="math inline">\(H_0: p=p_0\)</span> versus <span class="math inline">\(H_a:p\neq p_0\)</span>.</p>
+<p>If we fail to reject <span class="math inline">\(H_0,\)</span> our data are consistent with <span class="math inline">\(p_0,\)</span> so we consider <span class="math inline">\(p_0\)</span> a plausible value for <span class="math inline">\(p.\)</span> If we reject <span class="math inline">\(H_0,\)</span> we do not consider <span class="math inline">\(p_0\)</span> plausible. We repeat this process for different values of <span class="math inline">\(p_0.\)</span> The collection of all values for which we fail to reject <span class="math inline">\(H_0\)</span> forms our confidence interval.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4317,9 +4314,8 @@ H_0:p=p_0
 </div>
 </div>
 </div>
-<p>The confidence interval that we obtained in the example above is an approximation to the collection of values of <span class="math inline">\(p_0\)</span>$ that are consistent with our observed data at significance level <span class="math inline">\(\alpha = 0.05.\)</span> Notice that the interval is not symmetric around <span class="math inline">\(\hat{p}_{\text{obs}} = 0.85\)</span>: it extends further below <span class="math inline">\(\hat{p}_{\text{obs}}\)</span> (down to approximately 0.65) than above it (up to approximately 0.95). This asymmetry is not surprising when the sample proportion is close to 0 or 1. Recall the large-sample condition from <a href="#sec-large-sample-one-prop" class="quarto-xref"><span>Section 9.3</span></a>. Using <span class="math inline">\(\hat{p}_{\text{obs}} = 0.85\)</span> as our estimate of <span class="math inline">\(p,\)</span> we compute:</p>
-<p><span class="math display">\[
-\]</span>n<em>{} = 20 = 17 , ; ; n(1-</em>{}) = 20 = 3 &lt; 10. $$</p>
+<p>The confidence interval that we obtained in the example above is an approximation to the collection of values of <span class="math inline">\(p_0\)</span> that are consistent with our observed data at significance level <span class="math inline">\(\alpha = 0.05.\)</span> Notice that the interval is not symmetric around <span class="math inline">\(\hat{p}_{\text{obs}} = 0.85\)</span>: it extends further below <span class="math inline">\(\hat{p}_{\text{obs}}\)</span> (down to approximately 0.65) than above it (up to approximately 0.95). This asymmetry is not surprising when the sample proportion is close to 0 or 1. Recall the large-sample condition from <a href="#sec-large-sample-one-prop" class="quarto-xref"><span>Section 9.3</span></a>. Using <span class="math inline">\(\hat{p}_{\text{obs}} = 0.85\)</span> as our estimate of <span class="math inline">\(p,\)</span> we compute: <span class="math display">\[n\hat{p}_{\text{obs}} = 20 \times 0.85 = 17 \geq 10,\]</span> but <span class="math display">\[n(1-\hat{p}_{\text{obs}}) = 20 \times 0.15 = 3 &lt; 10.
+\]</span></p>
 <p>The large-sample condition fails because there are 3 observed failures. With a relatively small sample and a sample proportion close to 1, the binomial distribution can be noticeably skewed rather than approximately normal. As a result, an exact confidence interval need not be symmetric around <span class="math inline">\(\hat{p}_{\text{obs}}.\)</span> A method based on a symmetric normal approximation may not work well in this situation.</p>
 <p>This example illustrates that the choice of method for constructing a confidence interval matters. In the subsections that follow, we study two methods in detail. We begin in <a href="#sec-ci-large-sample" class="quarto-xref"><span>Section 9.6.1</span></a> with the large-sample method, which uses the normal approximation and produces a confidence interval that is symmetric around <span class="math inline">\(\hat{p}_{\text{obs}}.\)</span> We consider this method first because it is widely used in practice and builds directly on the large-sample methods we have already developed for hypothesis testing. When the large-sample condition is satisfied, the normal approximation generally works well; however, it may be misleading when the condition is not satisfied, as in this example.</p>
 <p>We then consider the exact binomial method in <a href="#sec-ci-binomial" class="quarto-xref"><span>Section 9.6.2</span></a>. This method does not rely on the normal approximation and can produce an asymmetric confidence interval. It is particularly useful when the large-sample condition is not satisfied.</p>
@@ -4495,7 +4491,7 @@ Rguroo output: One-Population Proportion Inference Output - Physical Activity
 </div>
 <p>From the Rguroo output, the 95% large sample confidence interval for <span class="math inline">\(p\)</span> is <span class="math inline">\((0.089, 0.311).\)</span> We are 95% confident that the true proportion of adults in the country who are physically inactive is between 0.089 (8.9%) and 0.311 (31.1%).</p>
 <p>b. To obtain a 99% confidence interval, we use the same steps as in part (a) except for Step 4 of the Rguroo instructions, we enter <span class="typein">0.99</span> instead of <span class="typein">0.95</span> in the <span class="des">Confidence Level</span> textbox.</p>
-<p>The 99% confidence interval reported in the Rguroo output is <span class="math inline">\((0.0543, 0.3457)\)</span> with width of 0.2914. This compares with the 95% confidence interval of <span class="math inline">\((0.0891, 0.3109)\)</span> with a width of 0.2217.</p>
+<p>The 99% confidence interval reported in the Rguroo output is <span class="math inline">\((0.0543, 0.3457)\)</span>, with a width of <span class="math inline">\(0.3457 - 0.0543 = 0.2914\)</span>. In comparison, the 95% confidence interval is <span class="math inline">\((0.0891, 0.3109)\)</span>, with a width of <span class="math inline">\(0.3109 - 0.0891 = 0.2218\)</span>. Thus, the 99% confidence interval is wider than the 95% confidence interval. The widths of the confidence intervals are also reported in the last column of the Rguroo Confidence Interval output.</p>
 <p>The 99% confidence interval is wider than the 95% confidence interval. For the same sample size and observed sample proportion, a higher confidence level produces a wider confidence interval.</p>
 </div>
 </div>
@@ -4525,8 +4521,9 @@ Confidence Level and Interval Width
 H_0: p = 0.36 \\
 H_a: p \neq 0.36.
 \end{cases}
-\]</span> Based on the confidence interval that you obtained in part (b), is <span class="math inline">\(p=0.36\)</span> a plausible value for the true proportion of students at the university who get most of their news from social media? How does your conclusion here compare to the conclusion from the hypothesis test in <a href="#exm-social-media-pvalue-large-sample" class="quarto-xref">Example&nbsp;<span>9.8</span></a>?</p></li>
+\]</span></p></li>
 </ol>
+<p>Based on the confidence interval that you obtained in part (b), is <span class="math inline">\(p=0.36\)</span> a plausible value for the true proportion of students at the university who get most of their news from social media? How does your conclusion here compare to the conclusion from the hypothesis test in <a href="#exm-social-media-pvalue-large-sample" class="quarto-xref">Example&nbsp;<span>9.8</span></a>?</p>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-84-contents" aria-controls="callout-84" aria-expanded="false" aria-label="Toggle callout">
@@ -4576,7 +4573,9 @@ Rguroo output: One-Population Proportion Inference Output - Social Media
 </div>
 <p>From the Rguroo output, the 95% large sample confidence interval for <span class="math inline">\(p\)</span> is <span class="math inline">\((0.4377, 0.7623).\)</span> We are 95% confident that the true proportion of students at the university who get most of their news from social media is between 0.438 (43.8%) and 0.762 (76.2%).</p>
 <p>c. From the Rguroo output, the standard error is <span class="math inline">\(0.0828079.\)</span> For a 95% confidence level, <span class="math inline">\(z^*= 1.96.\)</span> Using these two values,</p>
-<p><span class="math display">\[\text{Margin of Error} = 0.0828079\times 1.96 \approx 0.1623\]</span> The Rguroo output also reports the width of the interval as <span class="math inline">\(0.324601.\)</span> Using this value, you can also obtain the margin of error as <span class="math display">\[\text{Margin of Error}=\frac{\text{width of the interval}}{2} = \frac{0.324601}{2}\approx 0.1623.\]</span> d. The interval <span class="math inline">\((0.4377, 0.7623)\)</span> does not contain the null value of 0.36, so 0.36 is not a plausible value for <span class="math inline">\(p.\)</span> This is consistent with the result of the hypothesis test in <a href="#exm-social-media-pvalue-large-sample" class="quarto-xref">Example&nbsp;<span>9.8</span></a>, where we rejected the null hypothesis <span class="math inline">\(H_0:p=0.36.\)</span></p>
+<p><span class="math display">\[\text{Margin of Error} = 0.0828079\times 1.96 \approx 0.1623\]</span> The Rguroo output also reports the width of the interval as <span class="math inline">\(0.324601.\)</span> Using this value, you can also obtain the margin of error as <span class="math display">\[\text{Margin of Error}=\frac{\text{width of the interval}}{2} = \frac{0.324601}{2}\approx 0.1623.\]</span></p>
+<p>Note that the confidence interval is symmetric around the observed sample proportion <span class="math inline">\(\hat{p}_{\text{obs}} = 0.60,\)</span> and it extends below and above <span class="math inline">\(\hat{p}_{\text{obs}}\)</span> by the margin of error <span class="math inline">\(0.1623.\)</span> Therefore the width of the interval is <span class="math inline">\(2 \times 0.1623 \approx 0.3246.\)</span> In general, for confidence intervals that use the large sample normal approximation, the width of the interval is always twice the margin of error.</p>
+<p>d. The interval <span class="math inline">\((0.4377, 0.7623)\)</span> does not contain the null value of 0.36, so 0.36 is not a plausible value for <span class="math inline">\(p.\)</span> This is consistent with the result of the hypothesis test in <a href="#exm-social-media-pvalue-large-sample" class="quarto-xref">Example&nbsp;<span>9.8</span></a>, where we rejected the null hypothesis <span class="math inline">\(H_0:p=0.36.\)</span></p>
 </div>
 </div>
 </div>
@@ -4633,13 +4632,13 @@ n(1-\hat{p}_{\text{obs}})
 \end{aligned}
 \]</span> Both values satisfy the 10-10 rule. Therefore, the large sample normal approximation is appropriate.</p>
 <p>b. Click to see Rguroo instructions for obtaining a confidence interval:</p>
-<div id="prop-inference-gss2024-CI-ls" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} One-Population proportion hypothesis test — Marijuana Legalization Example">
+<div id="prop-inference-gss2024-CI-ls" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Large Sample Normal Confidence Interval — Marijuana Legalization Example">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-87-contents" aria-controls="callout-87" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> One-Population proportion hypothesis test — Marijuana Legalization Example
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Large Sample Normal Confidence Interval — Marijuana Legalization Example
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -4726,8 +4725,8 @@ Rguroo output: One-Population Proportion Inference Output - Marijuana Legalizati
 <div id="exm-youtube-ci-binomial" class="theorem example">
 <p><span class="theorem-title"><strong>Example 9.32 (Daily YouTube Use Among Teens: Exact Binomial Confidence Interval)</strong></span> Recall <a href="#exm-youtube-ppss" class="quarto-xref">Example&nbsp;<span>9.1</span></a>. A sample of <span class="math inline">\(n = 20\)</span> students produced <span class="math inline">\(x_{\text{obs}} = 17\)</span> daily YouTube users, giving a sample proportion of <span class="math inline">\(\hat{p}_{\text{obs}} = 17/20 = 0.85.\)</span></p>
 <ol type="a">
-<li><p>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function to construct a 95% exact binomial confidence interval for the true proportion of students in the district who use YouTube daily, and interpret the interval in the context of the problem.</p></li>
 <li><p>Check the 10-10 rule to determine whether we can use the large sample normal approximation for this problem?</p></li>
+<li><p>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function to construct a 95% exact binomial confidence interval for the true proportion of students in the district who use YouTube daily, and interpret the interval in the context of the problem.</p></li>
 </ol>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
@@ -4742,7 +4741,15 @@ Rguroo output: One-Population Proportion Inference Output - Marijuana Legalizati
 </div>
 <div id="callout-93" class="callout-93-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>a. Click to expand the box below to see how to use the <span class="fun">Proportion Inference</span> function in Rguroo to obtain an exact binomial confidence interval for this problem.</p>
+<p>a. To check whether the large sample normal approximation is appropriate, we apply the 10-10 rule: <span class="math display">\[
+\begin{aligned}
+n\hat{p}_{\text{obs}}
+&amp;=20(0.85)=17\geq10,\\
+n(1-\hat{p}_{\text{obs}})
+&amp;=20(0.15)=3&lt;10.
+\end{aligned}
+\]</span> The second condition is not satisfied because there are only 3 observed failures. Therefore, the large sample normal approximation is not appropriate for this example.</p>
+<p>b. Click to expand the box below to see how to use the <span class="fun">Proportion Inference</span> function in Rguroo to obtain an exact binomial confidence interval for this problem.</p>
 <div id="prop-ci-binomial-youtube" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Exact binomial confidence interval - YouTube example">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-91-contents" aria-controls="callout-91" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -4824,24 +4831,75 @@ Rguroo output: One-Population Proportion Inference Output - YouTube
 <p>From the Rguroo output, the 95% exact binomial confidence interval for <span class="math inline">\(p\)</span> is <span class="math inline">\((0.628, 0.958).\)</span> The following is an interpretation of this interval:</p>
 <p>We are 95% confident that the true proportion of students in the district who use YouTube daily is between 0.628 (62.8%) and 0.958 (95.8%).</p>
 <p>Notice that this interval is consistent with what we found using the grid in <a href="#exm-youtube-ci-grid" class="quarto-xref">Example&nbsp;<span>9.28</span></a>, where we identified the range of plausible values as approximately 0.65 to 0.95. The exact interval extends the lower endpoint to 0.628, which lies between the grid values 0.60 and 0.65, where the p-value crossed the 0.05 threshold, just as we anticipated. The upper endpoint, 0.958, also agrees with the grid analysis, which placed the upper crossing between 0.95 (fail to reject) and 0.99 (reject). Thus, the grid approach gave us a good approximation to the range of plausible values, while the exact binomial method determines the endpoints more precisely.</p>
-<p>b. To check whether the large sample normal approximation is appropriate, we apply the 10-10 rule: <span class="math display">\[
-\begin{aligned}
-n\hat{p}_{\text{obs}}
-&amp;=20(0.85)=17\geq10,\\
-n(1-\hat{p}_{\text{obs}})
-&amp;=20(0.15)=3&lt;10.
-\end{aligned}
-\]</span> The second condition is not satisfied because there are only 3 observed failures. Therefore, the large sample normal approximation is not appropriate for this example.</p>
-<p>Notice also that the exact binomial interval is not symmetric around <span class="math inline">\(\hat{p}_{\text{obs}}=0.85.\)</span> Its midpoint, as reported in the Rguroo output, is approximately 0.793. Unlike the normal-approximation interval, the exact binomial interval does not need to be centered at the observed sample proportion.</p>
+<p>Notice that the exact binomial interval is not symmetric around <span class="math inline">\(\hat{p}_{\text{obs}}=0.85.\)</span> Its midpoint, as reported in the Rguroo output, is approximately 0.793. Unlike the normal-approximation interval, the exact binomial interval does not need to be centered at the observed sample proportion.</p>
 </div>
 </div>
 </div>
-<div id="exm-inactivity-ci-binomial" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.33 (Physical Inactivity Among Adults: Exact Binomial Confidence Interval)</strong></span> Recall <a href="#exm-physical-inactivity-ppss" class="quarto-xref">Example&nbsp;<span>9.2</span></a>. A sample of <span class="math inline">\(n = 50\)</span> adults produced <span class="math inline">\(x_{\text{obs}} = 10\)</span> physically inactive individuals, giving a sample proportion of <span class="math inline">\(\hat{p}_{\text{obs}} = 10/50 = 0.20.\)</span></p>
-<ol type="a">
-<li><p>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function to construct a 95% exact binomial confidence interval for the true proportion of adults in the country who are physically inactive, and interpret the interval in the context of the problem.</p></li>
-<li><p>Compare the exact binomial interval from part (a) to the large sample confidence interval you obtained in <a href="#exm-inactivity-ci-large-sample" class="quarto-xref">Example&nbsp;<span>9.29</span></a>. Are they close? Explain.</p></li>
-</ol>
+<!--
+
+:::{#exm-inactivity-ci-binomial}
+## Physical Inactivity Among Adults: Exact Binomial Confidence Interval
+
+Recall @exm-physical-inactivity-ppss. A sample of $n = 50$ adults
+produced $x_{\text{obs}} = 10$ physically inactive individuals, giving
+a sample proportion of $\hat{p}_{\text{obs}} = 10/50 = 0.20.$ 
+
+a. Use Rguroo's [One-Population Proportion]{.fun} inference function to
+construct a 95% exact binomial confidence interval for the true
+proportion of adults in the country who are physically inactive, and
+interpret the interval in the context of the problem.
+
+b. Compare the exact binomial interval from part (a) to the large sample confidence interval you obtained in @exm-inactivity-ci-large-sample. Are they close? Explain.
+:::
+
+::: {.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+a\. The following is a screenshot of the [One Population Proportion Inference]{.dialog} for obtaining the exact binomial confidence interval for this example.
+
+
+
+
+
+
+
+
+::: {.cell}
+::: {.cell-output-display}
+![Rguroo Basics dialog showing how to obtain exact binomial CI](Rguroo_dialogs/Proportion_inference/binom-ci-inactive_dialog.png){fig-alt='Screenshot of a “One Population Proportion Inference” interface. The factor is “Physically Inactive,” with success defined as “Yes.” The sample size is n=50 with 10 successes, giving a sample proportion of 0.20. In the Confidence Interval section, the 95% level is selected and the “Binomial (Exact)” option is checked, while Bootstrap and Large Sample z are unchecked. In the Test of Hypothesis panel, an alternative proportion value of 0.35 is entered, but no test method is selected, and the significance level is 0.05.' width=100%}
+:::
+:::
+
+
+
+
+
+
+
+Click to expand the box below to see the Rguroo output.
+
+::: {.callout-tip .inner-callout collapse="true" title="Rguroo output: One-Population Proportion Inference Output - Physical Inactivity"}
+
+<div tabindex="0" class="rg-iframe-wrapper">
+  <iframe
+    src="Rguroo_html_output/Proportion Inference/Physical_exactCI_docx/Physical_exactCI.html"
+    class="rg-iframe"
+    title="Rguroo output: One Population Proportion Exact Binomial CI - Physical Inactivity Example">
+  </iframe>
+</div>
+
+:::
+
+From the Rguroo output, the 95% exact binomial confidence interval for
+$p$ is $(0.106, 0.338).$ We are 95% confident that the true proportion
+of adults in the country who are physically inactive is between 0.106 (10.6%)
+and 0.338 (33.8%).
+
+b\. The large sample normal approximation 95% confidence interval for this example was computed to be $(0.0891,0.3109).$  The two intervals are fairly close, although the exact binomial interval is slightly shifted to the right and is somewhat wider. As noted in @exm-inactivity-ci-large-sample, the 10-10 rule is satisfied for this example, so the large sample normal approximation is appropriate. Therefore, we expect the two methods to give similar, but not identical, intervals.
+:::
+-->
+<div id="exm-social-ci-binomial" class="theorem example">
+<p><span class="theorem-title"><strong>Example 9.33 (Social Media as a Primary News Source: Exact Binomial Confidence Interval)</strong></span> Recall <a href="#exm-social-media-news-ppss" class="quarto-xref">Example&nbsp;<span>9.3</span></a>. A sample of <span class="math inline">\(n = 15\)</span> students produced <span class="math inline">\(x_{\text{obs}} = 9\)</span> who reported using social media as their primary news source, giving a sample proportion of <span class="math inline">\(\hat{p}_{\text{obs}} = 9/15 = 0.60.\)</span> Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function to construct a 95% exact binomial confidence interval for the true proportion of students at the university who get most of their news from social media, and interpret the interval in the context of the problem.</p>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-95-contents" aria-controls="callout-95" aria-expanded="false" aria-label="Toggle callout">
@@ -4855,59 +4913,71 @@ n(1-\hat{p}_{\text{obs}})
 </div>
 <div id="callout-95" class="callout-95-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>a. The following is a screenshot of the <span class="dialog">One Population Proportion Inference</span> for obtaining the exact binomial confidence interval for this example.</p>
+<p>The following is a screenshot of the <span class="dialog">One Population Proportion Inference</span> for obtaining the exact binomial confidence interval for this example.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Rguroo_dialogs/Proportion_inference/binom-ci-inactive_dialog.png" class="img-fluid figure-img" style="width:100.0%" alt="Screenshot of a “One Population Proportion Inference” interface. The factor is “Physically Inactive,” with success defined as “Yes.” The sample size is n=50 with 10 successes, giving a sample proportion of 0.20. In the Confidence Interval section, the 95% level is selected and the “Binomial (Exact)” option is checked, while Bootstrap and Large Sample z are unchecked. In the Test of Hypothesis panel, an alternative proportion value of 0.35 is entered, but no test method is selected, and the significance level is 0.05."></p>
+<p><img src="Rguroo_dialogs/Proportion_inference/binom-ci-social_dialog.png" class="img-fluid figure-img" style="width:100.0%" alt="Screenshot of a “One Population Proportion Inference” interface. The factor is “Use Social media,” with success defined as “Yes.” The sample size is 15 with 9 successes, giving a sample proportion of 0.60. In the Confidence Interval section, the 95% level is selected and the “Binomial (Exact)” option is checked, while Bootstrap and Large Sample z are unchecked. In the Test of Hypothesis panel, a left-tailed alternative hypothesis (p < 0.35) is selected, the Binomial test method is checked, and the significance level is 0.05."></p>
 <figcaption>Rguroo Basics dialog showing how to obtain exact binomial CI</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Click to expand the box below to see the Rguroo output.</p>
-<div class="inner-callout callout callout-style-default callout-tip callout-titled" title="Rguroo output: One-Population Proportion Inference Output - Physical Inactivity">
+<div class="inner-callout callout callout-style-default callout-tip callout-titled" title="Rguroo output: One-Population Proportion Inference Output - Social Media">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-94-contents" aria-controls="callout-94" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Rguroo output: One-Population Proportion Inference Output - Physical Inactivity
+Rguroo output: One-Population Proportion Inference Output - Social Media
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-94" class="callout-94-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="rg-iframe-wrapper" tabindex="0">
-<p><iframe src="Rguroo_html_output/Proportion Inference/Physical_exactCI_docx/Physical_exactCI.html" class="rg-iframe" title="Rguroo output: One Population Proportion Exact Binomial CI - Physical Inactivity Example"> </iframe></p>
+<p><iframe src="Rguroo_html_output/Proportion Inference/socialBinomCI_docx/socialBinomCI.html" class="rg-iframe" title="Rguroo output: One Population Proportion Large Sample Normal CI - Social Media Example"> </iframe></p>
 </div>
 </div>
 </div>
 </div>
-<p>From the Rguroo output, the 95% exact binomial confidence interval for <span class="math inline">\(p\)</span> is <span class="math inline">\((0.106, 0.338).\)</span> We are 95% confident that the true proportion of adults in the country who are physically inactive is between 0.106 (10.6%) and 0.338 (33.8%).</p>
-<p>b. The large sample normal approximation 95% confidence interval for this example was computed to be <span class="math inline">\((0.0891,0.3109).\)</span> The two intervals are fairly close, although the exact binomial interval is slightly shifted to the right and is somewhat wider. As noted in <a href="#exm-inactivity-ci-large-sample" class="quarto-xref">Example&nbsp;<span>9.29</span></a>, the 10-10 rule is satisfied for this example, so the large sample normal approximation is appropriate. Therefore, we expect the two methods to give similar, but not identical, intervals.</p>
+<p>From the Rguroo output, the 95% exact binomial confidence interval for <span class="math inline">\(p\)</span> is <span class="math inline">\((0.3325, 0.8091).\)</span> We are 95% confident that the true proportion of students at the university who get most of their news from social media is between 0.3325 (33.25%) and 0.8091 (80.91%).</p>
+<p>The midpoint of the interval is reported as 0.571, which is not equal to the observed sample proportion <span class="math inline">\(\hat{p}_{\text{obs}} = 0.60.\)</span> This is because the exact binomial confidence interval does not need to be symmetric around the observed sample proportion, unlike the large sample normal approximation confidence interval, especially when the 10-10 rule is not satisfied, as is the case here. The 10-10 rule is not satisfied because <span class="math inline">\(n\hat{p}_{\text{obs}} = 15(0.6) = 9 &lt; 10\)</span> and <span class="math inline">\(n(1-\hat{p}_{\text{obs}}) = 15(0.4) = 6 &lt; 10.\)</span></p>
 </div>
 </div>
 </div>
 <!--
-:::{#exm-social-ci-binomial}
-## Social Media as a Primary News Source: Exact Binomial Confidence Interval
+:::{#exm-gss-ci-binomial}
+## Marijuana Legalization: Exact Binomial Confidence Interval
 
-Recall @exm-social-media-news-ppss. A sample of $n = 15$ students
-produced $x_{\text{obs}} = 9$ who reported using social media as their
-primary news source, giving a sample proportion of
-$\hat{p}_{\text{obs}} = 9/15 = 0.60.$ Use Rguroo's
-[One-Population Proportion]{.fun} inference function to construct a 95%
-exact binomial confidence interval for the true proportion of students
-at the university who get most of their news from social media, and
-interpret the interval in the context of the problem.
+Recall @exm-gss-marijuana-pvalue. The [GSS2024]{.data} dataset contains
+responses from $n = 388$ U.S. adults, of whom $x_{\text{obs}} = 282$
+supported the legalization of marijuana, giving a sample proportion of
+$\hat{p}_{\text{obs}} = 282/388 \approx 0.7268.$ 
+
+Use Rguroo's [One-Population Proportion]{.fun} inference function to construct a 95%
+exact binomial confidence interval for the true proportion of American
+adults who support the legalization of marijuana, and interpret the
+interval in the context of the problem.
+
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset
+for this example is available in the Rguroo dataset repository
+[Kozak]{.repo}, with the dataset name [GSS2024]{.data}.
+
+**Code book for Dataset GSS2024 is given [here](#code-book-gss2024).**
+
+</div>
+
 :::
 
-::: {.callout-tip .solution-callout collapse="true" icon=false}
+:::: {.callout-tip .solution-callout collapse="true" icon=false}
 ## 🔎 Solution
 
-The following is a screenshot of the [One Population Proportion Inference]{.dialog} for obtaining the exact binomial confidence interval for this example.
+Follow the same steps as in the [solution](#solution-gss-ci-large-sample) of @exm-gss-ci-large-sample to open the [One Population Proportion Inference]{.dialog} dialog and select the [GSS2024]{.data} dataset. The following is a screenshot of the dialog for obtaining the exact binomial confidence interval for this example.
 
 
 
@@ -4918,10 +4988,9 @@ The following is a screenshot of the [One Population Proportion Inference]{.dial
 
 ::: {.cell}
 ::: {.cell-output-display}
-![Rguroo Basics dialog showing how to obtain exact binomial CI](Rguroo_dialogs/Proportion_inference/binom-ci-social_dialog.png){fig-alt='Screenshot of a “One Population Proportion Inference” interface. The factor is “Use Social media,” with success defined as “Yes.” The sample size is 15 with 9 successes, giving a sample proportion of 0.60. In the Confidence Interval section, the 95% level is selected and the “Binomial (Exact)” option is checked, while Bootstrap and Large Sample z are unchecked. In the Test of Hypothesis panel, a left-tailed alternative hypothesis (p < 0.35) is selected, the Binomial test method is checked, and the significance level is 0.05.' width=100%}
+![Rguroo Basics dialog showing how to obtain exact binomial CI](Rguroo_dialogs/Proportion_inference/binom-ci-gss2024_dialog.png){fig-alt='Interface for one population proportion inference using the GSS2024 dataset on support for legalizing marijuana. The sample size is n=388 with 282 successes, giving a sample proportion of about 0.727. The confidence interval section shows a 95% confidence level with the “Binomial (Exact)” method selected.' width=100%}
 :::
 :::
-
 
 
 
@@ -4931,41 +5000,29 @@ The following is a screenshot of the [One Population Proportion Inference]{.dial
 
 Click to expand the box below to see the Rguroo output.
 
-::: {.callout-tip .inner-callout collapse="true" title="Rguroo output: One-Population Proportion Inference Output - Social Media"}
+::: {.callout-tip .inner-callout collapse="true" title="Rguroo output: One-Population Proportion Inference Output - Marijuana Legalization"}
 
 <div tabindex="0" class="rg-iframe-wrapper">
   <iframe
-    src="Rguroo_html_output/Proportion Inference/socialBinomCI_docx/socialBinomCI.html"
+    src="Rguroo_html_output/Proportion Inference/GSS2024ExactCI_docx/GSS2024ExactCI.html"
     class="rg-iframe"
-    title="Rguroo output: One Population Proportion Large Sample Normal CI - Social Media Example">
+    title="Rguroo output: One Population Proportion Exact Binomial CI - Marijuana Legalization Example">
   </iframe>
 </div>
-
 :::
 
 From the Rguroo output, the 95% exact binomial confidence interval for
-$p$ is $(0.352, 0.848).$ We are 95% confident that the true proportion
-of students at the university who get most of their news from social
-media is between 0.352 (35.2%) and 0.848 (84.8%).
+$p$ is $(0.679,0.769).$ We are 95% confident that
+the true proportion of American adults who support the legalization of
+marijuana is between 0.679 (67.9%) and 0.769 (76.9%).
 
-The midpoint of the interval is reported as 0.60, which in this case agrees exactly with the observed sample proportion. This is consistent with the fact that the 10-10 rule is satisfied:
-
-$$
-n\hat{p}_{\text{obs}} = 100 \times 0.60 = 60 > 10
-\qquad \text{and} \qquad
-n(1-\hat{p}_{\text{obs}}) = 100 \times 0.40 = 40 > 10.
-$$
-
-When the 10-10 rule is satisfied, the normal approximation works well, so we expect the confidence interval to be approximately centered at the observed sample proportion.
-
-:::
- -->
-<div id="exm-gss-ci-binomial" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.34 (Marijuana Legalization: Exact Binomial Confidence Interval)</strong></span> Recall <a href="#exm-gss-marijuana-pvalue" class="quarto-xref">Example&nbsp;<span>9.9</span></a>. The <span class="data">GSS2024</span> dataset contains responses from <span class="math inline">\(n = 388\)</span> U.S. adults, of whom <span class="math inline">\(x_{\text{obs}} = 282\)</span> supported the legalization of marijuana, giving a sample proportion of <span class="math inline">\(\hat{p}_{\text{obs}} = 282/388 \approx 0.7268.\)</span></p>
-<p>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function to construct a 95% exact binomial confidence interval for the true proportion of American adults who support the legalization of marijuana, and interpret the interval in the context of the problem.</p>
+::::
+-->
+<div id="exm-penguins-heavy-ci-binomial" class="theorem example">
+<p><span class="theorem-title"><strong>Example 9.34 (Heavy Chinstrap Penguins: Exact Binomial Confidence Interval)</strong></span> Recall <a href="#exm-penguins-heavy-pvalue-binomial" class="quarto-xref">Example&nbsp;<span>9.15</span></a>. The <span class="data">palmer_penguins_Chinstrap</span> dataset contains measurements on <span class="math inline">\(n = 34\)</span> Chinstrap penguins.</p>
+<p>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function to construct a 95% exact binomial confidence interval for the true proportion of Chinstrap penguins that are heavy, and interpret the interval in the context of the problem.</p>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">GSS2024</span>.</p>
-<p><strong>Code book for Dataset GSS2024 is given <a href="#code-book-gss2024">here</a>.</strong></p>
+<p>The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">palmer_penguins_Chinstrap</span>. Table <a href="#tbl-PalmerPenguinsChinstrap" class="quarto-xref">Table&nbsp;<span>9.2</span></a> displays the first six rows of the dataset. A complete description of the variables is provided in the <a href="#code-book-palmer-penguins-chinstrap">dataset code book</a> that follows.</p>
 </div>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
@@ -4980,66 +5037,213 @@ When the 10-10 rule is satisfied, the normal approximation works well, so we exp
 </div>
 <div id="callout-97" class="callout-97-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Follow the same steps as in the <a href="#solution-gss-ci-large-sample">solution</a> of <a href="#exm-gss-ci-large-sample" class="quarto-xref">Example&nbsp;<span>9.31</span></a> to open the <span class="dialog">One Population Proportion Inference</span> dialog and select the <span class="data">GSS2024</span> dataset. The following is a screenshot of the dialog for obtaining the exact binomial confidence interval for this example.</p>
+<p>Follow the same steps as in the <a href="#solution-gss-ci-large-sample">solution</a> of <a href="#exm-gss-ci-large-sample" class="quarto-xref">Example&nbsp;<span>9.31</span></a> to open the <span class="dialog">One Population Proportion Inference</span> dialog and select the <span class="data">palmer_penguins_Chinstrap</span> dataset. Then select</p>
+<ul>
+<li><span class="var">Heavy</span> as the <span class="dpd">Factor</span>,</li>
+<li><span class="var">Yes</span> as the <span class="dpd">Success</span>, and</li>
+<li><span class="var">No</span> as the <span class="dpd">Failure</span>.</li>
+</ul>
+<p>The following is a screenshot of the dialog for obtaining the exact binomial confidence interval for this example.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Rguroo_dialogs/Proportion_inference/binom-ci-gss2024_dialog.png" class="img-fluid figure-img" style="width:100.0%" alt="Interface for one population proportion inference using the GSS2024 dataset on support for legalizing marijuana. The sample size is n=388 with 282 successes, giving a sample proportion of about 0.727. The confidence interval section shows a 95% confidence level with the “Binomial (Exact)” method selected."></p>
-<figcaption>Rguroo Basics dialog showing how to obtain exact binomial CI</figcaption>
+<p><img src="Rguroo_dialogs/Proportion_inference/penguins-heavy-binom-ci_dialog.png" class="img-fluid figure-img" style="width:100.0%" alt="Interface for one population proportion inference using the palmer_penguins_Chinstrap dataset. The factor is Heavy with Yes as the success level. The sample size is n=34 with 5 successes, giving a sample proportion of about 0.147. The confidence interval section shows a 95% confidence level with the Binomial (Exact) method selected."></p>
+<figcaption>Rguroo Basics dialog showing how to obtain exact binomial CI for the Chinstrap penguins example</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Click to expand the box below to see the Rguroo output.</p>
-<div class="inner-callout callout callout-style-default callout-tip callout-titled" title="Rguroo output: One-Population Proportion Inference Output - Marijuana Legalization">
+<div class="inner-callout callout callout-style-default callout-tip callout-titled" title="Rguroo output: One-Population Proportion Inference Output - Heavy Chinstrap Penguins">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-96-contents" aria-controls="callout-96" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Rguroo output: One-Population Proportion Inference Output - Marijuana Legalization
+Rguroo output: One-Population Proportion Inference Output - Heavy Chinstrap Penguins
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-96" class="callout-96-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="rg-iframe-wrapper" tabindex="0">
-<p><iframe src="Rguroo_html_output/Proportion Inference/GSS2024ExactCI_docx/GSS2024ExactCI.html" class="rg-iframe" title="Rguroo output: One Population Proportion Exact Binomial CI - Marijuana Legalization Example"> </iframe></p>
+<p><iframe src="Rguroo_html_output/Proportion Inference/PenguinsHeavyPropCI_docx/PenguinsHeavyPropCI.html" class="rg-iframe" title="Rguroo output: One Population Proportion Exact Binomial CI - Heavy Chinstrap Penguins Example"> </iframe></p>
 </div>
 </div>
 </div>
 </div>
-<p>From the Rguroo output, the 95% exact binomial confidence interval for <span class="math inline">\(p\)</span> is <span class="math inline">\((0.679,0.769).\)</span> We are 95% confident that the true proportion of American adults who support the legalization of marijuana is between 0.679 (67.9%) and 0.769 (76.9%).</p>
+<p>From the Rguroo output, the 95% exact binomial confidence interval for <span class="math inline">\(p\)</span> is (0.0598,0.3066). We are 95% confident that the true proportion of Chinstrap penguins that are heavy is between 0.0598 (5.98%) and 0.3066 (30.66%).</p>
 </div>
 </div>
 </div>
 </section>
 <section id="homework-for-sec-confidence-interval-one-pop" class="level3" data-number="9.6.3">
 <h3 data-number="9.6.3" class="anchored" data-anchor-id="homework-for-sec-confidence-interval-one-pop"><span class="header-section-number">9.6.3</span> Homework for <a href="#sec-confidence-interval-one-pop" class="quarto-xref"><span>Section 9.6</span></a></h3>
-<p>For each of the scenarios described below, answer the following:</p>
+<ol type="1">
+<li><p><strong>Arizona Marijuana Legalization</strong> In Problem 1 (Arizona Marijuana Legalization) of <a href="#sec-stage-hw" class="quarto-xref"><span>Section 9.1.4</span></a>, <span class="math inline">\(p\)</span> is the true proportion of Arizona registered voters who support marijuana legalization. The sample consisted of <span class="math inline">\(n = 779\)</span> voters, of whom <span class="math inline">\(x_{\text{obs}} = 390\)</span> favored legalization.</p>
+<ol type="a">
+<li>Check whether the large sample condition is satisfied using the 10-10 rule. Based on your answer, determine whether the large sample normal approximation confidence interval is appropriate.</li>
+<li>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function with the <span class="des">Large Sample z</span> option to obtain a 95% confidence interval for <span class="math inline">\(p.\)</span> Interpret the interval in the context of the problem.</li>
+<li>At the time of this poll, 55% of Colorado residents supported the legalization of marijuana. Use your confidence interval to test <span class="math inline">\(H_0: p = 0.55\)</span> versus <span class="math inline">\(H_a: p \neq 0.55\)</span> at the <span class="math inline">\(\alpha = 0.05\)</span> significance level. Do Arizona registered voters differ from Colorado residents in their support for marijuana legalization?</li>
+</ol></li>
+<li><p><strong>Airport Security Screening</strong> In a random sample of <span class="math inline">\(n = 40\)</span> passengers at a particular airport terminal, <span class="math inline">\(x_{\text{obs}} = 5\)</span> required additional security screening. Let <span class="math inline">\(p\)</span> be the true proportion of passengers at this terminal who require additional security screening.</p>
 <ol type="a">
 <li>Check whether the large sample condition is satisfied using the 10-10 rule. Based on your answer, determine whether the large sample normal approximation confidence interval is appropriate.</li>
 <li>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function with the <span class="des">Binomial</span> option to obtain a 95% exact binomial confidence interval for <span class="math inline">\(p.\)</span> Interpret the interval in the context of the problem.</li>
-<li>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function with the <span class="des">Large Sample z</span> option to obtain a 95% large sample normal approximation confidence interval for <span class="math inline">\(p.\)</span> Interpret the interval in the context of the problem</li>
-<li>Compare the exact binomial confidence interval of part b to the large sample z confidence interval in part d.&nbsp;Are the intervals approximately the same? Is this comparison consistent with what you found in part (a)?</li>
-</ol>
-<hr>
-<ol type="1">
-<li><p><strong>Arizona Marijuana Legalization</strong> In Problem 1 (Arizona Marijuana Legalization) of <a href="#sec-stage-hw" class="quarto-xref"><span>Section 9.1.4</span></a>, <span class="math inline">\(p\)</span> is the true proportion of Arizona registered voters who support marijuana legalization. The sample consisted of <span class="math inline">\(n = 779\)</span> voters, of whom <span class="math inline">\(x_{\text{obs}} = 390\)</span> favored legalization.</p></li>
-<li><p><strong>Australian Unemployment Outlook</strong> In Problem 2 (Australian Unemployment Outlook) of <a href="#sec-stage-hw" class="quarto-xref"><span>Section 9.1.4</span></a>, <span class="math inline">\(p\)</span> is the true proportion of Australians in November 1997 who believed unemployment would increase. The sample consisted of <span class="math inline">\(n = 631\)</span> Australians, of whom <span class="math inline">\(x_{\text{obs}} = 284\)</span> believed unemployment would increase.</p></li>
-<li><p><strong>Arkansas Identity Theft Complaints</strong> In Problem 3 (Arkansas Identity Theft Complaints) of <a href="#sec-stage-hw" class="quarto-xref"><span>Section 9.1.4</span></a>, <span class="math inline">\(p\)</span> is the true proportion of consumer complaints in Arkansas that were for identity theft. The sample consisted of <span class="math inline">\(n = 3{,}482\)</span> complaints, of which <span class="math inline">\(x_{\text{obs}} = 1{,}601\)</span> were for identity theft.</p></li>
-<li><p><strong>Daily YouTube Use Among Teens: Small Sample</strong> Recall <a href="#exm-youtube-ppss" class="quarto-xref">Example&nbsp;<span>9.1</span></a>. Suppose that instead of a sample of <span class="math inline">\(n = 20\)</span> students, only <span class="math inline">\(n = 15\)</span> students were available, and <span class="math inline">\(x_{\text{obs}} = 13\)</span> of them reported using YouTube daily.</p></li>
-<li><p><strong>Social Media as a Primary News Source: Small Sample</strong> Recall <a href="#exm-social-media-news-ppss" class="quarto-xref">Example&nbsp;<span>9.3</span></a>. Suppose that instead of a sample of <span class="math inline">\(n = 15\)</span> students, only <span class="math inline">\(n = 12\)</span> students were available, and <span class="math inline">\(x_{\text{obs}} = 7\)</span> of them reported using social media as their primary news source.</p></li>
-<li><p><strong>Alaska Identity Theft Complaints</strong> In Problem 4 (Alaska Identity Theft Complaints) of <a href="#sec-stage-hw" class="quarto-xref"><span>Section 9.1.4</span></a>, <span class="math inline">\(p\)</span> is the true proportion of consumer complaints in Alaska that were for identity theft. The sample consisted of <span class="math inline">\(n = 1{,}432\)</span> complaints, of which <span class="math inline">\(x_{\text{obs}} = 321\)</span> were for identity theft.</p></li>
-<li><p><strong>Kennedy Assassination Conspiracy Belief</strong> In Problem 5 (Kennedy Assassination Conspiracy Belief) of <a href="#sec-stage-hw" class="quarto-xref"><span>Section 9.1.4</span></a>, <span class="math inline">\(p\)</span> is the true proportion of American adults in 2013 who believed there was a conspiracy behind President Kennedy’s assassination. The sample consisted of <span class="math inline">\(n = 1{,}039\)</span> adults, of whom <span class="math inline">\(x_{\text{obs}} = 634\)</span> believed in a conspiracy.</p></li>
-<li><p><strong>Autism Spectrum Disorder in Arizona</strong> In Problem 6 (Autism Spectrum Disorder in Arizona) of <a href="#sec-stage-hw" class="quarto-xref"><span>Section 9.1.4</span></a>, <span class="math inline">\(p\)</span> is the true proportion of children in Arizona diagnosed with ASD. The sample consisted of <span class="math inline">\(n = 32{,}601\)</span> children, of whom <span class="math inline">\(x_{\text{obs}} = 507\)</span> were diagnosed with ASD.</p></li>
-<li><p><strong>Graduate Degree Attainment: GSS2024</strong> In Problem 7 (Graduate Degree Attainment: GSS2024) of <a href="#sec-stage-hw" class="quarto-xref"><span>Section 9.1.4</span></a>, <span class="math inline">\(p\)</span> is the true proportion of U.S. adults who hold a graduate degree. The sample consisted of <span class="math inline">\(n = 388\)</span> adults, of whom <span class="math inline">\(x_{\text{obs}} = 33\)</span> reported a graduate degree as their highest level of education.</p></li>
+</ol></li>
+<li><p><strong>Australian Unemployment Outlook</strong> In Problem 2 (Australian Unemployment Outlook) of <a href="#sec-stage-hw" class="quarto-xref"><span>Section 9.1.4</span></a>, <span class="math inline">\(p\)</span> is the true proportion of Australians in November 1997 who believed unemployment would increase. The sample consisted of <span class="math inline">\(n = 631\)</span> Australians, of whom <span class="math inline">\(x_{\text{obs}} = 284\)</span> believed unemployment would increase.</p>
+<ol type="a">
+<li>Check whether the large sample condition is satisfied using the 10-10 rule. Based on your answer, determine whether the large sample normal approximation confidence interval is appropriate.</li>
+<li>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function with the <span class="des">Large Sample z</span> option to obtain a 90% confidence interval for <span class="math inline">\(p.\)</span> Interpret the interval in the context of the problem.</li>
+</ol></li>
+<li><p><strong>Defective Computer Chips</strong> A quality-control inspector randomly selects <span class="math inline">\(n = 50\)</span> computer chips from a manufacturer’s production line and finds that <span class="math inline">\(x_{\text{obs}} = 5\)</span> are defective. Let <span class="math inline">\(p\)</span> be the true proportion of chips produced by this manufacturer that are defective.</p>
+<ol type="a">
+<li>Check whether the large sample condition is satisfied using the 10-10 rule. Based on your answer, determine whether the large sample normal approximation confidence interval is appropriate.</li>
+<li>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function with the <span class="des">Binomial</span> option to obtain a 90% exact binomial confidence interval for <span class="math inline">\(p.\)</span> Interpret the interval in the context of the problem.</li>
+</ol></li>
+<li><p><strong>Arkansas Identity Theft Complaints</strong> In Problem 3 (Arkansas Identity Theft Complaints) of <a href="#sec-stage-hw" class="quarto-xref"><span>Section 9.1.4</span></a>, <span class="math inline">\(p\)</span> is the true proportion of consumer complaints in Arkansas that were for identity theft. The sample consisted of <span class="math inline">\(n = 3{,}482\)</span> complaints, of which <span class="math inline">\(x_{\text{obs}} = 1{,}601\)</span> were for identity theft.</p>
+<ol type="a">
+<li>Check whether the large sample condition is satisfied using the 10-10 rule. Based on your answer, determine whether the large sample normal approximation confidence interval is appropriate.</li>
+<li>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function with the <span class="des">Large Sample z</span> option to obtain a 95% confidence interval for <span class="math inline">\(p.\)</span> Interpret the interval in the context of the problem.</li>
+</ol></li>
+<li><p><strong>Daily YouTube Use Among Teens: Small Sample</strong> Recall <a href="#exm-youtube-ppss" class="quarto-xref">Example&nbsp;<span>9.1</span></a>. Suppose that instead of a sample of <span class="math inline">\(n = 20\)</span> students, only <span class="math inline">\(n = 15\)</span> students were available, and <span class="math inline">\(x_{\text{obs}} = 13\)</span> of them reported using YouTube daily.</p>
+<ol type="a">
+<li>Check whether the large sample condition is satisfied using the 10-10 rule. Based on your answer, determine whether the large sample normal approximation confidence interval is appropriate.</li>
+<li>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function with the <span class="des">Binomial</span> option to obtain a 95% exact binomial confidence interval for <span class="math inline">\(p.\)</span> Interpret the interval in the context of the problem.</li>
+</ol></li>
+<li><p><strong>Seed Germination Rate</strong> A gardener randomly selects <span class="math inline">\(n = 20\)</span> seeds of a particular variety and plants them under specified growing conditions. Of these, <span class="math inline">\(x_{\text{obs}} = 15\)</span> germinate. Let <span class="math inline">\(p\)</span> be the true germination rate for this variety of seeds under these conditions.</p>
+<ol type="a">
+<li>Check whether the large sample condition is satisfied using the 10-10 rule. Based on your answer, determine whether the large sample normal approximation confidence interval is appropriate.</li>
+<li>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function with the <span class="des">Binomial</span> option to obtain a 95% exact binomial confidence interval for <span class="math inline">\(p.\)</span> Interpret the interval in the context of the problem.</li>
+</ol></li>
+<li><p><strong>Social Media as a Primary News Source: Small Sample</strong> Recall <a href="#exm-social-media-news-ppss" class="quarto-xref">Example&nbsp;<span>9.3</span></a>. Suppose that instead of a sample of <span class="math inline">\(n = 15\)</span> students, only <span class="math inline">\(n = 12\)</span> students were available, and <span class="math inline">\(x_{\text{obs}} = 7\)</span> of them reported using social media as their primary news source.</p>
+<ol type="a">
+<li>Check whether the large sample condition is satisfied using the 10-10 rule. Based on your answer, determine whether the large sample normal approximation confidence interval is appropriate.</li>
+<li>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function with the <span class="des">Binomial</span> option to obtain a 95% exact binomial confidence interval for <span class="math inline">\(p.\)</span> Interpret the interval in the context of the problem.</li>
+<li>Use your confidence interval to test <span class="math inline">\(H_0: p = 0.36\)</span> versus <span class="math inline">\(H_a: p \neq 0.36\)</span> at the <span class="math inline">\(\alpha = 0.05\)</span> significance level. Is there evidence that the proportion of students who get most of their news from social media differs from 36%?</li>
+</ol></li>
+<li><p><strong>Online Order Returns</strong> A small online retailer randomly examines <span class="math inline">\(n = 30\)</span> of its recent orders and finds that <span class="math inline">\(x_{\text{obs}} = 1\)</span> was returned. Let <span class="math inline">\(p\)</span> be the true proportion of this retailer’s orders that are returned.</p>
+<ol type="a">
+<li>Check whether the large sample condition is satisfied using the 10-10 rule. Based on your answer, determine whether the large sample normal approximation confidence interval is appropriate.</li>
+<li>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function with the <span class="des">Binomial</span> option to obtain a 99% exact binomial confidence interval for <span class="math inline">\(p.\)</span> Interpret the interval in the context of the problem.</li>
+</ol></li>
+<li><p><strong>Alaska Identity Theft Complaints</strong> In Problem 4 (Alaska Identity Theft Complaints) of <a href="#sec-stage-hw" class="quarto-xref"><span>Section 9.1.4</span></a>, <span class="math inline">\(p\)</span> is the true proportion of consumer complaints in Alaska that were for identity theft. The sample consisted of <span class="math inline">\(n = 1{,}432\)</span> complaints, of which <span class="math inline">\(x_{\text{obs}} = 321\)</span> were for identity theft.</p>
+<ol type="a">
+<li>Check whether the large sample condition is satisfied using the 10-10 rule. Based on your answer, determine whether the large sample normal approximation confidence interval is appropriate.</li>
+<li>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function with the <span class="des">Large Sample z</span> option to obtain a 95% confidence interval for <span class="math inline">\(p.\)</span> Interpret the interval in the context of the problem.</li>
+<li>According to the Federal Trade Commission, 23% of all consumer complaints in 2007 were for identity theft. Use your confidence interval to test <span class="math inline">\(H_0: p = 0.23\)</span> versus <span class="math inline">\(H_a: p \neq 0.23\)</span> at the <span class="math inline">\(\alpha = 0.05\)</span> significance level. Is there evidence that Alaska’s proportion of identity theft complaints differs from the national proportion?</li>
+</ol></li>
+<li><p><strong>Free-Throw Shooting</strong> A basketball player attempts <span class="math inline">\(n = 20\)</span> free throws during a randomly selected practice session and makes <span class="math inline">\(x_{\text{obs}} = 14\)</span> of them. Let <span class="math inline">\(p\)</span> be the true proportion of free throws this player makes.</p>
+<ol type="a">
+<li>Check whether the large sample condition is satisfied using the 10-10 rule. Based on your answer, determine whether the large sample normal approximation confidence interval is appropriate.</li>
+<li>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function with the <span class="des">Binomial</span> option to obtain a 95% exact binomial confidence interval for <span class="math inline">\(p.\)</span> Interpret the interval in the context of the problem.</li>
+</ol></li>
+<li><p><strong>Kennedy Assassination Conspiracy Belief</strong> In Problem 5 (Kennedy Assassination Conspiracy Belief) of <a href="#sec-stage-hw" class="quarto-xref"><span>Section 9.1.4</span></a>, <span class="math inline">\(p\)</span> is the true proportion of American adults in 2013 who believed there was a conspiracy behind President Kennedy’s assassination. The sample consisted of <span class="math inline">\(n = 1{,}039\)</span> adults, of whom <span class="math inline">\(x_{\text{obs}} = 634\)</span> believed in a conspiracy.</p>
+<ol type="a">
+<li>Check whether the large sample condition is satisfied using the 10-10 rule. Based on your answer, determine whether the large sample normal approximation confidence interval is appropriate.</li>
+<li>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function with the <span class="des">Large Sample z</span> option to obtain a 95% confidence interval for <span class="math inline">\(p.\)</span> Interpret the interval in the context of the problem.</li>
+<li>In 2001, a Gallup poll found that 81% of American adults believed there was a conspiracy behind the assassination. Use your confidence interval to test <span class="math inline">\(H_0: p = 0.81\)</span> versus <span class="math inline">\(H_a: p \neq 0.81\)</span> at the <span class="math inline">\(\alpha = 0.05\)</span> significance level. Is there evidence that American belief in a conspiracy changed between 2001 and 2013?</li>
+</ol></li>
+<li><p><strong>Rare Side Effect</strong> Among a random sample of <span class="math inline">\(n = 60\)</span> patients receiving a commonly used medication at a clinic, <span class="math inline">\(x_{\text{obs}} = 4\)</span> experienced a particular side effect. Let <span class="math inline">\(p\)</span> be the true proportion of patients at this clinic who experience this side effect.</p>
+<ol type="a">
+<li>Check whether the large sample condition is satisfied using the 10-10 rule. Based on your answer, determine whether the large sample normal approximation confidence interval is appropriate.</li>
+<li>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function with the <span class="des">Binomial</span> option to obtain a 95% exact binomial confidence interval for <span class="math inline">\(p.\)</span> Interpret the interval in the context of the problem.</li>
+</ol></li>
+<li><p><strong>Autism Spectrum Disorder in Arizona</strong> In Problem 6 (Autism Spectrum Disorder in Arizona) of <a href="#sec-stage-hw" class="quarto-xref"><span>Section 9.1.4</span></a>, <span class="math inline">\(p\)</span> is the true proportion of children in Arizona diagnosed with ASD. The sample consisted of <span class="math inline">\(n = 32{,}601\)</span> children, of whom <span class="math inline">\(x_{\text{obs}} = 507\)</span> were diagnosed with ASD.</p>
+<ol type="a">
+<li>Check whether the large sample condition is satisfied using the 10-10 rule. Based on your answer, determine whether the large sample normal approximation confidence interval is appropriate.</li>
+<li>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function with the <span class="des">Large Sample z</span> option to obtain a 90% confidence interval for <span class="math inline">\(p.\)</span> Interpret the interval in the context of the problem.</li>
+</ol></li>
+<li><p><strong>Graduate Degree Attainment: GSS2024</strong> In Problem 7 (Graduate Degree Attainment: GSS2024) of <a href="#sec-stage-hw" class="quarto-xref"><span>Section 9.1.4</span></a>, <span class="math inline">\(p\)</span> is the true proportion of U.S. adults who hold a graduate degree. The sample consisted of <span class="math inline">\(n = 388\)</span> adults, of whom <span class="math inline">\(x_{\text{obs}} = 33\)</span> reported a graduate degree as their highest level of education.</p>
+<ol type="a">
+<li>Check whether the large sample condition is satisfied using the 10-10 rule. Based on your answer, determine whether the large sample normal approximation confidence interval is appropriate.</li>
+<li>Use Rguroo’s <span class="fun">One-Population Proportion</span> inference function with the <span class="des">Large Sample z</span> option to obtain a 99% confidence interval for <span class="math inline">\(p.\)</span> Interpret the interval in the context of the problem.</li>
+<li>According to the U.S. Census Bureau, approximately 15% of U.S. adults aged 25 and older hold a graduate degree. Use your confidence interval to test <span class="math inline">\(H_0: p = 0.15\)</span> versus <span class="math inline">\(H_a: p \neq 0.15\)</span> at the <span class="math inline">\(\alpha = 0.01\)</span> significance level. Does the GSS2024 data provide evidence that the proportion of U.S. adults who hold a graduate degree differs from 15%?</li>
+</ol></li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">GSS2024</span>.</p>
 <p><strong>Code book for Dataset GSS2024 is given <a href="#code-book-gss2024">here</a>.</strong></p>
 </div>
+<!--
+
+Check whether the large sample condition is satisfied using the 10-10 rule. 
+
+  - If the large sample condition is satisfied, use Rguroo's [One-Population Proportion]{.fun} inference function with the [Large Sample z]{.des} option to obtain a confidence interval with the specified significance level for $p.$ Interpret the interval in the context of the problem. 
+  
+  - On the other hand, if the large sample condition is not satisfied, use Rguroo's [One-Population Proportion]{.fun} inference function with the [Binomial]{.des} option to obtain a 95% exact binomial confidence interval for $p.$ Interpret the interval in the context of the problem.
+
+---
+
+1. **Arizona Marijuana Legalization**
+In Problem 1 (Arizona Marijuana Legalization) of @sec-stage-hw, $p$
+is the true proportion of Arizona registered voters who support
+marijuana legalization. The sample consisted of $n = 779$ voters, of
+whom $x_{\text{obs}} = 390$ favored legalization.
+
+2. **Australian Unemployment Outlook**
+In Problem 2 (Australian Unemployment Outlook) of @sec-stage-hw, $p$
+is the true proportion of Australians in November 1997 who believed
+unemployment would increase. The sample consisted of $n = 631$
+Australians, of whom $x_{\text{obs}} = 284$ believed unemployment
+would increase.
+
+3. **Arkansas Identity Theft Complaints**
+In Problem 3 (Arkansas Identity Theft Complaints) of @sec-stage-hw,
+$p$ is the true proportion of consumer complaints in Arkansas that
+were for identity theft. The sample consisted of $n = 3{,}482$
+complaints, of which $x_{\text{obs}} = 1{,}601$ were for identity
+theft.
+
+4. **Daily YouTube Use Among Teens: Small Sample**
+Recall @exm-youtube-ppss. Suppose that instead of a sample of $n = 20$
+students, only $n = 15$ students were available, and $x_{\text{obs}} = 13$
+of them reported using YouTube daily.
+
+5. **Social Media as a Primary News Source: Small Sample**
+Recall @exm-social-media-news-ppss. Suppose that instead of a sample
+of $n = 15$ students, only $n = 12$ students were available, and
+$x_{\text{obs}} = 7$ of them reported using social media as their
+primary news source.
+
+6. **Alaska Identity Theft Complaints**
+In Problem 4 (Alaska Identity Theft Complaints) of @sec-stage-hw,
+$p$ is the true proportion of consumer complaints in Alaska that
+were for identity theft. The sample consisted of $n = 1{,}432$
+complaints, of which $x_{\text{obs}} = 321$ were for identity theft.
+
+7. **Kennedy Assassination Conspiracy Belief**
+In Problem 5 (Kennedy Assassination Conspiracy Belief) of
+@sec-stage-hw, $p$ is the true proportion of American adults in
+2013 who believed there was a conspiracy behind President Kennedy's
+assassination. The sample consisted of $n = 1{,}039$ adults, of whom
+$x_{\text{obs}} = 634$ believed in a conspiracy.
+
+8. **Autism Spectrum Disorder in Arizona**
+In Problem 6 (Autism Spectrum Disorder in Arizona) of @sec-stage-hw,
+$p$ is the true proportion of children in Arizona diagnosed with
+ASD. The sample consisted of $n = 32{,}601$ children, of whom
+$x_{\text{obs}} = 507$ were diagnosed with ASD.
+
+9. **Graduate Degree Attainment: GSS2024**
+In Problem 7 (Graduate Degree Attainment: GSS2024) of @sec-stage-hw,
+$p$ is the true proportion of U.S. adults who hold a graduate
+degree. The sample consisted of $n = 388$ adults, of whom
+$x_{\text{obs}} = 33$ reported a graduate degree as their highest
+level of education.
+
+<div tabindex="0" style="width:85%; margin:auto;">
+
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset
+for this exercise is available in the Rguroo dataset repository
+[Kozak]{.repo}, with the dataset name [GSS2024]{.data}.
+
+**Code book for Dataset GSS2024 is given [here](#code-book-gss2024).**
+
+</div>
+
+-->
 </section>
 </section>
 <section id="sec-hyp-test-two-prop" class="level2" data-number="9.7">
@@ -5462,7 +5666,11 @@ P\left(\hat{p}_1-\hat{p}_2
 \geq \text{observed difference}\right),\;
 \text{assuming } p_1=p_2.\]</span></p>
 <p>This is the area to the right of the observed difference under the <span class="math inline">\(N\left(0, \sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}\right)\)</span> distribution. A small p-value indicates strong evidence against <span class="math inline">\(H_0\)</span> and in favor of <span class="math inline">\(H_a,\)</span> while a large p-value indicates that the data do not provide strong evidence against <span class="math inline">\(H_0.\)</span></p>
-<p><strong>Decision Rule:</strong> - Reject <span class="math inline">\(H_0\)</span> if p-value <span class="math inline">\(&lt; \alpha\)</span> (observed difference strongly support <span class="math inline">\(H_a\)</span>) - Fail to reject <span class="math inline">\(H_0\)</span> if p-value <span class="math inline">\(\geq \alpha\)</span> (data do not strongly support <span class="math inline">\(H_a\)</span>)</p>
+<p>Decision Rule:</p>
+<ul>
+<li>Reject <span class="math inline">\(H_0\)</span> if p-value <span class="math inline">\(&lt; \alpha\)</span> (observed difference strongly support <span class="math inline">\(H_a\)</span>).</li>
+<li>Fail to reject <span class="math inline">\(H_0\)</span> if p-value <span class="math inline">\(\geq \alpha\)</span> (data do not strongly support <span class="math inline">\(H_a\)</span>).</li>
+</ul>
 <p><strong>Critical Region Approach:</strong></p>
 <p>The critical region consists of values in the upper tail of the sampling distribution. These are the values of <span class="math inline">\(\hat{p}_1-\hat{p}_2\)</span> that are sufficiently large to lead us to reject <span class="math inline">\(H_0\)</span> in favor of <span class="math inline">\(H_a: p_1-p_2&gt;0.\)</span> We find the critical value <span class="math inline">\(c\)</span> o that the probability of falling in the critical region is equal to the significant level <span class="math inline">\(\alpha,\)</span> assuming <span class="math inline">\(p_1=p_2\)</span>:</p>
 <p><span class="math display">\[P\left(\hat{p}_1-\hat{p}_2 \geq c\right) = \alpha,\;
@@ -5470,7 +5678,11 @@ P\left(\hat{p}_1-\hat{p}_2
 <p>Using the sampling distribution under this assumption,</p>
 <p><span class="math display">\[\hat{p}_1-\hat{p}_2\sim N\left(0, \sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}\right)\]</span></p>
 <p>we choose <span class="math inline">\(c\)</span> so that the area to the right of <span class="math inline">\(c\)</span> is <span class="math inline">\(\alpha.\)</span> We reject <span class="math inline">\(H_0\)</span> if the observed difference <span class="math inline">\(\hat{p}_1-\hat{p}_2\)</span> falls in this critical region.</p>
-<p><strong>Decision Rule:</strong> - Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat{p}_1 - \hat{p}_2 &gt; c\)</span> (observed difference strongly supports <span class="math inline">\(H_a\)</span>) - Fail to reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat{p}_1 - \hat{p}_2 \leq c\)</span> (observed difference does not strongly support <span class="math inline">\(H_a\)</span>)</p>
+<p>Decision Rule:</p>
+<ul>
+<li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat{p}_1 - \hat{p}_2 &gt; c\)</span> (observed difference strongly supports <span class="math inline">\(H_a\)</span>).</li>
+<li>Fail to reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat{p}_1 - \hat{p}_2 \leq c\)</span> (observed difference does not strongly support <span class="math inline">\(H_a\)</span>).</li>
+</ul>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-right-tail-critical-pvalue" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two side-by-side normal curves for the distribution of p-hat1 minus p-hat2. The left shows the upper-tail critical region beyond c, and the right shows the p-value area to the right of the observed difference. Both curves are centered at zero.">
@@ -5520,8 +5732,7 @@ H_a: p_1 - p_2 &gt; 0.
 <p><span class="math display">\[
 \text{p-value} = P(\hat{p}_1 - \hat{p}_2 \geq 0.20), \; \text{assuming}\; p_1 = p_2.
 \]</span> See <a href="#fig-pvalue-schema" class="quarto-xref">Figure&nbsp;<span>9.52</span></a>.</p>
-<p>b. <strong>Using Rguroo</strong></p>
-<p>Click to expand the box below to see how to use the <span class="fun">Proportion Inference</span> function in Rguroo to answer this question.</p>
+<p>b. Click to expand the box below to see how to use the <span class="fun">Proportion Inference</span> function in Rguroo to answer this question.</p>
 <div id="prop-inference-Schema" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Two-Population Proportion Hypothesis Test: Schema-Based Instruction Example">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-106-contents" aria-controls="callout-106" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -5633,7 +5844,7 @@ Figure&nbsp;9.52: p-value for the schema-based instruction study.
 </div>
 </div>
 </div>
-<p>Since the <span class="math inline">\(p\)</span>-value is $ 0.021 &lt; 0.05,$ we reject <span class="math inline">\(H_0\)</span> at the significance level of 0.05 and conclude that there is sufficient evidence in favor of <span class="math inline">\(H_a:p_1-p_2&gt;0.\)</span> Therefore, the data provide sufficient evidence that the mastery rate is higher for the new instructional approach than for the traditional approach.</p>
+<p>Since the <span class="math inline">\(p\)</span>-value is <span class="math inline">\(0.021 &lt; 0.05,\)</span> we reject <span class="math inline">\(H_0\)</span> at the significance level of 0.05 and conclude that there is sufficient evidence in favor of <span class="math inline">\(H_a:p_1-p_2&gt;0.\)</span> Therefore, the data provide sufficient evidence that the mastery rate is higher for the new instructional approach than for the traditional approach.</p>
 </div>
 </div>
 </div>
@@ -5801,7 +6012,7 @@ Figure&nbsp;9.53: Critical region for the schema-based instruction study with α
 <div class="callout-body-container">
 <p><strong>p-value:</strong> <span class="math inline">\(\quad \text{p-value} = P(\hat{p}_1 - \hat{p}_2 \leq \text{observed difference} \mid p_1 = p_2)\)</span></p>
 <p><strong>Critical value <span class="math inline">\(c\)</span>:</strong> <span class="math inline">\(\quad P(\hat{p}_1 - \hat{p}_2 \leq c \mid p_1 = p_2) = \alpha\)</span></p>
-<p><strong>Decision:</strong> Reject <span class="math inline">\(H_0\)</span> if p-value <span class="math inline">\(&lt; \alpha,\)</span> equivalently if <span class="math inline">\(\hat{p}_1 - \hat{p}_2 \leq c.\)</span></p>
+<p>Decision: Reject <span class="math inline">\(H_0\)</span> if p-value <span class="math inline">\(&lt; \alpha,\)</span> equivalently if <span class="math inline">\(\hat{p}_1 - \hat{p}_2 \leq c.\)</span></p>
 </div>
 </div>
 </div>
@@ -5823,7 +6034,11 @@ Figure&nbsp;9.54: Critical region and p-value for a left-tailed test
 <p>The critical region consists of values in the lower tail of the sampling distribution—these are the values that strongly support <span class="math inline">\(H_a: p_1 - p_2 &lt; 0.\)</span> We find the critical value <span class="math inline">\(c\)</span> such that at the boundary where <span class="math inline">\(p_1 = p_2\)</span>:</p>
 <p><span class="math display">\[P(\hat{p}_1 - \hat{p}_2 &lt; c \mid p_1 = p_2) = \alpha\]</span></p>
 <p>Using the sampling distribution at the boundary, we find <span class="math inline">\(c\)</span> from <span class="math inline">\(N\left(0, \sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}\right)\)</span> such that the area to the left equals <span class="math inline">\(\alpha.\)</span></p>
-<p><strong>Decision Rule:</strong> - Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat{p}_1 - \hat{p}_2 &lt; c\)</span> (observed difference strongly supports <span class="math inline">\(H_a\)</span>) - Fail to reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat{p}_1 - \hat{p}_2 \geq c\)</span> (observed difference does not strongly support <span class="math inline">\(H_a\)</span>)</p>
+<p>Decision Rule:</p>
+<ul>
+<li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat{p}_1 - \hat{p}_2 &lt; c\)</span> (observed difference strongly supports <span class="math inline">\(H_a\)</span>).</li>
+<li>Fail to reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat{p}_1 - \hat{p}_2 \geq c\)</span> (observed difference does not strongly support <span class="math inline">\(H_a\)</span>).</li>
+</ul>
 <div id="exm-smoking-test-pvalue" class="theorem example">
 <p><span class="theorem-title"><strong>Example 9.42 (Smoking Cessation: Hypothesis Test - p-Value Example)</strong></span> For the smoking cessation study, we want to test whether the self-guided approach has a higher quit-smoking rate than the nicotine patch approach. Recall:</p>
 <ul>
@@ -5858,8 +6073,7 @@ H_a: p_1 - p_2 &lt; 0.
 <p>The <span class="math inline">\(p\)</span>-value is the probability of observing a difference at least as small as the observed difference of <span class="math inline">\(-0.10,\)</span> assuming <span class="math inline">\(p_1 = p_2\)</span>: <span class="math display">\[
 \text{p-value} = P(\hat{p}_1 - \hat{p}_2 \leq -0.10)\;\text{assuming}\;p_1 = p_2.
 \]</span></p>
-<p>b. <strong>Using Rguroo</strong></p>
-<p>To perform this hypothesis test in Rguroo, follow the same steps given in the <a href="#schema-test-pvalue">solution</a> of <a href="#exm-schema-test-pvalue" class="quarto-xref">Example&nbsp;<span>9.40</span></a>. One difference is that in the <span class="tab">Test of Hypothesis</span> tab, for <span class="des">Alternative Hypothesis p1 − p2</span>, you should select the <span class="typein">&lt;</span> (less than) option because this is a left-tailed test, and set the <span class="des">Significance Level</span> to 0.10. In addition, the values in the Basics dialog of <span class="dialog">Two Population Proportion Inference</span> and in the <span class="tab">Data Summary</span> tab should match those shown in <a href="#fig-smoking-inputs" class="quarto-xref">Figure&nbsp;<span>9.55</span></a>.</p>
+<p>b. To perform this hypothesis test in Rguroo, follow the same steps given in the <a href="#schema-test-pvalue">solution</a> of <a href="#exm-schema-test-pvalue" class="quarto-xref">Example&nbsp;<span>9.40</span></a>. One difference is that in the <span class="tab">Test of Hypothesis</span> tab, for <span class="des">Alternative Hypothesis p1 − p2</span>, you should select the <span class="typein">&lt;</span> (less than) option because this is a left-tailed test, and set the <span class="des">Significance Level</span> to 0.10. In addition, the values in the Basics dialog of <span class="dialog">Two Population Proportion Inference</span> and in the <span class="tab">Data Summary</span> tab should match those shown in <a href="#fig-smoking-inputs" class="quarto-xref">Figure&nbsp;<span>9.55</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-smoking-inputs" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Screenshot of a Two Population Proportion Inference interface. The response variable is Quit Smoking with success defined as Yes and failure as No. The population variable is Treatment. Population 1 Nicotine Patch has a sample size of 60 with 24 successes proportion 0.4. Population 2 Self-Guided has a sample size of 60 with 30 successes proportion 0.5. Tabs for Data Summary, Confidence Interval, and Test of Hypothesis are visible.">
@@ -5943,8 +6157,7 @@ H_a: p_1 - p_2 &lt; 0.
 </div>
 <div id="callout-116" class="callout-116-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>a. <strong>Using Rguroo</strong></p>
-<p>To perform this hypothesis test in Rguroo, follow the same steps given in the <a href="#exm-schema-test-cr">solution</a> of <a href="#exm-schema-test-cr" class="quarto-xref">Example&nbsp;<span>9.41</span></a>. One difference is that in the <span class="tab">Test of Hypothesis</span> tab, for <span class="des">Alternative Hypothesis p1 − p2</span>, you should select the <span class="typein">&lt;</span> (less than) option because this is a left-tailed test, and set the <span class="des">Significance Level</span> to <span class="typein">0.10</span>. In addition, the values in the Basics dialog of <span class="dialog">Two Population Proportion Inference</span> and in the <span class="tab">Data Summary</span> tab should match those shown in <a href="#fig-smoking-inputs1" class="quarto-xref">Figure&nbsp;<span>9.57</span></a>.</p>
+<p>a. To perform this hypothesis test in Rguroo, follow the same steps given in the <a href="#exm-schema-test-cr">solution</a> of <a href="#exm-schema-test-cr" class="quarto-xref">Example&nbsp;<span>9.41</span></a>. One difference is that in the <span class="tab">Test of Hypothesis</span> tab, for <span class="des">Alternative Hypothesis p1 − p2</span>, you should select the <span class="typein">&lt;</span> (less than) option because this is a left-tailed test, and set the <span class="des">Significance Level</span> to <span class="typein">0.10</span>. In addition, the values in the Basics dialog of <span class="dialog">Two Population Proportion Inference</span> and in the <span class="tab">Data Summary</span> tab should match those shown in <a href="#fig-smoking-inputs1" class="quarto-xref">Figure&nbsp;<span>9.57</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-smoking-inputs1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Screenshot of a Two Population Proportion Inference interface. The response variable is Quit Smoking with success defined as Yes and failure as No. The population variable is Treatment. Population 1 Nicotine Patch has a sample size of 60 with 24 successes proportion 0.4. Population 2 Self-Guided has a sample size of 60 with 30 successes proportion 0.5. Tabs for Data Summary, Confidence Interval, and Test of Hypothesis are visible.">
@@ -5997,7 +6210,7 @@ Figure&nbsp;9.58: p-value for the Smoking Cessation study.
 <p><span class="math display">\[
 \hat{p}_1-\hat{p}_2&lt;-0.1164.
 \]</span></p>
-<p>Since the observed difference <span class="math inline">\(\hat{p}_1-\hat{p}_2=-0.10\)</span> is greater than <strong><span class="math inline">\(-0.1164\)</span></strong>, it does <em>not</em> fall in the critical region, as shown by the green triangle outside the red-shaded region. Therefore, we fail to reject <span class="math inline">\(H_0\)</span> at the <strong>10%</strong> significance level.</p>
+<p>Since the observed difference <span class="math inline">\(\hat{p}_1-\hat{p}_2=-0.10\)</span> is greater than <strong><span class="math inline">\(-0.1164\)</span></strong>, it does <em>not</em> fall in the critical region, as shown by the green triangle outside the red-shaded region. Therefore, we fail to reject <span class="math inline">\(H_0\)</span> at the 10% significance level.</p>
 <p>Although the observed difference of <span class="math inline">\(-0.10\)</span> is in the direction of <span class="math inline">\(H_a\)</span> (the self-guided approach had a 50% quit-smoking rate compared with 40% for the nicotine patch approach), the observed difference does not fall in the critical region. Therefore, the data do not provide sufficient evidence that the self-guided approach has a higher quit-smoking rate than the nicotine patch approach.</p>
 </div>
 </div>
@@ -6014,7 +6227,7 @@ Figure&nbsp;9.58: p-value for the Smoking Cessation study.
 <div class="callout-body-container">
 <p><strong>p-value:</strong> <span class="math inline">\(\quad \text{p-value} = P(|\hat{p}_1 - \hat{p}_2| \geq |\text{observed difference}| \mid p_1 = p_2)\)</span></p>
 <p><strong>Critical values <span class="math inline">\(c_1, c_2\)</span>:</strong> <span class="math inline">\(\quad P(\hat{p}_1 - \hat{p}_2 \leq c_1 \mid p_1 = p_2) = P(\hat{p}_1 - \hat{p}_2 \geq c_2 \mid p_1 = p_2) = \alpha/2\)</span></p>
-<p><strong>Decision:</strong> Reject <span class="math inline">\(H_0\)</span> if p-value <span class="math inline">\(&lt; \alpha,\)</span> equivalently if <span class="math inline">\(\hat{p}_1 - \hat{p}_2 \leq c_1\)</span> or <span class="math inline">\(\hat{p}_1 - \hat{p}_2 \geq c_2.\)</span></p>
+<p>Decision: Reject <span class="math inline">\(H_0\)</span> if p-value <span class="math inline">\(&lt; \alpha,\)</span> equivalently if <span class="math inline">\(\hat{p}_1 - \hat{p}_2 \leq c_1\)</span> or <span class="math inline">\(\hat{p}_1 - \hat{p}_2 \geq c_2.\)</span></p>
 </div>
 </div>
 </div>
@@ -6040,7 +6253,11 @@ Figure&nbsp;9.59: Critical region and p-value for a two-tailed test
 <li><span class="math inline">\(c_1\)</span> is the value with area <span class="math inline">\(\alpha/2\)</span> to its left</li>
 <li><span class="math inline">\(c_2\)</span> is the value with area <span class="math inline">\(\alpha/2\)</span> to its right</li>
 </ul>
-<p><strong>Decision Rule:</strong> - Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat{p}_1 - \hat{p}_2 &lt; c_1\)</span> or <span class="math inline">\(\hat{p}_1 - \hat{p}_2 &gt; c_2\)</span> (observed difference strongly supports <span class="math inline">\(H_a\)</span>) - Fail to reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(c_1 \leq \hat{p}_1 - \hat{p}_2 \leq c_2\)</span> (observed difference does not strongly support <span class="math inline">\(H_a\)</span>)</p>
+<p>Decision Rule:</p>
+<ul>
+<li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat{p}_1 - \hat{p}_2 &lt; c_1\)</span> or <span class="math inline">\(\hat{p}_1 - \hat{p}_2 &gt; c_2\)</span> (observed difference strongly supports <span class="math inline">\(H_a\)</span>).</li>
+<li>Fail to reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(c_1 \leq \hat{p}_1 - \hat{p}_2 \leq c_2\)</span> (observed difference does not strongly support <span class="math inline">\(H_a\)</span>).</li>
+</ul>
 <div id="exm-text-test-pvalue" class="theorem example">
 <p><span class="theorem-title"><strong>Example 9.44 (Text Message Reminders: Hypothesis Test - p-Value Example)</strong></span> For the text message reminder study, we want to test whether adherence rates differ. Recall:</p>
 <ul>
@@ -6222,18 +6439,12 @@ Figure&nbsp;9.63: Critical region for the text messaging example with <span clas
 </div>
 <p>So far, in the examples above, we have performed two-population proportion inference using summarized data—namely, the sample sizes and the number of successes for each group. In practice, however, we often begin with raw data rather than pre-computed summaries. By raw data, we mean datasets where each individual observation is recorded as a separate row, with variables indicating group membership and the outcome for each case. The following example demonstrates how we can carry out two-population proportion inference directly from raw data using Rguroo.</p>
 <div id="exm-gss-test" class="theorem example">
-<p><span class="theorem-title"><strong>Example 9.46 (GSS 2024: Hypothesis Test Using Raw data)</strong></span> Consider the GSS marijuana legalization study. We want to test whether the proportion of U.S. adults who support the legalization of marijuana differs between females and males. Use the <span class="data">GSS2024</span> to test the hypotheses:</p>
-<p><span class="math display">\[
-\begin{cases}
-H_0: p_1 - p_2 = 0\\
-H_a: p_1 - p_2 \neq 0,
-\end{cases}
-\]</span></p>
-<p>where <span class="math inline">\(p_1\)</span> is the proportion of females who support legalization and <span class="math inline">\(p_2\)</span> is the proportion of males who support legalization.</p>
-<p>Using significance level <span class="math inline">\(\alpha=0.05,\)</span> test these hypotheses using:</p>
+<p><span class="theorem-title"><strong>Example 9.46 (GSS 2024: Hypothesis Test Using Raw Data)</strong></span> Consider the GSS marijuana legalization study. Use the <span class="data">GSS2024</span> to test whether the proportion of U.S. adults who support the legalization of marijuana differs between females and males. Define <span class="math inline">\(p_1\)</span> as the proportion of females who support legalization and <span class="math inline">\(p_2\)</span> as the proportion of males who support legalization.</p>
+<p>Use significance level <span class="math inline">\(\alpha=0.05.\)</span></p>
 <ol type="a">
-<li>the p-value approach.</li>
-<li>the critical region approach.</li>
+<li>Write the null and alternative hypotheses.</li>
+<li>Test using the p-value approach.</li>
+<li>Test using the critical region approach.</li>
 </ol>
 </div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
@@ -6248,7 +6459,13 @@ H_a: p_1 - p_2 \neq 0,
 </div>
 <div id="callout-124" class="callout-124-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Using Rguroo</strong></p>
+<p>a. The null and alternative hypotheses are:</p>
+<p><span class="math display">\[
+\begin{cases}
+H_0: p_1 - p_2 = 0\\
+H_a: p_1 - p_2 \neq 0,
+\end{cases}
+\]</span></p>
 <p>Click to expand the box below to see how to use the <span class="fun">Proportion Inference</span> function in Rguroo to answer this question.</p>
 <div id="prop2-inference-gss2024" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Two-Population proportion hypothesis test - Marijuana Legalization Example">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-122-contents" aria-controls="callout-122" aria-expanded="false" aria-label="Toggle callout">
@@ -6334,7 +6551,7 @@ Rguroo output: Two-Population Proportion Inference - Marijuana Legalization Exam
 </div>
 </div>
 </div>
-<p>a. p-Value Approach:**</p>
+<p>b. p-Value Approach:</p>
 <p>The <span class="math inline">\(p\)</span>-value measures the strength of evidence the data provide against <span class="math inline">\(H_0\)</span> and in favor of <span class="math inline">\(H_a: p_1 - p_2 \neq 0.\)</span> Because this is a two-sided test, differences at least as far from 0 as the observed difference of <span class="math inline">\(-0.064791,\)</span> in either direction, are at least as supportive of <span class="math inline">\(H_a.\)</span> Therefore, the p-value is <span class="math display">\[
 \text{p-value}
 =
@@ -6356,7 +6573,7 @@ Figure&nbsp;9.64: p-value for the marijuana legalization example.
 </div>
 </div>
 <p>Since the p-value is <span class="math inline">\(0.15268 &gt; 0.05,\)</span> we fail to reject <span class="math inline">\(H_0\)</span> at significance level <span class="math inline">\(\alpha = 0.05.\)</span> There is insufficient evidence in favor of <span class="math inline">\(H_a: p_1 - p_2 \neq 0.\)</span> Therefore, the data do not provide sufficient evidence that support for marijuana legalization differs between females and males.</p>
-<p>b. <strong>Critical Region Approach:</strong></p>
+<p>c. Critical Region Approach:</p>
 <p>Since this is a two-sided test, the critical values values <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> are determined so that <span class="math display">\[
 P(\hat{p}_1 - \hat{p}_2 \leq c_1 \text{ or }  \hat{p}_1 - \hat{p}_2 \geq c_2)= 0.05, \;\text{assuming}\; p_1 = p_2 .
 \]</span></p>
@@ -6401,14 +6618,14 @@ Figure&nbsp;9.65: Critical region for the marijuana legalization example, with <
 </ol>
 <hr>
 <ol type="1">
-<li><p>A researcher wants to determine whether male college students have a higher smoking rate than female college students. In a survey of 120 male students, 18 reported being regular smokers. Among 150 female students, 12 reported being regular smokers. Is there enough evidence to show that the proportion of male smokers is higher than the proportion of female smokers among college students? Test at the 5% level.</p></li>
-<li><p>A school district is evaluating whether a new reading program is more effective for students with previous tutoring than for those without. Of 85 students with previous tutoring, 68 passed the reading assessment. Of 92 students without previous tutoring, 59 passed the assessment. Is there enough evidence to show that the proportion of students passing the assessment is higher for those with previous tutoring than for those without? Test at the 5% level.</p></li>
-<li><p>A small clinic wants to compare the effectiveness of two different treatments for a skin condition. In a trial, 8 out of 25 patients receiving Treatment A showed improvement, while 12 out of 28 patients receiving Treatment B showed improvement. Is there enough evidence to show that the proportion of patients improving differs between the two treatments? Test at the 5% level.</p></li>
-<li><p>A coffee shop owner wants to know if customer satisfaction is higher during the morning shift than the evening shift. Of 45 morning customers surveyed, 38 reported being satisfied with their service. Of 52 evening customers surveyed, 35 reported being satisfied. Is there enough evidence to show that the proportion of satisfied customers is higher in the morning than in the evening? Test at the 5% level.</p></li>
-<li><p>Many high school students take the AP tests in different subject areas. In 2007, of the 211,693 students who took the calculus AB exam, 102,598 of them were female and 109,095 of them were male (“AP exam scores,” 2013). Is there enough evidence to show that the proportion of female students taking the calculus AB exam is different from the proportion of male students taking the calculus AB exam? Test at the 5% level.</p></li>
-<li><p>Are there more children diagnosed with Autism Spectrum Disorder (ASD) in states that have larger urban areas than in states that are mostly rural? In the state of Pennsylvania, a fairly urban state, there are 245 eight-year-olds diagnosed with ASD out of 18,440 eight-year-olds evaluated. In the state of Utah, a fairly rural state, there are 45 eight-year-olds diagnosed with ASD out of 2,123 eight-year-olds evaluated (“Autism and developmental,” 2008). Is there enough evidence to show that the proportion of children diagnosed with ASD in Pennsylvania is higher than the proportion in Utah? Test at the 1% level.</p></li>
-<li><p>A child dying from an accidental poisoning is a terrible incident. Is it more likely that a male child will get into poison than a female child? To find this out, data was collected that showed that out of 1,830 children between the ages of one and four who died from poisoning, 1,031 were males and 799 were females (Flanagan, Rooney &amp; Griffiths, 2005). Do the data show that the proportion of male children dying of poisoning is higher than the proportion of female children? Test at the 1% level.</p></li>
-<li><p>Many high school students take the AP tests in different subject areas. In 2007, of the 144,796 students who took the biology exam, 84,199 of them were female. In that same year, of the 211,693 students who took the calculus AB exam, 102,598 of them were female (“AP exam scores,” 2013). Is there enough evidence to show that the proportion of female students taking the biology exam is different from the proportion of female students taking the calculus AB exam? Test at the 5% level.</p></li>
+<li><p>A researcher wants to determine whether male college students have a higher smoking rate than female college students. In a survey of 120 male students, 18 reported being regular smokers. Among 150 female students, 12 reported being regular smokers. Is there enough evidence to show that the proportion of male smokers is higher than the proportion of female smokers among college students? Test at the <span class="math inline">\(\alpha=0.05\)</span> level.</p></li>
+<li><p>A school district is evaluating whether a new reading program is more effective for students with previous tutoring than for those without. Of 85 students with previous tutoring, 68 passed the reading assessment. Of 92 students without previous tutoring, 59 passed the assessment. Is there enough evidence to show that the proportion of students passing the assessment is higher for those with previous tutoring than for those without? Test at the <span class="math inline">\(\alpha=0.05\)</span> level.</p></li>
+<li><p>A small clinic wants to compare the effectiveness of two different treatments for a skin condition. In a trial, 8 out of 25 patients receiving Treatment A showed improvement, while 12 out of 28 patients receiving Treatment B showed improvement. Is there enough evidence to show that the proportion of patients improving differs between the two treatments? Test at the <span class="math inline">\(\alpha=0.05\)</span> level.</p></li>
+<li><p>A coffee shop owner wants to know if customer satisfaction is higher during the morning shift than the evening shift. Of 45 morning customers surveyed, 38 reported being satisfied with their service. Of 52 evening customers surveyed, 35 reported being satisfied. Is there enough evidence to show that the proportion of satisfied customers is higher in the morning than in the evening? Test at the <span class="math inline">\(\alpha=0.05\)</span> level.</p></li>
+<li><p>Many high school students take the AP tests in different subject areas. In 2007, of the 211,693 students who took the calculus AB exam, 102,598 of them were female and 109,095 of them were male (“AP exam scores,” 2013). Is there enough evidence to show that the proportion of female students taking the calculus AB exam is different from the proportion of male students taking the calculus AB exam? Test at the <span class="math inline">\(\alpha=0.05\)</span> level.</p></li>
+<li><p>Are there more children diagnosed with Autism Spectrum Disorder (ASD) in states that have larger urban areas than in states that are mostly rural? In the state of Pennsylvania, a fairly urban state, there are 245 eight-year-olds diagnosed with ASD out of 18,440 eight-year-olds evaluated. In the state of Utah, a fairly rural state, there are 45 eight-year-olds diagnosed with ASD out of 2,123 eight-year-olds evaluated (“Autism and developmental,” 2008). Is there enough evidence to show that the proportion of children diagnosed with ASD in Pennsylvania is higher than the proportion in Utah? Test at the <span class="math inline">\(\alpha=0.01\)</span> level.</p></li>
+<li><p>A child dying from an accidental poisoning is a terrible incident. Is it more likely that a male child will get into poison than a female child? To find this out, data was collected that showed that out of 1,830 children between the ages of one and four who died from poisoning, 1,031 were males and 799 were females (Flanagan, Rooney &amp; Griffiths, 2005). Do the data show that the proportion of male children dying of poisoning is higher than the proportion of female children? Test at the <span class="math inline">\(\alpha=0.01\)</span> level.</p></li>
+<li><p>Many high school students take the AP tests in different subject areas. In 2007, of the 144,796 students who took the biology exam, 84,199 of them were female. In that same year, of the 211,693 students who took the calculus AB exam, 102,598 of them were female (“AP exam scores,” 2013). Is there enough evidence to show that the proportion of female students taking the biology exam is different from the proportion of female students taking the calculus AB exam? Test at the <span class="math inline">\(\alpha=0.05\)</span> level.</p></li>
 <li><p>The General Social Survey (GSS) collects data through different survey modes, including in-person interviews and telephone interviews. Researchers want to investigate whether the survey mode affects responses to sensitive questions. Using the GSS2024 dataset, test whether the proportion of respondents who support the legalization of marijuana differs between those surveyed in person and those surveyed by phone. The variable <span class="var">Mode</span> indicates the survey mode (In Person or Phone), and the variable <span class="var">Grass</span> indicates support for marijuana legalization (Yes or No). Test at the 5% level. <strong>Note:</strong> The <code>Mode</code> variable in the GSS2024 dataset includes three categories: In Person, Phone, and Web. When you select only the In Person and Phone groups in Rguroo for your analysis, Rguroo will automatically exclude respondents who completed the survey via the Web.</p></li>
 </ol>
 </section>
@@ -6491,7 +6708,7 @@ Large Sample Confidence Interval for <span class="math inline">\(p_1 - p_2\)</sp
 </section>
 <section id="relationship-between-confidence-intervals-and-hypothesis-tests" class="level3" data-number="9.8.2">
 <h3 data-number="9.8.2" class="anchored" data-anchor-id="relationship-between-confidence-intervals-and-hypothesis-tests"><span class="header-section-number">9.8.2</span> Relationship Between Confidence Intervals and Hypothesis Tests</h3>
-<p>There is an important connection between confidence intervals and two-sided hypothesis tests. A <span class="math inline">\((1-\alpha)\times100%\)</span> confidence interval and a two-sided hypothesis test at significance level <span class="math inline">\(\alpha\)</span> lead to the same conclusion about the null value <span class="math inline">\(p_1-p_2=0\)</span>:</p>
+<p>There is an important connection between confidence intervals and two-sided hypothesis tests. A <span class="math inline">\((1-\alpha)\times100%\)</span> confidence interval and a two-sided hypothesis test at significance level <span class="math inline">\(\alpha\)</span> lead to the same decisions about the null value <span class="math inline">\(p_1-p_2=0\)</span>:</p>
 <ul>
 <li><p>If a <span class="math inline">\((1-\alpha) \times 100\%\)</span> confidence interval for <span class="math inline">\(p_1 - p_2\)</span> <strong>does not contain 0</strong>, then 0 is not a plausible value for <span class="math inline">\(p_1-p_2,\)</span> and we <strong>reject</strong> <span class="math inline">\(H_0: p_1 - p_2 = 0\)</span> at significance level <span class="math inline">\(\alpha\)</span> in a two-sided test.</p></li>
 <li><p>If a <span class="math inline">\((1-\alpha) \times 100\%\)</span> confidence interval for <span class="math inline">\(p_1 - p_2\)</span> <strong>contains 0</strong>, 0 is a plausible value for <span class="math inline">\(p_1-p_2,\)</span> and we <strong>fail to reject</strong> <span class="math inline">\(H_0: p_1 - p_2 = 0\)</span> at significance level <span class="math inline">\(\alpha\)</span> in a two-sided test.</p></li>
