@@ -277,7 +277,12 @@ window.Quarto = {
   <li><a href="#critical-region-approach" id="toc-critical-region-approach" class="nav-link" data-scroll-target="#critical-region-approach"><span class="header-section-number">15.2.5</span> Critical Region Approach</a></li>
   <li><a href="#homework-for-section-12.1" id="toc-homework-for-section-12.1" class="nav-link" data-scroll-target="#homework-for-section-12.1"><span class="header-section-number">15.2.6</span> Homework for Section 12.1</a></li>
   </ul></li>
-  <li><a href="#chi-square-test-for-independence" id="toc-chi-square-test-for-independence" class="nav-link" data-scroll-target="#chi-square-test-for-independence"><span class="header-section-number">15.3</span> Chi-Square Test for Independence</a></li>
+  <li><a href="#chi-square-test-for-independence" id="toc-chi-square-test-for-independence" class="nav-link" data-scroll-target="#chi-square-test-for-independence"><span class="header-section-number">15.3</span> Chi-Square Test for Independence</a>
+  <ul class="collapse">
+  <li><a href="#null-and-alternative-hypotheses-1" id="toc-null-and-alternative-hypotheses-1" class="nav-link" data-scroll-target="#null-and-alternative-hypotheses-1"><span class="header-section-number">15.3.1</span> Null and Alternative Hypotheses</a></li>
+  <li><a href="#expected-counts" id="toc-expected-counts" class="nav-link" data-scroll-target="#expected-counts"><span class="header-section-number">15.3.2</span> Expected Counts</a></li>
+  <li><a href="#test-statistic" id="toc-test-statistic" class="nav-link" data-scroll-target="#test-statistic"><span class="header-section-number">15.3.3</span> Test Statistic</a></li>
+  </ul></li>
   <li><a href="#chi-square-test-for-homogeneity" id="toc-chi-square-test-for-homogeneity" class="nav-link" data-scroll-target="#chi-square-test-for-homogeneity"><span class="header-section-number">15.4</span> Chi-Square Test for Homogeneity</a></li>
   </ul>
 </nav>
@@ -357,7 +362,7 @@ window.Quarto = {
 </div>
 <p>Many questions involving categorical data ask us to compare what we observe in a sample with what we would expect under a particular assumption. Chi-square tests are hypothesis tests designed for categorical data and provide a way to determine whether the differences between observed and expected counts are large enough to provide evidence against that assumption. In this chapter, we will study three types of chi-square tests. The chi-square goodness-of-fit test determines whether the distribution of a single categorical variable follows a specified distribution. The chi-square test of independence examines whether two categorical variables are associated within a population, while the chi-square test for homogeneity determines whether the distribution of a categorical variable is the same across two or more populations or groups. Although these tests address different questions, they share the same underlying idea: comparing observed counts with the counts we would expect if the null hypothesis were true.</p>
 <p>As with the other hypothesis tests you have studied, the general testing process remains the same. What changes are the conditions that must be satisfied, calculating expected counts, and the test statistic used to calculate the p-value. The following summarizes the general steps used in hypothesis testing, no matter the type of test.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div id="general-hypothesis-steps" class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -642,8 +647,8 @@ Figure&nbsp;15.1: Comparison of the chi-squared distribution with various degree
 </table>
 <p>Is there sufficient evidence to conclude that students’ preferences for course modality differ from the distribution stated by the college at the <span class="math inline">\(\alpha=0.05\)</span> significance level? Use the p-value approach.</p>
 </div>
-<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div id="gof-modality-pvalue-solution" class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -652,14 +657,276 @@ Figure&nbsp;15.1: Comparison of the chi-squared distribution with various degree
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>To determine if there is sufficient evidence that the preferences for course modality differs from the stated distribution, we need to conduct a full hypothesis test. This is a goodness-of-fit test since we are determining if a catagorical variable matches a specific distribution.</p>
+<p>Before we begin the test, we need to make sure the conditions for a GOF test are satisfied.</p>
+<p><em>Categorical Data:</em> We have categorical data since the college recorded modality.</p>
+<p><em>Randomness:</em> The college used a random sample.</p>
+<p><em>Independence:</em> The sample is independent since the modality preference of one student does not affect another student.</p>
+<p><em>Expected Counts:</em> The college did not report the expected counts, so we can compute them.</p>
+<p>Recall: expected counts are <span class="math inline">\(n \times p\)</span> for each category.</p>
+<p>In-Person: <span class="math inline">\((120)(0.40)= 48\)</span></p>
+<p>Online: <span class="math inline">\((120)(0.35)=42\)</span></p>
+<p>Hybrid <span class="math inline">\((120)(.25)=30\)</span></p>
+<p>All expected counts are greater than 5.</p>
+<p>Now that we know the conditions for a GOF test are satisfied, we will follow the <a href="#general-hypothesis-steps">General Hypothesis Test Steps</a> to complete the test.</p>
+<p><strong>State the null and alternative</strong></p>
+<p>From <a href="#exm-modality-gof">Example 15.1</a>, to write the null hypothesis, we state the proportions given in the distribution. The alternative will state that the population does not follow the distribution as stated.</p>
+<p><span class="math inline">\(H_o:\)</span> <span class="math inline">\(p_\text{in-person}=0.40\)</span>, <span class="math inline">\(p_\text{online}=0.35\)</span>, <span class="math inline">\(p_\text{hybrid}=0.25\)</span></p>
+<p><span class="math inline">\(H_a:\)</span> The population does not follow the stated distribution.</p>
+<p><strong>Select <span class="math inline">\(\alpha\)</span></strong></p>
+<p>In this example, the <span class="math inline">\(\alpha\)</span> was given. So, <span class="math inline">\(\alpha = 0.05\)</span></p>
+<p><strong>P-value Approach to find test-statistic and p-value</strong></p>
+<p>Since the question specifically tells us to use the p-value approach, we will use Rguroo to find the test statistic and p-value.</p>
+<p>Click to expand the box below see how to find the test statisic and p-value for a GOF Test.</p>
+<div id="GOF-P-Value_Approach-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Finding the Test Statistic and P-value for GOF Test in Rguroo">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span><img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Finding the Test Statistic and P-value for GOF Test in Rguroo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Open the <strong>Analytics</strong> toolbox in Rguroo.<br>
+</li>
+<li>Open the <span class="dpd">Analysis</span> dropdown, and select <span class="fun">Goodness of Fit</span>. This opens the <span class="fun">Goodness of Fit Test</span> dialog box.</li>
+<li>In the <span class="fun">Goodness of Fit Test</span> dialog box, there are two options. You can choose an existing dataset, or you can type the data in manually. For this example, we will type the data in manually.
+<ul>
+<li>We have three modalities, so we will need three rows. Click the plus icon <img src="Rguroo_Icons/add.png" class="img-fluid" alt="plus icon"> button three times. This will give us space to enter the three modalities.</li>
+<li>Enter the modality names in both the <em>Level</em> and <em>Label</em> columns.</li>
+<li>Enter the observed counts in the <em>Obs Count</em> column and the expected percentages in the <em>Null Probability</em> column.</li>
+</ul></li>
+<li>Select <em>Chi-Square</em> in the Test of Hypothesis box.</li>
+<li>Leave the <span class="math inline">\(\alpha=0.05\)</span> in the <em>Significance Level</em> box, since we are using this value.</li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the information for the test.</li>
+<li>Remember to save your output in case you need to refer to it later.</li>
+</ol>
+<div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Click here to see the Rguroo dialog
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Rguroo_dialogs/Chi_squared/dialog_gof_modality_pvalue.png" class="img-fluid figure-img" width="500"></p>
+<figcaption>Goodness of Fit Test Dialog for Modality Example</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-gof-modality-pvalue" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo output for GOF Test for Modality Example, showing graph, p-value = 0.01930 and test statistic of 7.89524 ">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gof-modality-pvalue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chi-Square/gof-output-pvalue.png" class="img-fluid figure-img" style="width:70.0%" alt="Rguroo output for GOF Test for Modality Example, showing graph, p-value = 0.01930 and test statistic of 7.89524 ">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gof-modality-pvalue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.2: Rguroo output for GOF Test for Modality Example)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The P-value graph displays the chi-squared distribution under the null hypothesis. The observed test statistic, <span class="math inline">\(\chi^2=7.89524\)</span>, is marked by the green triangle. The red shaded area to the right of the test statistic represents the p-value, <span class="math inline">\(\text{p-value} =0.01930\)</span>.</p>
+<p><strong>Make a Decision</strong></p>
+<p>Since the p-value <span class="math inline">\(&lt; \alpha\)</span>, <span class="math inline">\(0.01930&lt;0.05\)</span>, we reject the null hypothesis.</p>
+<p><strong>State the Conclusion</strong></p>
+<p>There is sufficient evidence to support the claim that the population does not follow the stated modality distribution of 40% in-person, 35% online, and 25% hybrid.</p>
+</div>
+</div>
+</div>
+<div id="exm-car-preference" class="theorem example">
+<p><span class="theorem-title"><strong>Example 15.5 (GOF Test for Car Preference - Using P-value Approach)</strong></span> A project conducted by the Australian Federal Office of Road Safety randomly surveyed 300 people and asked them many questions about their cars. One question was the reason that a person chooses a given car, and that data is in <a href="#tbl-Car_table" class="quarto-xref">Table&nbsp;<span>15.1</span></a> (“Car preferences,” 2013). Do the data show that the frequencies observed substantiate the claim that the reasons for choosing a car are equally likely? Test at the <span class="math inline">\(\alpha=0.05\)</span> level of significance. Use the p-value approach.</p>
+<div class="cell" data-tbl-alt="Reason for Choosing a Car">
+<div id="tbl-Car_table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Reason for Choosing a Car">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Car_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;15.1: Reason for Choosing a Car
+</figcaption>
+<div aria-describedby="tbl-Car_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Reason</th>
+<th style="text-align: right;">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">comfort</td>
+<td style="text-align: right;">47</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cost</td>
+<td style="text-align: right;">46</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">looks</td>
+<td style="text-align: right;">27</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">performance</td>
+<td style="text-align: right;">34</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">reliability</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">safety</td>
+<td style="text-align: right;">84</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">carprefs</span>. <a href="#tbl-Car_table" class="quarto-xref">Table&nbsp;<span>15.1</span></a> shows the variables and the first 6 rows of the data set. A complete description of the variables is provided in the <a href="#code-book-carpref">dataset code book</a> that follows.</p>
+</div>
+<div id="code-book-carpref" class="codebook callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Code book for Carprefs Dataset
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Description</strong> The dataset gives survey results from a project conducted by the Australian Federal Office of Road Safety.</p>
+<p>Format</p>
+<p>This dataset contains the following columns:</p>
+<p><span class="var">ID</span>: Identification number for the respondent <br><br> <span class="var">Age</span>: Age of the respondent <br><br> <span class="var">Sex</span>: Sex of the respondent <br><br> <span class="var">LicYr</span>: Number of years the respondent has held a driver’s license <br><br> <span class="var">LicMth</span>: Additional number of months the respondent has held a driver’s license <br><br> <span class="var">ActCar</span>: Type of car the respondent currently drives <br><br> <span class="var">Kids5</span>: Number of children age 5 or younger <br><br> <span class="var">Kids6</span>: Number of children age 6 or older <br><br> <span class="var">PreferCar</span>: Type of car the respondent would prefer to own <br><br> <span class="var">Carsmall_new5K</span>: Car preference related to a small new car <br><br> <span class="var">Reason</span>: Main reason for the respondent’s car preference <br><br> <span class="var">Cost</span>: Importance of cost when choosing a car <br><br> <span class="var">Reliable</span>: Importance of reliability when choosing a car <br><br> <span class="var">Perform</span>: Importance of performance when choosing a car <br><br> <span class="var">Fuel</span>: Importance of fuel economy when choosing a car <br><br> <span class="var">Safety</span>: Importance of safety when choosing a car <br><br> <span class="var">AC.PS</span>: Importance of air conditioning and power steering when choosing a car <br><br> <span class="var">Park</span>: Importance of ease of parking when choosing a car <br><br> <span class="var">Room</span>: Importance of interior room when choosing a car <br><br> <span class="var">Doors</span>: Importance of the number of doors when choosing a car <br><br> <span class="var">Prestige</span>: Importance of prestige when choosing a car <br><br> <span class="var">Colour</span>: Importance of car color when choosing a car</p>
+</div>
+</div>
+</div>
+<div id="gof-carpref-pvalue-solution" class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>To determine if the reasons for chosing a car are equally likely, we need to conduct a full hypothesis test. This is a goodness-of-fit test since we are determining if a catagorical variable matches a specific distribution; in this case each reason has the same proportion</p>
+<p>Before we begin the test, we need to make sure the conditions for a GOF test are satisfied.</p>
+<p><em>Categorical Data:</em> We have categorical data since the store recorded payment method.</p>
+<p><em>Randomness:</em> Australian Federal Office of Road Safety used a random sample.</p>
+<p><em>Independence:</em> The sample is independent since reason for chosing a car is independent from one person to the next.</p>
+<p><em>Expected Counts:</em> Australian Federal Office of Road Safety did not report expected counts; however, there are 6 reasons listed for chosing a car so each reason should have a probability of <span class="math inline">\(\frac{1}{6}\)</span> if the reasons are equally likely. This means that the expected counts for each reason would be <span class="math inline">\((300)(\frac{1}{6}) = 50\)</span>. The expected counts are all greater than 5.</p>
+<p>Now that we know the conditions for a GOF test are satisfied, we will follow the <a href="#general-hypothesis-steps">General Hypothesis Test Steps</a> to complete the test.</p>
+<p><strong>State the null and alternative</strong></p>
+<p>To write the null hypothesis, we state the proportions given in the distribution. As stated before, since we are testing whether the reasons are equally likely, all proportions will be <span class="math inline">\(\frac{1}{6}\)</span>The alternative will state that the population does not follow the store’s distribution as stated (not equally likely).</p>
+<p><span class="math inline">\(H_o:\)</span> <span class="math inline">\(p_\text{comfort}= p_\text{cost}=p_\text{looks}=p_\text{performance}=p_\text{reliability}=p_\text{safety}=\frac{1}{6}\)</span></p>
+<p><span class="math inline">\(H_a:\)</span> The reasons for chosing a car are not equally likely.</p>
+<p><strong>Select <span class="math inline">\(\alpha\)</span></strong></p>
+<p>In this example, the <span class="math inline">\(\alpha\)</span> was given. So, <span class="math inline">\(\alpha = 0.05\)</span></p>
+<p><strong>P-value Approach to find test-statistic and p-value</strong></p>
+<p>Since the question specifically tells us to use the p-value approach, we will use Rguroo to find the test statistic and p-value. For this example, we could input the categories and observed counts that are shown in the <a href="#tbl-Car_table" class="quarto-xref">Table&nbsp;<span>15.1</span></a>. However, entering these manually is time consuming and this dataset is in Rguroo. We will use the exisiting dataset and Rguroo will populate the categories for us.</p>
+<p>Click to expand the box below see how to find the test statisic and p-value for a GOF Test using raw data.</p>
+<div id="GOF-P-Value_Approach-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Finding the Test Statistic and P-value for GOF Test in Rguroo Using Raw Data">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span><img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Finding the Test Statistic and P-value for GOF Test in Rguroo Using Raw Data
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Open the <strong>Analytics</strong> toolbox in Rguroo.<br>
+</li>
+<li>Open the <span class="dpd">Analysis</span> dropdown, and select <span class="fun">Goodness of Fit</span>. This opens the <span class="fun">Goodness of Fit Test</span> dialog box.</li>
+<li>In the <span class="fun">Goodness of Fit Test</span> dialog box, there are two options. You can choose an existing dataset, or you can type the data in manually. For this example, we will select the dataset.
+<ul>
+<li>From the <span class="dpd">Select a Dataset</span> menu, select the <span class="data">carpref</span> dataset.</li>
+<li>From the <span class="dpd">Factor</span> select the variable <span class="var">Reason</span></li>
+<li>In the Null Probability column, we can leave this blank since Rguroo defaults to equally likely. You can also enter <span class="math inline">\(\frac{1}{6}\)</span>, in each, but it is not needed. Notice that the table provided above automatically populates.</li>
+</ul></li>
+<li>Select <em>Chi-Square</em> in the Test of Hypothesis box.</li>
+<li>Leave the <span class="math inline">\(\alpha=0.05\)</span> in the <em>Significance Level</em> box, since we are using this value.</li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the information for the test.</li>
+<li>Remember to save your output in case you need to refer to it later.</li>
+</ol>
+<div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Click here to see the Rguroo dialog
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Rguroo_dialogs/Chi_squared/dialog_gof_carpref.png" class="img-fluid figure-img" width="500"></p>
+<figcaption>Goodness of Fit Test Dialog for Reason for Choosing Car Example</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-gof-carpref-pvalue" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo output for GOF Test for Reason for Choosing Car Example, showing graph, p-value = 0.0000 and test statistic of 42.2">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gof-carpref-pvalue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chi-Square/gof-carpref-output.png" class="img-fluid figure-img" style="width:70.0%" alt="Rguroo output for GOF Test for Reason for Choosing Car Example, showing graph, p-value = 0.0000 and test statistic of 42.2">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gof-carpref-pvalue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.3: Rguroo output for GOF Test for Reason for Choosing Car Example
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Notice in the Rguroo output that the expected proportions automatically filled in as the decimal form of <span class="math inline">\(\frac{1}{6}\)</span>.</p>
+<p>The P-value graph displays the chi-squared distribution under the null hypothesis. The observed test statistic, <span class="math inline">\(\chi^2=42.2000\)</span>, is marked by the green triangle. The red shaded area to the right of the test statistic is so small, it is barely visible. The <span class="math inline">\(\text{p-value} =0.0000\)</span>.</p>
+<p><strong>Make a Decision</strong></p>
+<p>Since the p-value is <span class="math inline">\(&lt; \alpha\)</span>, <span class="math inline">\(0.0000\)</span> is <span class="math inline">\(&lt;0.05\)</span>, we reject the null hypothesis.</p>
+<p><strong>State the Conclusion</strong></p>
+<p>There is sufficient evidence to support the claim that the reasons for choosing a car are not equally likely.</p>
 </div>
 </div>
 </div>
 <div id="exm-payment-gof-test-pvalue" class="theorem example">
-<p><span class="theorem-title"><strong>Example 15.5 (GOF Test for Method of Payment - Using P-value Approach)</strong></span> A retail company reports that customers typically use the following methods of payment: 50% use a credit or debit card, 30% use a mobile payment method, 20% use cash.</p>
+<p><span class="theorem-title"><strong>Example 15.6 (GOF Test for Method of Payment - Using P-value Approach)</strong></span> A retail company reports that customers typically use the following methods of payment: 50% use a credit or debit card, 30% use a mobile payment method, 20% use cash.</p>
 <p>A random sample of 200 customers at one of the company’s stores produced the following results:</p>
 <table class="caption-top table">
 <thead>
@@ -685,8 +952,8 @@ Figure&nbsp;15.1: Comparison of the chi-squared distribution with various degree
 </table>
 <p>The store manager wants to determine whether the distribution of payment methods at this store differs from the company’s reported distribution. Use the p-value approach and a significance level of <span class="math inline">\(\alpha = 0.05\)</span>.</p>
 </div>
-<div class="solution-callout callout callout-style-default callout-tip no-icon callout-empty-content callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -695,9 +962,98 @@ Figure&nbsp;15.1: Comparison of the chi-squared distribution with various degree
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p>To determine if the payment methods at this store differs from the company’s reported distribution, we need to conduct a full hypothesis test. This is a goodness-of-fit test since we are determining if a catagorical variable matches a specific distribution.</p>
+<p>Before we begin the test, we need to make sure the conditions for a GOF test are satisfied.</p>
+<p><em>Categorical Data:</em> We have categorical data since the store recorded payment method.</p>
+<p><em>Randomness:</em> The store used a random sample.</p>
+<p><em>Independence:</em> The sample is independent since the payment method of one person does not affect another.</p>
+<p><em>Expected Counts:</em> The store did not report the expected counts, so we will compute them.</p>
+<p>Credit/Debit: <span class="math inline">\((200)(0.50)= 100\)</span></p>
+<p>Mobile: <span class="math inline">\((200)(0.30)=60\)</span></p>
+<p>Cash; <span class="math inline">\((200)(.20)=40\)</span></p>
+<p>These expected counts are all greater than 5.</p>
+<p>Now that we know the conditions for a GOF test are satisfied, we will follow the <a href="#general-hypothesis-steps">General Hypothesis Test Steps</a> to complete the test.</p>
+<p><strong>State the null and alternative</strong></p>
+<p>To write the null hypothesis, we state the proportions given in the distribution. The alternative will state that the population does not follow the store’s distribution as stated.</p>
+<p><span class="math inline">\(H_o:\)</span> <span class="math inline">\(p_\text{credit/debit}=0.50\)</span>, <span class="math inline">\(p_\text{mobile}=0.30\)</span>, <span class="math inline">\(p_\text{cash}=0.20\)</span></p>
+<p><span class="math inline">\(H_a:\)</span> The population does not follow the stated distribution.</p>
+<p><strong>Select <span class="math inline">\(\alpha\)</span></strong></p>
+<p>In this example, the <span class="math inline">\(\alpha\)</span> was given. So, <span class="math inline">\(\alpha = 0.05\)</span></p>
+<p><strong>P-value Approach to find test-statistic and p-value</strong></p>
+<p>Since the question specifically tells us to use the p-value approach, we will use Rguroo to find the test statistic and p-value.</p>
+<p>Click to expand the box below see how to find the test statisic and p-value for a GOF Test.</p>
+<div id="GOF-P-Value_Approach-in-Rguroo" class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Finding the Test Statistic and P-value for GOF Test in Rguroo">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span><img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Finding the Test Statistic and P-value for GOF Test in Rguroo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Open the <strong>Analytics</strong> toolbox in Rguroo.<br>
+</li>
+<li>Open the <span class="dpd">Analysis</span> dropdown, and select <span class="fun">Goodness of Fit</span>. This opens the <span class="fun">Goodness of Fit Test</span> dialog box.</li>
+<li>In the <span class="fun">Goodness of Fit Test</span> dialog box, there are two options. You can choose an existing dataset, or you can type the data in manually. For this example, we will type the data in manually.
+<ul>
+<li>We have three payment methods, so we will need three rows. Click the plus icon <img src="Rguroo_Icons/add.png" class="img-fluid" alt="plus icon"> button three times. This will give us space to enter the payment methods.</li>
+<li>Enter the payment method names in both the <em>Level</em> and <em>Label</em> columns.</li>
+<li>Enter the observed counts in the <em>Obs Count</em> column and the expected percentages in the <em>Null Probability</em> column.</li>
+</ul></li>
+<li>Select <em>Chi-Square</em> in the Test of Hypothesis box.</li>
+<li>Leave the <span class="math inline">\(\alpha=0.05\)</span> in the <em>Significance Level</em> box, since we are using this value.</li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the information for the test.</li>
+<li>Remember to save your output in case you need to refer to it later.</li>
+</ol>
+<div class="inner-callout callout callout-style-simple callout-tip callout-titled" title="Click here to see the Rguroo dialog">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Click here to see the Rguroo dialog
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Rguroo_dialogs/Chi_squared/dialog_gof_payment_pvalue.png" class="img-fluid figure-img" width="500"></p>
+<figcaption>Goodness of Fit Test Dialog for Payment Method Example</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-gof-payment-pvalue" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo output for GOF Test for Payment Method Example, showing graph, p-value = 0.14661 and test statistic of 3.840">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gof-payment-pvalue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chi-Square/gof-output-payment-pvalue.png" class="img-fluid figure-img" style="width:70.0%" alt="Rguroo output for GOF Test for Payment Method Example, showing graph, p-value = 0.14661 and test statistic of 3.840">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gof-payment-pvalue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.4: Rguroo output for GOF Test for Payment Method Example
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The P-value graph displays the chi-squared distribution under the null hypothesis. The observed test statistic, <span class="math inline">\(\chi^2=3.840\)</span>, is marked by the green triangle. The red shaded area to the right of the test statistic represents the p-value, <span class="math inline">\(\text{p-value} =0.14661\)</span>.</p>
+<p><strong>Make a Decision</strong></p>
+<p>Since the p-value is not <span class="math inline">\(&lt; \alpha\)</span>, <span class="math inline">\(0.14661\)</span> is not <span class="math inline">\(&lt;0.05\)</span>, we do not reject the null hypothesis.</p>
+<p><strong>State the Conclusion</strong></p>
+<p>There is not sufficient evidence to support the claim that this specific store’s population does not follow the stated payment method distribution of 50% credit/debit, 30% mobile, 20% cash. So, this means the specific store follows the overall company’s payment method distribution.</p>
 </div>
 </div>
 </div>
@@ -713,15 +1069,15 @@ Figure&nbsp;15.1: Comparison of the chi-squared distribution with various degree
 <img src="Rguroo_outputs/Chi-Square/chi-square-dist.png" class="img-fluid figure-img" style="width:80.0%" alt="Right-skewed chi-square distribution with a critical value marking the beginning of the critical region. The area to the right of the critical value is shaded and represents alpha. The null hypothesis is rejected when the chi-square test statistic is greater than the critical value.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chi-square-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.2: Critical region for chi-squared test
+Figure&nbsp;15.5: Critical region for chi-squared test
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-chi-square-dist" class="quarto-xref">Figure&nbsp;<span>15.2</span></a> shows the critical value, <span class="math inline">\(\chi^2_\alpha\)</span>, that separates the chi-square distribution into the noncritical region and the critical region. The critical region, shown in the right tail (shaded), has an area equal to <span class="math inline">\(\alpha\)</span>. If the chi-square test statistic is greater than the critical value, we reject the null hypothesis.</p>
+<p><a href="#fig-chi-square-dist" class="quarto-xref">Figure&nbsp;<span>15.5</span></a> shows the critical value, <span class="math inline">\(\chi^2_\alpha\)</span>, that separates the chi-square distribution into the noncritical region and the critical region. The critical region, shown in the right tail (shaded), has an area equal to <span class="math inline">\(\alpha\)</span>. If the chi-square test statistic is greater than the critical value, we reject the null hypothesis.</p>
 <div id="exm-modality-gof-test-critical-region" class="theorem example">
-<p><span class="theorem-title"><strong>Example 15.6 (GOF Test for Modality - Using Critical Region Approach)</strong></span> We will revisit <a href="#exm-modality-exp-counts" class="quarto-xref">Example&nbsp;<span>15.3</span></a> and show how to conduct the same hypothesis test using the critcal region approach. A college states that 40% of its students prefer in-person courses, 35% prefer online courses, and 25% prefer hybrid courses. A random sample of 120 students was asked to identify their preferred course modality. The results are shown below.</p>
+<p><span class="theorem-title"><strong>Example 15.7 (GOF Test for Modality - Using Critical Region Approach)</strong></span> We will revisit <a href="#exm-modality-gof-test-pvalue" class="quarto-xref">Example&nbsp;<span>15.4</span></a> and show how to conduct the same hypothesis test using the critcal region approach. A college states that 40% of its students prefer in-person courses, 35% prefer online courses, and 25% prefer hybrid courses. A random sample of 120 students was asked to identify their preferred course modality. The results are shown below.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -750,8 +1106,8 @@ Figure&nbsp;15.2: Critical region for chi-squared test
 </table>
 <p>Is there sufficient evidence to conclude that students’ preferences for course modality differ from the distribution stated by the college at the <span class="math inline">\(\alpha=0.05\)</span> significance level? Use the critical region approach.</p>
 </div>
-<div class="solution-callout callout callout-style-default callout-tip no-icon callout-empty-content callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -760,41 +1116,119 @@ Figure&nbsp;15.2: Critical region for chi-squared test
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p>Since we are testing the same claim, we will use some of our work in <a href="#exm-modality-gof-test-pvalue" class="quarto-xref">Example&nbsp;<span>15.4</span></a>. In that example, we already checked that the conditions for a chi-squared test were met, we stated the null and alternative hypotheses, and we stated <span class="math inline">\(\alpha\)</span>. Let’s write down the previous steps for a hypothesis and then continue on.</p>
+<p><strong>State the null and alternative</strong></p>
+<p><span class="math inline">\(H_o:\)</span> <span class="math inline">\(p_\text{in-person}=0.40\)</span>, <span class="math inline">\(p_\text{online}=0.35\)</span>, <span class="math inline">\(p_\text{hybrid}=0.25\)</span></p>
+<p><span class="math inline">\(H_a:\)</span> The population does not follow the stated distribution.</p>
+<p><strong>Select <span class="math inline">\(\alpha\)</span></strong></p>
+<p><span class="math inline">\(\alpha = 0.05\)</span></p>
+<p><strong>Critical Region Approach to find Critical Value and Test Statistic</strong></p>
+<p>To obtain critical regions in Rguroo, we use the same Rguroo steps as shown in the <a href="#gof-modality-pvalue-solution">solution</a> of <a href="#exm-modality-gof-test-pvalue" class="quarto-xref">Example&nbsp;<span>15.4</span></a>. Scroll down to the last image on the Rguroo output and you will see the <span class="math inline">\(\chi^2\)</span> test statistic (same as before) and the critical value.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-gof-modality-critical-region" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo output for GOF Test for Modality Example - Critical Region Approach, showing graph, critical value = 5.9915 and test statistic of 7.89524 ">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gof-modality-critical-region-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chi-Square/gof-modality-critical-region.png" class="img-fluid figure-img" style="width:70.0%" alt="Rguroo output for GOF Test for Modality Example - Critical Region Approach, showing graph, critical value = 5.9915 and test statistic of 7.89524 ">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gof-modality-critical-region-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.6: Rguroo output for GOF Test for Modality Example - Critical Region Approach)
+</figcaption>
+</figure>
 </div>
 </div>
 </div>
-<div id="exm-payment-gof-test-critical-region" class="theorem example">
-<p><span class="theorem-title"><strong>Example 15.7 (GOF Test for Method of Payment - Using Critical Region Approach)</strong></span> A retail company reports that customers typically use the following methods of payment: 50% use a credit or debit card, 30% use a mobile payment method, 20% use cash.</p>
-<p>A random sample of 200 customers at one of the company’s stores produced the following results:</p>
+<p>The critical region graph displays the chi-squared distribution. The red shaded region represents the critical region for a <span class="math inline">\(\alpha=0.05\)</span> significance level and begins at the critical value of <span class="math inline">\(\chi^2=5.9915\)</span>. The green triangle marks the observed chi-squared test statistic of <span class="math inline">\(\chi^2=7.8952\)</span>.</p>
+<p><strong>Make a Decision</strong></p>
+<p>Because the observed test statistic, <span class="math inline">\(\chi^2=7.8952\)</span>, falls within the red critical region (values greater than <span class="math inline">\(\chi^2=5.9915\)</span>), the null hypothesis is rejected.</p>
+<p><strong>State the Conclusion</strong></p>
+<p>There is sufficient evidence to support the claim that the population does not follow the stated modality distribution of 40% in-person, 35% online, and 25% hybrid.</p>
+<p>Notice that the test results, no matter the apprach, will yield the same decision and conclusion.</p>
+</div>
+</div>
+</div>
+<div id="exm-car-preference-critical-region" class="theorem example">
+<p><span class="theorem-title"><strong>Example 15.8 (GOF Test for Car Preference - Using Critical Region Approach)</strong></span> We will revisit <a href="#exm-car-preference" class="quarto-xref">Example&nbsp;<span>15.5</span></a> and show how to conduct the same hypothesis test using the critical region approach. A project conducted by the Australian Federal Office of Road Safety randomly surveyed 300 people and asked them many questions about their cars. One question was the reason that a person chooses a given car, and that data is in <a href="#tbl-Car_table" class="quarto-xref">Table&nbsp;<span>15.1</span></a> (“Car preferences,” 2013). Do the data show that the frequencies observed substantiate the claim that the reasons for choosing a car are equally likely? Test at the <span class="math inline">\(\alpha=0.05\)</span> level of significance. Use the critical region approach.</p>
+<p><a href="#tbl-Car_table" class="quarto-xref">Table&nbsp;<span>15.1</span></a> shows the tabulated data. A complete description of the variables is provided in the <a href="#code-book-carpref">dataset code book</a>.</p>
+</div>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Since we are testing the same claim, we will use some of our work in <a href="#exm-car-preference" class="quarto-xref">Example&nbsp;<span>15.5</span></a>. In that example, we already checked that the conditions for a chi-squared test were met, we stated the null and alternative hypotheses, and we stated <span class="math inline">\(\alpha\)</span>. Let’s write down the previous steps for a hypothesis and then continue on.</p>
+<p><strong>State the null and alternative</strong></p>
+<p><span class="math inline">\(H_o:\)</span> <span class="math inline">\(p_\text{comfort}= p_\text{cost}=p_\text{looks}=p_\text{performance}=p_\text{reliability}=p_\text{safety}=\frac{1}{6}\)</span></p>
+<p><span class="math inline">\(H_a:\)</span> The reasons for chosing a car are not equally likely.</p>
+<p><strong>Select <span class="math inline">\(\alpha\)</span></strong></p>
+<p><span class="math inline">\(\alpha = 0.05\)</span></p>
+<p><strong>Critical Region Approach to find Critical Value and Test Statistic</strong></p>
+<p>To obtain critical regions in Rguroo, we use the same Rguroo steps as shown in the <a href="#gof-carpref-pvalue-solution">solution</a> of <a href="#exm-car-preference" class="quarto-xref">Example&nbsp;<span>15.5</span></a>. Scroll down to the last image on the Rguroo output and you will see the <span class="math inline">\(\chi^2\)</span> test statistic (same as before) and the critical value.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-gof-carpref-critical-region" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo output for GOF Test for Reason for Choosing Car Example - Critical Region Approach, showing graph, critical value of 11.07 and test statistic of 42.2">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gof-carpref-critical-region-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chi-Square/gof-carpref-output-critical-region.png" class="img-fluid figure-img" style="width:70.0%" alt="Rguroo output for GOF Test for Reason for Choosing Car Example - Critical Region Approach, showing graph, critical value of 11.07 and test statistic of 42.2">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gof-carpref-critical-region-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.7: Rguroo output for GOF Test for Reason for Choosing Car Example - Critical Region Approach
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The critical region graph displays the chi-squared distribution. The red shaded region represents the critical region for a <span class="math inline">\(\alpha=0.05\)</span> significance level and begins at the critical value of <span class="math inline">\(\chi^2=11.07\)</span>. The green triangle marks the observed chi-squared test statistic of <span class="math inline">\(\chi^2=42.2\)</span>.</p>
+<p><strong>Make a Decision</strong></p>
+<p>Because the observed test statistic, <span class="math inline">\(\chi^2=42.2\)</span>, falls within the red critical region (values greater than <span class="math inline">\(\chi^2=11.07\)</span>), the null hypothesis is rejected.</p>
+<p><strong>State the Conclusion</strong></p>
+<p>There is sufficient evidence to support the claim that the reasons for choosing a car are not equally likely.</p>
+<p>Again, notice that this is the same decision and conclusion as with the p-value method.</p>
+</div>
+</div>
+</div>
+<div id="exm-transportation-gof-test-critical-region" class="theorem example">
+<p><span class="theorem-title"><strong>Example 15.9 (GOF Test for Transportation Methods - Using Critical Region Approach)</strong></span> A college reports that students typically use the following methods to travel to campus: 50% drive, 20% carpool, 15% use public transportation, and 15% walk or bike.</p>
+<p>A random sample of 160 students is selected. The students report their primary method of transportation to campus as follows:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>Payment Method</th>
+<th>Transportation Method</th>
 <th>Observed Count</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Credit/Debit Card</td>
-<td>112</td>
+<td>Drive</td>
+<td>91</td>
 </tr>
 <tr class="even">
-<td>Mobile Payment</td>
-<td>48</td>
+<td>Carpool</td>
+<td>25</td>
 </tr>
 <tr class="odd">
-<td>Cash</td>
-<td>40</td>
+<td>Public Trasportation</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>Walk or Bike</td>
+<td>24</td>
 </tr>
 </tbody>
 </table>
-<p>The store manager wants to determine whether the distribution of payment methods at this store differs from the company’s reported distribution. Use the critical region approach and a significance level of <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<p>At the <span class="math inline">\(\alpha = 0.01\)</span> significance level, is there enough evidence to conclude that the distribution of transportation methods differs from the reported distribution? Use the critical region approach.</p>
 </div>
-<div class="solution-callout callout callout-style-default callout-tip no-icon callout-empty-content callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -803,9 +1237,59 @@ Figure&nbsp;15.2: Critical region for chi-squared test
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p>For this example, we will follow the same procedure and steps as in the last example. Since we have not checked that the chi-squared conditions have been met, we will do that as well.</p>
+<p><em>Categorical Data:</em> We have categorical data since the college reported method of transportation.</p>
+<p><em>Randomness:</em> The college used a random sample.</p>
+<p><em>Independence:</em> The sample is independent since we will assume one person’s method of transportation does not affect another person’s method of transportation.</p>
+<p><em>Expected Counts:</em> The college did not report the expected counts, so we will compute them.</p>
+<p>Drive: <span class="math inline">\((160)(0.50)=80\)</span></p>
+<p>Carpool: <span class="math inline">\((160)(0.20)=32\)</span></p>
+<p>Public Trasportation: <span class="math inline">\((160)(0.15)=24\)</span></p>
+<p>Walk or Bike: <span class="math inline">\((160)(0.15)=24\)</span></p>
+<p><strong>State the null and alternative</strong></p>
+<p><span class="math inline">\(H_o:\)</span> <span class="math inline">\(p_\text{drive}=0.50\)</span>, <span class="math inline">\(p_\text{carpool}=0.20\)</span>, <span class="math inline">\(p_\text{public}=0.15\)</span>, <span class="math inline">\(p_\text{walk/bike}=0.15\)</span></p>
+<p><span class="math inline">\(H_a:\)</span> The population does not follow the stated distribution.</p>
+<p><strong>Select <span class="math inline">\(\alpha\)</span></strong></p>
+<p><span class="math inline">\(\alpha = 0.01\)</span></p>
+<p><strong>Critical Region Approach to find Critical Value and Test Statistic</strong></p>
+<p>To obtain critical regions in Rguroo, we use the same Rguroo steps as shown in the <a href="#gof-modality-pvalue-solution">solution</a> of <a href="#exm-modality-gof-test-pvalue" class="quarto-xref">Example&nbsp;<span>15.4</span></a>.</p>
+<p>In this case, we have 4 modes of transportation so we will need to click the plus icon <img src="Rguroo_Icons/add.png" class="img-fluid" alt="plus icon"> button four times. We also have <span class="math inline">\(\alpha=0.01\)</span>, so type <span class="typein">0.01</span> in the <em>Significance Level</em> box. Once you have entered the information, click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the information for the test.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-gof-transportation-dialog" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dialog for Transportation Method">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gof-transportation-dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_dialogs/Chi_Squared/dialog-gof-transportation.png" class="img-fluid figure-img" style="width:70.0%" alt="Dialog for Transportation Method">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gof-transportation-dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.8: Dialog for Transportation Method
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Scroll down to the last image on the Rguroo output and you will see the <span class="math inline">\(\chi^2\)</span> test statistic and the critical value.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-gof-transprtation-critical-region" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo output for GOF Test for Transportation Example - Critical Region Approach, showing graph, critical value = 5.9915 and test statistic of 7.89524 ">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gof-transprtation-critical-region-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chi-Square/gof-output-transportation-criticalreg.png" class="img-fluid figure-img" style="width:70.0%" alt="Rguroo output for GOF Test for Transportation Example - Critical Region Approach, showing graph, critical value = 5.9915 and test statistic of 7.89524 ">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gof-transprtation-critical-region-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.9: Rguroo output for GOF Test for Transportation Example - Critical Region Approach
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The critical region graph displays the chi-squared distribution. The red shaded region represents the critical region for a <span class="math inline">\(\alpha=0.01\)</span> significance level and begins at the critical value of <span class="math inline">\(\chi^2=11.345\)</span>. The green triangle marks the observed chi-squared test statistic of <span class="math inline">\(\chi^2=3.7104\)</span>.</p>
+<p><strong>Make a Decision</strong></p>
+<p>Because the observed test statistic, <span class="math inline">\(\chi^2=3.7104\)</span>, does not fall within the red critical region (values greater than <span class="math inline">\(\chi^2=11.345\)</span>), the null hypothesis is not rejected.</p>
+<p><strong>State the Conclusion</strong></p>
+<p>There is not sufficient evidence to support the claim that the population does not follow the stated transportation distribution of 50% drive, 20% carpool, and 15% public transportation, 15% walk or bike. So college students follow the transportation method percentages as stated.</p>
 </div>
 </div>
 </div>
@@ -813,13 +1297,13 @@ Figure&nbsp;15.2: Critical region for chi-squared test
 <section id="homework-for-section-12.1" class="level3" data-number="15.2.6">
 <h3 data-number="15.2.6" class="anchored" data-anchor-id="homework-for-section-12.1"><span class="header-section-number">15.2.6</span> Homework for Section 12.1</h3>
 <ol type="1">
-<li>According to the M&amp;M candy company, the expected proportion can be found in <a href="#tbl-MandM" class="quarto-xref">Table&nbsp;<span>15.1</span></a>. In addition, the table contains the number of M&amp;M’s of each color that were found in a case of candy (Madison, 2013). At the 5% level, do the observed frequencies support the claim of M&amp;M?</li>
+<li>According to the M&amp;M candy company, the expected proportion can be found in <a href="#tbl-MandM" class="quarto-xref">Table&nbsp;<span>15.2</span></a>. In addition, the table contains the number of M&amp;M’s of each color that were found in a case of candy (Madison, 2013). At the 5% level, do the observed frequencies support the claim of M&amp;M?</li>
 </ol>
 <div class="cell" data-tbl-alt="M&amp;M Observed and Expected">
 <div id="tbl-MandM" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="M&amp;M Observed and Expected">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-MandM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;15.1: M&amp;M Observed and Expected
+Table&nbsp;15.2: M&amp;M Observed and Expected
 </figcaption>
 <div aria-describedby="tbl-MandM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -870,14 +1354,14 @@ Table&nbsp;15.1: M&amp;M Observed and Expected
 </div>
 </div>
 <ol start="2" type="1">
-<li><p>Eyeglassomatic manufactures eyeglasses for different retailers. The data frame is in <span class="quarto-unresolved-ref">?tbl-Defects</span>. They test to see how many defective lenses they made the time period of January 1 to March 31. <a href="#tbl-Defect_table" class="quarto-xref">Table&nbsp;<span>15.2</span></a> gives the defect and the number of defects.</p>
+<li><p>Eyeglassomatic manufactures eyeglasses for different retailers. The data frame is in <span class="quarto-unresolved-ref">?tbl-Defects</span>. They test to see how many defective lenses they made the time period of January 1 to March 31. <a href="#tbl-Defect_table" class="quarto-xref">Table&nbsp;<span>15.3</span></a> gives the defect and the number of defects.</p>
 <p><strong>Code book for Data Frame Defects</strong> below <span class="quarto-unresolved-ref">?tbl-Defects</span>.</p></li>
 </ol>
 <div class="cell" data-tbl-alt="Number of Defective Lenses">
 <div id="tbl-Defect_table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Number of Defective Lenses">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Defect_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;15.2: Number of Defective Lenses
+Table&nbsp;15.3: Number of Defective Lenses
 </figcaption>
 <div aria-describedby="tbl-Defect_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -950,13 +1434,13 @@ Table&nbsp;15.2: Number of Defective Lenses
 </div>
 <p>Do the data support the notion that each defect type occurs in the same proportion? Test at the 5% level.</p>
 <ol start="3" type="1">
-<li><p>On occasion, medical studies need to model the proportion of the population that has a disease and compare that to observed frequencies of the disease actually occurring. Suppose the end-stage renal failure in south-west Wales was collected for different age groups. Do the data in <a href="#tbl-Renal" class="quarto-xref">Table&nbsp;<span>15.3</span></a> show that the observed frequencies are in agreement with proportion of people in each age group (Boyle, Flowerdew &amp; Williams, 1997)? Test at the 1% level.</p>
+<li><p>On occasion, medical studies need to model the proportion of the population that has a disease and compare that to observed frequencies of the disease actually occurring. Suppose the end-stage renal failure in south-west Wales was collected for different age groups. Do the data in <a href="#tbl-Renal" class="quarto-xref">Table&nbsp;<span>15.4</span></a> show that the observed frequencies are in agreement with proportion of people in each age group (Boyle, Flowerdew &amp; Williams, 1997)? Test at the 1% level.</p>
 <p><strong>Table Renal Failure Frequencies</strong></p>
 <div class="cell" data-tbl-alt="Renal Failure Frequencies">
 <div id="tbl-Renal" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Renal Failure Frequencies">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Renal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;15.3: Renal Failure Frequencies
+Table&nbsp;15.4: Renal Failure Frequencies
 </figcaption>
 <div aria-describedby="tbl-Renal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1001,12 +1485,12 @@ Table&nbsp;15.3: Renal Failure Frequencies
 </figure>
 </div>
 </div></li>
-<li><p>In Africa in 2011, the number of deaths of a female from cardiovascular disease for different age groups are in <a href="#tbl-Deaths" class="quarto-xref">Table&nbsp;<span>15.4</span></a> (“Global health observatory,” 2013). In addition, the proportion of deaths of females from all causes for the same age groups are also in table Deaths of Females for Different Age Groups. Do the data show that the death from cardiovascular disease are in the same proportion as all deaths for the different age groups? Test at the 5% level.</p>
+<li><p>In Africa in 2011, the number of deaths of a female from cardiovascular disease for different age groups are in <a href="#tbl-Deaths" class="quarto-xref">Table&nbsp;<span>15.5</span></a> (“Global health observatory,” 2013). In addition, the proportion of deaths of females from all causes for the same age groups are also in table Deaths of Females for Different Age Groups. Do the data show that the death from cardiovascular disease are in the same proportion as all deaths for the different age groups? Test at the 5% level.</p>
 <div class="cell" data-tbl-alt="Deaths of Females for Different Age Groups">
 <div id="tbl-Deaths" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Deaths of Females for Different Age Groups">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Deaths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;15.4: Deaths of Females for Different Age Groups
+Table&nbsp;15.5: Deaths of Females for Different Age Groups
 </figcaption>
 <div aria-describedby="tbl-Deaths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1049,12 +1533,12 @@ Table&nbsp;15.4: Deaths of Females for Different Age Groups
 </ol>
 <!-- -->
 <ol start="5" type="1">
-<li><p>In Australia in 1995, there was a question of whether indigenous people are more likely to die in prison than non-indigenous people. To figure out, the data in <a href="#tbl-Prisoners" class="quarto-xref">Table&nbsp;<span>15.5</span></a> was collected. (“Aboriginal deaths in,” 2013). Do the data show that indigenous people die in the same proportion as non-indigenous people? Test at the 1% level.</p>
+<li><p>In Australia in 1995, there was a question of whether indigenous people are more likely to die in prison than non-indigenous people. To figure out, the data in <a href="#tbl-Prisoners" class="quarto-xref">Table&nbsp;<span>15.6</span></a> was collected. (“Aboriginal deaths in,” 2013). Do the data show that indigenous people die in the same proportion as non-indigenous people? Test at the 1% level.</p>
 <div class="cell" data-tbl-alt="Death of Indigenous Prisoners">
 <div id="tbl-Prisoners" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Death of Indigenous Prisoners">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Prisoners-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;15.5: Death of Indigenous Prisoners
+Table&nbsp;15.6: Death of Indigenous Prisoners
 </figcaption>
 <div aria-describedby="tbl-Prisoners-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
@@ -1084,60 +1568,275 @@ Table&nbsp;15.5: Death of Indigenous Prisoners
 </figure>
 </div>
 </div></li>
-<li><p>A project conducted by the Australian Federal Office of Road Safety asked people many questions about their cars. One question was the reason that a person chooses a given car, and that data is in <a href="#tbl-Car_table" class="quarto-xref">Table&nbsp;<span>15.6</span></a> (“Car preferences,” 2013).</p></li>
 </ol>
-<div class="cell" data-tbl-alt="Reason for Choosing a Car">
-<div id="tbl-Car_table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Reason for Choosing a Car">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Car_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;15.6: Reason for Choosing a Car
-</figcaption>
-<div aria-describedby="tbl-Car_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Reason</th>
-<th style="text-align: right;">Freq</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">comfort</td>
-<td style="text-align: right;">47</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">cost</td>
-<td style="text-align: right;">46</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">looks</td>
-<td style="text-align: right;">27</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">performance</td>
-<td style="text-align: right;">34</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">reliability</td>
-<td style="text-align: right;">62</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">safety</td>
-<td style="text-align: right;">84</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</figure>
-</div>
-</div>
-<p>Do the data show that the frequencies observed substantiate the claim that the reasons for choosing a car are equally likely? Test at the 5% level.</p>
 </section>
 </section>
 <section id="chi-square-test-for-independence" class="level2" data-number="15.3">
 <h2 data-number="15.3" class="anchored" data-anchor-id="chi-square-test-for-independence"><span class="header-section-number">15.3</span> Chi-Square Test for Independence</h2>
+<p>A <strong>chi-squared test of independence</strong> is used to determine whether there is an association between two categorical variables. The data are organized in a contingency table, with the categories of one variable represented by the rows and the categories of the other variable represented by the columns. The test compares the observed counts with the expected counts that would occur if the two variables were independent. If the observed counts differ significantly from the expected counts, there is evidence that the two variables are associated. If the differences are not significant, there is not sufficient evidence to conclude that the variables are associated.</p>
+<p>Just as we had with the goodness-of-fit test, we must satify the conditions for a chi-squared test.</p>
+<ol type="1">
+<li>Categorical data: The variable being analyzed is categorical, and the data are counts of observations within the categories.</li>
+<li>Randomness: The data should come from a random sample or a randomized process.</li>
+<li>Independence: The observations should be independent. When sampling without replacement from a finite population, the sample should generally be no more than 10% of the population.</li>
+<li>Expected counts: The expected counts must be sufficiently large for the chi-square distribution to provide a reasonable approximation. A commonly used guideline is that each expected count should be at least 5.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Goodness-of-Fit versus Test of Independence
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Both the goodness-of-fit test and a test of independence use a chi-squared test, but they answer different questions. A goodness-of-fit test determines whether the distribution of <em>one categorical variable matches a specified distribution</em>. A test of independence determines whether there is an <em>association between two categorical variables</em>.</p>
+</div>
+</div>
+<section id="null-and-alternative-hypotheses-1" class="level3" data-number="15.3.1">
+<h3 data-number="15.3.1" class="anchored" data-anchor-id="null-and-alternative-hypotheses-1"><span class="header-section-number">15.3.1</span> Null and Alternative Hypotheses</h3>
+<p>For a chi-squared test of independence, the hypotheses address whether there is an association between two categorical variables. The null hypothesis states that the two variables are independent, meaning there is no association between the variables. The alternative hypothesis states that the two variables are not independent, meaning there is an association between the variables.</p>
+<p><span class="math display">\[ \begin{aligned}
+H_0 &amp;: \text{The two categorical variables are independent.} \\
+H_a &amp;: \text{The two categorical variables are associated.}
+\end{aligned} \]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Hypotheses for Test of Independence
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The hypotheses should be written in the context of the problem. Be specific and list the variables in the hypotheses.</p>
+</div>
+</div>
+<div id="exm-year-study-location-independence" class="theorem example">
+<p><span class="theorem-title"><strong>Example 15.10 (Modality Preference)</strong></span> A college wants to determine whether a student’s class year is associated with the student’s preferred study location. A random sample of students is surveyed and each student is classified by class year (Freshman, Sophomore, Junior, or Senior) and preferred study location (Home, Library, or Coffee Shop).</p>
+<p>A random sample of 200 college students is surveyed to determine whether class year and preferred study location are associated.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Class Year</th>
+<th style="text-align: right;">Home</th>
+<th style="text-align: right;">Library</th>
+<th style="text-align: right;">Coffee Shop</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Freshman</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">55</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sophomore</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">52</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Junior</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">48</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Senior</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">100**</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">200</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>State the null and alternative hypotheses.</p>
+</div>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+<div id="exm-exercise-sleep-independence" class="theorem example">
+<p><span class="theorem-title"><strong>Example 15.11</strong></span> A researcher wants to determine whether exercise frequency is associated with sleep quality. A random sample of adults is asked to classify exercise frequency as Rarely, Sometimes, or Often and sleep quality as Poor, Fair, or Good.</p>
+<p>A random sample of 180 adults is surveyed to determine whether exercise frequency and sleep quality are associated.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Exercise Frequency</th>
+<th style="text-align: right;">Poor</th>
+<th style="text-align: right;">Fair</th>
+<th style="text-align: right;">Good</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Rarely</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">53</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">180</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>State the null and alternative hypotheses.</p>
+</div>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Before you begin, <a href="getting_started_with_rguroo.html#create-tables">click here</a> to review how to create a two-way table.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="expected-counts" class="level3" data-number="15.3.2">
+<h3 data-number="15.3.2" class="anchored" data-anchor-id="expected-counts"><span class="header-section-number">15.3.2</span> Expected Counts</h3>
+<p>Just as with a chi-squared goodness-of-fit test, a chi-squared test of independence compares observed counts with expected counts. In both tests, the expected counts represent what we would expect to observe if the null hypothesis were true.</p>
+<p>For a goodness-of-fit test, the expected counts are determined from the expected proportions specified in the null hypothesis:</p>
+<p><span class="math display">\[E=n\times p\]</span></p>
+<p>where <span class="math inline">\(n\)</span> is the sample size and <span class="math inline">\(p\)</span> is the expected proportion for a category.</p>
+<p>For a test of independence, there are no specified expected proportions. Instead, the expected count for each cell is calculated from the row and column totals of the two-way table:</p>
+<p><span class="math display">\[E=\frac{(\text{Row Total})(\text{Column Total})}{\text{Grand Total}}\]</span>E=Grand&nbsp;Total(Row&nbsp;Total)(Column&nbsp;Total)​$$</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Key Connection
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In both chi-squared tests, expected counts describe what we would expect to observe if <span class="math inline">\(H_0\)</span> were true. The difference is how the expected counts are determined: GOF uses specified proportions, while a test of independence uses the row and column totals of a two-way table.</p>
+</div>
+</div>
+<div id="exm-exercise-sleep-independence-exp-counts" class="theorem example">
+<p><span class="theorem-title"><strong>Example 15.12</strong></span> Let’s revisit <a href="#exm-exercise-sleep-independence" class="quarto-xref">Example&nbsp;<span>15.11</span></a>. A researcher wants to determine whether exercise frequency is associated with sleep quality. A random sample of adults is asked to classify exercise frequency as Rarely, Sometimes, or Often and sleep quality as Poor, Fair, or Good.</p>
+<p>A random sample of 180 adults is surveyed to determine whether exercise frequency and sleep quality are associated.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Exercise Frequency</th>
+<th style="text-align: right;">Poor</th>
+<th style="text-align: right;">Fair</th>
+<th style="text-align: right;">Good</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Rarely</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sometimes</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Often</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">53</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">180</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>Calculate the expected counts</p>
+</div>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+<p>Understanding how expected counts are calculated helps explain how the chi-squared test works. Although we demonstrate the calculation by hand, you will not be required to calculate expected counts by hand in practice. Rguroo will calculate the expected counts for you.</p>
+</section>
+<section id="test-statistic" class="level3" data-number="15.3.3">
+<h3 data-number="15.3.3" class="anchored" data-anchor-id="test-statistic"><span class="header-section-number">15.3.3</span> Test Statistic</h3>
+</section>
 </section>
 <section id="chi-square-test-for-homogeneity" class="level2" data-number="15.4">
 <h2 data-number="15.4" class="anchored" data-anchor-id="chi-square-test-for-homogeneity"><span class="header-section-number">15.4</span> Chi-Square Test for Homogeneity</h2>

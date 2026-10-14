@@ -3,22 +3,24 @@ project:
   output-dir: Final_output
   resources:
     - "Rguroo_html_output/**"
-  post-render:
-    - scripts/make-pdf.sh
+#  post-render:
+#    - scripts/make-pdf.sh
 
 number-sections: true
 
 filters:
   - filters/class-to-macro.lua
 
-
 format:
   html:
+    toc: true
+    toc-depth: 3
     css: styles.css
     include-after-body: open-links-new-tab.html
-  pdf:
-    pdf-engine: xelatex
-    include-in-header: _preamble.tex
+  #pdf:
+  #  latex-tinytex: false
+  #  pdf-engine: xelatex
+  #  include-in-header: _preamble.tex
 book:
   title: "Introductory Statistics: A Conceptual Approach Using Rguroo"
   author:
@@ -34,7 +36,6 @@ book:
   cover-image: images/cover_picture.jpg
   chapters:
     - index.qmd
-    - getting_started_with_rguroo.qmd
     - Statistical Basics.qmd
     - Graphical_Description_of_Data.qmd
     - Numerical-description-of-Data.qmd
@@ -45,10 +46,6 @@ book:
     - foundations_of_inference.qmd
     - proportion inference.qmd
     - mean inference.qmd
-    - One Sample Inference.qmd
-    - Estimation.qmd
-    - Two Sample Inference.qmd
     - Regression.qmd
-    - chi_square_inference.qmd
     - Chi-Square and ANOVA Tests.qmd
     - References.qmd
