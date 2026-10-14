@@ -910,3 +910,846 @@ Use the [SleepStudy]{.data} to reclassify the variable [AllNighter]{.var} to a c
 ![Try It](Rguroo_Icons/try_it.png){width=45px} **Try It: Sort and Filter Data**
 
 Use the [Tuition_4_year]{.data} dataset to sort [INSTATE_TUITION]{.var} in ascending order. Then filter to include only colleges in California (CA).
+
+## 0.6 Saving and Exporting Your Work {#sec-save-export}
+
+Rguroo is a cloud-based program, which means everything you save is stored in your Rguroo account rather than on your computer. When you log back in, from any computer with internet access, your saved datasets, graphs, and analyses will be exactly where you left them. Work that is **not** saved, however, is lost when you close the tab or log out. In this section, you will learn how to save datasets and outputs, where saved items appear, and how to export your work so you can submit it, share it, or keep a copy on your own computer.
+
+### 0.6.1 Saving Datasets {#sec-save-data}
+
+Any time you create, edit, or change a dataset, you need to save it before it can be used in other Rguroo tools. Rguroo saves datasets using a **Save As** textbox, which appears at the top of the Dataset Editor, the Table Editor, and the data preview window that opens after you use a data function such as [Subset]{.fun} or [Transform]{.fun}. Follow the steps below to save a dataset.
+
+1.  Type a descriptive name for the dataset in the **Save As** textbox at the top of the workspace.
+2.  Click the ![Save as](Rguroo_Icons/save_as.png) button. The dataset will now appear in your **Data** toolbox.
+3.  Check the tab at the top of the workspace. A red tab means the dataset has unsaved changes, and a green tab means all changes have been saved.
+
+A few things to keep in mind when saving datasets:
+
+-   **Saving with the same name replaces the dataset.** If you save again using the same name, the old version is overwritten. If you want to keep the original, save the edited version with a new name.
+-   **Choose names you will recognize later.** A name such as *cats_no_max* or *StudyHours_Week2* is much easier to find than *Dataset1*. Variable names cannot contain spaces, so Rguroo will replace any spaces in a variable name with a period.
+-   **Save results from data functions.** When you subset, sort, or transform a dataset, the result opens in a preview window. The result is not kept unless you save it using the **Save As** textbox in that preview window.
+-   **Save Parameters.** Some data functions, such as [Transform]{.fun}, include a [Save Parameters]{.des} checkbox. When it is checked, Rguroo saves your dialog box settings along with the new dataset so you can reopen and edit them later. Leave this box checked if you think you may need to make changes after you log out.
+
+::: {.callout-note appearance="simple" icon="false"}
+**Save early and often.** Rguroo does not automatically save new or edited datasets. If you close the tab or log out before clicking [Save As]{.button}, your changes will be lost.
+:::
+
+[Walkthrough Example: Saving an Edited Dataset Under a New Name]{style="color: blue; font-weight: bold;"}
+
+In Section 0.4.1, you created and saved the [Study Hours]{.data} dataset. Suppose a sixth student reports studying 9 hours per week. Add this value to the dataset and save the updated version as [Study Hours 6]{.data} so the original dataset is not changed.
+
+**Let's Save the Dataset:** In the **Data** toolbox, right-click on [Study Hours]{.data} and select *Edit* to open it in the Dataset Editor (@fig-open-edit). 
+
+```{r, echo=FALSE}
+#| label: fig-open-edit
+#| fig-cap: "Right-Click Menu for Study Hours with Edit Selectede"
+#| fig-alt: "Rguroo Data toolbox with the Study Hours dataset right-clicked. A menu lists View, Edit, Dataset Summary, Show Dependencies, Functions, Variable Type Editor, Edit Comment, Cut, Copy, Paste, Export as RGR, Download, Rename, and Delete. The Edit option is circled in red."
+#| out-width: "40%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/edit_saved_dataset.png")
+```
+
+Click the Variable Properties, Add Rows/Variables button to add a new row (@fig-add-rows-button). 
+
+```{r, echo=FALSE}
+#| label: fig-add-rows-button
+#| fig-cap: 'Variable Properties, Add Rows/Variables Icon in the Dataset Editor'
+#| fig-alt: 'Study Hours dataset open in the Dataset Editor with five values in the Hours column: 6, 10, 8, 5, and 12. The first icon in the toolbar is circled in red, and a tooltip below it reads Variable Properties, Add Rows/Variables.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/add_rows_button.png")
+```
+
+In the [Variable and Row Management]{.dialog} dialog, enter [1]{.typein} in the # of Rows box, select End radio button for Position, and click Add Rows (@fig-add-rows-dialog). 
+
+```{r, echo = FALSE}
+#| label: fig-add-rows-dialog
+#| fig-cap: 'Add Rows in the Variable and Row Management Dialog'
+#| fig-alt: 'Variable and Row Management dialog with Add Rows selected in the left panel. The right panel shows the number of rows set to 1 and the Position option set to End, with an Add Rows button below.'
+#| out-width: "60%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/add_rows_dialog.png")
+```
+
+Enter [9]{.typein} in the [Hours]{.var} column. Notice that the tab at the top of the workspace turns red because the dataset has unsaved changes. In the **Save As** textbox, type [Study Hours 6]{.typein} and click [Save As]{.button}. The tab turns green, and your **Data** toolbox now lists both [Study Hours]{.data} (5 values) and [Study Hours 6]{.data} (6 values) (@fig-save-study-hours6).
+
+```{r, echo = FALSE}
+#| label: fig-save-study-hours6
+#| fig-cap: 'Study Hours with a Sixth Value Added and Saved as Study Hours 6'
+#| fig-alt: 'Dataset Editor showing the Hours column with six values: 6, 10, 8, 5, 12, and the new value 9 in row 6. The Save As textbox in the toolbar contains the name Study Hours 6.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/study_hours_6.png")
+```
+
+### 0.6.2 Saving Outputs {#sec-save-output}
+
+Graphs, analyses, and simulations can be saved just like datasets. When you save an output, Rguroo stores both the result and every setting you chose in the dialog box. Later, you can reopen the saved output and it will appear exactly as you left it, ready for you to review or make changes. This makes your work **reproducible**, meaning you or your instructor can see exactly how a result was produced. Follow the steps below to save an output.
+
+1.  Fill in the dialog box (for example, a [Boxplot]{.fun} or [Summary Statistic]{.fun} dialog) and click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to check your output.
+2.  Type a descriptive name in the **Save As** textbox at the top of the dialog box.
+3.  Click the [Save As]{.button} button ![Save as](Rguroo_Icons/save_as.png). The saved output now appears in the toolbox where it was created.
+
+[Walkthrough Example: Saving a Graph]{style="color: blue; font-weight: bold;"}
+
+Create a boxplot of the [Hours]{.var} variable in the [Study Hours 6]{.data} dataset and save it as *Study Hours Boxplot*.
+
+**Let's Save the Graph:** Open the **Plots** toolbox, click the [Create Plot]{.dpd} dropdown, and select [Boxplot]{.fun}. From the [Dataset]{.dpd} dropdown, select *Study Hours 6*, and move [Hours]{.var} to the Selected column. Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the boxplot (@fig-boxplot-dialog-study). In the **Save As** textbox at the top of the dialog, type [Study Hours Boxplot]{.typein} and click [Save As]{.button}. The boxplot now appears in your **Plots** toolbox, and [Study Hours 6]{.data} appears in green bold text in your **Data** toolbox (@fig-saved-boxplot).
+
+```{r,echo=FALSE}
+#| label: fig-boxplot-dialog-study
+#| fig-cap: 'Boxplot Dialog for the Study Hours 6 Dataset'
+#| fig-alt: 'Rguroo Boxplot dialog with Study Hours 6 selected in the Dataset dropdown. In the Numerical Variables section, Hours has been moved to the Selected column. The Factor Variables section has no variables selected. The Notched, Horizontal, and Show Mean checkboxes are unchecked, the Title, X-Axis, and Y-Axis label boxes are empty, and the Preview eye icon appears in the upper right corner.'
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/study_boxplot_dialog.png")
+```
+
+```{r, echo = FALSE}
+#| label: fig-saved-boxplot
+#| fig-cap: 'Saved Study Hours Boxplot in the Plots Toolbox'
+#| fig-alt: 'Rguroo window with the Plots toolbox open on the left, where the search box contains study and the list shows the saved plot study hours boxplot. On the right, the boxplot tab shows the Basics, Details, and Level Editor buttons, a row of export icons, and the Save As textbox containing study hours boxplot. Below is a vertical boxplot of Hours with the lower whisker at 5, the box from 6 to 10, the median line at 8.5, and the upper whisker at 12.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/saved_boxplot_study.png")
+```
+
+::: {.callout-note appearance="simple" icon="false"}
+**Datasets used by saved outputs are protected.** Once you save a graph or analysis, the dataset it uses is shown in **green bold text** in the **Data** toolbox. Rguroo will not let you delete that dataset until you first delete the saved output that depends on it.
+:::
+
+### 0.6.3 Where to Find Saved Datasets and Outputs {#sec-find-data}
+
+Each saved item appears in the toolbox where it was created:
+
+| What you saved | Where it appears |
+|------------------------------------|------------------------------------|
+| Datasets and tables | **Data** toolbox |
+| Graphs (boxplots, histograms, barplots, etc.) | **Plots** toolbox |
+| Statistical analyses (confidence intervals, hypothesis tests, regression, etc.) | **Analytics** toolbox |
+| Simulations and probability calculations | **Probability-Simulation** toolbox |
+
+: Where saved items appear in Rguroo {#tbl-saved-locations tbl-alt="Table listing the type of item saved in Rguroo and the toolbox where it appears: datasets and tables in the Data toolbox, graphs in the Plots toolbox, analyses in the Analytics toolbox, and simulations in the Probability-Simulation toolbox."}
+
+Because you will use the **Data** toolbox most often, it is worth learning how to keep it organized. The other toolboxes work the same way.
+
+**Finding a dataset.** Type the first few letters of a dataset name in the search box at the top of the **Data** toolbox to narrow the list. Hovering your mouse over a dataset name shows its comment (if one was added), the number of rows, and the number of variables.
+
+**Organizing with folders.** As the semester goes on, your list of datasets will grow. Folders can help you keep things organized, for example by creating one folder per chapter (@fig-data-folders).
+
+1.  Click the [Data Import]{.dpd} dropdown and select [Add Folder to Root]{.fun}. You can also right-click on an empty area of the **Data** toolbox list and select [Add Folder to Root]{.fun}.
+2.  Type a name for the folder, such as *Chapter 3*.
+3.  Drag and drop datasets into the folder.
+
+Right-clicking on a folder gives you the options [New Folder]{.des} (to create a folder inside it), [Export as RGR (.rgr)]{.des}, [Rename]{.des}, and [Delete]{.des}. A folder can only be deleted when it is empty.
+
+```{r, echo = FALSE}
+#| label: fig-data-folders
+#| fig-cap: 'Datasets Organized in a Chapter 3 Folder in the Data Toolbox'
+#| fig-alt: 'Rguroo Data toolbox with Study Ho typed in the search box. The Datasets list shows an expanded folder named Chapter 3 containing two datasets: Study Hours, and Study Hours 6 shown in green bold italic text.'
+#| out-width: "40%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/folder_expanded.png")
+```
+
+**Right-click options for a dataset.** Right-clicking on a dataset name opens a menu of options. Several of these were introduced in Section 0.5, and the rest are summarized below.
+
+| Option | What it does |
+|-----------------------|-------------------------------------------------|
+| View | Opens the dataset in the data viewer (double-clicking the name does the same thing) |
+| Edit | Opens the dataset in the Dataset Editor so you can change values, rows, or variables |
+| Dataset Summary | Shows the dataset summary described in Section 0.5.1 |
+| Variable Type Editor | Reclassifies variables, as described in Section 0.5.2 |
+| Functions | Opens a list of data functions, such as [Summary Statistic]{.fun}, [Subset]{.fun}, and [Transform]{.fun}, with this dataset already selected |
+| Rename | Changes the name of the dataset |
+| Edit Comment | Adds or edits a short description that appears when you hover over the dataset name |
+| Download | Saves a copy of the dataset to your computer as a CSV file (see [Section 0.6.4](#sec-export)) |
+| Delete | Permanently removes the dataset from your account |
+
+: Right-click options for a dataset in the Data toolbox {#tbl-right-click tbl-alt="Table listing right-click options for a dataset in the Rguroo Data toolbox, including View, Edit, Dataset Summary, Variable Type Editor, Functions, Rename, Edit Comment, Download, and Delete, along with what each option does."}
+
+::: {.callout-note appearance="simple" icon="false"}
+⚠️ Deleting a dataset cannot be undone. If you might need a dataset later, move it into a folder instead of deleting it.
+:::
+
+### 0.6.4 Exporting  {#sec-export}
+
+Saving keeps your work inside your Rguroo account. **Exporting** creates a file outside of Rguroo, which you can submit to your instructor, upload to your course website, add to a report, or keep as a backup. Rguroo provides three main ways to export.
+
+**Downloading a dataset as a CSV file**
+
+A CSV (comma-separated values) file can be opened in Excel, Google Sheets, or almost any other program.
+
+1.  In the **Data** toolbox, right-click on the dataset name (@fig-download-dataset).
+2.  Select [Download]{.des}.
+3.  Click [Download]{.button} in the window that appears. Depending on your browser settings, the file will either save to your Downloads folder or you will be asked where to save it.
+
+You can also download a dataset while viewing it, or from the preview window after using a data function, by clicking the download icon in the top-left corner of the data viewer.
+
+```{r,echo = FALSE}
+#| label: fig-download-dataset
+#| fig-cap: 'Downloading the Study Hours 6 Dataset as a CSV File'
+#| fig-alt: 'Rguroo Data toolbox with Study Ho typed in the search box, listing two datasets: Study Hours, and Study Hours 6 shown in green bold italic text. Study Hours 6 has been right-clicked, opening a menu with View, Edit, Dataset Summary, Show Dependencies, Functions, Variable Type Editor, Edit Comment, Cut, Copy, Paste, Export as RGR, Download, Rename, and Delete. The Download option is highlighted.'
+#| out-width: "45%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/download_dataset.png")
+```
+
+**Saving a graph as an image**
+
+When you only need a single graph, such as a boxplot for a discussion post or lab report, you can save the graph itself as an image file.
+
+1.  Open the saved graph, or click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to display it.
+2.  Right-click on the graph and select *Save image as* (@fig-save-image-as).
+3.  Choose a location on your computer and click *Save*.
+
+Rguroo saves graphs as **SVG** files. An SVG image stays sharp at any size, so it looks clear when it is enlarged or printed. The desktop version of Microsoft Word and most web browsers can open SVG files. Some programs, including Google Docs, cannot. If you need to use your graph in one of those programs, take a screenshot of the graph instead: press *Windows + Shift + S* on a PC or *Command + Shift + 4* on a Mac, then drag a box around the graph.
+
+```{r, echo=FALSE}
+#| label: fig-save-image-as
+#| fig-cap: 'Saving the Study Hours Boxplot as an Image'
+#| fig-alt: 'Rguroo output tab for the saved study hours boxplot, showing a vertical boxplot of Hours with whiskers from 5 to 12, a box from 6 to 10, and a median line at 8.5. The graph has been right-clicked, opening a browser menu with Open Image in New Tab, Save Image As, Copy Image, Copy Image Address, Create QR Code for this Image, Search This Image with Google Lens, and Inspect. Save Image As is highlighted.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/save_image_as.png")
+```
+
+**Exporting a report**
+
+Analyses in Rguroo produce a **report**: a set of tables, graphs, and written explanations in one output tab. Instead of saving each piece separately, you can download the entire report at once. Rguroo downloads the report as a zipped (compressed) folder that contains the report in two formats: a Word document (.docx) and an HTML file (a web page that opens in any browser), along with the graph image files.
+
+1.  Run the analysis and click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to display the report.
+2.  In the toolbar at the top of the output tab, click the Word icon. When you hover over it, it reads *Download docx, html included* (@fig-download-docx-html).
+3.  Save the zipped folder to your computer.
+4.  Extract (unzip) the folder before opening any of the files:
+    -   **Windows:** Right-click the zipped folder, select *Extract All*, and click *Extract*.
+    -   **Mac:** Double-click the zipped folder. A regular folder with the same name appears next to it.
+5.  Open the extracted folder to find the Word file, the HTML file, and the graph images.
+
+```{r, echo = FALSE}
+#| label: fig-download-docx-html
+#| fig-cap: 'Download Docx, HTML is Included Button in the Output Toolbar'
+#| fig-alt: 'Rguroo output toolbar with the Basics, Details, Level Editor, and Report Layout buttons on the left, followed by a row of icons. The Word document icon is circled in red, and a tooltip below it reads Download Docx, HTML is included.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/download_docx_html_button.png")
+```
+
+
+::: {.callout-note appearance="simple" icon="false"}
+**Why unzip first?** Windows lets you open files inside a zipped folder without extracting them. If you open the HTML file this way, the graphs will not appear, because the browser cannot find the image files. Always extract the folder first.
+:::
+
+Each format in the download works best for a different purpose:
+
+| Format | Best for | Things to know |
+|------------|----------------------|-----------------------------------------|
+| HTML | Viewing or printing the complete report, including all graphs | The graphs are saved as separate image files. Keep them in the same folder as the HTML file, or the graphs will not appear. Each graph includes a written description for screen readers. |
+| Word | Copying tables and results into a lab report or project | Open the file in the desktop version of Microsoft Word. The file may appear blank in Google Docs, Word Online, or other programs. Graphs are not included, so add them separately using *Save Image As...*. |
+
+: Comparing report export formats {#tbl-export-formats tbl-alt="Table comparing the two Rguroo report export formats. HTML is best for viewing or printing the complete report with graphs, which are saved as separate image files that must stay in the same folder and include screen reader descriptions. Word is best for copying tables and results into a lab report, must be opened in desktop Microsoft Word because it may appear blank in Google Docs or Word Online, and does not include the graphs."}
+
+[Walkthrough Example: Exporting a Report]{style="color: blue; font-weight: bold;"}
+
+Use the **Mean Inference** function to create a report for the [Hours]{.var} variable in the [Study Hours 6]{.data} dataset. Then download the report.
+
+**Let's Export the Report:** Open the **Analytics** toolbox. Click the [Analysis]{.dpd} dropdown, select [Mean Inference]{.fun}, and then select [One Population]{.fun} (@fig-analysis-menu). This opens the [One Population Mean Inference]{.dialog} dialog.
+
+```{r, echo=FALSE}
+#| label: fig-analysis-menu
+#| fig-cap: 'Selecting One Population Mean Inference from the Analysis Dropdown'
+#| fig-alt: 'Rguroo Analytics toolbox with the Analysis dropdown open. The menu lists Proportion Inference, Mean Inference, Median Inference, Linear Regression, Variance Inference, Goodness of Fit, Contingency Table, ANOVA, Non-Parametric ANOVA, Time Series, Tabulation, and Numerical Summaries. Mean Inference is highlighted, and its submenu shows One Population, which is highlighted, and One and Two Population.'
+#| out-width: "50%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/analysis_menu_mean_inference.png")
+```
+
+From the [Dataset]{.dpd} dropdown, select [Study Hours 6]{.data}, and from the [Variable]{.dpd} dropdown, select [Hours]{.var}. Rguroo automatically fills in the sample mean, sample standard deviation, and sample size (@fig-mean-inference-dialog). Leave all of the other options at their default settings and click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png).
+
+```{r, echo=FALSE}
+#| label: fig-mean-inference-dialog
+#| fig-cap: 'One Population Mean Inference Dialog for Study Hours 6'
+#| fig-alt: 'Rguroo One Population Mean Inference dialog with Study Hours 6 selected in the Dataset dropdown and Hours selected in the Variable dropdown. The dialog shows a sample mean of 8.33333, a sample standard deviation of 2.58198, and a sample size of 6, with the Pop. S.d. box empty. Below, the Confidence Interval tab is open with a confidence level of 0.95, and all Method checkboxes are unchecked.'
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/dialog_mean_inference.png")
+```
+
+The report opens in a new tab with a **Data Summary** table showing a sample size of 6, a mean of 8.33333 hours, and a sample standard deviation of 2.58199 hours (@fig-mean-inference-output). Notice the Word icon in the toolbar at the top of the report.
+
+```{r, echo=FALSE}
+#| label: fig-mean-inference-output
+#| fig-cap: 'One Population Mean Inference Report for Study Hours 6'
+#| fig-alt: 'Rguroo output tab with the Basics, Details, and Report Layout buttons, a row of icons including the Word icon, the Preview button, and the Save As textbox containing MeanInferenceOnePop_3. Below, the report titled One Population Mean Inference shows a Data Summary table listing the variable Hours with a sample size of 6, a mean of 8.33333, and a sample standard deviation of 2.58199.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/mean_inference_output.png")
+```
+
+Next, click the Word icon (*Download Docx, HTML is included*) in the toolbar. Rguroo saves a zipped folder named *MeanInferenceOnePop* followed by a number to your Downloads folder (@fig-download-zip). Extract the folder (@fig-extracted-folder). Inside, you will find a Word file and an HTML file with the same name.
+
+```{r, echo=FALSE}
+#| label: fig-download-zip
+#| fig-cap: 'Zipped Report Folder and Extracted Folder in Downloads'
+#| fig-alt: 'Mac Finder window showing the Downloads folder with two items: MeanInferenceOnePop_3_docx.zip, a 10 KB ZIP archive, and MeanInferenceOnePop_3_docx, the extracted folder, which is highlighted.'
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/download_zip.png")
+```
+
+```{r, echo=FALSE}
+#| label: fig-extracted-folder
+#| fig-cap: 'Contents of the Extracted Report Folder'
+#| fig-alt: 'Mac Finder window showing the contents of the MeanInferenceOnePop_3_docx folder: a Word file named MeanInferenceOnePop_3.docx and an HTML file named MeanInferenceOnePop_3.html.'
+#| out-width: "60%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/extracted_folder.png")
+```
+
+Open the Word file in Microsoft Word (@fig-report-word). The Data Summary table is ready to copy into a lab report or project. Then open the HTML file in your web browser (@fig-report-html) to see the report exactly as it appears in Rguroo.
+
+```{r, echo=FALSE}
+#| label: fig-report-word
+#| fig-cap: 'Mean Inference Report Opened in Microsoft Word'
+#| fig-alt: 'Microsoft Word document titled One Population Mean Inference, opened in Compatibility Mode. Below the title, a Data Summary table lists the variable Hours with a sample size of 6, a mean of 8.33333, and a sample standard deviation of 2.58199.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/report_word.png")
+```
+
+```{r, echo=FALSE}
+#| label: fig-report-html
+#| fig-cap: 'Mean Inference Report Opened in a Web Browser'
+#| fig-alt: 'HTML report in a web browser with the title One Population Mean Inference and a Data Summary table listing the variable Hours with a sample size of 6, a mean of 8.33333, and a sample standard deviation of 2.58199.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/report_html.png")
+```
+
+Saving the analysis with [Save As]{.button} before you export is a good habit. If you need to change something later, you can reopen the saved analysis, make the change, and export again.
+
+
+::: {.callout-note appearance="simple" icon="false"}
+**Pop-up blockers.** If nothing happens when you click a download or export button, your browser may be blocking pop-ups. Allow pop-ups for rguroo.com and try again.
+:::
+
+**Exporting and importing RGR files**
+
+An **RGR file** (a file ending in .rgr) is Rguroo's own file type. It packages a saved graph, analysis, or dataset together with all of its dialog box settings and the datasets it uses. When someone imports your RGR file into their own Rguroo account, they see your work exactly as you saved it. Instructors often use RGR files to share class examples, and students can use them to submit Rguroo work for homework, projects, and exams.
+
+To export an RGR file:
+
+1.  Place the items you want to export in a folder in the appropriate toolbox (see Section 0.6.3).
+2.  Right-click on the folder and select [Export as RGR (.rgr)]{.des}.
+3.  Save the .rgr file to your computer.
+
+To import an RGR file that someone has shared with you:
+
+1.  Open the **Data** toolbox.
+2.  Click the [Data Import]{.dpd} dropdown and select [RGR (.rgr)]{.fun}. You can also use the import option in the Quick Access Tools (see Section 0.7.1).
+3.  Choose the .rgr file and click [Upload]{.button}.
+
+Rguroo places the imported items in a new folder named *Imported* followed by the date and time, inside each toolbox the items belong to. For example, an RGR file containing a boxplot will add a folder with the dataset to the **Data** toolbox and a folder with the boxplot to the **Plots** toolbox. You can then rename or move these items as you like.
+
+[Walkthrough Example: Exporting Your Work as an RGR File]{style="color: blue; font-weight: bold;"}
+
+Your instructor asks you to submit the boxplot you created in Section 0.6.2 as an RGR file.
+
+**Let's Export the Work:** Open the **Plots** toolbox and create a folder named *Week 1 Submission*. Drag *Study Hours Boxplot* into the folder. Right-click on Week 1 Submission and select [Export as RGR (.rgr)]{.des} (@fig-export-rgr), then save the file to your computer. Because the RGR file includes the dataset the boxplot uses, your instructor will see both the boxplot and the [Study Hours 6]{.data} data when they import it. Upload the .rgr file wherever your instructor has asked you to submit it.
+
+```{r, echo = FALSE}
+#| label: fig-export-rgr
+#| fig-cap: 'Exporting the Week 1 Submission Folder as an RGR File'
+#| fig-alt: 'Rguroo Plots toolbox with study typed in the search box. The Plots list shows an expanded folder named Week 1 Submission containing the saved plot study hours boxplot. The folder has been right-clicked, opening a menu with New Folder, Export as RGR (.rgr), Cut, Paste, Rename, and Delete. Export as RGR (.rgr) is highlighted.'
+#| out-width: "50%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/export_rgr.png")
+```
+
+![Try It](Rguroo_Icons/try_it.png){width=45px} **Try It: Save, Organize, and Export**
+
+Use the [Exercise Time]{.data} dataset you created in Section 0.4.5.
+
+a.  Create a folder in your **Data** toolbox named *Getting Started* and move [Exercise Time]{.data} into it.
+b.  Download [Exercise Time]{.data} as a CSV file and open it on your computer to confirm the five values are there.
+c.  Create a boxplot of the exercise times and save it with an appropriate name. Check that it appears in your **Plots** toolbox and that [Exercise Time]{.data} now appears in green bold text in your **Data** toolbox.
+d.  Place the boxplot in a folder in the **Plots** toolbox and export the folder as an RGR file.
+
+## 0.7 Resources in Rguroo {#sec-resources}
+
+You do not need to memorize every Rguroo feature. Rguroo includes several built-in resources you can turn to when you are unsure how to do something. This section describes where to find them.
+
+### 0.7.1 Quick Access Tools {#sec-quick-access}
+
+The **Quick Access Tools** dropdown at the top of the Rguroo window (item [2]{.circle-number} in @fig-dashboard) provides shortcuts to features you will use often. Click [Quick Access Tools]{.dpd} to open the menu (@fig-quick-access).
+
+```{r, echo=FALSE}
+#| label: fig-quick-access
+#| fig-cap: 'Quick Access Tools Dropdown Menu'
+#| fig-alt: 'Top of the Rguroo window with the Quick Access Tools dropdown open. The menu lists Import Dataset with shortcut Alt+1, Import RGR file (.rgr) with Alt+2, Scientific Calculator with Alt+3, Shortcut Keys with Alt+4, Dataset Repository with Alt+8, and Open Jupyter Light with Ctrl+Alt+R. The User Guide and My Groups buttons appear to the right, and the Data, Plots, Analytics, Prediction-Classification, Probability-Simulation, and Applets-Calculators toolboxes are listed on the left.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/quick_access_tools.png")
+```
+
+| Tool | What it does |
+|--------------------|----------------------------------------------------|
+| Import | Imports a dataset from your computer or a URL, or imports an RGR file (see Sections 0.4.4 and [0.6.4](#sec-export)) |
+| Scientific Calculator | Opens a Desmos scientific calculator, useful for quick calculations such as factorials, combinations, and permutations |
+| Shortcut Keys | Lists keyboard shortcuts for working in Rguroo |
+| Dataset Repository | Opens the Rguroo Dataset Repository so you can import a dataset (see Section 0.4.4) |
+| Jupyter Lite | Opens a browser-based coding notebook. This is an optional tool for users who want to write code and is not needed for this course |
+
+: Rguroo Quick Access Tools {#tbl-quick-access tbl-alt="Table listing the Rguroo Quick Access Tools: Import, Scientific Calculator, Shortcut Keys, Dataset Repository, and Jupyter Lite, along with a description of what each tool does."}
+
+::: {.callout-note appearance="simple" icon="false"}
+**Tip:** Hover your mouse over any icon in Rguroo to see its name.
+:::
+
+### 0.7.2 User Guide {#sec-user-guide}
+
+Rguroo provides written guides at three levels of detail. All of them can be opened from the **User's Guide** and **Documentation** buttons at the top of the Rguroo window (items [3]{.circle-number} and [6]{.circle-number} in @fig-dashboard) or from the *Resources* menu on the [Rguroo website](https://www.rguroo.com).
+
+-   **[Quick User's Guide](http://files.rguroo.com/guides/quick_userguide.html)** (web-based). This is the best place to start. It is organized by topic, from the Dataset Editor and data functions to plots, inference, probability, and simulation. Each topic gives short step-by-step instructions with examples that use datasets from the Rguroo repository, so you can follow along in your own account. A camera icon ![camera](Rguroo_Icons/camera_inline.png) next to a topic links to a video for that topic.
+-   **[Full User's Guide](http://files.rguroo.com/guides/latest_userguide.pdf)** (PDF). A longer reference with more technical detail about every dialog box option and the statistical methods Rguroo uses.
+-   **[Dashboard Quick Guide](http://files.rguroo.com/guides/quick_userguide_dashboard.html)** (web-based). Instructions for the instructor Dashboard, covered in Section 0.9.
+
+Help is also available inside each dialog box. Next to the name of each section of a dialog box is a small question mark icon ![help icon](Rguroo_Icons/help_icon.png). Click the question mark to open a **Help** window that explains the options in that section (@fig-dialog-help). For example, clicking the question mark next to **Numerical Variables** in the [Boxplot]{.dialog} dialog explains how to select variables and how to create side-by-side boxplots. Close the Help window by clicking the **X** in its upper-right corner. The question mark is often the fastest way to find out what a particular checkbox or dropdown does.
+
+```{r, echo=FALSE}
+#| label: fig-dialog-help
+#| fig-cap: 'Opening Help for the Numerical Variables Section of the Boxplot Dialog'
+#| fig-alt: 'Rguroo Boxplot dialog with Study Hours 6 selected and Hours in the Selected column. The question mark icon next to the Numerical Variables heading is circled in red, with a red arrow pointing from it to a Help window titled Help: Boxplot, Variable Selection. The Help window explains how to create boxplots for one or more numerical variables, how to select variables using the arrow buttons or drag and drop, and how to create side-by-side boxplots stratified by factor variables.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/dialog_help.png")
+```
+
+[Walkthrough Example: Using the Quick User's Guide]{style="color: blue; font-weight: bold;"}
+
+Suppose you want to learn how to create a histogram, a graph you will use in Chapter 2.
+
+**Let's Find It in the Guide:** Open the [Quick User's Guide](http://files.rguroo.com/guides/quick_userguide.html). In the table of contents on the left, find the topic *Plots for Numerical Data* and select *Histogram*. Alternatively, you can type *Histogram* in the search bar that can be accessed by clicking the magnifying glass icon. The page shows which toolbox and menu to use, describes the options in the Histogram dialog, and works through an example with a dataset you can import from the repository. If you prefer to watch, click the camera icon to open the video for that topic.
+
+### 0.7.3 Video Tutorials {#sec-video-tutorials}
+
+Short "how-to" videos are available for most Rguroo features. You can find them in three places:
+
+-   **Inside Rguroo.** Click the **Tutorial Videos** button at the top of the Rguroo window (item [5]{.circle-number} in @fig-dashboard).
+-   **On the Rguroo website.** Visit the [Rguroo Video Tutorials](https://rguroo.com/video-tutorials) page.
+-   **On YouTube.** Visit the [Rguroo YouTube channel](https://www.youtube.com/channel/UCaY4gT66_NgYUqJRxvGI8QQ).
+
+Throughout this text, a camera icon ![Video icon](Rguroo_Icons/camera_inline.png) followed by **Click Here** means a video is available for the skill being described.
+
+## 0.8 How Rguroo is Used in the Text {#sec-rguroo-in-text}
+
+This text uses Rguroo in every chapter. To help you find the instructions you need quickly, Rguroo steps, dialog boxes, and outputs are always presented in the same way. This section explains what to look for.
+
+### 0.8.1 Identify Instructions for Solutions {#sec-instructions-solutions}
+
+Each worked example in this text is set up the same way:
+
+1.  The **example** states the problem. If the example uses a dataset, a line with the dataset repository logo ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) tells you the name of the dataset and the repository it is in. A collapsible **code book** describes each variable.
+2.  The **🔎 Solution** box is collapsed so you can try the problem on your own first. Click it to expand the full solution.
+3.  Inside the solution, Rguroo steps appear in their own collapsible box marked with the Rguroo logo ![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}. Click the box to see numbered, step-by-step instructions.
+4.  Many Rguroo boxes include a nested box labeled **Click here to see the Rguroo dialog**, which shows a screenshot of the completed dialog box so you can compare it with yours.
+
+When a set of Rguroo steps is used again later in a chapter, the text links back to the first full set of instructions (for example, "as shown [here](#)") rather than repeating them. Many Rguroo boxes also begin with a **Before you begin** note reminding you to import the dataset first.
+
+Within Rguroo steps, different parts of the Rguroo window are formatted differently so you can tell at a glance what you are looking for on the screen.
+
+| Formatting in the text | What it refers to | Example |
+|--------------------|----------------------------|----------------------|
+| **Bold** | A toolbox on the left side of the Rguroo window | **Data**, **Plots**, **Analytics** |
+| [Dropdown]{.dpd} | A dropdown menu or button you click to see a list | [Functions]{.dpd}, [Dataset]{.dpd} |
+| [Function]{.fun} | A function or menu item you select | [Summary Statistic]{.fun}, [Boxplot]{.fun} |
+| [Dialog]{.dialog} | The name of a dialog box | [Basic Summary Statistic]{.dialog} |
+| [Option]{.des} | A field, checkbox, or option inside a dialog box | [Mean]{.des}, [Sample Size]{.des} |
+| [Type this]{.typein} | Text you type exactly as shown | [kozak]{.typein} |
+| [Button]{.button} | A button you click | [Import]{.button}, [Save As]{.button} |
+| [dataset]{.data} | The name of a dataset | [cats]{.data} |
+| [variable]{.var} | The name of a variable in a dataset | [Bwt]{.var} |
+| [Repository]{.repo} | The name of a dataset repository | [Kozak]{.repo} |
+
+: Text formatting used for Rguroo instructions {#tbl-rguroo-formatting tbl-alt="Table explaining the text formatting used for Rguroo instructions in this book. Bold text is a toolbox, and styled text is used for dropdowns, functions, dialog box names, dialog options, text to type, buttons, dataset names, variable names, and repository names, each with an example."}
+
+[Walkthrough Example: Following a Solution with Rguroo Steps]{style="color: blue; font-weight: bold;"}
+
+The example below is set up exactly like the examples you will see in later chapters. Try it now using the [Study Hours]{.data} dataset you created in Section 0.4.1.
+
+::: {#exm-study-hours-mean}
+## Finding the Mean Study Time
+
+Find the mean number of hours per week that the five students in the [Study Hours]{.data} dataset study.
+:::
+
+::::{.callout-tip .solution-callout collapse="true" icon=false}
+## 🔎 Solution
+
+Variable: $x$ = number of hours a student studies per week
+
+Click to expand the box below to see how to calculate the mean in Rguroo.
+
+:::: {.callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Calculating the Mean Study Time"}
+**Before you begin:** Make sure the [Study Hours]{.data} dataset is saved in your **Data** toolbox, as shown in Section 0.4.1.
+
+1.  Open the **Data** toolbox.
+2.  Click on the [Functions]{.dpd} dropdown, and select [Summary Statistic]{.fun}. This opens the [Basic Summary Statistic]{.dialog} dialog.
+3.  From the [Dataset]{.dpd} dropdown, select the [Study Hours]{.data} dataset.
+4.  From the [Numerical]{.dpd} dropdown, select the [Hours]{.var} variable.
+5.  In the **Statistics** section of the dialog, select the checkbox for [Mean]{.des}.
+6.  Click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the result.
+
+::: {.callout-note appearance="simple" collapse="true" icon="none" title="Click here to see the Rguroo dialog"}
+
+```{r, echo=FALSE}
+#| label: fig-study-hours-mean-dialog
+#| fig-cap: 'Basic Summary Statistic Dialog for the Study Hours Dataset'
+#| fig-alt: 'Rguroo Basic Summary Statistic dialog with Study Hours selected in the Dataset dropdown and Hours selected in the Numerical dropdown. The Frequency, Factor 1, and Factor 2 boxes are empty, and Include Interaction is unchecked. In the Statistics section, only the Mean checkbox is checked.'
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/study_hours_mean_dialog.png")
+```
+
+:::
+::::
+
+```{r, echo=FALSE}
+#| label: fig-study-hours-mean
+#| fig-cap: 'Mean Study Time for the Study Hours Dataset'
+#| fig-alt: 'Rguroo Summary Statistic output table with the columns Level and Mean. Under the heading All Observations, one row lists All Observations with a mean of 8.2.'
+#| out-width: "40%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/study_hours_mean_output.png")
+```
+
+The mean study time is 8.2 hours per week (@fig-study-hours-mean).
+
+::::
+
+### 0.8.2 Dialog Boxes {#sec-dialog-boxes}
+
+
+A **dialog box** is the window where you tell Rguroo what you want to do. You choose the dataset and variables, select options, and then click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) to see the result. Most dialog boxes are organized from top to bottom in the order you fill them in: first the dataset, then the variables, then the options.
+
+**How tabs work.** Each time you open a dataset or select a function, such as [Boxplot]{.fun} or [Mean Inference]{.fun}, Rguroo opens a new **tab** in the workspace. The tab holds everything for that task: the dialog box appears as a window on top of the tab, and when you click the preview icon, the output appears in the same tab behind it. Because each task has its own tab, you can switch between a dataset, a graph, and an analysis without closing any of them. After you save, the tab takes the name you entered in the **Save As** textbox.
+
+**Reopening the dialog box.** The toolbar at the top of each tab has yellow buttons such as **Basics** and **Details**. Click **Basics** to reopen the dialog box with the most common options (@fig-tab-dialog-output), or **Details** for additional options. Your earlier selections are still there, so you can change one setting and preview again without starting over. Graph tabs also have a **Level Editor** button for changing the order, labels, and colors of categories. Analytics tabs have a **Report Layout** button for choosing what appears in the report. 
+
+```{r, echo = FALSE}
+#| label: fig-tab-dialog-output
+#| fig-cap: 'Boxplot Dialog Box Open Over the Output in the Study Hours Boxplot Tab'
+#| fig-alt: 'Rguroo workspace with two tabs, Dataset and study hours boxplot. The study hours boxplot tab is selected, and its toolbar shows the Basics button, highlighted and open, followed by the Details and Level Editor buttons, a row of icons, the Preview button, and the Save As textbox containing study hours boxplot. The Boxplot dialog box floats over the tab with Study Hours 6 selected as the dataset and Hours in the Selected column, and part of the blue boxplot output is visible behind it on the right.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/tab_dialog_output.png")
+```
+
+Screenshots of completed dialog boxes appear in the boxes labeled **Click here to see the Rguroo dialog**, or as figures with captions such as "Basic Summary Statistic Dialog for the Study Hours Dataset." Use these screenshots to check your work. If your result does not match the text, compare your dialog box with the screenshot to find which selection is different.
+
+A few tips for working with dialog boxes:
+
+-   **Icons in the title bar.** The title bar of each dialog box has a pin icon on the left, which keeps the dialog box open while you work, and a camera icon that opens a video about that dialog box. On the right are the preview icon ![preview icon](Rguroo_Icons/preview_inline.png) and an **X** to close the dialog box. Closing the dialog box does not close the tab or delete your output.
+-   **Help is built in.** Click the question mark icon next to any section name in a dialog box to see an explanation of its options (see Section 0.7.2).
+-   **Your screen may look slightly different.** Rguroo is updated regularly, so the layout or colors on your screen may differ a little from the screenshots. The names of menus, options, and buttons will be the same.
+
+
+### 0.8.3 Rguroo Outputs {#sec-rguroo-outputs} 
+
+When you click the preview icon ![preview icon](Rguroo_Icons/preview_inline.png), Rguroo displays the result in the same tab as the dialog box. Depending on the function, the output may be a graph, a table of results, or a full report with tables, graphs, and a written explanation of how to interpret the results. If you change a selection in the dialog box and click the preview icon again, the output updates in place.
+
+In this text, Rguroo outputs appear in two ways:
+
+-   **Screenshots** of the output, shown as figures with a caption (for example, "Mean and Median Weight of Cats"). These show the key numbers you should see when you complete the steps.
+-   **Interactive outputs**, shown in a scrollable window inside the page. These are the actual Rguroo output, so you can scroll through the full report, and graphs can be explored the same way they would be in Rguroo. If you are using a keyboard, press *Tab* to move into the output window and use the arrow keys to scroll.
+
+When you compare your output to the text, focus on the values the question asks for. Results based on **simulation** or **random sampling** (introduced in Chapter 4) will be slightly different every time they are run, so your numbers will be close to, but not exactly the same as, the numbers in the text.
+
+::: {.callout-note appearance="simple" icon="false"}
+**Accessibility.** Rguroo works with standard screen readers and provides written descriptions of its graphs. Every screenshot in this text also includes alternative text describing what the image shows.
+:::
+
+### 0.8.4 Rguroo Icons {#sec-rguroo-icons}
+
+The following icons appear in Rguroo and throughout this text. Some were introduced in Section 0.3. They are collected here so you have one place to look them up.
+
+| Icon | Name | Where you see it | What it means |
+|:----:|------------|----------------------|--------------------------------|
+| ![preview icon](Rguroo_Icons/preview_inline.png) | Preview | Rguroo dialog boxes and this text | Runs the dialog box and shows the graph, table, or output |
+| ![Save as](Rguroo_Icons/save_as.png) | Save As | Rguroo data and outputs | Saves the dataset or output with the name typed in the **Save As** textbox |
+| ![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) | Dataset repository | This text | The dataset for an example or exercise is available in an Rguroo dataset repository |
+| ![](Rguroo_Icons/R_circle_logo.svg){width=22px} | Rguroo logo | This text | A collapsible box with step-by-step Rguroo instructions |
+| ![plus icon](Rguroo_Icons/add.png) | Add | Rguroo dialog boxes | Adds a new row, such as a new logical expression or a new variable |
+| ![filter icon](Rguroo_Icons/filters.png) | Filters | Rguroo Dataset Editor | Opens the Filters panel so you can hide rows with certain values |
+| ![camera](Rguroo_Icons/camera_inline.png) | Camera | This text and the Rguroo User's Guide | A video is available for this skill |
+| ![Try It](Rguroo_Icons/try_it.png){width=30px} | Try It | This text | A practice problem to try on your own |
+
+: Common Rguroo icons {#tbl-rguroo-icons tbl-alt="Table of common icons used in Rguroo and in this text. Each row shows the icon, its name, where it appears, and its meaning. The icons are Preview, Save As, Folder, Dataset repository, Rguroo logo, Add, Filters, Camera, and Try It."}
+
+![Try It](Rguroo_Icons/try_it.png){width=45px} **Try It: Find the Icons**
+
+Open the [Summary Statistic]{.fun} dialog in Rguroo and locate the Preview icon and the **Save As** textbox. Then open the [Subset]{.fun} dialog and find the green Add icon ![plus icon](Rguroo_Icons/add.png). Hover over each icon to confirm its name.
+
+## 0.9 Instructor Dashboard {#sec-instructor-dashboard}
+
+The Rguroo **Dashboard** is a set of tools for instructors. From the Dashboard, you can create groups for your classes, build your own dataset repositories, share those repositories with your students, monitor student login activity, and email your students. Students do not have access to the Dashboard, but they benefit from the repositories and emails you share with them through it.
+
+::: {.callout-note appearance="simple" icon="false"}
+**Students:** This section is written for instructors. You only need Section 0.4.4 (*My Groups*) to join your instructor's group and import datasets from it.
+:::
+
+### 0.9.1 Creating Instructor Account {#sec-create-instructor-acct}
+
+Faculty accounts in Rguroo are **free**. To register, you must use your **institution-issued email address** (for example, an address ending in .edu). The Rguroo team reviews each faculty registration manually before approving it, and accounts registered with a personal email address, such as Gmail or Yahoo, will not be approved.
+
+Instructors register in much the same way as students (see Section 0.2), with one difference: on the registration page, select **Faculty** instead of **Student** (see @fig-rguroo-student).
+
+1.  Go to the [Rguroo website](https://www.rguroo.com) and click **Register** in the upper-right corner.
+2.  Select **Faculty**.
+3.  Enter your institutional email address and complete the email verification, as described in Section 0.2 (@fig-faculty-register).
+4.  Complete the **Your Information** page, including your institution's name.
+5.  Click **Submit**, then check your email and complete the verification, as described in Section 0.2. Because faculty accounts are reviewed manually, approval is not immediate. You will receive an email when your account has been approved.
+
+```{r, echo=FALSE}
+#| label: fig-faculty-register
+#| fig-cap: 'Rguroo Faculty Registration Page'
+#| fig-alt: 'Rguroo Faculty Registration web page. Under the heading Register Faculty, the Your Role dropdown is set to Instructor, followed by Email and Verify Email text boxes. A note below reads: In order for your account to be approved, you must use your institution-issued email address. A yellow Submit button appears at the bottom.'
+#| out-width: "80%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/faculty_register.png")
+```
+
+::: {.callout-note appearance="simple" icon="false"}
+**Plan ahead.** Because faculty accounts are reviewed manually, register well before the start of the term so your account is ready in time to create your class groups and repositories.
+:::
+
+Once your faculty account is active, a **Dashboard** button appears at the top right of the Rguroo window (item [7]{.circle-number} in @fig-dashboard).
+
+::: {.callout-note appearance="simple" icon="false"}
+**Already have a student or trial account?** Your faculty account must be registered with your institutional email address. If you previously created an account with a different email, register again as faculty using your institutional email.
+:::
+
+Rguroo also offers free workshops and one-on-one training for faculty. To schedule a session, visit the [Request Training](https://rguroo.com/request-training/) page.
+
+### 0.9.2 Navigating Instructor Dashboard {#sec-navigate-dashboard}	 
+
+To open the Dashboard, log in to Rguroo and click the **Dashboard** button at the top right of the Rguroo window. The Dashboard opens in a new browser tab.
+
+The left side of the Dashboard has two main icons:
+
+-   **Groups** opens the **Manage Groups** page, where you create groups, add and remove members, share repositories, monitor activity, and send emails (@fig-dashboard-groups).
+-   **Repositories** opens the **Manage Repositories** page, where you create dataset repositories and add datasets to them.
+
+On a small screen, click the three horizontal lines at the top right of the Dashboard window to see these icons.
+
+On both pages, the left pane is a **directory** that works like the folders in your Rguroo toolboxes. You can create items in the main (root) directory or organize them in folders. For example, you might create a folder for each semester, or a folder for each course you teach. To create a folder, click the **FOLDER** button at the top of the directory pane, type a name, and click [Apply]{.button}.
+
+```{r, echo = FALSE}
+#| label: fig-dashboard-groups
+#| fig-cap: 'Rguroo Dashboard Showing the Manage Groups Page'
+#| fig-alt: 'Rguroo Dashboard with Welcome Instructor at the top right. The left side has two icons, Groups, which is selected, and Repositories. Next to them are the FOLDER and GROUP buttons, and below them is a folder named My Classes with a trash icon and an add group icon on its right. The main area is titled Manage Groups.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/dashboard_groups.png")
+```
+
+::: {.callout-note appearance="simple" icon="false"}
+**Suggested order for setting up a new class:** (1) create a repository and add your datasets ([Section 0.9.3](#sec-create-repository)), (2) create a group for the class ([Section 0.9.4(#sec-create-groups)]), (3) share the repository with the group ([Section 0.9.5](#sec-link-repository)), and (4) give students the Group Code.
+:::
+
+### 0.9.3 Creating Repositories {#sec-create-repository}
+
+A **dataset repository** is a collection of datasets that users can import into their own Rguroo accounts with a few clicks. The Kozak repository used throughout this text is one example. Creating your own repository lets you give students exactly the datasets they need for a lab, project, or exam.
+
+**Creating a repository**
+
+1.  In the Dashboard, select the **Repositories** icon to open the **Manage Repositories** page.
+2.  Click the REPOSITORY button at the top of the directory pane (@fig-create-repository). To create the repository inside a folder, click the plus sign next to the folder name instead.
+3.  In the **Create Repository** dialog, enter a unique **Name** and, optionally, a **Description** and click CREATE.
+
+```{r, echo = FALSE}
+#| fig-cap: 'Create Repository Dialog in the Rguroo Dashboard'
+#| label: fig-create-repository
+#| fig-alt: 'Rguroo Dashboard with Welcome Instructor at the top right and Repositories selected on the left. Next to it are the FOLDER and REPOSITORY buttons and a folder named My Repositories. The Create Repository dialog is open in the center with an empty Name box, an empty Description box, and a CREATE button.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/dashboard_create_repository.png")
+```
+
+**Adding datasets to a repository**
+
+Select the repository name to open its **Manage Repository** page (@fig-manage-repository). In the **Datasets** section, the icons on the right let you add datasets in three ways:
+
+```{r, echo=FALSE}
+#| label: fig-manage-repository
+#| fig-cap: 'Manage Repository Page for a New, Empty Repository'
+#| fig-alt: 'Rguroo Dashboard page titled Manage Repository: New Repository. Below the title, the repository name New Repository and the note Created: a few seconds ago appear, followed by a count of 0 Datasets with a pencil edit icon and a trash icon on the right. The Datasets section below shows 0 Records found and a row of icons on the right: a download arrow, a shaded plus, a plus sign with three lines, a plain plus sign, and an up arrow to collapse the section. The empty table has columns for Name, Title, File Type, Comment, Columns, and Rows.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/dashboard_manage_repository.png")
+```
+
+-   **Upload a CSV or Excel file from your computer.** Click the plain plus sign (fourth icon) and select the file. Then enter:
+    -   **Name**: the dataset name students will see in their **Data** toolbox after importing.
+    -   **Title**: the title shown in the repository list.
+    -   **Comment** (optional): a short description students see when hovering over the dataset name.
+    -   **Documentation** (optional): a full description of the dataset, typed in the text editor or uploaded as a text (.txt) or HTML file. Students can open it from the information icon in the repository list. This is a good place to paste the dataset's code book.
+-   **Import datasets from your own Rguroo account.** Click the plus sign with three lines (third icon), check the datasets you want from your **Data** toolbox, and click [Import]{.button}.
+-   **Import datasets from a repository another instructor has shared with you.** Click the shaded plus (second icon), choose the shared repository, select the datasets, and click the import button.
+
+| Icon | What it does |
+|------|--------------|
+| Down arrow (first icon) | Downloads selected datasets to your computer |
+| Shaded plus (second icon) | Imports datasets from a repository another instructor shared with you |
+| Plus with three lines (third icon) | Imports datasets from your own Rguroo account |
+| Plain plus (fourth icon) | Uploads a CSV or Excel file from your computer |
+
+: Icons in the Datasets section of the Manage Repository page {#tbl-repository-icons tbl-alt="Table describing the four icons in the Datasets section of the Rguroo Manage Repository page: the down arrow downloads selected datasets, the shaded plus imports datasets from a repository shared by another instructor, the plus with three lines imports datasets from your own Rguroo account, and the plain plus uploads a CSV or Excel file from your computer."}
+
+
+
+**Managing datasets in a repository**
+
+Each dataset in the list has a download icon and an eye icon for previewing it. Hover over a dataset name to see the eye icon (preview) and the down-arrow icon (download). To delete or update a dataset, check the box next to its name. A bar appears at the bottom of the page with the buttons **DELETE SELECTED DATASET** and **UPDATE DATASET DETAILS** (@fig-manage-datasets). Use **UPDATE DATASET DETAILS** to change a dataset’s name, title, comment, or documentation. To rename a repository or change its description, click the pencil icon next to the dataset count. To delete a repository, click the trash icon next to it.
+
+```{r, echo = FALSE}
+#| label: fig-manage-datasets
+#| fig-cap: 'Managing a Dataset in a Repository'
+#| fig-alt: 'Rguroo Dashboard Manage Repository page for New Repository, which is highlighted in the left sidebar below a folder named My Repositories. The Datasets section lists one dataset, Study Hours, a csv file with 1 column and 5 rows. Its checkbox is checked, and download and eye preview icons appear next to it. A bar at the bottom of the page reads 1 selected, with the buttons DELETE SELECTED DATASET and UPDATE DATASET DETAILS.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/dashboard_manage_datasets.png")
+```
+
+### 0.9.4 Creating Groups {#sec-create-groups}
+
+A **group** is a set of Rguroo users, usually the students in one of your classes. Groups are how you share repositories with students, monitor their activity, and send them emails.
+
+**Creating a group**
+
+1.  In the Dashboard, select the **Groups** icon to open the **Manage Groups** page.
+2.  Click the **GROUP** button at the top of the directory pane (@fig-create-group), or click the add-group icon next to a folder name to create the group inside that folder. You can also duplicate an existing group using the duplicate button.
+3.  In the **Create Group** dialog, enter:
+    -   **Name**: for example, *STAT C1000 Section 12345 Fall 2026*.
+    -   **Group Code**: the code students will type to join. Type your own alphanumeric code or click [Generate]{.button} for a random one. Rguroo will ask for a different code if yours is already in use.
+    -   **Description** (optional).
+    -   **Expiration Date**: the date the group expires. The default is six months after the group is created. After the group expires, members can no longer access the repositories shared with the group, although any datasets they already imported stay in their accounts.
+and click **CREATE**
+
+```{r, echo = FALSE}
+#| label: fig-create-group
+#| fig-cap: 'Create Group Dialog in the Rguroo Dashboard'
+#| fig-alt: 'Rguroo Dashboard with Welcome Instructor at the top right and Groups selected on the left. Next to it are the FOLDER and GROUP buttons and a folder named My Classes with a trash icon and an add group icon. The Create Group dialog is open in the center with an empty Name box, a Group Code box with a GENERATE button, an empty Description box, an Expiration Date box showing 2027/04/13, and a CREATE button.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/dashboard_create_group.png")
+```
+
+::: {.callout-note appearance="simple" icon="false"}
+⚠️ The Group Code cannot be changed after the group is created. You can change the group's name, description, and expiration date at any time by selecting the group and clicking the edit icon.
+:::
+
+**Adding students to a group**
+
+There are two ways to add members:
+
+-   **Students join with the Group Code.** Give students the Group Code (for example, in your syllabus or course website). Students join by clicking *My Groups* at the top of the Rguroo window, selecting *Join a Group*, entering the code, and clicking *Join Group*, as described in Section 0.4.4.
+-   **You invite students by email.** Select the group, then in the **Members** section click the plus sign, enter the student's Rguroo username (email), and click [Add]{.button}. To invite a whole class at once, click the plus-sign-with-three-lines button, download the CSV or Excel template, fill in your students' email addresses, and import the completed file. Each student receives an email with the Group Code and instructions for joining.
+
+
+### 0.9.5 Linking Repositories to Groups {#sec-link-repository}
+
+Creating a repository does not automatically give students access to it. You need to **share** (link) the repository with a group.
+
+1.  In the Dashboard, select the **Groups** icon and click the name of the group.
+2.  At the bottom of the page, find the section labeled **Share My Repositories** and click the down arrow to see the repositories you have created.
+3.  In the **Action** column, click the share button in the row for the repository you want to share.
+
+```{r, echo = FALSE}
+#| label: fig-share-repo-group
+#| fig-cap: 'Sharing a Repository with a Group'
+#| fig-alt: 'Rguroo Dashboard Manage Group page for New Group, which is highlighted in the left sidebar below a folder named My Classes. The page shows the group code, an expiration date of in 6 months, 0 members, and 1 Shared out of 1 Repositories. Below an empty Members section, the Share My Repositories section lists New Repository with a green SHARED status and an UNSHARE button in the Actions column.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/dashboard_share_repo_group.png")
+```
+
+The **Status** column changes to show that the repository is shared, and the share button changes to an unshare button. To stop sharing the repository with that group, click the unshare button. You can share the same repository with several groups, which is useful when you teach more than one section of the same course.
+
+Students can then import the shared datasets in either of two ways:
+
+-   Click *My Groups* and select *Show My Groups*, then select the group and repository (see Section 0.4.4).
+-   In the **Data** toolbox, select [Data Import]{.dpd} then [Dataset Repository]{.fun}, choose the **My Repositories** option, and select the repository.
+
+**Sharing a repository with another instructor**
+
+Repositories can also be shared directly with other faculty, even if they are not in one of your groups. This is a convenient way for a department to share a common set of datasets. In the **Repositories** page, hover over the repository and click the share icon. In the **Share Repository** dialog (@fig-share-repo-dialog), type the instructor’s Rguroo username (email) in the Email of user to add box, click the plus icon, and then click **SHARE**. To stop sharing, click the trash icon next to their name. Students can only be given access to repositories through groups.
+
+```{r, echo = FALSE}
+#| label: fig-share-repo-faculty
+#| fig-cap: 'Share Icon for a Repository in the Repositories Sidebar'
+#| fig-alt: 'Rguroo Dashboard Repositories sidebar showing a folder named My Repositories and a repository named New Repository. The mouse is over New Repository, revealing a share icon and a copy icon on the right, with a tooltip reading Share New Repository.'
+#| out-width: "50%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/dashboard_share_repo_faculty.png")
+```
+
+```{r, echo = FALSE}
+#| label: fig-share-repo-dialog
+#| fig-cap: 'Share Repository Dialog for Sharing with Another Instructor'
+#| fig-alt: 'Rguroo Share Repository dialog with a text box labeled Email of user to add and a plus icon, the message This repository is not shared with anyone, and a SHARE button.'
+#| out-width: "60%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/dashboard_share_repo_dialog.png")
+```
+
+### 0.9.6 Student Activity Log {#sec-student-activity}
+
+The Dashboard lets you see when, and for how long, each group member has been logged in to Rguroo. This can help you check whether students are getting started with Rguroo early in the term, or follow up with a student who has not logged in.
+
+1.  In the Dashboard, select the **Groups** icon and click the name of the group. A list of group members appears.
+2.  Move your mouse over a student's name and click the activity monitor icon.
+3.  A time plot opens showing the dates the student logged in along the horizontal axis and how long they were logged in each time.
+
+```{r, echo=FALSE}
+#| label: fig-group-members
+#| fig-cap: 'Group Members with Activity and Login History Icons'
+#| fig-alt: 'Rguroo Dashboard Manage Group page for New Group showing the group code, an expiration date of in 4 months, 2 members, and 1 Shared out of 1 Repositories. The Members section lists Student One and Student Two with their email addresses. The mouse is over Student One, revealing a bar chart icon and a clock history icon to the left of the name.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/dashboard_members.png")
+```
+
+```{r, echo=FALSE}
+#| label: fig-login-history
+#| fig-cap: 'Login History for a Group Member'
+#| fig-alt: 'Rguroo Login History table listing seven sessions for one student. Each row shows the session duration, ranging from 37 minutes to about 1.5 hours, the login and logout dates and times between February 4 and March 11, 2027, and a session end reason of Expired.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/dashboard_login_history.png")
+```
+
+```{r, echo = FALSE}
+#| label: fig-activity-graph
+#| fig-cap: 'Login Activity Graph for a Group Member'
+#| fig-alt: 'Rguroo login activity time plot for one student. The horizontal axis shows dates from February 4 to March 28, 2027, and the vertical axis shows session length from 0 to 1 hour 40 minutes. Seven points connected by a shaded curve show sessions ranging from about 37 minutes to about 1.5 hours. A tooltip on the first point reads Feb 04, 2027, Duration 1H 29M, Login Time 10:15.'
+#| out-width: "90%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/dashboard_activity.png")
+```
+
+The member list also provides two other tools:
+
+-   **Emailing students.** Check the box next to the **Name** header to select everyone, or check individual students. Click the send-mail button at the bottom of the page, enter a subject and message, and click send. Emails come from a no-reply address, so ask students to contact you through your usual channels rather than replying.
+-   **Removing students.** Select the students' names and click the remove-members button at the bottom of the list. Removed students immediately lose access to the repositories shared with the group.
+
+::: {.callout-note appearance="simple" icon="false"}
+The activity log shows **login activity** only. It does not show which datasets a student opened or which analyses they ran. To see a student's actual Rguroo work, ask them to submit an RGR file (see Section 0.6.4).
+:::
+
+### 0.9.7 Applets and Calculators {#sec-applets-calculators}
+
+The **Applets-Calculators** toolbox on the left side of the Rguroo window contains interactive tools that are useful for in-class demonstrations and for students exploring probability and inference concepts on their own. All Rguroo users, not just instructors, have access to this toolbox.
+
+To open an applet, click **Applets-Calculators** on the left side of the Rguroo window, expand a folder by clicking the plus sign next to it, and double-click the applet you want. You can also type part of an applet's name in the **Search Applet** box to narrow the list (@fig-applets).
+
+```{r, echo=FALSE}
+#| label: fig-applets
+#| fig-cap: 'Applets-Calculators Toolbox'
+#| fig-alt: 'Rguroo Applets-Calculators toolbox expanded below the Data, Plots, Analytics, Prediction-Classification, and Probability-Simulation toolboxes. A Search Applet box appears above an Applets list containing three folders. The Art of Stat folder contains Exploratory Data Analysis, Association and Correlation, Distributions, Central Limit Theorem, two Confidence Intervals folders, and Inference for Comparing groups. The Rossman/Chance folder contains Sampling Distribution, Data Analysis, Probability, and Statistical Inference. The Calculators (Desmos) folder contains Scientific Calculator, Four Function Calculator, and Graphical Calculator.'
+#| out-width: "40%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/applets_calculators.png")
+```
+
+The toolbox is organized into three folders:
+
+-   **Art of Stat.** Applets that accompany the *Statistics: The Art and Science of Learning from Data* textbook, organized by topic: Exploratory Data Analysis; Association and Correlation; Distributions; the Central Limit Theorem; Confidence Intervals and Significance Tests; and Inference for Comparing Groups.
+-   **Rossman/Chance.** Well-known teaching applets organized into four areas: Sampling Distribution, Data Analysis, Probability, and Statistical Inference. They are especially useful for simulation-based demonstrations, such as showing how a sampling distribution builds up as more samples are drawn.
+-   **Calculators (Desmos).** Three Desmos calculators: a **Scientific Calculator**, a **Four Function Calculator**, and a **Graphical Calculator**. The Scientific Calculator can also be opened from the Quick Access Tools menu (see Section 0.7.1). Chapter 4 uses its [func]{.dpd} menu to compute factorials, permutations ($_nP_r$), and combinations ($_nC_r$).
+
+[Walkthrough Example: Using the Desmos Scientific Calculator]{style="color: blue; font-weight: bold;"}
+
+A class of 30 students needs to choose a 3-person committee. Use the Desmos Scientific Calculator in Rguroo to find the number of possible committees.
+
+**Let's Use the Calculator:** Open the **Applets-Calculators** toolbox, expand the **Calculators (Desmos)** folder, and double-click **Scientific Calculator**. Click the [func]{.dpd} button and select **nCr**. Type [30, 3]{.typein} and the calculator displays **4,060** (@fig-desmos-ncr). There are 4,060 possible committees. You will learn why this is a combination, and when to use one, in Chapter 4.
+
+```{r, echo=FALSE}
+#| label: fig-desmos-ncr
+#| fig-cap: 'Computing a Combination with the Desmos Scientific Calculator in Rguroo'
+#| fig-alt: 'Desmos Scientific Calculator open in a Rguroo tab named Scientific Calculator. The input line reads nCr(30,3) with the answer equals 4060 on the right. Below the input line, the func tab is selected, showing buttons for sin, cos, tan, their inverses, mean, stdev, stdevp, nPr, nCr, and factorial, along with exponent, square root, absolute value, round, natural log, log, e, and pi buttons.'
+#| out-width: "70%"
+knitr::include_graphics("Rguroo_outputs/Chapter_0/desmos_ncr.png")
+```
+
+![Try It](Rguroo_Icons/try_it.png){width=45px} **Try It: Use the Desmos Scientific Calculator**
+
+Open the Desmos Scientific Calculator in Rguroo and use the [func]{.dpd} tab to complete each calculation.
+
+a.  A coffee shop offers 8 pastries. Find $8!$, the number of ways to arrange all 8 pastries in a display case, using the **!** button.
+b.  A club with 10 members needs to choose a president, vice president, secretary, and treasurer. Find the number of ways to fill these four positions using **nPr** with $n = 10$ and $r = 4$.
+c.  Recall the six values in the *Study Hours 6* dataset: 6, 10, 8, 5, 12, 9. Use **mean** and **stdev** to find the mean and sample standard deviation, separating the values with commas. Compare your answers with the Rguroo report you created in Section 0.6.4.
