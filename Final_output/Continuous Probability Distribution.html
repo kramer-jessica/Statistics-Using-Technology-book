@@ -204,44 +204,20 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./One Sample Inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">One Sample Inference</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Estimation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estimation</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Two Sample Inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Two Sample Inference</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./Regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chi_square_inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">TBD</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Chi-Square and ANOVA Tests.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Chi-squared and ANOVA Tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chi-squared and ANOVA Tests</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./References.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">References</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">References</span></span></a>
   </div>
 </li>
     </ul>
@@ -250,7 +226,7 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
@@ -389,7 +365,7 @@ Chapter 6 Objectives
 <p><span class="math display">\[
 P(a \leq X \leq b) = \text{area under } f(x) \text{ from } a \text{ to } b
 \]</span></p>
-<p>This relationship is easiest to see visually. <a href="#fig-area-under-curve" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-area-under-curve</span></a> shows a density curve <span class="math inline">\(f(x)\)</span> with the region between two values, <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, shaded in blue. That shaded region is exactly the probability <span class="math inline">\(P(a\leq X \leq b)\)</span>: not an approximation of it, the area itself <em>is</em> the probability. This is what makes continuous probability fundamentally different from the discrete case. There is no single bar or point to read off; the entire shape of the curve between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> contributes to the answer.</p>
+<p>This relationship is easiest to see visually. <a href="#fig-area-under-curve" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> shows a density curve <span class="math inline">\(f(x)\)</span> with the region between two values, <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, shaded in blue. That shaded region is exactly the probability <span class="math inline">\(P(a\leq X \leq b)\)</span>: not an approximation of it, the area itself <em>is</em> the probability. This is what makes continuous probability fundamentally different from the discrete case. There is no single bar or point to read off; the entire shape of the curve between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> contributes to the answer.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-area-under-curve" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A bell-shaped density curve with the region between two points a and b shaded, illustrating that the probability a continuous random variable falls between a and b equals the area under the curve over that interval.">
@@ -528,7 +504,7 @@ f(x) = \frac{1}{b - a}, \quad \text{for } a \leq x \leq b.
 <p><span class="math display">\[
 \text{Total area} = (b - a) \cdot \frac{1}{b - a} = 1.
 \]</span></p>
-<p><a href="#fig-uniform-density" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-uniform-density</span></a> shows the general shape of a uniform distribution on the interval <span class="math inline">\([a, b]\)</span>. The curve is a horizontal line at height <span class="math inline">\(f(x) = \frac{1}{b-a}\)</span> across the entire interval, and it drops to 0 outside of <span class="math inline">\([a, b]\)</span>, indicating that values outside that range are impossible. The shaded rectangle represents the total probability, which equals the area of the rectangle — width, <span class="math inline">\((b-a)\)</span>, times height, <span class="math inline">\(\frac{1}{b-a}\)</span> — confirming that the total area under the curve is exactly 1, as required for any valid probability density function.</p>
+<p><a href="#fig-uniform-density" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> shows the general shape of a uniform distribution on the interval <span class="math inline">\([a, b]\)</span>. The curve is a horizontal line at height <span class="math inline">\(f(x) = \frac{1}{b-a}\)</span> across the entire interval, and it drops to 0 outside of <span class="math inline">\([a, b]\)</span>, indicating that values outside that range are impossible. The shaded rectangle represents the total probability, which equals the area of the rectangle — width, <span class="math inline">\((b-a)\)</span>, times height, <span class="math inline">\(\frac{1}{b-a}\)</span> — confirming that the total area under the curve is exactly 1, as required for any valid probability density function.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-uniform-density" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Density curve for a uniform distribution from a to b. The curve is a horizontal rectangle with constant height f(x) = 1/(b-a) across the entire interval [a, b], and zero outside that interval. The shaded region illustrates that all values are equally likely.">
@@ -1351,7 +1327,7 @@ Figure&nbsp;6.13: Dialog and graph of the normal distribution showing the area t
 <li>Approximately bell-shaped</li>
 <li>Free from extreme outliers</li>
 </ul>
-<p>A histogram, as shown in <a href="#fig-histogram-shapes" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-histogram-shapes</span></a>, that is strongly right-skewed, left-skewed, bimodal, or heavily influenced by extreme values suggests the data may not come from a normal distribution.</p>
+<p>A histogram, as shown in <a href="#fig-histogram-shapes" class="quarto-xref">Figure&nbsp;<span>6.14</span></a>, that is strongly right-skewed, left-skewed, bimodal, or heavily influenced by extreme values suggests the data may not come from a normal distribution.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-histogram-shapes" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Four histograms arranged in a two by two grid. The top left histogram is roughly symmetric and bell-shaped with a single peak, consistent with a normal distribution. The top right histogram is strongly right-skewed, with a tall bar on the left and a long tail extending to the right. The bottom left histogram is bimodal, showing two distinct peaks separated by a dip. The bottom right histogram is roughly bell-shaped in the main body but has a small cluster of extreme values far to the right, representing outliers.">
@@ -1367,7 +1343,7 @@ Figure&nbsp;6.14: Four histogram shapes: approximately normal (top left), right-
 </div>
 </div>
 <p><strong>2. Normal Quantile Plot (Normal Probability Plot)</strong></p>
-<p>A <strong>normal quantile plot</strong> (also called a Q-Q plot) compares the actual data values against the values we would expect if the data were perfectly normal. If the data follow a normal distribution, the points will fall close to a <strong>straight line</strong>. Departures from that line — especially S-shaped curves, strong bends, or systematic patterns — suggest the data are not well-described by a normal model. <a href="#fig-qq-plots-comparison" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-qq-plots-comparison</span></a> illustrates three common patterns you may encounter: data that closely follow the reference line, data that curve away from the line in an S-shape, and data that mostly follow the line but contain one or two points that break away from it.</p>
+<p>A <strong>normal quantile plot</strong> (also called a Q-Q plot) compares the actual data values against the values we would expect if the data were perfectly normal. If the data follow a normal distribution, the points will fall close to a <strong>straight line</strong>. Departures from that line — especially S-shaped curves, strong bends, or systematic patterns — suggest the data are not well-described by a normal model. <a href="#fig-qq-plots-comparison" class="quarto-xref">Figure&nbsp;<span>6.15</span></a> illustrates three common patterns you may encounter: data that closely follow the reference line, data that curve away from the line in an S-shape, and data that mostly follow the line but contain one or two points that break away from it.</p>
 <p><strong>Guidelines for interpretation:</strong></p>
 <ul>
 <li>Points close to a line → consistent with normality</li>
@@ -1447,7 +1423,7 @@ Figure&nbsp;6.15: Normal probability plots with 95% confidence bounds for random
 </div>
 </div>
 <div id="exm-eruption-times" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.8 (Kiama Blowhole Eruption Times)</strong></span> The dataset <span class="data">Blowhole_eruptions</span> contains times (in seconds) between eruptions of a blowhole on the coast of Australia. The data in <a href="#tbl-Eruption" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Eruption</span></a> are times in seconds between eruptions (“Kiama blowhole eruptions,” 2013). A complete description of the variables is provided in the <a href="#code-book-class">dataset code book</a> that follows.</p>
+<p><span class="theorem-title"><strong>Example 6.8 (Kiama Blowhole Eruption Times)</strong></span> The dataset <span class="data">Blowhole_eruptions</span> contains times (in seconds) between eruptions of a blowhole on the coast of Australia. The data in <a href="#tbl-Eruption" class="quarto-xref">Table&nbsp;<span>6.1</span></a> are times in seconds between eruptions (“Kiama blowhole eruptions,” 2013). A complete description of the variables is provided in the <a href="#code-book-class">dataset code book</a> that follows.</p>
 <ol type="a">
 <li>State the random variable</li>
 <li>Draw a density plot overlay of a histogram of the data.</li>
@@ -1531,7 +1507,7 @@ Code book for Class Blowhole_eruptions Dataset
 <div class="callout-body-container callout-body">
 <ol type="a">
 <li>Let <span class="math inline">\(X =\)</span> time (in seconds) between eruptions of the Kiama blowhole.</li>
-<li>It was shown in Chapter 2 <a href="#exm-drawing-a-histogram-density-plot">Example</a> how to create a density plot overlay of a histgram in Rguroo. The histogram of eruption times and dialog box are shown in <a href="#fig-eruption-histogram" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-eruption-histogram</span></a>.</li>
+<li>It was shown in Chapter 2 <a href="#exm-drawing-a-histogram-density-plot">Example</a> how to create a density plot overlay of a histgram in Rguroo. The histogram of eruption times and dialog box are shown in <a href="#fig-eruption-histogram" class="quarto-xref">Figure&nbsp;<span>6.16</span></a>.</li>
 </ol>
 <div class="cell">
 <div id="fig-eruption-histogram" class="cell quarto-float quarto-figure quarto-figure-center anchored">
@@ -1637,7 +1613,7 @@ Figure&nbsp;6.18: Normal probability plot of Kiama Blowhole eruption times.
 </div>
 </div>
 </div>
-<p><a href="#fig-qqplot-erup" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-qqplot-erup</span></a> shows the normal probability plot of the eruption times. The points deviate from the straight reference line, indicating that the data are not normally distributed.</p>
+<p><a href="#fig-qqplot-erup" class="quarto-xref">Figure&nbsp;<span>6.18</span></a> shows the normal probability plot of the eruption times. The points deviate from the straight reference line, indicating that the data are not normally distributed.</p>
 <ol start="4" type="a">
 <li>The histogram and normal probability plot show that the eruption times are not consistent with a normal distribution. The data are right-skewed, so a normal model is not appropriate for this dataset.</li>
 </ol>
@@ -1645,7 +1621,7 @@ Figure&nbsp;6.18: Normal probability plot of Kiama Blowhole eruption times.
 </div>
 </div>
 <div id="exm-cholesterol-data" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6.9 (Cholesterol Data)</strong></span> The dataset <span class="data">cholesterol</span> was collected on patients four days after having a heart attack. The data is in <a href="#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Cholesterol</span></a>.</p>
+<p><span class="theorem-title"><strong>Example 6.9 (Cholesterol Data)</strong></span> The dataset <span class="data">cholesterol</span> was collected on patients four days after having a heart attack. The data is in <a href="mean inference.html#tbl-Cholesterol" class="quarto-xref">Table&nbsp;<span>10.2</span></a>.</p>
 <ol type="a">
 <li>Create a density plot overlay of the histogram of the day 4 cholesterol values and describe the shape.</li>
 <li>Create a normal probability plot. Do the points fall close to a line?</li>
@@ -1666,7 +1642,7 @@ Figure&nbsp;6.18: Normal probability plot of Kiama Blowhole eruption times.
 <div class="callout-body-container callout-body">
 <ol type="a">
 <li><p>Let <span class="math inline">\(X =\)</span> day 4 cholesterol levels measured in mg/dL</p></li>
-<li><p>The histogram of day 4 cholesterol levels with the density overlay is shown in <a href="#fig-cholesterol-hist" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-cholesterol-hist</span></a>.</p></li>
+<li><p>The histogram of day 4 cholesterol levels with the density overlay is shown in <a href="#fig-cholesterol-hist" class="quarto-xref">Figure&nbsp;<span>6.19</span></a>.</p></li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
@@ -1684,7 +1660,7 @@ Figure&nbsp;6.19: Histogram of day 4 cholesterol levels
 </div>
 <p>The density plot of day 4 cholesterol levels looks roughly bell-shaped and symmetric.</p>
 <ol start="3" type="a">
-<li>The normal probability plot of day 4 cholesterol levels is shown in <a href="#fig-cholesterol-qqplot" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-cholesterol-qqplot</span></a>.</li>
+<li>The normal probability plot of day 4 cholesterol levels is shown in <a href="#fig-cholesterol-qqplot" class="quarto-xref">Figure&nbsp;<span>6.20</span></a>.</li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
@@ -1711,7 +1687,7 @@ Figure&nbsp;6.20: QQ plot of day 4 cholesterol levels
 <section id="homework-for-section-6.4" class="level3" data-number="6.4.2">
 <h3 data-number="6.4.2" class="anchored" data-anchor-id="homework-for-section-6.4"><span class="header-section-number">6.4.2</span> Homework for Section 6.4</h3>
 <ol type="1">
-<li>The size of fish is very important to commercial fishing. A study conducted in 2012 collected the lengths of Atlantic cod caught in nets in Karlskrona (Ovegard, Berndt &amp; Lunneryd, 2012). Data based on information from the study is in <a href="#tbl-Cod" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Cod</span></a>. Determine if the data is from a population that is normally distributed.</li>
+<li>The size of fish is very important to commercial fishing. A study conducted in 2012 collected the lengths of Atlantic cod caught in nets in Karlskrona (Ovegard, Berndt &amp; Lunneryd, 2012). Data based on information from the study is in <a href="#tbl-Cod" class="quarto-xref">Table&nbsp;<span>6.2</span></a>. Determine if the data is from a population that is normally distributed.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Cod</span>.</p>
@@ -1757,7 +1733,7 @@ Table&nbsp;6.2: Atlantic Cod Lengths
 </div>
 </div>
 <ol start="2" type="1">
-<li>The WHO MONICA Project collected blood pressure data for people in China (Kuulasmaa, Hense &amp; Tolonen, 1998). Data based on information from the study is in <a href="#tbl-BP" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-BP</span></a>. Determine if the data is from a population that is normally distributed.</li>
+<li>The WHO MONICA Project collected blood pressure data for people in China (Kuulasmaa, Hense &amp; Tolonen, 1998). Data based on information from the study is in <a href="#tbl-BP" class="quarto-xref">Table&nbsp;<span>6.3</span></a>. Determine if the data is from a population that is normally distributed.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">BP</span>.</p>
@@ -1803,7 +1779,7 @@ Table&nbsp;6.3: Blood Pressure Values for People in China
 </div>
 </div>
 <ol start="3" type="1">
-<li>Annual rainfalls for Sydney, Australia are given in <a href="#tbl-Annual" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-Annual</span></a> (“Annual maximums of,” 2013). Can you assume rainfall is normally distributed?</li>
+<li>Annual rainfalls for Sydney, Australia are given in <a href="#tbl-Annual" class="quarto-xref">Table&nbsp;<span>6.4</span></a> (“Annual maximums of,” 2013). Can you assume rainfall is normally distributed?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
 <p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Annual</span>.</p>
