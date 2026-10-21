@@ -144,6 +144,12 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./getting_started_with_rguroo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Rguroo</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Statistical Basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Statistical Basics</span></span></a>
   </div>
@@ -216,8 +222,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./chi_square_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">TBD</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./References.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">References</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">References</span></span></a>
   </div>
 </li>
     </ul>
@@ -321,18 +333,13 @@ window.Quarto = {
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Open the <strong>Data</strong> toolbox in Rguroo.<br>
-</li>
-<li>From the <span class="dpd">Data Import</span> dropdown, select <span class="fun">Dataset Repository</span>.<br>
-</li>
-<li>In the top search box, type <span class="typein">kozak</span>, then select the <span class="repo">Statistics Using Technology – Kozak</span> repository.<br>
-</li>
-<li>In the middle search box, type the first few letters of the dataset name, and choose your desired dataset name that appears in the lower panel.<br>
-</li>
-<li>Click the <span class="button">Import</span>. The dataset will be imported to your Rguroo account.</li>
-<li>Click <span class="button">Close</span> to exit the dialog.<br>
-</li>
-<li>To view the dataset, double-click the dataset name under the <strong>Data</strong> toolbox list.</li>
+<li>Open the <strong>Data</strong> toolbox in Rguroo.</li>
+<li>From the <span class="dpd">Data Import</span> dropdown, select <span class="fun">Dataset Repository</span>.</li>
+<li>In the <span class="des">Quick Filter</span> textbox, type <span class="typein">stats with rguroo</span>, followed by a space. Then begin typing the dataset name. The results update as you type, so you can stop typing as soon as the dataset appears in the results panel.</li>
+<li>Select the dataset from the results panel.</li>
+<li>Click <span class="button">Import</span> to import the dataset into your Rguroo account.</li>
+<li>Click <span class="button">Close</span> to exit the dialog.</li>
+<li>To view the dataset, double-click its name in the <strong>Data</strong> toolbox list.</li>
 </ol>
 </div>
 </div>
@@ -539,10 +546,10 @@ H_a: \mu \neq 26.8
 <li>Describe the parameter <span class="math inline">\(\mu\)</span> in words.</li>
 <li>Write the null and alternative hypotheses.</li>
 </ol>
-</div>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">PalmerPenguins_Adelie</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">PalmerPenguins_Adelie</span>.</p>
 <p><strong>Code book for Dataset PalmerPenguins_Adelie is given <a href="#code-book-palmerpenguins-adelie">here</a>.</strong></p>
+</div>
 </div>
 <div id="code-book-palmerpenguins-adelie" class="codebook callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
@@ -700,7 +707,7 @@ H_a: \mu \neq 188
 <li><p><strong>Maintaining Balance</strong> Maintaining balance may become harder with age. In a study of steadiness, elderly subjects stood on a force platform and reacted to an unpredictable noise while the platform measured how much they swayed, in millimeters, in the forward/backward direction. The mean forward sway of younger people under the same conditions is 18.125 mm. A researcher wants to determine whether the elderly sway <em>more</em> than this value, on average.</p></li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">sway_elderly</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">sway_elderly</span>.</p>
 <p><strong>Code book for Dataset sway_elderly is given <a href="#code-book-sway-elderly">here</a>.</strong></p>
 </div>
 </section>
@@ -999,7 +1006,7 @@ H_a: \mu \neq 4.87
 \]</span> where <span class="math inline">\(\mu\)</span> denotes the mean CO2 emission, in metric tons per capita, across countries in 2010. Import the <span class="data">Emission</span> dataset into Rguroo from the book’s Rguroo dataset repository, use the variable <span class="var">y2010</span>, and obtain the sample size <span class="math inline">\(n\)</span> and sample standard deviation <span class="math inline">\(s\)</span> from Rguroo’s summary statistics. The first six rows of the dataset are shown in <a href="#tbl-emission" class="quarto-xref">Table&nbsp;<span>10.1</span></a>. What is the null distribution of <span class="math inline">\(\bar{X}\)</span>?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Emission</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Emission</span>.</p>
 <p><strong>Code book for Dataset Emission is given <a href="#code-book-emission">below</a>.</strong></p>
 </div>
 <div id="code-book-emission" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -1083,7 +1090,7 @@ H_a: \mu \neq 1.0
 \]</span> where <span class="math inline">\(\mu\)</span> denotes the mean standardized mercury concentration, in mg/kg, across Florida lakes. Import the <span class="data">Mercury</span> dataset into Rguroo from the book’s Rguroo dataset repository, use the variable <span class="var">mercury</span>, and obtain the sample standard deviation <span class="math inline">\(s\)</span> from Rguroo’s summary statistics. The first six rows of the dataset are shown in <a href="#tbl-mercury" class="quarto-xref">Table&nbsp;<span>10.2</span></a>. What is the null distribution of <span class="math inline">\(\bar{X}\)</span>?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Mercury</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Mercury</span>.</p>
 <p><strong>Code book for Dataset Mercury is given <a href="#code-book-mercury">below</a>.</strong></p>
 </div>
 <div id="code-book-mercury" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -1194,7 +1201,7 @@ H_a: \mu \neq 10
 <li>Now suppose instead that <span class="math inline">\(\sigma\)</span> is unknown and must be estimated by the sample standard deviation <span class="math inline">\(s\)</span> obtained from Rguroo. What is the null distribution of <span class="math inline">\(\bar{X}\)</span>?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Sugar_children</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Sugar_children</span>.</p>
 <p><strong>Code book for Dataset Sugar_children is given <a href="#code-book-sugar">below</a>.</strong></p>
 </div>
 <div id="code-book-sugar" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -1300,7 +1307,7 @@ H_a: \mu &gt; 97
 \]</span> where <span class="math inline">\(\mu\)</span> denotes the mean pulse rate after running for one minute, in beats per minute, among females who drink alcohol. Suppose that, based on a large body of exercise-physiology research, the population standard deviation of post-exercise pulse rate among young women is known to be <span class="math inline">\(\sigma = 9\)</span> beats per minute. Import the <span class="data">Pulse_females</span> dataset into Rguroo from the book’s Rguroo dataset repository and use the variable <span class="var">pulse_after</span> to obtain the sample size <span class="math inline">\(n.\)</span> The first six rows of the dataset are shown in <a href="#tbl-pulse-females" class="quarto-xref">Table&nbsp;<span>10.4</span></a>. What is the null distribution of <span class="math inline">\(\bar{X}\)</span>?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Pulse_females</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Pulse_females</span>.</p>
 <p><strong>Code book for Dataset Pulse_females is given <a href="#code-book-pulse-females">below</a>.</strong></p>
 </div>
 <div id="code-book-pulse-females" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -1429,7 +1436,7 @@ H_a: \mu &lt; 60.29
 \]</span> where <span class="math inline">\(\mu\)</span> denotes the mean economic dynamism of middle-income countries. Import the <span class="data">Middle_economies</span> dataset into Rguroo from the book’s Rguroo dataset repository, use the variable <span class="var">ED</span>, and obtain the sample size <span class="math inline">\(n\)</span> and sample standard deviation <span class="math inline">\(s\)</span> from Rguroo’s summary statistics. The first six rows of the dataset are shown in <a href="#tbl-middle-economies" class="quarto-xref">Table&nbsp;<span>10.5</span></a>. What is the null distribution of <span class="math inline">\(\bar{X}\)</span>?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Middle_economies</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Middle_economies</span>.</p>
 <p><strong>Code book for Dataset Middle_economies is given <a href="#code-book-middle-economies">below</a>.</strong></p>
 </div>
 <div id="code-book-middle-economies" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -1553,7 +1560,7 @@ H_a: \mu \neq 80.1
 <li>Now suppose instead that <span class="math inline">\(\sigma\)</span> is unknown and must be estimated by the sample standard deviation <span class="math inline">\(s\)</span> obtained from Rguroo. What is the null distribution of <span class="math inline">\(\bar{X}\)</span>?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Fert_prenatal</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Fert_prenatal</span>.</p>
 <p><strong>Code book for Dataset Fert_prenatal is given <a href="#code-book-fert-prenatal">below</a>.</strong></p>
 </div>
 <div id="code-book-fert-prenatal" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -1643,7 +1650,7 @@ H_a: \mu &gt; 18.125
 \]</span> where <span class="math inline">\(\mu\)</span> denotes the mean forward/backward sway, in millimeters, among elderly subjects. Suppose that, based on extensive prior balance research using this force-platform protocol, the population standard deviation of forward/backward sway among elderly individuals is known to be <span class="math inline">\(\sigma = 6\)</span> mm. Import the <span class="data">sway_elderly</span> dataset into Rguroo from the book’s Rguroo dataset repository and use the variable <span class="var">FBSway</span> to obtain the sample size <span class="math inline">\(n.\)</span> The first six rows of the dataset are shown in <a href="#tbl-sway-elderly" class="quarto-xref">Table&nbsp;<span>10.7</span></a>. What is the null distribution of <span class="math inline">\(\bar{X}\)</span>?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">sway_elderly</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">sway_elderly</span>.</p>
 <p><strong>Code book for Dataset sway_elderly is given <a href="#code-book-sway-elderly">below</a>.</strong></p>
 </div>
 <div id="code-book-sway-elderly" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -2187,8 +2194,11 @@ H_a: \mu \neq 188
 <li>Use Rguroo to obtain the p-value, interpret it in the context of the problem, and state whether you reject or fail to reject <span class="math inline">\(H_0\)</span> at <span class="math inline">\(\alpha = 0.05\)</span> significane level.</li>
 <li>Give your decision.</li>
 </ol>
+<div tabindex="0" style="width:85%; margin:auto;">
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">PalmerPenguins_Adelie</span>.</p>
+<p><strong>Code book for Dataset PalmerPenguins_Adelie is given <a href="#code-book-palmerpenguins-adelie">here</a>.</strong></p>
 </div>
-<p>See the codebook for the dataset <a href="#code-book-palmerpenguins">here</a></p>
+</div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -2296,7 +2306,7 @@ H_a: \mu \neq 4.87
 <li>Give your overall conclusion.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Emission</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Emission</span>.</p>
 <p><strong>Code book for Dataset Emission is given <a href="#code-book-emission">here</a>.</strong></p>
 </div>
 <ol start="2" type="1">
@@ -2314,7 +2324,7 @@ H_a: \mu \neq 1.0
 <li>Give your overall conclusion.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Mercury</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Mercury</span>.</p>
 <p><strong>Code book for Dataset Mercury is given <a href="#code-book-mercury">here</a>.</strong></p>
 </div>
 <ol start="3" type="1">
@@ -2330,7 +2340,7 @@ H_a: \mu \neq 10
 <li>Now suppose instead that <span class="math inline">\(\sigma\)</span> is unknown and must be estimated by the sample standard deviation <span class="math inline">\(s\)</span> obtained from Rguroo. State the null distribution of <span class="math inline">\(\bar{X},\)</span> obtain the p-value using Rguroo, and give your conclusion.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Sugar_children</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Sugar_children</span>.</p>
 <p><strong>Code book for Dataset Sugar_children is given <a href="#code-book-sugar">here</a>.</strong></p>
 </div>
 <ol start="4" type="1">
@@ -2348,7 +2358,7 @@ H_a: \mu &gt; 97
 <li>State your decision at a significance level of <span class="math inline">\(\alpha = 0.05,\)</span> and separately at <span class="math inline">\(\alpha = 0.01.\)</span> Explain why the two significance levels lead to different decisions, and what this illustrates about the role of <span class="math inline">\(\alpha\)</span> in a hypothesis test.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Pulse_females</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Pulse_females</span>.</p>
 <p><strong>Code book for Dataset Pulse_females is given <a href="#code-book-pulse-females">here</a>.</strong></p>
 </div>
 <ol start="5" type="1">
@@ -2366,7 +2376,7 @@ H_a: \mu &lt; 60.29
 <li>Give your overall conclusion.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Middle_economies</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Middle_economies</span>.</p>
 <p><strong>Code book for Dataset Middle_economies is given <a href="#code-book-middle-economies">here</a>.</strong></p>
 </div>
 <ol start="6" type="1">
@@ -2382,7 +2392,7 @@ H_a: \mu \neq 80.1
 <li>Now suppose instead that <span class="math inline">\(\sigma\)</span> is unknown and must be estimated by the sample standard deviation <span class="math inline">\(s\)</span> obtained from Rguroo. State the null distribution of <span class="math inline">\(\bar{X},\)</span> obtain the p-value using Rguroo, and give your conclusion.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Fert_prenatal</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Fert_prenatal</span>.</p>
 <p><strong>Code book for Dataset Fert_prenatal is given <a href="#code-book-fert-prenatal">here</a>.</strong></p>
 </div>
 <ol start="7" type="1">
@@ -2400,7 +2410,7 @@ H_a: \mu &gt; 18.125
 <li>Give your overall conclusion.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">sway_elderly</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">sway_elderly</span>.</p>
 <p><strong>Code book for Dataset sway_elderly is given <a href="#code-book-sway-elderly">here</a>.</strong></p>
 </div>
 </section>
@@ -2830,8 +2840,11 @@ H_a: \mu \neq 188
 <li>Using a significance level of <span class="math inline">\(\alpha = 0.05,\)</span> use Rguroo’s <span class="fun">Mean Inference</span> function to obtain the critical region. Interpret the critical region in the context of the problem, and using the observed value, state whether you reject or fail to reject <span class="math inline">\(H_0.\)</span></li>
 <li>Give your overall conclusion.</li>
 </ol>
+<div tabindex="0" style="width:85%; margin:auto;">
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">PalmerPenguins_Adelie</span>.</p>
+<p><strong>Code book for Dataset PalmerPenguins_Adelie is given <a href="#code-book-palmerpenguins-adelie">here</a>.</strong></p>
 </div>
-<p>See the codebook for the dataset <a href="#code-book-palmerpenguins">here</a></p>
+</div>
 <div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-52-contents" aria-controls="callout-52" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -2930,7 +2943,7 @@ H_a: \mu \neq 4.87
 <li>Give your overall conclusion.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Emission</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Emission</span>.</p>
 <p><strong>Code book for Dataset Emission is given <a href="#code-book-emission">here</a>.</strong></p>
 </div>
 <ol start="2" type="1">
@@ -2947,7 +2960,7 @@ H_a: \mu \neq 1.0
 <li>Give your overall conclusion.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Mercury</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Mercury</span>.</p>
 <p><strong>Code book for Dataset Mercury is given <a href="#code-book-mercury">here</a>.</strong></p>
 </div>
 <ol start="3" type="1">
@@ -2963,7 +2976,7 @@ H_a: \mu \neq 10
 <li>Now suppose instead that <span class="math inline">\(\sigma\)</span> is unknown and must be estimated by the sample standard deviation <span class="math inline">\(s\)</span> obtained from Rguroo. State the null distribution of <span class="math inline">\(\bar{X},\)</span> obtain the critical region using Rguroo, and give your conclusion.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Sugar_children</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Sugar_children</span>.</p>
 <p><strong>Code book for Dataset Sugar_children is given <a href="#code-book-sugar">here</a>.</strong></p>
 </div>
 <ol start="4" type="1">
@@ -2993,7 +3006,7 @@ H_a: \mu &lt; 60.29
 <li>Give your overall conclusion.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Middle_economies</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Middle_economies</span>.</p>
 <p><strong>Code book for Dataset Middle_economies is given <a href="#code-book-middle-economies">here</a>.</strong></p>
 </div>
 <ol start="6" type="1">
@@ -3009,7 +3022,7 @@ H_a: \mu \neq 80.1
 <li>Now suppose instead that <span class="math inline">\(\sigma\)</span> is unknown and must be estimated by the sample standard deviation <span class="math inline">\(s\)</span> obtained from Rguroo. State the null distribution of <span class="math inline">\(\bar{X},\)</span> obtain the critical region using Rguroo, and give your conclusion.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Fert_prenatal</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Fert_prenatal</span>.</p>
 <p><strong>Code book for Dataset Fert_prenatal is given <a href="#code-book-fert-prenatal">here</a>.</strong></p>
 </div>
 <ol start="7" type="1">
@@ -3026,7 +3039,7 @@ H_a: \mu &gt; 18.125
 <li>Give your overall conclusion.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">sway_elderly</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">sway_elderly</span>.</p>
 <p><strong>Code book for Dataset sway_elderly is given <a href="#code-book-sway-elderly">here</a>.</strong></p>
 </div>
 </section>
@@ -3660,7 +3673,7 @@ Rguroo Output: Flipper Length of Adélie Penguins
 <li>Using the confidence interval, determine whether the mean CO2 emission in 2010 differs from the 2004 mean of 4.87 metric tons per capita. Is your conclusion consistent with a two-sided test of <span class="math inline">\(H_0: \mu = 4.87\)</span> at the <span class="math inline">\(\alpha = 0.01\)</span> significance level?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Emission</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Emission</span>.</p>
 <p><strong>Code book for Dataset Emission is given <a href="#code-book-emission">here</a>.</strong></p>
 </div>
 <ol start="2" type="1">
@@ -3673,7 +3686,7 @@ Rguroo Output: Flipper Length of Adélie Penguins
 <li>Using the confidence interval, determine whether the mean mercury concentration across Florida lakes differs from the allowable amount of 1.0 mg/kg. Is your conclusion consistent with a two-sided test of <span class="math inline">\(H_0: \mu = 1.0\)</span> at the <span class="math inline">\(\alpha = 0.10\)</span> significance level?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Mercury</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Mercury</span>.</p>
 <p><strong>Code book for Dataset Mercury is given <a href="#code-book-mercury">here</a>.</strong></p>
 </div>
 <ol start="3" type="1">
@@ -3686,7 +3699,7 @@ Rguroo Output: Flipper Length of Adélie Penguins
 <li>Using each confidence interval, determine whether the mean amount of sugar in children’s cereal differs from the 10 g found in a glazed donut. Is your conclusion consistent with a two-sided test of <span class="math inline">\(H_0: \mu = 10\)</span> at the <span class="math inline">\(\alpha = 0.05\)</span> significance level in each case? Compare the two intervals — which is narrower, and why?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Sugar_children</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Sugar_children</span>.</p>
 <p><strong>Code book for Dataset Sugar_children is given <a href="#code-book-sugar">here</a>.</strong></p>
 </div>
 <ol start="4" type="1">
@@ -3699,7 +3712,7 @@ Rguroo Output: Flipper Length of Adélie Penguins
 <li>Using the confidence interval, determine whether the mean pulse rate after running among females who drink alcohol differs from 97 beats per minute. Note that the test in the previous section was one-sided (<span class="math inline">\(H_a: \mu &gt; 97\)</span>), while the confidence interval corresponds to a two-sided test; comment on whether the two conclusions agree and why they may differ.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Pulse_females</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Pulse_females</span>.</p>
 <p><strong>Code book for Dataset Pulse_females is given <a href="#code-book-pulse-females">here</a>.</strong></p>
 </div>
 <ol start="5" type="1">
@@ -3712,7 +3725,7 @@ Rguroo Output: Flipper Length of Adélie Penguins
 <li>Using the confidence interval, determine whether the mean economic dynamism of middle-income countries differs from the high-income mean of 60.29. Note that the test in the previous section was one-sided (<span class="math inline">\(H_a: \mu &lt; 60.29\)</span>), while the confidence interval corresponds to a two-sided test; comment on whether the two conclusions agree and why they may differ.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Middle_economies</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Middle_economies</span>.</p>
 <p><strong>Code book for Dataset Middle_economies is given <a href="#code-book-middle-economies">here</a>.</strong></p>
 </div>
 <ol start="6" type="1">
@@ -3725,7 +3738,7 @@ Rguroo Output: Flipper Length of Adélie Penguins
 <li>Using each confidence interval, determine whether the mean percentage of women receiving prenatal care in 2009 differs from the 1999 mean of 80.1%. Is your conclusion consistent with a two-sided test of <span class="math inline">\(H_0: \mu = 80.1\)</span> at the <span class="math inline">\(\alpha = 0.05\)</span> significance level in each case? Compare the two intervals — which is narrower, and why?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Fert_prenatal</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Fert_prenatal</span>.</p>
 <p><strong>Code book for Dataset Fert_prenatal is given <a href="#code-book-fert-prenatal">here</a>.</strong></p>
 </div>
 <ol start="7" type="1">
@@ -3738,7 +3751,7 @@ Rguroo Output: Flipper Length of Adélie Penguins
 <li>Using the confidence interval, determine whether the mean sway among elderly subjects differs from 18.125 mm. Note that the test in the previous section was one-sided (<span class="math inline">\(H_a: \mu &gt; 18.125\)</span>), while the confidence interval corresponds to a two-sided test; comment on whether the two conclusions agree and why they may differ.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">sway_elderly</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">sway_elderly</span>.</p>
 <p><strong>Code book for Dataset sway_elderly is given <a href="#code-book-sway-elderly">here</a>.</strong></p>
 </div>
 </section>
@@ -3836,7 +3849,7 @@ Figure&nbsp;10.23: Shapiro–Wilk test results indicating that the flipper lengt
 <li>Based on the plot and the test together, is the normality assumption reasonable for the CO2 emission data?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Emission</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Emission</span>.</p>
 <p><strong>Code book for Dataset Emission is given <a href="#code-book-emission">here</a>.</strong></p>
 </div>
 <ol start="2" type="1">
@@ -3848,7 +3861,7 @@ Figure&nbsp;10.23: Shapiro–Wilk test results indicating that the flipper lengt
 <li>Based on the plot and the test together, is the normality assumption reasonable for the mercury data?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Mercury</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Mercury</span>.</p>
 <p><strong>Code book for Dataset Mercury is given <a href="#code-book-mercury">here</a>.</strong></p>
 </div>
 <ol start="3" type="1">
@@ -3860,7 +3873,7 @@ Figure&nbsp;10.23: Shapiro–Wilk test results indicating that the flipper lengt
 <li>Based on the plot and the test together, is the normality assumption reasonable for the economic dynamism data?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Middle_economies</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Middle_economies</span>.</p>
 <p><strong>Code book for Dataset Middle_economies is given <a href="#code-book-middle-economies">here</a>.</strong></p>
 </div>
 </section>
@@ -3916,7 +3929,7 @@ Large-Sample Mean Inference
 <li>Compare this large-sample interval to the <span class="math inline">\(t\)</span>-based interval you constructed for these data in the homework for <a href="#sec-confidence-interval-one-mean" class="quarto-xref"><span>Section 10.5</span></a>. How close are the two intervals, and why?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Emission</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Emission</span>.</p>
 <p><strong>Code book for Dataset Emission is given <a href="#code-book-emission">here</a>.</strong></p>
 </div>
 <ol start="2" type="1">
@@ -3929,7 +3942,7 @@ Large-Sample Mean Inference
 <li>Compare your result to the <span class="math inline">\(t\)</span>-based test you carried out for these data in the homework for <a href="#sec-null-distribution-mean" class="quarto-xref"><span>Section 10.2</span></a> and <a href="#sec-pvalue-mean" class="quarto-xref"><span>Section 10.3</span></a>. Do the two methods lead to the same conclusion? Explain why this is expected for a sample of this size.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Mercury</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Mercury</span>.</p>
 <p><strong>Code book for Dataset Mercury is given <a href="#code-book-mercury">here</a>.</strong></p>
 </div>
 <ol start="3" type="1">
@@ -3942,7 +3955,7 @@ Large-Sample Mean Inference
 <li>Compare your result to the test you carried out for these data in the homework for <a href="#sec-null-distribution-mean" class="quarto-xref"><span>Section 10.2</span></a> and <a href="#sec-pvalue-mean" class="quarto-xref"><span>Section 10.3</span></a>. Do the two methods lead to the same conclusion?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Pulse_females</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Pulse_females</span>.</p>
 <p><strong>Code book for Dataset Pulse_females is given <a href="#code-book-pulse-females">here</a>.</strong></p>
 </div>
 <ol start="4" type="1">
@@ -3955,7 +3968,7 @@ Large-Sample Mean Inference
 <li>Compare your result to the <span class="math inline">\(t\)</span>-based test you carried out for these data in the homework for <a href="#sec-null-distribution-mean" class="quarto-xref"><span>Section 10.2</span></a> and <a href="#sec-pvalue-mean" class="quarto-xref"><span>Section 10.3</span></a>. Do the two methods lead to the same conclusion?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Middle_economies</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Middle_economies</span>.</p>
 <p><strong>Code book for Dataset Middle_economies is given <a href="#code-book-middle-economies">here</a>.</strong></p>
 </div>
 </section>
@@ -4236,8 +4249,11 @@ D=\text{After}-\text{Before}.
 <li>Report the p-value from the Rguroo output and state whether you would reject <span class="math inline">\(H_0\)</span> at the <span class="math inline">\(\alpha=0.05\)</span> significance level.</li>
 <li>Interpret the results in the context of the exercise program and blood pressure.</li>
 </ol>
+<div tabindex="0" style="width:85%; margin:auto;">
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">BP_Paired_wide</span>.</p>
+<p><strong>Code book for Dataset BP_Paired_wide is given <a href="#code-book-bp-pairs-wide">here</a>.</strong></p>
 </div>
-<p>To answer this question, import the <span class="data">BP_Paired_wide</span> dataset into Rguroo from the book’s Rguroo dataset repository.</p>
+</div>
 <div id="code-book-bp-pairs-wide" class="codebook callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-71-contents" aria-controls="callout-71" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -4638,7 +4654,7 @@ Rguroo Output: SAT Prep
 <li>Interpret the results in the context of cholesterol levels and time since heart attack.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Cholesterol</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Cholesterol</span>.</p>
 <p><strong>Code book for Dataset Cholesterol is given <a href="#code-book-cholesterol">here</a>.</strong></p>
 </div>
 <div id="code-book-cholesterol" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -4739,7 +4755,7 @@ Table&nbsp;10.9: Cholesterol Levels After a Heart Attack
 <li>Use the confidence interval to determine whether the mean cholesterol level changes from day 2 to day 4. Is your conclusion consistent with the test in Problem 1?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Cholesterol</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Cholesterol</span>.</p>
 <p><strong>Code book for Dataset Cholesterol is given <a href="#code-book-cholesterol">here</a>.</strong></p>
 </div>
 <ol start="3" type="1">
@@ -4754,7 +4770,7 @@ Table&nbsp;10.9: Cholesterol Levels After a Heart Attack
 <li>Interpret the results in the context of east coast and west coast wholesale fish prices.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Price</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Price</span>.</p>
 <p><strong>Code book for Dataset Price is given <a href="#code-book-price">here</a>.</strong></p>
 </div>
 <div id="code-book-price" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -4851,7 +4867,7 @@ Table&nbsp;10.10: Wholesale Prices of Fish in Dollars
 <li>Use the confidence interval to determine whether the mean wholesale price differs between the two suppliers. Is your conclusion consistent with the test in Problem 3?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Price</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Price</span>.</p>
 <p><strong>Code book for Dataset Price is given <a href="#code-book-price">here</a>.</strong></p>
 </div>
 <ol start="5" type="1">
@@ -4866,7 +4882,7 @@ Table&nbsp;10.10: Wholesale Prices of Fish in Dollars
 <li>Interpret the results in the context of traffic on Friday the 6th versus Friday the 13th.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Traffic</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Traffic</span>.</p>
 <p><strong>Code book for Dataset Traffic is given <a href="#code-book-traffic">here</a>.</strong></p>
 </div>
 <div id="code-book-traffic" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -4986,7 +5002,7 @@ Table&nbsp;10.11: Traffic Counts on Friday the 6th and the 13th
 <li>Use the confidence interval to determine whether the mean number of vehicles differs between the two days. Is your conclusion consistent with the test in Problem 5?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Traffic</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Traffic</span>.</p>
 <p><strong>Code book for Dataset Traffic is given <a href="#code-book-traffic">here</a>.</strong></p>
 </div>
 <ol start="7" type="1">
@@ -5001,7 +5017,7 @@ Table&nbsp;10.11: Traffic Counts on Friday the 6th and the 13th
 <li>Interpret the results in the context of Reiki treatment and pain.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Reiki</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Reiki</span>.</p>
 <p><strong>Code book for Dataset Reiki is given <a href="#code-book-reiki">here</a>.</strong></p>
 </div>
 <div id="code-book-reiki" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -5104,7 +5120,7 @@ Table&nbsp;10.12: Pain Scores Before and After Reiki Treatment
 <li>Use the confidence interval to determine whether Reiki changes mean pain. Note that the test in Problem 7 was one-sided (<span class="math inline">\(H_a: \mu_D &lt; 0\)</span>), while the confidence interval corresponds to a two-sided test; comment on whether the two conclusions agree and why they may differ.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Reiki</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Reiki</span>.</p>
 <p><strong>Code book for Dataset Reiki is given <a href="#code-book-reiki">here</a>.</strong></p>
 </div>
 <ol start="9" type="1">
@@ -5119,7 +5135,7 @@ Table&nbsp;10.12: Pain Scores Before and After Reiki Treatment
 <li>Interpret the results in the context of female labor force participation in 1990 versus 2018.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Labor</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Labor</span>.</p>
 <p><strong>Code book for Dataset Labor is given <a href="#code-book-labor">here</a>.</strong></p>
 </div>
 <div id="code-book-labor" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -5464,7 +5480,7 @@ Table&nbsp;10.13: Female Labor Force Participation Rates
 <li>Use the confidence interval to determine whether the mean participation rate differs between 1990 and 2018. Is your conclusion consistent with the test in Problem 9?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Labor</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Labor</span>.</p>
 <p><strong>Code book for Dataset Labor is given <a href="#code-book-labor">here</a>.</strong></p>
 </div>
 <ol start="11" type="1">
@@ -5479,7 +5495,7 @@ Table&nbsp;10.13: Female Labor Force Participation Rates
 <li>Interpret the results in the context of pulse rate before and after exercise.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Pulse_males</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Pulse_males</span>.</p>
 <p><strong>Code book for Dataset Pulse_males is given <a href="#code-book-pulse-males">here</a>.</strong></p>
 </div>
 <div id="code-book-pulse-males" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -5639,7 +5655,7 @@ Table&nbsp;10.14: Pulse Rates Before and After Exercise for Males Who Drink but 
 <li>Use the confidence interval to determine whether the mean pulse rate differs before and after exercise. Is your conclusion consistent with the test in Problem 11?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Pulse_males</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Pulse_males</span>.</p>
 <p><strong>Code book for Dataset Pulse_males is given <a href="#code-book-pulse-males">here</a>.</strong></p>
 </div>
 </section>
@@ -5880,7 +5896,7 @@ s_p = \sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}}.
 <p>e. State the p-value and determine whether you should reject or fail to reject the null hypothesis.</p>
 <p>f. Interpret the results in the context of the relationship between age and support for legalizing marijuana.</p>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">GSS2024</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this example is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">GSS2024</span>.</p>
 <p><strong>Code book for Dataset GSS2024 is given <a href="#code-book-gss2024">here</a>.</strong></p>
 </div>
 </div>
@@ -6168,7 +6184,7 @@ Choosing a Method for Two Independent Means
 <li>Interpret the results in the context of male and female household incomes.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">nhanes</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">nhanes</span>.</p>
 <p><strong>Code book for Dataset nhanes is given <a href="#code-book-nhanes">here</a>.</strong></p>
 </div>
 <div id="code-book-nhanes" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -6251,7 +6267,7 @@ Table&nbsp;10.16: Household Income and Sex from nhanes
 <li>Use the confidence interval to determine whether the mean incomes differ. Does 0 fall inside the interval, and what does that imply?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">nhanes</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">nhanes</span>.</p>
 <p><strong>Code book for Dataset nhanes is given <a href="#code-book-nhanes">here</a>.</strong></p>
 </div>
 <ol start="3" type="1">
@@ -6266,7 +6282,7 @@ Table&nbsp;10.16: Household Income and Sex from nhanes
 <li>Interpret the results in the context of brain volume and schizophrenia.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Brain</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Brain</span>.</p>
 <p><strong>Code book for Dataset Brain is given <a href="#code-book-brain">here</a>.</strong></p>
 </div>
 <div id="code-book-brain" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -6348,7 +6364,7 @@ Table&nbsp;10.17: Total Brain Volume of Patients
 <li>Note that the test in Problem 3 was one-sided (<span class="math inline">\(H_a: \mu_1 - \mu_2 &lt; 0\)</span>), while the confidence interval corresponds to a two-sided test. Use the confidence interval to determine whether the mean TBV differs between the two groups, and comment on whether this conclusion agrees with the test in Problem 3 and why they may differ.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Brain</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Brain</span>.</p>
 <p><strong>Code book for Dataset Brain is given <a href="#code-book-brain">here</a>.</strong></p>
 </div>
 <ol start="5" type="1">
@@ -6363,7 +6379,7 @@ Table&nbsp;10.17: Total Brain Volume of Patients
 <li>Interpret the results in the context of river lengths and outflow.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Length</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Length</span>.</p>
 <p><strong>Code book for Dataset Length is given <a href="#code-book-length">here</a>.</strong></p>
 </div>
 <div id="code-book-length" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -6453,7 +6469,7 @@ Table&nbsp;10.18: Lengths of South Island Rivers in Kilometers
 <li>Use the confidence interval to determine whether the mean lengths differ. Does 0 fall inside the interval, and what does that imply?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Length</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Length</span>.</p>
 <p><strong>Code book for Dataset Length is given <a href="#code-book-length">here</a>.</strong></p>
 </div>
 <ol start="7" type="1">
@@ -6468,7 +6484,7 @@ Table&nbsp;10.18: Lengths of South Island Rivers in Kilometers
 <li>Interpret the results in the context of infant crying time and handling method.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Crying</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Crying</span>.</p>
 <p><strong>Code book for Dataset Crying is given <a href="#code-book-crying">here</a>.</strong></p>
 </div>
 <div id="code-book-crying" class="codebook callout callout-style-default callout-tip callout-titled">
@@ -6541,7 +6557,7 @@ Table&nbsp;10.19: Crying Time of Infants Given Vitamin K Shots
 </div>
 </div>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Crying</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Crying</span>.</p>
 <p><strong>Code book for Dataset Crying is given <a href="#code-book-crying">here</a>.</strong></p>
 </div>
 <ol start="8" type="1">
@@ -6554,7 +6570,7 @@ Table&nbsp;10.19: Crying Time of Infants Given Vitamin K Shots
 <li>Note that the test in Problem 7 was one-sided (<span class="math inline">\(H_a: \mu_1 - \mu_2 &gt; 0\)</span>), while the confidence interval corresponds to a two-sided test. Use the confidence interval to determine whether the mean crying times differ, and comment on whether this conclusion agrees with the test in Problem 7 and why they may differ.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Crying</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Crying</span>.</p>
 <p><strong>Code book for Dataset Crying is given <a href="#code-book-crying">here</a>.</strong></p>
 </div>
 </section>
@@ -6721,7 +6737,7 @@ Rguroo Output: Large-Sample Household Income Test
 <li>Compare your result to the <span class="math inline">\(t\)</span>-based test you carried out for these data in the homework for <a href="#sec-mean-independent" class="quarto-xref"><span>Section 10.9</span></a>. Do the two methods lead to the same conclusion? Explain why this is expected for samples of this size.</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">nhanes</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">nhanes</span>.</p>
 <p><strong>Code book for Dataset nhanes is given <a href="#code-book-nhanes">here</a>.</strong></p>
 </div>
 <ol start="2" type="1">
@@ -6734,7 +6750,7 @@ Rguroo Output: Large-Sample Household Income Test
 <li>Compare this large-sample interval to the <span class="math inline">\(t\)</span>-based interval you constructed for these data in the homework for <a href="#sec-mean-independent" class="quarto-xref"><span>Section 10.9</span></a>. How close are the two intervals, and why?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">nhanes</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">nhanes</span>.</p>
 <p><strong>Code book for Dataset nhanes is given <a href="#code-book-nhanes">here</a>.</strong></p>
 </div>
 <ol start="3" type="1">
@@ -6747,7 +6763,7 @@ Rguroo Output: Large-Sample Household Income Test
 <li>The worked example <a href="#exm-two-mean-unknown-sigma-ci" class="quarto-xref">Example&nbsp;<span>10.23</span></a> constructed a <span class="math inline">\(t\)</span>-based 95% confidence interval for this same comparison and obtained approximately <span class="math inline">\((1.15,\ 9.34)\)</span> years. Compare your large-sample interval to that result. How close are the two, and why?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">GSS2024</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">GSS2024</span>.</p>
 <p><strong>Code book for Dataset GSS2024 is given <a href="#code-book-gss2024">here</a>.</strong></p>
 </div>
 <ol start="4" type="1">
@@ -6760,7 +6776,7 @@ Rguroo Output: Large-Sample Household Income Test
 <li>Compare your result to the <span class="math inline">\(t\)</span>-based test you carried out for these data in the homework for <a href="#sec-mean-independent" class="quarto-xref"><span>Section 10.9</span></a>. Do the two methods lead to the same conclusion?</li>
 </ol>
 <div tabindex="0" style="width:85%; margin:auto;">
-<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Kozak</span>, with the dataset name <span class="data">Brain</span>.</p>
+<p><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> The dataset for this exercise is available in the Rguroo dataset repository <span class="repo">Intro to Stats with Rguroo</span>, with the dataset name <span class="data">Brain</span>.</p>
 <p><strong>Code book for Dataset Brain is given <a href="#code-book-brain">here</a>.</strong></p>
 </div>
 

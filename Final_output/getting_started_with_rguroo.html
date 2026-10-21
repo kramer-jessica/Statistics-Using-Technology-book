@@ -2,23 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Getting Started with Rguroo – Introductory Statistics: A Conceptual Approach Using Rguroo</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -38,16 +32,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <link href="./Statistical Basics.html" rel="next">
 <link href="./index.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c574c73dd0d0ff61020859ffc61752ee.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -76,11 +69,40 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -188,44 +210,26 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./One Sample Inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">One Sample Inference</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Estimation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estimation</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Two Sample Inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Two Sample Inference</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./Regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./chi_square_inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">TBD</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Chi-Square and ANOVA Tests.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Chi-squared and ANOVA Tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chi-squared and ANOVA Tests</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chi_square_inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">TBD</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./References.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">References</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">References</span></span></a>
   </div>
 </li>
     </ul>
@@ -256,6 +260,36 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#search-replace" id="toc-search-replace" class="nav-link" data-scroll-target="#search-replace">0.5.3 Search and Replace</a></li>
   <li><a href="#sort-filter" id="toc-sort-filter" class="nav-link" data-scroll-target="#sort-filter">0.5.4 Sorting and Filtering Data</a></li>
   <li><a href="#practice-try-it-yourself-1" id="toc-practice-try-it-yourself-1" class="nav-link" data-scroll-target="#practice-try-it-yourself-1">0.5.5 Practice: Try It Yourself</a></li>
+  </ul></li>
+  <li><a href="#sec-save-export" id="toc-sec-save-export" class="nav-link" data-scroll-target="#sec-save-export">0.6 Saving and Exporting Your Work</a>
+  <ul class="collapse">
+  <li><a href="#sec-save-data" id="toc-sec-save-data" class="nav-link" data-scroll-target="#sec-save-data">0.6.1 Saving Datasets</a></li>
+  <li><a href="#sec-save-output" id="toc-sec-save-output" class="nav-link" data-scroll-target="#sec-save-output">0.6.2 Saving Outputs</a></li>
+  <li><a href="#sec-find-data" id="toc-sec-find-data" class="nav-link" data-scroll-target="#sec-find-data">0.6.3 Where to Find Saved Datasets and Outputs</a></li>
+  <li><a href="#sec-export" id="toc-sec-export" class="nav-link" data-scroll-target="#sec-export">0.6.4 Exporting</a></li>
+  </ul></li>
+  <li><a href="#sec-resources" id="toc-sec-resources" class="nav-link" data-scroll-target="#sec-resources">0.7 Resources in Rguroo</a>
+  <ul class="collapse">
+  <li><a href="#sec-quick-access" id="toc-sec-quick-access" class="nav-link" data-scroll-target="#sec-quick-access">0.7.1 Quick Access Tools</a></li>
+  <li><a href="#sec-user-guide" id="toc-sec-user-guide" class="nav-link" data-scroll-target="#sec-user-guide">0.7.2 User Guide</a></li>
+  <li><a href="#sec-video-tutorials" id="toc-sec-video-tutorials" class="nav-link" data-scroll-target="#sec-video-tutorials">0.7.3 Video Tutorials</a></li>
+  </ul></li>
+  <li><a href="#sec-rguroo-in-text" id="toc-sec-rguroo-in-text" class="nav-link" data-scroll-target="#sec-rguroo-in-text">0.8 How Rguroo is Used in the Text</a>
+  <ul class="collapse">
+  <li><a href="#sec-instructions-solutions" id="toc-sec-instructions-solutions" class="nav-link" data-scroll-target="#sec-instructions-solutions">0.8.1 Identify Instructions for Solutions</a></li>
+  <li><a href="#sec-dialog-boxes" id="toc-sec-dialog-boxes" class="nav-link" data-scroll-target="#sec-dialog-boxes">0.8.2 Dialog Boxes</a></li>
+  <li><a href="#sec-rguroo-outputs" id="toc-sec-rguroo-outputs" class="nav-link" data-scroll-target="#sec-rguroo-outputs">0.8.3 Rguroo Outputs</a></li>
+  <li><a href="#sec-rguroo-icons" id="toc-sec-rguroo-icons" class="nav-link" data-scroll-target="#sec-rguroo-icons">0.8.4 Rguroo Icons</a></li>
+  </ul></li>
+  <li><a href="#sec-instructor-dashboard" id="toc-sec-instructor-dashboard" class="nav-link" data-scroll-target="#sec-instructor-dashboard">0.9 Instructor Dashboard</a>
+  <ul class="collapse">
+  <li><a href="#sec-create-instructor-acct" id="toc-sec-create-instructor-acct" class="nav-link" data-scroll-target="#sec-create-instructor-acct">0.9.1 Creating Instructor Account</a></li>
+  <li><a href="#sec-navigate-dashboard" id="toc-sec-navigate-dashboard" class="nav-link" data-scroll-target="#sec-navigate-dashboard">0.9.2 Navigating Instructor Dashboard</a></li>
+  <li><a href="#sec-create-repository" id="toc-sec-create-repository" class="nav-link" data-scroll-target="#sec-create-repository">0.9.3 Creating Repositories</a></li>
+  <li><a href="#sec-create-groups" id="toc-sec-create-groups" class="nav-link" data-scroll-target="#sec-create-groups">0.9.4 Creating Groups</a></li>
+  <li><a href="#sec-link-repository" id="toc-sec-link-repository" class="nav-link" data-scroll-target="#sec-link-repository">0.9.5 Linking Repositories to Groups</a></li>
+  <li><a href="#sec-student-activity" id="toc-sec-student-activity" class="nav-link" data-scroll-target="#sec-student-activity">0.9.6 Student Activity Log</a></li>
+  <li><a href="#sec-applets-calculators" id="toc-sec-applets-calculators" class="nav-link" data-scroll-target="#sec-applets-calculators">0.9.7 Applets and Calculators</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1043,7 +1077,7 @@ Table&nbsp;1: Class Survey
 </figcaption>
 <div aria-describedby="tbl-class-survey-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 6%">
 <col style="width: 5%">
@@ -1135,12 +1169,12 @@ Table&nbsp;1: Class Survey
 </div>
 </div>
 <div id="code-book-class" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Code book for Class Survey1 Dataset
+Code book for Class Survey1 Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1218,7 +1252,7 @@ Table&nbsp;2: Sleep Study
 </figcaption>
 <div aria-describedby="tbl-sleep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 2%">
 <col style="width: 3%">
@@ -1462,12 +1496,12 @@ Table&nbsp;2: Sleep Study
 </div>
 </div>
 <div id="code-book-sleep" class="codebook callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Code book for SleepStudy Dataset
+Code book for SleepStudy Dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1796,6 +1830,1397 @@ Figure&nbsp;38: SleepStudy with GPA Sorted in Descending Order and Filtered to S
 <p>Use the <span class="data">SleepStudy</span> to reclassify the variable <span class="var">AllNighter</span> to a categorical variable. Review the [SleepStudy Code Book] (#code-book-sleep) to determine the definitions of 0 and 1.</p>
 <p><img src="Rguroo_Icons/try_it.png" class="img-fluid" width="45" alt="Try It"> <strong>Try It: Sort and Filter Data</strong></p>
 <p>Use the <span class="data">Tuition_4_year</span> dataset to sort <span class="var">INSTATE_TUITION</span> in ascending order. Then filter to include only colleges in California (CA).</p>
+</section>
+</section>
+<section id="sec-save-export" class="level2">
+<h2 class="anchored" data-anchor-id="sec-save-export">0.6 Saving and Exporting Your Work</h2>
+<p>Rguroo is a cloud-based program, which means everything you save is stored in your Rguroo account rather than on your computer. When you log back in, from any computer with internet access, your saved datasets, graphs, and analyses will be exactly where you left them. Work that is <strong>not</strong> saved, however, is lost when you close the tab or log out. In this section, you will learn how to save datasets and outputs, where saved items appear, and how to export your work so you can submit it, share it, or keep a copy on your own computer.</p>
+<section id="sec-save-data" class="level3">
+<h3 class="anchored" data-anchor-id="sec-save-data">0.6.1 Saving Datasets</h3>
+<p>Any time you create, edit, or change a dataset, you need to save it before it can be used in other Rguroo tools. Rguroo saves datasets using a <strong>Save As</strong> textbox, which appears at the top of the Dataset Editor, the Table Editor, and the data preview window that opens after you use a data function such as <span class="fun">Subset</span> or <span class="fun">Transform</span>. Follow the steps below to save a dataset.</p>
+<ol type="1">
+<li>Type a descriptive name for the dataset in the <strong>Save As</strong> textbox at the top of the workspace.</li>
+<li>Click the <img src="Rguroo_Icons/save_as.png" class="img-fluid" alt="Save as"> button. The dataset will now appear in your <strong>Data</strong> toolbox.</li>
+<li>Check the tab at the top of the workspace. A red tab means the dataset has unsaved changes, and a green tab means all changes have been saved.</li>
+</ol>
+<p>A few things to keep in mind when saving datasets:</p>
+<ul>
+<li><strong>Saving with the same name replaces the dataset.</strong> If you save again using the same name, the old version is overwritten. If you want to keep the original, save the edited version with a new name.</li>
+<li><strong>Choose names you will recognize later.</strong> A name such as <em>cats_no_max</em> or <em>StudyHours_Week2</em> is much easier to find than <em>Dataset1</em>. Variable names cannot contain spaces, so Rguroo will replace any spaces in a variable name with a period.</li>
+<li><strong>Save results from data functions.</strong> When you subset, sort, or transform a dataset, the result opens in a preview window. The result is not kept unless you save it using the <strong>Save As</strong> textbox in that preview window.</li>
+<li><strong>Save Parameters.</strong> Some data functions, such as <span class="fun">Transform</span>, include a <span class="des">Save Parameters</span> checkbox. When it is checked, Rguroo saves your dialog box settings along with the new dataset so you can reopen and edit them later. Leave this box checked if you think you may need to make changes after you log out.</li>
+</ul>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Save early and often.</strong> Rguroo does not automatically save new or edited datasets. If you close the tab or log out before clicking <span class="button">Save As</span>, your changes will be lost.</p>
+</div>
+</div>
+</div>
+<p><span style="color: blue; font-weight: bold;">Walkthrough Example: Saving an Edited Dataset Under a New Name</span></p>
+<p>In Section 0.4.1, you created and saved the <span class="data">Study Hours</span> dataset. Suppose a sixth student reports studying 9 hours per week. Add this value to the dataset and save the updated version as <span class="data">Study Hours 6</span> so the original dataset is not changed.</p>
+<p><strong>Let’s Save the Dataset:</strong> In the <strong>Data</strong> toolbox, right-click on <span class="data">Study Hours</span> and select <em>Edit</em> to open it in the Dataset Editor (<a href="#fig-open-edit" class="quarto-xref">Figure&nbsp;<span>39</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-open-edit" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Data toolbox with the Study Hours dataset right-clicked. A menu lists View, Edit, Dataset Summary, Show Dependencies, Functions, Variable Type Editor, Edit Comment, Cut, Copy, Paste, Export as RGR, Download, Rename, and Delete. The Edit option is circled in red.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-open-edit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/edit_saved_dataset.png" class="img-fluid figure-img" style="width:40.0%" alt="Rguroo Data toolbox with the Study Hours dataset right-clicked. A menu lists View, Edit, Dataset Summary, Show Dependencies, Functions, Variable Type Editor, Edit Comment, Cut, Copy, Paste, Export as RGR, Download, Rename, and Delete. The Edit option is circled in red.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-open-edit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;39: Right-Click Menu for Study Hours with Edit Selectede
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Click the Variable Properties, Add Rows/Variables button to add a new row (<a href="#fig-add-rows-button" class="quarto-xref">Figure&nbsp;<span>40</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-add-rows-button" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Study Hours dataset open in the Dataset Editor with five values in the Hours column: 6, 10, 8, 5, and 12. The first icon in the toolbar is circled in red, and a tooltip below it reads Variable Properties, Add Rows/Variables.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-add-rows-button-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/add_rows_button.png" class="img-fluid figure-img" style="width:90.0%" alt="Study Hours dataset open in the Dataset Editor with five values in the Hours column: 6, 10, 8, 5, and 12. The first icon in the toolbar is circled in red, and a tooltip below it reads Variable Properties, Add Rows/Variables.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-add-rows-button-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;40: Variable Properties, Add Rows/Variables Icon in the Dataset Editor
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>In the <span class="dialog">Variable and Row Management</span> dialog, enter <span class="typein">1</span> in the # of Rows box, select End radio button for Position, and click Add Rows (<a href="#fig-add-rows-dialog" class="quarto-xref">Figure&nbsp;<span>41</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-add-rows-dialog" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Variable and Row Management dialog with Add Rows selected in the left panel. The right panel shows the number of rows set to 1 and the Position option set to End, with an Add Rows button below.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-add-rows-dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/add_rows_dialog.png" class="img-fluid figure-img" style="width:60.0%" alt="Variable and Row Management dialog with Add Rows selected in the left panel. The right panel shows the number of rows set to 1 and the Position option set to End, with an Add Rows button below.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-add-rows-dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;41: Add Rows in the Variable and Row Management Dialog
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Enter <span class="typein">9</span> in the <span class="var">Hours</span> column. Notice that the tab at the top of the workspace turns red because the dataset has unsaved changes. In the <strong>Save As</strong> textbox, type <span class="typein">Study Hours 6</span> and click <span class="button">Save As</span>. The tab turns green, and your <strong>Data</strong> toolbox now lists both <span class="data">Study Hours</span> (5 values) and <span class="data">Study Hours 6</span> (6 values) (<a href="#fig-save-study-hours6" class="quarto-xref">Figure&nbsp;<span>42</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-save-study-hours6" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dataset Editor showing the Hours column with six values: 6, 10, 8, 5, 12, and the new value 9 in row 6. The Save As textbox in the toolbar contains the name Study Hours 6.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-save-study-hours6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/study_hours_6.png" class="img-fluid figure-img" style="width:90.0%" alt="Dataset Editor showing the Hours column with six values: 6, 10, 8, 5, 12, and the new value 9 in row 6. The Save As textbox in the toolbar contains the name Study Hours 6.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-save-study-hours6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;42: Study Hours with a Sixth Value Added and Saved as Study Hours 6
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-save-output" class="level3">
+<h3 class="anchored" data-anchor-id="sec-save-output">0.6.2 Saving Outputs</h3>
+<p>Graphs, analyses, and simulations can be saved just like datasets. When you save an output, Rguroo stores both the result and every setting you chose in the dialog box. Later, you can reopen the saved output and it will appear exactly as you left it, ready for you to review or make changes. This makes your work <strong>reproducible</strong>, meaning you or your instructor can see exactly how a result was produced. Follow the steps below to save an output.</p>
+<ol type="1">
+<li>Fill in the dialog box (for example, a <span class="fun">Boxplot</span> or <span class="fun">Summary Statistic</span> dialog) and click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to check your output.</li>
+<li>Type a descriptive name in the <strong>Save As</strong> textbox at the top of the dialog box.</li>
+<li>Click the <span class="button">Save As</span> button <img src="Rguroo_Icons/save_as.png" class="img-fluid" alt="Save as">. The saved output now appears in the toolbox where it was created.</li>
+</ol>
+<p><span style="color: blue; font-weight: bold;">Walkthrough Example: Saving a Graph</span></p>
+<p>Create a boxplot of the <span class="var">Hours</span> variable in the <span class="data">Study Hours 6</span> dataset and save it as <em>Study Hours Boxplot</em>.</p>
+<p><strong>Let’s Save the Graph:</strong> Open the <strong>Plots</strong> toolbox, click the <span class="dpd">Create Plot</span> dropdown, and select <span class="fun">Boxplot</span>. From the <span class="dpd">Dataset</span> dropdown, select <em>Study Hours 6</em>, and move <span class="var">Hours</span> to the Selected column. Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the boxplot (<a href="#fig-boxplot-dialog-study" class="quarto-xref">Figure&nbsp;<span>43</span></a>). In the <strong>Save As</strong> textbox at the top of the dialog, type <span class="typein">Study Hours Boxplot</span> and click <span class="button">Save As</span>. The boxplot now appears in your <strong>Plots</strong> toolbox, and <span class="data">Study Hours 6</span> appears in green bold text in your <strong>Data</strong> toolbox (<a href="#fig-saved-boxplot" class="quarto-xref">Figure&nbsp;<span>44</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-boxplot-dialog-study" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Boxplot dialog with Study Hours 6 selected in the Dataset dropdown. In the Numerical Variables section, Hours has been moved to the Selected column. The Factor Variables section has no variables selected. The Notched, Horizontal, and Show Mean checkboxes are unchecked, the Title, X-Axis, and Y-Axis label boxes are empty, and the Preview eye icon appears in the upper right corner.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-boxplot-dialog-study-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/study_boxplot_dialog.png" class="img-fluid figure-img" style="width:70.0%" alt="Rguroo Boxplot dialog with Study Hours 6 selected in the Dataset dropdown. In the Numerical Variables section, Hours has been moved to the Selected column. The Factor Variables section has no variables selected. The Notched, Horizontal, and Show Mean checkboxes are unchecked, the Title, X-Axis, and Y-Axis label boxes are empty, and the Preview eye icon appears in the upper right corner.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplot-dialog-study-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;43: Boxplot Dialog for the Study Hours 6 Dataset
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-saved-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo window with the Plots toolbox open on the left, where the search box contains study and the list shows the saved plot study hours boxplot. On the right, the boxplot tab shows the Basics, Details, and Level Editor buttons, a row of export icons, and the Save As textbox containing study hours boxplot. Below is a vertical boxplot of Hours with the lower whisker at 5, the box from 6 to 10, the median line at 8.5, and the upper whisker at 12.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-saved-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/saved_boxplot_study.png" class="img-fluid figure-img" style="width:90.0%" alt="Rguroo window with the Plots toolbox open on the left, where the search box contains study and the list shows the saved plot study hours boxplot. On the right, the boxplot tab shows the Basics, Details, and Level Editor buttons, a row of export icons, and the Save As textbox containing study hours boxplot. Below is a vertical boxplot of Hours with the lower whisker at 5, the box from 6 to 10, the median line at 8.5, and the upper whisker at 12.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-saved-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;44: Saved Study Hours Boxplot in the Plots Toolbox
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Datasets used by saved outputs are protected.</strong> Once you save a graph or analysis, the dataset it uses is shown in <strong>green bold text</strong> in the <strong>Data</strong> toolbox. Rguroo will not let you delete that dataset until you first delete the saved output that depends on it.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-find-data" class="level3">
+<h3 class="anchored" data-anchor-id="sec-find-data">0.6.3 Where to Find Saved Datasets and Outputs</h3>
+<p>Each saved item appears in the toolbox where it was created:</p>
+<div id="tbl-saved-locations" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table listing the type of item saved in Rguroo and the toolbox where it appears: datasets and tables in the Data toolbox, graphs in the Plots toolbox, analyses in the Analytics toolbox, and simulations in the Probability-Simulation toolbox.">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-saved-locations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Where saved items appear in Rguroo
+</figcaption>
+<div aria-describedby="tbl-saved-locations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>What you saved</th>
+<th>Where it appears</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Datasets and tables</td>
+<td><strong>Data</strong> toolbox</td>
+</tr>
+<tr class="even">
+<td>Graphs (boxplots, histograms, barplots, etc.)</td>
+<td><strong>Plots</strong> toolbox</td>
+</tr>
+<tr class="odd">
+<td>Statistical analyses (confidence intervals, hypothesis tests, regression, etc.)</td>
+<td><strong>Analytics</strong> toolbox</td>
+</tr>
+<tr class="even">
+<td>Simulations and probability calculations</td>
+<td><strong>Probability-Simulation</strong> toolbox</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Because you will use the <strong>Data</strong> toolbox most often, it is worth learning how to keep it organized. The other toolboxes work the same way.</p>
+<p><strong>Finding a dataset.</strong> Type the first few letters of a dataset name in the search box at the top of the <strong>Data</strong> toolbox to narrow the list. Hovering your mouse over a dataset name shows its comment (if one was added), the number of rows, and the number of variables.</p>
+<p><strong>Organizing with folders.</strong> As the semester goes on, your list of datasets will grow. Folders can help you keep things organized, for example by creating one folder per chapter (<a href="#fig-data-folders" class="quarto-xref">Figure&nbsp;<span>45</span></a>).</p>
+<ol type="1">
+<li>Click the <span class="dpd">Data Import</span> dropdown and select <span class="fun">Add Folder to Root</span>. You can also right-click on an empty area of the <strong>Data</strong> toolbox list and select <span class="fun">Add Folder to Root</span>.</li>
+<li>Type a name for the folder, such as <em>Chapter 3</em>.</li>
+<li>Drag and drop datasets into the folder.</li>
+</ol>
+<p>Right-clicking on a folder gives you the options <span class="des">New Folder</span> (to create a folder inside it), <span class="des">Export as RGR (.rgr)</span>, <span class="des">Rename</span>, and <span class="des">Delete</span>. A folder can only be deleted when it is empty.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-data-folders" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Data toolbox with Study Ho typed in the search box. The Datasets list shows an expanded folder named Chapter 3 containing two datasets: Study Hours, and Study Hours 6 shown in green bold italic text.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-data-folders-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/folder_expanded.png" class="img-fluid figure-img" style="width:40.0%" alt="Rguroo Data toolbox with Study Ho typed in the search box. The Datasets list shows an expanded folder named Chapter 3 containing two datasets: Study Hours, and Study Hours 6 shown in green bold italic text.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-folders-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;45: Datasets Organized in a Chapter 3 Folder in the Data Toolbox
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Right-click options for a dataset.</strong> Right-clicking on a dataset name opens a menu of options. Several of these were introduced in Section 0.5, and the rest are summarized below.</p>
+<div id="tbl-right-click" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table listing right-click options for a dataset in the Rguroo Data toolbox, including View, Edit, Dataset Summary, Variable Type Editor, Functions, Rename, Edit Comment, Download, and Delete, along with what each option does.">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-right-click-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Right-click options for a dataset in the Data toolbox
+</figcaption>
+<div aria-describedby="tbl-right-click-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>View</td>
+<td>Opens the dataset in the data viewer (double-clicking the name does the same thing)</td>
+</tr>
+<tr class="even">
+<td>Edit</td>
+<td>Opens the dataset in the Dataset Editor so you can change values, rows, or variables</td>
+</tr>
+<tr class="odd">
+<td>Dataset Summary</td>
+<td>Shows the dataset summary described in Section 0.5.1</td>
+</tr>
+<tr class="even">
+<td>Variable Type Editor</td>
+<td>Reclassifies variables, as described in Section 0.5.2</td>
+</tr>
+<tr class="odd">
+<td>Functions</td>
+<td>Opens a list of data functions, such as <span class="fun">Summary Statistic</span>, <span class="fun">Subset</span>, and <span class="fun">Transform</span>, with this dataset already selected</td>
+</tr>
+<tr class="even">
+<td>Rename</td>
+<td>Changes the name of the dataset</td>
+</tr>
+<tr class="odd">
+<td>Edit Comment</td>
+<td>Adds or edits a short description that appears when you hover over the dataset name</td>
+</tr>
+<tr class="even">
+<td>Download</td>
+<td>Saves a copy of the dataset to your computer as a CSV file (see <a href="#sec-export">Section 0.6.4</a>)</td>
+</tr>
+<tr class="odd">
+<td>Delete</td>
+<td>Permanently removes the dataset from your account</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>⚠️ Deleting a dataset cannot be undone. If you might need a dataset later, move it into a folder instead of deleting it.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-export" class="level3">
+<h3 class="anchored" data-anchor-id="sec-export">0.6.4 Exporting</h3>
+<p>Saving keeps your work inside your Rguroo account. <strong>Exporting</strong> creates a file outside of Rguroo, which you can submit to your instructor, upload to your course website, add to a report, or keep as a backup. Rguroo provides three main ways to export.</p>
+<p><strong>Downloading a dataset as a CSV file</strong></p>
+<p>A CSV (comma-separated values) file can be opened in Excel, Google Sheets, or almost any other program.</p>
+<ol type="1">
+<li>In the <strong>Data</strong> toolbox, right-click on the dataset name (<a href="#fig-download-dataset" class="quarto-xref">Figure&nbsp;<span>46</span></a>).</li>
+<li>Select <span class="des">Download</span>.</li>
+<li>Click <span class="button">Download</span> in the window that appears. Depending on your browser settings, the file will either save to your Downloads folder or you will be asked where to save it.</li>
+</ol>
+<p>You can also download a dataset while viewing it, or from the preview window after using a data function, by clicking the download icon in the top-left corner of the data viewer.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-download-dataset" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Data toolbox with Study Ho typed in the search box, listing two datasets: Study Hours, and Study Hours 6 shown in green bold italic text. Study Hours 6 has been right-clicked, opening a menu with View, Edit, Dataset Summary, Show Dependencies, Functions, Variable Type Editor, Edit Comment, Cut, Copy, Paste, Export as RGR, Download, Rename, and Delete. The Download option is highlighted.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-download-dataset-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/download_dataset.png" class="img-fluid figure-img" style="width:45.0%" alt="Rguroo Data toolbox with Study Ho typed in the search box, listing two datasets: Study Hours, and Study Hours 6 shown in green bold italic text. Study Hours 6 has been right-clicked, opening a menu with View, Edit, Dataset Summary, Show Dependencies, Functions, Variable Type Editor, Edit Comment, Cut, Copy, Paste, Export as RGR, Download, Rename, and Delete. The Download option is highlighted.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-download-dataset-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;46: Downloading the Study Hours 6 Dataset as a CSV File
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Saving a graph as an image</strong></p>
+<p>When you only need a single graph, such as a boxplot for a discussion post or lab report, you can save the graph itself as an image file.</p>
+<ol type="1">
+<li>Open the saved graph, or click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to display it.</li>
+<li>Right-click on the graph and select <em>Save image as</em> (<a href="#fig-save-image-as" class="quarto-xref">Figure&nbsp;<span>47</span></a>).</li>
+<li>Choose a location on your computer and click <em>Save</em>.</li>
+</ol>
+<p>Rguroo saves graphs as <strong>SVG</strong> files. An SVG image stays sharp at any size, so it looks clear when it is enlarged or printed. The desktop version of Microsoft Word and most web browsers can open SVG files. Some programs, including Google Docs, cannot. If you need to use your graph in one of those programs, take a screenshot of the graph instead: press <em>Windows + Shift + S</em> on a PC or <em>Command + Shift + 4</em> on a Mac, then drag a box around the graph.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-save-image-as" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo output tab for the saved study hours boxplot, showing a vertical boxplot of Hours with whiskers from 5 to 12, a box from 6 to 10, and a median line at 8.5. The graph has been right-clicked, opening a browser menu with Open Image in New Tab, Save Image As, Copy Image, Copy Image Address, Create QR Code for this Image, Search This Image with Google Lens, and Inspect. Save Image As is highlighted.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-save-image-as-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/save_image_as.png" class="img-fluid figure-img" style="width:90.0%" alt="Rguroo output tab for the saved study hours boxplot, showing a vertical boxplot of Hours with whiskers from 5 to 12, a box from 6 to 10, and a median line at 8.5. The graph has been right-clicked, opening a browser menu with Open Image in New Tab, Save Image As, Copy Image, Copy Image Address, Create QR Code for this Image, Search This Image with Google Lens, and Inspect. Save Image As is highlighted.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-save-image-as-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;47: Saving the Study Hours Boxplot as an Image
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Exporting a report</strong></p>
+<p>Analyses in Rguroo produce a <strong>report</strong>: a set of tables, graphs, and written explanations in one output tab. Instead of saving each piece separately, you can download the entire report at once. Rguroo downloads the report as a zipped (compressed) folder that contains the report in two formats: a Word document (.docx) and an HTML file (a web page that opens in any browser), along with the graph image files.</p>
+<ol type="1">
+<li>Run the analysis and click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to display the report.</li>
+<li>In the toolbar at the top of the output tab, click the Word icon. When you hover over it, it reads <em>Download docx, html included</em> (<a href="#fig-download-docx-html" class="quarto-xref">Figure&nbsp;<span>48</span></a>).</li>
+<li>Save the zipped folder to your computer.</li>
+<li>Extract (unzip) the folder before opening any of the files:
+<ul>
+<li><strong>Windows:</strong> Right-click the zipped folder, select <em>Extract All</em>, and click <em>Extract</em>.</li>
+<li><strong>Mac:</strong> Double-click the zipped folder. A regular folder with the same name appears next to it.</li>
+</ul></li>
+<li>Open the extracted folder to find the Word file, the HTML file, and the graph images.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-download-docx-html" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo output toolbar with the Basics, Details, Level Editor, and Report Layout buttons on the left, followed by a row of icons. The Word document icon is circled in red, and a tooltip below it reads Download Docx, HTML is included.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-download-docx-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/download_docx_html_button.png" class="img-fluid figure-img" style="width:90.0%" alt="Rguroo output toolbar with the Basics, Details, Level Editor, and Report Layout buttons on the left, followed by a row of icons. The Word document icon is circled in red, and a tooltip below it reads Download Docx, HTML is included.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-download-docx-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;48: Download Docx, HTML is Included Button in the Output Toolbar
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Why unzip first?</strong> Windows lets you open files inside a zipped folder without extracting them. If you open the HTML file this way, the graphs will not appear, because the browser cannot find the image files. Always extract the folder first.</p>
+</div>
+</div>
+</div>
+<p>Each format in the download works best for a different purpose:</p>
+<div id="tbl-export-formats" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table comparing the two Rguroo report export formats. HTML is best for viewing or printing the complete report with graphs, which are saved as separate image files that must stay in the same folder and include screen reader descriptions. Word is best for copying tables and results into a lab report, must be opened in desktop Microsoft Word because it may appear blank in Google Docs or Word Online, and does not include the graphs.">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-export-formats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5: Comparing report export formats
+</figcaption>
+<div aria-describedby="tbl-export-formats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 29%">
+<col style="width: 54%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Format</th>
+<th>Best for</th>
+<th>Things to know</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HTML</td>
+<td>Viewing or printing the complete report, including all graphs</td>
+<td>The graphs are saved as separate image files. Keep them in the same folder as the HTML file, or the graphs will not appear. Each graph includes a written description for screen readers.</td>
+</tr>
+<tr class="even">
+<td>Word</td>
+<td>Copying tables and results into a lab report or project</td>
+<td>Open the file in the desktop version of Microsoft Word. The file may appear blank in Google Docs, Word Online, or other programs. Graphs are not included, so add them separately using <em>Save Image As…</em>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><span style="color: blue; font-weight: bold;">Walkthrough Example: Exporting a Report</span></p>
+<p>Use the <strong>Mean Inference</strong> function to create a report for the <span class="var">Hours</span> variable in the <span class="data">Study Hours 6</span> dataset. Then download the report.</p>
+<p><strong>Let’s Export the Report:</strong> Open the <strong>Analytics</strong> toolbox. Click the <span class="dpd">Analysis</span> dropdown, select <span class="fun">Mean Inference</span>, and then select <span class="fun">One Population</span> (<a href="#fig-analysis-menu" class="quarto-xref">Figure&nbsp;<span>49</span></a>). This opens the <span class="dialog">One Population Mean Inference</span> dialog.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-analysis-menu" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Analytics toolbox with the Analysis dropdown open. The menu lists Proportion Inference, Mean Inference, Median Inference, Linear Regression, Variance Inference, Goodness of Fit, Contingency Table, ANOVA, Non-Parametric ANOVA, Time Series, Tabulation, and Numerical Summaries. Mean Inference is highlighted, and its submenu shows One Population, which is highlighted, and One and Two Population.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-analysis-menu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/analysis_menu_mean_inference.png" class="img-fluid figure-img" style="width:50.0%" alt="Rguroo Analytics toolbox with the Analysis dropdown open. The menu lists Proportion Inference, Mean Inference, Median Inference, Linear Regression, Variance Inference, Goodness of Fit, Contingency Table, ANOVA, Non-Parametric ANOVA, Time Series, Tabulation, and Numerical Summaries. Mean Inference is highlighted, and its submenu shows One Population, which is highlighted, and One and Two Population.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-analysis-menu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;49: Selecting One Population Mean Inference from the Analysis Dropdown
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>From the <span class="dpd">Dataset</span> dropdown, select <span class="data">Study Hours 6</span>, and from the <span class="dpd">Variable</span> dropdown, select <span class="var">Hours</span>. Rguroo automatically fills in the sample mean, sample standard deviation, and sample size (<a href="#fig-mean-inference-dialog" class="quarto-xref">Figure&nbsp;<span>50</span></a>). Leave all of the other options at their default settings and click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon">.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-mean-inference-dialog" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo One Population Mean Inference dialog with Study Hours 6 selected in the Dataset dropdown and Hours selected in the Variable dropdown. The dialog shows a sample mean of 8.33333, a sample standard deviation of 2.58198, and a sample size of 6, with the Pop. S.d. box empty. Below, the Confidence Interval tab is open with a confidence level of 0.95, and all Method checkboxes are unchecked.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mean-inference-dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/dialog_mean_inference.png" class="img-fluid figure-img" style="width:70.0%" alt="Rguroo One Population Mean Inference dialog with Study Hours 6 selected in the Dataset dropdown and Hours selected in the Variable dropdown. The dialog shows a sample mean of 8.33333, a sample standard deviation of 2.58198, and a sample size of 6, with the Pop. S.d. box empty. Below, the Confidence Interval tab is open with a confidence level of 0.95, and all Method checkboxes are unchecked.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mean-inference-dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;50: One Population Mean Inference Dialog for Study Hours 6
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The report opens in a new tab with a <strong>Data Summary</strong> table showing a sample size of 6, a mean of 8.33333 hours, and a sample standard deviation of 2.58199 hours (<a href="#fig-mean-inference-output" class="quarto-xref">Figure&nbsp;<span>51</span></a>). Notice the Word icon in the toolbar at the top of the report.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-mean-inference-output" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo output tab with the Basics, Details, and Report Layout buttons, a row of icons including the Word icon, the Preview button, and the Save As textbox containing MeanInferenceOnePop_3. Below, the report titled One Population Mean Inference shows a Data Summary table listing the variable Hours with a sample size of 6, a mean of 8.33333, and a sample standard deviation of 2.58199.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mean-inference-output-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/mean_inference_output.png" class="img-fluid figure-img" style="width:90.0%" alt="Rguroo output tab with the Basics, Details, and Report Layout buttons, a row of icons including the Word icon, the Preview button, and the Save As textbox containing MeanInferenceOnePop_3. Below, the report titled One Population Mean Inference shows a Data Summary table listing the variable Hours with a sample size of 6, a mean of 8.33333, and a sample standard deviation of 2.58199.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mean-inference-output-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;51: One Population Mean Inference Report for Study Hours 6
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Next, click the Word icon (<em>Download Docx, HTML is included</em>) in the toolbar. Rguroo saves a zipped folder named <em>MeanInferenceOnePop</em> followed by a number to your Downloads folder (<a href="#fig-download-zip" class="quarto-xref">Figure&nbsp;<span>52</span></a>). Extract the folder (<a href="#fig-extracted-folder" class="quarto-xref">Figure&nbsp;<span>53</span></a>). Inside, you will find a Word file and an HTML file with the same name.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-download-zip" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Mac Finder window showing the Downloads folder with two items: MeanInferenceOnePop_3_docx.zip, a 10 KB ZIP archive, and MeanInferenceOnePop_3_docx, the extracted folder, which is highlighted.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-download-zip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/download_zip.png" class="img-fluid figure-img" style="width:70.0%" alt="Mac Finder window showing the Downloads folder with two items: MeanInferenceOnePop_3_docx.zip, a 10 KB ZIP archive, and MeanInferenceOnePop_3_docx, the extracted folder, which is highlighted.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-download-zip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;52: Zipped Report Folder and Extracted Folder in Downloads
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-extracted-folder" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Mac Finder window showing the contents of the MeanInferenceOnePop_3_docx folder: a Word file named MeanInferenceOnePop_3.docx and an HTML file named MeanInferenceOnePop_3.html.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-extracted-folder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/extracted_folder.png" class="img-fluid figure-img" style="width:60.0%" alt="Mac Finder window showing the contents of the MeanInferenceOnePop_3_docx folder: a Word file named MeanInferenceOnePop_3.docx and an HTML file named MeanInferenceOnePop_3.html.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-extracted-folder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;53: Contents of the Extracted Report Folder
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Open the Word file in Microsoft Word (<a href="#fig-report-word" class="quarto-xref">Figure&nbsp;<span>54</span></a>). The Data Summary table is ready to copy into a lab report or project. Then open the HTML file in your web browser (<a href="#fig-report-html" class="quarto-xref">Figure&nbsp;<span>55</span></a>) to see the report exactly as it appears in Rguroo.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-report-word" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Microsoft Word document titled One Population Mean Inference, opened in Compatibility Mode. Below the title, a Data Summary table lists the variable Hours with a sample size of 6, a mean of 8.33333, and a sample standard deviation of 2.58199.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-report-word-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/report_word.png" class="img-fluid figure-img" style="width:90.0%" alt="Microsoft Word document titled One Population Mean Inference, opened in Compatibility Mode. Below the title, a Data Summary table lists the variable Hours with a sample size of 6, a mean of 8.33333, and a sample standard deviation of 2.58199.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-report-word-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;54: Mean Inference Report Opened in Microsoft Word
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-report-html" class="quarto-float quarto-figure quarto-figure-center anchored" alt="HTML report in a web browser with the title One Population Mean Inference and a Data Summary table listing the variable Hours with a sample size of 6, a mean of 8.33333, and a sample standard deviation of 2.58199.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-report-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/report_html.png" class="img-fluid figure-img" style="width:90.0%" alt="HTML report in a web browser with the title One Population Mean Inference and a Data Summary table listing the variable Hours with a sample size of 6, a mean of 8.33333, and a sample standard deviation of 2.58199.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-report-html-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;55: Mean Inference Report Opened in a Web Browser
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Saving the analysis with <span class="button">Save As</span> before you export is a good habit. If you need to change something later, you can reopen the saved analysis, make the change, and export again.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Pop-up blockers.</strong> If nothing happens when you click a download or export button, your browser may be blocking pop-ups. Allow pop-ups for rguroo.com and try again.</p>
+</div>
+</div>
+</div>
+<p><strong>Exporting and importing RGR files</strong></p>
+<p>An <strong>RGR file</strong> (a file ending in .rgr) is Rguroo’s own file type. It packages a saved graph, analysis, or dataset together with all of its dialog box settings and the datasets it uses. When someone imports your RGR file into their own Rguroo account, they see your work exactly as you saved it. Instructors often use RGR files to share class examples, and students can use them to submit Rguroo work for homework, projects, and exams.</p>
+<p>To export an RGR file:</p>
+<ol type="1">
+<li>Place the items you want to export in a folder in the appropriate toolbox (see Section 0.6.3).</li>
+<li>Right-click on the folder and select <span class="des">Export as RGR (.rgr)</span>.</li>
+<li>Save the .rgr file to your computer.</li>
+</ol>
+<p>To import an RGR file that someone has shared with you:</p>
+<ol type="1">
+<li>Open the <strong>Data</strong> toolbox.</li>
+<li>Click the <span class="dpd">Data Import</span> dropdown and select <span class="fun">RGR (.rgr)</span>. You can also use the import option in the Quick Access Tools (see Section 0.7.1).</li>
+<li>Choose the .rgr file and click <span class="button">Upload</span>.</li>
+</ol>
+<p>Rguroo places the imported items in a new folder named <em>Imported</em> followed by the date and time, inside each toolbox the items belong to. For example, an RGR file containing a boxplot will add a folder with the dataset to the <strong>Data</strong> toolbox and a folder with the boxplot to the <strong>Plots</strong> toolbox. You can then rename or move these items as you like.</p>
+<p><span style="color: blue; font-weight: bold;">Walkthrough Example: Exporting Your Work as an RGR File</span></p>
+<p>Your instructor asks you to submit the boxplot you created in Section 0.6.2 as an RGR file.</p>
+<p><strong>Let’s Export the Work:</strong> Open the <strong>Plots</strong> toolbox and create a folder named <em>Week 1 Submission</em>. Drag <em>Study Hours Boxplot</em> into the folder. Right-click on Week 1 Submission and select <span class="des">Export as RGR (.rgr)</span> (<a href="#fig-export-rgr" class="quarto-xref">Figure&nbsp;<span>56</span></a>), then save the file to your computer. Because the RGR file includes the dataset the boxplot uses, your instructor will see both the boxplot and the <span class="data">Study Hours 6</span> data when they import it. Upload the .rgr file wherever your instructor has asked you to submit it.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-export-rgr" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Plots toolbox with study typed in the search box. The Plots list shows an expanded folder named Week 1 Submission containing the saved plot study hours boxplot. The folder has been right-clicked, opening a menu with New Folder, Export as RGR (.rgr), Cut, Paste, Rename, and Delete. Export as RGR (.rgr) is highlighted.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-export-rgr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/export_rgr.png" class="img-fluid figure-img" style="width:50.0%" alt="Rguroo Plots toolbox with study typed in the search box. The Plots list shows an expanded folder named Week 1 Submission containing the saved plot study hours boxplot. The folder has been right-clicked, opening a menu with New Folder, Export as RGR (.rgr), Cut, Paste, Rename, and Delete. Export as RGR (.rgr) is highlighted.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-export-rgr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;56: Exporting the Week 1 Submission Folder as an RGR File
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><img src="Rguroo_Icons/try_it.png" class="img-fluid" width="45" alt="Try It"> <strong>Try It: Save, Organize, and Export</strong></p>
+<p>Use the <span class="data">Exercise Time</span> dataset you created in Section 0.4.5.</p>
+<ol type="a">
+<li>Create a folder in your <strong>Data</strong> toolbox named <em>Getting Started</em> and move <span class="data">Exercise Time</span> into it.</li>
+<li>Download <span class="data">Exercise Time</span> as a CSV file and open it on your computer to confirm the five values are there.</li>
+<li>Create a boxplot of the exercise times and save it with an appropriate name. Check that it appears in your <strong>Plots</strong> toolbox and that <span class="data">Exercise Time</span> now appears in green bold text in your <strong>Data</strong> toolbox.</li>
+<li>Place the boxplot in a folder in the <strong>Plots</strong> toolbox and export the folder as an RGR file.</li>
+</ol>
+</section>
+</section>
+<section id="sec-resources" class="level2">
+<h2 class="anchored" data-anchor-id="sec-resources">0.7 Resources in Rguroo</h2>
+<p>You do not need to memorize every Rguroo feature. Rguroo includes several built-in resources you can turn to when you are unsure how to do something. This section describes where to find them.</p>
+<section id="sec-quick-access" class="level3">
+<h3 class="anchored" data-anchor-id="sec-quick-access">0.7.1 Quick Access Tools</h3>
+<p>The <strong>Quick Access Tools</strong> dropdown at the top of the Rguroo window (item <span class="circle-number">2</span> in <a href="#fig-dashboard" class="quarto-xref">Figure&nbsp;<span>4</span></a>) provides shortcuts to features you will use often. Click <span class="dpd">Quick Access Tools</span> to open the menu (<a href="#fig-quick-access" class="quarto-xref">Figure&nbsp;<span>57</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-quick-access" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Top of the Rguroo window with the Quick Access Tools dropdown open. The menu lists Import Dataset with shortcut Alt+1, Import RGR file (.rgr) with Alt+2, Scientific Calculator with Alt+3, Shortcut Keys with Alt+4, Dataset Repository with Alt+8, and Open Jupyter Light with Ctrl+Alt+R. The User Guide and My Groups buttons appear to the right, and the Data, Plots, Analytics, Prediction-Classification, Probability-Simulation, and Applets-Calculators toolboxes are listed on the left.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-quick-access-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/quick_access_tools.png" class="img-fluid figure-img" style="width:90.0%" alt="Top of the Rguroo window with the Quick Access Tools dropdown open. The menu lists Import Dataset with shortcut Alt+1, Import RGR file (.rgr) with Alt+2, Scientific Calculator with Alt+3, Shortcut Keys with Alt+4, Dataset Repository with Alt+8, and Open Jupyter Light with Ctrl+Alt+R. The User Guide and My Groups buttons appear to the right, and the Data, Plots, Analytics, Prediction-Classification, Probability-Simulation, and Applets-Calculators toolboxes are listed on the left.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-quick-access-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;57: Quick Access Tools Dropdown Menu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="tbl-quick-access" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table listing the Rguroo Quick Access Tools: Import, Scientific Calculator, Shortcut Keys, Dataset Repository, and Jupyter Lite, along with a description of what each tool does.">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-quick-access-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6: Rguroo Quick Access Tools
+</figcaption>
+<div aria-describedby="tbl-quick-access-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Import</td>
+<td>Imports a dataset from your computer or a URL, or imports an RGR file (see Sections 0.4.4 and <a href="#sec-export">0.6.4</a>)</td>
+</tr>
+<tr class="even">
+<td>Scientific Calculator</td>
+<td>Opens a Desmos scientific calculator, useful for quick calculations such as factorials, combinations, and permutations</td>
+</tr>
+<tr class="odd">
+<td>Shortcut Keys</td>
+<td>Lists keyboard shortcuts for working in Rguroo</td>
+</tr>
+<tr class="even">
+<td>Dataset Repository</td>
+<td>Opens the Rguroo Dataset Repository so you can import a dataset (see Section 0.4.4)</td>
+</tr>
+<tr class="odd">
+<td>Jupyter Lite</td>
+<td>Opens a browser-based coding notebook. This is an optional tool for users who want to write code and is not needed for this course</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Tip:</strong> Hover your mouse over any icon in Rguroo to see its name.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-user-guide" class="level3">
+<h3 class="anchored" data-anchor-id="sec-user-guide">0.7.2 User Guide</h3>
+<p>Rguroo provides written guides at three levels of detail. All of them can be opened from the <strong>User’s Guide</strong> and <strong>Documentation</strong> buttons at the top of the Rguroo window (items <span class="circle-number">3</span> and <span class="circle-number">6</span> in <a href="#fig-dashboard" class="quarto-xref">Figure&nbsp;<span>4</span></a>) or from the <em>Resources</em> menu on the <a href="https://www.rguroo.com">Rguroo website</a>.</p>
+<ul>
+<li><strong><a href="http://files.rguroo.com/guides/quick_userguide.html">Quick User’s Guide</a></strong> (web-based). This is the best place to start. It is organized by topic, from the Dataset Editor and data functions to plots, inference, probability, and simulation. Each topic gives short step-by-step instructions with examples that use datasets from the Rguroo repository, so you can follow along in your own account. A camera icon <img src="Rguroo_Icons/camera_inline.png" class="img-fluid" alt="camera"> next to a topic links to a video for that topic.</li>
+<li><strong><a href="http://files.rguroo.com/guides/latest_userguide.pdf">Full User’s Guide</a></strong> (PDF). A longer reference with more technical detail about every dialog box option and the statistical methods Rguroo uses.</li>
+<li><strong><a href="http://files.rguroo.com/guides/quick_userguide_dashboard.html">Dashboard Quick Guide</a></strong> (web-based). Instructions for the instructor Dashboard, covered in Section 0.9.</li>
+</ul>
+<p>Help is also available inside each dialog box. Next to the name of each section of a dialog box is a small question mark icon <img src="Rguroo_Icons/help_icon.png" class="img-fluid" alt="help icon">. Click the question mark to open a <strong>Help</strong> window that explains the options in that section (<a href="#fig-dialog-help" class="quarto-xref">Figure&nbsp;<span>58</span></a>). For example, clicking the question mark next to <strong>Numerical Variables</strong> in the <span class="dialog">Boxplot</span> dialog explains how to select variables and how to create side-by-side boxplots. Close the Help window by clicking the <strong>X</strong> in its upper-right corner. The question mark is often the fastest way to find out what a particular checkbox or dropdown does.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-dialog-help" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Boxplot dialog with Study Hours 6 selected and Hours in the Selected column. The question mark icon next to the Numerical Variables heading is circled in red, with a red arrow pointing from it to a Help window titled Help: Boxplot, Variable Selection. The Help window explains how to create boxplots for one or more numerical variables, how to select variables using the arrow buttons or drag and drop, and how to create side-by-side boxplots stratified by factor variables.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dialog-help-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/dialog_help.png" class="img-fluid figure-img" style="width:90.0%" alt="Rguroo Boxplot dialog with Study Hours 6 selected and Hours in the Selected column. The question mark icon next to the Numerical Variables heading is circled in red, with a red arrow pointing from it to a Help window titled Help: Boxplot, Variable Selection. The Help window explains how to create boxplots for one or more numerical variables, how to select variables using the arrow buttons or drag and drop, and how to create side-by-side boxplots stratified by factor variables.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dialog-help-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;58: Opening Help for the Numerical Variables Section of the Boxplot Dialog
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span style="color: blue; font-weight: bold;">Walkthrough Example: Using the Quick User’s Guide</span></p>
+<p>Suppose you want to learn how to create a histogram, a graph you will use in Chapter 2.</p>
+<p><strong>Let’s Find It in the Guide:</strong> Open the <a href="http://files.rguroo.com/guides/quick_userguide.html">Quick User’s Guide</a>. In the table of contents on the left, find the topic <em>Plots for Numerical Data</em> and select <em>Histogram</em>. Alternatively, you can type <em>Histogram</em> in the search bar that can be accessed by clicking the magnifying glass icon. The page shows which toolbox and menu to use, describes the options in the Histogram dialog, and works through an example with a dataset you can import from the repository. If you prefer to watch, click the camera icon to open the video for that topic.</p>
+</section>
+<section id="sec-video-tutorials" class="level3">
+<h3 class="anchored" data-anchor-id="sec-video-tutorials">0.7.3 Video Tutorials</h3>
+<p>Short “how-to” videos are available for most Rguroo features. You can find them in three places:</p>
+<ul>
+<li><strong>Inside Rguroo.</strong> Click the <strong>Tutorial Videos</strong> button at the top of the Rguroo window (item <span class="circle-number">5</span> in <a href="#fig-dashboard" class="quarto-xref">Figure&nbsp;<span>4</span></a>).</li>
+<li><strong>On the Rguroo website.</strong> Visit the <a href="https://rguroo.com/video-tutorials">Rguroo Video Tutorials</a> page.</li>
+<li><strong>On YouTube.</strong> Visit the <a href="https://www.youtube.com/channel/UCaY4gT66_NgYUqJRxvGI8QQ">Rguroo YouTube channel</a>.</li>
+</ul>
+<p>Throughout this text, a camera icon <img src="Rguroo_Icons/camera_inline.png" class="img-fluid" alt="Video icon"> followed by <strong>Click Here</strong> means a video is available for the skill being described.</p>
+</section>
+</section>
+<section id="sec-rguroo-in-text" class="level2">
+<h2 class="anchored" data-anchor-id="sec-rguroo-in-text">0.8 How Rguroo is Used in the Text</h2>
+<p>This text uses Rguroo in every chapter. To help you find the instructions you need quickly, Rguroo steps, dialog boxes, and outputs are always presented in the same way. This section explains what to look for.</p>
+<section id="sec-instructions-solutions" class="level3">
+<h3 class="anchored" data-anchor-id="sec-instructions-solutions">0.8.1 Identify Instructions for Solutions</h3>
+<p>Each worked example in this text is set up the same way:</p>
+<ol type="1">
+<li>The <strong>example</strong> states the problem. If the example uses a dataset, a line with the dataset repository logo <img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid" alt="Rguroo dataset logo"> tells you the name of the dataset and the repository it is in. A collapsible <strong>code book</strong> describes each variable.</li>
+<li>The <strong>🔎 Solution</strong> box is collapsed so you can try the problem on your own first. Click it to expand the full solution.</li>
+<li>Inside the solution, Rguroo steps appear in their own collapsible box marked with the Rguroo logo <img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22">. Click the box to see numbered, step-by-step instructions.</li>
+<li>Many Rguroo boxes include a nested box labeled <strong>Click here to see the Rguroo dialog</strong>, which shows a screenshot of the completed dialog box so you can compare it with yours.</li>
+</ol>
+<p>When a set of Rguroo steps is used again later in a chapter, the text links back to the first full set of instructions (for example, “as shown <a href="#">here</a>”) rather than repeating them. Many Rguroo boxes also begin with a <strong>Before you begin</strong> note reminding you to import the dataset first.</p>
+<p>Within Rguroo steps, different parts of the Rguroo window are formatted differently so you can tell at a glance what you are looking for on the screen.</p>
+<div id="tbl-rguroo-formatting" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table explaining the text formatting used for Rguroo instructions in this book. Bold text is a toolbox, and styled text is used for dropdowns, functions, dialog box names, dialog options, text to type, buttons, dataset names, variable names, and repository names, each with an example.">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-rguroo-formatting-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7: Text formatting used for Rguroo instructions
+</figcaption>
+<div aria-describedby="tbl-rguroo-formatting-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 40%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Formatting in the text</th>
+<th>What it refers to</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Bold</strong></td>
+<td>A toolbox on the left side of the Rguroo window</td>
+<td><strong>Data</strong>, <strong>Plots</strong>, <strong>Analytics</strong></td>
+</tr>
+<tr class="even">
+<td><span class="dpd">Dropdown</span></td>
+<td>A dropdown menu or button you click to see a list</td>
+<td><span class="dpd">Functions</span>, <span class="dpd">Dataset</span></td>
+</tr>
+<tr class="odd">
+<td><span class="fun">Function</span></td>
+<td>A function or menu item you select</td>
+<td><span class="fun">Summary Statistic</span>, <span class="fun">Boxplot</span></td>
+</tr>
+<tr class="even">
+<td><span class="dialog">Dialog</span></td>
+<td>The name of a dialog box</td>
+<td><span class="dialog">Basic Summary Statistic</span></td>
+</tr>
+<tr class="odd">
+<td><span class="des">Option</span></td>
+<td>A field, checkbox, or option inside a dialog box</td>
+<td><span class="des">Mean</span>, <span class="des">Sample Size</span></td>
+</tr>
+<tr class="even">
+<td><span class="typein">Type this</span></td>
+<td>Text you type exactly as shown</td>
+<td><span class="typein">kozak</span></td>
+</tr>
+<tr class="odd">
+<td><span class="button">Button</span></td>
+<td>A button you click</td>
+<td><span class="button">Import</span>, <span class="button">Save As</span></td>
+</tr>
+<tr class="even">
+<td><span class="data">dataset</span></td>
+<td>The name of a dataset</td>
+<td><span class="data">cats</span></td>
+</tr>
+<tr class="odd">
+<td><span class="var">variable</span></td>
+<td>The name of a variable in a dataset</td>
+<td><span class="var">Bwt</span></td>
+</tr>
+<tr class="even">
+<td><span class="repo">Repository</span></td>
+<td>The name of a dataset repository</td>
+<td><span class="repo">Kozak</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><span style="color: blue; font-weight: bold;">Walkthrough Example: Following a Solution with Rguroo Steps</span></p>
+<p>The example below is set up exactly like the examples you will see in later chapters. Try it now using the <span class="data">Study Hours</span> dataset you created in Section 0.4.1.</p>
+<div id="exm-study-hours-mean" class="theorem example">
+<p><span class="theorem-title"><strong>Example 1 (Finding the Mean Study Time)</strong></span> Find the mean number of hours per week that the five students in the <span class="data">Study Hours</span> dataset study.</p>
+</div>
+<div class="solution-callout callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🔎 Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Variable: <span class="math inline">\(x\)</span> = number of hours a student studies per week</p>
+<p>Click to expand the box below to see how to calculate the mean in Rguroo.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'} Calculating the Mean Study Time">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid" style="vertical-align:middle;" width="22"> Calculating the Mean Study Time
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Before you begin:</strong> Make sure the <span class="data">Study Hours</span> dataset is saved in your <strong>Data</strong> toolbox, as shown in Section 0.4.1.</p>
+<ol type="1">
+<li>Open the <strong>Data</strong> toolbox.</li>
+<li>Click on the <span class="dpd">Functions</span> dropdown, and select <span class="fun">Summary Statistic</span>. This opens the <span class="dialog">Basic Summary Statistic</span> dialog.</li>
+<li>From the <span class="dpd">Dataset</span> dropdown, select the <span class="data">Study Hours</span> dataset.</li>
+<li>From the <span class="dpd">Numerical</span> dropdown, select the <span class="var">Hours</span> variable.</li>
+<li>In the <strong>Statistics</strong> section of the dialog, select the checkbox for <span class="des">Mean</span>.</li>
+<li>Click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the result.</li>
+</ol>
+<div class="callout callout-style-simple callout-note callout-titled" title="Click here to see the Rguroo dialog">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Click here to see the Rguroo dialog
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-study-hours-mean-dialog" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Basic Summary Statistic dialog with Study Hours selected in the Dataset dropdown and Hours selected in the Numerical dropdown. The Frequency, Factor 1, and Factor 2 boxes are empty, and Include Interaction is unchecked. In the Statistics section, only the Mean checkbox is checked.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-study-hours-mean-dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/study_hours_mean_dialog.png" class="img-fluid figure-img" style="width:70.0%" alt="Rguroo Basic Summary Statistic dialog with Study Hours selected in the Dataset dropdown and Hours selected in the Numerical dropdown. The Frequency, Factor 1, and Factor 2 boxes are empty, and Include Interaction is unchecked. In the Statistics section, only the Mean checkbox is checked.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-study-hours-mean-dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;59: Basic Summary Statistic Dialog for the Study Hours Dataset
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-study-hours-mean" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Summary Statistic output table with the columns Level and Mean. Under the heading All Observations, one row lists All Observations with a mean of 8.2.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-study-hours-mean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/study_hours_mean_output.png" class="img-fluid figure-img" style="width:40.0%" alt="Rguroo Summary Statistic output table with the columns Level and Mean. Under the heading All Observations, one row lists All Observations with a mean of 8.2.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-study-hours-mean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;60: Mean Study Time for the Study Hours Dataset
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The mean study time is 8.2 hours per week (<a href="#fig-study-hours-mean" class="quarto-xref">Figure&nbsp;<span>60</span></a>).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-dialog-boxes" class="level3">
+<h3 class="anchored" data-anchor-id="sec-dialog-boxes">0.8.2 Dialog Boxes</h3>
+<p>A <strong>dialog box</strong> is the window where you tell Rguroo what you want to do. You choose the dataset and variables, select options, and then click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> to see the result. Most dialog boxes are organized from top to bottom in the order you fill them in: first the dataset, then the variables, then the options.</p>
+<p><strong>How tabs work.</strong> Each time you open a dataset or select a function, such as <span class="fun">Boxplot</span> or <span class="fun">Mean Inference</span>, Rguroo opens a new <strong>tab</strong> in the workspace. The tab holds everything for that task: the dialog box appears as a window on top of the tab, and when you click the preview icon, the output appears in the same tab behind it. Because each task has its own tab, you can switch between a dataset, a graph, and an analysis without closing any of them. After you save, the tab takes the name you entered in the <strong>Save As</strong> textbox.</p>
+<p><strong>Reopening the dialog box.</strong> The toolbar at the top of each tab has yellow buttons such as <strong>Basics</strong> and <strong>Details</strong>. Click <strong>Basics</strong> to reopen the dialog box with the most common options (<a href="#fig-tab-dialog-output" class="quarto-xref">Figure&nbsp;<span>61</span></a>), or <strong>Details</strong> for additional options. Your earlier selections are still there, so you can change one setting and preview again without starting over. Graph tabs also have a <strong>Level Editor</strong> button for changing the order, labels, and colors of categories. Analytics tabs have a <strong>Report Layout</strong> button for choosing what appears in the report.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-tab-dialog-output" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo workspace with two tabs, Dataset and study hours boxplot. The study hours boxplot tab is selected, and its toolbar shows the Basics button, highlighted and open, followed by the Details and Level Editor buttons, a row of icons, the Preview button, and the Save As textbox containing study hours boxplot. The Boxplot dialog box floats over the tab with Study Hours 6 selected as the dataset and Hours in the Selected column, and part of the blue boxplot output is visible behind it on the right.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tab-dialog-output-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/tab_dialog_output.png" class="img-fluid figure-img" style="width:90.0%" alt="Rguroo workspace with two tabs, Dataset and study hours boxplot. The study hours boxplot tab is selected, and its toolbar shows the Basics button, highlighted and open, followed by the Details and Level Editor buttons, a row of icons, the Preview button, and the Save As textbox containing study hours boxplot. The Boxplot dialog box floats over the tab with Study Hours 6 selected as the dataset and Hours in the Selected column, and part of the blue boxplot output is visible behind it on the right.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tab-dialog-output-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;61: Boxplot Dialog Box Open Over the Output in the Study Hours Boxplot Tab
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Screenshots of completed dialog boxes appear in the boxes labeled <strong>Click here to see the Rguroo dialog</strong>, or as figures with captions such as “Basic Summary Statistic Dialog for the Study Hours Dataset.” Use these screenshots to check your work. If your result does not match the text, compare your dialog box with the screenshot to find which selection is different.</p>
+<p>A few tips for working with dialog boxes:</p>
+<ul>
+<li><strong>Icons in the title bar.</strong> The title bar of each dialog box has a pin icon on the left, which keeps the dialog box open while you work, and a camera icon that opens a video about that dialog box. On the right are the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon"> and an <strong>X</strong> to close the dialog box. Closing the dialog box does not close the tab or delete your output.</li>
+<li><strong>Help is built in.</strong> Click the question mark icon next to any section name in a dialog box to see an explanation of its options (see Section 0.7.2).</li>
+<li><strong>Your screen may look slightly different.</strong> Rguroo is updated regularly, so the layout or colors on your screen may differ a little from the screenshots. The names of menus, options, and buttons will be the same.</li>
+</ul>
+</section>
+<section id="sec-rguroo-outputs" class="level3">
+<h3 class="anchored" data-anchor-id="sec-rguroo-outputs">0.8.3 Rguroo Outputs</h3>
+<p>When you click the preview icon <img src="Rguroo_Icons/preview_inline.png" class="img-fluid" alt="preview icon">, Rguroo displays the result in the same tab as the dialog box. Depending on the function, the output may be a graph, a table of results, or a full report with tables, graphs, and a written explanation of how to interpret the results. If you change a selection in the dialog box and click the preview icon again, the output updates in place.</p>
+<p>In this text, Rguroo outputs appear in two ways:</p>
+<ul>
+<li><strong>Screenshots</strong> of the output, shown as figures with a caption (for example, “Mean and Median Weight of Cats”). These show the key numbers you should see when you complete the steps.</li>
+<li><strong>Interactive outputs</strong>, shown in a scrollable window inside the page. These are the actual Rguroo output, so you can scroll through the full report, and graphs can be explored the same way they would be in Rguroo. If you are using a keyboard, press <em>Tab</em> to move into the output window and use the arrow keys to scroll.</li>
+</ul>
+<p>When you compare your output to the text, focus on the values the question asks for. Results based on <strong>simulation</strong> or <strong>random sampling</strong> (introduced in Chapter 4) will be slightly different every time they are run, so your numbers will be close to, but not exactly the same as, the numbers in the text.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Accessibility.</strong> Rguroo works with standard screen readers and provides written descriptions of its graphs. Every screenshot in this text also includes alternative text describing what the image shows.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-rguroo-icons" class="level3">
+<h3 class="anchored" data-anchor-id="sec-rguroo-icons">0.8.4 Rguroo Icons</h3>
+<p>The following icons appear in Rguroo and throughout this text. Some were introduced in Section 0.3. They are collected here so you have one place to look them up.</p>
+<div id="tbl-rguroo-icons" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table of common icons used in Rguroo and in this text. Each row shows the icon, its name, where it appears, and its meaning. The icons are Preview, Save As, Folder, Dataset repository, Rguroo logo, Add, Filters, Camera, and Try It.">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-rguroo-icons-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8: Common Rguroo icons
+</figcaption>
+<div aria-describedby="tbl-rguroo-icons-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 16%">
+<col style="width: 30%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Icon</th>
+<th>Name</th>
+<th>Where you see it</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="Rguroo_Icons/preview_inline.png" class="img-fluid figure-img"></td>
+<td>Preview</td>
+<td>Rguroo dialog boxes and this text</td>
+<td>Runs the dialog box and shows the graph, table, or output</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><img src="Rguroo_Icons/save_as.png" class="img-fluid figure-img"></td>
+<td>Save As</td>
+<td>Rguroo data and outputs</td>
+<td>Saves the dataset or output with the name typed in the <strong>Save As</strong> textbox</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><img src="Rguroo_Icons/Rguroo_repo_logo.png" class="img-fluid figure-img"></td>
+<td>Dataset repository</td>
+<td>This text</td>
+<td>The dataset for an example or exercise is available in an Rguroo dataset repository</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><img src="Rguroo_Icons/R_circle_logo.svg" class="img-fluid figure-img" width="22"></td>
+<td>Rguroo logo</td>
+<td>This text</td>
+<td>A collapsible box with step-by-step Rguroo instructions</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><img src="Rguroo_Icons/add.png" class="img-fluid figure-img"></td>
+<td>Add</td>
+<td>Rguroo dialog boxes</td>
+<td>Adds a new row, such as a new logical expression or a new variable</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><img src="Rguroo_Icons/filters.png" class="img-fluid figure-img"></td>
+<td>Filters</td>
+<td>Rguroo Dataset Editor</td>
+<td>Opens the Filters panel so you can hide rows with certain values</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><img src="Rguroo_Icons/camera_inline.png" class="img-fluid figure-img"></td>
+<td>Camera</td>
+<td>This text and the Rguroo User’s Guide</td>
+<td>A video is available for this skill</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><img src="Rguroo_Icons/try_it.png" class="img-fluid figure-img" width="30"></td>
+<td>Try It</td>
+<td>This text</td>
+<td>A practice problem to try on your own</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><img src="Rguroo_Icons/try_it.png" class="img-fluid" width="45" alt="Try It"> <strong>Try It: Find the Icons</strong></p>
+<p>Open the <span class="fun">Summary Statistic</span> dialog in Rguroo and locate the Preview icon and the <strong>Save As</strong> textbox. Then open the <span class="fun">Subset</span> dialog and find the green Add icon <img src="Rguroo_Icons/add.png" class="img-fluid" alt="plus icon">. Hover over each icon to confirm its name.</p>
+</section>
+</section>
+<section id="sec-instructor-dashboard" class="level2">
+<h2 class="anchored" data-anchor-id="sec-instructor-dashboard">0.9 Instructor Dashboard</h2>
+<p>The Rguroo <strong>Dashboard</strong> is a set of tools for instructors. From the Dashboard, you can create groups for your classes, build your own dataset repositories, share those repositories with your students, monitor student login activity, and email your students. Students do not have access to the Dashboard, but they benefit from the repositories and emails you share with them through it.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Students:</strong> This section is written for instructors. You only need Section 0.4.4 (<em>My Groups</em>) to join your instructor’s group and import datasets from it.</p>
+</div>
+</div>
+</div>
+<section id="sec-create-instructor-acct" class="level3">
+<h3 class="anchored" data-anchor-id="sec-create-instructor-acct">0.9.1 Creating Instructor Account</h3>
+<p>Faculty accounts in Rguroo are <strong>free</strong>. To register, you must use your <strong>institution-issued email address</strong> (for example, an address ending in .edu). The Rguroo team reviews each faculty registration manually before approving it, and accounts registered with a personal email address, such as Gmail or Yahoo, will not be approved.</p>
+<p>Instructors register in much the same way as students (see Section 0.2), with one difference: on the registration page, select <strong>Faculty</strong> instead of <strong>Student</strong> (see <a href="#fig-rguroo-student" class="quarto-xref">Figure&nbsp;<span>2</span></a>).</p>
+<ol type="1">
+<li>Go to the <a href="https://www.rguroo.com">Rguroo website</a> and click <strong>Register</strong> in the upper-right corner.</li>
+<li>Select <strong>Faculty</strong>.</li>
+<li>Enter your institutional email address and complete the email verification, as described in Section 0.2 (<a href="#fig-faculty-register" class="quarto-xref">Figure&nbsp;<span>62</span></a>).</li>
+<li>Complete the <strong>Your Information</strong> page, including your institution’s name.</li>
+<li>Click <strong>Submit</strong>, then check your email and complete the verification, as described in Section 0.2. Because faculty accounts are reviewed manually, approval is not immediate. You will receive an email when your account has been approved.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-faculty-register" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Faculty Registration web page. Under the heading Register Faculty, the Your Role dropdown is set to Instructor, followed by Email and Verify Email text boxes. A note below reads: In order for your account to be approved, you must use your institution-issued email address. A yellow Submit button appears at the bottom.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-faculty-register-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/faculty_register.png" class="img-fluid figure-img" style="width:80.0%" alt="Rguroo Faculty Registration web page. Under the heading Register Faculty, the Your Role dropdown is set to Instructor, followed by Email and Verify Email text boxes. A note below reads: In order for your account to be approved, you must use your institution-issued email address. A yellow Submit button appears at the bottom.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-faculty-register-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;62: Rguroo Faculty Registration Page
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Plan ahead.</strong> Because faculty accounts are reviewed manually, register well before the start of the term so your account is ready in time to create your class groups and repositories.</p>
+</div>
+</div>
+</div>
+<p>Once your faculty account is active, a <strong>Dashboard</strong> button appears at the top right of the Rguroo window (item <span class="circle-number">7</span> in <a href="#fig-dashboard" class="quarto-xref">Figure&nbsp;<span>4</span></a>).</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Already have a student or trial account?</strong> Your faculty account must be registered with your institutional email address. If you previously created an account with a different email, register again as faculty using your institutional email.</p>
+</div>
+</div>
+</div>
+<p>Rguroo also offers free workshops and one-on-one training for faculty. To schedule a session, visit the <a href="https://rguroo.com/request-training/">Request Training</a> page.</p>
+</section>
+<section id="sec-navigate-dashboard" class="level3">
+<h3 class="anchored" data-anchor-id="sec-navigate-dashboard">0.9.2 Navigating Instructor Dashboard</h3>
+<p>To open the Dashboard, log in to Rguroo and click the <strong>Dashboard</strong> button at the top right of the Rguroo window. The Dashboard opens in a new browser tab.</p>
+<p>The left side of the Dashboard has two main icons:</p>
+<ul>
+<li><strong>Groups</strong> opens the <strong>Manage Groups</strong> page, where you create groups, add and remove members, share repositories, monitor activity, and send emails (<a href="#fig-dashboard-groups" class="quarto-xref">Figure&nbsp;<span>63</span></a>).</li>
+<li><strong>Repositories</strong> opens the <strong>Manage Repositories</strong> page, where you create dataset repositories and add datasets to them.</li>
+</ul>
+<p>On a small screen, click the three horizontal lines at the top right of the Dashboard window to see these icons.</p>
+<p>On both pages, the left pane is a <strong>directory</strong> that works like the folders in your Rguroo toolboxes. You can create items in the main (root) directory or organize them in folders. For example, you might create a folder for each semester, or a folder for each course you teach. To create a folder, click the <strong>FOLDER</strong> button at the top of the directory pane, type a name, and click <span class="button">Apply</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-dashboard-groups" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Dashboard with Welcome Instructor at the top right. The left side has two icons, Groups, which is selected, and Repositories. Next to them are the FOLDER and GROUP buttons, and below them is a folder named My Classes with a trash icon and an add group icon on its right. The main area is titled Manage Groups.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dashboard-groups-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/dashboard_groups.png" class="img-fluid figure-img" style="width:90.0%" alt="Rguroo Dashboard with Welcome Instructor at the top right. The left side has two icons, Groups, which is selected, and Repositories. Next to them are the FOLDER and GROUP buttons, and below them is a folder named My Classes with a trash icon and an add group icon on its right. The main area is titled Manage Groups.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dashboard-groups-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;63: Rguroo Dashboard Showing the Manage Groups Page
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Suggested order for setting up a new class:</strong> (1) create a repository and add your datasets (<a href="#sec-create-repository">Section 0.9.3</a>), (2) create a group for the class ([Section 0.9.4(#sec-create-groups)]), (3) share the repository with the group (<a href="#sec-link-repository">Section 0.9.5</a>), and (4) give students the Group Code.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-create-repository" class="level3">
+<h3 class="anchored" data-anchor-id="sec-create-repository">0.9.3 Creating Repositories</h3>
+<p>A <strong>dataset repository</strong> is a collection of datasets that users can import into their own Rguroo accounts with a few clicks. The Kozak repository used throughout this text is one example. Creating your own repository lets you give students exactly the datasets they need for a lab, project, or exam.</p>
+<p><strong>Creating a repository</strong></p>
+<ol type="1">
+<li>In the Dashboard, select the <strong>Repositories</strong> icon to open the <strong>Manage Repositories</strong> page.</li>
+<li>Click the REPOSITORY button at the top of the directory pane (<a href="#fig-create-repository" class="quarto-xref">Figure&nbsp;<span>64</span></a>). To create the repository inside a folder, click the plus sign next to the folder name instead.</li>
+<li>In the <strong>Create Repository</strong> dialog, enter a unique <strong>Name</strong> and, optionally, a <strong>Description</strong> and click CREATE.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-create-repository" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Dashboard with Welcome Instructor at the top right and Repositories selected on the left. Next to it are the FOLDER and REPOSITORY buttons and a folder named My Repositories. The Create Repository dialog is open in the center with an empty Name box, an empty Description box, and a CREATE button.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-create-repository-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/dashboard_create_repository.png" class="img-fluid figure-img" style="width:90.0%" alt="Rguroo Dashboard with Welcome Instructor at the top right and Repositories selected on the left. Next to it are the FOLDER and REPOSITORY buttons and a folder named My Repositories. The Create Repository dialog is open in the center with an empty Name box, an empty Description box, and a CREATE button.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-create-repository-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;64: Create Repository Dialog in the Rguroo Dashboard
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Adding datasets to a repository</strong></p>
+<p>Select the repository name to open its <strong>Manage Repository</strong> page (<a href="#fig-manage-repository" class="quarto-xref">Figure&nbsp;<span>65</span></a>). In the <strong>Datasets</strong> section, the icons on the right let you add datasets in three ways:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-manage-repository" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Dashboard page titled Manage Repository: New Repository. Below the title, the repository name New Repository and the note Created: a few seconds ago appear, followed by a count of 0 Datasets with a pencil edit icon and a trash icon on the right. The Datasets section below shows 0 Records found and a row of icons on the right: a download arrow, a shaded plus, a plus sign with three lines, a plain plus sign, and an up arrow to collapse the section. The empty table has columns for Name, Title, File Type, Comment, Columns, and Rows.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-manage-repository-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/dashboard_manage_repository.png" class="img-fluid figure-img" style="width:90.0%" alt="Rguroo Dashboard page titled Manage Repository: New Repository. Below the title, the repository name New Repository and the note Created: a few seconds ago appear, followed by a count of 0 Datasets with a pencil edit icon and a trash icon on the right. The Datasets section below shows 0 Records found and a row of icons on the right: a download arrow, a shaded plus, a plus sign with three lines, a plain plus sign, and an up arrow to collapse the section. The empty table has columns for Name, Title, File Type, Comment, Columns, and Rows.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-manage-repository-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;65: Manage Repository Page for a New, Empty Repository
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Upload a CSV or Excel file from your computer.</strong> Click the plain plus sign (fourth icon) and select the file. Then enter:
+<ul>
+<li><strong>Name</strong>: the dataset name students will see in their <strong>Data</strong> toolbox after importing.</li>
+<li><strong>Title</strong>: the title shown in the repository list.</li>
+<li><strong>Comment</strong> (optional): a short description students see when hovering over the dataset name.</li>
+<li><strong>Documentation</strong> (optional): a full description of the dataset, typed in the text editor or uploaded as a text (.txt) or HTML file. Students can open it from the information icon in the repository list. This is a good place to paste the dataset’s code book.</li>
+</ul></li>
+<li><strong>Import datasets from your own Rguroo account.</strong> Click the plus sign with three lines (third icon), check the datasets you want from your <strong>Data</strong> toolbox, and click <span class="button">Import</span>.</li>
+<li><strong>Import datasets from a repository another instructor has shared with you.</strong> Click the shaded plus (second icon), choose the shared repository, select the datasets, and click the import button.</li>
+</ul>
+<div id="tbl-repository-icons" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-alt="Table describing the four icons in the Datasets section of the Rguroo Manage Repository page: the down arrow downloads selected datasets, the shaded plus imports datasets from a repository shared by another instructor, the plus with three lines imports datasets from your own Rguroo account, and the plain plus uploads a CSV or Excel file from your computer.">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-repository-icons-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9: Icons in the Datasets section of the Manage Repository page
+</figcaption>
+<div aria-describedby="tbl-repository-icons-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 70%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Icon</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Down arrow (first icon)</td>
+<td>Downloads selected datasets to your computer</td>
+</tr>
+<tr class="even">
+<td>Shaded plus (second icon)</td>
+<td>Imports datasets from a repository another instructor shared with you</td>
+</tr>
+<tr class="odd">
+<td>Plus with three lines (third icon)</td>
+<td>Imports datasets from your own Rguroo account</td>
+</tr>
+<tr class="even">
+<td>Plain plus (fourth icon)</td>
+<td>Uploads a CSV or Excel file from your computer</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>Managing datasets in a repository</strong></p>
+<p>Each dataset in the list has a download icon and an eye icon for previewing it. Hover over a dataset name to see the eye icon (preview) and the down-arrow icon (download). To delete or update a dataset, check the box next to its name. A bar appears at the bottom of the page with the buttons <strong>DELETE SELECTED DATASET</strong> and <strong>UPDATE DATASET DETAILS</strong> (<a href="#fig-manage-datasets" class="quarto-xref">Figure&nbsp;<span>66</span></a>). Use <strong>UPDATE DATASET DETAILS</strong> to change a dataset’s name, title, comment, or documentation. To rename a repository or change its description, click the pencil icon next to the dataset count. To delete a repository, click the trash icon next to it.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-manage-datasets" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Dashboard Manage Repository page for New Repository, which is highlighted in the left sidebar below a folder named My Repositories. The Datasets section lists one dataset, Study Hours, a csv file with 1 column and 5 rows. Its checkbox is checked, and download and eye preview icons appear next to it. A bar at the bottom of the page reads 1 selected, with the buttons DELETE SELECTED DATASET and UPDATE DATASET DETAILS.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-manage-datasets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/dashboard_manage_datasets.png" class="img-fluid figure-img" style="width:90.0%" alt="Rguroo Dashboard Manage Repository page for New Repository, which is highlighted in the left sidebar below a folder named My Repositories. The Datasets section lists one dataset, Study Hours, a csv file with 1 column and 5 rows. Its checkbox is checked, and download and eye preview icons appear next to it. A bar at the bottom of the page reads 1 selected, with the buttons DELETE SELECTED DATASET and UPDATE DATASET DETAILS.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-manage-datasets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;66: Managing a Dataset in a Repository
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-create-groups" class="level3">
+<h3 class="anchored" data-anchor-id="sec-create-groups">0.9.4 Creating Groups</h3>
+<p>A <strong>group</strong> is a set of Rguroo users, usually the students in one of your classes. Groups are how you share repositories with students, monitor their activity, and send them emails.</p>
+<p><strong>Creating a group</strong></p>
+<ol type="1">
+<li>In the Dashboard, select the <strong>Groups</strong> icon to open the <strong>Manage Groups</strong> page.</li>
+<li>Click the <strong>GROUP</strong> button at the top of the directory pane (<a href="#fig-create-group" class="quarto-xref">Figure&nbsp;<span>67</span></a>), or click the add-group icon next to a folder name to create the group inside that folder. You can also duplicate an existing group using the duplicate button.</li>
+<li>In the <strong>Create Group</strong> dialog, enter:
+<ul>
+<li><strong>Name</strong>: for example, <em>STAT C1000 Section 12345 Fall 2026</em>.</li>
+<li><strong>Group Code</strong>: the code students will type to join. Type your own alphanumeric code or click <span class="button">Generate</span> for a random one. Rguroo will ask for a different code if yours is already in use.</li>
+<li><strong>Description</strong> (optional).</li>
+<li><strong>Expiration Date</strong>: the date the group expires. The default is six months after the group is created. After the group expires, members can no longer access the repositories shared with the group, although any datasets they already imported stay in their accounts. and click <strong>CREATE</strong></li>
+</ul></li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-create-group" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Dashboard with Welcome Instructor at the top right and Groups selected on the left. Next to it are the FOLDER and GROUP buttons and a folder named My Classes with a trash icon and an add group icon. The Create Group dialog is open in the center with an empty Name box, a Group Code box with a GENERATE button, an empty Description box, an Expiration Date box showing 2027/04/13, and a CREATE button.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-create-group-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/dashboard_create_group.png" class="img-fluid figure-img" style="width:90.0%" alt="Rguroo Dashboard with Welcome Instructor at the top right and Groups selected on the left. Next to it are the FOLDER and GROUP buttons and a folder named My Classes with a trash icon and an add group icon. The Create Group dialog is open in the center with an empty Name box, a Group Code box with a GENERATE button, an empty Description box, an Expiration Date box showing 2027/04/13, and a CREATE button.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-create-group-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;67: Create Group Dialog in the Rguroo Dashboard
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>⚠️ The Group Code cannot be changed after the group is created. You can change the group’s name, description, and expiration date at any time by selecting the group and clicking the edit icon.</p>
+</div>
+</div>
+</div>
+<p><strong>Adding students to a group</strong></p>
+<p>There are two ways to add members:</p>
+<ul>
+<li><strong>Students join with the Group Code.</strong> Give students the Group Code (for example, in your syllabus or course website). Students join by clicking <em>My Groups</em> at the top of the Rguroo window, selecting <em>Join a Group</em>, entering the code, and clicking <em>Join Group</em>, as described in Section 0.4.4.</li>
+<li><strong>You invite students by email.</strong> Select the group, then in the <strong>Members</strong> section click the plus sign, enter the student’s Rguroo username (email), and click <span class="button">Add</span>. To invite a whole class at once, click the plus-sign-with-three-lines button, download the CSV or Excel template, fill in your students’ email addresses, and import the completed file. Each student receives an email with the Group Code and instructions for joining.</li>
+</ul>
+</section>
+<section id="sec-link-repository" class="level3">
+<h3 class="anchored" data-anchor-id="sec-link-repository">0.9.5 Linking Repositories to Groups</h3>
+<p>Creating a repository does not automatically give students access to it. You need to <strong>share</strong> (link) the repository with a group.</p>
+<ol type="1">
+<li>In the Dashboard, select the <strong>Groups</strong> icon and click the name of the group.</li>
+<li>At the bottom of the page, find the section labeled <strong>Share My Repositories</strong> and click the down arrow to see the repositories you have created.</li>
+<li>In the <strong>Action</strong> column, click the share button in the row for the repository you want to share.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-share-repo-group" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Dashboard Manage Group page for New Group, which is highlighted in the left sidebar below a folder named My Classes. The page shows the group code, an expiration date of in 6 months, 0 members, and 1 Shared out of 1 Repositories. Below an empty Members section, the Share My Repositories section lists New Repository with a green SHARED status and an UNSHARE button in the Actions column.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-share-repo-group-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/dashboard_share_repo_group.png" class="img-fluid figure-img" style="width:90.0%" alt="Rguroo Dashboard Manage Group page for New Group, which is highlighted in the left sidebar below a folder named My Classes. The page shows the group code, an expiration date of in 6 months, 0 members, and 1 Shared out of 1 Repositories. Below an empty Members section, the Share My Repositories section lists New Repository with a green SHARED status and an UNSHARE button in the Actions column.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-share-repo-group-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;68: Sharing a Repository with a Group
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The <strong>Status</strong> column changes to show that the repository is shared, and the share button changes to an unshare button. To stop sharing the repository with that group, click the unshare button. You can share the same repository with several groups, which is useful when you teach more than one section of the same course.</p>
+<p>Students can then import the shared datasets in either of two ways:</p>
+<ul>
+<li>Click <em>My Groups</em> and select <em>Show My Groups</em>, then select the group and repository (see Section 0.4.4).</li>
+<li>In the <strong>Data</strong> toolbox, select <span class="dpd">Data Import</span> then <span class="fun">Dataset Repository</span>, choose the <strong>My Repositories</strong> option, and select the repository.</li>
+</ul>
+<p><strong>Sharing a repository with another instructor</strong></p>
+<p>Repositories can also be shared directly with other faculty, even if they are not in one of your groups. This is a convenient way for a department to share a common set of datasets. In the <strong>Repositories</strong> page, hover over the repository and click the share icon. In the <strong>Share Repository</strong> dialog (<a href="#fig-share-repo-dialog" class="quarto-xref">Figure&nbsp;<span>70</span></a>), type the instructor’s Rguroo username (email) in the Email of user to add box, click the plus icon, and then click <strong>SHARE</strong>. To stop sharing, click the trash icon next to their name. Students can only be given access to repositories through groups.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-share-repo-faculty" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Dashboard Repositories sidebar showing a folder named My Repositories and a repository named New Repository. The mouse is over New Repository, revealing a share icon and a copy icon on the right, with a tooltip reading Share New Repository.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-share-repo-faculty-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/dashboard_share_repo_faculty.png" class="img-fluid figure-img" style="width:50.0%" alt="Rguroo Dashboard Repositories sidebar showing a folder named My Repositories and a repository named New Repository. The mouse is over New Repository, revealing a share icon and a copy icon on the right, with a tooltip reading Share New Repository.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-share-repo-faculty-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;69: Share Icon for a Repository in the Repositories Sidebar
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-share-repo-dialog" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Share Repository dialog with a text box labeled Email of user to add and a plus icon, the message This repository is not shared with anyone, and a SHARE button.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-share-repo-dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/dashboard_share_repo_dialog.png" class="img-fluid figure-img" style="width:60.0%" alt="Rguroo Share Repository dialog with a text box labeled Email of user to add and a plus icon, the message This repository is not shared with anyone, and a SHARE button.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-share-repo-dialog-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;70: Share Repository Dialog for Sharing with Another Instructor
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-student-activity" class="level3">
+<h3 class="anchored" data-anchor-id="sec-student-activity">0.9.6 Student Activity Log</h3>
+<p>The Dashboard lets you see when, and for how long, each group member has been logged in to Rguroo. This can help you check whether students are getting started with Rguroo early in the term, or follow up with a student who has not logged in.</p>
+<ol type="1">
+<li>In the Dashboard, select the <strong>Groups</strong> icon and click the name of the group. A list of group members appears.</li>
+<li>Move your mouse over a student’s name and click the activity monitor icon.</li>
+<li>A time plot opens showing the dates the student logged in along the horizontal axis and how long they were logged in each time.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-group-members" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Dashboard Manage Group page for New Group showing the group code, an expiration date of in 4 months, 2 members, and 1 Shared out of 1 Repositories. The Members section lists Student One and Student Two with their email addresses. The mouse is over Student One, revealing a bar chart icon and a clock history icon to the left of the name.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-group-members-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/dashboard_members.png" class="img-fluid figure-img" style="width:90.0%" alt="Rguroo Dashboard Manage Group page for New Group showing the group code, an expiration date of in 4 months, 2 members, and 1 Shared out of 1 Repositories. The Members section lists Student One and Student Two with their email addresses. The mouse is over Student One, revealing a bar chart icon and a clock history icon to the left of the name.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-group-members-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;71: Group Members with Activity and Login History Icons
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-login-history" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Login History table listing seven sessions for one student. Each row shows the session duration, ranging from 37 minutes to about 1.5 hours, the login and logout dates and times between February 4 and March 11, 2027, and a session end reason of Expired.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-login-history-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/dashboard_login_history.png" class="img-fluid figure-img" style="width:90.0%" alt="Rguroo Login History table listing seven sessions for one student. Each row shows the session duration, ranging from 37 minutes to about 1.5 hours, the login and logout dates and times between February 4 and March 11, 2027, and a session end reason of Expired.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-login-history-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;72: Login History for a Group Member
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-activity-graph" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo login activity time plot for one student. The horizontal axis shows dates from February 4 to March 28, 2027, and the vertical axis shows session length from 0 to 1 hour 40 minutes. Seven points connected by a shaded curve show sessions ranging from about 37 minutes to about 1.5 hours. A tooltip on the first point reads Feb 04, 2027, Duration 1H 29M, Login Time 10:15.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-activity-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/dashboard_activity.png" class="img-fluid figure-img" style="width:90.0%" alt="Rguroo login activity time plot for one student. The horizontal axis shows dates from February 4 to March 28, 2027, and the vertical axis shows session length from 0 to 1 hour 40 minutes. Seven points connected by a shaded curve show sessions ranging from about 37 minutes to about 1.5 hours. A tooltip on the first point reads Feb 04, 2027, Duration 1H 29M, Login Time 10:15.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-activity-graph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;73: Login Activity Graph for a Group Member
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The member list also provides two other tools:</p>
+<ul>
+<li><strong>Emailing students.</strong> Check the box next to the <strong>Name</strong> header to select everyone, or check individual students. Click the send-mail button at the bottom of the page, enter a subject and message, and click send. Emails come from a no-reply address, so ask students to contact you through your usual channels rather than replying.</li>
+<li><strong>Removing students.</strong> Select the students’ names and click the remove-members button at the bottom of the list. Removed students immediately lose access to the repositories shared with the group.</li>
+</ul>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>The activity log shows <strong>login activity</strong> only. It does not show which datasets a student opened or which analyses they ran. To see a student’s actual Rguroo work, ask them to submit an RGR file (see Section 0.6.4).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-applets-calculators" class="level3">
+<h3 class="anchored" data-anchor-id="sec-applets-calculators">0.9.7 Applets and Calculators</h3>
+<p>The <strong>Applets-Calculators</strong> toolbox on the left side of the Rguroo window contains interactive tools that are useful for in-class demonstrations and for students exploring probability and inference concepts on their own. All Rguroo users, not just instructors, have access to this toolbox.</p>
+<p>To open an applet, click <strong>Applets-Calculators</strong> on the left side of the Rguroo window, expand a folder by clicking the plus sign next to it, and double-click the applet you want. You can also type part of an applet’s name in the <strong>Search Applet</strong> box to narrow the list (<a href="#fig-applets" class="quarto-xref">Figure&nbsp;<span>74</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-applets" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rguroo Applets-Calculators toolbox expanded below the Data, Plots, Analytics, Prediction-Classification, and Probability-Simulation toolboxes. A Search Applet box appears above an Applets list containing three folders. The Art of Stat folder contains Exploratory Data Analysis, Association and Correlation, Distributions, Central Limit Theorem, two Confidence Intervals folders, and Inference for Comparing groups. The Rossman/Chance folder contains Sampling Distribution, Data Analysis, Probability, and Statistical Inference. The Calculators (Desmos) folder contains Scientific Calculator, Four Function Calculator, and Graphical Calculator.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-applets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/applets_calculators.png" class="img-fluid figure-img" style="width:40.0%" alt="Rguroo Applets-Calculators toolbox expanded below the Data, Plots, Analytics, Prediction-Classification, and Probability-Simulation toolboxes. A Search Applet box appears above an Applets list containing three folders. The Art of Stat folder contains Exploratory Data Analysis, Association and Correlation, Distributions, Central Limit Theorem, two Confidence Intervals folders, and Inference for Comparing groups. The Rossman/Chance folder contains Sampling Distribution, Data Analysis, Probability, and Statistical Inference. The Calculators (Desmos) folder contains Scientific Calculator, Four Function Calculator, and Graphical Calculator.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-applets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;74: Applets-Calculators Toolbox
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The toolbox is organized into three folders:</p>
+<ul>
+<li><strong>Art of Stat.</strong> Applets that accompany the <em>Statistics: The Art and Science of Learning from Data</em> textbook, organized by topic: Exploratory Data Analysis; Association and Correlation; Distributions; the Central Limit Theorem; Confidence Intervals and Significance Tests; and Inference for Comparing Groups.</li>
+<li><strong>Rossman/Chance.</strong> Well-known teaching applets organized into four areas: Sampling Distribution, Data Analysis, Probability, and Statistical Inference. They are especially useful for simulation-based demonstrations, such as showing how a sampling distribution builds up as more samples are drawn.</li>
+<li><strong>Calculators (Desmos).</strong> Three Desmos calculators: a <strong>Scientific Calculator</strong>, a <strong>Four Function Calculator</strong>, and a <strong>Graphical Calculator</strong>. The Scientific Calculator can also be opened from the Quick Access Tools menu (see Section 0.7.1). Chapter 4 uses its <span class="dpd">func</span> menu to compute factorials, permutations (<span class="math inline">\(_nP_r\)</span>), and combinations (<span class="math inline">\(_nC_r\)</span>).</li>
+</ul>
+<p><span style="color: blue; font-weight: bold;">Walkthrough Example: Using the Desmos Scientific Calculator</span></p>
+<p>A class of 30 students needs to choose a 3-person committee. Use the Desmos Scientific Calculator in Rguroo to find the number of possible committees.</p>
+<p><strong>Let’s Use the Calculator:</strong> Open the <strong>Applets-Calculators</strong> toolbox, expand the <strong>Calculators (Desmos)</strong> folder, and double-click <strong>Scientific Calculator</strong>. Click the <span class="dpd">func</span> button and select <strong>nCr</strong>. Type <span class="typein">30, 3</span> and the calculator displays <strong>4,060</strong> (<a href="#fig-desmos-ncr" class="quarto-xref">Figure&nbsp;<span>75</span></a>). There are 4,060 possible committees. You will learn why this is a combination, and when to use one, in Chapter 4.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-desmos-ncr" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Desmos Scientific Calculator open in a Rguroo tab named Scientific Calculator. The input line reads nCr(30,3) with the answer equals 4060 on the right. Below the input line, the func tab is selected, showing buttons for sin, cos, tan, their inverses, mean, stdev, stdevp, nPr, nCr, and factorial, along with exponent, square root, absolute value, round, natural log, log, e, and pi buttons.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-desmos-ncr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Rguroo_outputs/Chapter_0/desmos_ncr.png" class="img-fluid figure-img" style="width:70.0%" alt="Desmos Scientific Calculator open in a Rguroo tab named Scientific Calculator. The input line reads nCr(30,3) with the answer equals 4060 on the right. Below the input line, the func tab is selected, showing buttons for sin, cos, tan, their inverses, mean, stdev, stdevp, nPr, nCr, and factorial, along with exponent, square root, absolute value, round, natural log, log, e, and pi buttons.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-desmos-ncr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;75: Computing a Combination with the Desmos Scientific Calculator in Rguroo
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><img src="Rguroo_Icons/try_it.png" class="img-fluid" width="45" alt="Try It"> <strong>Try It: Use the Desmos Scientific Calculator</strong></p>
+<p>Open the Desmos Scientific Calculator in Rguroo and use the <span class="dpd">func</span> tab to complete each calculation.</p>
+<ol type="a">
+<li>A coffee shop offers 8 pastries. Find <span class="math inline">\(8!\)</span>, the number of ways to arrange all 8 pastries in a display case, using the <strong>!</strong> button.</li>
+<li>A club with 10 members needs to choose a president, vice president, secretary, and treasurer. Find the number of ways to fill these four positions using <strong>nPr</strong> with <span class="math inline">\(n = 10\)</span> and <span class="math inline">\(r = 4\)</span>.</li>
+<li>Recall the six values in the <em>Study Hours 6</em> dataset: 6, 10, 8, 5, 12, 9. Use <strong>mean</strong> and <strong>stdev</strong> to find the mean and sample standard deviation, separating the values with commas. Compare your answers with the Rguroo report you created in Section 0.6.4.</li>
+</ol>
 
 
 </section>
@@ -1803,258 +3228,247 @@ Figure&nbsp;38: SleepStudy with GPA Sorted in Descending Order and Filtered to S
 
 </main> <!-- /main -->
 <script>
-
 document.addEventListener("DOMContentLoaded", function () {
-
   document.querySelectorAll('a[href]').forEach(function (link) {
-
     link.setAttribute("target", "_blank");
-
     link.setAttribute("rel", "noopener noreferrer");
-
   });
-
 });
-
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
     }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
         }
       }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
     }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
     }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
         }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -2062,161 +3476,185 @@ document.addEventListener("DOMContentLoaded", function () {
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./index.html" class="pagination-link" aria-label="Preface">
