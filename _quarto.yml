@@ -15,6 +15,7 @@ format:
   html:
     toc: true
     toc-depth: 3
+    toc-expand: 3          # ADDED: shows subsections in the right-hand TOC by default
     css: styles.css
     include-after-body: open-links-new-tab.html
   #pdf:
@@ -30,12 +31,11 @@ book:
       affiliation: "California State University, Fullerton"
     - name: "Jessica Kramer"
       affiliation: "Santiago Canyon College"
-    - name: "Kathryn Kozak"
-      affiliation: "Coconino Community College"
   date: "2026"
-  cover-image: images/cover_picture.jpg
+  # REMOVED: cover-image (the cover is now the index.qmd page)
   chapters:
-    - index.qmd
+    - index.qmd            # cover page only
+    - preface.qmd          # ADDED: your old index.qmd content
     - getting_started_with_rguroo.qmd
     - Statistical Basics.qmd
     - Graphical_Description_of_Data.qmd
@@ -48,6 +48,7 @@ book:
     - proportion inference.qmd
     - mean inference.qmd
     - Regression.qmd
-    - Chi-Square and ANOVA Tests.qmd
+#    - Chi-Square and ANOVA Tests.qmd
     - chi_square_inference.qmd
+    - anova.qmd
     - References.qmd
