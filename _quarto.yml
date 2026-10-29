@@ -3,22 +3,25 @@ project:
   output-dir: Final_output
   resources:
     - "Rguroo_html_output/**"
-  post-render:
-    - scripts/make-pdf.sh
+#  post-render:
+#    - scripts/make-pdf.sh
 
 number-sections: true
 
 filters:
   - filters/class-to-macro.lua
 
-
 format:
   html:
+    toc: true
+    toc-depth: 3
+    toc-expand: 3          # ADDED: shows subsections in the right-hand TOC by default
     css: styles.css
     include-after-body: open-links-new-tab.html
-  pdf:
-    pdf-engine: xelatex
-    include-in-header: _preamble.tex
+  #pdf:
+  #  latex-tinytex: false
+  #  pdf-engine: xelatex
+  #  include-in-header: _preamble.tex
 book:
   title: "Introductory Statistics: A Conceptual Approach Using Rguroo"
   author:
@@ -28,12 +31,11 @@ book:
       affiliation: "California State University, Fullerton"
     - name: "Jessica Kramer"
       affiliation: "Santiago Canyon College"
-    - name: "Kathryn Kozak"
-      affiliation: "Coconino Community College"
   date: "2026"
-  cover-image: images/cover_picture.jpg
+  # REMOVED: cover-image (the cover is now the index.qmd page)
   chapters:
-    - index.qmd
+    - index.qmd            # cover page only
+    - preface.qmd          # ADDED: your old index.qmd content
     - getting_started_with_rguroo.qmd
     - Statistical Basics.qmd
     - Graphical_Description_of_Data.qmd
@@ -45,10 +47,8 @@ book:
     - foundations_of_inference.qmd
     - proportion inference.qmd
     - mean inference.qmd
-    - One Sample Inference.qmd
-    - Estimation.qmd
-    - Two Sample Inference.qmd
     - Regression.qmd
+#    - Chi-Square and ANOVA Tests.qmd
     - chi_square_inference.qmd
-    - Chi-Square and ANOVA Tests.qmd
+    - anova.qmd
     - References.qmd
