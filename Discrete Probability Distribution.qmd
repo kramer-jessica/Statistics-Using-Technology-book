@@ -19,13 +19,13 @@ By the end of Chapter 5, you should be able to:
 
 ::: {#Importing-Data-to-Rguroo-Chapter-5 .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Data to Rguroo"} 
 
-1. Open the **Data** toolbox in Rguroo.  
-2. From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.  
-3. In the top search box, type [kozak]{.typein}, then select the [Statistics Using Technology – Kozak]{.repo} repository.  
-4. In the middle search box, type the first few letters of the dataset, and choose your dataset that appears in the lower panel.  
-5. Click the [Import]{.button}. The dataset will be imported into your Rguroo account.  
-6. Click the [Close]{.button} to close the dialog.  
-7. To view the dataset, double-click the dataset under the **Data** toolbox list.
+1. Open the **Data** toolbox in Rguroo.
+2. From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.
+3. In the [Quick Filter]{.des} textbox, type [stats with rguroo]{.typein}, followed by a space. Then begin typing the dataset name. The results update as you type, so you can stop typing as soon as the dataset appears in the results panel.
+4. Select the dataset from the results panel.
+5. Click [Import]{.button} to import the dataset into your Rguroo account.
+6. Click [Close]{.button} to exit the dialog.
+7. To view the dataset, double-click its name in the **Data** toolbox list.
 
 :::
 
@@ -49,7 +49,7 @@ a.  The heigt of a tree in inches is continuous since it is something you measur
 b.  The number of A's you receive on your college transcript is discrete since it is something you count.
 :::
 
-## Basics of Probability Distributions
+## Basics of Probability Distributions {#sec-basics-probability-dist}
 
 A probability distribution can be illustrated with a simple experiment such as tossing a fair coin twice. The sample space, which lists all possible outcomes, is:
 $$\{HH, HT, TH, TT\}$$
@@ -153,13 +153,13 @@ b. Verify Rule 1: Each probability is between 0 and 1.
 
 The 2010 U.S. Census found the chance of a household being a certain size. The data is in @tbl-Household (\\"Households by age,\\" 2013). Note, the category 7 is really 7 or more people in the household. Use the probability distribution to answer the following questions.
 
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [table_5_1_1]{.data}.
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Intro to Stats with Rguroo]{.repo}, with the dataset name [table_5_1_1]{.data}.
 
 ```{r , echo=FALSE}
 #| tbl-alt: "Table showing household size"
 #| label: tbl-Household
 #| tbl-cap: "Household Size from U.S. Census of 2010"
-Household<- read.csv( "https://krkozak.github.io/MAT160/table_5_1_1.csv") 
+Household<- read.csv( "FJK_datasets/table_5_1_1.csv") 
 knitr::kable(Household)
 ```
 
@@ -189,7 +189,7 @@ We can also display probability distributions in graphical form, called a **prob
 
 Use the 2010 U.S. census for number of people in a household to create a probability histogram.
 
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [table_5_1_1]{.data}.
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Intro to Stats with Rguroo]{.repo}, with the dataset name [table_5_1_1]{.data}.
 
 :::
 
@@ -264,7 +264,7 @@ Since the formula for standard deviation is a little more complicated, we will o
 
 Use the 2010 U.S. census for number of people in a household to find the expected value and standard deviation. Interpret the expected value.
 
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [table_5_1_1]{.data}.
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Intro to Stats with Rguroo]{.repo}, with the dataset name [table_5_1_1]{.data}.
 :::
 
 :::{.callout-tip .solution-callout collapse="true" icon=false}
@@ -508,7 +508,7 @@ Below is a copy of the dataset for number of people in a household. Remember, th
 #| tbl-alt: "Table showing household size"
 #| label: tbl-Household2
 #| tbl-cap: "Household Size from U.S. Census of 2010"
-Household<- read.csv( "https://krkozak.github.io/MAT160/table_5_1_1.csv") 
+Household<- read.csv( "FJK_datasets/table_5_1_1.csv") 
 knitr::kable(Household)
 ```
 
@@ -532,19 +532,19 @@ c. For 7 or more people in a household, remember that the row with 7 is really 7
 
 :::
 
-### Homework for Section 5.1
+### Homework for @sec-basics-probability-dist
 
 1.  Eyeglassomatic manufactures eyeglasses for different retailers. The number of days it takes to fix defects in an eyeglass and the probability that it will take that number of days are in @tbl-Days.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [table_5_1_3]{.data}.
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Intro to Stats with Rguroo]{.repo}, with the dataset name [table_5_1_3]{.data}.
 :::
 
 ```{r, echo=FALSE }
 #| tbl-alt: "Table showing Number of Days to Fix Eyeglasses"
 #| label: tbl-Days
 #| tbl-cap: "Number of Days to fix Eyeglasses"
-Days<- read.csv("https://krkozak.github.io/MAT160/table_5_1_3.csv") 
+Days<- read.csv("FJK_datasets/table_5_1_3.csv") 
 knitr::kable(Days)
 ```
 
@@ -577,7 +577,7 @@ h.  Is it unusual for to flip two heads?
 
 4.  An LG Dishwasher, which costs \\\$800, has a 20% chance of needing to be replaced in the first 2 years of purchase. A two-year extended warranty costs \\\$112.10 on a dishwasher. What is the expected value of the extended warranty assuming it is replaced in the first 2 years? Interpret the results.
 
-## Binomial Probability Distribution 
+## Binomial Probability Distribution {#sec-binomial-probability-distribution}
 
 Imagine a factory that produces light bulbs, where each bulb can either be defective or not defective. If a company tests 20 bulbs and wants to know the probability that exactly 3 are defective, they need a systematic way to calculate that likelihood. In Section 5.1, we learned about probability distributions. One important type of probability distribution is the **binomial probability distribution**, which comes from a **binomial experiment**. In a binomial experiment, each trial is called a **Bernoulli trial**. This type of experiment allows us to calculate a specific number of successes.
 
@@ -959,7 +959,7 @@ b. Since this is a binomial experiment, we can use the formula to find the expec
 
 :::
 
-### Homework for Section 5.2
+### Homework for @sec-binomial-probability-distribution
 
 1.  Approximately 10% of all people are left-handed (\\"11 little-known facts,\\" 2013). Consider a grouping of fifteen people.
 
