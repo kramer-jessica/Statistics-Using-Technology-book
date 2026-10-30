@@ -19,13 +19,13 @@ By the end of Chapter 1, you should be able to:
 **Before you begin, review the process for importing a dataset.** Click on the box below to expand the directions for importing a dataset into your Data Toolbox.
 
 ::: {#Importing-Data-to-Rguroo-Chapter-1 .callout-note appearance="simple" collapse="true" icon="none" title="![](Rguroo_Icons/R_circle_logo.svg){width=22px style='vertical-align:middle;'}  Importing Data to Rguroo"}
-1.  Open the **Data** toolbox in Rguroo.\
-2.  From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.\
-3.  In the top search box, type [kozak]{.typein}, then select the [Statistics Using Technology – Kozak]{.repo} repository.\
-4.  In the middle search box, type the first few letters of the dataset, and choose your dataset that appears in the lower panel.\
-5.  Click the [Import]{.button}. The dataset will be imported into your Rguroo account.\
-6.  Click the [Close]{.button} to close the dialog.\
-7.  To view the dataset, double-click the dataset under the **Data** toolbox list.
+1. Open the **Data** toolbox in Rguroo.
+2. From the [Data Import]{.dpd} dropdown, select [Dataset Repository]{.fun}.
+3. In the [Quick Filter]{.des} textbox, type [stats with rguroo]{.typein}, followed by a space. Then begin typing the dataset name. The results update as you type, so you can stop typing as soon as the dataset appears in the results panel.
+4. Select the dataset from the results panel.
+5. Click [Import]{.button} to import the dataset into your Rguroo account.
+6. Click [Close]{.button} to exit the dialog.
+7. To view the dataset, double-click its name in the **Data** toolbox list.
 :::
 
 ```{r setup, include=FALSE}
@@ -38,7 +38,7 @@ library("MASS")
 
 You encounter statistics in many parts of everyday life. A sports fan follows player performance numbers, while someone interested in politics pays attention to polling data. Environmental advocates study measurements such as arsenic levels in local water or trends in global temperatures. In business, people track monthly sales or monitor product quality. In health fields, professionals examine the success rates of procedures or the percentage of a population affected by a disease. These are only a few of the many ways statistics appear across different areas of life. To develop the ability to gather data and interpret it effectively, it is essential to understand the nature of statistics and the fundamental concepts that define the field.
 
-## What is Statistics?
+## What is Statistics? {#sec-what-is-statistics}
 
 **Statistics** is the study of how to collect, organize, analyze, and interpret data.
 
@@ -95,7 +95,7 @@ A **dataset** is built from the observations and variables you collect. In a wel
 #| tbl-cap: "Example of a Clean Dataset"
 #| echo: FALSE
 Sugar <- read.csv(
-        "https://krkozak.github.io/MAT160/sugar.csv")
+        "FJK_datasets/sugar.csv")
 options(width = 60)
 knitr::kable(head(Sugar))
 ```
@@ -270,7 +270,7 @@ c.  Number of siblings is *numerical data* since it involves numerical quantitie
 d.  Age groupings (such as baby, toddler, adolescent, teenager, adult, and elderly) is *categorical data* because they represent groups rather than numerical values. These categories describe stages of life instead of exact ages, so arithmetic operations are not meaningful. It is considered *ordinal* because the categories follow a natural order from youngest to oldest.
 :::
 
-### Homework for Section 1.1
+### Homework for @sec-what-is-statistics
 
 1.  Suppose you want to know how Arizona workers age 16 or older travel to work. To estimate the percentage of people who use the different modes of travel, you take a sample containing 500 Arizona workers aged 16 or older. State the observation, variable, population, sample, parameter, and statistic.
 
@@ -314,7 +314,7 @@ c.  Pain levels on a scale from 1 to 10, 10 being the worst pain ever
 
 d.  Mean salary of employees in dollars
 
-## Sampling Methods
+## Sampling Methods {#sec-sampling-methods}
 
 As we discussed before, if you want to learn something about a population, it is often impossible or impractical to examine the whole population. It might be too expensive in terms of time or money. In other cases, it might be impractical — you can’t test all batteries for their length of lifetime because there wouldn’t be any batteries left to sell. Instead, we collect data from a sample.
 
@@ -351,14 +351,14 @@ When using statistical software to select a random sample, you might notice some
 
 Data was collected for two semesters in a statistics class on students’ transportation, demographics, living expenses, preferences, and academic majors. Take a simple random sample of size 5 without replacement and record the variable [gender]{.var}. Use a seed of 35. Then, repeat the process with a seed of 106.
 
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}. @tbl-Class shows the variables and the first 6 rows of the data set. A complete description of the variables is provided in the [dataset code book](#code-book-class) that follows.
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Intro to Stats with Rguroo]{.repo}, with the dataset name [class_survey1]{.data}. @tbl-Class shows the variables and the first 6 rows of the data set. A complete description of the variables is provided in the [dataset code book](#code-book-class) that follows.
 :::
 
 ```{r class-data1-table,echo=FALSE}
 #| tbl-alt: "Table showing first 6 rows of statistics class survey dataset"
 #| label: tbl-Class
 #| tbl-cap: "Class Survey"
-Class <- read.csv("https://krkozak.github.io/MAT160/class_survey.csv")
+Class <- read.csv("FJK_datasets/class_survey.csv")
 knitr::kable(head(Class))
 ```
 
@@ -457,7 +457,7 @@ A **stratified sample** is collected by first dividing the population into group
 
 Use the [class_survey1]{.data} dataset to take a stratified sample of size 5 of [vehicle]{.var} using [gender]{.var} as the strata. Use a seed of 35 and take the sample without replacement.
 
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}. @tbl-Class shows the variables and the first 6 rows of the data set. A complete description of the variables is provided in the [dataset code book](#code-book-class).
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Intro to Stats with Rguroo]{.repo}, with the dataset name [class_survey1]{.data}. @tbl-Class shows the variables and the first 6 rows of the data set. A complete description of the variables is provided in the [dataset code book](#code-book-class).
 :::
 
 ::::: {.callout-tip .solution-callout collapse="true" icon="false"}
@@ -572,7 +572,7 @@ To create a systematic sample, the librarian would first calculate the sampling 
 
 Use the [class_survey1]{.data} dataset to take a systematic sample of size 5 and record [gender]{.var}. Use a seed of 103.
 
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}. @tbl-Class shows the variables and the first 6 rows of the data set. A complete description of the variables is provided in the [dataset code book](#code-book-class).
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Intro to Stats with Rguroo]{.repo}, with the dataset name [class_survey1]{.data}. @tbl-Class shows the variables and the first 6 rows of the data set. A complete description of the variables is provided in the [dataset code book](#code-book-class).
 :::
 
 ::::: {.callout-tip .solution-callout collapse="true" icon="false"}
@@ -659,7 +659,7 @@ d.  This is a systematic sample since they selected every $100^{th}$ surgery. Th
 e.  This is a convenience sample since they left it up to the facility how to do it. The problem with convenience samples is that the person collecting the data will probably collect data from surgeries that had no complications.
 :::
 
-### Homework for Section 1.2
+### Homework for @sec-sampling-methods
 
 1.  Researchers want to collect cholesterol levels of U.S. patients who had a heart attack two days prior. The following are different sampling techniques that the researcher could use. Classify each as simple random sample, stratified sample, systematic sample, cluster sample, or convenience sample.
 
@@ -698,7 +698,7 @@ e.  The officer divides the batches made in a month into which day they were mad
 8.  Data was collected for two semesters in a statistics class drive. Use Rguroo to take a simple random sample of size 7 and record the variable [major]{.var}. Use a seed of 29. The first six rows of the dataset are in @tbl-Class.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [class_survey1]{.data}.
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this exercise is available in the Rguroo dataset repository [Intro to Stats with Rguroo]{.repo}, with the dataset name [class_survey1]{.data}.
 :::
 
 **Code book for Dataset Class Survey is below @tbl-Class**
@@ -706,7 +706,7 @@ e.  The officer divides the batches made in a month into which day they were mad
 9.  Data was collected from the Chronicle of Higher Education for tuition from public four-year colleges, private four-year colleges, and for-profit four-year colleges. The first 6 rows of the dataset is in @tbl-Tuition. Using [type]{.var} of institution as your cluster, use Rguroo to take a cluster sample of [INSTATE_TUTION]{.var} (sample size of 10). Use a seed of 47.
 
 ::: {tabindex="0" style="width:85%; margin:auto;"}
-![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Kozak]{.repo}, with the dataset name [tuition_4_year]{.data}. The first six rows of the dataset are in @tbl-Tuition. A complete description of the variables is provided in the [dataset code book](#code-book-tuition) that follows.
+![Rguroo dataset logo](Rguroo_Icons/Rguroo_repo_logo.png) The dataset for this example is available in the Rguroo dataset repository [Intro to Stats with Rguroo]{.repo}, with the dataset name [tuition_4_year]{.data}. The first six rows of the dataset are in @tbl-Tuition. A complete description of the variables is provided in the [dataset code book](#code-book-tuition) that follows.
 :::
 
 ```{r tuition-table,echo=FALSE}
@@ -714,7 +714,7 @@ e.  The officer divides the batches made in a month into which day they were mad
 #| warning: FALSE
 #| label: tbl-Tuition
 #| tbl-cap: "Head of Tuition Dataset"
-Tuition <- read.csv("https://krkozak.github.io/MAT160/Tuition_4_year.csv")
+Tuition <- read.csv("FJK_datasets/Tuition_4_year.csv")
 knitr::kable(head(Tuition))
 ```
 
@@ -748,7 +748,7 @@ Source Tuition and Fees, 1998-99 Through 2018-19. (2018, December 31). Retrieved
 References Chronicle of Higher Education \*, December 31, 2018.
 :::
 
-## Observational Study and Experimental Design
+## Observational Study and Experimental Design {#sec-obs-study-exp-design}
 
 This section provides an introduction to observational studies and experimental design—how to plan experiments or surveys so that the resulting conclusions are statistically sound. Because experimental design is a complex and detailed process, this section offers only a brief overview of the key ideas and best practices.
 
@@ -898,7 +898,7 @@ When planning and conducting a statistical study, the following guidelines help 
 
 9.  *Interpret and Evaluate Results*. Consider and note limitations, potential sources of bias, and any assumptions made during the study. State valid conclusions, if appropriate. Suggest improvements or directions for further studies.
 
-### Homework for Section 1.3
+### Homework for @sec-obs-study-exp-design
 
 1.  You want to determine if cinnamon reduces a person's insulin sensitivity. You give patients who are insulin sensitive a certain amount of cinnamon and then measure their glucose levels. Is this an observation or an experiment? Why?
 
@@ -942,7 +942,7 @@ When planning and conducting a statistical study, the following guidelines help 
 
 21. Consider a question that you would like to answer. Describe how you would design your own experiment. Make sure you state the question you would like to answer, then determine if an experiment or an observation is to be done, decide if the question needs one or two samples, if two samples are the samples matched, if this is a randomized experiment, if there is any blinding, and if this is a cross-sectional, retrospective, or prospective study.
 
-## Errors, Bias, and Ethics in Statistics
+## Errors, Bias, and Ethics in Statistics {#sec-errors-bias-ethics}
 
 Many studies are conducted and conclusions are drawn using statistical methods. However, not all studies are conducted properly, and conclusions are not always supported by the data. As a result, it is important to approach statistical studies with a critical eye. When reading or conducting a study, there are several issues you should consider to determine whether the results are accurate, unbiased, and ethically presented.
 
@@ -1134,7 +1134,7 @@ c.  The primary ethical concern is credibility. Selectively reporting only favor
 d.  The primary ethical concern is a conflict of interest. Because the funding organization stands to profit from positive results, there is a risk that the study design, analysis, or reporting may favor a desired outcome. This does not mean the results are incorrect, but it does require careful scrutiny.
 :::
 
-### Homework for Section 1.4
+### Homework for Section @sec-errors-bias-ethics
 
 1.  Suppose there is a study where a researcher conducts an experiment to show that deep breathing exercises helps to lower blood pressure. The researcher takes two groups of people and has one group to perform deep breathing exercises and a series of aerobic exercises every day and the other group was asked to refrain from any exercises. The researcher found that the group performing the deep breathing exercises and the aerobic exercises had lower blood pressure. Discuss any issue with this study.
 
